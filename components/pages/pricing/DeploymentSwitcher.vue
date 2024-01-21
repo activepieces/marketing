@@ -1,9 +1,9 @@
 <script setup>
-const emit = defineEmits(['change'])
+const emit = defineEmits(['deploymentModeChanged'])
 const props = defineProps(['deploymentMode'])
 
 const handleSwitchChange = function(newValue) {
-  emit('change', newValue);
+  emit('deploymentModeChanged', newValue);
 }
 </script>
 

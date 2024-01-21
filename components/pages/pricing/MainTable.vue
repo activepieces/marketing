@@ -6,8 +6,8 @@ import DeploymentSwitcher from './DeploymentSwitcher.vue'
 const selectedTeamPlan = ref('pro');
 const embedIsStartup = ref(false);
 
-const props = defineProps(['deploymentMode'])
-const emit = defineEmits(['deploymentModeChange'])
+let deploymentMode = ref('cloud')
+
 
 const agencyCommittedUsers = ref('flexible');
 const agencyCommittedUsersPlans = [
@@ -34,7 +34,7 @@ const agencyCommittedUsersPlans = [
 ];
 
 const handleDeploymentModeChange = (newMode) => {
-  emit('deploymentModeChange', newMode);
+  deploymentMode.value =newMode;
 }
 
 onMounted(() => {
@@ -48,7 +48,7 @@ onMounted(() => {
     <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
       <h2
         class="mb-4 text-5xl tracking-tight font-bold text-gray-900 dark:text-white">
-        Activepieces Pricing
+        Activepieces Pricing 
       </h2>
     </div>
 
@@ -86,7 +86,7 @@ onMounted(() => {
       </div>
 
       <div class="flex flex-col gap-1 items-end">
-        <DeploymentSwitcher :deployment-mode="deploymentMode" @change="handleDeploymentModeChange" />
+        <DeploymentSwitcher :deployment-mode="deploymentMode" @deployment-mode-changed="handleDeploymentModeChange" />
       </div>
     </div>
 
@@ -331,11 +331,11 @@ onMounted(() => {
                         <div class="text-gray-500 text-sm">per month</div>
                       </div>
 
-                      <div class="mb-4 font-normal text-lg text-gray-500 dark:text-gray-400">{{ deploymentMode == 'cloud' ?  '1,000 monthly tasks' : 'Unlimited tasks' }}{{ agencyCommittedUsers != 'flexible' ? ', '+ agencyCommittedUsers +' users' : '' }}</div>
+                      <div class="mb-4 font-normal text-lg text-gray-500 dark:text-gray-400">{{ deploymentMode === 'cloud' ?  '1,000 monthly tasks' : 'Unlimited tasks' }}{{ agencyCommittedUsers != 'flexible' ? ', '+ agencyCommittedUsers +' users' : '' }}</div>
                       <a href="#" class="flex justify-center text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-bue-200 dark:focus:ring-primary-900 font-medium rounded-lg text-lg px-5 py-2.5 text-center mb-4">Contact sales</a>
                       <div class="text-md text-gray-500 dark:text-gray-400">
                         <ul class="mb-2 flex flex-col content-start">
-                          <li v-if="deploymentMode == 'cloud'" data-popover-target="popover-extra-tasks" data-popover-placement="left" class="hover:text-gray-800">$1 per extra 1,000 tasks</li>
+                          <li v-if="deploymentMode === 'cloud'" data-popover-target="popover-extra-tasks" data-popover-placement="left" class="hover:text-gray-800">$1 per extra 1,000 tasks</li>
                         </ul>
                       </div>
                 </div>
