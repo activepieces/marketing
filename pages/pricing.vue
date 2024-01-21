@@ -1,11 +1,10 @@
-<script setup>
-import { ref } from 'vue'
 
+<script setup>
 
 </script>
 
 <template>
-  <PagesPricingMainTable />
+  <ap-marketing-table></ap-marketing-table>
   <PagesPricingCustomersLogos />
   <PagesPricingFAQ />
 </template>

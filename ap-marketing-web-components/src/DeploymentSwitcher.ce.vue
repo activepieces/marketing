@@ -21,22 +21,9 @@ const handleSwitchChange = function(newValue) {
   </div>
   <div class="inline-block font-semibold text-gray-600">
     <Transition name="fade" :duration="{ enter: 500, leave: 0 }">
-      <div v-if="deploymentMode == 'cloud'">We host it — no maintenance effort</div>
-      <div v-else-if="deploymentMode == 'self-hosted'">You host it — maintain your own setup</div>
+      <div v-if="deploymentMode == 'cloud'">We host it - no maintenance effort</div>
+      <div v-else-if="deploymentMode == 'self-hosted'">You host it - maintain your own setup</div>
     </Transition>
   </div>
 </template>
 
-<style scoped>
-.fade-enter-active {
-  transition: opacity 0.8s ease;
-}
-
-.fade-enter-from {
-  opacity: 0;
-}
-
-.fade-leave-active {
-  display: none
-}
-</style>
