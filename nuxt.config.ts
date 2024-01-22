@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   app: {
     head: {
-      script: [{ src: '_nuxt/assets/js/ap-marketing-table.js', type:'module'  }],
+      script: [{ src: '/js/ap-marketing-table.js', type:'module'  }],
     },
   },
   css: ['~/assets/css/main.css'],
