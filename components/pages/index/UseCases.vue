@@ -7,9 +7,9 @@ defineProps({
 <template>
 <section class="bg-teal-50 dark:bg-gray-900 my-16">
     <div class="py-20 px-4 mx-auto max-w-screen-xl lg:px-6">
-        <h2 class="mb-4 pb-10 text-4xl tracking-tight font-bold text-gray-900 dark:text-white text-center">Put everything on autopilot</h2>
+        <h2 class="mb-4 pb-10 text-3xl lg:text-4xl tracking-tight font-bold text-gray-900 dark:text-white text-center">Put everything on autopilot</h2>
         <div class="flex flex-col space-y space-y">
-            <ul class="flex grid grid-flow-col justify-stretch w-full space-x space-x-4 text-sm font-medium text-gray-500 dark:text-gray-400 md:me-4 mb-4 md:mb-0" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
+            <ul class="grid grid-cols-3 lg:grid-cols-5 justify-stretch w-full gap-4 text-sm font-medium text-gray-500 dark:text-gray-400 md:me-4 mb-4 md:mb-0" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
                 <li v-for="(item, index) in [
                     { id: 'ai', name: 'AI Automation' },
                     { id: 'it', name: 'IT Operations' },
@@ -17,7 +17,7 @@ defineProps({
                     { id: 'marketing', name: 'Marketing' },
                     { id: 'support', name: 'Support' }
                  ]" role="presentation">
-                    <button class="inline-flex text-center items-center justify-center px-8 py-5 rounded-lg bg-white text-gray-600 hover:text-black aria-selected:text-white aria-selected:hover:text-white aria-selected:bg-primary-600 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white text-lg transition duration-100"
+                    <button class="inline-flex text-center items-center justify-center text-md py-4 lg:text-lg lg:py-5 rounded-lg bg-white text-gray-600 hover:text-black aria-selected:text-white aria-selected:hover:text-white aria-selected:bg-primary-600 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white transition duration-100"
                       :id="item.id +'-tab'" :data-tabs-target="'#'+ item.id" type="button" role="tab" :aria-controls="item.id" :aria-selected="index == 0 ? 'true' : 'false'">
                         {{  item.name  }}
                     </button>

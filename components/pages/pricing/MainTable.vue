@@ -52,7 +52,7 @@ onMounted(() => {
       </h2>
     </div>
 
-    <div class="flex flex-row justify-between items-center mb-10 mt-16 w-full">
+    <div class="hidden lg:flex flex-row justify-between items-center mb-10 mt-16 w-full">
       <div class="flex flex-row gap-3 items-center">
         <p class="inline-block ml-2 text-xl text-gray-500">Your plan:</p>
         <div>
@@ -474,6 +474,11 @@ onMounted(() => {
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="flex justify-between items-center lg:hidden fixed bottom-0 left-0 z-50  bg-primary w-full py-3 px-2 text-lg text-white">
+    <div>asd</div>
+    <button class="border border-white py-1 px-2 rounded-lg">Start free</button>
   </div>
 </section>
 </template>

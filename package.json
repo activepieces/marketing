@@ -20,6 +20,9 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
-    "flowbite": "^2.2.0"
+    "@vueuse/core": "^10.7.2",
+    "flowbite": "^2.2.0",
+    "marked": "^11.1.1",
+    "vue-use-active-scroll": "^1.1.1"
   }
 }

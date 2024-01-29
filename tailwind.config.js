@@ -12,6 +12,9 @@ export default {
   ],
   theme: {
     extend: {
+      aria: {
+        current: 'current="true"'
+      },
       colors: {
         primary: { // Using https://uicolors.app/create on our primary #6e41e2
           50: '#f4f4fe',
