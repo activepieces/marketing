@@ -1,11 +1,10 @@
-<script setup>
-import { ref } from 'vue'
 
-let deploymentMode = ref('cloud')
+<script setup>
+
 </script>
 
 <template>
-  <PagesPricingMainTable :deployment-mode="deploymentMode" @deployment-mode-change="(newMode) => deploymentMode = newMode" />
+  <ap-marketing-table></ap-marketing-table>
   <PagesPricingCustomersLogos />
   <PagesPricingFAQ />
 </template>

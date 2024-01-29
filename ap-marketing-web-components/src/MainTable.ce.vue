@@ -1,13 +1,13 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-import { initTabs } from 'flowbite'
-import DeploymentSwitcher from './DeploymentSwitcher.vue'
-
+import { ref } from 'vue'
+import DeploymentSwitcher from './DeploymentSwitcher.ce.vue'
 const selectedTeamPlan = ref('pro');
 const embedIsStartup = ref(false);
-
-const props = defineProps(['deploymentMode'])
-const emit = defineEmits(['deploymentModeChange'])
+let deploymentMode = ref('cloud');
+const teamTabName = 'team';
+const agencyTabName = 'agency';
+const embedTabName = 'embed';
+let selectedTab = ref(teamTabName)
 
 const agencyCommittedUsers = ref('flexible');
 const agencyCommittedUsersPlans = [
@@ -34,12 +34,10 @@ const agencyCommittedUsersPlans = [
 ];
 
 const handleDeploymentModeChange = (newMode) => {
-  emit('deploymentModeChange', newMode);
+  deploymentMode.value =newMode;
 }
 
-onMounted(() => {
-  initTabs();
-});
+
 </script>
 
 <template>
@@ -48,7 +46,7 @@ onMounted(() => {
     <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
       <h2
         class="mb-4 text-5xl tracking-tight font-bold text-gray-900 dark:text-white">
-        Activepieces Pricing
+        Activepieces Pricing 
       </h2>
     </div>
 
@@ -56,27 +54,59 @@ onMounted(() => {
       <div class="flex flex-row gap-3 items-center">
         <p class="inline-block ml-2 text-xl text-gray-500">Your plan:</p>
         <div>
-          <ul class="text-sm font-medium text-center text-gray-500 flex flex-row gap-2" id="pricingTabsParent" data-tabs-toggle="#plans-body" role="tablist">
+          <ul class="text-sm font-medium text-center text-gray-500 flex flex-row gap-2" id="pricingTabsParent"  role="tablist">
             <li class="w-full" role="presentation">
-                <button id="team-tab" data-tabs-target="#team-plan-tab-body" role="tab" aria-controls="team-plan-tab" aria-selected="false" type="button" class="group inline-block py-3 px-8 w-full text-2xl bg-transparent hover:bg-gray-100 hover:border-transparent rounded-full border-2 border-transparent aria-selected:!bg-transparent aria-selected:!border-teal-500">
-                  <div class="flex flex-row gap-1.5 items-center group-hover:text-gray-900 group-aria-selected:text-transparent group-aria-selected:bg-clip-text group-aria-selected:bg-gradient-to-r group-aria-selected:from-teal-400 group-aria-selected:to-60% group-aria-selected:to-emerald-400">
-                    <svg class="fill-gray-400 group-hover:fill-gray-900 group-aria-selected:fill-teal-400" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M240-120q-66 0-113-47T80-280q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47Zm480 0q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47Zm-480-80q33 0 56.5-23.5T320-280q0-33-23.5-56.5T240-360q-33 0-56.5 23.5T160-280q0 33 23.5 56.5T240-200Zm480 0q33 0 56.5-23.5T800-280q0-33-23.5-56.5T720-360q-33 0-56.5 23.5T640-280q0 33 23.5 56.5T720-200ZM480-520q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47Zm0-80q33 0 56.5-23.5T560-680q0-33-23.5-56.5T480-760q-33 0-56.5 23.5T400-680q0 33 23.5 56.5T480-600Zm0-80Zm240 400Zm-480 0Z"/></svg>
+                <button id="team-tab" @click="selectedTab=teamTabName"  role="tab" type="button" class="group inline-block py-3 px-8 w-full text-2xl bg-transparent hover:bg-gray-100 hover:border-transparent rounded-full border-2 border-transparent " :class="{
+                  '!bg-transparent !border-teal-500 ': selectedTab == teamTabName
+                }">
+                  <div 
+                  :class="{
+                    '!text-transparent !bg-clip-text !bg-gradient-to-r !from-teal-400 !to-60% !to-emerald-400':  selectedTab == teamTabName}"
+
+                  class="flex flex-row gap-1.5 items-center group-hover:text-gray-900 ">
+                    <svg 
+                    :class="{
+                      '!fill-teal-400': selectedTab == teamTabName
+                    }"
+
+                    class="fill-gray-400 group-hover:fill-gray-900"                     
+                    xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M240-120q-66 0-113-47T80-280q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47Zm480 0q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47Zm-480-80q33 0 56.5-23.5T320-280q0-33-23.5-56.5T240-360q-33 0-56.5 23.5T160-280q0 33 23.5 56.5T240-200Zm480 0q33 0 56.5-23.5T800-280q0-33-23.5-56.5T720-360q-33 0-56.5 23.5T640-280q0 33 23.5 56.5T720-200ZM480-520q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47Zm0-80q33 0 56.5-23.5T560-680q0-33-23.5-56.5T480-760q-33 0-56.5 23.5T400-680q0 33 23.5 56.5T480-600Zm0-80Zm240 400Zm-480 0Z"/></svg>
                     <span>Team</span>
                   </div>
                 </button>
             </li>
             <li class="w-full" role="presentation">
-                  <button id="team-tab" data-tabs-target="#agency-plan-tab-body" role="tab" aria-controls="agency-plan-tab" aria-selected="false" type="button" class="group inline-block py-3 px-8 w-full text-2xl bg-transparent hover:bg-gray-100 hover:border-transparent rounded-full border-2 border-transparent aria-selected:!bg-transparent aria-selected:!border-fuchsia-500">
-                  <div class="flex flex-row gap-1.5 items-center group-hover:text-gray-900 group-aria-selected:text-transparent group-aria-selected:bg-clip-text group-aria-selected:bg-gradient-to-r group-aria-selected:from-fuchsia-400 group-aria-selected:to-30% group-aria-selected:to-pink-400">
-                    <svg class="fill-gray-400 group-hover:fill-gray-900 group-aria-selected:fill-fuchsia-400" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-120 80-600l120-240h560l120 240-400 480Zm-95-520h190l-60-120h-70l-60 120Zm55 347v-267H218l222 267Zm80 0 222-267H520v267Zm144-347h106l-60-120H604l60 120Zm-474 0h106l60-120H250l-60 120Z"/></svg>
+                  <button id="agency-tab" :class="{
+                  '!bg-transparent !border-fuchsia-500': selectedTab == agencyTabName
+                }"  @click="selectedTab=agencyTabName"  role="tab"   type="button" class="group inline-block py-3 px-8 w-full text-2xl bg-transparent hover:bg-gray-100 hover:border-transparent rounded-full border-2 border-transparent">
+                  <div class="flex flex-row gap-1.5 items-center group-hover:text-gray-900 "
+                  :class="{
+                    '!text-transparent !bg-clip-text !bg-gradient-to-r !from-fuchsia-400 !to-30% !to-pink-400':  selectedTab == agencyTabName}
+                    ">
+                    <svg class="fill-gray-400 group-hover:fill-gray-900" 
+                    :class="{
+                      '!fill-fuchsia-400': selectedTab == agencyTabName
+                    }"
+                    
+                    xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-120 80-600l120-240h560l120 240-400 480Zm-95-520h190l-60-120h-70l-60 120Zm55 347v-267H218l222 267Zm80 0 222-267H520v267Zm144-347h106l-60-120H604l60 120Zm-474 0h106l60-120H250l-60 120Z"/></svg>
                     <span>Agency</span>
                   </div>
                 </button>
             </li>
             <li class="w-full" role="presentation">
-                <button id="embed-tab" data-tabs-target="#embed-plan-tab-body" role="tab" aria-controls="agency-plan-tab" aria-selected="false" type="button" class="group inline-block py-3 px-8 w-full text-2xl bg-transparent hover:bg-gray-100 hover:border-transparent rounded-full border-2 border-transparent aria-selected:!bg-transparent aria-selected:!border-indigo-500">
-                  <div class="flex flex-row gap-1.5 items-center group-hover:text-gray-900 group-aria-selected:text-transparent group-aria-selected:bg-clip-text group-aria-selected:bg-gradient-to-r group-aria-selected:from-indigo-500 group-aria-selected:to-40% group-aria-selected:to-blue-400">
-                    <svg class="fill-gray-400 group-hover:fill-gray-900 group-aria-selected:fill-indigo-400" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M344-336 200-480l144-144 56 57-87 87 87 87-56 57Zm272 0-56-57 87-87-87-87 56-57 144 144-144 144ZM200-120q-33 0-56.5-23.5T120-200v-160h80v160h160v80H200Zm400 0v-80h160v-160h80v160q0 33-23.5 56.5T760-120H600ZM120-600v-160q0-33 23.5-56.5T200-840h160v80H200v160h-80Zm640 0v-160H600v-80h160q33 0 56.5 23.5T840-760v160h-80Z"/></svg>
+                <button :class="{
+                  '!bg-transparent !border-indigo-500 ': selectedTab == embedTabName
+                }"  @click="selectedTab=embedTabName"  id="embed-tab" data-tabs-target="#embed-plan-tab-body" role="tab" aria-controls="agency-plan-tab" aria-selected="false" type="button" class="group inline-block py-3 px-8 w-full text-2xl bg-transparent hover:bg-gray-100 hover:border-transparent rounded-full border-2 border-transparent ">
+                  <div 
+                  :class="{
+                    '!text-transparent !bg-clip-text !bg-gradient-to-r !from-indigo-500 !to-40% !to-blue-400':  selectedTab == embedTabName
+                  }"
+                  class="flex flex-row gap-1.5 items-center group-hover:text-gray-900 ">
+                    <svg :class="{
+                      '!fill-indigo-400': selectedTab == embedTabName
+                    }"
+                    
+                    class="fill-gray-400 group-hover:fill-gray-900 " xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M344-336 200-480l144-144 56 57-87 87 87 87-56 57Zm272 0-56-57 87-87-87-87 56-57 144 144-144 144ZM200-120q-33 0-56.5-23.5T120-200v-160h80v160h160v80H200Zm400 0v-80h160v-160h80v160q0 33-23.5 56.5T760-120H600ZM120-600v-160q0-33 23.5-56.5T200-840h160v80H200v160h-80Zm640 0v-160H600v-80h160q33 0 56.5 23.5T840-760v160h-80Z"/></svg>
                     <span>Embed</span>
                   </div>
                 </button>
@@ -86,13 +116,13 @@ onMounted(() => {
       </div>
 
       <div class="flex flex-col gap-1 items-end">
-        <DeploymentSwitcher :deployment-mode="deploymentMode" @change="handleDeploymentModeChange" />
+        <DeploymentSwitcher :deployment-mode="deploymentMode" @deployment-mode-changed="handleDeploymentModeChange" />
       </div>
     </div>
 
 
     <div id="plans-body">
-      <div id="team-plan-tab-body" class="hidden" role="tabpanel" aria-labelledby="team-plan-tab">
+      <div id="team-plan-tab-body" :class="{'hidden': selectedTab !== teamTabName}" role="tabpanel" aria-labelledby="team-plan-tab">
         <div class="bg-white rounded-lg divide-y divide-gray-200 shadow border-gray-800 border dark:divide-gray-700 lg:divide-y-0 lg:divide-x lg:grid lg:grid-cols-3 dark:bg-gray-800 flex items-stretch">
           <div class="col-span-2 p-6 lg:p-8">
             <div id="team-content">
@@ -215,7 +245,7 @@ onMounted(() => {
         </div>
       </div>
 
-      <div id="agency-plan-tab-body" class="hidden" role="tabpanel" aria-labelledby="agency-plan-tab">
+      <div id="agency-plan-tab-body" :class="{'hidden': selectedTab !== agencyTabName}" role="tabpanel" aria-labelledby="agency-plan-tab">
         <div class="bg-white rounded-lg divide-y divide-gray-200 shadow border-gray-800 border dark:divide-gray-700 lg:divide-y-0 lg:divide-x lg:grid lg:grid-cols-3 dark:bg-gray-800 flex items-stretch">
           <div class="col-span-2 p-6 lg:p-8">
             <div id="agency-content">
@@ -331,11 +361,11 @@ onMounted(() => {
                         <div class="text-gray-500 text-sm">per month</div>
                       </div>
 
-                      <div class="mb-4 font-normal text-lg text-gray-500 dark:text-gray-400">{{ deploymentMode == 'cloud' ?  '1,000 monthly tasks' : 'Unlimited tasks' }}{{ agencyCommittedUsers != 'flexible' ? ', '+ agencyCommittedUsers +' users' : '' }}</div>
+                      <div class="mb-4 font-normal text-lg text-gray-500 dark:text-gray-400">{{ deploymentMode === 'cloud' ?  '1,000 monthly tasks' : 'Unlimited tasks' }}{{ agencyCommittedUsers != 'flexible' ? ', '+ agencyCommittedUsers +' users' : '' }}</div>
                       <a href="#" class="flex justify-center text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-bue-200 dark:focus:ring-primary-900 font-medium rounded-lg text-lg px-5 py-2.5 text-center mb-4">Contact sales</a>
                       <div class="text-md text-gray-500 dark:text-gray-400">
                         <ul class="mb-2 flex flex-col content-start">
-                          <li v-if="deploymentMode == 'cloud'" data-popover-target="popover-extra-tasks" data-popover-placement="left" class="hover:text-gray-800">$1 per extra 1,000 tasks</li>
+                          <li v-if="deploymentMode === 'cloud'" data-popover-target="popover-extra-tasks" data-popover-placement="left" class="hover:text-gray-800">$1 per extra 1,000 tasks</li>
                         </ul>
                       </div>
                 </div>
@@ -343,7 +373,7 @@ onMounted(() => {
         </div>
       </div>
 
-      <div id="embed-plan-tab-body" class="hidden" role="tabpanel" aria-labelledby="embed-plan-tab">
+      <div :class="{'hidden': selectedTab !== embedTabName}"  id="embed-plan-tab-body"  role="tabpanel" aria-labelledby="embed-plan-tab">
         <div class="bg-white rounded-lg divide-y divide-gray-200 shadow border-gray-800 border dark:divide-gray-700 lg:divide-y-0 lg:divide-x lg:grid lg:grid-cols-3 dark:bg-gray-800 flex items-stretch">
           <div class="col-span-2 p-6 lg:p-8">
             <div id="embed-content">
@@ -483,4 +513,7 @@ onMounted(() => {
 </section>
 </template>
 
-<style scoped></style>
+<style lang="scss">
+@import url("./index.css");
+
+</style>
