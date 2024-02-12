@@ -28,7 +28,7 @@ import LogosScroll from './LogosScroll.vue'
                 <LogosScroll class="py-4 lg:mt-0" />
             </div>
             <div class="lg:col-span-6 mt-10 lg:mt-0">
-                <video autoplay loop muted playsinline class="max-w-[1280px] w-full shadow-2xl bg-white rounded-xl"><source src="https://tookey.io/static/full-13b36bffb435d2e2cf3486028518976e.mp4" type="video/mp4"></video>
+                <!--<video autoplay loop muted playsinline class="max-w-[1280px] w-full shadow-2xl bg-white rounded-xl"><source src="https://tookey.io/static/full-13b36bffb435d2e2cf3486028518976e.mp4" type="video/mp4"></video>-->
             </div>
         </div>
         <div class="pt-16 grid gap-8 sm:gap-12 md:grid-cols-3">

@@ -1,6 +1,10 @@
 <script setup>
 import { ref } from 'vue'
 
+const categories = [
+  'AI', 'Sales and Marketing', 'Customer Service', 'Content and Files', 'HR'
+];
+
 const piecesPerPage = 20;
 const basePiecesUrl = 'https://cloud.activepieces.com/api/v1/webhooks/6ErKUFB4miHkqU42njO0h/sync';
 const piecesUrl = ref(basePiecesUrl)
@@ -9,7 +13,7 @@ const loadMorePieces = ref(false)
 const { data: pieces, status: resultsStatus } = await useFetch(piecesUrl)
 
 const props = defineProps(['filters', 'sortBy', 'searchQuery'])
-const emit = defineEmits(['sortByChange', 'searchQueryChange'])
+const emit = defineEmits(['sortByChange', 'searchQueryChange', 'filtersChange'])
 
 watch([props.filters, () => props.sortBy, () => props.searchQuery], (f) => {
     const searchParams = new URLSearchParams({
@@ -38,6 +42,9 @@ const handleSearchQueryChange = (e) => {
 <section class="bg-gray-50 dark:bg-gray-900 w-full">
   <div class="py-8 px-6 mx-auto max-w-screen-xl">
     <input class="appearance-none mb-4 block w-full bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight border-2 border-transparent focus:ring-0 focus:outline-none focus:bg-white focus:border-primary-500" type="text" placeholder="Search pieces" @keyup="handleSearchQueryChange($event)">
+    
+    <PagesPiecesFilter class="block lg:hidden" :categories="categories" :filters="filters" @filtersChange="(newFilters) => $emit('filtersChange', newFilters)" />
+
     <div class="flex justify-between mb-8 items-center">
         <p class="font-normal text-gray-500 text-normal text-left">
             <span v-if="resultsStatus == 'success'">Showing {{ pieces.length }} piece{{ pieces.length > 1 ? 's' : '' }}</span>
@@ -53,14 +60,14 @@ const handleSearchQueryChange = (e) => {
     </div>
     
     <div v-if="resultsStatus == 'success' && pieces.length > 0" class="w-full">
-        <div class="gap-8 grid grid-cols-2">
+        <div class="gap-8 grid grid-cols-1 md:grid-cols-2">
             <NuxtLink v-for="(piece, pieceIndex) in pieces" :to="`/pieces/${piece.name.replace('@activepieces/piece-', '')}`"
-                class="flex gap-4 block p-6 transition duration-200 shadow hover:shadow-md hover:-translate-y-[2px] bg-white rounded dark:bg-gray-800"
+                class="flex flex-row md:flex-col lg:flex-row items-center md:items-start gap-4 block p-6 transition duration-200 shadow hover:shadow-md hover:-translate-y-[2px] bg-white rounded dark:bg-gray-800"
                 :class="{ 'hidden': pieceIndex >= piecesPerPage && loadMorePieces == false }">
                 <img :src="piece.logoUrl" class="w-12 h-12">
                 <div>
                     <h3 class="mb-[2px] text-lg font-bold dark:text-white">{{ piece.displayName }}</h3>
-                    <p class="font-light text-gray-500 dark:text-gray-400">{{ piece.description == '' ? 'Here goes the piece description, even if it\'s empty we need to auto generate it.' : piece.description }}</p>
+                    <p class="hidden md:block font-light text-gray-500 dark:text-gray-400">{{ piece.description == '' ? 'Here goes the piece description, even if it\'s empty we need to auto generate it.' : piece.description }}</p>
                 </div>
             </NuxtLink>
         </div>

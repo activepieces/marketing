@@ -21,8 +21,15 @@ onMounted(() => {
                 </h2>
                 <div id="accordion-flush-body-1" class="" aria-labelledby="accordion-flush-heading-1">
                     <div class="py-5 border-b border-gray-200 dark:border-gray-700">
-                        <p class="mb-2 text-gray-500 dark:text-gray-400">Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.</p>
-                        <p class="text-gray-500 dark:text-gray-400">Check out this guide to learn how to <a href="#" class="text-primary-600 dark:text-primary-500 hover:underline">get started</a> and start developing websites even faster with components on top of Tailwind CSS.</p>
+                        <p class="mb-4 text-gray-500 dark:text-gray-400">
+                            Consider the <span class="font-bold">Team plans</span> if you'd like to automate your internal work at a small business (the Pro plan) or at a larger enterprise organization (the Enterprise plan).
+                        </p>
+                        <p class="mb-4 text-gray-500 dark:text-gray-400">
+                            Consider the <span class="font-bold">Agency plan</span> if you work with multiple clients on automating their work, it gives you management superpowers on top of the core automation features.
+                        </p>
+                        <p class="text-gray-500 dark:text-gray-400">
+                            Consider the <span class="font-bold">Embed plan</span> if you run a SaaS product and you'd like to offer automations as part of your product.
+                        </p>
                     </div>
                 </div>
                 <h2 id="accordion-flush-heading-2">
@@ -33,8 +40,8 @@ onMounted(() => {
                 </h2>
                 <div id="accordion-flush-body-2" class="hidden" aria-labelledby="accordion-flush-heading-2">
                     <div class="py-5 border-b border-gray-200 dark:border-gray-700">
-                        <p class="mb-2 text-gray-500 dark:text-gray-400">Flowbite is first conceptualized and designed using the Figma software so everything you see in the library has a design equivalent in our Figma file.</p>
-                        <p class="text-gray-500 dark:text-gray-400">Check out the <a href="#" class="text-primary-600 dark:text-primary-500 hover:underline">Figma design system</a> based on the utility classes from Tailwind CSS and components from Flowbite.</p>
+                        <p class="mb-4 text-gray-500 dark:text-gray-400">We encourage you to consider the <span class="font-bold">self hosted</span> version if you are in a regulated industry or have specific requirements to keep your data in your region or in your own servers.</p>
+                        <p class="text-gray-500 dark:text-gray-400">If your main driver to self host is to save the cost of the tasks, we made it cheap to run your tasks on our cloud. However, you might want to self host if you build high volume automations such as reading all your Slack messages.</p>
                     </div>
                 </div>
                 <h2 id="accordion-flush-heading-3">
@@ -45,13 +52,15 @@ onMounted(() => {
                 </h2>
                 <div id="accordion-flush-body-3" class="hidden" aria-labelledby="accordion-flush-heading-3">
                     <div class="py-5 border-b border-gray-200 dark:border-gray-700">
-                        <p class="mb-2 text-gray-500 dark:text-gray-400">The main difference is that the core components from Flowbite are open source under the MIT license, whereas Tailwind UI is a paid product. Another difference is that Flowbite relies on smaller and standalone components, whereas Tailwind UI offers sections of pages.</p>
-                        <p class="mb-2 text-gray-500 dark:text-gray-400">However, we actually recommend using both Flowbite, Flowbite Pro, and even Tailwind UI as there is no technical reason stopping you from using the best of two worlds.</p>
-                        <p class="mb-2 text-gray-500 dark:text-gray-400">Learn more about these technologies:</p>
-                        <ul class="pl-5 list-disc text-gray-500 dark:text-gray-400">
-                            <li><a href="#" class="text-primary-600 dark:text-primary-500 hover:underline">Flowbite Pro</a></li>
-                            <li><a href="#" class="text-primary-600 dark:text-primary-500 hover:underline">Tailwind UI</a></li>
-                        </ul>
+                        <p class="mb-4 text-gray-500 dark:text-gray-400">
+                            On <span class="font-bold">our cloud</span>, we charge $1 per 1,000 tasks on all plans. We think this is at the low end of the per-task pricing in the market.
+                        </p>
+                        <p class="mb-4 text-gray-500 dark:text-gray-400">
+                            If you <span class="font-bold">self host</span> Activepieces, you can run as many tasks as your machines can handle. Read more about our <a target="_blank" href="https://www.activepieces.com/docs/install/architecture" class="text-primary-600 dark:text-primary-500 hover:underline">architecture</a> for information about hosting and scaling Activepieces.
+                        </p>
+                        <p class="text-gray-500 dark:text-gray-400">
+                            A <span class="font-bold">task</span> is any step of your automation flow that gets executed, be it a trigger or an action step. If your flow has a total of 5 steps and it triggers 10 times, these are 50 tasks.
+                        </p>
                     </div>
                 </div>
                 <h2 id="accordion-flush-heading-4">
@@ -62,13 +71,9 @@ onMounted(() => {
                 </h2>
                 <div id="accordion-flush-body-4" class="hidden" aria-labelledby="accordion-flush-heading-4">
                     <div class="py-5 border-b border-gray-200 dark:border-gray-700">
-                        <p class="mb-2 text-gray-500 dark:text-gray-400">The main difference is that the core components from Flowbite are open source under the MIT license, whereas Tailwind UI is a paid product. Another difference is that Flowbite relies on smaller and standalone components, whereas Tailwind UI offers sections of pages.</p>
-                        <p class="mb-2 text-gray-500 dark:text-gray-400">However, we actually recommend using both Flowbite, Flowbite Pro, and even Tailwind UI as there is no technical reason stopping you from using the best of two worlds.</p>
-                        <p class="mb-2 text-gray-500 dark:text-gray-400">Learn more about these technologies:</p>
-                        <ul class="pl-5 list-disc text-gray-500 dark:text-gray-400">
-                            <li><a href="#" class="text-primary-600 dark:text-primary-500 hover:underline">Flowbite Pro</a></li>
-                            <li><a href="#" class="text-primary-600 dark:text-primary-500 hover:underline">Tailwind UI</a></li>
-                        </ul>
+                        <p class="mb-4 text-gray-500 dark:text-gray-400">
+                            Activepieces is <a target="_blank" href="https://www.activepieces.com/docs/about/license" class="text-primary-600 dark:text-primary-500 hover:underline">open-core</a>. All the main features like building, modifying and publishing automation flows are published under the MIT license, while some features are published under our enterprise license that requires an active subscription to use them.
+                        </p>
                     </div>
                 </div>
             </div> 

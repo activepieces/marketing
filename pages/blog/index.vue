@@ -1,5 +1,19 @@
 <script setup>
-import { ref, reactive, computed } from 'vue'
+const pageTitle = 'Learn to automate your work';
+const metaDesc = 'Read tutorials, guides, thoughts and more about building automated flows to run in the background to save yourself the manual work.';
+const metaKeywords = 'automation blog, business automation tutorials, no-code business automation';
+
+useHead({
+  title: pageTitle,
+  meta: [
+    { name: 'description', content: metaDesc },
+    { name: 'keywords', content: metaKeywords },
+    { property: 'og:title', content: pageTitle },
+    { property: 'og:description', content: metaDesc },
+  ]
+})
+
+import { ref, computed } from 'vue'
 import { useActiveScroll } from 'vue-use-active-scroll'
 import { formatTimeAgo } from '@vueuse/core'
 
@@ -20,8 +34,8 @@ const { setActive, activeId } = useActiveScroll(targets)
 <template>
 <section class="bg-white dark:bg-gray-900">
     <div class="grid grid-cols-3 py-8 px-4 mx-auto max-w-screen-xl gap-16 py-16 px-6 ">
-        <div class="col-span-1 sticky top-20 self-start">
-            <h2 class="mb-4 text-6xl tracking-tight font-extrabold text-gray-900 dark:text-white">Your Automation Buddy</h2>
+        <div class="col-span-3 lg:col-span-1 lg:sticky top-20 self-start">
+            <h2 class="mb-4 text-4xl lg:text-5xl tracking-tight font-extrabold text-gray-900 dark:text-white">Your Automation Buddy</h2>
             <p class="font-light text-gray-500 dark:text-gray-400 sm:text-xl">We blog everything automation. Best practices, useful products, tutorials and our thoughts.</p>
             <div class="mt-10">
               <p class="uppercase text-gray-500 font-semibold">Categories</p>
@@ -33,13 +47,13 @@ const { setActive, activeId } = useActiveScroll(targets)
                         :to="{ hash: `#${link.href}` }"
                         :ariaCurrentValue="link.href === activeId ? 'true': 'false'"
                         class="block my-6 text-2xl font-normal flex gap-2 items-center leading-none hover:underline"
-                        :class="{ 'text-primary !no-underline': link.href === activeId }"
+                        :class="{ 'lg:text-primary lg:!no-underline': link.href === activeId }"
                     >
-                        <span :class="{ 'invisible': link.href !== activeId }">👉</span><span>{{ link.label }}</span>
+                        <span class="hidden lg:block" :class="{ 'invisible': link.href !== activeId }">👉</span><span>{{ link.label }}</span>
                 </RouterLink>
             </div>
         </div> 
-        <div class="col-span-2 flex flex-col mt-10 dark:divide-gray-700">
+        <div class="col-span-3 lg:col-span-2 flex flex-col mt-10 dark:divide-gray-700">
             <div v-for="category in categories" :id="category.attributes.slug" :ref="el => targets.push(el)"
                 class="py-20 first:pt-0 last:pb-0">
                 <NuxtLink :to="`/blog/category/${category.attributes.slug}`" class="group inline-flex gap-3 text-4xl font-light mb-10 items-center"><span>{{ category.attributes.name }}</span><span class="hidden group-hover:inline-block uppercase bg-gray-100 text-gray-900 text-sm font-semibold py-1 px-3 rounded-full tracking-wider">Browse</span></NuxtLink>

@@ -19,7 +19,7 @@ const handleSwitchChange = function(newValue) {
       <label :for="'deployment-self-hosted-'+ $.uid" class="inline-block cursor-pointer font-normal text-gray-600 hover:text-black peer-checked:font-semibold peer-checked:text-primary peer-checked:bg-primary-100 px-6 py-2 rounded-full">Self hosted</label>
     </div>
   </div>
-  <div class="inline-block font-semibold text-gray-600">
+  <div class="hidden lg:inline-block font-semibold text-gray-600">
     <Transition name="fade" :duration="{ enter: 500, leave: 0 }">
       <div v-if="deploymentMode == 'cloud'">We host it - no maintenance effort</div>
       <div v-else-if="deploymentMode == 'self-hosted'">You host it - maintain your own setup</div>
