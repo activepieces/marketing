@@ -535,7 +535,7 @@ const addNumSep = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
                 <label class="relative inline-flex items-center cursor-pointer">
                   <input type="checkbox" value="" class="sr-only peer" v-model="embedIsStartup">
                   <div class="shrink-0 relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-0 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary-600"></div>
-                  <span class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">We're a startup younger than 2 years old with fewer than 15 employee <span class="inline-block py-1 px-2 bg-sky-100 rounded-lg ms-1">50% off</span></span>
+                  <span class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">We're a startup younger than 2 years old with fewer than 15 employees <span class="inline-block py-1 px-2 bg-sky-100 rounded-lg ms-1">50% off</span></span>
                 </label>
               </div>
             </div>
