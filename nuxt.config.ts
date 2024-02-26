@@ -23,5 +23,13 @@ export default defineNuxtConfig({
     public: {
       strapiUrl: process.env.STRAPI_URL
     }
-  }
+  },
+  routeRules: {
+    '/docs': { redirect: '/docs/getting-started/introduction' },
+    '/docs/**': { proxy: 'https://activepieces.mintlify.dev/docs/**' },
+    '/plans': { redirect: '/pricing' },
+    '/roadmap': { redirect: 'https://github.com/orgs/activepieces/projects/53' },
+    '/pieces-roadmap': { redirect: 'https://community.activepieces.com/c/feature-requests/9' },
+    '/request-a-piece': { redirect: 'https://community.activepieces.com/c/feature-requests/9' }
+  },
 })
