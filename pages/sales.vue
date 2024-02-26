@@ -78,29 +78,34 @@ const submitSalesForm = async function() {
   <div>
     <section class="bg-white dark:bg-gray-900 my-16">
       <div class="px-4 mx-auto max-w-screen-xl sm:px-8 lg:px-10">
-        <NuxtLink to="/" class="inline-block"><img src="/activepieces-logo-hz-og.svg" class="h-6 md:h-8" alt="Activepieces Home" /></NuxtLink>
-        <div class="mt-16 flex gap-16 mb-36">
-          <div class="w-1/2">
-            <div class="text-7xl font-extrabold">Contact our sales team</div>
-            <div class="max-w-[30rem] leading-8 mt-4 text-xl font-light text-gray-900">Deploy Activepieces for your internal automations, to work with clients or to embed in your SaaS. Unlock all the potential with our paid features.</div>
-            <div class="w-[30rem] pt-16 grid grid-cols-2 justify-center items-center [&_img]:h-6 gap-y-10">
-              <img src="/logos/pipedrive.png" alt="Pipedrive" />
-              <img src="/logos/rakuten.png" alt="Rakuten" />
-              <img src="/logos/experiencecom.png" alt="Experience.com" />
-              <img src="/logos/roblox.png" alt="Roblox" />
-              <img src="/logos/exabeam.png" alt="Exabeam" />
-              <img src="/logos/alfred24.png" alt="Alfred24" />
-              <img src="/logos/contentful.png" alt="Contentful" />
-              <img src="/logos/vts.png" alt="VTS" />
-            </div>
-            <div class="mt-16 flex gap-4">
-              <img class="w-24" src="/badges/g2-top25-24.svg">
-              <img class="w-24" src="/badges/g2-most-implementable-w24.svg">
-              <img class="w-24" src="/badges/g2-high-performer-w24.svg">
+        <div class="text-center md:text-left">
+          <NuxtLink to="/" class="inline-block"><img src="/activepieces-logo-hz-og.svg" class="h-6 md:h-8" alt="Activepieces Home" /></NuxtLink>
+        </div>
+
+        <div class="mt-16 block md:flex gap-16 mb-36">
+          <div class="w-full md:w-1/2 text-center md:text-left">
+            <div class="text-4xl md:text-7xl font-extrabold">Contact our sales team</div>
+            <div class="max-w-none md:max-w-[30rem] leading-8 mt-4 text-lg md:text-xl font-light text-gray-900">Deploy Activepieces for your internal automations, to work with clients or to embed in your SaaS. Unlock all the potential with our paid features.</div>
+            <div class="max-md:hidden">
+              <div class="w-[30rem] pt-16 grid grid-cols-2 justify-center items-center [&_img]:h-6 gap-y-10">
+                <img src="/logos/pipedrive.png" alt="Pipedrive" />
+                <img src="/logos/rakuten.png" alt="Rakuten" />
+                <img src="/logos/experiencecom.png" alt="Experience.com" />
+                <img src="/logos/roblox.png" alt="Roblox" />
+                <img src="/logos/exabeam.png" alt="Exabeam" />
+                <img src="/logos/alfred24.png" alt="Alfred24" />
+                <img src="/logos/contentful.png" alt="Contentful" />
+                <img src="/logos/vts.png" alt="VTS" />
+              </div>
+              <div class="mt-16 flex gap-4">
+                <img class="w-24" src="/badges/g2-top25-24.svg">
+                <img class="w-24" src="/badges/g2-most-implementable-w24.svg">
+                <img class="w-24" src="/badges/g2-high-performer-w24.svg">
+              </div>
             </div>
           </div>
 
-          <div class="w-1/2">
+          <div class="w-full md:w-1/2 max-md:pt-10">
             <div :class="{ 'hidden': sendingStatus != 'sent' }">
               <img class="w-[20rem] mx-auto" src="/dancing-cat.gif">
               <div class="text-3xl text-center mt-10">Thank you for contacting us. Someone in our team will reach out to you shortly.</div>
@@ -152,8 +157,8 @@ const submitSalesForm = async function() {
                     <label for="sales-field-context" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Context</label>
                     <textarea name="context" id="sales-field-context" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Which features are you looking for? What are you trying to solve?" required></textarea>
                 </div>
-                <div class="col-span-2 flex justify-start gap-4 items-center">
-                  <button type="submit" :disabled="sendingStatus == 'pending'" class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Contact Sales</button>
+                <div class="col-span-2 md:flex justify-start gap-4 items-center">
+                  <button type="submit" :disabled="sendingStatus == 'pending'" class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-primary-700 max-md:w-full hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Contact Sales</button>
                   <div class="text-gray-500" :class="{ 'hidden': sendingStatus != 'pending' }">Loading..</div>
                 </div>
             </form>
