@@ -29,7 +29,7 @@ useHead({
         {{ piece.displayName }} Integrations
       </h2>
       <p class="mb-10 text-xl tracking-tight font-normal text-gray-500">Activepieces lets you connect {{ piece.displayName }} with the most popular apps, so you can automate your work and have more time for what matters most - no code required.</p>
-      <a href="#" class="mt-10 text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-normal rounded-lg text-md px-6 py-3 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">Start free</a>
+      <a href="https://cloud.activepieces.com/sign-up" class="mt-10 text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-normal rounded-lg text-xl px-10 py-4 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">Start free</a>
     </div>
 
     <div class="mt-24 w-full bg-gray-50">
@@ -41,13 +41,13 @@ useHead({
         <div class="mt-10 grid grid-cols-1 md:grid-cols-2 space-x-0 space-y-6 md:space-x-6 md:space-y-0">
           <div class="flex flex-col gap-6">
             <template v-for="(trigger, triggerIndex) in Object.values(piece.triggers)">
-              <PagesPiecesCard v-if="triggerIndex % 2 == 0" :item="trigger" :pieceLogoUrl="piece.logoUrl" item-type="trigger" />
+              <PagesPiecesCard v-if="triggerIndex % 2 == 0" :item="trigger" :piece-name="piece.name" :piece-logo-url="piece.logoUrl" item-type="trigger" />
             </template>
           </div>
 
           <div class="flex flex-col gap-6">
             <template v-for="(trigger, triggerIndex) in Object.values(piece.triggers)">
-              <PagesPiecesCard v-if="triggerIndex % 2 != 0" :item="trigger" :pieceLogoUrl="piece.logoUrl" item-type="trigger" />
+              <PagesPiecesCard v-if="triggerIndex % 2 != 0" :item="trigger" :piece-name="piece.name" :piece-logo-url="piece.logoUrl" item-type="trigger" />
             </template>
           </div>
         </div>
@@ -61,13 +61,13 @@ useHead({
         <div class="mt-10 grid grid-cols-1 md:grid-cols-2 space-x-0 space-y-6 md:space-x-6 md:space-y-0">
           <div class="flex flex-col gap-6">
             <template v-for="(action, actionIndex) in Object.values(piece.actions)">
-              <PagesPiecesCard v-if="actionIndex % 2 == 0" :item="action" :pieceLogoUrl="piece.logoUrl" item-type="action" />
+              <PagesPiecesCard v-if="actionIndex % 2 == 0" :item="action" :piece-name="piece.name" :piece-logo-url="piece.logoUrl" item-type="action" />
             </template>
           </div>
 
           <div class="flex flex-col gap-6">
             <template v-for="(action, actionIndex) in Object.values(piece.actions)">
-              <PagesPiecesCard v-if="actionIndex % 2 != 0" :item="action" :pieceLogoUrl="piece.logoUrl" item-type="action" />
+              <PagesPiecesCard v-if="actionIndex % 2 != 0" :item="action" :piece-name="piece.name" :piece-logo-url="piece.logoUrl" item-type="action" />
             </template>
           </div>
         </div>

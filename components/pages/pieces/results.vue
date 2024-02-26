@@ -1,29 +1,43 @@
 <script setup>
 import { ref } from 'vue'
 
-const categories = [
-  'AI', 'Sales and Marketing', 'Customer Service', 'Content and Files', 'HR'
-];
-
 const piecesPerPage = 20;
-const basePiecesUrl = 'https://cloud.activepieces.com/api/v1/webhooks/6ErKUFB4miHkqU42njO0h/sync';
+const basePiecesUrl = 'https://cloud.activepieces.com/api/v1/pieces';
 const piecesUrl = ref(basePiecesUrl)
 const loadMorePieces = ref(false)
 
 const { data: pieces, status: resultsStatus } = await useFetch(piecesUrl)
 
-const props = defineProps(['filters', 'sortBy', 'searchQuery'])
+const props = defineProps(['filters', 'sortBy', 'searchQuery', 'categories'])
 const emit = defineEmits(['sortByChange', 'searchQueryChange', 'filtersChange'])
 
-watch([props.filters, () => props.sortBy, () => props.searchQuery], (f) => {
-    const searchParams = new URLSearchParams({
-        ...props.filters,
-        sortBy: props.sortBy,
-        searchQuery: props.searchQuery
-    }).toString();
+watch([props.filters, () => props.sortBy, () => props.searchQuery], () => {
+    const { categories, ...otherFilters } = props.filters;
+    
+    const paramsObj = otherFilters;
+    if (props.sortBy != '') {
+        paramsObj.sortBy = props.sortBy;
 
-    piecesUrl.value = `${basePiecesUrl}?${searchParams}`;
-})
+        if (props.sortBy == 'NAME') {
+            paramsObj.orderBy = 'ASC';
+        } else if (props.sortBy == 'DATE') {
+            paramsObj.orderBy = 'DESC';
+        }
+    }
+    if (props.searchQuery != '') paramsObj.searchQuery = props.searchQuery;
+
+    const searchParams = new URLSearchParams(paramsObj);
+
+    if (Array.isArray(categories)) {
+        categories.forEach(category => {
+            searchParams.append('categories', category);
+        });
+    }
+
+    const searchParamsString = searchParams.toString();
+
+    piecesUrl.value = `${basePiecesUrl}?${searchParamsString}`;
+});
 
 watch(() => resultsStatus.value, (f) => {
     loadMorePieces.value = false;
@@ -52,9 +66,8 @@ const handleSearchQueryChange = (e) => {
         </p>
         <div>Sort by
             <select @change="handleSortByChange($event)" class="ms-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option value="popular" :selected="sortBy == 'popular'">Most popular</option>
-                <option value="last-updated" :selected="sortBy == 'last-updated'">Last updated</option>
-                <option value="alphabetic" :selected="sortBy == 'alphabetic'">A to Z</option>
+                <option value="NAME" :selected="sortBy == 'NAME'">A to Z</option>
+                <option value="DATE" :selected="sortBy == 'DATE'">Last updated</option>
             </select>
         </div>
     </div>
@@ -62,12 +75,12 @@ const handleSearchQueryChange = (e) => {
     <div v-if="resultsStatus == 'success' && pieces.length > 0" class="w-full">
         <div class="gap-8 grid grid-cols-1 md:grid-cols-2">
             <NuxtLink v-for="(piece, pieceIndex) in pieces" :to="`/pieces/${piece.name.replace('@activepieces/piece-', '')}`"
-                class="flex flex-row md:flex-col lg:flex-row items-center md:items-start gap-4 block p-6 transition duration-200 shadow hover:shadow-md hover:-translate-y-[2px] bg-white rounded dark:bg-gray-800"
+                class="flex flex-row md:flex-col lg:flex-row items-center gap-4 block p-6 transition duration-200 shadow hover:shadow-md hover:-translate-y-[2px] bg-white rounded dark:bg-gray-800"
                 :class="{ 'hidden': pieceIndex >= piecesPerPage && loadMorePieces == false }">
                 <img :src="piece.logoUrl" class="w-12 h-12">
                 <div>
                     <h3 class="mb-[2px] text-lg font-bold dark:text-white">{{ piece.displayName }}</h3>
-                    <p class="hidden md:block font-light text-gray-500 dark:text-gray-400">{{ piece.description == '' ? 'Here goes the piece description, even if it\'s empty we need to auto generate it.' : piece.description }}</p>
+                    <p v-if="piece.description != ''" class="hidden md:block font-light text-gray-500 dark:text-gray-400">{{ piece.description }}</p>
                 </div>
             </NuxtLink>
         </div>

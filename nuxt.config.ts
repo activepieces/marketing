@@ -18,6 +18,10 @@ export default defineNuxtConfig({
     compilerOptions: {
       isCustomElement: (tag) => ['ap-marketing-table'].includes(tag),
     },
+  },
+  runtimeConfig: {
+    public: {
+      strapiUrl: process.env.STRAPI_URL
+    }
   }
-  
 })

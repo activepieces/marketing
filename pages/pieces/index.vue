@@ -13,20 +13,32 @@ useHead({
   ]
 })
 
-const categories = [
-  'AI', 'Sales and Marketing', 'Customer Service', 'Content and Files', 'HR'
-];
+const getCategories = async function() {
+  const { data: categoriesCodes } = await useFetch(`https://cloud.activepieces.com/api/v1/pieces/categories`)
+
+  let categories = categoriesCodes.value.map((category) => {
+    return {
+      name: category,
+      displayName: category.toLowerCase().split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+    }
+  })
+  
+  return categories;
+}
+
+const categories = await getCategories();
 
 const filters = ref({
   categories: [],
 })
 
-const sortBy = ref('popular');
+const sortBy = ref('NAME');
 const searchQuery = ref('');
 </script>
 
 <template>
 <section class="bg-white dark:bg-gray-900 my-16">
+  {{ categories.data }}
     <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
       <h2
         class="mb-4 text-5xl tracking-tight font-bold text-gray-900 dark:text-white">
@@ -36,7 +48,7 @@ const searchQuery = ref('');
     </div>
     <div class="flex flex-col lg:flex-row gap-10 mx-auto max-w-screen-xl sm:py-6 lg:px-6">
       <PagesPiecesFilter class="hidden lg:block" :categories="categories" :filters="filters" @filtersChange="(newFilters) => Object.assign(filters, newFilters)" />
-      <PagesPiecesResults :filters="filters" :sort-by="sortBy" :search-query="searchQuery" @sortByChange="(newSortBy) => sortBy = newSortBy" @searchQueryChange="(newSearchQuery) => searchQuery = newSearchQuery" @filtersChange="(newFilters) => Object.assign(filters, newFilters)" />
+      <PagesPiecesResults :categories="categories" :filters="filters" :sort-by="sortBy" :search-query="searchQuery" @sortByChange="(newSortBy) => sortBy = newSortBy" @searchQueryChange="(newSearchQuery) => searchQuery = newSearchQuery" @filtersChange="(newFilters) => Object.assign(filters, newFilters)" />
     </div>
 </section>
 </template>

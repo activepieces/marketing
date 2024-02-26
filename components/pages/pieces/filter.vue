@@ -31,6 +31,7 @@ onMounted(() => {
 <form method="get"
     class="w-full lg:w-1/4 mb-10 lg:mb-0 p-4 py-0 overflow-y-auto bg-white dark:bg-gray-800"
     tabindex="-1" aria-labelledby="drawer-label" data-accordion="collapse">
+
     <h5
         class="inline-flex w-full py-4 bg-white justify-between items-center mb-4 mb-0 text-base font-semibold !text-gray-500 uppercase dark:text-gray-400"
         :data-accordion-target="`#filters-accordion-body-${$.uid}`" aria-expanded="true" :aria-controls="`filters-accordion-body-${$.uid}`">
@@ -49,11 +50,11 @@ onMounted(() => {
                 </h6>
 
                 <div v-for="(category, i) in categories" class="flex items-center">
-                    <input :id="`category-${$.uid}-${i}`" type="checkbox" :value="category" @change="handleFiltersChange" :checked="filters.categories.includes(category)"
+                    <input :id="`category-${$.uid}-${i}`" type="checkbox" :value="category.name" @change="handleFiltersChange" :checked="filters.categories.includes(category.name)"
                         class="cursor-pointer w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
 
                     <label :for="`category-${$.uid}-${i}`" class="cursor-pointer w-full ml-2 text-md font-normal text-gray-900 dark:text-gray-300">
-                        {{ category }}
+                        {{ category.displayName }}
                     </label>
                 </div>
 

@@ -1,9 +1,14 @@
 <script setup>
 import { onMounted, ref } from 'vue'
+import { useStorage } from '@vueuse/core'
 
 const githubButtonsScriptLoaded = ref('false')
+const showGitHubBadge = ref(false)
+const gitHubBadgeHidden = useStorage('github-badge-hidden')
 
 onMounted(() => {
+  if (typeof gitHubBadgeHidden.value == 'undefined' || gitHubBadgeHidden.value != 'true') showGitHubBadge.value = true;
+
   const githubButtonsScript = document.createElement("script");
   githubButtonsScript.setAttribute(
     "src",
@@ -118,6 +123,16 @@ onMounted(() => {
         </div>
     </nav>
   </header>
+
+  <div v-if="showGitHubBadge" class="opacity-100 transition-all fixed w-full justify-center bottom-16 z-[1] flex">
+    <div class="bg-[#06FFB4] shadow-2xl border border-solid border-black border-opacity-50 h-[70px] w-[350px] lg:w-[400px] rounded-xl text-h6-sm lg:text-h6-lg !font-bold flex justify-center gap-8 items-center">
+      Star us on GitHub
+      <div class="overflow-hidden min-w-[97.57px] max-h-[28px]">
+        <a class="github-button" href="https://github.com/activepieces/activepieces" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star activepieces/activepieces on GitHub"></a>
+      </div>
+      <svg @click="showGitHubBadge = false, gitHubBadgeHidden = 'true'" class="cursor-pointer" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.8749 0.635938C16.3874 0.148438 15.5999 0.148438 15.1124 0.635938L8.9999 6.73594L2.8874 0.623437C2.3999 0.135938 1.6124 0.135938 1.1249 0.623437C0.637402 1.11094 0.637402 1.89844 1.1249 2.38594L7.2374 8.49844L1.1249 14.6109C0.637402 15.0984 0.637402 15.8859 1.1249 16.3734C1.6124 16.8609 2.3999 16.8609 2.8874 16.3734L8.9999 10.2609L15.1124 16.3734C15.5999 16.8609 16.3874 16.8609 16.8749 16.3734C17.3624 15.8859 17.3624 15.0984 16.8749 14.6109L10.7624 8.49844L16.8749 2.38594C17.3499 1.91094 17.3499 1.11094 16.8749 0.635938Z" fill="#111111"></path></svg>
+    </div>
+  </div>
 </template>
 
 <style scoped>

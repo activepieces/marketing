@@ -85,9 +85,9 @@
             © {{ new Date().getFullYear() }} Activepieces. All rights reserved
           </span>
           <div class="text-gray-500 flex gap-2 text-base">
-            <NuxtLink to="/privacy" class="hover:underline">Privacy</NuxtLink>
-            <span>-</span>
             <NuxtLink to="/terms" class="hover:underline">Terms</NuxtLink>
+            <span>-</span>
+            <NuxtLink to="/privacy" class="hover:underline">Privacy</NuxtLink>
             <span>-</span>
             <NuxtLink to="/google-api-disclosure" class="hover:underline">Google API Disclosure</NuxtLink>
           </div>

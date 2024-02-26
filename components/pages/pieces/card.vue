@@ -2,7 +2,7 @@
 import { initAccordions } from 'flowbite';
 import { onMounted } from 'vue'
 
-const props = defineProps(['item', 'pieceLogoUrl', 'itemType'])
+const props = defineProps(['item', 'pieceLogoUrl', 'pieceName', 'itemType'])
 const cardId = getCurrentInstance().uid;
 const propsExist = Object.keys(props.item.props).length > 0;
 
@@ -84,6 +84,14 @@ const propTypes = {
 onMounted(() => {
     initAccordions();
 })
+
+const pieceName = props.pieceName.replace('@activepieces/piece-', '');
+let tryItLink = '';
+if (props.itemType == 'trigger') {
+    tryItLink = `/flow/${pieceName}/${props.item.name}/any/any`;
+} else {
+    tryItLink = `/flow/any/any/${pieceName}/${props.item.name}`;
+}
 </script>
 
 <template>
@@ -101,13 +109,15 @@ onMounted(() => {
 
     <div v-if="propsExist" :id="`piece-item-details-${cardId}`" class="px-6 py-4 hidden border-b border-gray-200" :aria-labelledby="`piece-item-details-${cardId}`">
         <div v-for="prop in item.props" class="flex gap-3 items-center my-2">
-            <img :src="`/props-icons/${propTypes[prop.type].icon}`" :title="propTypes[prop.type].text" class="fill-black stroke-black w-6 h-6">
-            <span class="font-semibold">{{ prop.displayName }}</span>
-            <span v-if="!prop.required" class="inline py-[1px] px-2 bg-gray-100 text-gray-500 rounded-lg text-sm">Required</span>
+            <template v-if="prop.type != 'MARKDOWN'">
+                <img :src="`/props-icons/${propTypes[prop.type]?.icon}`" :title="propTypes[prop.type]?.text" class="fill-black stroke-black w-6 h-6">
+                <span class="font-semibold">{{ prop.displayName }}</span>
+                <span v-if="!prop.required" class="inline py-[1px] px-2 bg-gray-100 text-gray-500 rounded-lg text-sm">Required</span>
+            </template>
         </div>
     </div>
 
-    <a href="#" class="group flex justify-between px-6 py-4 text-right font-bold text-black hover:text-primary-500">
+    <NuxtLink :to="tryItLink" class="group flex justify-between px-6 py-4 text-right font-bold text-black hover:text-primary-500">
         <div>
             <span v-if="itemType == 'trigger'" class="bg-gray-200 group-hover:bg-primary-100 text-gray-900 font-normal py-1 px-3 text-sm rounded-full flex items-center gap-1">
                 <template v-if="item.type == 'POLLING'">
@@ -119,6 +129,6 @@ onMounted(() => {
             </span>
         </div>
         <span>Try it <svg class="inline-block group-hover:fill-primary-500" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"/></svg></span>
-    </a>
+    </NuxtLink>
 </div>
 </template>
