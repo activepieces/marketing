@@ -16,6 +16,7 @@ export default {
         current: 'current="true"'
       },
       colors: {
+        ...colors,
         primary: { // Using https://uicolors.app/create on our primary #6e41e2
           50: '#f4f4fe',
           100: '#eceafd',
@@ -51,6 +52,9 @@ export default {
   },
   plugins: [
     require('flowbite/plugin')
+  ],
+  safelist: [
+    { pattern: /^bg-/, variants: ['hover', 'focus'] },
   ],
 }
 
