@@ -19,10 +19,26 @@ import { ref, computed } from 'vue'
 import { useActiveScroll } from 'vue-use-active-scroll'
 import { formatTimeAgo } from '@vueuse/core'
 
-const { data: categoriesResponse } = await useFetch(`${config.public.strapiUrl}/api/categories?populate[posts][sort]=createdAt:desc&populate[posts][limit]=3&populate[posts][populate]=author,author.photo,categories`);
+const { data: categoriesResponse } = await useFetch(`${config.public.strapiUrl}/api/categories`);
 let categories = categoriesResponse.value.data;
 
-categories = categories.filter((category) => category.attributes.posts.data.length > 0 )
+categories = await Promise.all(categories.map(async (category) => {
+    const postsUrl = `${config.public.strapiUrl}/api/posts?filters[categories][id][$eq]=${category.id}&sort[0]=createdAt:desc&pagination[limit]=3&populate=author,author.photo,categories`;
+    const { data: postsResponse } = await useFetch(postsUrl);
+    
+    return {
+        ...category,
+        attributes: {
+            ...category.attributes,
+            posts: postsResponse.value,
+        },
+    };
+}));
+
+categories = categories.filter((category) => {
+    console.log(category.attributes.posts.data)
+    return category.attributes.posts.data.length > 0
+})
 
 const links = computed(() =>
    categories.map(({ attributes: { slug, name } }) => ({ href: slug, label: name }))
