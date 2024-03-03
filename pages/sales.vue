@@ -5,6 +5,9 @@ const pageTitle = 'Contact Activepieces sales team';
 const metaDesc = '';
 const metaKeywords = '';
 
+const route = useRoute()
+const selectedPlanBase64 = route.query.selectedPlan;
+
 useHead({
   title: pageTitle,
   meta: [
@@ -44,6 +47,9 @@ function getFormFieldsWithLabels(formId) {
     // Use a sanitized or formatted version of labelText as key for jsonForm if necessary
     jsonForm[labelText] = inputValue;
   });
+
+  // Add plan to json
+  if (selectedPlanBase64) jsonForm['plan'] = JSON.parse(atob(selectedPlanBase64));
 
   return {
     'json': jsonForm,

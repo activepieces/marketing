@@ -147,6 +147,10 @@ let renderPlan = function() {
     'link': typeof newPlanDetails.cta[deploymentMode.value] !== 'undefined' ? newPlanDetails.cta[deploymentMode.value].link : newPlanDetails.cta.link,
   }
 
+  if (newPlanDetails.cta.link == '/sales') {
+    newPlanDetails.cta.link += '?selectedPlan='+ btoa(JSON.stringify(newPlanDetails));
+  }
+
   Object.assign(selectedPlanDetails.value, newPlanDetails);
 }
 renderPlan();
