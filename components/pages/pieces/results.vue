@@ -1,17 +1,12 @@
 <script setup>
 import { ref } from 'vue'
 
-const piecesPerPage = 20;
-const basePiecesUrl = 'https://cloud.activepieces.com/api/v1/pieces';
-const piecesUrl = ref(basePiecesUrl)
-const loadMorePieces = ref(false)
-
-const { data: pieces, status: resultsStatus } = await useFetch(piecesUrl)
-
 const props = defineProps(['filters', 'sortBy', 'searchQuery', 'categories'])
 const emit = defineEmits(['sortByChange', 'searchQueryChange', 'filtersChange'])
 
-watch([props.filters, () => props.sortBy, () => props.searchQuery], () => {
+const piecesPerPage = 20;
+const basePiecesUrl = 'https://cloud.activepieces.com/api/v1/pieces';
+const getPiecesUrl =  () => {
     const { categories, ...otherFilters } = props.filters;
     
     const paramsObj = otherFilters;
@@ -36,7 +31,17 @@ watch([props.filters, () => props.sortBy, () => props.searchQuery], () => {
 
     const searchParamsString = searchParams.toString();
 
-    piecesUrl.value = `${basePiecesUrl}?${searchParamsString}`;
+    return `${basePiecesUrl}?${searchParamsString}`;
+}
+
+const piecesUrl = ref(getPiecesUrl())
+const loadMorePieces = ref(false)
+
+const { data: pieces, status: resultsStatus } = await useFetch(piecesUrl)
+
+watch([props.filters, () => props.sortBy, () => props.searchQuery], () => {
+    const newUrl = getPiecesUrl();
+    piecesUrl.value = newUrl;
 });
 
 watch(() => resultsStatus.value, (f) => {
