@@ -98,7 +98,7 @@ onMounted(() => {
 
 <template>
 <main class="py-8 lg:py-16 bg-white dark:bg-gray-900 antialiased">
-    <meta name="discourse-username" :content="post.attributes.author.data.attributes.name != '' ? post.attributes.author.data.attributes.name : 'system'"'>
+    <meta name="discourse-username" :content="post.attributes.author.data.attributes.discourseUsername != '' ? post.attributes.author.data.attributes.discourseUsername : 'system'">
 
     <div class="flex justify-between px-4 mx-auto max-w-screen-xl">
       <aside class="hidden relative ml-auto xl:block" aria-labelledby="sidebar-label">
