@@ -3,6 +3,7 @@ const config = useRuntimeConfig();
 
 import { marked } from 'marked'
 import { useRoute } from 'vue-router'
+import { onMounted } from 'vue'
 
 const route = useRoute()
 let currentUrl = ref('');
@@ -74,11 +75,31 @@ useHead({
     { property: 'og:description', content: metaDesc },
   ]
 })
+
+onMounted(() => {
+    const pageUrl = useFullUrl();
+    console.log(pageUrl)
+
+    window.DiscourseEmbed = {
+        discourseUrl: 'https://community.activepieces.com/',
+        discourseEmbedUrl: pageUrl,
+        // className: 'CLASS_NAME',
+    };
+
+    (function() {
+        var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+        d.src = window.DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+    })();
+});
 </script>
 
 <template>
 <main class="py-8 lg:py-16 bg-white dark:bg-gray-900 antialiased">
-  <div class="flex justify-between px-4 mx-auto max-w-screen-xl">
+    <div v-if="route.query.testing !== undefined" id='discourse-comments'></div>
+    <meta name='discourse-username' content='abuaboud'>
+
+    <div class="flex justify-between px-4 mx-auto max-w-screen-xl">
       <aside class="hidden relative ml-auto xl:block" aria-labelledby="sidebar-label">
           <div class="sticky top-20 p-2 bg-gray-50 rounded-lg border border-gray-200 dark:border-gray-700 dark:bg-gray-800">
               <a :href="`https://twitter.com/intent/tweet?text=${post.attributes.title}+${currentUrl}`" target="_blank" data-tooltip-target="share-twitter" class="flex items-center p-2 mb-2 text-sm font-medium text-center text-gray-500 bg-gray-50 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600" type="button"> 
@@ -197,7 +218,7 @@ useHead({
               </NuxtLink>
           </article>
       </div>
-  </div>
+    </div>
 </aside>
 </template>
 
