@@ -96,8 +96,7 @@ onMounted(() => {
 
 <template>
 <main class="py-8 lg:py-16 bg-white dark:bg-gray-900 antialiased">
-    <div v-if="route.query.testing !== undefined" id='discourse-comments'></div>
-    <meta name='discourse-username' content='abuaboud'>
+    <meta name="discourse-username" :content="post.attributes.author.data.attributes.name != '' ? post.attributes.author.data.attributes.name : 'system'"'>
 
     <div class="flex justify-between px-4 mx-auto max-w-screen-xl">
       <aside class="hidden relative ml-auto xl:block" aria-labelledby="sidebar-label">
@@ -172,6 +171,7 @@ onMounted(() => {
           </header>
           <img v-if="post.attributes.featuredImage.data" :src="`${config.public.strapiUrl}${post.attributes.featuredImage?.data?.attributes?.url}`" class="w-full rounded-lg">
           <div v-html="marked.parse(post.attributes.content)"></div>
+          <div v-if="route.query.testing !== undefined" id='discourse-comments'></div>
       </article>
       <aside class="hidden relative xl:block xl:w-80" aria-labelledby="sidebar-label">
           <h3 id="sidebar-label" class="sr-only">Sidebar</h3>
