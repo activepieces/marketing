@@ -77,20 +77,22 @@ useHead({
 })
 
 onMounted(() => {
-    const pageUrl = useFullUrl();
-    console.log(pageUrl)
+    if (route.query.testing !== undefined) {
+        const pageUrl = useFullUrl();
+        console.log(pageUrl)
 
-    window.DiscourseEmbed = {
-        discourseUrl: 'https://community.activepieces.com/',
-        discourseEmbedUrl: pageUrl,
-        // className: 'CLASS_NAME',
-    };
+        window.DiscourseEmbed = {
+            discourseUrl: 'https://community.activepieces.com/',
+            discourseEmbedUrl: pageUrl,
+            // className: 'CLASS_NAME',
+        };
 
-    (function() {
-        var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
-        d.src = window.DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
-    })();
+        (function() {
+            var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+            d.src = window.DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+        })();
+    }
 });
 </script>
 
