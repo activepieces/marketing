@@ -98,8 +98,8 @@ onMounted(() => {
 <main class="py-8 lg:py-16 bg-white dark:bg-gray-900 antialiased">
     <meta name="discourse-username" :content="post.attributes.author.data.attributes.discourseUsername !== null ? post.attributes.author.data.attributes.discourseUsername : 'system'">
 
-    <div class="flex justify-between px-4 mx-auto max-w-screen-xl">
-      <aside class="hidden relative ml-auto xl:block" aria-labelledby="sidebar-label">
+    <div class="flex justify-between mx-auto max-w-screen-xl">
+      <aside class="flex-shrink flex-grow-0 hidden relative mx-auto xl:block" aria-labelledby="sidebar-label">
           <div class="sticky top-20 p-2 bg-gray-50 rounded-lg border border-gray-200 dark:border-gray-700 dark:bg-gray-800">
               <a :href="`https://twitter.com/intent/tweet?text=${post.attributes.title}+${currentUrl}`" target="_blank" data-tooltip-target="share-twitter" class="flex items-center p-2 mb-2 text-sm font-medium text-center text-gray-500 bg-gray-50 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600" type="button"> 
                   <svg class="w-5 h-5" aria-hidden="true" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -139,7 +139,7 @@ onMounted(() => {
           Share on LinkedIn
           <div class="tooltip-arrow" data-popper-arrow></div>
       </div>
-      <article class="mx-auto w-full format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
+      <article class="mx-auto w-full format px-10 format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
           <header class="mb-4 lg:mb-6 not-format">  
                <nav class="flex" aria-label="Breadcrumb">
                 <ol class="inline-flex items-center space-x-1 md:space-x-3">
@@ -173,7 +173,7 @@ onMounted(() => {
           <div v-html="marked.parse(post.attributes.content)"></div>
           <div id='discourse-comments'></div>
       </article>
-      <aside class="hidden relative xl:block xl:w-80" aria-labelledby="sidebar-label">
+      <aside class="shrink-0 hidden relative xl:block xl:w-80" aria-labelledby="sidebar-label">
           <h3 id="sidebar-label" class="sr-only">Sidebar</h3>
           <!--<div class="p-5 mb-6 font-medium text-gray-500 bg-white rounded-lg border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
               <h4 class="mb-4 text-sm font-bold text-gray-900 uppercase dark:text-white">Follow me</h4>
@@ -225,7 +225,7 @@ onMounted(() => {
 <style>
 .format{
     color:var(--tw-format-body);
-    max-width:65ch;
+    /*max-width:65ch;*/
     --tw-format-body:#6b7280;
     --tw-format-headings:#111827;
     --tw-format-lead:#6b7280;
