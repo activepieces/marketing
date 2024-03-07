@@ -30,6 +30,7 @@ export default defineNuxtConfig({
     '/plans': { redirect: '/pricing' },
     '/roadmap': { redirect: 'https://github.com/orgs/activepieces/projects/53' },
     '/pieces-roadmap': { redirect: 'https://community.activepieces.com/c/feature-requests/9' },
-    '/request-a-piece': { redirect: 'https://community.activepieces.com/c/feature-requests/9' }
+    '/request-a-piece': { redirect: 'https://community.activepieces.com/c/feature-requests/9' },
+    '/request-a-feature': { redirect: 'https://community.activepieces.com/c/feature-requests/9' }
   },
 })

@@ -55,7 +55,7 @@ onMounted(() => {
                           </NuxtLink>
                         </li>
                         <li>
-                          <NuxtLink to="https://activepieces.com/roadmap" class="group/link flex gap-4 items-center py-2.5 px-4 w-full rounded-lg hover:bg-violet-50 transition-colors duration-200">
+                          <NuxtLink to="https://www.activepieces.com/roadmap" class="group/link flex gap-4 items-center py-2.5 px-4 w-full rounded-lg hover:bg-violet-50 transition-colors duration-200">
                               <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-violet-700" viewBox="0 0 576 512"><path class="fa-secondary" opacity=".7" fill="currentColor" d="M192.1 416L384 480V96L192 32l.1 384z"/><path class="fa-primary" opacity=".4" fill="currentColor" d="M0 114.5V464c0 11.3 11.5 19 22 14.8L192 416l-.1-384L10.1 99.6C4 102 0 107.9 0 114.5zM554 33.2L384 96V480l181.9-67.6c6.1-2.4 10.1-8.3 10.1-14.9V48c0-11.3-11.4-19.1-22-14.9z"/></svg>
                               <div>
                                 <div class="text-base text-black">Roadmap</div>
@@ -64,7 +64,7 @@ onMounted(() => {
                           </NuxtLink>
                         </li>
                         <li>
-                          <NuxtLink to="/pieces" class="group/link flex gap-4 items-center py-2.5 px-4 w-full rounded-lg hover:bg-emerald-50 transition-colors duration-200">
+                          <NuxtLink to="https://www.activepieces.com/request-a-feature" class="group/link flex gap-4 items-center py-2.5 px-4 w-full rounded-lg hover:bg-emerald-50 transition-colors duration-200">
                               <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-emerald-700" viewBox="0 0 384 512"><path class="fa-secondary" opacity="0.4" fill="currentColor" d="M321.2 297.8c-19.8 27.1-39.7 54.4-49.2 86.2H112c-9.6-31.9-29.5-59.1-49.2-86.2c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4zM112 176c0-44.2 35.8-80 80-80c8.8 0 16-7.2 16-16s-7.2-16-16-16C130.1 64 80 114.1 80 176c0 8.8 7.2 16 16 16s16-7.2 16-16z"/><path class="fa-primary" opacity=".7" fill="currentColor" d="M192 512c44.2 0 80-35.8 80-80V384H112v48c0 44.2 35.8 80 80 80z"/></svg>
                               <div>
                                 <div class="text-base text-black">Feature Requests</div>
