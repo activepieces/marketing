@@ -208,14 +208,14 @@ onMounted(() => {
   <div class="px-4 mx-auto max-w-screen-xl">
       <h2 class="mb-8 text-2xl font-bold text-gray-900 dark:text-white">Read Next</h2>
       <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          <article v-for="post in relatedPosts.data">
-              <NuxtLink :to="`/blog/${post.attributes.slug}`" class="flex overflow-hidden justify-center items-center mb-5 w-full h-60 max-w-full rounded-lg">
-                  <img class="min-w-full min-h-full object-cover w-auto h-auto" :src="`${config.public.strapiUrl}${post.attributes.featuredImage.data?.attributes?.formats.medium.url}`" alt="Image 1">
+          <article v-for="relatedPost in relatedPosts.data">
+              <NuxtLink :to="`/blog/${relatedPost.attributes.slug}`" class="flex overflow-hidden justify-center items-center mb-5 w-full h-60 max-w-full rounded-lg">
+                  <img v-if="typeof relatedPost.attributes.featuredImage.data !== 'undefined'" class="min-w-full min-h-full object-cover w-auto h-auto" :src="`${config.public.strapiUrl}${relatedPost.attributes.featuredImage.data?.attributes?.formats.thumbnail.url}`" alt="Image 1">
               </NuxtLink>
               <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
-                  <NuxtLink :to="`/blog/${post.attributes.slug}`">{{ post.attributes.title }}</NuxtLink>
+                  <NuxtLink :to="`/blog/${relatedPost.attributes.slug}`">{{ relatedPost.attributes.title }}</NuxtLink>
               </h2>
-              <NuxtLink :to="`/blog/${post.attributes.slug}`" class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline">
+              <NuxtLink :to="`/blog/${relatedPost.attributes.slug}`" class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline">
                   Read more
               </NuxtLink>
           </article>
