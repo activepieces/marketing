@@ -165,7 +165,7 @@ onMounted(() => {
               <div class="flex justify-between items-center pb-4 border-gray-200 dark:border-gray-700">
                   <div class="mr-4 text-sm">
                       <address class="inline not-italic">By <span rel="author" class="text-gray-900 no-underline dark:text-white">{{ post.attributes.author.data.attributes.name }}</span></address>
-                      <span> on <time pubdate :datetime="extractDate(post.attributes.createdAt)" :title="formatDate(post.attributes.createdAt)">{{ formatDate(post.attributes.createdAt) }}</time></span>
+                      <span> on <time pubdate :datetime="extractDate(post.attributes.updatedAt)" :title="formatDate(post.attributes.updatedAt)">{{ formatDate(post.attributes.updatedAt) }}</time></span>
                   </div>
               </div>
           </header>
