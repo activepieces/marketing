@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import { formatTimeAgo } from '@vueuse/core'
 
 const props = defineProps(['filters', 'sortBy', 'searchQuery', 'categories'])
 const emit = defineEmits(['sortByChange', 'searchQueryChange', 'filtersChange'])
@@ -83,9 +84,12 @@ const handleSearchQueryChange = (e) => {
                 class="flex flex-row md:flex-col lg:flex-row items-center gap-4 block p-6 transition duration-200 shadow hover:shadow-md hover:-translate-y-[2px] bg-white rounded dark:bg-gray-800"
                 :class="{ 'hidden': pieceIndex >= piecesPerPage && loadMorePieces == false }">
                 <img :src="piece.logoUrl" class="w-12 h-12">
-                <div>
-                    <h3 class="mb-[2px] text-lg font-bold dark:text-white">{{ piece.displayName }}</h3>
-                    <p v-if="piece.description != ''" class="hidden md:block font-light text-gray-500 dark:text-gray-400">{{ piece.description }}</p>
+                <div class="w-full">
+                    <div class="flex w-full justify-between items-center">
+                        <h3 class="mb-[2px] text-lg font-bold dark:text-white">{{ piece.displayName }}</h3>
+                        <div class="text-sm text-gray-500">{{ formatTimeAgo(new Date(piece.created)) }}</div>
+                    </div>
+                    <p v-if="piece.description != ''" class="hidden md:block font-light text-gray-500 dark:text-gray-400 mb-1">{{ piece.description }}</p>
                 </div>
             </NuxtLink>
         </div>
