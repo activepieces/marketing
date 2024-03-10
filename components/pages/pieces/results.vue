@@ -88,13 +88,10 @@ onMounted(() => {
             <NuxtLink v-for="(piece, pieceIndex) in pieces" :to="`/pieces/${piece.name.replace('@activepieces/piece-', '')}`"
                 class="flex flex-col justify-between p-6 transition duration-200 shadow hover:shadow-md hover:-translate-y-[2px] bg-white rounded dark:bg-gray-800"
                 :class="{ 'hidden': pieceIndex >= piecesPerPage && loadMorePieces == false }">
-                <div class="flex flex-row md:flex-col lg:flex-row gap-4">
+                <div class="flex flex-row md:flex-col lg:flex-row gap-4 lg:items-center">
                     <img :src="piece.logoUrl" class="w-12 h-12">
                     <div class="w-full">
-                        <div class="flex w-full justify-between items-center">
-                            <h3 class="text-lg font-bold dark:text-white">{{ piece.displayName }}</h3>
-                            
-                        </div>
+                        <h3 class="text-lg font-bold dark:text-white">{{ piece.displayName }}</h3>
                         <p v-if="piece.description != ''" class="hidden md:block font-light text-gray-500 dark:text-gray-400 mt-[2px]">{{ piece.description }}</p>
                     </div>
                 </div>
