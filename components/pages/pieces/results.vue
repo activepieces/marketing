@@ -103,7 +103,7 @@ onMounted(() => {
                         <div v-if="piece.authors.length > 0" class="text-sm text-gray-500">Contributors</div>
                         <div v-if="piece.authors.length > 0" class="flex gap-1.5 opacity-80">
                             <span v-for="(author, authorIndex) in piece.authors">
-                                <img :src="`https://github.com/${author}.png`" class="w-6 h-6 rounded-full cursor-default" :data-tooltip-target="`tooltip-${piece.id}-${authorIndex}`" data-tooltip-placement="bottom" @click.stop.prevent>
+                                <img :src="`https://github.com/${author}.png?size=48`" class="w-6 h-6 bg-violet-100 rounded-full cursor-default" :data-tooltip-target="`tooltip-${piece.id}-${authorIndex}`" data-tooltip-placement="bottom" @click.stop.prevent>
 
                                 <span :id="`tooltip-${piece.id}-${authorIndex}`" role="tooltip" class="absolute z-10 px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 tooltip">
                                     @{{author}}
