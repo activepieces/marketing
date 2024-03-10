@@ -41,17 +41,17 @@ defineProps({
         </div>
         <div>
             <svg class="mb-2 w-8 h-8 text-fuchsia-400 mx-auto lg:mx-0" fill="currentColor" viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg"><path d="M80-680v-80q0-33 23.5-56.5T160-840h640q33 0 56.5 23.5T880-760v80h-80v-80H160v80H80Zm240 560v-80H160q-33 0-56.5-23.5T80-280v-80h80v80h640v-80h80v80q0 33-23.5 56.5T800-200H640v80H320Zm160-400Zm-288 0 104-104-56-56L80-520l160 160 56-56-104-104Zm576 0L664-416l56 56 160-160-160-160-56 56 104 104Z"/></svg>
-            <h3 class="mb-2 text-2xl font-bold dark:text-white">111 contributors</h3>
+            <h3 class="mb-2 text-2xl font-bold dark:text-white">115 contributors</h3>
             <p class="font-light text-gray-500 dark:text-gray-400">Devoted time to make Activepieces even better</p>
         </div>
         <div>
             <svg class="mb-2 w-8 h-8 text-fuchsia-400 mx-auto lg:mx-0" fill="currentColor" viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg"><path d="M352-120H200q-33 0-56.5-23.5T120-200v-152q48 0 84-30.5t36-77.5q0-47-36-77.5T120-568v-152q0-33 23.5-56.5T200-800h160q0-42 29-71t71-29q42 0 71 29t29 71h160q33 0 56.5 23.5T800-720v160q42 0 71 29t29 71q0 42-29 71t-71 29v160q0 33-23.5 56.5T720-120H568q0-50-31.5-85T460-240q-45 0-76.5 35T352-120Zm-152-80h85q24-66 77-93t98-27q45 0 98 27t77 93h85v-240h80q8 0 14-6t6-14q0-8-6-14t-14-6h-80v-240H480v-80q0-8-6-14t-14-6q-8 0-14 6t-6 14v80H200v88q54 20 87 67t33 105q0 57-33 104t-87 68v88Zm260-260Z"/></svg>
-            <h3 class="mb-2 text-2xl font-bold dark:text-white">172 pieces</h3>
+            <h3 class="mb-2 text-2xl font-bold dark:text-white">183 pieces</h3>
             <p class="font-light text-gray-500 dark:text-gray-400">Created and maintained by the community</p>
         </div>
         <div>
             <svg class="mb-2 w-8 h-8 text-fuchsia-400 mx-auto lg:mx-0" fill="currentColor" viewBox="0 -960 960 960" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="m668-340 152-130 26 2q17 2 26.5 14t9.5 26q0 8-3 16t-11 14l-104 91 31 135q1 2 1 4.5v4.5q0 17-12 28.5T756-123q-5 0-10.5-1.5T735-129l-21-13-46-198Zm-94-292-42-98 9-22q5-12 15.5-18.5T578-777q11 0 21.5 6t15.5 18l55 130-96-9ZM294-247l126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143Zm-100 75 44-189L91-488q-8-6-10.5-14T78-518q0-14 9.5-26t26.5-14l194-17 75-178q5-12 15.5-18t21.5-6q11 0 21.5 6t15.5 18l75 178 194 17q17 2 26.5 14t9.5 26q0 8-2.5 16T749-488L602-361l44 189q1 3 1 9 0 17-12 28.5T607-123q-3 0-21-6L420-229 254-129q-5 3-10.5 4.5T233-123q-18 0-31-14.5t-8-34.5Zm226-248Z"/></svg>
-            <h3 class="mb-2 text-2xl font-bold dark:text-white">6.5k stars</h3>
+            <h3 class="mb-2 text-2xl font-bold dark:text-white">6.7k stars</h3>
             <p class="font-light text-gray-500 dark:text-gray-400">On our GitHub repository showing the community love</p>
         </div>
       </div>
