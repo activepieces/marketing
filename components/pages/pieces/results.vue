@@ -88,7 +88,7 @@ onMounted(() => {
             <NuxtLink v-for="(piece, pieceIndex) in pieces" :to="`/pieces/${piece.name.replace('@activepieces/piece-', '')}`"
                 class="flex flex-col justify-between p-6 transition duration-200 shadow hover:shadow-md hover:-translate-y-[2px] bg-white rounded dark:bg-gray-800"
                 :class="{ 'hidden': pieceIndex >= piecesPerPage && loadMorePieces == false }">
-                <div class="flex flex-row md:flex-col lg:flex-row  gap-4">
+                <div class="flex flex-row md:flex-col lg:flex-row gap-4">
                     <img :src="piece.logoUrl" class="w-12 h-12">
                     <div class="w-full">
                         <div class="flex w-full justify-between items-center">
@@ -98,22 +98,22 @@ onMounted(() => {
                         <p v-if="piece.description != ''" class="hidden md:block font-light text-gray-500 dark:text-gray-400 mt-[2px]">{{ piece.description }}</p>
                     </div>
                 </div>
-                <p class="mt-6 flex w-full justify-between border-t border-gray-200 pt-3">
+                <div class="mt-6 flex w-full justify-between border-t border-gray-200 pt-3">
                     <div class="flex justify-start gap-2.5 items-center">
                         <div v-if="piece.authors.length > 0" class="text-sm text-gray-500">Contributors</div>
                         <div v-if="piece.authors.length > 0" class="flex gap-1.5 opacity-80">
                             <span v-for="(author, authorIndex) in piece.authors">
                                 <img :src="`https://github.com/${author}.png`" class="w-6 h-6 rounded-full cursor-default" :data-tooltip-target="`tooltip-${piece.id}-${authorIndex}`" data-tooltip-placement="bottom" @click.stop.prevent>
 
-                                <div :id="`tooltip-${piece.id}-${authorIndex}`" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 tooltip">
+                                <span :id="`tooltip-${piece.id}-${authorIndex}`" role="tooltip" class="absolute z-10 px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 tooltip">
                                     @{{author}}
                                     <div class="tooltip-arrow" data-popper-arrow></div>
-                                </div>
+                                </span>
                             </span>
                         </div>
                     </div>
                     <div class="text-sm text-gray-500">{{ formatTimeAgo(new Date(piece.created)) }}</div>
-                </p>
+                </div>
             </NuxtLink>
         </div>
         <div class="text-center pt-10">
