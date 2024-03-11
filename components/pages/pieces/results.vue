@@ -6,9 +6,14 @@ import { initTooltips } from 'flowbite';
 const props = defineProps(['filters', 'sortBy', 'searchQuery', 'categories'])
 const emit = defineEmits(['sortByChange', 'searchQueryChange', 'filtersChange'])
 
+const maintainers = ['abuaboud', 'AbdulTheActivePiecer', 'khaledmashaly', 'kishanprmr', 'MoShizzle'];
+const isMaintainer = (author) => {
+  return maintainers.includes(author);
+}
+
 const piecesPerPage = 20;
 const basePiecesUrl = 'https://cloud.activepieces.com/api/v1/pieces';
-const getPiecesUrl =  () => {
+const getPiecesUrl = () => {
     const { categories, ...otherFilters } = props.filters;
     
     const paramsObj = otherFilters;
@@ -39,7 +44,27 @@ const getPiecesUrl =  () => {
 const piecesUrl = ref(getPiecesUrl())
 const loadMorePieces = ref(false)
 
+const handlePiecesChange = () => {
+    pieces.value = pieces.value.map((piece) => {
+        let maintainers = piece.authors.filter(author => isMaintainer(author));
+        let nonMaintainers = piece.authors.filter(author => !isMaintainer(author));
+
+        if (maintainers.length > 1) {
+            piece.authors = [
+                ...nonMaintainers,
+                maintainers[0],
+                { maintainers: maintainers.slice(1) }
+            ];
+        }
+
+        return piece;
+    })
+}
+
 const { data: pieces, status: resultsStatus } = await useFetch(piecesUrl)
+handlePiecesChange();
+
+watch([pieces], handlePiecesChange);
 
 watch([props.filters, () => props.sortBy, () => props.searchQuery], () => {
     const newUrl = getPiecesUrl();
@@ -98,15 +123,21 @@ onMounted(() => {
                 <div class="mt-6 flex w-full justify-between border-t border-gray-200 pt-3">
                     <div class="flex justify-start gap-2.5 items-center">
                         <div v-if="piece.authors.length > 0" class="text-sm text-gray-500">Contributors</div>
-                        <div v-if="piece.authors.length > 0" class="flex gap-1.5 opacity-80">
-                            <span v-for="(author, authorIndex) in piece.authors">
-                                <img :src="`https://github.com/${author}.png?size=48`" class="w-6 h-6 bg-violet-100 rounded-full cursor-default" :data-tooltip-target="`tooltip-${piece.id}-${authorIndex}`" data-tooltip-placement="bottom" @click.stop.prevent>
+                        <div v-if="piece.authors.length > 0" class="flex gap-1.5">
+                            <div v-for="(author, authorIndex) in piece.authors">
+                                <img v-if="typeof author === 'string'" :src="`https://github.com/${author}.png?size=48`" class="w-6 h-6 bg-violet-100 rounded-full cursor-default opacity-80" data-tooltip-style="light" :data-tooltip-target="`tooltip-${piece.id}-${authorIndex}`" data-tooltip-placement="bottom" @click.stop.prevent>
+                                <img v-if="typeof author === 'object'" :src="`/ap-logo-purple-bg-48.png`" class="w-6 h-6 rounded-full cursor-default opacity-80" data-tooltip-style="light" :data-tooltip-target="`tooltip-${piece.id}-${authorIndex}`" data-tooltip-placement="bottom" @click.stop.prevent>
 
-                                <span :id="`tooltip-${piece.id}-${authorIndex}`" role="tooltip" class="absolute z-10 px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 tooltip">
-                                    @{{author}}
-                                    <div class="tooltip-arrow" data-popper-arrow></div>
-                                </span>
-                            </span>
+                                <div :id="`tooltip-${piece.id}-${authorIndex}`" role="tooltip" class="absolute visible inline-block z-10 px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-lg tooltip opacity-0">
+                                    <template v-if="typeof author === 'object'">
+                                        Other maintainers:<br>
+                                        <div v-for="m in author.maintainers">@{{ m }}</div>
+                                    </template>
+                                    <template v-else>
+                                        @{{author}}{{ maintainers.indexOf(author) != -1 ? ' (maintainer)' : '' }}
+                                    </template>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="text-sm text-gray-500">{{ formatTimeAgo(new Date(piece.created)) }}</div>
