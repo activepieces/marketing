@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, nextTick } from 'vue'
 import { formatTimeAgo } from '@vueuse/core'
 import { initTooltips } from 'flowbite';
 
@@ -45,20 +45,28 @@ const piecesUrl = ref(getPiecesUrl())
 const loadMorePieces = ref(false)
 
 const handlePiecesChange = () => {
-    pieces.value = pieces.value.map((piece) => {
+    let newPieces = [];
+    pieces.value.forEach((piece) => {
         let maintainers = piece.authors.filter(author => isMaintainer(author));
         let nonMaintainers = piece.authors.filter(author => !isMaintainer(author));
 
+        let authors = piece.authors;
         if (maintainers.length > 1) {
-            piece.authors = [
+            authors = [
                 ...nonMaintainers,
                 maintainers[0],
                 { maintainers: maintainers.slice(1) }
             ];
         }
 
-        return piece;
+        newPieces.push({
+            ...piece,
+            authors
+        });
     })
+    Object.assign(pieces.value, newPieces);
+
+    nextTick(() => initTooltips());
 }
 
 const { data: pieces, status: resultsStatus } = await useFetch(piecesUrl)
@@ -82,10 +90,6 @@ const handleSortByChange = (e) => {
 const handleSearchQueryChange = (e) => {
     emit('searchQueryChange', e.target.value)
 }
-
-onMounted(() => {
-    initTooltips();
-})
 </script>
 
 <template>
