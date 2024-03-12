@@ -32,7 +32,7 @@ const filters = ref({
   categories: [],
 })
 
-const sortBy = ref('CREATED');
+const sortBy = ref('NAME');
 const searchQuery = ref('');
 </script>
 
