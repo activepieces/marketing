@@ -145,7 +145,7 @@ const handleSearchQueryChange = (e) => {
                             </div>
                         </div>
                     </div>
-                    <div class="text-sm text-gray-500">{{ formatTimeAgo(new Date(piece.created)) }}</div>
+                    <div class="text-sm text-gray-500">{{ sortBy === 'CREATED' ? formatTimeAgo(new Date(piece.created)) : formatTimeAgo(new Date(piece.updated)) }}</div>
                 </div>
             </NuxtLink>
         </div>
