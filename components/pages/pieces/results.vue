@@ -22,7 +22,7 @@ const getPiecesUrl = () => {
 
         if (props.sortBy == 'NAME') {
             paramsObj.orderBy = 'ASC';
-        } else if (props.sortBy == 'DATE') {
+        } else if (props.sortBy == 'CREATED' || props.sortBy == 'UPDATED') {
             paramsObj.orderBy = 'DESC';
         }
     }
@@ -107,7 +107,8 @@ const handleSearchQueryChange = (e) => {
         <div>Sort by
             <select @change="handleSortByChange($event)" class="ms-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option value="NAME" :selected="sortBy == 'NAME'">A to Z</option>
-                <option value="DATE" :selected="sortBy == 'DATE'">Last updated</option>
+                <option value="UPDATED" :selected="sortBy == 'UPDATED'">Last updated</option>
+                <option value="CREATED" :selected="sortBy == 'CREATED'">Last created</option>
             </select>
         </div>
     </div>
