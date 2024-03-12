@@ -1,6 +1,6 @@
 <!-- Marquee (Scroll animation) reference: https://codepen.io/hexagoncircle/pen/wvmjomb -->
 <script setup>
-const { data: piecesData, status: resultsStatus } = await useFetch('https://cloud.activepieces.com/api/v1/pieces?sortBy=DATE&orderBy=DESC')
+const { data: piecesData, status: resultsStatus } = await useFetch('https://cloud.activepieces.com/api/v1/pieces?sortBy=UPDATED&orderBy=DESC')
 
 let allPieces = piecesData.value.filter((piece) => piece.categories != null && piece.categories.length > 0);
 
