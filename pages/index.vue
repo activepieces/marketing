@@ -24,7 +24,7 @@ onMounted(() => {
 <template>
   <PagesIndexHero />
   <PagesIndexUseCases />
-  <PagesIndexOfferings />
+  <!--<PagesIndexOfferings />-->
   <PagesIndexSocialProof />
   <PagesIndexFeatures />
   <PagesIndexPieces />
