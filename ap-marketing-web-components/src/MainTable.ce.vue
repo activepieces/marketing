@@ -192,11 +192,11 @@ const addNumSep = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
                     class="hidden lg:inline fill-gray-400 group-hover:fill-gray-900"                     
                     xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M240-120q-66 0-113-47T80-280q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47Zm480 0q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47Zm-480-80q33 0 56.5-23.5T320-280q0-33-23.5-56.5T240-360q-33 0-56.5 23.5T160-280q0 33 23.5 56.5T240-200Zm480 0q33 0 56.5-23.5T800-280q0-33-23.5-56.5T720-360q-33 0-56.5 23.5T640-280q0 33 23.5 56.5T720-200ZM480-520q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47Zm0-80q33 0 56.5-23.5T560-680q0-33-23.5-56.5T480-760q-33 0-56.5 23.5T400-680q0 33 23.5 56.5T480-600Zm0-80Zm240 400Zm-480 0Z"/></svg>
-                    <span>Team</span>
+                    <span>Auotmate</span>
                   </div>
                 </button>
             </li>
-            <li class="lg:w-full" role="presentation">
+            <!--<li class="lg:w-full" role="presentation">
                   <button id="agency-tab" :class="{
                   '!bg-transparent !border-fuchsia-500': selectedTab == agencyTabName
                 }"  @click="selectedTab=agencyTabName"  role="tab"   type="button"
@@ -214,7 +214,7 @@ const addNumSep = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
                     <span>Agency</span>
                   </div>
                 </button>
-            </li>
+            </li>-->
             <li class="lg:w-full" role="presentation">
                 <button :class="{
                   '!bg-transparent !border-indigo-500 ': selectedTab == embedTabName
@@ -438,7 +438,7 @@ const addNumSep = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
         <div>
           <div>
             <div id="embed-content">
-              <p class="mb-2 text-lg font-normal text-gray-500 dark:text-gray-400"><span class="font-light text-2xl lg:text-3xl">Great for SaaS to add in-app automation builder.</span></p>
+              <p class="mb-4 lg:mb-2 text-lg font-normal text-gray-500 dark:text-gray-400"><span class="font-light text-2xl lg:text-3xl">Great for SaaS to add in-app automation builder.</span></p>
               <div class="flex flex-col lg:grid lg:grid-cols-3 gap-8 lg:gap-4 mt-4 lg:mt-6 text-base justify-stretch">
                 <ul role="list" class="space-y-3 dark:text-white h-full">
                   <li class="flex space-x-2.5 items-center mb-1 text-xl">
@@ -533,7 +533,7 @@ const addNumSep = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
                 </ul>
               </div>
 
-              <hr class="my-6">
+              <!--<hr class="my-6">
 
               <div>
                 <label class="relative inline-flex items-center cursor-pointer">
@@ -541,7 +541,7 @@ const addNumSep = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
                   <div class="shrink-0 relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-0 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary-600"></div>
                   <span class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">We're a startup younger than 2 years old with fewer than 15 employees <span class="inline-block py-1 px-2 bg-sky-100 rounded-lg ms-1">50% off</span></span>
                 </label>
-              </div>
+              </div>-->
             </div>
           </div>
         </div>
