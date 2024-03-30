@@ -22,7 +22,7 @@ const getPiecesUrl = () => {
 
         if (props.sortBy == 'NAME') {
             paramsObj.orderBy = 'ASC';
-        } else if (props.sortBy == 'CREATED' || props.sortBy == 'UPDATED') {
+        } else if (props.sortBy == 'CREATED' || props.sortBy == 'UPDATED' || props.sortBy == 'POPULARITY') {
             paramsObj.orderBy = 'DESC';
         }
     }
@@ -109,6 +109,7 @@ const handleSearchQueryChange = (e) => {
                 <option value="NAME" :selected="sortBy == 'NAME'">A to Z</option>
                 <option value="UPDATED" :selected="sortBy == 'UPDATED'">Last updated</option>
                 <option value="CREATED" :selected="sortBy == 'CREATED'">Last created</option>
+                <option value="POPULARITY" :selected="sortBy == 'POPULARITY'">Popularity</option>
             </select>
         </div>
     </div>
