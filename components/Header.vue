@@ -1,9 +1,9 @@
 <script setup>
-import { onMounted, ref } from 'vue'
-import { useStorage } from '@vueuse/core'
+import { onMounted } from 'vue';
+import { useStorage } from '@vueuse/core';
 
-const githubButtonsScriptLoaded = ref('false')
 const showGitHubBadge = ref(false)
+const githubButtonsScriptLoaded = ref('false')
 const gitHubBadgeHidden = useStorage('github-badge-hidden')
 
 onMounted(() => {

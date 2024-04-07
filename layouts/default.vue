@@ -6,6 +6,7 @@
   <div>
     <NuxtLoadingIndicator />
     <Header />
+
     <slot />
     <Footer />
   </div>
