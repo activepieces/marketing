@@ -1,13 +1,20 @@
 <script setup>
-import { onMounted } from 'vue';
+import { onMounted, ref, defineProps } from 'vue';
 import { useStorage } from '@vueuse/core';
 
-const showGitHubBadge = ref(false)
+const props = defineProps({
+  hideGithubBadge: {
+    type: Boolean,
+    default: false,
+  }
+});
+
+const showGitHubBadge = ref(!props.hideGithubBadge)
 const githubButtonsScriptLoaded = ref('false')
 const gitHubBadgeHidden = useStorage('github-badge-hidden')
 
 onMounted(() => {
-  if (typeof gitHubBadgeHidden.value == 'undefined' || gitHubBadgeHidden.value != 'true') showGitHubBadge.value = true;
+  if (!props.hideGithubBadge && (typeof gitHubBadgeHidden.value == 'undefined' || gitHubBadgeHidden.value != 'true')) showGitHubBadge.value = true;
 
   const githubButtonsScript = document.createElement("script");
   githubButtonsScript.setAttribute(

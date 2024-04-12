@@ -24,25 +24,6 @@ useHead({
   ]
 })
 
-const { data: articles, error: articleError } = await useFetch(`${config.public.strapiUrl}/api/playbook-articles?filters[slug][$eq]=${whichPageObj.articleSlug}`);
-const article = articles.value.data[0];
-
-const markdown = ref(article.attributes.content || '')
-
-const renderer = new marked.Renderer();
-const originalHeading = renderer.heading.bind(renderer);
-renderer.heading = (text, level, raw) => {
-    if (level === 2 || level === 3) {
-        const id = raw.toLowerCase().replace(/[^\w]+/g, '-');
-        return `<h${level} id="${id}">${text}</h${level}>`;
-    }
-    return originalHeading(text, level, raw);
-};
-
-marked.setOptions({ renderer });
-
-const htmlContent = computed(() => marked.parse(markdown.value));
-
 const generateTOC = (markdownText) => {
     const toc = [];
     const lines = markdownText.split('\n');
@@ -65,8 +46,6 @@ const generateTOC = (markdownText) => {
     return toc;
 };
 
-const toc = generateTOC(markdown.value);
-
 const scrollToElementWithHeaderOffset = (elementId) => {
   const headerOffset = 80;
   const element = document.getElementById(elementId);
@@ -81,7 +60,6 @@ const scrollToElementWithHeaderOffset = (elementId) => {
   }
 };
 
-// Method to handle TOC item clicks
 const handleTocItemClick = (itemId) => {
   scrollToElementWithHeaderOffset(itemId);
 };
@@ -94,10 +72,48 @@ onMounted(() => {
         headerHeight.value = header.offsetHeight;
     }
 });
+
+const isSlugEmpty = ref(typeof whichPageObj.articleSlug === 'undefined' || whichPageObj.articleSlug == '' ? true : false);
+
+let toc;
+const articles = ref(null);
+const articlesError = ref(null);
+const article = ref(null);
+
+const markdown = ref(null);
+const htmlContent = computed(() => marked.parse(markdown.value));
+
+if (!isSlugEmpty.value) {
+    const articleResponse = await useFetch(`${config.public.strapiUrl}/api/playbook-articles?filters[slug][$eq]=${whichPageObj.articleSlug}`);
+    articles.value = articleResponse.data.value;
+    articlesError.value = articleResponse.error.value;
+    article.value = articles.value.data[0];
+
+    markdown.value = article.value.attributes.content || '';
+    const renderer = new marked.Renderer();
+    const originalHeading = renderer.heading.bind(renderer);
+    renderer.heading = (text, level, raw) => {
+        if (level === 2 || level === 3) {
+            const id = raw.toLowerCase().replace(/[^\w]+/g, '-');
+            return `<h${level} id="${id}">${text}</h${level}>`;
+        }
+        return originalHeading(text, level, raw);
+    };
+    marked.setOptions({ renderer });
+
+    toc = generateTOC(markdown.value);
+}
+
+onMounted(() => {
+  if (isSlugEmpty.value) {
+    const firstEl = document.querySelector('.sidebar [data-tree-view-link]');
+    if (firstEl) firstEl.click();
+  }
+});
 </script>
 
 <template>
-    <div class="flex gap-10">
+    <div v-if="!isSlugEmpty" class="flex gap-10">
         <article class="format flex-grow flex-1">
             <h1>{{ article.attributes.title }}</h1>
             <div class="text-black" v-html="htmlContent"></div>

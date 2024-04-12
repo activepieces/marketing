@@ -35,16 +35,11 @@ export default defineNuxtConfig({
   },
   hooks: {
     'pages:extend'(pages) {
-        // playbook- and playbook-home- are functional names that we use in the code to replace and parse the paths
+        // playbook- is a functional name that we use in the code to replace and parse the paths
         pages.push(
         {
-          name: 'playbook-home-embedded-ipaas',
-          path: '/embedded-ipaas',
-          file: '~/pages/playbook/[...all].vue'
-        },
-        {
           name: 'playbook-embedded-ipaas',
-          path: '/embedded-ipaas/:all(.*)',
+          path: '/embedded-ipaas:all(.*)',
           file: '~/pages/playbook/[...all].vue'
       })
     }

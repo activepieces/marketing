@@ -13,14 +13,15 @@ export const whichPage = function (route) {
   if (routeNameStripped == 'all') {
       playbookPrefix = '/playbook';
       playbookName = params.all[0];
-      articleSlug = params.all[1];
+      articleSlug = params.all[1] ? params.all[1] : '';
   } else {
       playbookPrefix = '';
       playbookName = routeNameStripped;
-      articleSlug = params.all[0];
+      articleSlug = params.all[0] ? params.all[0] : '';
   }
 
   return {
+    params: params,
     articleSlug: articleSlug,
     playbookPrefix: playbookPrefix,
     'playbookName': playbookName,

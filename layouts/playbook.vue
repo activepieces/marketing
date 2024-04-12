@@ -1,6 +1,6 @@
 <script setup>
 const config = useRuntimeConfig();
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import { useRoute } from 'vue-router';
 import { whichPage } from '~/middleware/playbookRequest';
 
@@ -78,26 +78,19 @@ function expandMatchingItems(items, playbookBase, routePath, parent = null) {
 expandMatchingItems(navItems, whichPageObj.playbookBase, route.path);
 
 const headerHeight = ref(0);
-
-onMounted(() => {
-    const header = document.querySelector('header');
-    if (header) {
-        headerHeight.value = header.offsetHeight;
-    }
-});
 </script>
 
 <template>
   <div>
     <NuxtLoadingIndicator />
-    <Header />
+    <Header :hide-github-badge="true" />
 
     <section class="bg-white dark:bg-gray-900 mt-10">
         <div class="flex flex-col lg:flex-row mx-auto gap-12 px-10 2xl:px-0 mt-10 max-w-screen-2xl">
             <aside class="lg:flex lg:flex-col lg:w-1/5 sticky self-start overflow-y-auto" :style="{ maxHeight: `calc(100vh - ${headerHeight}px - 2.5rem)`, top: `calc(${headerHeight}px + 2.5rem)` }">
                 <div class="pb-10">
-                    <h2 class="mb-4 text-4xl lg:text-3xl tracking-tight font-extrabold text-gray-500 dark:text-white">{{ playbook.attributes.title }}</h2>
-                    <div class="mt-10 text-sm">
+                    <NuxtLink :to="whichPageObj.playbookBase"><h2 class="mb-4 text-4xl lg:text-3xl tracking-tight font-extrabold text-gray-500 dark:text-white hover:text-black">{{ playbook.attributes.title }}</h2></NuxtLink>
+                    <div class="sidebar mt-10 text-sm">
                         <p class="uppercase text-gray-500 font-semibold">Chapters</p>
                         <TreeView v-for="(item, chapterIndex) in navItems" :key="item.title" :title="`${chapterIndex + 1}. ${item.title}`" initialExpanded="true" class="my-1">
                             <template v-slot:title><span class="font-bold">{{chapterIndex + 1}}. {{ item.title }}</span></template>
