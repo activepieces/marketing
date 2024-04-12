@@ -4,6 +4,7 @@ import { marked } from 'marked'
 import { whichPage } from '~/middleware/playbookRequest';
 
 const route = useRoute();
+const router = useRouter();
 const whichPageObj = whichPage(route);
 
 definePageMeta({
@@ -106,8 +107,8 @@ if (!isSlugEmpty.value) {
 
 onMounted(() => {
   if (isSlugEmpty.value) {
-    const firstEl = document.querySelector('.sidebar [data-tree-view-link]');
-    if (firstEl) firstEl.click();
+    const firstNavLink = document.querySelectorAll('.sidebar [data-tree-view-link="true"]')[0];
+    window.location.href = firstNavLink.href;
   }
 });
 </script>

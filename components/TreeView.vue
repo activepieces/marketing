@@ -7,7 +7,7 @@ const childEl = ref(null);
 
 const props = defineProps({
   title: String,
-  to: Object,
+  to: String,
   initialExpanded: {
     type: Boolean,
     default: false,
@@ -42,7 +42,7 @@ const toggle = (arrow) => {
 
 <template>
     <div>
-        <NuxtLink data-tree-view-link :to="props.to || '#'" class="block p-2 flex justify-between text-gray-500 items-center" :class="{'cursor-pointer': hasChildren, '!text-black font-bold bg-gray-100': isActive(), 'hover:!text-black hover:bg-gray-100': !!to, 'hover:text-black': !to}" @click="toggle()">
+        <NuxtLink :data-tree-view-link="!props.to ? 'false' : 'true'" :to="props.to || '#'" class="block p-2 flex justify-between text-gray-500 items-center" :class="{'cursor-pointer': hasChildren, '!text-black font-bold bg-gray-100': isActive(), 'hover:!text-black hover:bg-gray-100': !!to, 'hover:text-black': !to}" @click="toggle()">
             <div>
                 <slot name="title">{{ title }}</slot>
             </div>
