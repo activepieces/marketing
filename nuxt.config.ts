@@ -29,6 +29,7 @@ export default defineNuxtConfig({
     '/docs/**': { proxy: 'https://activepieces.mintlify.dev/docs/**' },
     '/plans': { redirect: '/pricing' },
     '/roadmap': { redirect: 'https://github.com/orgs/activepieces/projects/53' },
+    '/report-issue': { redirect: 'https://community.activepieces.com/c/need-help/5' },
     '/pieces-roadmap': { redirect: 'https://community.activepieces.com/c/feature-requests/9' },
     '/request-a-piece': { redirect: 'https://community.activepieces.com/c/feature-requests/9' },
     '/request-a-feature': { redirect: 'https://community.activepieces.com/c/feature-requests/9' },
