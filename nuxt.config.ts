@@ -33,6 +33,17 @@ export default defineNuxtConfig({
     '/pieces-roadmap': { redirect: 'https://community.activepieces.com/c/feature-requests/9' },
     '/request-a-piece': { redirect: 'https://community.activepieces.com/c/feature-requests/9' },
     '/request-a-feature': { redirect: 'https://community.activepieces.com/c/feature-requests/9' },
-    '/school': { redirect: 'https://community.activepieces.com/c/tutorials/automation-school/11' }
+    '/school': { redirect: 'https://community.activepieces.com/c/tutorials/automation-school/11' },
   },
+  hooks: {
+    'pages:extend'(pages) {
+        // playbook- is a functional name that we use in the code to replace and parse the paths
+        pages.push(
+        {
+          name: 'playbook-embedded-ipaas',
+          path: '/embedded-ipaas:all(.*)',
+          file: '~/pages/playbook/[...all].vue'
+      })
+    }
+  }
 })
