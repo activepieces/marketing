@@ -31,7 +31,8 @@ export default {
           950: '#281560',
           DEFAULT: '#6e41e2'
         },
-        secondary: colors.teal
+        secondary: colors.teal,
+        rose: colors.rose
       },
       animation: {
         'infinite-scroll': 'infinite-scroll 40s linear infinite',
