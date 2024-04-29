@@ -2,9 +2,6 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   app: {
-    head: {
-      script: [{ src: '/js/ap-marketing-table.js', type:'module'  }],
-    },
   },
   css: ['~/assets/css/main.css'],
   postcss: {
@@ -15,9 +12,6 @@ export default defineNuxtConfig({
     
   },
   vue: {  
-    compilerOptions: {
-      isCustomElement: (tag) => ['ap-marketing-table'].includes(tag),
-    },
   },
   runtimeConfig: {
     public: {

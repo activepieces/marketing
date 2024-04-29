@@ -16,7 +16,8 @@ useHead({
 </script>
 
 <template>
-  <ap-marketing-table></ap-marketing-table>
+
+  <PagesPricingTable  />
   <PagesPricingCustomersLogos />
   <PagesPricingFAQ />
 </template>
