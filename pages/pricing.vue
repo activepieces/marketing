@@ -4,6 +4,10 @@ const pageTitle = 'Pricing';
 const metaDesc = 'Self host Activepieces as an alternative to Zapier to run unlimited tasks for free, or use Activepieces Cloud at a fraction of Zapier or Workato cost.';
 const metaKeywords = 'free zapier alternative, open source workato, free zapier, best alternative to zapier';
 
+definePageMeta({
+  layout: 'pricing',
+});
+
 useHead({
   title: pageTitle,
   meta: [
@@ -16,7 +20,6 @@ useHead({
 </script>
 
 <template>
-
   <PagesPricingTable  />
   <PagesPricingCustomersLogos />
   <PagesPricingFAQ />
