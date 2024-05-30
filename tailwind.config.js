@@ -12,6 +12,10 @@ export default {
   ],
   theme: {
     extend: {
+      filter: {
+        'invert-0': 'invert(0)',
+        'brightness-0': 'brightness(0)',
+      },
       aria: {
         current: 'current="true"'
       },

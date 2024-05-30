@@ -23,6 +23,8 @@ onMounted(() => {
 
 <template>
   <PagesIndexHero />
+  <PagesIndexCompanyLogos />
+  <PagesIndexMainValue />
   <PagesIndexUseCases />
   <!--<PagesIndexOfferings />-->
   <PagesIndexSocialProof />
