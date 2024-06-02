@@ -9,7 +9,6 @@ export default defineNuxtConfig({
       tailwindcss: {},
       autoprefixer: {},
     },
-    
   },
   vue: {  
   },

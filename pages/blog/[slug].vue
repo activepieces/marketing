@@ -78,7 +78,6 @@ useHead({
 
 onMounted(() => {
     const pageUrl = useFullUrl();
-    console.log(pageUrl)
 
     window.DiscourseEmbed = {
         discourseUrl: 'https://community.activepieces.com/',
