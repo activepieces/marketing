@@ -68,8 +68,8 @@ const { setActive, activeId } = useActiveScroll(targets)
                   </span>
                   <span class="text-sm">{{ formatTimeAgo(new Date(post.attributes.createdAt)) }}</span>
               </div>
-              <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><NuxtLink :to="`/blog/${post.attributes.slug}`">{{post.attributes.title}}</NuxtLink></h2>
-              <p class="mb-5 font-light text-gray-500 dark:text-gray-400">{{ post.attributes.content.substring(0, 300) }}..</p>
+              <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white whitespace-nowrap overflow-hidden text-ellipsis"><NuxtLink :to="`/blog/${post.attributes.slug}`">{{post.attributes.title}}</NuxtLink></h2>
+              <p class="mb-5 font-light text-gray-500 dark:text-gray-400">{{ post.attributes.content.replace(/(\*\*|__|\*|_|~~|`|#|>|-|\+|\[.*?\]\(.*?\)|!\[.*?\]\(.*?\))/g, '').substring(0, 300) }}..</p>
               <div class="flex justify-between items-center">
                   <div class="flex items-center space-x-4">
                     <img class="w-7 h-7 rounded-full" :src="`${config.public.strapiUrl}${post.attributes.author.data?.attributes.photo.data.attributes.formats.thumbnail.url}`" :alt="post.attributes.author.data?.attributes.name">
