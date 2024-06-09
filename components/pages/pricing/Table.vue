@@ -128,7 +128,7 @@ const handleDeploymentModeChange = (newMode) => {
           </div>
 
           <router-link to="/sales"
-            class="bg-white text-primary hover:bg-primary-700 hover:text-white focus:ring-4 focus:ring-primary-200 font-normal rounded-lg text-xl px-5 py-3 text-center border-2 border-primary">Request Trial</router-link>
+            class="bg-white text-primary hover:bg-primary-700 hover:text-white focus:ring-4 focus:ring-primary-200 font-normal rounded-lg text-xl px-5 py-3 text-center border-2 border-primary">Start Trial</router-link>
           <!-- List -->
           <ul role="list" class="space-y-4 text-left mt-4">
             <li class="flex items-center space-x-3">
@@ -171,7 +171,7 @@ const handleDeploymentModeChange = (newMode) => {
               <p class="mb-4 text-base">25 users then $10 per extra user</p>
             </div>
             <router-link to="/sales"
-              class="block bg-white text-primary hover:bg-primary-700 hover:text-white focus:ring-4 focus:ring-primary-200 font-normal rounded-lg text-xl px-5 py-3 text-center border-2 border-primary">Request Trial</router-link>
+              class="block bg-white text-primary hover:bg-primary-700 hover:text-white focus:ring-4 focus:ring-primary-200 font-normal rounded-lg text-xl px-5 py-3 text-center border-2 border-primary">Start Trial</router-link>
             <!-- List -->
             <ul role="list" class="space-y-4 text-left mt-4">
               <li class="flex items-center space-x-3">
