@@ -55,7 +55,7 @@ const handleDeploymentModeChange = (newMode) => {
   <section class="bg-white dark:bg-gray-900">
     <div class="py-6 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
       <div class="mx-auto max-w-screen-md text-center mb-4 lg:mb-12">
-        <h2 class="text-5xl tracking-tight font-extrabold text-gray-900 dark:text-white">Simple Pricing</h2>
+        <h2 class="text-5xl tracking-tight font-extrabold text-gray-900 dark:text-white">Find a plan that works for you</h2>
       </div>
       <div class="flex flex-col gap-1 items-center">
         <DeploymentSwitcher :deployment-mode="deploymentMode" @deployment-mode-changed="handleDeploymentModeChange" />
