@@ -90,6 +90,10 @@ const handleSortByChange = (e) => {
 const handleSearchQueryChange = (e) => {
     emit('searchQueryChange', e.target.value)
 }
+
+onMounted(() => {
+    initTooltips();
+})
 </script>
 
 <template>
@@ -119,18 +123,22 @@ const handleSearchQueryChange = (e) => {
             <NuxtLink v-for="(piece, pieceIndex) in pieces" :to="`/pieces/${piece.name.replace('@activepieces/piece-', '')}`"
                 class="flex flex-col justify-between p-6 transition duration-200 shadow hover:shadow-md hover:-translate-y-[2px] bg-white rounded dark:bg-gray-800"
                 :class="{ 'hidden': pieceIndex >= piecesPerPage && loadMorePieces == false }">
+                <div :id="`tooltip-enterprise-${pieceIndex}`" role="tooltip" class="absolute visible inline-block z-10 px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-lg tooltip opacity-0">
+                    Requires a special license
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+
                 <div class="flex flex-row md:flex-col lg:flex-row gap-4 lg:items-center">
                     <img :src="piece.logoUrl" class="w-12 h-12">
                     <div class="w-full">
                         <div class="flex row justify-between items-center">
                             <h3 class="text-lg font-bold dark:text-white">{{ piece.displayName }}</h3>
-                            <span  v-if="piece.categories?.includes('PREMIUM')" c class="flex gap-0 bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">
-                                <svg class="w-[14px] h-[14px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                    <path stroke="#1E429F" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 17.345a4.76 4.76 0 0 0 2.558 1.618c2.274.589 4.512-.446 4.999-2.31.487-1.866-1.273-3.9-3.546-4.49-2.273-.59-4.034-2.623-3.547-4.488.486-1.865 2.724-2.899 4.998-2.31.982.236 1.87.793 2.538 1.592m-3.879 12.171V21m0-18v2.2"/>
-                                </svg>
+                            <span @click.prevent
+                                class="flex cursor-default gap-0 bg-gradient-to-r from-blue-50 to-blue-100 text-blue-600 text-xs font-medium px-2.5 py-1 rounded dark:bg-blue-900 dark:text-blue-300"
+                                :class="{ 'hidden': !piece.categories?.includes('PREMIUM') }"
+                                :data-tooltip-target="`tooltip-enterprise-${pieceIndex}`">
                                 Enterprise
                             </span>
-
                         </div>
                         <p v-if="piece.description != ''" class="hidden md:block font-light text-gray-500 dark:text-gray-400 mt-[4px]">{{ piece.description }}</p>
                     </div>
