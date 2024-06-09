@@ -91,7 +91,7 @@ onBeforeUnmount(() => {
 <template>
     <section class="bg-white dark:bg-gray-900">
       <div class="mx-auto max-w-screen-xl px-4">
-        <h2 class="mb-14 text-4xl tracking-tight font-bold text-gray-900 dark:text-white text-center">37k+ teams deploy automations securely</h2>
+        <h2 class="mb-14 text-4xl tracking-tight font-bold text-gray-900 dark:text-white text-center">38k+ teams deploy automations securely</h2>
         <div class="grid grid-cols-1 gap-8 gap-y-14 text-gray-500 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 dark:text-gray-400 opacity-100">
           <div v-for="(slot, index) in logoSlots" :key="index" class="relative h-6">
             <transition name="fade-slide">

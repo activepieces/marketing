@@ -36,17 +36,17 @@ defineProps({
       <div class="col-span-2 space-y-8 md:grid md:grid-cols-2 md:gap-12 md:space-y-0">
         <div>
             <svg class="mb-2 w-8 h-8 text-fuchsia-400 mx-auto lg:mx-0" fill="currentColor" aria-hidden="true" viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg"><path d="m160-419 101-101-101-101L59-520l101 101Zm540-21 100-160 100 160H700Zm-220-40q-50 0-85-35t-35-85q0-51 35-85.5t85-34.5q51 0 85.5 34.5T600-600q0 50-34.5 85T480-480Zm0-160q-17 0-28.5 11.5T440-600q0 17 11.5 28.5T480-560q17 0 28.5-11.5T520-600q0-17-11.5-28.5T480-640Zm0 40ZM0-240v-63q0-44 44.5-70.5T160-400q13 0 25 .5t23 2.5q-14 20-21 43t-7 49v65H0Zm240 0v-65q0-65 66.5-105T480-450q108 0 174 40t66 105v65H240Zm560-160q72 0 116 26.5t44 70.5v63H780v-65q0-26-6.5-49T754-397q11-2 22.5-2.5t23.5-.5Zm-320 30q-57 0-102 15t-53 35h311q-9-20-53.5-35T480-370Zm0 50Z"/></svg>
-            <h3 class="mb-2 text-2xl font-bold dark:text-white">37k+ users</h3>
+            <h3 class="mb-2 text-2xl font-bold dark:text-white">38k+ users</h3>
             <p class="font-light text-gray-500 dark:text-gray-400">Giving continuous feedback to improve our tools</p>
         </div>
         <div>
             <svg class="mb-2 w-8 h-8 text-fuchsia-400 mx-auto lg:mx-0" fill="currentColor" viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg"><path d="M80-680v-80q0-33 23.5-56.5T160-840h640q33 0 56.5 23.5T880-760v80h-80v-80H160v80H80Zm240 560v-80H160q-33 0-56.5-23.5T80-280v-80h80v80h640v-80h80v80q0 33-23.5 56.5T800-200H640v80H320Zm160-400Zm-288 0 104-104-56-56L80-520l160 160 56-56-104-104Zm576 0L664-416l56 56 160-160-160-160-56 56 104 104Z"/></svg>
-            <h3 class="mb-2 text-2xl font-bold dark:text-white">138 contributors</h3>
+            <h3 class="mb-2 text-2xl font-bold dark:text-white">147 contributors</h3>
             <p class="font-light text-gray-500 dark:text-gray-400">Devoted time to make Activepieces even better</p>
         </div>
         <div>
             <svg class="mb-2 w-8 h-8 text-fuchsia-400 mx-auto lg:mx-0" fill="currentColor" viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg"><path d="M352-120H200q-33 0-56.5-23.5T120-200v-152q48 0 84-30.5t36-77.5q0-47-36-77.5T120-568v-152q0-33 23.5-56.5T200-800h160q0-42 29-71t71-29q42 0 71 29t29 71h160q33 0 56.5 23.5T800-720v160q42 0 71 29t29 71q0 42-29 71t-71 29v160q0 33-23.5 56.5T720-120H568q0-50-31.5-85T460-240q-45 0-76.5 35T352-120Zm-152-80h85q24-66 77-93t98-27q45 0 98 27t77 93h85v-240h80q8 0 14-6t6-14q0-8-6-14t-14-6h-80v-240H480v-80q0-8-6-14t-14-6q-8 0-14 6t-6 14v80H200v88q54 20 87 67t33 105q0 57-33 104t-87 68v88Zm260-260Z"/></svg>
-            <h3 class="mb-2 text-2xl font-bold dark:text-white">199 pieces</h3>
+            <h3 class="mb-2 text-2xl font-bold dark:text-white">205 pieces</h3>
             <p class="font-light text-gray-500 dark:text-gray-400">Created and maintained by the community</p>
         </div>
         <div>

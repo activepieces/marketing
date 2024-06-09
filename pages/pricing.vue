@@ -21,6 +21,6 @@ useHead({
 
 <template>
   <PagesPricingTable  />
-  <PagesPricingCustomersLogos />
+  <PagesIndexCompanyLogos class="mt-10 mb-20" />
   <PagesPricingFAQ />
 </template>
