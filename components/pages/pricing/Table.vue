@@ -2,21 +2,22 @@
 import DeploymentSwitcher from './DeploymentSwitcher.vue'
 
 let deploymentMode = ref('cloud');
+const expandEmbed = ref(false);
 
 const ONE_DOLLAR_PER_1000_TASKS = '$1 per 1,000 extra tasks';
 
 const proFeatures = ref([
   '1 project',
-  '<strong>All</strong> pieces included',
-  '<strong>Unlimited</strong> flows',
-  '<strong>Unlimited</strong> flow steps',
+  'All standard pieces',
+  'Unlimited flows',
   ONE_DOLLAR_PER_1000_TASKS,
 ])
 
 const enterpriseFeatures = ref([
-  '<strong>Unlimited</strong> Projects',
-  '<strong>Environments & Git sync</strong>',
-  'Advanced roles & permissions',
+  'Enterprise pieces',
+  'Role-based access control',
+  'Unlimited projects',
+  'Collaborate with Git',
   'Audit logs',
   'Customize branding & language',
   'Single Sign-On',
@@ -112,10 +113,9 @@ const handleDeploymentModeChange = (newMode) => {
           </div>
 
           <div class="mx-auto w-[100px] h-[3px] bg-gradient-to-r from-transparent to-blue-500 mb-4 mt-4"></div>
-          <p class="font-light text-gray-900 sm:text-lg dark:text-gray-400">Collaborate with your team and comply with your org policies</p>
+          <p class="font-light text-gray-900 sm:text-lg dark:text-gray-400">Automate with maxmimum security, reliability, collaboration and compliance</p>
           <div class="flex justify-center items-center my-8">
-            <span class="mr-2 text-5xl font-extrabold">$99</span>
-            <span class="text-gray-500 dark:text-gray-400 leading-5 text-base text-left">per user<br>per month</span>
+            <span class="mr-2 text-5xl font-extrabold"><span class="text-4xl">Custom Pricing</span></span>
           </div>
           <div class="flex items-start flex-col text-left">
             <Transition name="slide-fade" :duration="{ enter: 500, leave: 0 }">
@@ -124,7 +124,7 @@ const handleDeploymentModeChange = (newMode) => {
                 <div class="font-bold">Includes 1,000 tasks per month</div>
               </p>
             </Transition>
-            <p class="mb-4 text-base">Minimum of 5 users</p>
+            <p class="mb-4 text-base">Starts at $15k / year</p>
           </div>
 
           <router-link to="/sales"
@@ -152,36 +152,42 @@ const handleDeploymentModeChange = (newMode) => {
           <h3 class="text-4xl font-semibold text-[#EA047E]">Embed</h3>
           <div class="mx-auto w-[100px] h-[3px] bg-gradient-to-r from-transparent to-[#EA047E] mb-4 mt-4"></div>
           <p class="font-light text-gray-900 sm:text-lg dark:text-gray-400">Add Activepieces in your SaaS and let your users enjoy automations</p>
-          <div class="flex justify-center items-center my-8">
-            <span class="mr-2 text-5xl font-extrabold">$1,200</span>
-            <span class="text-gray-500 dark:text-gray-400">per month</span>
+          
+          <p class="text-center mt-5" v-if="!expandEmbed">
+            <a href="#" @click.prevent="expandEmbed = true" class="text-blue-500 font-semibold hover:underline">Show details</a>
+          </p>
+          <div v-if="expandEmbed">
+            <div class="flex justify-center items-center my-8">
+              <span class="mr-2 text-5xl font-extrabold">$1,200</span>
+              <span class="text-gray-500 dark:text-gray-400">per month</span>
+            </div>
+            <div class="flex items-start flex-col text-left">
+              <Transition name="slide-fade" :duration="{ enter: 500, leave: 0 }">
+                <p class="mb-2 font-semibold text-base" v-if="deploymentMode === 'self-hosted'">Unlimited Tasks</p>
+                <p class="mb-2 text-base" v-else>
+                  <div class="font-bold">Includes 1,000 tasks per month</div>
+                </p>
+              </Transition>
+              <p class="mb-4 text-base">25 users then $10 per extra user</p>
+            </div>
+            <router-link to="/sales"
+              class="block bg-white text-primary hover:bg-primary-700 hover:text-white focus:ring-4 focus:ring-primary-200 font-normal rounded-lg text-xl px-5 py-3 text-center border-2 border-primary">Request Trial</router-link>
+            <!-- List -->
+            <ul role="list" class="space-y-4 text-left mt-4">
+              <li class="flex items-center space-x-3">
+                <span>Everything in free, plus ...</span>
+              </li>
+              <li v-for="(feature, index) in embeddingFeatures" :key="index" class="flex items-center space-x-3">
+                <svg class="flex-shrink-0 w-5 h-5 text-green-500" fill="currentColor"
+                  viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                <span v-html="feature"></span>
+              </li>
+            </ul>
           </div>
-          <div class="flex items-start flex-col text-left">
-            <Transition name="slide-fade" :duration="{ enter: 500, leave: 0 }">
-              <p class="mb-2 font-semibold text-base" v-if="deploymentMode === 'self-hosted'">Unlimited Tasks</p>
-              <p class="mb-2 text-base" v-else>
-                <div class="font-bold">Includes 1,000 tasks per month</div>
-              </p>
-            </Transition>
-            <p class="mb-4 text-base">25 users then $10 per extra user</p>
-          </div>
-          <router-link to="/sales"
-            class="bg-white text-primary hover:bg-primary-700 hover:text-white focus:ring-4 focus:ring-primary-200 font-normal rounded-lg text-xl px-5 py-3 text-center border-2 border-primary">Request Trial</router-link>
-          <!-- List -->
-          <ul role="list" class="space-y-4 text-left mt-4">
-            <li class="flex items-center space-x-3">
-              <span>Everything in free, plus ...</span>
-            </li>
-            <li v-for="(feature, index) in embeddingFeatures" :key="index" class="flex items-center space-x-3">
-              <svg class="flex-shrink-0 w-5 h-5 text-green-500" fill="currentColor"
-                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                  clip-rule="evenodd"></path>
-              </svg>
-              <span v-html="feature"></span>
-            </li>
-          </ul>
         </div>
       </div>
     </div>
