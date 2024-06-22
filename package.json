@@ -17,9 +17,10 @@
     "postcss": "^8.4.31",
     "tailwindcss": "^3.3.5",
     "vue": "^3.3.8",
-    "vue-router": "^4.2.5"
+    "vue-router": "^4.4.0"
   },
   "dependencies": {
+    "@gtm-support/vue-gtm": "^3.0.1",
     "@vueuse/core": "^10.7.2",
     "flowbite": "^2.2.0",
     "marked": "^11.1.1",
