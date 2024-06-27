@@ -14,19 +14,21 @@ const proFeatures = ref([
 ])
 
 const enterpriseFeatures = ref([
-  'Enterprise pieces',
   'Role-based access control',
-  'Unlimited projects',
-  'Collaborate with Git',
+  'Advanced alerts',
+  'Enterprise pieces',
+  'Collaborate using Git',
   'Audit logs',
+  'Log streaming to observability apps',
   'Customize branding & language',
   'Single Sign-On',
   '5 private pieces',
+  'Unlimited projects',
   ONE_DOLLAR_PER_1000_TASKS,
 ]);
 
 const embeddingFeatures = ref([
-  '<strong>Unlimited</strong> Projects',
+  'Unlimited Projects',
   'Provision users automatically',
   'Embedding Javascript SDK',
   'Customize branding & language',
@@ -121,14 +123,14 @@ const handleDeploymentModeChange = (newMode) => {
             <Transition name="slide-fade" :duration="{ enter: 500, leave: 0 }">
               <p class="mb-2 font-semibold text-base" v-if="deploymentMode === 'self-hosted'">Unlimited Tasks</p>
               <p class="mb-2 text-base" v-else>
-                <div class="font-bold">Includes 1,000 tasks per month</div>
+                <div class="font-bold">&nbsp;</div>
               </p>
             </Transition>
-            <p class="mb-4 text-base">Starts at $500 per month</p>
+            <p class="mb-4 text-base">Starts at $1,200 per month</p>
           </div>
 
           <router-link to="/sales"
-            class="bg-white text-primary hover:bg-primary-700 hover:text-white focus:ring-4 focus:ring-primary-200 font-normal rounded-lg text-xl px-5 py-3 text-center border-2 border-primary">Start Trial</router-link>
+            class="bg-white text-primary hover:bg-primary-700 hover:text-white focus:ring-4 focus:ring-primary-200 font-normal rounded-lg text-xl px-5 py-3 text-center border-2 border-primary">Contact sales</router-link>
           <!-- List -->
           <ul role="list" class="space-y-4 text-left mt-4">
             <li class="flex items-center space-x-3">
@@ -171,7 +173,7 @@ const handleDeploymentModeChange = (newMode) => {
               <p class="mb-4 text-base">25 users then $10 per extra user</p>
             </div>
             <router-link to="/sales"
-              class="block bg-white text-primary hover:bg-primary-700 hover:text-white focus:ring-4 focus:ring-primary-200 font-normal rounded-lg text-xl px-5 py-3 text-center border-2 border-primary">Start Trial</router-link>
+              class="block bg-white text-primary hover:bg-primary-700 hover:text-white focus:ring-4 focus:ring-primary-200 font-normal rounded-lg text-xl px-5 py-3 text-center border-2 border-primary">Contact sales</router-link>
             <!-- List -->
             <ul role="list" class="space-y-4 text-left mt-4">
               <li class="flex items-center space-x-3">
