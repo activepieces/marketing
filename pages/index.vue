@@ -1,20 +1,22 @@
 <script setup>
-const pageTitle = 'Open source no-code business automation · Zapier open source alternative';
-const metaDesc = 'Automate your work with Activepieces for free. Trusted by thousands of users who run millions of automated tasks every month. The perfect alternative to Zapier that can be self-hosted or used on the cloud.';
-const metaKeywords = 'open source business automation, open source zapier, zapier open source alternative, zapier alternative, workato alternative, open source workato';
+const pageTitle = "Unleash the power of AI for every team";
+const metaDesc =
+  "Empower every department from marketing and sales to HR and finance with secure, intuitive, and powerful decentralized AI automation.";
+const metaKeywords =
+  "enterprise automation solutions, open source business automation, open source zapier, zapier open source alternative, zapier alternative, workato alternative, open source workato";
 
 useHead({
   title: pageTitle,
   meta: [
-    { name: 'description', content: metaDesc },
-    { name: 'keywords', content: metaKeywords },
-    { property: 'og:title', content: pageTitle },
-    { property: 'og:description', content: metaDesc },
-  ]
-})
+    { name: "description", content: metaDesc },
+    { name: "keywords", content: metaKeywords },
+    { property: "og:title", content: pageTitle },
+    { property: "og:description", content: metaDesc },
+  ],
+});
 
-import { onMounted } from 'vue'
-import { initTabs } from 'flowbite'
+import { onMounted } from "vue";
+import { initTabs } from "flowbite";
 
 onMounted(() => {
   initTabs();
@@ -23,11 +25,8 @@ onMounted(() => {
 
 <template>
   <PagesIndexHero />
-  <PagesIndexCompanyLogos />
-  <PagesIndexMainValue />
-  <PagesIndexUseCases />
-  <!--<PagesIndexOfferings />-->
-  <PagesIndexSocialProof />
+  <PagesIndexEnterpriseValue />
   <PagesIndexFeatures />
   <PagesIndexPieces />
+  <PagesIndexBlog />
 </template>
