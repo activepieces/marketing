@@ -433,7 +433,7 @@ onMounted(() => {
             <li>
               <NuxtLink
                 to="/open-source"
-                class="p-1 relative inline-flex items-center text-sm font-medium text-white bg-gradient-to-r from-[#6232cf] to-[#5d8af3] rounded-full shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:rotate-3"
+                class="p-[2px] relative inline-flex items-center text-sm font-medium text-white bg-gradient-to-r from-[#6232cf] to-[#5d8af3] rounded-full shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:rotate-3"
               >
                 <span
                   class="flex gap-x-1 w-full bg-gray-900 bg-white text-gray-800 rounded-full px-4 py-2"
