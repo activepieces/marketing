@@ -26,15 +26,20 @@
             >
               <router-link
                 to="/sales"
-                class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-white rounded-lg bg-primary hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
+                class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-white rounded-lg bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 dark:focus:ring-primary-900"
                 >Request demo</router-link
               >
               <a
                 href="https://cloud.activepieces.com/sign-up"
-                class="inline-flex items-center justify-center px-5 py-3 text-base text-primary-700 font-medium text-center rounded-lg bg-white border border-primary-700 hover:bg-primary-50 focus:ring-4 focus:ring-primary-300 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+                class="inline-flex items-center justify-center px-5 py-3 text-base text-primary-700 font-medium text-center rounded-lg bg-white border border-primary-700 hover:bg-primary-50 focus:ring-4 focus:ring-pink-300 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
               >
                 Start free
               </a>
+            </div>
+            <div class="flex flex-wrap items-center gap-x-8 gap-y-5 mt-7">
+              <img class="w-20" src="/badges/g2-top25-24.svg" />
+              <img class="w-20" src="/badges/g2-most-implementable-w24.svg" />
+              <img class="w-20" src="/badges/g2-high-performer-w24.svg" />
             </div>
           </div>
         </div>
