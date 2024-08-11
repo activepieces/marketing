@@ -23,108 +23,114 @@
       </p>
       <div class="flex flex-row flex-wrap justify-center gap-10">
         <div
-          class="bg-gradient-to-b from-primary-100 to-white rounded-lg shadow-md max-w-[350px] px-5 py-7"
+          class="bg-gradient-to-b from-primary-100 to-white rounded-lg shadow-md max-w-[350px]"
         >
           <img
-            src="/hero.jpg"
+            src="/story/catalyst.png"
             alt="hero"
-            class="object-contain w-full max-h-[250px] mb-8"
+            class="object-contain w-full mb-8 rounded-t-lg"
           />
-          <p class="text-gray-900 text-2xl font-semibold mb-5">
-            IT teams should be catalysts, not constraints
-          </p>
-          <p class="text-gray-900 text-base leading-[28px]">
-            Your IT team excels at managing software infrastructure and that's
-            what they should be doing every day. Don't overwhelm them with the
-            details of implementation.
-          </p>
-          <!--<a
-            href="https://www.activepieces.com/blog/ai-trends-2024"
-            target="_blank"
-            class="text-xl text-gray-900 flex flex-row items-center mt-6 tracking-[2px]"
-            >Learn more
-            <svg
-              class="w-5 h-5 ml-2 mt-1"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
-          </a>-->
+          <div class="px-5 pb-7">
+            <p class="text-gray-900 text-2xl font-semibold mb-5">
+              IT teams should be catalysts, not constraints
+            </p>
+            <p class="text-gray-900 text-base leading-[28px]">
+              Your IT team excels at managing software infrastructure and that's
+              what they should be doing every day. Don't overwhelm them with the
+              details of implementation.
+            </p>
+            <!--<a
+              href="https://www.activepieces.com/blog/ai-trends-2024"
+              target="_blank"
+              class="text-xl text-gray-900 flex flex-row items-center mt-6 tracking-[2px]"
+              >Learn more
+              <svg
+                class="w-5 h-5 ml-2 mt-1"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </a>-->
+          </div>
         </div>
         <div
-          class="bg-gradient-to-b from-primary-100 to-white rounded-lg shadow-md max-w-[350px] px-5 py-7"
+          class="bg-gradient-to-b from-primary-100 to-white rounded-lg shadow-md max-w-[350px]"
         >
           <img
-            src="/hero.jpg"
+            src="/story/knowhow.png"
             alt="hero"
-            class="object-contain w-full max-h-[250px] mb-8"
+            class="object-contain w-full mb-8 rounded-t-lg"
           />
-          <p class="text-gray-900 text-2xl font-semibold mb-5">
-            Department know-how is tough to transfer
-          </p>
-          <p class="text-gray-900 text-base leading-[28px]">
-            Forcing your teams to share their know-how with IT and engineering
-            will only increase the overhead and tension across the organization.
-          </p>
-          <!--<a
-            href="https://www.activepieces.com/blog/ai-trends-2024"
-            target="_blank"
-            class="text-xl text-gray-900 flex flex-row items-center mt-6 tracking-[2px]"
-            >Learn more
-            <svg
-              class="w-5 h-5 ml-2 mt-1"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
-          </a>-->
+          <div class="px-5 pb-7">
+            <p class="text-gray-900 text-2xl font-semibold mb-5">
+              Department know-how is tough to transfer
+            </p>
+            <p class="text-gray-900 text-base leading-[28px]">
+              Forcing your teams to share their know-how with IT and engineering
+              will only increase the overhead and tension across the organization.
+            </p>
+            <!--<a
+              href="https://www.activepieces.com/blog/ai-trends-2024"
+              target="_blank"
+              class="text-xl text-gray-900 flex flex-row items-center mt-6 tracking-[2px]"
+              >Learn more
+              <svg
+                class="w-5 h-5 ml-2 mt-1"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </a>-->
+          </div>
         </div>
         <div
-          class="bg-gradient-to-b from-primary-100 to-white rounded-lg shadow-md max-w-[350px] px-5 py-7"
+          class="bg-gradient-to-b from-primary-100 to-white rounded-lg shadow-md max-w-[350px]"
         >
           <img
-            src="/hero.jpg"
+            src="/story/superpowers.png"
             alt="hero"
-            class="object-contain w-full max-h-[250px] mb-8"
+            class="object-contain w-full mb-8 rounded-t-lg"
           />
-          <p class="text-gray-900 text-2xl font-semibold mb-5">
-            Hidden superpowers reside in departments
-          </p>
-          <p class="text-gray-900 text-base leading-[28px]">
-            Your teams will impress you by how much they can automate within
-            their departments. All what it takes is a great software and IT
-            support.
-          </p>
-          <!--<a
-            href="https://www.activepieces.com/blog/ai-trends-2024"
-            target="_blank"
-            class="text-xl text-gray-900 flex flex-row items-center mt-6 tracking-[2px]"
-            >Learn more
-            <svg
-              class="w-5 h-5 ml-2 mt-1"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
-          </a>-->
+          <div class="px-5 pb-7">
+            <p class="text-gray-900 text-2xl font-semibold mb-5">
+              Hidden superpowers reside in your departments
+            </p>
+            <p class="text-gray-900 text-base leading-[28px]">
+              Your teams will impress you by how much they can automate within
+              their departments. All what it takes is a great software and IT
+              support.
+            </p>
+            <!--<a
+              href="https://www.activepieces.com/blog/ai-trends-2024"
+              target="_blank"
+              class="text-xl text-gray-900 flex flex-row items-center mt-6 tracking-[2px]"
+              >Learn more
+              <svg
+                class="w-5 h-5 ml-2 mt-1"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </a>-->
+          </div>
         </div>
       </div>
       <div class="flex justify-center mt-10">
