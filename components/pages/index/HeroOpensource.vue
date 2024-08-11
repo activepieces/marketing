@@ -67,7 +67,7 @@ const { data: homepageAnnouncement } = await useFetch(
             >
               <a
                 href="https://cloud.activepieces.com/sign-up"
-                class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-white rounded-lg bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 dark:focus:ring-pink-900"
+                class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-white rounded-lg bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
               >
                 Start free
                 <svg

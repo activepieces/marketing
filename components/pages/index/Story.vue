@@ -18,11 +18,12 @@
       <p
         class="max-w-xl mb-10 font-light text-gray-500 text-xl text-center mx-auto"
       >
-        AI is changing very quickly. In {{ new Date().getFullYear() }}, your IT team should supervise rather than implement each AI workflow.
+        AI is changing very quickly. In {{ new Date().getFullYear() }}, your IT
+        team should supervise rather than implement each AI workflow.
       </p>
       <div class="flex flex-row flex-wrap justify-center gap-10">
         <div
-          class="bg-gradient-to-b from-pink-100 to-white rounded-lg shadow-md max-w-[350px] px-5 py-7"
+          class="bg-gradient-to-b from-primary-100 to-white rounded-lg shadow-md max-w-[350px] px-5 py-7"
         >
           <img
             src="/hero.png"
@@ -32,8 +33,10 @@
           <p class="text-gray-900 text-2xl font-semibold mb-5">
             IT teams should be catalysts, not constraints
           </p>
-          <p class="text-gray-900 text-base leading-[28px] min-h-[150px]">
-            Your IT team excels at managing software infrastructure and that's what they should be doing every day. Don't overwhelm them with the details of implementation.
+          <p class="text-gray-900 text-base leading-[28px]">
+            Your IT team excels at managing software infrastructure and that's
+            what they should be doing every day. Don't overwhelm them with the
+            details of implementation.
           </p>
           <!--<a
             href="https://www.activepieces.com/blog/ai-trends-2024"
@@ -55,7 +58,7 @@
           </a>-->
         </div>
         <div
-          class="bg-gradient-to-b from-cyan-100 to-white rounded-lg shadow-md max-w-[350px] px-5 py-7"
+          class="bg-gradient-to-b from-primary-100 to-white rounded-lg shadow-md max-w-[350px] px-5 py-7"
         >
           <img
             src="/hero.png"
@@ -65,8 +68,9 @@
           <p class="text-gray-900 text-2xl font-semibold mb-5">
             Department know-how is tough to transfer
           </p>
-          <p class="text-gray-900 text-base leading-[28px] min-h-[150px]">
-            Forcing your teams to share their know-how with IT and engineering will only increase the overhead and tension across the organization.
+          <p class="text-gray-900 text-base leading-[28px]">
+            Forcing your teams to share their know-how with IT and engineering
+            will only increase the overhead and tension across the organization.
           </p>
           <!--<a
             href="https://www.activepieces.com/blog/ai-trends-2024"
@@ -88,7 +92,7 @@
           </a>-->
         </div>
         <div
-          class="bg-gradient-to-b from-lime-100 to-white rounded-lg shadow-md max-w-[350px] px-5 py-7"
+          class="bg-gradient-to-b from-primary-100 to-white rounded-lg shadow-md max-w-[350px] px-5 py-7"
         >
           <img
             src="/hero.png"
@@ -98,8 +102,10 @@
           <p class="text-gray-900 text-2xl font-semibold mb-5">
             Hidden superpowers reside in departments
           </p>
-          <p class="text-gray-900 text-base leading-[28px] min-h-[150px]">
-            Your teams will impress you by how much they can automate within their departments. All what it takes is a great software and IT support.
+          <p class="text-gray-900 text-base leading-[28px]">
+            Your teams will impress you by how much they can automate within
+            their departments. All what it takes is a great software and IT
+            support.
           </p>
           <!--<a
             href="https://www.activepieces.com/blog/ai-trends-2024"
