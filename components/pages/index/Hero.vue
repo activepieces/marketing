@@ -1,25 +1,20 @@
 <script setup></script>
 
 <template>
-  <section
-    class="bg-gradient-to-b from-white via-white to-[#dcd8fc] dark:bg-gray-900"
-  >
+  <section class="animated-gradient dark:bg-gray-900 -mt-6">
     <div class="max-w-screen-xl px-4 pt-[100px] pb-[50px] mx-auto">
       <div class="lg:grid items-center gap-8 lg:gap-12 lg:grid-cols-12">
         <div class="lg:col-span-6 text-center sm:mb-6 lg:text-left lg:mb-0">
           <div class="max-w-screen-sm mx-auto">
             <h1
-              class="mb-4 font-bold leading-none tracking-tight text-gray-900 text-5xl xl:text-6xl dark:text-white"
+              class="mb-4 font-bold leading-none tracking-tight text-gray-900 text-5xl xl:text-6xl xl:leading-tight dark:text-white"
             >
-              Unleash the power of <span class="colored-text">AI</span> for
-              every team
+              Turn every department into an <span class="colored-text">AI Powerhouse</span>
             </h1>
             <p
               class="max-w-xl mx-auto mb-6 font-light text-gray-900 lg:mx-0 xl:mb-8 md:text-lg xl:text-2xl dark:text-gray-400"
             >
-              Empower every department from marketing and sales to HR and
-              finance with secure, intuitive, and powerful decentralized AI
-              automation
+              Activepieces is the best way to build a self-driven AI culture across HR, finance, marketing, sales and more — under the supervision of your IT ninjas
             </p>
             <div
               class="flex flex-col space-y-4 sm:flex-row sm:justify-left sm:space-y-0 sm:space-x-4 justify-center lg:justify-start"
@@ -40,7 +35,7 @@
         </div>
         <div class="lg:col-span-6 mt-10 lg:mt-0">
           <img
-            src="/hero.png"
+            src="/hero.webp"
             alt="hero"
             class="max-w-[1280px] w-full max-h-[500px] object-contain"
           />
@@ -56,4 +51,26 @@
   -webkit-text-fill-color: transparent;
   background: linear-gradient(to right, #6232cf 51%, #5b94f8 100%) text;
 }
+
+@keyframes gradientAnimation {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animated-gradient {
+    background: linear-gradient(
+      90deg,  /* Horizontal gradient */
+      rgba(255, 250, 252, 0.9),  /* Very light pink */
+      rgba(240, 235, 255, 0.9),  /* Very light lavender */
+      rgba(235, 245, 255, 0.9),  /* Very light blue */
+      rgba(235, 255, 240, 0.9),  /* Very light green */
+      rgba(255, 245, 230, 0.9)   /* Very light orange */
+    );
+    background-size: 300% 100%; /* Increased size for more movement */
+    animation: gradientAnimation 20s linear infinite; /* Slower animation for smoother effect */
+  }
 </style>

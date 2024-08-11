@@ -18,8 +18,7 @@
       <p
         class="max-w-xl mb-10 font-light text-gray-500 text-xl text-center mx-auto"
       >
-        Adapt to the fast-paced AI landscape with Activepieces: Boost efficiency
-        and slash costs through expert AI adoption solutions
+        AI is changing very quickly. If you're pushing your IT teams to keep up, you will miss out on adopting new AI.
       </p>
       <div class="flex flex-row flex-wrap justify-center gap-10">
         <div
