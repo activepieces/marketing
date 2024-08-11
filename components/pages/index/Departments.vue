@@ -16,7 +16,7 @@
         We didn't reinvent the wheel
       </h2>
       <p
-        class="font-light text-gray-500 sm:text-lg md:px-20 lg:px-38 xl:px-48 dark:text-gray-400"
+        class="font-light text-gray-500 text-xl md:px-20 lg:px-38 xl:px-48 dark:text-gray-400"
       >
         We are strategists, designers and developers. Innovators and problem
         solvers. Small enough to be simple and quick, but big enough to deliver
