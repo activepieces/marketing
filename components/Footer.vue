@@ -20,7 +20,7 @@ const route = useRoute();
           <a
             v-if="route.path === '/open-source'"
             href="https://cloud.activepieces.com/sign-up"
-            class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-normal rounded-lg text-2xl px-20 lg:px-30 py-6 mr-2 mb-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+            class="text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-normal rounded-lg text-2xl px-20 lg:px-30 py-6 mr-2 mb-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
           >
             <span v-if="route.path === '/open-source'">Start free</span>
             <span v-else>Contact sales</span>
@@ -28,7 +28,7 @@ const route = useRoute();
           <router-link
             v-else
             to="/sales"
-            class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-normal rounded-lg text-2xl px-20 lg:px-30 py-6 mr-2 mb-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+            class="text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-normal rounded-lg text-2xl px-20 lg:px-30 py-6 mr-2 mb-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
             >Contact sales</router-link
           >
         </div>

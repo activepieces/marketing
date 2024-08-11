@@ -130,11 +130,12 @@
       <div class="flex justify-center mt-10">
         <router-link
           to="/sales"
-          class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-normal rounded-lg text-xl px-10 py-4 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+          class="text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-normal rounded-lg text-xl px-10 py-4 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
           >Catch up on AI adoption</router-link
         >
       </div>
     </div>
+    <!-- TODO: TO BE REMOVED LATER -->
     <!-- <div class="max-w-screen-xl px-4 py-8 mx-auto lg:py-20">
       <div class="grid gap-8 sm:gap-12 md:grid-cols-2 items-end">
         <div class="flex flex-col justify-start">

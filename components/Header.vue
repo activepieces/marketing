@@ -73,7 +73,7 @@ onMounted(() => {
               :class="
                 route.path === '/open-source'
                   ? 'order-1 text-primary-700 bg-white border border-primary-700 hover:bg-primary-50 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 lg:px-5 lg:py-2.5 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800'
-                  : 'order-2 text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 lg:px-5 lg:py-2.5 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800'
+                  : 'order-2 text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg text-sm px-4 py-2 lg:px-5 lg:py-2.5 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800'
               "
               >Request demo</router-link
             >
@@ -81,7 +81,7 @@ onMounted(() => {
               href="https://cloud.activepieces.com/sign-up"
               :class="
                 route.path === '/open-source'
-                  ? 'order-2 text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 lg:px-5 lg:py-2.5 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800'
+                  ? 'order-2 text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg text-sm px-4 py-2 lg:px-5 lg:py-2.5 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800'
                   : 'order-1 text-primary-700 bg-white border border-primary-700 hover:bg-primary-50 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 lg:px-5 lg:py-2.5 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800'
               "
               >Start free</a
@@ -387,7 +387,7 @@ onMounted(() => {
                   </li>
                   <li>
                     <NuxtLink
-                      to="https://www.activepieces.com/blog"
+                      to="/blog"
                       class="group/link flex gap-4 items-center py-2.5 px-4 w-full rounded-lg hover:bg-blue-50 transition-colors duration-200"
                     >
                       <svg
@@ -433,29 +433,30 @@ onMounted(() => {
             <li>
               <NuxtLink
                 to="/open-source"
-                class="mt-[10px] gap-x-1 relative inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-blue-500 to-[#6232cf] rounded-full shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:rotate-3 lg:mt-[0px]"
+                class="p-[2px] relative inline-flex items-center text-sm font-medium text-white bg-gradient-to-r from-[#6232cf] to-[#5d8af3] rounded-full shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:rotate-3"
               >
-                <svg
-                  class="w-5 h-5 text-white"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="m8 8-4 4 4 4m8 0 4-4-4-4m-2-3-4 14"
-                  />
-                </svg>
                 <span
-                  class="absolute inset-0 bg-opacity-30 bg-white rounded-full -translate-x-1 -translate-y-1 blur-md"
-                ></span>
-                Open Source
+                  class="flex gap-x-1 w-full bg-gray-900 bg-white text-gray-800 rounded-full px-4 py-2"
+                >
+                  <svg
+                    class="w-5 h-5 text-primary"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="m8 8-4 4 4 4m8 0 4-4-4-4m-2-3-4 14"
+                    />
+                  </svg>
+                  Open Source
+                </span>
               </NuxtLink>
             </li>
             <li class="min-w-[122px] min-h-[34px] py-3 px-3 lg:p-0 lg:hidden">
@@ -478,7 +479,7 @@ onMounted(() => {
 
   <div
     v-if="showGitHubBadge"
-    class="opacity-100 transition-all fixed w-full justify-center bottom-16 z-[1] flex"
+    class="opacity-100 transition-all fixed w-full justify-end bottom-16 right-5 z-[1] flex"
   >
     <div
       class="bg-[#06FFB4] shadow-2xl border border-solid border-black border-opacity-50 h-[70px] w-[350px] lg:w-[400px] rounded-xl text-h6-sm lg:text-h6-lg !font-bold flex justify-center gap-8 items-center"
