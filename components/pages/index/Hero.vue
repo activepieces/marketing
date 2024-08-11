@@ -1,8 +1,8 @@
 <script setup></script>
 
 <template>
-  <section class="animated-gradient dark:bg-gray-900 -mt-6">
-    <div class="max-w-screen-xl px-4 pt-[100px] pb-[50px] mx-auto">
+  <section class="animated-gradient dark:bg-gray-900 -mt-[62px]">
+    <div class="max-w-screen-xl px-4 pt-[160px] pb-[50px] mx-auto">
       <div class="lg:grid items-center gap-8 lg:gap-12 lg:grid-cols-12">
         <div class="lg:col-span-6 text-center sm:mb-6 lg:text-left lg:mb-0">
           <div class="max-w-screen-sm mx-auto">
@@ -21,7 +21,7 @@
             >
               <router-link
                 to="/sales"
-                class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-white rounded-lg bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 dark:focus:ring-primary-900"
+                class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-white rounded-lg bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-pink-300 dark:focus:ring-primary-900"
                 >Request demo</router-link
               >
               <a
@@ -40,9 +40,9 @@
         </div>
         <div class="lg:col-span-6 mt-10 lg:mt-0">
           <img
-            src="/hero.webp"
+            src="/hero.jpg"
             alt="hero"
-            class="max-w-[1280px] w-full max-h-[500px] object-contain"
+            class="max-w-[1280px] w-full max-h-[500px] object-contain rounded-xl"
           />
         </div>
       </div>
@@ -57,25 +57,28 @@
   background: linear-gradient(to right, #6232cf 51%, #5b94f8 100%) text;
 }
 
-@keyframes gradientAnimation {
-    0%, 100% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
+@keyframes GradientBackground {
+  0% {
+    background-position: 0% 50%;
   }
 
-  .animated-gradient {
-    background: linear-gradient(
-      90deg,  /* Horizontal gradient */
-      rgba(255, 250, 252, 0.9),  /* Very light pink */
-      rgba(240, 235, 255, 0.9),  /* Very light lavender */
-      rgba(235, 245, 255, 0.9),  /* Very light blue */
-      rgba(235, 255, 240, 0.9),  /* Very light green */
-      rgba(255, 245, 230, 0.9)   /* Very light orange */
-    );
-    background-size: 300% 100%; /* Increased size for more movement */
-    animation: gradientAnimation 20s linear infinite; /* Slower animation for smoother effect */
+  50% {
+    background-position: 100% 50%;
   }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-gradient {
+  background: linear-gradient(45deg,
+    rgba(229, 225, 255, .7),
+    rgba(225, 239, 255, .7),
+    rgba(255, 225, 255, .7),
+    rgba(225, 255, 239, .7)
+  );
+  background-size: 600% 600%;
+  animation: GradientBackground 10s ease infinite;
+}
 </style>

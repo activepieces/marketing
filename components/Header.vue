@@ -1,7 +1,8 @@
 <script setup>
 import { onMounted, ref, defineProps } from "vue";
-import { useStorage } from "@vueuse/core";
+import { useStorage, useScroll } from "@vueuse/core";
 import { useRoute } from "vue-router";
+
 const route = useRoute();
 
 const props = defineProps({
@@ -10,6 +11,9 @@ const props = defineProps({
     default: false,
   },
 });
+
+const { y } = useScroll(window);
+const isScrolled = computed(() => y.value > 50);
 
 const showGitHubBadge = ref(!props.hideGithubBadge);
 const githubButtonsScriptLoaded = ref("false");
@@ -35,7 +39,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <header class="sticky top-0 z-10">
+  <header :class="`sticky top-0 z-10 transition-colors duration-300 ${isScrolled ? 'bg-white shadow-md' : 'bg-transparent'}`">
     <nav class="border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
       <div
         class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl"
@@ -73,7 +77,7 @@ onMounted(() => {
               :class="
                 route.path === '/open-source'
                   ? 'order-1 text-primary-700 bg-white border border-primary-700 hover:bg-primary-50 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 lg:px-5 lg:py-2.5 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800'
-                  : 'order-2 text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg text-sm px-4 py-2 lg:px-5 lg:py-2.5 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800'
+                  : 'order-2 text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg text-sm px-4 py-2 lg:px-5 lg:py-2.5 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800'
               "
               >Request demo</router-link
             >
@@ -81,7 +85,7 @@ onMounted(() => {
               href="https://cloud.activepieces.com/sign-up"
               :class="
                 route.path === '/open-source'
-                  ? 'order-2 text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg text-sm px-4 py-2 lg:px-5 lg:py-2.5 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800'
+                  ? 'order-2 text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg text-sm px-4 py-2 lg:px-5 lg:py-2.5 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800'
                   : 'order-1 text-primary-700 bg-white border border-primary-700 hover:bg-primary-50 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 lg:px-5 lg:py-2.5 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800'
               "
               >Start free</a

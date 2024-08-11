@@ -18,7 +18,7 @@
       <p
         class="max-w-xl mb-10 font-light text-gray-500 text-xl text-center mx-auto"
       >
-        AI is changing very quickly. If you're pushing your IT teams to keep up, you will miss out on adopting new AI.
+        AI is changing very quickly. In {{ new Date().getFullYear() }}, your IT team should supervise rather than implement each AI workflow.
       </p>
       <div class="flex flex-row flex-wrap justify-center gap-10">
         <div
@@ -30,14 +30,12 @@
             class="object-contain w-full max-h-[250px] mb-8"
           />
           <p class="text-gray-900 text-2xl font-semibold mb-5">
-            IT teams shouldn't be a bottle-neck
+            IT teams should be catalysts, not constraints
           </p>
           <p class="text-gray-900 text-base leading-[28px] min-h-[150px]">
-            Activepieces allows employees in all departments to create their own
-            automation flows, freeing up your IT team to focus on security and
-            strategic initiatives instead of routine tasks.
+            Your IT team excels at managing software infrastructure and that's what they should be doing every day. Don't overwhelm them with the details of implementation.
           </p>
-          <a
+          <!--<a
             href="https://www.activepieces.com/blog/ai-trends-2024"
             target="_blank"
             class="text-xl text-gray-900 flex flex-row items-center mt-6 tracking-[2px]"
@@ -54,7 +52,7 @@
                 clip-rule="evenodd"
               ></path>
             </svg>
-          </a>
+          </a>-->
         </div>
         <div
           class="bg-gradient-to-b from-cyan-100 to-white rounded-lg shadow-md max-w-[350px] px-5 py-7"
@@ -65,14 +63,12 @@
             class="object-contain w-full max-h-[250px] mb-8"
           />
           <p class="text-gray-900 text-2xl font-semibold mb-5">
-            Know-how transfer shouldn't slow you down
+            Department know-how is tough to transfer
           </p>
           <p class="text-gray-900 text-base leading-[28px] min-h-[150px]">
-            With easy to use, highly extensible tool, Activepieces empowers
-            employees in all departments to automate their work directly,
-            without hands-on IT support.
+            Forcing your teams to share their know-how with IT and engineering will only increase the overhead and tension across the organization.
           </p>
-          <a
+          <!--<a
             href="https://www.activepieces.com/blog/ai-trends-2024"
             target="_blank"
             class="text-xl text-gray-900 flex flex-row items-center mt-6 tracking-[2px]"
@@ -89,7 +85,7 @@
                 clip-rule="evenodd"
               ></path>
             </svg>
-          </a>
+          </a>-->
         </div>
         <div
           class="bg-gradient-to-b from-lime-100 to-white rounded-lg shadow-md max-w-[350px] px-5 py-7"
@@ -100,14 +96,12 @@
             class="object-contain w-full max-h-[250px] mb-8"
           />
           <p class="text-gray-900 text-2xl font-semibold mb-5">
-            Hidden powers lie within your departments
+            Hidden superpowers reside in departments
           </p>
           <p class="text-gray-900 text-base leading-[28px] min-h-[150px]">
-            Activepieces enables every department to harness the full potential
-            of AI, driving innovation and efficiency from within your
-            organization.
+            Your teams will impress you by how much they can automate within their departments. All what it takes is a great software and IT support.
           </p>
-          <a
+          <!--<a
             href="https://www.activepieces.com/blog/ai-trends-2024"
             target="_blank"
             class="text-xl text-gray-900 flex flex-row items-center mt-6 tracking-[2px]"
@@ -124,13 +118,13 @@
                 clip-rule="evenodd"
               ></path>
             </svg>
-          </a>
+          </a>-->
         </div>
       </div>
       <div class="flex justify-center mt-10">
         <router-link
           to="/sales"
-          class="text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-normal rounded-lg text-xl px-10 py-4 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+          class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-normal rounded-lg text-xl px-10 py-4 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
           >Catch up on AI adoption</router-link
         >
       </div>
