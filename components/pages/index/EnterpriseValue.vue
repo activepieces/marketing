@@ -25,7 +25,7 @@
           class="bg-gradient-to-b from-pink-100 to-white rounded-lg shadow-md max-w-[350px] px-5 py-7"
         >
           <img
-            src="/hero.png"
+            src="/hero.jpg"
             alt="hero"
             class="object-contain w-full max-h-[250px] mb-8"
           />
@@ -58,7 +58,7 @@
           class="bg-gradient-to-b from-cyan-100 to-white rounded-lg shadow-md max-w-[350px] px-5 py-7"
         >
           <img
-            src="/hero.png"
+            src="/hero.jpg"
             alt="hero"
             class="object-contain w-full max-h-[250px] mb-8"
           />
@@ -91,7 +91,7 @@
           class="bg-gradient-to-b from-lime-100 to-white rounded-lg shadow-md max-w-[350px] px-5 py-7"
         >
           <img
-            src="/hero.png"
+            src="/hero.jpg"
             alt="hero"
             class="object-contain w-full max-h-[250px] mb-8"
           />

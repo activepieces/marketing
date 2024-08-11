@@ -26,6 +26,7 @@ onMounted(() => {
 <template>
   <PagesIndexHero />
   <PagesIndexEnterpriseValue />
+  <PagesIndexDepartments />
   <PagesIndexFeatures />
   <PagesIndexPieces />
   <PagesIndexBlog />
