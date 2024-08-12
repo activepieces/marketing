@@ -61,7 +61,7 @@
           </p>
         </div>
       </div>
-      <div class="flex-1 rounded-[16px] p-6 card-shadow bg-primary-100">
+      <div class="flex-1 rounded-[16px] p-6 card-shadow bg-primary-100 relative">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 512 512"
@@ -82,6 +82,7 @@
           code for vulnerabilities, Activepieces is the most secure automation
           software in the market.
         </p>
+        <img src="/story/security.png" class="absolute left-0 bottom-0 max-[750px]:hidden">
       </div>
     </div>
   </section>

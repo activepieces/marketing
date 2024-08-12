@@ -1,7 +1,9 @@
 <script setup>
 const config = useRuntimeConfig();
 import { useElementVisibility } from "@vueuse/core";
+import { useRoute } from "vue-router";
 
+const route = useRoute();
 const selectedFeature = ref(0);
 
 const featuresSection = ref(null);
@@ -67,7 +69,12 @@ watch([selectedFeature, playFeatures], () => {
         <h2
           class="mb-4 text-3xl md:text-4xl text-center md:text-left tracking-tight font-bold text-gray-900 dark:text-white"
         >
-          The most powerful tool in your stack
+          <span v-if="route.path === '/open-source'">
+            The most powerful tool in your stack
+          </span>
+          <span v-else>
+            Built on the best open source software
+          </span>
         </h2>
       </div>
 
