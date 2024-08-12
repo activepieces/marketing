@@ -34,7 +34,7 @@ pieces = pieces.map((group) => {
   <section class="bg-white dark:bg-gray-900 my-32">
     <div class="mx-auto max-w-screen-2xl sm:py-6 lg:px-6">
       <div class="gap-8 items-center xl:gap-16 flex flex-col md:flex-row">
-        <div class="basis-1/4 text-center md:text-left">
+        <div class="basis-1/4 text-center px-4 md:text-left">
           <h2
             class="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white"
           >
