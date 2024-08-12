@@ -3,7 +3,7 @@
 <template>
   <section>
     <div
-      class="flex flex-wrap items-center justify-center gap-x-10 gap-y-5 mt-[100px] [&>img]:h-6 [&>img]:grayscale"
+      class="flex flex-wrap items-center justify-center gap-x-10 gap-y-5 mt-[100px] [&>img]:h-6 [&>img]:grayscale max-[1023px]:mt-10 max-[500px]:[&>img]:h-5"
     >
       <img src="/logos/pipedrive.png" alt="Pipedrive" />
       <img src="/logos/redbull.svg" alt="Redbull" />

@@ -34,10 +34,21 @@
                 Start free
               </a>
             </div>
-            <div class="flex flex-wrap items-center gap-x-8 gap-y-5 mt-7">
-              <img class="w-20" src="/badges/g2-top25-24.svg" />
-              <img class="w-20" src="/badges/g2-most-implementable-w24.svg" />
-              <img class="w-20" src="/badges/g2-high-performer-w24.svg" />
+            <div
+              class="flex flex-wrap items-center gap-x-8 gap-y-5 mt-7 max-[1023px]:justify-center"
+            >
+              <img
+                class="w-20 max-[500px]:w-16"
+                src="/badges/g2-top25-24.svg"
+              />
+              <img
+                class="w-20 max-[500px]:w-16"
+                src="/badges/g2-most-implementable-w24.svg"
+              />
+              <img
+                class="w-20 max-[500px]:w-16"
+                src="/badges/g2-high-performer-w24.svg"
+              />
             </div>
           </div>
         </div>
