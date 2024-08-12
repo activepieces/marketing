@@ -112,7 +112,7 @@ if (props.itemType == 'trigger') {
             <template v-if="prop.type != 'MARKDOWN'">
                 <img :src="`/props-icons/${propTypes[prop.type]?.icon}`" :title="propTypes[prop.type]?.text" class="fill-black stroke-black w-6 h-6">
                 <span class="font-semibold">{{ prop.displayName }}</span>
-                <span v-if="!prop.required" class="inline py-[1px] px-2 bg-gray-100 text-gray-500 rounded-lg text-sm">Required</span>
+                <span v-if="prop.required" class="inline py-[1px] px-2 bg-gray-100 text-gray-500 rounded-lg text-sm">Required</span>
             </template>
         </div>
     </div>
