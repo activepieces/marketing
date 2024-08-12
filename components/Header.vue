@@ -492,7 +492,7 @@ onMounted(() => {
 
   <div
     v-if="showGitHubBadge"
-    class="opacity-100 transition-all fixed w-full justify-center bottom-16 right-5 z-[1] flex"
+    class="opacity-100 transition-all fixed w-full justify-center bottom-16 z-[1] flex"
   >
     <div
       class="bg-[#06FFB4] shadow-2xl border border-solid border-black border-opacity-50 h-[70px] w-[350px] lg:w-[400px] rounded-xl text-h6-sm lg:text-h6-lg !font-bold flex justify-center gap-8 items-center"

@@ -1,7 +1,7 @@
 <script setup>
-const pageTitle = "Unleash the power of AI for every team";
+const pageTitle = "Turn every department into an AI Powerhouse";
 const metaDesc =
-  "Empower every department from marketing and sales to HR and finance with secure, intuitive, and powerful decentralized AI automation.";
+  "Activepieces is the best way to build a self-driven AI culture across HR, finance, marketing, sales and more — under the supervision of your IT ninjas";
 const metaKeywords =
   "enterprise automation solutions, open source business automation, open source zapier, zapier open source alternative, zapier alternative, workato alternative, open source workato";
 
