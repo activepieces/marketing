@@ -2,7 +2,9 @@
 
 <template>
   <section class="animated-gradient dark:bg-gray-900 -mt-[62px]">
-    <div class="max-w-screen-xl px-4 pt-[160px] pb-[50px] mx-auto">
+    <div
+      class="max-w-screen-xl px-4 pt-[160px] pb-[50px] mx-auto max-[500px]:pt-[125px]"
+    >
       <div class="lg:grid items-center gap-8 lg:gap-12 lg:grid-cols-12">
         <div class="lg:col-span-6 text-center sm:mb-6 lg:text-left lg:mb-0">
           <div class="max-w-screen-sm mx-auto">
@@ -13,7 +15,7 @@
               <span class="colored-text">AI Powerhouse</span>
             </h1>
             <p
-              class="max-w-xl mx-auto mb-6 font-light text-gray-900 lg:mx-0 xl:mb-8 md:text-lg xl:text-2xl dark:text-gray-400"
+              class="max-w-xl mx-auto mb-6 font-light text-gray-900 lg:mx-0 xl:mb-8 md:text-lg xl:text-2xl dark:text-gray-400 max-[500px]:mb-[75px]"
             >
               Activepieces is the best way to build a self-driven AI culture
               across HR, finance, marketing, sales and more — under the
@@ -29,7 +31,7 @@
               >
               <a
                 href="https://cloud.activepieces.com/sign-up"
-                class="inline-flex items-center justify-center px-5 py-3 text-base text-gray-700 font-medium text-center rounded-lg bg-white border border-gray-900 hover:bg-gray-50 focus:ring-4 focus:ring-blue-300 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+                class="inline-flex items-center justify-center px-5 py-3 text-base text-gray-700 font-medium text-center rounded-lg bg-white border border-gray-900 hover:bg-gray-50 focus:ring-4 focus:ring-blue-300 sm:mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
               >
                 Start free
               </a>

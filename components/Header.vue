@@ -40,6 +40,7 @@ onMounted(() => {
 
 <template>
   <header
+    class="max-[1200px]:bg-white"
     :class="`sticky top-0 z-10 transition-colors duration-300 ${
       isScrolled ? 'bg-white shadow-md' : 'bg-transparent'
     }`"
@@ -48,15 +49,17 @@ onMounted(() => {
       <div
         class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl"
       >
-        <div class="flex flex-row items-center">
+        <div
+          class="flex flex-row items-center max-[555px]:overflow-hidden max-[555px]:w-[30px]"
+        >
           <NuxtLink to="/" class="flex items-center">
             <img
               src="/activepieces-logo-hz-og.svg"
-              class="mr-3 h-4 md:h-6"
+              class="mr-3 h-6 max-[555px]:h-8 max-[555px]:object-cover max-[555px]:object-left"
               alt="Activepieces Home"
             />
           </NuxtLink>
-          <div class="h-[28px] hidden lg:flex">
+          <div class="h-[28px] flex max-[1200px]:hidden">
             <a
               class="github-button invisible"
               :class="{ visible: githubButtonsScriptLoaded }"
@@ -69,10 +72,10 @@ onMounted(() => {
             >
           </div>
         </div>
-        <div class="flex items-center lg:order-2">
+        <div class="flex items-center min-[1201px]:order-2">
           <a
             href="https://cloud.activepieces.com/sign-in"
-            class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 lg:px-5 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800"
+            class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 lg:px-5 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800 max-[555px]:hidden"
             >Login</a
           >
           <div class="flex flex-row gap-x-2">
@@ -98,7 +101,7 @@ onMounted(() => {
           <button
             data-collapse-toggle="mobile-menu-2"
             type="button"
-            class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 max-[1200px]:flex"
             aria-controls="mobile-menu-2"
             aria-expanded="false"
           >
@@ -130,21 +133,21 @@ onMounted(() => {
           </button>
         </div>
         <div
-          class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
+          class="hidden justify-between items-center w-full min-[1201px]:flex min-[1201px]:w-auto min-[1201px]:order-1"
           id="mobile-menu-2"
         >
           <ul
-            class="flex flex-col mt-4 font-medium lg:items-center lg:flex-row lg:space-x-8 lg:mt-0"
+            class="flex flex-col mt-4 font-medium min-[1201px]:items-center min-[1201px]:flex-row min-[1201px]:space-x-8 min-[1201px]:mt-0"
           >
             <li class="group">
               <button
                 id="product-nav-button"
                 data-dropdown-toggle="product-nav-menu"
-                class="flex justify-between items-center py-3 pr-4 pl-3 w-full font-medium text-gray-500 border-b border-gray-100 lg:w-auto group-hover:text-black lg:border-0 lg:hover:text-primary-600 lg:p-0 dark:text-gray-400 lg:dark:hover:text-primary-500 dark:hover:bg-gray-700 dark:hover:text-primary-500 lg:dark:hover:bg-transparent dark:border-gray-700 transition duration-400"
+                class="flex justify-between items-center py-3 pr-4 pl-3 w-full font-medium text-gray-500 border-b border-gray-100 min-[1201px]:w-auto group-hover:text-black min-[1201px]:border-0 min-[1201px]:hover:text-primary-600 min-[1201px]:p-0 dark:text-gray-400 min-[1201px]:dark:hover:text-primary-500 dark:hover:bg-gray-700 dark:hover:text-primary-500 min-[1201px]:dark:hover:bg-transparent dark:border-gray-700 transition duration-400"
               >
                 Product
                 <svg
-                  class="ml-1 w-5 h-5 lg:w-4 lg:h-4 lg:group-hover:-rotate-180 transition duration-300"
+                  class="ml-1 w-5 h-5 min-[1201px]:w-4 min-[1201px]:h-4 min-[1201px]:group-hover:-rotate-180 transition duration-300"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -158,7 +161,7 @@ onMounted(() => {
               </button>
               <div
                 id="product-nav-menu"
-                class="hidden max-lg:!static !inset-x-auto !inset-y-auto !transform-none lg:!block lg:!opacity-0 lg:!h-0 lg:absolute z-10 bg-white rounded divide-y divide-gray-100 lg:shadow-2xl dark:bg-gray-700 transition-opacity duration-[400ms] lg:group-hover:!h-auto lg:hover:!h-auto lg:hover:!opacity-100 lg:group-hover:!opacity-100 overflow-hidden"
+                class="hidden max-min-[1201px]:!static !inset-x-auto !inset-y-auto !transform-none min-[1201px]:!block min-[1201px]:!opacity-0 min-[1201px]:!h-0 min-[1201px]:absolute z-10 bg-white rounded divide-y divide-gray-100 min-[1201px]:shadow-2xl dark:bg-gray-700 transition-opacity duration-[400ms] min-[1201px]:group-hover:!h-auto min-[1201px]:hover:!h-auto min-[1201px]:hover:!opacity-100 min-[1201px]:group-hover:!opacity-100 overflow-hidden"
               >
                 <ul
                   class="py-4 px-2 text-lg font-medium text-gray-500 dark:text-gray-400 overflow-hidden"
@@ -270,11 +273,11 @@ onMounted(() => {
               <button
                 id="resources-nav-button"
                 data-dropdown-toggle="resources-nav-menu"
-                class="flex justify-between items-center py-3 pr-4 pl-3 w-full font-medium text-gray-500 border-b border-gray-100 lg:w-auto group-hover:text-black lg:border-0 lg:hover:text-primary-600 lg:p-0 dark:text-gray-400 lg:dark:hover:text-primary-500 dark:hover:bg-gray-700 dark:hover:text-primary-500 lg:dark:hover:bg-transparent dark:border-gray-700 transition duration-400"
+                class="flex justify-between items-center py-3 pr-4 pl-3 w-full font-medium text-gray-500 border-b border-gray-100 min-[1201px]:w-auto group-hover:text-black min-[1201px]:border-0 min-[1201px]:hover:text-primary-600 min-[1201px]:p-0 dark:text-gray-400 min-[1201px]:dark:hover:text-primary-500 dark:hover:bg-gray-700 dark:hover:text-primary-500 min-[1201px]:dark:hover:bg-transparent dark:border-gray-700 transition duration-400"
               >
                 Resources
                 <svg
-                  class="ml-1 w-5 h-5 lg:w-4 lg:h-4 lg:group-hover:-rotate-180 transition duration-300"
+                  class="ml-1 w-5 h-5 min-[1201px]:w-4 min-[1201px]:h-4 min-[1201px]:group-hover:-rotate-180 transition duration-300"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -288,7 +291,7 @@ onMounted(() => {
               </button>
               <div
                 id="resources-nav-menu"
-                class="hidden max-lg:!static !inset-x-auto !inset-y-auto !transform-none lg:!block lg:!opacity-0 lg:!h-0 lg:absolute z-10 bg-white rounded divide-y divide-gray-100 lg:shadow-2xl dark:bg-gray-700 transition-opacity duration-[400ms] lg:group-hover:!h-auto lg:hover:!h-auto lg:hover:!opacity-100 lg:group-hover:!opacity-100 overflow-hidden"
+                class="hidden max-min-[1201px]:!static !inset-x-auto !inset-y-auto !transform-none min-[1201px]:!block min-[1201px]:!opacity-0 min-[1201px]:!h-0 min-[1201px]:absolute z-10 bg-white rounded divide-y divide-gray-100 min-[1201px]:shadow-2xl dark:bg-gray-700 transition-opacity duration-[400ms] min-[1201px]:group-hover:!h-auto min-[1201px]:hover:!h-auto min-[1201px]:hover:!opacity-100 min-[1201px]:group-hover:!opacity-100 overflow-hidden"
               >
                 <ul
                   class="py-4 px-2 text-lg font-medium text-gray-500 dark:text-gray-400 overflow-hidden"
@@ -434,7 +437,7 @@ onMounted(() => {
             <li>
               <NuxtLink
                 to="/pricing"
-                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 text-gray-500 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-600 lg:p-0 dark:text-gray-400 lg:dark:hover:text-primary-500 dark:hover:bg-gray-700 dark:hover:text-primary-500 lg:dark:hover:bg-transparent dark:border-gray-700"
+                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 text-gray-500 hover:bg-gray-50 min-[1201px]:hover:bg-transparent min-[1201px]:border-0 min-[1201px]:hover:text-primary-600 min-[1201px]:p-0 dark:text-gray-400 min-[1201px]:dark:hover:text-primary-500 dark:hover:bg-gray-700 dark:hover:text-primary-500 min-[1201px]:dark:hover:bg-transparent dark:border-gray-700"
                 >Pricing</NuxtLink
               >
             </li>
@@ -467,7 +470,9 @@ onMounted(() => {
                 </span>
               </NuxtLink>
             </li>
-            <li class="min-w-[122px] min-h-[34px] py-3 px-3 lg:p-0 lg:hidden">
+            <li
+              class="min-w-[122px] min-h-[34px] py-3 px-3 min-[1201px]:p-0 min-[1201px]:hidden"
+            >
               <a
                 class="github-button invisible"
                 :class="{ visible: githubButtonsScriptLoaded }"
@@ -487,7 +492,7 @@ onMounted(() => {
 
   <div
     v-if="showGitHubBadge"
-    class="opacity-100 transition-all fixed w-full justify-end bottom-16 right-5 z-[1] flex"
+    class="opacity-100 transition-all fixed w-full justify-center bottom-16 right-5 z-[1] flex"
   >
     <div
       class="bg-[#06FFB4] shadow-2xl border border-solid border-black border-opacity-50 h-[70px] w-[350px] lg:w-[400px] rounded-xl text-h6-sm lg:text-h6-lg !font-bold flex justify-center gap-8 items-center"
