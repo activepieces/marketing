@@ -69,7 +69,7 @@
           />
           <div class="px-5 pb-7">
             <p class="text-gray-900 text-2xl font-semibold mb-5">
-              Department know-how is tough to transfer
+              Departments know-how is tough to transfer
             </p>
             <p class="text-gray-900 text-base leading-[28px]">
               Forcing your teams to share their know-how with IT and engineering
@@ -108,9 +108,7 @@
               Hidden superpowers reside in your departments
             </p>
             <p class="text-gray-900 text-base leading-[28px]">
-              Your teams will impress you by how much they can automate within
-              their departments. All what it takes is a great software and IT
-              support.
+              ChatGPT made it clear that everyone is capable of inventing technology. Your teams will impress you by how much work they can automate.
             </p>
             <!--<a
               href="https://www.activepieces.com/blog/ai-trends-2024"

@@ -5,19 +5,18 @@
     <h2
       class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white"
     >
-      Benefits
+      A powerhouse needs an engine
     </h2>
     <p
       class="font-light text-gray-500 text-xl md:px-20 lg:px-38 xl:px-48 dark:text-gray-400"
     >
-      A comprehensive solution built on top of the famous open source
-      Activepieces.
+      Like nothing in the market — Activepieces is built perfectly for tech teams to deploy and manage, and can't be easier for non-technical teams to utilize.
     </p>
     <div
       class="flex flex-row gap-x-6 justify-center max-w-[800px] w-full mx-auto mt-8 sm:mt-12 max-[750px]:flex-col max-[750px]:gap-y-6"
     >
       <div class="flex flex-col gap-y-6 flex-1">
-        <div class="rounded-[16px] p-6 card-shadow bg-primary-200">
+        <div class="rounded-[16px] p-6 card-shadow bg-primary-100">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 640 512"
@@ -38,7 +37,7 @@
             missing or an issue arises.
           </p>
         </div>
-        <div class="rounded-[16px] p-6 card-shadow bg-primary-200">
+        <div class="rounded-[16px] p-6 card-shadow bg-primary-100">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 640 512"
@@ -60,7 +59,7 @@
           </p>
         </div>
       </div>
-      <div class="flex-1 rounded-[16px] p-6 card-shadow bg-primary-200">
+      <div class="flex-1 rounded-[16px] p-6 card-shadow bg-primary-100">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 512 512"

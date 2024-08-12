@@ -1,19 +1,19 @@
 <script setup>
 const resources = [
   {
-    title: "Article Title Article Title Article Title Article Title",
-    desc: "This is an article that ipsem loren ipsem loren ipsem loren ipsem loren ipsem loren This is an article that ipsem loren ipsem loren ipsem loren ipsem loren ipsem loren",
-    link: "/blog/",
+    title: "AI Trends Shaping the Enterprise Landscape in 2024",
+    desc: "Gartner says 65% of enterprises will have deployed some kind of hyperautomation this year, let's explore the top AI trends in enterprise.",
+    link: "/blog/ai-trends-2024",
   },
   {
-    title: "Article Title Article Title Article Title Article Title",
-    desc: "This is an article that ipsem loren ipsem loren ipsem loren ipsem loren ipsem loren This is an article that ipsem loren ipsem loren ipsem loren ipsem loren ipsem loren",
-    link: "/blog/",
+    title: "Staying AI-Agile With AI Infrastructure Tools",
+    desc: "You can't stay on top of AI if you centralize AI deployment within one of your departments. Learn how to stay \"AI\" agile.",
+    link: "/blog/ai-deployment-software",
   },
   {
-    title: "Article Title Article Title Article Title Article Title",
-    desc: "This is an article that ipsem loren ipsem loren ipsem loren ipsem loren ipsem loren This is an article that ipsem loren ipsem loren ipsem loren ipsem loren ipsem loren",
-    link: "/blog/",
+    title: "Addressing Enterprise Employee Concerns About AI",
+    desc: "Building an inclusive culture is crucial to your AI adoption strategy. Learn how to build a culture of \"AI and You\" not \"AI to replace you\" within your organization.",
+    link: "/blog/easing-ai-fears",
   },
 ];
 </script>
@@ -23,7 +23,7 @@ const resources = [
     <h2
       class="mb-10 font-bold leading-none tracking-tight text-gray-900 text-4xl"
     >
-      Resources
+      Curious to learn more?
     </h2>
     <div
       class="flex flex-row justify-center gap-x-[32px] gap-y-10 max-[1000px]:flex-wrap"
@@ -38,7 +38,7 @@ const resources = [
         >
           <NuxtLink :to="item.link">{{ item.title }}</NuxtLink>
         </h2>
-        <p class="mb-5 font-light text-gray-500 dark:text-gray-400 text-left">
+        <p class="mb-5 font-light text-gray-500 dark:text-gray-400 text-left min-h-24">
           {{ item.desc }}
         </p>
         <div class="flex justify-between items-center">

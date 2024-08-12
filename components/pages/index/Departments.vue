@@ -13,14 +13,12 @@
       <h2
         class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white"
       >
-        We didn't reinvent the wheel
+        Your whole organization, automated
       </h2>
       <p
         class="font-light text-gray-500 text-xl md:px-20 lg:px-38 xl:px-48 dark:text-gray-400"
       >
-        We are strategists, designers and developers. Innovators and problem
-        solvers. Small enough to be simple and quick, but big enough to deliver
-        the scope you want at the pace you need.
+        Like it or not, AI is going to be in every department of every organization. Activepieces is the infrastructure that enables your team to keep up to speed.
       </p>
 
       <div class="flex flex-col gap-4 mt-8 sm:mt-12">
