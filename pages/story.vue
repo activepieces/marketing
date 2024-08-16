@@ -1,5 +1,5 @@
 <script setup>
-const pageTitle = "Everyone is an AI builder - Activepieces?";
+const pageTitle = "Everyone is an AI builder";
 const metaDesc =
   "Automate your work with AI, LLMs and other tools. Activepieces empowers all your departments to automate their work without relying on IT.";
 const metaKeywords =
