@@ -101,7 +101,7 @@ onMounted(() => {
           <button
             data-collapse-toggle="mobile-menu-2"
             type="button"
-            class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 max-[1200px]:flex"
+            class="inline-flex items-center p-2 ml-2 text-sm text-gray-500 rounded-lg hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 max-[1200px]:flex"
             aria-controls="mobile-menu-2"
             aria-expanded="false"
           >
@@ -444,7 +444,7 @@ onMounted(() => {
             <li>
               <NuxtLink
                 to="/open-source"
-                class="p-[2px] relative inline-flex items-center text-sm font-medium text-white bg-gradient-to-r from-[#6232cf] to-[#5d8af3] rounded-full shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:rotate-3"
+                class="p-[2px] relative inline-flex items-center text-sm font-medium text-white bg-gradient-to-r from-[#6232cf] to-[#5d8af3] rounded-full shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:rotate-3 max-[1200px]:mt-3"
               >
                 <span
                   class="flex gap-x-1 w-full bg-gray-900 bg-white text-gray-800 rounded-full px-4 py-2"
