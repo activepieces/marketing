@@ -57,7 +57,7 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ["@nuxtjs/sitemap", "vue3-carousel-nuxt"],
+  modules: ["@nuxtjs/sitemap"],
 
   sitemap: {
     urls: async () => {
