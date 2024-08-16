@@ -20,7 +20,7 @@ useHead({
   <section class="story-section">
     <div class="max-w-screen-xl px-4 py-8 mx-auto lg:py-20">
       <div class="flex flex-row items-start relative gap-x-3">
-        <div class="w-1/2 max-[700px]:w-2/3 max-[500px]:w-full">
+        <div class="w-1/2 mx-auto max-[700px]:w-2/3 max-[500px]:w-full">
           <p class="text-gray-800 font-bold text-4xl tracking-[2px] mb-2">
             Before November 2022...
           </p>
@@ -89,7 +89,7 @@ useHead({
               <img
                 src="/chatgpt-logo.png"
                 alt="ChatGPT"
-                class="w-[150px] h-[150px] object-contain mb-[10px] bg-primary-200 rounded-lg px-4"
+                class="w-[150px] h-[150px] object-contain mb-[10px] bg-primary-200 rounded-lg px-10"
               />
               <p class="text-center text-xl font-bold text-gray-800">ChatGPT</p>
             </div>
