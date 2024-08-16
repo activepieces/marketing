@@ -59,18 +59,6 @@ onMounted(() => {
               alt="Activepieces Home"
             />
           </NuxtLink>
-          <div class="h-[28px] flex max-[1200px]:hidden">
-            <a
-              class="github-button invisible"
-              :class="{ visible: githubButtonsScriptLoaded }"
-              href="https://github.com/activepieces/activepieces"
-              data-color-scheme="no-preference: light; light: light; dark: light;"
-              data-size="large"
-              data-show-count="true"
-              aria-label="Star activepieces/activepieces on GitHub"
-              >Star</a
-            >
-          </div>
         </div>
         <div class="flex items-center min-[1201px]:order-2">
           <a
@@ -101,7 +89,7 @@ onMounted(() => {
           <button
             data-collapse-toggle="mobile-menu-2"
             type="button"
-            class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 max-[1200px]:flex"
+            class="inline-flex items-center p-2 ml-2 text-sm text-gray-500 rounded-lg hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 max-[1200px]:flex"
             aria-controls="mobile-menu-2"
             aria-expanded="false"
           >
@@ -438,51 +426,42 @@ onMounted(() => {
               <NuxtLink
                 to="/pricing"
                 class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 text-gray-500 hover:bg-gray-50 min-[1201px]:hover:bg-transparent min-[1201px]:border-0 min-[1201px]:hover:text-primary-600 min-[1201px]:p-0 dark:text-gray-400 min-[1201px]:dark:hover:text-primary-500 dark:hover:bg-gray-700 dark:hover:text-primary-500 min-[1201px]:dark:hover:bg-transparent dark:border-gray-700"
+                :class="{ 'text-primary-600': route.path.includes('/pricing') }"
                 >Pricing</NuxtLink
               >
             </li>
             <li>
               <NuxtLink
-                to="/open-source"
-                class="p-[2px] relative inline-flex items-center text-sm font-medium text-white bg-gradient-to-r from-[#6232cf] to-[#5d8af3] rounded-full shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:rotate-3"
+                to="/story"
+                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 text-gray-500 hover:bg-gray-50 min-[1201px]:hover:bg-transparent min-[1201px]:border-0 min-[1201px]:hover:text-primary-600 min-[1201px]:p-0 dark:text-gray-400 min-[1201px]:dark:hover:text-primary-500 dark:hover:bg-gray-700 dark:hover:text-primary-500 min-[1201px]:dark:hover:bg-transparent dark:border-gray-700"
+                :class="{ 'text-primary-600': route.path.includes('/story') }"
+                >Story</NuxtLink
+              >
+            </li>
+            <li>
+              <a
+                href="https://github.com/activepieces/activepieces"
+                target="_blank"
+                class="p-[2px] relative inline-flex items-center text-sm font-medium text-white bg-gradient-to-r from-[#6232cf] to-[#5d8af3] rounded-full shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:rotate-3 max-[1200px]:mt-3"
               >
                 <span
-                  class="flex gap-x-1 w-full bg-gray-900 bg-white text-gray-800 rounded-full px-4 py-2"
+                  class="flex gap-x-2 w-full bg-gray-900 bg-white text-gray-800 rounded-full px-4 py-2"
                 >
                   <svg
-                    class="w-5 h-5 text-primary"
+                    viewBox="0 0 16 16"
+                    width="16"
+                    height="16"
+                    class="w-5 h-5"
                     aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    fill="none"
-                    viewBox="0 0 24 24"
+                    fill="#1f2937"
                   >
                     <path
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="m8 8-4 4 4 4m8 0 4-4-4-4m-2-3-4 14"
-                    />
+                      d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"
+                    ></path>
                   </svg>
                   Open Source
                 </span>
-              </NuxtLink>
-            </li>
-            <li
-              class="min-w-[122px] min-h-[34px] py-3 px-3 min-[1201px]:p-0 min-[1201px]:hidden"
-            >
-              <a
-                class="github-button invisible"
-                :class="{ visible: githubButtonsScriptLoaded }"
-                href="https://github.com/activepieces/activepieces"
-                data-color-scheme="no-preference: light; light: light; dark: light;"
-                data-size="large"
-                data-show-count="true"
-                aria-label="Star activepieces/activepieces on GitHub"
-                >Star</a
-              >
+              </a>
             </li>
           </ul>
         </div>
