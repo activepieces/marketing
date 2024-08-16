@@ -22,7 +22,7 @@ useHead({
       <div class="flex flex-row items-start relative gap-x-3">
         <div class="w-1/2 mx-auto max-[700px]:w-2/3 max-[500px]:w-full">
           <p class="text-gray-800 font-bold text-4xl tracking-[2px] mb-2">
-            Before November 2022...
+            Before November 2022 ...
           </p>
           <p class="text-gray-800 text-xl mb-8 leading-[35px]">
             IT teams were handling all the tech creation. They were the ones
@@ -32,7 +32,7 @@ useHead({
             pitch in. But that approach wasn’t cutting it.
           </p>
           <p class="text-gray-800 font-bold text-4xl tracking-[2px] mb-2">
-            Then ChatGPT dropped...
+            Then ChatGPT dropped ...
           </p>
           <p class="text-gray-800 text-xl mb-8 leading-[35px]">
             and everything started to shift. Suddenly, people in all kinds of
