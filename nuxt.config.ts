@@ -54,6 +54,12 @@ export default defineNuxtConfig({
         path: "/embedded-ipaas:all(.*)",
         file: "~/pages/playbook/[...all].vue",
       });
+
+      pages.push({
+        name: "playbook-ai-adoption",
+        path: "/ai-adoption:all(.*)",
+        file: "~/pages/playbook/[...all].vue",
+      });
     },
   },
 
