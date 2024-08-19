@@ -4,12 +4,7 @@ import { marked } from 'marked'
 import { whichPage } from '~/middleware/playbookRequest';
 
 const route = useRoute();
-const router = useRouter();
 const whichPageObj = whichPage(route);
-
-definePageMeta({
-  layout: 'playbook',
-});
 
 const pageTitle = 'Learn to automate your work';
 const metaDesc = 'Read tutorials, guides, thoughts and more about building automated flows to run in the background to save yourself the manual work.';

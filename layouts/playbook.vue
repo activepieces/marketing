@@ -1,4 +1,4 @@
-<script setup>
+<<script setup>
 const config = useRuntimeConfig();
 import { ref } from 'vue'
 import { useRoute } from 'vue-router';
@@ -109,4 +109,4 @@ const headerHeight = ref(0);
     
     <Footer />
   </div>
-</template>
+</template>>
