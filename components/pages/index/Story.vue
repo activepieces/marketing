@@ -1,11 +1,4 @@
-<script setup>
-// import { onMounted } from "vue";
-// import { initAccordions } from "flowbite";
-
-// onMounted(() => {
-//   initAccordions();
-// });
-</script>
+<script setup></script>
 
 <template>
   <section class="bg-white">
@@ -73,7 +66,8 @@
             </p>
             <p class="text-gray-900 text-base leading-[28px]">
               Forcing your teams to share their know-how with IT and engineering
-              will only increase the overhead and tension across the organization.
+              will only increase the overhead and tension across the
+              organization.
             </p>
             <!--<a
               href="https://www.activepieces.com/blog/ai-trends-2024"
@@ -108,7 +102,9 @@
               Hidden superpowers reside in your departments
             </p>
             <p class="text-gray-900 text-base leading-[28px]">
-              ChatGPT made it clear that everyone is capable of inventing technology. Your teams will impress you by how much work they can automate.
+              ChatGPT made it clear that everyone is capable of inventing
+              technology. Your teams will impress you by how much work they can
+              automate.
             </p>
             <!--<a
               href="https://www.activepieces.com/blog/ai-trends-2024"
@@ -139,148 +135,6 @@
         >
       </div>
     </div>
-    <!-- TODO: TO BE REMOVED LATER -->
-    <!-- <div class="max-w-screen-xl px-4 py-8 mx-auto lg:py-20">
-      <div class="grid gap-8 sm:gap-12 md:grid-cols-2 items-end">
-        <div class="flex flex-col justify-start">
-          <h2
-            class="mb-4 font-bold leading-none tracking-tight text-gray-900 text-4xl dark:text-white"
-          >
-            Don't miss out on AI adoption
-          </h2>
-          <p class="max-w-xl mb-7 font-light text-gray-900 text-[18px]">
-            Adapt to the fast-paced AI landscape with Activepieces: Boost
-            efficiency and slash costs through expert AI adoption solutions
-          </p>
-          <div
-            id="accordion-collapse"
-            data-accordion="collapse"
-            class="h-[300px]"
-          >
-            <h2 id="accordion-collapse-heading-1">
-              <button
-                type="button"
-                class="flex items-center justify-between w-full p-5 font-medium text-[18px] !text-gray-900 gap-3"
-                data-accordion-target="#accordion-collapse-body-1"
-                aria-expanded="true"
-                aria-controls="accordion-collapse-body-1"
-              >
-                <span>IT teams shouldn't be a bottle-neck</span>
-                <svg
-                  data-accordion-icon
-                  class="w-3 h-3 rotate-180 shrink-0"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 10 6"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 5 5 1 1 5"
-                  />
-                </svg>
-              </button>
-            </h2>
-            <div
-              id="accordion-collapse-body-1"
-              class="hidden"
-              aria-labelledby="accordion-collapse-heading-1"
-            >
-              <div class="p-5 dark:bg-gray-900">
-                <p class="mb-2 !text-gray-900 text-base">
-                  Activepieces allows employees in all departments to create
-                  their own automation flows, freeing up your IT team to focus
-                  on security and strategic initiatives instead of routine tasks
-                </p>
-              </div>
-            </div>
-            <h2 id="accordion-collapse-heading-2">
-              <button
-                type="button"
-                class="flex items-center justify-between w-full p-5 font-medium text-[18px] !text-gray-900 gap-3"
-                data-accordion-target="#accordion-collapse-body-2"
-                aria-expanded="false"
-                aria-controls="accordion-collapse-body-2"
-              >
-                <span>Know-how transfer shouldn't slow you down</span>
-                <svg
-                  data-accordion-icon
-                  class="w-3 h-3 rotate-180 shrink-0"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 10 6"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 5 5 1 1 5"
-                  />
-                </svg>
-              </button>
-            </h2>
-            <div
-              id="accordion-collapse-body-2"
-              class="hidden"
-              aria-labelledby="accordion-collapse-heading-2"
-            >
-              <div class="p-5 dark:bg-gray-900">
-                <p class="mb-2 !text-gray-900 text-base">
-                  With easy to use, highly extensible tool, Activepieces
-                  empowers employees in all departments to automate their work
-                  directly, without hands-on IT support
-                </p>
-              </div>
-            </div>
-            <h2 id="accordion-collapse-heading-3">
-              <button
-                type="button"
-                class="flex items-center justify-between w-full p-5 font-medium text-[18px] !text-gray-900 gap-3"
-                data-accordion-target="#accordion-collapse-body-3"
-                aria-expanded="false"
-                aria-controls="accordion-collapse-body-3"
-              >
-                <span>Hidden powers lie within your departments</span>
-                <svg
-                  data-accordion-icon
-                  class="w-3 h-3 rotate-180 shrink-0"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 10 6"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 5 5 1 1 5"
-                  />
-                </svg>
-              </button>
-            </h2>
-            <div
-              id="accordion-collapse-body-3"
-              class="hidden"
-              aria-labelledby="accordion-collapse-heading-3"
-            >
-              <div class="p-5">
-                <p class="mb-2 !text-gray-900 text-base">
-                  Activepieces enables every department to harness the full
-                  potential of AI, driving innovation and efficiency from within
-                  your organization
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
   </section>
 </template>
 

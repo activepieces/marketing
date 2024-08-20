@@ -2,6 +2,7 @@
 import { onMounted, ref, defineProps } from "vue";
 import { useStorage, useScroll } from "@vueuse/core";
 import { useRoute } from "vue-router";
+import { initCollapses } from "flowbite";
 
 const route = useRoute();
 
@@ -19,6 +20,8 @@ const showGitHubBadge = ref(!props.hideGithubBadge);
 const githubButtonsScriptLoaded = ref("false");
 const gitHubBadgeHidden = useStorage("github-badge-hidden");
 
+let menuExpanded = ref(false);
+
 onMounted(() => {
   if (
     !props.hideGithubBadge &&
@@ -35,6 +38,14 @@ onMounted(() => {
 
   githubButtonsScript.onload = () => (githubButtonsScriptLoaded.value = true);
   document.head.appendChild(githubButtonsScript);
+
+  initCollapses();
+  menuExpanded.value = false; // reset collapse menu
+});
+
+const mobileMenu = ref();
+watch(useRoute(), () => {
+  if (menuExpanded.value) mobileMenu.value.click(); // close menu if opened
 });
 </script>
 
@@ -87,11 +98,13 @@ onMounted(() => {
             >
           </div>
           <button
+            ref="mobileMenu"
             data-collapse-toggle="mobile-menu-2"
             type="button"
             class="inline-flex items-center p-2 ml-2 text-sm text-gray-500 rounded-lg hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 max-[1200px]:flex"
             aria-controls="mobile-menu-2"
-            aria-expanded="false"
+            :aria-expanded="menuExpanded"
+            @click="menuExpanded = !menuExpanded"
           >
             <span class="sr-only">Open main menu</span>
             <svg
