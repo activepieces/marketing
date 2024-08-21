@@ -90,9 +90,7 @@ pieces = pieces.map((group) => {
                 </span>
               </NuxtLink>
             </div>
-
             <div
-              aria-hidden="true"
               class="marquee__group shrink-0 flex items-center justify-center min-w-full group-hover:[animation-play-state:paused]"
             >
               <NuxtLink
@@ -116,7 +114,6 @@ pieces = pieces.map((group) => {
               </NuxtLink>
             </div>
           </div>
-
           <div
             class="marquee marquee--reverse flex overflow-hidden select-none pt-2 pb-1"
           >
@@ -143,9 +140,7 @@ pieces = pieces.map((group) => {
                 </span>
               </NuxtLink>
             </div>
-
             <div
-              aria-hidden="true"
               class="marquee__group shrink-0 flex items-center justify-center min-w-full group-hover:[animation-play-state:paused]"
             >
               <NuxtLink
@@ -196,7 +191,6 @@ pieces = pieces.map((group) => {
             </div>
 
             <div
-              aria-hidden="true"
               class="marquee__group shrink-0 flex items-center justify-center min-w-full group-hover:[animation-play-state:paused]"
             >
               <NuxtLink

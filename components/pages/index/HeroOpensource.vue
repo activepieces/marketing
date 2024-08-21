@@ -95,6 +95,7 @@ const { data: homepageAnnouncement } = await useFetch(
             class="max-w-[1280px] w-full shadow-2xl bg-white rounded-xl"
           >
             <source src="/videos/hero-video.mp4" type="video/mp4" />
+            <track kind="captions" srclang="en" label="English" />
           </video>
         </div>
       </div>

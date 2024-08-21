@@ -59,7 +59,7 @@
         </div>
         <div class="lg:col-span-6 mt-10 lg:mt-0">
           <img
-            src="/hero.jpg"
+            src="/hero.webp"
             alt="hero"
             class="max-w-[1280px] w-full max-h-[500px] object-contain rounded-xl"
           />
