@@ -2,7 +2,7 @@
 import { onMounted, ref, defineProps } from "vue";
 import { useStorage, useScroll } from "@vueuse/core";
 import { useRoute } from "vue-router";
-import { initCollapses } from "flowbite";
+import { initCollapses, initDropdowns } from "flowbite";
 
 const route = useRoute();
 
@@ -40,6 +40,7 @@ onMounted(() => {
   document.head.appendChild(githubButtonsScript);
 
   initCollapses();
+  initDropdowns();
   menuExpanded.value = false; // reset collapse menu
 });
 
