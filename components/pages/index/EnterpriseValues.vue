@@ -10,7 +10,9 @@
     <p
       class="font-light text-gray-500 text-xl md:px-20 lg:px-38 xl:px-48 dark:text-gray-400"
     >
-      Like nothing in the market — Activepieces is built perfectly for tech teams to deploy and manage, and can't be easier for non-technical teams to utilize.
+      Like nothing in the market — Activepieces is built perfectly for tech
+      teams to deploy and manage, and can't be easier for non-technical teams to
+      utilize.
     </p>
     <div
       class="flex flex-row gap-x-6 justify-center max-w-[800px] w-full mx-auto mt-8 sm:mt-12 max-[750px]:flex-col max-[750px]:gap-y-6"
@@ -61,7 +63,9 @@
           </p>
         </div>
       </div>
-      <div class="flex-1 rounded-[16px] p-6 card-shadow bg-primary-100 relative">
+      <div
+        class="flex-1 rounded-[16px] p-6 card-shadow bg-primary-100 relative"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 512 512"
@@ -82,7 +86,11 @@
           code for vulnerabilities, Activepieces is the most secure automation
           software in the market.
         </p>
-        <img src="/story/security.png" class="absolute left-0 bottom-0 max-[750px]:hidden">
+        <img
+          src="/story/security.png"
+          class="absolute left-0 bottom-0 max-[750px]:hidden"
+          alt="Maximum Security"
+        />
       </div>
     </div>
   </section>

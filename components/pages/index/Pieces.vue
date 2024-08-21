@@ -75,7 +75,11 @@ pieces = pieces.map((group) => {
                 v-for="piece in pieces[0]"
                 class="inline-block w-[280px] h-[67px] grow-0 shrink-0 shadow-[0_0_1px_#181d263d,_0_2px_4px_#181d2614,_0_2px_16px_#181d260f] rounded-xl p-4 flex flex-row items-center hover:shadow-[0_0_1px_#181d263d,_0_4px_6px_#181d2614,_0_4px_18px_#181d260f] hover:-translate-y-1 transition-all duration-400"
               >
-                <img class="me-3 h-[37px]" :src="piece.icon" />
+                <img
+                  class="me-3 h-[37px]"
+                  :src="piece.icon"
+                  :alt="piece.name"
+                />
                 <span>
                   <span class="block text-lg font-bold text-gray-600">{{
                     piece.name
@@ -96,7 +100,11 @@ pieces = pieces.map((group) => {
                 v-for="piece in pieces[0]"
                 class="inline-block w-[280px] h-[67px] grow-0 shrink-0 shadow-[0_0_1px_#181d263d,_0_2px_4px_#181d2614,_0_2px_16px_#181d260f] rounded-xl p-4 flex flex-row items-center hover:shadow-[0_0_1px_#181d263d,_0_4px_6px_#181d2614,_0_4px_18px_#181d260f] hover:-translate-y-1 transition-all duration-400"
               >
-                <img class="me-3 h-[37px]" :src="piece.icon" />
+                <img
+                  class="me-3 h-[37px]"
+                  :src="piece.icon"
+                  :alt="piece.name"
+                />
                 <span>
                   <span class="block text-lg font-bold text-gray-600">{{
                     piece.name
@@ -120,7 +128,11 @@ pieces = pieces.map((group) => {
                 v-for="piece in pieces[1]"
                 class="inline-block w-[280px] h-[67px] grow-0 shrink-0 shadow-[0_0_1px_#181d263d,_0_2px_4px_#181d2614,_0_2px_16px_#181d260f] rounded-xl p-4 flex flex-row items-center hover:shadow-[0_0_1px_#181d263d,_0_4px_6px_#181d2614,_0_4px_18px_#181d260f] hover:-translate-y-1 transition-all duration-400"
               >
-                <img class="me-3 h-[37px]" :src="piece.icon" />
+                <img
+                  class="me-3 h-[37px]"
+                  :src="piece.icon"
+                  :alt="piece.name"
+                />
                 <span>
                   <span class="block text-lg font-bold text-gray-600">{{
                     piece.name
@@ -141,7 +153,11 @@ pieces = pieces.map((group) => {
                 v-for="piece in pieces[1]"
                 class="inline-block w-[280px] h-[67px] grow-0 shrink-0 shadow-[0_0_1px_#181d263d,_0_2px_4px_#181d2614,_0_2px_16px_#181d260f] rounded-xl p-4 flex flex-row items-center hover:shadow-[0_0_1px_#181d263d,_0_4px_6px_#181d2614,_0_4px_18px_#181d260f] hover:-translate-y-1 transition-all duration-400"
               >
-                <img class="me-3 h-[37px]" :src="piece.icon" />
+                <img
+                  class="me-3 h-[37px]"
+                  :src="piece.icon"
+                  :alt="piece.name"
+                />
                 <span>
                   <span class="block text-lg font-bold text-gray-600">{{
                     piece.name
@@ -163,7 +179,11 @@ pieces = pieces.map((group) => {
                 v-for="piece in pieces[2]"
                 class="inline-block w-[280px] h-[67px] grow-0 shrink-0 shadow-[0_0_1px_#181d263d,_0_2px_4px_#181d2614,_0_2px_16px_#181d260f] rounded-xl p-4 flex flex-row items-center hover:shadow-[0_0_1px_#181d263d,_0_4px_6px_#181d2614,_0_4px_18px_#181d260f] hover:-translate-y-1 transition-all duration-400"
               >
-                <img class="me-3 h-[37px]" :src="piece.icon" />
+                <img
+                  class="me-3 h-[37px]"
+                  :src="piece.icon"
+                  :alt="piece.name"
+                />
                 <span>
                   <span class="block text-lg font-bold text-gray-600">{{
                     piece.name
@@ -184,7 +204,11 @@ pieces = pieces.map((group) => {
                 v-for="piece in pieces[2]"
                 class="inline-block w-[280px] h-[67px] grow-0 shrink-0 shadow-[0_0_1px_#181d263d,_0_2px_4px_#181d2614,_0_2px_16px_#181d260f] rounded-xl p-4 flex flex-row items-center hover:shadow-[0_0_1px_#181d263d,_0_4px_6px_#181d2614,_0_4px_18px_#181d260f] hover:-translate-y-1 transition-all duration-400"
               >
-                <img class="me-3 h-[37px]" :src="piece.icon" />
+                <img
+                  class="me-3 h-[37px]"
+                  :src="piece.icon"
+                  :alt="piece.name"
+                />
                 <span>
                   <span class="block text-lg font-bold text-gray-600">{{
                     piece.name
