@@ -7,12 +7,12 @@ const resources = [
   },
   {
     title: "Staying AI-Agile With AI Infrastructure Tools",
-    desc: "You can't stay on top of AI if you centralize AI deployment within one of your departments. Learn how to stay \"AI\" agile.",
+    desc: 'You can\'t stay on top of AI if you centralize AI deployment within one of your departments. Learn how to stay "AI" agile.',
     link: "/blog/ai-deployment-software",
   },
   {
     title: "Addressing Enterprise Employee Concerns About AI",
-    desc: "Building an inclusive culture is crucial to your AI adoption strategy. Learn how to build a culture of \"AI and You\" not \"AI to replace you\" within your organization.",
+    desc: 'Building an inclusive culture is crucial to your AI adoption strategy. Learn how to build a culture of "AI and You" not "AI to replace you" within your organization.',
     link: "/blog/easing-ai-fears",
   },
 ];
@@ -38,7 +38,9 @@ const resources = [
         >
           <NuxtLink :to="item.link">{{ item.title }}</NuxtLink>
         </h2>
-        <p class="mb-5 font-light text-gray-500 dark:text-gray-400 text-left min-h-24">
+        <p
+          class="mb-5 font-light text-gray-500 dark:text-gray-400 text-left min-h-24"
+        >
           {{ item.desc }}
         </p>
         <div class="flex justify-between items-center">
@@ -47,6 +49,7 @@ const resources = [
             :to="item.link"
             class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline"
           >
+            <span class="screen-reader-text">{{ item.title }}</span>
             Read more
             <svg
               class="ml-2 w-4 h-4"
@@ -67,4 +70,19 @@ const resources = [
   </section>
 </template>
 
-<style scoped></style>
+<style scoped>
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+  word-wrap: normal !important;
+  word-break: normal;
+}
+</style>

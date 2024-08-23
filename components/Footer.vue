@@ -168,7 +168,14 @@ const route = useRoute();
       >
         <span class="flex gap-2 items-center">
           Backed by
-          <img class="h-6" src="/logos/ycombinator.svg" />
+          <img
+            width="50"
+            height="50"
+            class="h-6 w-fit"
+            src="/logos/ycombinator.svg"
+            alt="ycombinator"
+            loading="lazy"
+          />
         </span>
         <span
           class="block mb-6 text-base text-gray-500 dark:text-gray-400 lg:mb-0"
