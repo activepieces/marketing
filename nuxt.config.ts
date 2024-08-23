@@ -2,7 +2,13 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
 
-  app: {},
+  app: {
+    head: {
+      htmlAttrs: {
+        lang: "en",
+      },
+    },
+  },
 
   css: ["~/assets/css/main.css"],
 
@@ -53,14 +59,14 @@ export default defineNuxtConfig({
         name: "playbook-embedded-ipaas",
         path: "/embedded-ipaas:all(.*)",
         file: "~/pages/playbook/[...all].vue",
-        meta: { 'layout': 'playbook' }
+        meta: { layout: "playbook" },
       });
 
       pages.push({
         name: "playbook-ai-adoption",
         path: "/ai-adoption:all(.*)",
         file: "~/pages/playbook/[...all].vue",
-        meta: { 'layout': 'playbook' }
+        meta: { layout: "playbook" },
       });
     },
   },

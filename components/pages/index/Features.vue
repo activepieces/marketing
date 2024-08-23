@@ -72,9 +72,7 @@ watch([selectedFeature, playFeatures], () => {
           <span v-if="route.path === '/open-source'">
             The most powerful tool in your stack
           </span>
-          <span v-else>
-            Built on the best open source software
-          </span>
+          <span v-else> Built on the best open source software </span>
         </h2>
       </div>
 
@@ -93,10 +91,14 @@ watch([selectedFeature, playFeatures], () => {
             <h3 class="text-lg font-bold mb-3.5 hidden md:block">
               {{ group.name }}
             </h3>
-            <div class="flex flex-row flex-nowrap md:flex-wrap gap-4">
+            <div
+              class="flex flex-row flex-nowrap md:flex-wrap gap-4"
+              role="tablist"
+            >
               <button
                 v-for="(feature, findex) in group.features"
                 type="button"
+                role="tab"
                 @click="selectedFeature = feature.featureIndex"
                 aria-selected="false"
                 class="group relative outline-none focus:ring-0 flex whitespace-nowrap items-center py-2.5 px-5 text-lg font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-300 hover:border-gray-300 hover:text-primary focus:z-10 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
@@ -146,6 +148,7 @@ watch([selectedFeature, playFeatures], () => {
               class="max-w-[1280px] w-full shadow-2xl bg-white rounded-xl"
             >
               <source :src="feature.video" type="video/mp4" />
+              <track kind="captions" srclang="en" label="English" />
             </video>
           </div>
         </template>
