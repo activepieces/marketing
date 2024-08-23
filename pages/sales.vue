@@ -58,6 +58,36 @@ function getFormFieldsWithLabels(formId) {
 }
 
 const submitSalesForm = async function() {
+  const freeEmailProviders = [
+    'gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'aol.com', 'icloud.com', 'mail.com', 'zoho.com', 'yandex.com', 
+    'protonmail.com', 'gmx.com', 'tutanota.com', '163.com', 'qq.com', '126.com', 'sina.com', 'sohu.com', 'mail.ru', 'live.com', 
+    'me.com', 'inbox.com', 'fastmail.com', 'hushmail.com', 'lavabit.com', 'rocketmail.com', 'lycos.com', 'comcast.net', 
+    'verizon.net', 'att.net', 'mac.com', 'cox.net', 'charter.net', 'bellsouth.net', 'shaw.ca', 'rogers.com', 'sympatico.ca', 
+    'telus.net', 'earthlink.net', 'optonline.net', 'frontier.com', 'juno.com', 'usa.net', 'runbox.com', 'gawab.com', 
+    'web.de', 'freenet.de', 't-online.de', 'gmx.de', 'bluewin.ch', 'orange.fr', 'wanadoo.fr', 'libero.it', 'virgilio.it', 
+    'tin.it', 'alice.it', 'neuf.fr', 'free.fr', 'laposte.net', 'sfr.fr', 'voila.fr', 'wanadoo.es', 'terra.es', 'telefonica.net', 
+    'eircom.net', 'tiscali.co.uk', 'btinternet.com', 'virginmedia.com', 'ntlworld.com', 'blueyonder.co.uk', 'talktalk.net', 
+    'sky.com', 'orange.net', 'uk2.net', 'bigpond.com', 'optusnet.com.au', 'ozemail.com.au', 'iinet.net.au', 'netzero.net', 
+    'aim.com', 'mail.bg', 'abv.bg', 'tut.by', 'bk.ru', 'list.ru', 'inbox.ru', 'rbcmail.ru', 'rambler.ru', 'mail.kz', 'kzmail.kz', 
+    'yahoo.co.uk', 'yahoo.de', 'yahoo.fr', 'yahoo.it', 'yahoo.es', 'yahoo.ca', 'yahoo.com.au', 'yahoo.co.jp', 'yahoo.com.sg', 
+    'yahoo.co.in', 'yahoo.com.ph', 'yahoo.com.my', 'yahoo.com.hk', 'yahoo.com.mx', 'yahoo.com.br', 'yahoo.co.id', 'yahoo.com.ar',
+    'yahoo.com.tr', 'yahoo.com.vn', 'yahoo.com.sa', 'yahoo.com.eg', 'yahoo.com.cn', 'yahoo.com.tw', 'yahoo.com.th', 
+    'yahoo.com.vn', 'yahoo.com.pe', 'yahoo.com.ve', 'yahoo.com.co', 'yahoo.com.cl', 'yahoo.com.do', 'yahoo.com.gt', 
+    'yahoo.com.py', 'yahoo.com.uy', 'yahoo.com.bo', 'yahoo.com.cr', 'yahoo.com.hn', 'yahoo.com.ni', 'yahoo.com.pa', 
+    'yahoo.com.sv', 'yahoo.com.cu', 'yahoo.com.bb', 'yahoo.com.bs', 'yahoo.com.dm', 'yahoo.com.gd', 'yahoo.com.jm', 
+    'yahoo.com.kn', 'yahoo.com.lc', 'yahoo.com.vc', 'yahoo.com.ag', 'yahoo.com.bz', 'yahoo.com.bm', 'yahoo.com.ai', 
+    'yahoo.com.ky', 'yahoo.com.ms', 'yahoo.com.tc', 'yahoo.com.vg'
+  ];
+
+  const emailField = document.getElementById('sales-field-email');
+  const emailValue = emailField.value.toLowerCase();
+  const emailDomain = emailValue.split('@')[1];
+
+  if (freeEmailProviders.includes(emailDomain)) {
+    alert('Please enter your "work" email address.');
+    return;
+  }
+
   const formData = getFormFieldsWithLabels('sales-form');
 
   sendingStatus.value = 'pending'
@@ -78,6 +108,19 @@ const submitSalesForm = async function() {
     return null;
   }
 }
+
+const validatePhoneInput = (event) => {
+  let input = event.target.value;
+
+  input = input.replace(/[^+\d-]/g, '');
+  if (input.startsWith('+')) {
+    input = '+' + input.slice(1).replace(/\+/g, '');
+  }
+
+  input = input.replace(/-{2,}/g, '-');
+
+  event.target.value = input;
+};
 </script>
 
 <template>
@@ -90,8 +133,8 @@ const submitSalesForm = async function() {
 
         <div class="mt-16 block md:flex gap-16 mb-36">
           <div class="w-full md:w-1/2 text-center md:text-left">
-            <div class="text-4xl md:text-7xl font-extrabold">Contact our sales team</div>
-            <div class="max-w-none md:max-w-[30rem] leading-8 mt-4 text-lg md:text-xl font-light text-gray-900">Deploy Activepieces for your internal automations, to work with clients or to embed in your SaaS. Unlock all the potential with our paid features.</div>
+            <div class="text-4xl md:text-7xl font-extrabold">Explore AI Transformation</div>
+            <div class="max-w-none md:max-w-[30rem] leading-8 mt-4 text-lg md:text-xl font-light text-gray-900">See how Activepieces can help with transforming your organization into an AI-first company. AI is developing quickly and we can help you keep up.</div>
             <div class="max-md:hidden">
               <div class="w-[30rem] pt-16 grid grid-cols-2 justify-center items-center [&_img]:h-6 gap-y-10">
                 <img src="/logos/pipedrive.png" alt="Pipedrive" />
@@ -111,60 +154,37 @@ const submitSalesForm = async function() {
             </div>
           </div>
 
-          <div class="w-full md:w-1/2 max-md:pt-10">
+          <div class="w-full md:w-1/2 max-md:pt-10 justify-center flex flex-col">
             <div :class="{ 'hidden': sendingStatus != 'sent' }">
               <img class="w-[20rem] mx-auto" src="/dancing-cat.gif">
               <div class="text-3xl text-center mt-10">Thank you for contacting us. Someone in our team will reach out to you shortly.</div>
             </div>
-            <form id="sales-form" class="grid grid-cols-1 gap-8 mx-auto max-w-screen-md sm:grid-cols-2" :class="{ 'hidden': sendingStatus == 'sent' }" @submit.prevent="submitSalesForm">
-                <div class="col-span-2">
-                    <label for="sales-field-goal" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your Goal</label>
-                    <select id="sales-field-goal" class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" required>
-                      <option value="">Select</option>
-                      <option value="Use Activepieces internally in our company">Internal automations in my company</option>
-                      <option value="Use Activepieces with our agency's clients">Build automations for clients</option>
-                      <option value="Embed Activepieces in our SaaS product">Embed Activepieces in our SaaS product</option>
-                      <option value="Something else (elaborate below)">Something else (tell more below)</option>
-                    </select>
-                </div>
-                <div class="col-span-2">
-                    <label for="sales-field-email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your Work Email</label>
-                    <input type="email" name="email" id="sales-field-email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" required>
+            <form id="sales-form" class="grid grid-cols-2 gap-4 mx-auto max-w-screen-md" :class="{ 'hidden': sendingStatus == 'sent' }" @submit.prevent="submitSalesForm">
+                <div>
+                    <label for="sales-field-first-name" class="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-300">First Name *</label>
+                    <input type="text" name="first_name" id="sales-field-first-name" class="block p-3 w-full text-xl text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" required>
                 </div>
                 <div>
-                    <label for="sales-field-first-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">First Name</label>
-                    <input type="text" name="first_name" id="sales-field-first-name" class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" required>
+                    <label for="sales-field-last-name" class="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-300">Last Name *</label>
+                    <input type="text" name="last_name" id="sales-field-last-name" class="block p-3 w-full text-xl text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" required>
                 </div>
                 <div>
-                    <label for="sales-field-last-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Last Name</label>
-                    <input type="text" name="last_name" id="sales-field-last-name" class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" required>
+                    <label for="sales-field-email" class="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-300">Work Email *</label>
+                    <input type="email" name="email" id="sales-field-email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
+                    pattern="^[a-zA-Z0-9._%+-]+@(?!gmail\.com$|yahoo\.com$|hotmail\.com$|outlook\.com$|aol\.com$|icloud\.com$|mail\.com$|zoho\.com$|yandex\.com$|protonmail\.com$|gmx\.com$|tutanota\.com$|163\.com$|qq\.com$|126\.com$|sina\.com$|sohu\.com$|mail\.ru$|live\.com$|me\.com$|inbox\.com$|fastmail\.com$|hushmail\.com$|lavabit\.com$|rocketmail\.com$|lycos\.com$).+$" 
+                    required>
+                </div>
+                <div>
+                    <label for="sales-field-phone" class="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-300">Phone</label>
+                    <input type="tel" name="phone" id="sales-field-phone" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
+                      @input="validatePhoneInput">
                 </div>
                 <div class="col-span-2">
-                    <label for="sales-field-company-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Company Name</label>
-                    <input type="text" name="company_name" id="sales-field-company-name" class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" required>
-                </div>
-                <div>
-                    <label for="sales-field-employees" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Number of Employees</label>
-                    <select name="employees" id="sales-field-employees" class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" required>
-                      <option value="">Select</option>
-                      <option value="1 - 25">1 - 25</option>
-                      <option value="26 - 50">26 - 50</option>
-                      <option value="51 - 100">51 - 100</option>
-                      <option value="101 - 500">101 - 500</option>
-                      <option value="501 - 1,000">501 - 1,000</option>
-                      <option value="1,000+">1,000+</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="sales-field-automation-users" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Expected Automation Users</label>
-                    <input type="number" name="automation_users" id="sales-field-automation-users" min="1" class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="25" required>
-                </div>
-                <div class="col-span-2">
-                    <label for="sales-field-context" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Context</label>
-                    <textarea name="context" id="sales-field-context" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Which features are you looking for? What are you trying to solve?" required></textarea>
+                    <label for="sales-field-context" class="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-400">Additional context</label>
+                    <textarea name="context" id="sales-field-context" rows="2" class="block p-2.5 w-full text-xl text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"></textarea>
                 </div>
                 <div class="col-span-2 md:flex justify-start gap-4 items-center">
-                  <button type="submit" :disabled="sendingStatus == 'pending'" class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-primary-700 max-md:w-full hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Contact Sales</button>
+                  <button type="submit" :disabled="sendingStatus == 'pending'" class="py-3 px-5 text-xl font-medium text-center text-white rounded-lg bg-primary-700 max-md:w-full hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Send</button>
                   <div class="text-gray-500" :class="{ 'hidden': sendingStatus != 'pending' }">Loading..</div>
                 </div>
             </form>
