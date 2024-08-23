@@ -11,7 +11,7 @@
         alt="Pipedrive"
         width="150"
         height="50"
-        class="w-fit h-fit"
+        class="w-auto"
       />
       <img
         src="/logos/redbull.svg"
@@ -19,7 +19,7 @@
         alt="Redbull"
         width="150"
         height="50"
-        class="w-fit h-fit"
+        class="w-auto"
       />
       <img
         src="/logos/rakuten.svg"
@@ -27,7 +27,7 @@
         alt="Rakuten"
         width="150"
         height="50"
-        class="w-fit h-fit"
+        class="w-auto"
       />
       <img
         src="/logos/roblox.webp"
@@ -35,7 +35,7 @@
         alt="Roblox"
         width="150"
         height="50"
-        class="w-fit h-fit"
+        class="w-auto"
       />
       <img
         src="/logos/docusign.svg"
@@ -43,7 +43,7 @@
         alt="Docusign"
         width="150"
         height="50"
-        class="w-fit h-fit"
+        class="w-auto"
       />
     </div>
   </section>

@@ -171,7 +171,7 @@ const route = useRoute();
           <img
             width="50"
             height="50"
-            class="h-6 w-fit"
+            class="h-6 w-auto"
             src="/logos/ycombinator.svg"
             alt="ycombinator"
             loading="lazy"
