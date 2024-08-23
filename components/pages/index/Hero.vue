@@ -43,16 +43,22 @@
                 class="w-20 max-[500px]:w-16"
                 src="/badges/g2-top25-24.svg"
                 alt="g2 badge"
+                width="150"
+                height="150"
               />
               <img
                 class="w-20 max-[500px]:w-16"
                 src="/badges/g2-most-implementable-w24.svg"
                 alt="g2 badge"
+                width="150"
+                height="150"
               />
               <img
                 class="w-20 max-[500px]:w-16"
                 src="/badges/g2-high-performer-w24.svg"
                 alt="g2 badge"
+                width="150"
+                height="150"
               />
             </div>
           </div>
@@ -61,6 +67,8 @@
           <img
             src="/hero.webp"
             alt="hero"
+            width="350"
+            height="350"
             class="max-w-[1280px] w-full max-h-[500px] object-contain rounded-xl"
           />
         </div>

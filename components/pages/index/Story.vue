@@ -19,8 +19,11 @@
           class="bg-gradient-to-b from-primary-100 to-white rounded-lg shadow-md max-w-[350px]"
         >
           <img
-            src="/story/catalyst.png"
-            alt="hero"
+            src="/story/catalyst.webp"
+            loading="lazy"
+            width="200"
+            height="200"
+            alt="catalyst"
             class="object-contain w-full mb-8 rounded-t-lg"
           />
           <div class="px-5 pb-7">
@@ -56,8 +59,11 @@
           class="bg-gradient-to-b from-primary-100 to-white rounded-lg shadow-md max-w-[350px]"
         >
           <img
-            src="/story/knowhow.png"
-            alt="hero"
+            src="/story/knowhow.webp"
+            loading="lazy"
+            width="200"
+            height="200"
+            alt="knowhow"
             class="object-contain w-full mb-8 rounded-t-lg"
           />
           <div class="px-5 pb-7">
@@ -93,8 +99,11 @@
           class="bg-gradient-to-b from-primary-100 to-white rounded-lg shadow-md max-w-[350px]"
         >
           <img
-            src="/story/superpowers.png"
-            alt="hero"
+            src="/story/superpowers.webp"
+            loading="lazy"
+            width="200"
+            height="200"
+            alt="superpowers"
             class="object-contain w-full mb-8 rounded-t-lg"
           />
           <div class="px-5 pb-7">

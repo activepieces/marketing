@@ -87,8 +87,11 @@
           software in the market.
         </p>
         <img
-          src="/story/security.png"
-          class="absolute left-0 bottom-0 max-[750px]:hidden"
+          src="/story/security.webp"
+          loading="lazy"
+          width="200"
+          height="200"
+          class="absolute left-0 bottom-0 max-[750px]:hidden w-fit h-fit"
           alt="Maximum Security"
         />
       </div>

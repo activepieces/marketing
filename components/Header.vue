@@ -67,7 +67,9 @@ watch(useRoute(), () => {
           <NuxtLink to="/" class="flex items-center">
             <img
               src="/activepieces-logo-hz-og.svg"
-              class="mr-3 h-6 max-[555px]:h-8 max-[555px]:object-cover max-[555px]:object-left"
+              width="200"
+              height="100"
+              class="mr-3 w-fit h-6 max-[555px]:h-8 max-[555px]:object-cover max-[555px]:object-left"
               alt="Activepieces Home"
             />
           </NuxtLink>

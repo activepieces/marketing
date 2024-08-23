@@ -43,7 +43,10 @@
               </div>
               <div class="w-1/3 flex justify-center max-[900px]:hidden">
                 <img
-                  src="/story/departments.png"
+                  src="/story/departments.webp"
+                  loading="lazy"
+                  width="150"
+                  height="150"
                   class="w-full object-contain max-w-[14rem] me-8"
                   alt="departments"
                 />
