@@ -1,22 +1,27 @@
-<<script setup>
+<script setup>
 const config = useRuntimeConfig();
-import { ref } from 'vue'
-import { useRoute } from 'vue-router';
-import { whichPage } from '~/middleware/playbookRequest';
+import { useRoute } from "vue-router";
+import { whichPage } from "~/middleware/playbookRequest";
 
 const route = useRoute();
 const whichPageObj = whichPage(route);
 
-const { data: playbooks, error: playbookError } = await useFetch(`${config.public.strapiUrl}/api/playbooks?filters[slug][$eq]=${whichPageObj.playbookName}`);
+const { data: playbooks, error: playbookError } = await useFetch(
+  `${config.public.strapiUrl}/api/playbooks?filters[slug][$eq]=${whichPageObj.playbookName}`
+);
 const playbook = playbooks.value.data[0];
 
-const { data: chapters, error: chapterError } = await useFetch(`${config.public.strapiUrl}/api/playbook-chapters?filters[playbook][id][$eq]=${playbook.id}&sort[0]=order:asc&populate[chapterArticles][populate][0]=parentArticle`);
+const { data: chapters, error: chapterError } = await useFetch(
+  `${config.public.strapiUrl}/api/playbook-chapters?filters[playbook][id][$eq]=${playbook.id}&sort[0]=order:asc&populate[chapterArticles][populate][0]=parentArticle`
+);
 
 function nestArticles(articles) {
-  const articleMap = new Map(articles.map(article => [article.id, { ...article, items: [] }]));
+  const articleMap = new Map(
+    articles.map((article) => [article.id, { ...article, items: [] }])
+  );
   const nestedArticles = [];
 
-  articles.forEach(article => {
+  articles.forEach((article) => {
     if (article.parentArticle?.data) {
       const parentArticle = articleMap.get(article.parentArticle.data.id);
       if (parentArticle) {
@@ -30,10 +35,10 @@ function nestArticles(articles) {
   return nestedArticles;
 }
 
-const navItems = chapters.value.data.map(chapter => {
+const navItems = chapters.value.data.map((chapter) => {
   const { title, chapterArticles } = chapter.attributes;
 
-  const articles = chapterArticles.data.map(article => ({
+  const articles = chapterArticles.data.map((article) => ({
     id: article.id,
     title: article.attributes.title,
     url: article.attributes.slug,
@@ -51,7 +56,7 @@ const navItems = chapters.value.data.map(chapter => {
 
 function expandMatchingItems(items, playbookBase, routePath, parent = null) {
   let pathFound = false;
-  items.forEach(item => {
+  items.forEach((item) => {
     if (item.url) {
       item.url = `${playbookBase}/${item.url}`;
     }
@@ -76,37 +81,84 @@ function expandMatchingItems(items, playbookBase, routePath, parent = null) {
 }
 
 expandMatchingItems(navItems, whichPageObj.playbookBase, route.path);
-
-const headerHeight = ref(0);
 </script>
 
 <template>
-  <div>
+  <div class="bg-gradient-to-r from-[#6232cf24] to-[#5d8af324]">
     <NuxtLoadingIndicator />
     <Header :hide-github-badge="true" />
 
-    <section class="bg-white dark:bg-gray-900 mt-10">
-        <div class="flex flex-col lg:flex-row mx-auto gap-12 px-10 2xl:px-0 mt-10 max-w-screen-2xl">
-            <aside class="lg:flex lg:flex-col lg:w-1/5 sticky self-start overflow-y-auto" :style="{ maxHeight: `calc(100vh - ${headerHeight}px - 2.5rem)`, top: `calc(${headerHeight}px + 2.5rem)` }">
-                <div class="pb-10">
-                    <NuxtLink :to="whichPageObj.playbookBase"><h2 class="mb-4 text-4xl lg:text-3xl tracking-tight font-extrabold text-gray-500 dark:text-white hover:text-black">{{ playbook.attributes.title }}</h2></NuxtLink>
-                    <div class="sidebar mt-10 text-sm">
-                        <p class="uppercase text-gray-500 font-semibold">Chapters</p>
-                        <TreeView v-for="(item, chapterIndex) in navItems" :key="item.title" :title="`${chapterIndex + 1}. ${item.title}`" initialExpanded="true" class="my-1">
-                            <template v-slot:title><span class="font-bold">{{chapterIndex + 1}}. {{ item.title }}</span></template>
-                            <TreeView v-for="subItem in item.items" :key="subItem.title" :title="subItem.title" :to="`${subItem.url}`" :initialExpanded="!!subItem.initialExpanded">
-                                <TreeView v-for="subSubItem in subItem.items" :key="subSubItem.title" :title="subSubItem.title" :to="`${subSubItem.url}`" :initialExpanded="!!subSubItem.initialExpanded"></TreeView>
-                            </TreeView>
-                        </TreeView>
-                    </div>
-                </div>
-            </aside>
-            <div class="flex-1 flex flex-col lg:mt-0 dark:divide-gray-700">
-              <slot />
-            </div>  
+    <section class="pt-6">
+      <div
+        class="flex flex-col lg:flex-row mx-auto gap-12 px-10 2xl:px-4 mt-8 max-w-screen-2xl"
+      >
+        <aside
+          class="lg:flex lg:flex-col lg:w-1/5 sticky self-start overflow-y-auto top-[90px] max-h-[calc(100vh-90px)]"
+        >
+          <div class="pb-10">
+            <NuxtLink :to="whichPageObj.playbookBase"
+              ><h2
+                class="mb-4 text-4xl lg:text-3xl tracking-tight font-extrabold text-gray-700 dark:text-white hover:text-black"
+              >
+                {{ playbook.attributes.title }}
+              </h2></NuxtLink
+            >
+            <div class="sidebar mt-10 text-sm">
+              <p class="uppercase text-gray-500 font-semibold">Chapters</p>
+              <TreeView
+                v-for="(item, chapterIndex) in navItems"
+                :key="item.title"
+                :title="`${chapterIndex + 1}. ${item.title}`"
+                initialExpanded="true"
+                class="my-1"
+              >
+                <template v-slot:title
+                  ><span class="font-bold"
+                    >{{ chapterIndex + 1 }}. {{ item.title }}</span
+                  ></template
+                >
+                <TreeView
+                  v-for="subItem in item.items"
+                  :key="subItem.title"
+                  :title="subItem.title"
+                  :to="`${subItem.url}`"
+                  :initialExpanded="!!subItem.initialExpanded"
+                >
+                  <TreeView
+                    v-for="subSubItem in subItem.items"
+                    :key="subSubItem.title"
+                    :title="subSubItem.title"
+                    :to="`${subSubItem.url}`"
+                    :initialExpanded="!!subSubItem.initialExpanded"
+                  ></TreeView>
+                </TreeView>
+              </TreeView>
+            </div>
+          </div>
+        </aside>
+        <div class="flex-1">
+          <div class="flex flex-row justify-center items-center mb-10">
+            <h2
+              class="text-[70px] tracking-tight font-extrabold text-gray-900 flex-1 leading-[1em]"
+            >
+              {{ playbook.attributes.title }}
+            </h2>
+            <!-- make image dynamic per playbook -->
+            <img
+              src="/story/departments.webp"
+              width="150"
+              height="150"
+              class="w-full object-contain max-h-[275px] flex-1"
+              alt="departments"
+            />
+          </div>
+          <div class="bg-white p-8">
+            <slot />
+          </div>
         </div>
+      </div>
     </section>
-    
-    <Footer />
+
+    <Footer class="pt-10" />
   </div>
-</template>>
+</template>
