@@ -150,13 +150,11 @@ expandMatchingItems(navItems, whichPageObj.playbookBase, route.path);
             <!-- make image dynamic per playbook -->
             <img
               src="/story/departments.webp"
-              width="150"
-              height="150"
-              class="w-full object-contain max-h-[275px] flex-1 me-20"
+              class="w-full object-contain max-h-[230px] flex-1 me-20"
               alt="departments"
             />
           </div>
-          <div class="bg-white p-8 rounded-lg">
+          <div class="bg-white p-8 rounded-t-lg">
             <slot />
           </div>
         </div>
