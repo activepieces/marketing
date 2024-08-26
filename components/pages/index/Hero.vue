@@ -21,7 +21,7 @@ const { data: homepageAnnouncement } = await useFetch(
             >
               <span
                 class="px-3 py-1 mr-3 text-xs text-white rounded-full bg-primary-600 whitespace-nowrap"
-                >{{
+                ><!--{{
                   new Date(
                     homepageAnnouncement.data.attributes.updatedAt
                   ).toDateString() === new Date().toDateString()
@@ -32,7 +32,7 @@ const { data: homepageAnnouncement } = await useFetch(
                           day: "numeric",
                         })
                         .replace(/\./g, "")
-                }}</span
+                }}-->New</span
               >
               <span
                 class="text-sm font-medium overflow-hidden whitespace-nowrap text-ellipsis max-w-full"
