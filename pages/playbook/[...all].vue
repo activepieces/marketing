@@ -22,6 +22,10 @@ useHead({
   ],
 });
 
+definePageMeta({
+  layout: 'playbook'
+})
+
 const generateTOC = (markdownText) => {
   const toc = [];
   const lines = markdownText.split("\n");

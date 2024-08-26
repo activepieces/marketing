@@ -63,8 +63,8 @@ export default defineNuxtConfig({
       });
 
       pages.push({
-        name: "playbook-ai-adoption",
-        path: "/ai-adoption:all(.*)",
+        name: "playbook-ai-transformation",
+        path: "/ai-transformation:all(.*)",
         file: "~/pages/playbook/[...all].vue",
         meta: { layout: "playbook" },
       });
