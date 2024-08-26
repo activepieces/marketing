@@ -61,9 +61,7 @@ const { data: homepageAnnouncement } = await useFetch(
             <p
               class="max-w-xl mx-auto mb-6 font-light text-gray-900 lg:mx-0 xl:mb-8 md:text-lg xl:text-2xl dark:text-gray-400 max-[500px]:mb-[75px]"
             >
-              Activepieces is the best way to build a self-driven AI culture
-              across HR, finance, marketing, sales and more — under the
-              supervision of your IT ninjas
+            Activepieces is the infrastructure for enterprise AI transformation. The only automation software loved by both technical and non-technical teams.
             </p>
             <div
               class="flex flex-col space-y-4 sm:flex-row sm:justify-left sm:space-y-0 sm:space-x-4 justify-center lg:justify-start"
