@@ -96,13 +96,13 @@ expandMatchingItems(navItems, whichPageObj.playbookBase, route.path);
           class="lg:flex lg:flex-col lg:w-1/5 sticky self-start overflow-y-auto top-[90px] max-h-[calc(100vh-90px)]"
         >
           <div class="pb-10">
-            <NuxtLink :to="whichPageObj.playbookBase"
+            <!--<NuxtLink :to="whichPageObj.playbookBase"
               ><h2
                 class="mb-4 text-4xl lg:text-3xl tracking-tight font-extrabold text-gray-700 dark:text-white hover:text-black"
               >
                 {{ playbook.attributes.title }}
               </h2></NuxtLink
-            >
+            >-->
             <div class="sidebar mt-10 text-sm">
               <p class="uppercase text-gray-500 font-semibold">Chapters</p>
               <TreeView
@@ -138,27 +138,29 @@ expandMatchingItems(navItems, whichPageObj.playbookBase, route.path);
         </aside>
         <div class="flex-1">
           <div class="flex flex-row justify-center items-center mb-10">
-            <h2
-              class="text-[70px] tracking-tight font-extrabold text-gray-900 flex-1 leading-[1em]"
-            >
+            <div class="text-gray-900 w-full">
+              <h1 class="text-[80px] tracking-tight font-medium">
               {{ playbook.attributes.title }}
-            </h2>
+              </h1>
+            
+              <h2 class="text-3xl tracking-tight font-normal max-w-[500px]">The new setup that will turn your organization into an AI powerhouse</h2>
+
+              <p class="mt-6 text-xs tracking-[0.6px] uppercase font-soehneMono text-gray-500"><strong>By:</strong> Ashraf Samhouri | with Ginikachukwu Nwibe & Mabel Obadoni</p>
+            </div>
             <!-- make image dynamic per playbook -->
             <img
               src="/story/departments.webp"
               width="150"
               height="150"
-              class="w-full object-contain max-h-[275px] flex-1"
+              class="w-full object-contain max-h-[275px] flex-1 me-20"
               alt="departments"
             />
           </div>
-          <div class="bg-white p-8">
+          <div class="bg-white p-8 rounded-lg">
             <slot />
           </div>
         </div>
       </div>
     </section>
-
-    <Footer class="pt-10" />
   </div>
 </template>
