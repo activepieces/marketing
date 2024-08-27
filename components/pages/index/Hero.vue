@@ -16,27 +16,12 @@ const { data: homepageAnnouncement } = await useFetch(
             <a
               :href="homepageAnnouncement.data.attributes.url"
               v-if="homepageAnnouncement.data.attributes.content"
-              class="inline-flex max-w-full items-center justify-between px-1 py-1 pr-4 mb-6 text-sm text-gray-700 bg-white shadow-sm rounded-full dark:bg-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700"
+              class="inline-flex max-w-full items-center justify-between px-4 py-1 mb-6 text-sm text-gray-700 bg-white shadow-sm rounded-full hover:bg-gray-100"
               role="alert"
             >
-              <span
-                class="px-3 py-1 mr-3 text-xs text-white rounded-full bg-primary-600 whitespace-nowrap"
-                ><!--{{
-                  new Date(
-                    homepageAnnouncement.data.attributes.updatedAt
-                  ).toDateString() === new Date().toDateString()
-                    ? "Today"
-                    : new Date(homepageAnnouncement.data.attributes.updatedAt)
-                        .toLocaleDateString("en-US", {
-                          month: "short",
-                          day: "numeric",
-                        })
-                        .replace(/\./g, "")
-                }}-->New</span
-              >
-              <span
-                class="text-sm font-medium overflow-hidden whitespace-nowrap text-ellipsis max-w-full"
-                >{{ homepageAnnouncement.data.attributes.content }}</span
+              <span class="text-sm font-medium max-w-full"
+                ><span class="text-primary-700 font-semibold">New:</span>
+                {{ homepageAnnouncement.data.attributes.content }}</span
               >
               <svg
                 class="w-5 h-5 ml-2"
@@ -61,7 +46,9 @@ const { data: homepageAnnouncement } = await useFetch(
             <p
               class="max-w-xl mx-auto mb-6 font-light text-gray-900 lg:mx-0 xl:mb-8 md:text-lg xl:text-2xl dark:text-gray-400 max-[500px]:mb-[75px]"
             >
-            Activepieces is the infrastructure for enterprise AI transformation. The only automation software loved by both technical and non-technical teams.
+              Activepieces is the infrastructure for enterprise AI
+              transformation. The only automation software loved by both
+              technical and non-technical teams.
             </p>
             <div
               class="flex flex-col space-y-4 sm:flex-row sm:justify-left sm:space-y-0 sm:space-x-4 justify-center lg:justify-start"
