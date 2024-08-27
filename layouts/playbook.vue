@@ -1,10 +1,16 @@
 <script setup>
-const config = useRuntimeConfig();
 import { useRoute } from "vue-router";
 import { whichPage } from "~/middleware/playbookRequest";
+import { onMounted } from "vue";
+import { initCollapses } from "flowbite";
+const config = useRuntimeConfig();
 
 const route = useRoute();
 const whichPageObj = whichPage(route);
+
+onMounted(() => {
+  initCollapses();
+});
 
 const { data: playbooks, error: playbookError } = await useFetch(
   `${config.public.strapiUrl}/api/playbooks?filters[slug][$eq]=${whichPageObj.playbookName}`
@@ -38,14 +44,15 @@ function nestArticles(articles) {
 const navItems = chapters.value.data.map((chapter) => {
   const { title, chapterArticles } = chapter.attributes;
 
-  const articles = chapterArticles.data.map((article) => ({
-    id: article.id,
-    title: article.attributes.title,
-    url: article.attributes.slug,
-    order: article.attributes.order,
-    parentArticle: article.attributes.parentArticle,
-  }))
-  .sort((a, b) => a.order - b.order);
+  const articles = chapterArticles.data
+    .map((article) => ({
+      id: article.id,
+      title: article.attributes.title,
+      url: article.attributes.slug,
+      order: article.attributes.order,
+      parentArticle: article.attributes.parentArticle,
+    }))
+    .sort((a, b) => a.order - b.order);
 
   const items = nestArticles(articles);
 
@@ -82,6 +89,12 @@ function expandMatchingItems(items, playbookBase, routePath, parent = null) {
 }
 
 expandMatchingItems(navItems, whichPageObj.playbookBase, route.path);
+
+let isExpanded = ref(false);
+const mobileMenu = ref();
+const toggleMobileMenu = () => {
+  mobileMenu.value.click(); // close menu on route click
+};
 </script>
 
 <template>
@@ -89,12 +102,90 @@ expandMatchingItems(navItems, whichPageObj.playbookBase, route.path);
     <NuxtLoadingIndicator />
     <Header :hide-github-badge="true" />
 
-    <section class="pt-6">
+    <section class="pt-6 relative max-[1100px]:pt-0">
       <div
-        class="flex flex-col lg:flex-row mx-auto gap-12 px-10 2xl:px-4 mt-8 max-w-screen-2xl"
+        class="hidden sticky top-[62px] z-[99] px-6 py-2 bg-primary-300 shadow-md w-full max-[1100px]:block max-[1023px]:top-[60px] max-[1023px]:px-4"
+      >
+        <div
+          class="flex flex-row justify-between items-center"
+          ref="mobileMenu"
+          data-collapse-toggle="playbook-mobile-menu"
+          aria-controls="playbook-mobile-menu"
+          :aria-expanded="isExpanded"
+          @click="isExpanded = !isExpanded"
+        >
+          <p class="text-sm text-gray-900">
+            <span class="font-bold"> {{ playbook.attributes.title }}</span
+            >: Table of Content
+          </p>
+          <button
+            type="button"
+            class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg focus:outline-none focus:ring-0"
+          >
+            <span class="sr-only">Open main menu</span>
+            <svg
+              v-if="!isExpanded"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="#374151"
+              height="20"
+              width="20"
+              viewBox="0 -960 960 960"
+            >
+              <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z" />
+            </svg>
+            <svg
+              v-else
+              xmlns="http://www.w3.org/2000/svg"
+              fill="#374151"
+              height="20"
+              width="20"
+              viewBox="0 -960 960 960"
+            >
+              <path d="M480-345 240-585l56-56 184 184 184-184 56 56-240 240Z" />
+            </svg>
+          </button>
+        </div>
+        <div class="hidden" id="playbook-mobile-menu">
+          <div class="sidebar text-sm pt-4">
+            <p class="uppercase text-gray-800 font-bold">Chapters</p>
+            <TreeView
+              v-for="(item, chapterIndex) in navItems"
+              :key="item.title"
+              :title="`${chapterIndex + 1}. ${item.title}`"
+              :initialExpanded="false"
+              class="my-1"
+            >
+              <template v-slot:title
+                ><span class="font-bold"
+                  >{{ chapterIndex + 1 }}. {{ item.title }}</span
+                ></template
+              >
+              <TreeView
+                v-for="subItem in item.items"
+                :key="subItem.title"
+                :title="subItem.title"
+                :to="`${subItem.url}`"
+                :initialExpanded="!!subItem.initialExpanded"
+                @click="toggleMobileMenu"
+              >
+                <TreeView
+                  v-for="subSubItem in subItem.items"
+                  :key="subSubItem.title"
+                  :title="subSubItem.title"
+                  :to="`${subSubItem.url}`"
+                  :initialExpanded="!!subSubItem.initialExpanded"
+                  @click="toggleMobileMenu"
+                ></TreeView>
+              </TreeView>
+            </TreeView>
+          </div>
+        </div>
+      </div>
+      <div
+        class="flex flex-row mx-auto gap-12 px-10 2xl:px-4 mt-8 max-w-screen-2xl max-[555px]:mt-14 max-[555px]:px-0"
       >
         <aside
-          class="lg:flex lg:flex-col lg:w-1/5 sticky self-start overflow-y-auto top-[90px] max-h-[calc(100vh-90px)]"
+          class="flex flex-col w-1/5 sticky self-start overflow-y-auto top-[90px] max-h-[calc(100vh-90px)] max-[1100px]:hidden"
         >
           <div class="pb-10">
             <!--<NuxtLink :to="whichPageObj.playbookBase"
@@ -110,7 +201,7 @@ expandMatchingItems(navItems, whichPageObj.playbookBase, route.path);
                 v-for="(item, chapterIndex) in navItems"
                 :key="item.title"
                 :title="`${chapterIndex + 1}. ${item.title}`"
-                initialExpanded="true"
+                :initialExpanded="true"
                 class="my-1"
               >
                 <template v-slot:title
@@ -138,24 +229,40 @@ expandMatchingItems(navItems, whichPageObj.playbookBase, route.path);
           </div>
         </aside>
         <div class="flex-1">
-          <div class="flex flex-row justify-center items-center mb-10">
-            <div class="text-gray-900 w-full">
-              <h1 class="text-[80px] tracking-tight font-medium">
-              {{ playbook.attributes.title }}
+          <div
+            class="flex flex-row justify-center items-center mb-10 gap-x-4 max-[555px]:mb-8 max-[555px]:px-4"
+          >
+            <div class="text-gray-900 w-full max-[555px]:text-center">
+              <h1
+                class="text-[80px] tracking-tight font-medium max-[555px]:text-6xl"
+              >
+                {{ playbook.attributes.title }}
               </h1>
-            
-              <h2 class="text-3xl tracking-tight font-normal max-w-[500px]">The new setup that will turn your organization into an AI powerhouse</h2>
 
-              <p class="mt-6 text-xs tracking-[0.6px] uppercase font-soehneMono text-gray-500"><strong>By:</strong> Ashraf Samhouri | with Ginikachukwu Nwibe & Mabel Obadoni</p>
+              <h2
+                class="text-3xl tracking-tight font-normal max-w-[500px] max-[555px]:mx-auto max-[555px]:text-2xl max-[555px]:mt-4"
+              >
+                The new setup that will turn your organization into an AI
+                powerhouse
+              </h2>
+
+              <p
+                class="mt-6 text-xs tracking-[0.6px] uppercase font-soehneMono text-gray-500"
+              >
+                <strong>By:</strong> Ashraf Samhouri | with Ginikachukwu Nwibe &
+                Mabel Obadoni
+              </p>
             </div>
             <!-- make image dynamic per playbook -->
             <img
               src="/story/departments.webp"
-              class="w-full object-contain max-h-[230px] flex-1 me-20"
-              alt="departments"
+              class="w-full object-contain max-h-[230px] flex-1 me-20 max-[800px]:hidden"
+              alt="playbook"
+              width="150"
+              height="150"
             />
           </div>
-          <div class="bg-white p-8 rounded-t-lg">
+          <div class="bg-white p-8 rounded-t-lg max-[555px]:p-4">
             <slot />
           </div>
         </div>

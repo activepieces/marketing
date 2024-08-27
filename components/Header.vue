@@ -122,18 +122,6 @@ watch(useRoute(), () => {
                 clip-rule="evenodd"
               ></path>
             </svg>
-            <svg
-              class="hidden w-6 h-6"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
           </button>
         </div>
         <div
@@ -450,7 +438,9 @@ watch(useRoute(), () => {
               <NuxtLink
                 to="/ai-transformation/preface"
                 class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 text-gray-500 hover:bg-gray-50 min-[1201px]:hover:bg-transparent min-[1201px]:border-0 min-[1201px]:hover:text-primary-600 min-[1201px]:p-0 dark:text-gray-400 min-[1201px]:dark:hover:text-primary-500 dark:hover:bg-gray-700 dark:hover:text-primary-500 min-[1201px]:dark:hover:bg-transparent dark:border-gray-700"
-                :class="{ 'text-primary-600': route.path.includes('/ai-transformation') }"
+                :class="{
+                  'text-primary-600': route.path.includes('/ai-transformation'),
+                }"
                 >AI Transformation</NuxtLink
               >
             </li>
