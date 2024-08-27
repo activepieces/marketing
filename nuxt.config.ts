@@ -28,6 +28,7 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
+    "/subprocessors": { redirect: "https://trust.activepieces.com/subprocessors" },
     "/docs": { redirect: "/docs/getting-started/introduction" },
     "/docs/**": { proxy: "https://activepieces.mintlify.dev/docs/**" },
     "/plans": { redirect: "/pricing" },
