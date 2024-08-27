@@ -16,11 +16,19 @@ const { data: homepageAnnouncement } = await useFetch(
             <a
               :href="homepageAnnouncement.data.attributes.url"
               v-if="homepageAnnouncement.data.attributes.content"
-              class="inline-flex max-w-full items-center justify-between px-4 py-1 mb-6 text-sm text-gray-700 bg-white shadow-sm rounded-full hover:bg-gray-100"
+              class="inline-flex max-w-full items-center justify-between px-1 py-1 pr-4 mb-6 text-sm text-gray-700 bg-white shadow-sm rounded-full dark:bg-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 max-[500px]:pl-4"
               role="alert"
             >
-              <span class="text-sm font-medium max-w-full"
-                ><span class="text-primary-700 font-semibold">New:</span>
+              <span
+                class="px-3 py-1 mr-3 text-xs text-white rounded-full bg-primary-600 min-[501px]:whitespace-nowrap max-[500px]:hidden"
+                >New</span
+              >
+              <span
+                class="text-sm font-medium max-w-full min-[501px]:overflow-hidden min-[501px]:whitespace-nowrap min-[501px]:text-ellipsis"
+                ><span
+                  class="hidden text-primary-700 font-semibold max-[500px]:inline"
+                  >New:</span
+                >
                 {{ homepageAnnouncement.data.attributes.content }}</span
               >
               <svg
