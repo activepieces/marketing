@@ -1,10 +1,7 @@
-<script setup>
-
-</script>
+<script setup></script>
 
 <template>
   <div>
-    <NuxtLoadingIndicator />
     <Header />
 
     <slot />

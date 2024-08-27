@@ -1,11 +1,8 @@
-<script setup>
-
-</script>
+<script setup></script>
 
 <template>
   <div>
-    <NuxtLoadingIndicator />
-    <Header :hide-github-badge="true"  />
+    <Header :hide-github-badge="true" />
 
     <slot />
     <Footer />

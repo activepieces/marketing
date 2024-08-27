@@ -99,7 +99,6 @@ const toggleMobileMenu = () => {
 
 <template>
   <div class="bg-gradient-to-r from-[#6232cf24] to-[#5d8af324]">
-    <NuxtLoadingIndicator />
     <Header :hide-github-badge="true" />
 
     <section class="pt-6 relative max-[1100px]:pt-0">
