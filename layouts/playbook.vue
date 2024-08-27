@@ -44,7 +44,8 @@ const navItems = chapters.value.data.map((chapter) => {
     url: article.attributes.slug,
     order: article.attributes.order,
     parentArticle: article.attributes.parentArticle,
-  }));
+  }))
+  .sort((a, b) => a.order - b.order);
 
   const items = nestArticles(articles);
 

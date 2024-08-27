@@ -102,7 +102,8 @@ const htmlContent = computed(() => $parseMarkdown(markdown.value, {
     'h4': 'mt-3 text-[22px] md:text-[28px] xl:text-3xl -tracking-[0.11px] md:-tracking-[0.14px] xl:-tracking-[0.15px] leading-[120%]',
     'h5': 'mt-3 text-[20px] md:text-[26px] xl:text-2xl -tracking-[0.11px] md:-tracking-[0.14px] xl:-tracking-[0.15px] leading-[120%]',
     'h6': 'mt-3 text-[18px] md:text-[24px] xl:text-xl -tracking-[0.11px] md:-tracking-[0.14px] xl:-tracking-[0.15px] leading-[120%]',
-    'img': 'rounded-lg'
+    'img': 'rounded-lg',
+    'a': 'text-primary-500 hover:text-primary-800'
 }));
 
 if (!isSlugEmpty.value) {
