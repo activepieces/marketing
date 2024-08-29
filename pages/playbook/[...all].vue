@@ -6,7 +6,7 @@ const { $parseMarkdown } = useNuxtApp();
 const route = useRoute();
 const whichPageObj = whichPage(route);
 
-const pageTitle = "Learn to automate your work";
+let pageTitle = ref("");
 const metaDesc =
   "Read tutorials, guides, thoughts and more about building automated flows to run in the background to save yourself the manual work.";
 const metaKeywords =
@@ -110,13 +110,13 @@ if (!isSlugEmpty.value) {
   const articleResponse = await useFetch(
     `${config.public.strapiUrl}/api/playbook-articles?filters[slug][$eq]=${whichPageObj.articleSlug}`
   );
+
   articles.value = articleResponse.data.value;
   articlesError.value = articleResponse.error.value;
   article.value = articles.value.data[0];
-
   markdown.value = article.value.attributes.content || "";
-
   readingTime.value = calculateReadingTime(markdown.value);
+  pageTitle.value = article.value.attributes.title + " | Harmony";
 }
 
 onMounted(() => {
