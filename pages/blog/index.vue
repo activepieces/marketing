@@ -27,7 +27,7 @@ const { data: newPostsResponse } = await useFetch(newPostsUrl);
 const { data: categoriesResponse } = await useFetch(`${config.public.strapiUrl}/api/categories`);
 const categories = categoriesResponse.value.data;
 
-const initialCategory = route.query.category || route.hash.replace('#', '') || categories[0]?.attributes.slug || (categories.length > 0 ? categories[0].attributes.slug : '');
+const initialCategory = route.query.category || route.hash.replace('#', '')
 const selectedCategory = ref(initialCategory);
 
 const page = ref(1);
@@ -38,6 +38,10 @@ const isLoading = ref(true)
 const posts = ref(null);
 
 onMounted(async () => {
+  if (!initialCategory && categories.length > 0) {
+    selectedCategory.value = categories[0].attributes.slug;
+    router.push({ hash: `#${selectedCategory.value}` });
+  }
   await fetchPosts()
 })
 
@@ -49,7 +53,6 @@ const fetchPosts = async () => {
   const { data: postsResponse } = await useFetch(postsUrl);
   posts.value = postsResponse.value;
   isLoading.value = false
-
 };
 
 const changeCategory = async (slug) => {
