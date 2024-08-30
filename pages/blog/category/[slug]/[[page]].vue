@@ -74,7 +74,7 @@ const totalPages = Math.ceil(totalPosts / limit);
                   <img
                     :src="post.attributes?.featuredImage?.data?.attributes?.url ? `${config.public.strapiUrl}${post.attributes.featuredImage.data.attributes.url}` : defaultImage"
                     alt="Landscape"
-                    class="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-110">
+                    class="w-full h-48 object-cover transition-transform duration-300 ease-in-out group-hover:scale-110">
                 </div>
               </div>
 
