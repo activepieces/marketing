@@ -39,8 +39,7 @@ import { formatTimeAgo } from '@vueuse/core'
 const { data: categoryResponse } = await useFetch(`${config.public.strapiUrl}/api/categories?filters[slug][$eq]=${slug}`);
 let category = categoryResponse.value.data[0];
 
-const postsUrl = `${config.public.strapiUrl}/api/posts?filters[categories][id][$eq]=${category.id}&sort[0]=createdAt:desc&pagination[start]=${(page - 1) * perPage}&pagination[limit]=${perPage}&populate=author,author.photo,categories`;
-const { data: postsResponse } = await useFetch(postsUrl);
+const { data: postsResponse } = await useFetch(`${config.public.strapiUrl}/api/posts?filters[categories][id][$eq]=${category.id}&sort[0]=createdAt:desc&pagination[start]=${(page - 1) * perPage}&pagination[limit]=${perPage}&populate=featuredImage,author,author.photo,categories`);
 
 const pagination = postsResponse.value.meta.pagination;
 const start = pagination.start;
@@ -52,52 +51,66 @@ const totalPages = Math.ceil(totalPosts / limit);
 </script>
 
 <template>
-<section class="bg-white dark:bg-gray-900">
-  <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
-        <div class="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
-            <p class="mb-1 text-2xl"><NuxtLink class="text-gray-700 hover:text-primary" to="/blog">Blog Home</NuxtLink> <span class="text-gray-400">/</span></p>
-            <h2 class="mb-4 text-3xl lg:text-5xl tracking-tight font-extrabold text-gray-900 dark:text-white">{{ category.attributes.name }}</h2>
-            <p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">List of all blogs under {{ category.attributes.name }}</p>
-        </div>
-      <div class="mx-auto max-w-screen-sm divide-y divide-gray-200 dark:divide-gray-700">
-          <article v-for="post in postsResponse.data" class="py-6 text-center">
-              <div class="flex gap-2 justify-center w-full">
-                <span v-for="category in post.attributes.categories.data" :href="`/category/${category.attributes.slug}`" class="bg-primary-100 dark:hover:bg-primary-300 text-primary-800 text-sm font-medium mr-3 px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">{{ category.attributes.name }}</span>
-              </div>
-              <h2 class="my-4 text-2xl font-bold tracking-tight text-gray-900 md:text-3xl dark:text-white">
-                <NuxtLink :to="`/blog/${post.attributes.slug}`">{{post.attributes.title}}</NuxtLink>
-              </h2>
-              <div class="flex justify-center items-center space-x-4 text-gray-500 sm:space-x-6">
-                  <div class="flex items-center space-x-3">
-                    <img class="w-7 h-7 rounded-full" :src="`${config.public.strapiUrl}${post.attributes.author.data?.attributes.photo.data.attributes.formats.thumbnail.url}`" :alt="post.attributes.author.data?.attributes.name">
-                    <span class="font-medium dark:text-white">
-                        {{ post.attributes.author.data?.attributes.name }}
-                    </span>
-                  </div>
-                  <span>{{ formatTimeAgo(new Date(post.attributes.createdAt)) }}</span>
-              </div>
-          </article>               
+  <section class="bg-white dark:bg-gray-900">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+      <div class="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
+        <p class="mb-1 text-2xl">
+          <NuxtLink class="text-gray-700 hover:text-primary" to="/blog">Blog Home</NuxtLink> <span
+            class="text-gray-400">/</span>
+        </p>
+        <h2 class="mb-4 text-3xl lg:text-5xl tracking-tight font-extrabold text-gray-900 dark:text-white">{{
+          category.attributes.name }}</h2>
+        <p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">List of all blogs under {{
+          category.attributes.name }}</p>
       </div>
 
-    <div class="flex flex-col items-center mt-16">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <!-- Blog 1 -->
+        <div v-for="post in postsResponse.data" class="bg-white rounded-lg shadow-md overflow-hidden group">
+          <NuxtLink :to="`/blog/${post.attributes.slug}`">
+            <div class="overflow-hidden">
+              <img v-if="post.attributes?.featuredImage?.data?.attributes?.url" :src="`${config.public.strapiUrl}${post.attributes.featuredImage.data.attributes.url}`" alt="Landscape"
+                class="w-full h-48 object-cover transition-transform duration-300 ease-in-out group-hover:scale-110">
+            </div>
+            <div class="p-6">
+              <p class="text-gray-400 text-sm mb-2">{{ formatTimeAgo(new Date(post.attributes.createdAt)) }}</p>
+              <h3 class="text-xl font-semibold text-gray-800 mb-2cursor-pointer">
+                {{ post.attributes.title }}
+              </h3>
+              <p class="text-gray-600">Landscape photography is one of the most popular genres among photographers.</p>
+            </div>
+          </NuxtLink>
+        </div>
+
+      </div>
+
+      <div class="flex flex-col items-center mt-16">
         <span class="text-base text-gray-700 dark:text-gray-400">
-            Showing <span class="font-semibold text-gray-900 dark:text-white">{{ start + 1 }}</span> to <span class="font-semibold text-gray-900 dark:text-white">{{ Math.min(totalPosts, start + limit) }}</span> of <span class="font-semibold text-gray-900 dark:text-white">{{ totalPosts }}</span> Blogs
+          Showing <span class="font-semibold text-gray-900 dark:text-white">{{ start + 1 }}</span> to <span
+            class="font-semibold text-gray-900 dark:text-white">{{ Math.min(totalPosts, start + limit) }}</span> of
+          <span class="font-semibold text-gray-900 dark:text-white">{{ totalPosts }}</span> Blogs
         </span>
         <div class="flex mt-4">
-            <NuxtLink :to="`/blog/category/${category.attributes.slug}/${page - 1}`" v-if="currentPage > 1" class="flex items-center justify-center px-4 h-10 me-3 text-base font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                <svg class="w-3.5 h-3.5 me-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
-                </svg>
-                Previous
-            </NuxtLink>
-            <NuxtLink :to="`/blog/category/${category.attributes.slug}/${page + 1}`" v-if="currentPage < totalPages" class="flex items-center justify-center px-4 h-10 text-base font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                Next
-                <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                </svg>
-              </NuxtLink>
+          <NuxtLink :to="`/blog/category/${category.attributes.slug}/${page - 1}`" v-if="currentPage > 1"
+            class="flex items-center justify-center px-4 h-10 me-3 text-base font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+            <svg class="w-3.5 h-3.5 me-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+              fill="none" viewBox="0 0 14 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M13 5H1m0 0 4 4M1 5l4-4" />
+            </svg>
+            Previous
+          </NuxtLink>
+          <NuxtLink :to="`/blog/category/${category.attributes.slug}/${page + 1}`" v-if="currentPage < totalPages"
+            class="flex items-center justify-center px-4 h-10 text-base font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+            Next
+            <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+              fill="none" viewBox="0 0 14 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M1 5h12m0 0L9 1m4 4L9 9" />
+            </svg>
+          </NuxtLink>
         </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 </template>
