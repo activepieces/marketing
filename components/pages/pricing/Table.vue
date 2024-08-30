@@ -64,7 +64,7 @@ const handleDeploymentModeChange = (newMode) => {
       </div>
       <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
         <p class="mb-5 font-light text-gray-900 sm:text-2xl dark:text-gray-400 h-[40px]"
-          v-if="deploymentMode === 'cloud'">Pay $1 per 1k tasks on our cloud, no monthly commitment</p>
+          v-if="deploymentMode === 'cloud'">Pay $1 per 1,000 tasks on our cloud, no monthly commitment</p>
         <p class="mb-5 font-light text-gray-900 sm:text-2xl dark:text-gray-400 h-[40px]"
           v-else="deploymentMode === 'self-hosted'">Unlimited tasks, process as many tasks as your machines can</p>
 
