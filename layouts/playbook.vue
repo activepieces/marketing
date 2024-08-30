@@ -274,15 +274,12 @@ const toggleMobileMenu = () => {
       <div
         data-modal-target="download-pdf-modal"
         data-modal-toggle="download-pdf-modal"
-        class="fixed bottom-8 right-8 cursor-pointer overflow-hidden w-12 h-12 rounded-full shadow-lg bg-primary transition-all duration-300 hover:w-52 group max-[500px]:bottom-6 max-[500px]:right-6"
+        class="fixed bottom-8 right-8 cursor-pointer rounded-full shadow-lg bg-primary max-[500px]:bottom-4 max-[500px]:right-4"
       >
         <div
-          class="flex items-center justify-end text-white gap-x-2 h-12 relative px-3"
+          class="flex items-center justify-center text-white gap-x-2 h-12 relative px-4"
         >
-          <span
-            class="absolute left-7 opacity-0 transition-opacity delay-0 group-hover:opacity-100 group-hover:delay-300"
-            >Download as PDF</span
-          >
+          <span>Download as PDF</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 384 512"
