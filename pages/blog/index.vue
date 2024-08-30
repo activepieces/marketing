@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { formatTimeAgo } from '@vueuse/core'
 import { useRoute, useRouter } from 'vue-router'
 
@@ -27,7 +27,7 @@ const { data: newPostsResponse } = await useFetch(newPostsUrl);
 const { data: categoriesResponse } = await useFetch(`${config.public.strapiUrl}/api/categories`);
 const categories = categoriesResponse.value.data;
 
-const selectedCategory = ref(categories[0]?.attributes.slug || '');
+const selectedCategory = ref(route.hash.replace('#', '') || categories[0]?.attributes.slug || '');
 
 const page = ref(1);
 const perPage = 10;
@@ -56,9 +56,14 @@ const changeCategory = async (slug) => {
   page.value = 1
   await fetchPosts()
   isLoading.value = false
+  router.push({ hash: `#${slug}` });
 };
 
 const defaultImage = 'https://content.activepieces.com/uploads/placeholder_blog_de8c9fa735.png'
+
+watch(selectedCategory, async (newCategory) => {
+  await fetchPosts();
+});
 </script>
 
 <template>
