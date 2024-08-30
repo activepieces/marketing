@@ -21,7 +21,7 @@ useHead({
 
 const slug = route.params.slug;
 const page = parseInt(route.params.page) || 1;
-const perPage = 10;
+const perPage = 12;
 
 // Redirect to no page if the page is 1 (server and client side)
 if (process.server) {
