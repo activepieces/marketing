@@ -27,7 +27,8 @@ const { data: newPostsResponse } = await useFetch(newPostsUrl);
 const { data: categoriesResponse } = await useFetch(`${config.public.strapiUrl}/api/categories`);
 const categories = categoriesResponse.value.data;
 
-const selectedCategory = ref(route.hash.replace('#', '') || categories[0]?.attributes.slug || '');
+const initialCategory = route.query.category || route.hash.replace('#', '') || categories[0]?.attributes.slug || '';
+const selectedCategory = ref(initialCategory);
 
 const page = ref(1);
 const perPage = 10;
@@ -111,7 +112,7 @@ watch(selectedCategory, async (newCategory) => {
             v-for="category in categories"
             @click="changeCategory(category.attributes.slug)"
             :key="category.attributes.slug"
-            class="block my-5 text-lg font-semibold flex gap-2 items-center leading-none hover:underline"
+            class="block my-5 text-lg font-semibold flex gap-2 items-center leading-none hover:text-primary"
             :class="{ 'text-primary': category.attributes.slug === selectedCategory }"
           >
             <span class="hidden lg:block" :class="{ 'invisible': category.attributes.slug !== selectedCategory }">👉</span>
