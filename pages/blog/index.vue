@@ -39,7 +39,6 @@ const posts = ref(null);
 
 onMounted(async () => {
   await fetchPosts()
-  isLoading.value = false
 })
 
 const fetchPosts = async () => {
@@ -49,6 +48,8 @@ const fetchPosts = async () => {
   const postsUrl = `${config.public.strapiUrl}/api/posts?filters[categories][id][$eq]=${category.id}&sort[0]=createdAt:desc&pagination[start]=${(page.value - 1) * perPage}&pagination[limit]=${perPage}&populate=featuredImage,author,author.photo,categories`;
   const { data: postsResponse } = await useFetch(postsUrl);
   posts.value = postsResponse.value;
+  isLoading.value = false
+
 };
 
 const changeCategory = async (slug) => {
@@ -56,7 +57,6 @@ const changeCategory = async (slug) => {
   selectedCategory.value = slug
   page.value = 1
   await fetchPosts()
-  isLoading.value = false
   router.push({ hash: `#${slug}` });
 };
 
