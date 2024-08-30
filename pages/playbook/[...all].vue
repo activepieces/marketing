@@ -117,7 +117,7 @@ if (!isSlugEmpty.value) {
   article.value = articles.value.data[0];
   markdown.value = article.value.attributes.content || "";
   readingTime.value = calculateReadingTime(markdown.value);
-  pageTitle.value = article.value.attributes.title + " | " + playbookName.value;
+  pageTitle.value = article.value.attributes.title + " · " + playbookName.value;
 }
 
 onMounted(() => {
