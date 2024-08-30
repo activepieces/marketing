@@ -6,6 +6,7 @@ const { $parseMarkdown } = useNuxtApp();
 const route = useRoute();
 const whichPageObj = whichPage(route);
 
+const playbookName = ref(inject("playbookName"));
 let pageTitle = ref("");
 const metaDesc =
   "Read tutorials, guides, thoughts and more about building automated flows to run in the background to save yourself the manual work.";
@@ -116,7 +117,7 @@ if (!isSlugEmpty.value) {
   article.value = articles.value.data[0];
   markdown.value = article.value.attributes.content || "";
   readingTime.value = calculateReadingTime(markdown.value);
-  pageTitle.value = article.value.attributes.title + " | Harmony";
+  pageTitle.value = article.value.attributes.title + " | " + playbookName.value;
 }
 
 onMounted(() => {
