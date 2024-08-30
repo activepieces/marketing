@@ -77,7 +77,7 @@ const totalPages = Math.ceil(totalPosts / limit);
               <h3 class="text-xl font-semibold text-gray-800 mb-2cursor-pointer">
                 {{ post.attributes.title }}
               </h3>
-              <p class="text-gray-600">Landscape photography is one of the most popular genres among photographers.</p>
+              <p class="text-gray-600">{{ post.attributes.content.replace(/(\*\*|__|\*|_|~~|`|#|>|-|\+|\[.*?\]\(.*?\)|!\[.*?\]\(.*?\))/g, '').substring(0, 110) }}..</p>
             </div>
           </NuxtLink>
         </div>
