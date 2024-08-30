@@ -21,6 +21,9 @@ const { data: chapters, error: chapterError } = await useFetch(
   `${config.public.strapiUrl}/api/playbook-chapters?filters[playbook][id][$eq]=${playbook.id}&sort[0]=order:asc&populate[chapterArticles][populate][0]=parentArticle`
 );
 
+let playbookName = ref(playbook.attributes.title);
+provide("playbookName", playbookName);
+
 function nestArticles(articles) {
   const articleMap = new Map(
     articles.map((article) => [article.id, { ...article, items: [] }])
