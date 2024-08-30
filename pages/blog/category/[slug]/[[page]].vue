@@ -41,6 +41,7 @@ let category = categoryResponse.value.data[0];
 
 const { data: postsResponse } = await useFetch(`${config.public.strapiUrl}/api/posts?filters[categories][id][$eq]=${category.id}&sort[0]=createdAt:desc&pagination[start]=${(page - 1) * perPage}&pagination[limit]=${perPage}&populate=featuredImage,author,author.photo,categories`);
 
+const defaultImage = 'https://content.activepieces.com/uploads/placeholder_blog_de8c9fa735.png'
 const pagination = postsResponse.value.meta.pagination;
 const start = pagination.start;
 const limit = pagination.limit;
@@ -65,23 +66,46 @@ const totalPages = Math.ceil(totalPosts / limit);
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        <!-- Blog 1 -->
         <div v-for="post in postsResponse.data" class="bg-white rounded-lg shadow-md overflow-hidden group">
           <NuxtLink :to="`/blog/${post.attributes.slug}`">
-            <div class="overflow-hidden">
-              <img v-if="post.attributes?.featuredImage?.data?.attributes?.url" :src="`${config.public.strapiUrl}${post.attributes.featuredImage.data.attributes.url}`" alt="Landscape"
-                class="w-full h-48 object-cover transition-transform duration-300 ease-in-out group-hover:scale-110">
+            <div class="flex flex-col h-full">
+              <div class="h-48">
+                <div class="overflow-hidden">
+                  <img
+                    :src="post.attributes?.featuredImage?.data?.attributes?.url ? `${config.public.strapiUrl}${post.attributes.featuredImage.data.attributes.url}` : defaultImage"
+                    alt="Landscape"
+                    class="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-110">
+                </div>
+              </div>
+
+              <div class="p-6 flex flex-col h-full justify-between flex-grow">
+                <div>
+                  <h3 class="text-xl font-semibold text-gray-800 mb-2 cursor-pointer">
+                    {{ post.attributes.title }}
+                  </h3>
+                  <p class="text-gray-600 mt-auto">{{
+                    post.attributes.content.replace(/(\*\*|__|\*|_|~~|`|#|>|-|\+|\[.*?\]\(.*?\)|!\[.*?\]\(.*?\))/g,
+                      '').substring(0, 80) }}..</p>
+                </div>
+                <div class="flex flex-col justify-end flex-grow mt-4">
+                  <div class="flex justify-between items-center">
+                    <div class="flex items-center space-x-2">
+                      <img class="w-5 h-5 rounded-full"
+                        :src="`${config.public.strapiUrl}${post.attributes.author.data?.attributes.photo.data.attributes.formats.thumbnail.url}`"
+                        :alt="post.attributes.author.data?.attributes.name">
+                      <span class="text-sm font-medium dark:text-white">
+                        {{ post.attributes.author.data?.attributes.name }}
+                      </span>
+                    </div>
+                    <p class="text-gray-400 text-sm ml-auto">{{ formatTimeAgo(new Date(post.attributes.createdAt)) }}
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="p-6">
-              <p class="text-gray-400 text-sm mb-2">{{ formatTimeAgo(new Date(post.attributes.createdAt)) }}</p>
-              <h3 class="text-xl font-semibold text-gray-800 mb-2cursor-pointer">
-                {{ post.attributes.title }}
-              </h3>
-              <p class="text-gray-600">{{ post.attributes.content.replace(/(\*\*|__|\*|_|~~|`|#|>|-|\+|\[.*?\]\(.*?\)|!\[.*?\]\(.*?\))/g, '').substring(0, 110) }}..</p>
-            </div>
+
           </NuxtLink>
         </div>
-
       </div>
 
       <div class="flex flex-col items-center mt-16">
