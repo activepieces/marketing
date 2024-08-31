@@ -8,7 +8,7 @@ import { onMounted } from 'vue'
 import prism from "prismjs";
 
 import 'prismjs/components/prism-typescript';
-
+import "public/prism-dark-theme.css";
 
 marked.use({
     highlight: (code, lang) => {
@@ -302,7 +302,6 @@ onMounted(() => {
 </template>
 
 <style>
-@import "public/prism-dark-theme.css";
 
 .format {
     color: var(--tw-format-body);
