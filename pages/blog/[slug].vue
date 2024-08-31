@@ -234,10 +234,10 @@ onMounted(() => {
                         </ol>
                     </nav>
                     <div class="flex items-center my-4 md:my-6">
-                        <span v-for="category in post.attributes.categories.data"
-                            :href="`/category/${category.attributes.slug}`"
-                            class="bg-primary-100 dark:hover:bg-primary-300 text-primary-800 text-sm font-medium mr-3 px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">{{
-                            category.attributes.name }}</span>
+                        <NuxtLink v-for="category in post.attributes.categories.data"
+                            :to="`/blog/category/${category.attributes.slug}`"
+                            class="bg-primary-100 dark:hover:bg-primary-300 text-primary-800 text-sm font-medium mr-3 px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
+                            {{ category.attributes.name }}</NuxtLink>
                     </div>
                     <h1 class="mb-2 text-2xl font-extrabold leading-tight text-gray-900 lg:text-4xl dark:text-white">{{
                         post.attributes.title }}</h1>
