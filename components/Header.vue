@@ -218,7 +218,7 @@ watch(useRoute(), () => {
                 class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 text-gray-500 hover:bg-gray-50 min-[1201px]:hover:bg-transparent min-[1201px]:border-0 min-[1201px]:hover:text-primary-600 min-[1201px]:p-0 dark:text-gray-400 min-[1201px]:dark:hover:text-primary-500 dark:hover:bg-gray-700 dark:hover:text-primary-500 min-[1201px]:dark:hover:bg-transparent dark:border-gray-700"
                 :class="{
                   'text-primary-600': route.path.includes('/ai-transformation'),
-                }">AI Transformation</NuxtLink>
+                }">Our Book</NuxtLink>
             </li>
             <li>
               <a href="https://github.com/activepieces/activepieces" target="_blank"
