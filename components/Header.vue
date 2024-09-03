@@ -87,13 +87,13 @@ watch(useRoute(), () => {
           </button>
         </div>
         <div
-          class="hidden justify-between items-center w-full min-[1201px]:flex min-[1201px]:w-auto min-[1201px]:order-1"
+          class="hidden text-sm justify-between items-center w-full min-[1201px]:flex min-[1201px]:w-auto min-[1201px]:order-1"
           id="mobile-menu-2">
           <ul
             class="flex flex-col mt-4 font-medium min-[1201px]:items-center min-[1201px]:flex-row min-[1201px]:space-x-8 min-[1201px]:mt-0">
             <li class="group">
               <button id="product-nav-button" data-dropdown-toggle="product-nav-menu"
-                class="flex justify-between items-center py-3 pr-4 pl-3 w-full font-medium text-gray-500 border-b border-gray-100 min-[1201px]:w-auto group-hover:text-black min-[1201px]:border-0 min-[1201px]:hover:text-primary-600 min-[1201px]:p-0 dark:text-gray-400 min-[1201px]:dark:hover:text-primary-500 dark:hover:bg-gray-700 dark:hover:text-primary-500 min-[1201px]:dark:hover:bg-transparent dark:border-gray-700 transition duration-400">
+                class="flex justify-between items-center py-3 pr-4 pl-3 w-full font-medium text-gray-900 border-b border-gray-100 min-[1201px]:w-auto group-hover:text-black min-[1201px]:border-0 min-[1201px]:hover:text-primary-600 min-[1201px]:p-0 dark:text-gray-400 min-[1201px]:dark:hover:text-primary-500 dark:hover:bg-gray-700 dark:hover:text-primary-500 min-[1201px]:dark:hover:bg-transparent dark:border-gray-700 transition duration-400">
                 Product
                 <svg
                   class="ml-1 w-5 h-5 min-[1201px]:w-4 min-[1201px]:h-4 min-[1201px]:group-hover:-rotate-180 transition duration-300"
@@ -112,8 +112,8 @@ watch(useRoute(), () => {
                       class="group/link flex gap-4 items-center py-2.5 px-4 w-full rounded-lg hover:bg-blue-50 transition-colors duration-200">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-unplug text-blue-700"><path d="m19 5 3-3"/><path d="m2 22 3-3"/><path d="M6.3 20.3a2.4 2.4 0 0 0 3.4 0L12 18l-6-6-2.3 2.3a2.4 2.4 0 0 0 0 3.4l2.6 2.6a2.4 2.4 0 0 0 3.4 0Z"/><path d="M7.5 13.5 10 11"/><path d="M10.5 16.5 13 14"/><path d="m12 6 6 6 2.3-2.3a2.4 2.4 0 0 0 0-3.4l-2.6-2.6a2.4 2.4 0 0 0-3.4 0Z"/></svg>
                       <div>
-                        <div class="text-base text-black">Pieces</div>
-                        <p class="text-sm text-gray-500 font-light max-w-80 group-hover/link:text-black">
+                        <div class="text-sm text-black">Pieces</div>
+                        <p class="text-xs text-gray-500 font-light max-w-80 group-hover/link:text-black">
                           Explore our catalog of utilities and connectors
                         </p>
                       </div>
@@ -124,8 +124,8 @@ watch(useRoute(), () => {
                       class="group/link flex gap-4 items-center py-2.5 px-4 w-full rounded-lg hover:bg-amber-50 transition-colors duration-200">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lightbulb text-amber-700"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
                       <div>
-                        <div class="text-base text-black">Feature Requests</div>
-                        <p class="text-sm text-gray-500 font-light max-w-80 group-hover/link:text-black">
+                        <div class="text-sm text-black">Feature Requests</div>
+                        <p class="text-xs text-gray-500 font-light max-w-80 group-hover/link:text-black">
                           Request a feature or upvote an existing request
                         </p>
                       </div>
@@ -136,7 +136,7 @@ watch(useRoute(), () => {
             </li>
             <li class="group">
               <button id="resources-nav-button" data-dropdown-toggle="resources-nav-menu"
-                class="flex justify-between items-center py-3 pr-4 pl-3 w-full font-medium text-gray-500 border-b border-gray-100 min-[1201px]:w-auto group-hover:text-black min-[1201px]:border-0 min-[1201px]:hover:text-primary-600 min-[1201px]:p-0 dark:text-gray-400 min-[1201px]:dark:hover:text-primary-500 dark:hover:bg-gray-700 dark:hover:text-primary-500 min-[1201px]:dark:hover:bg-transparent dark:border-gray-700 transition duration-400">
+                class="flex justify-between items-center py-3 pr-4 pl-3 w-full font-medium text-gray-900 border-b border-gray-100 min-[1201px]:w-auto group-hover:text-black min-[1201px]:border-0 min-[1201px]:hover:text-primary-600 min-[1201px]:p-0 dark:text-gray-400 min-[1201px]:dark:hover:text-primary-500 dark:hover:bg-gray-700 dark:hover:text-primary-500 min-[1201px]:dark:hover:bg-transparent dark:border-gray-700 transition duration-400">
                 Resources
                 <svg
                   class="ml-1 w-5 h-5 min-[1201px]:w-4 min-[1201px]:h-4 min-[1201px]:group-hover:-rotate-180 transition duration-300"
@@ -161,8 +161,8 @@ watch(useRoute(), () => {
                       </svg>
 
                       <div>
-                        <div class="text-base text-black">Tutorials</div>
-                        <p class="text-sm text-gray-500 font-light max-w-80 group-hover/link:text-black">
+                        <div class="text-sm text-black">Tutorials</div>
+                        <p class="text-xs text-gray-500 font-light max-w-80 group-hover/link:text-black">
                           Learn the best ways to automate your work
                         </p>
                       </div>
@@ -174,8 +174,8 @@ watch(useRoute(), () => {
 
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-messages-square text-pink-700"><path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2z"/><path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"/></svg>
                       <div>
-                        <div class="text-base text-black">Community</div>
-                        <p class="text-sm text-gray-500 font-light max-w-80 group-hover/link:text-black">
+                        <div class="text-sm text-black">Community</div>
+                        <p class="text-xs text-gray-500 font-light max-w-80 group-hover/link:text-black">
                           Get answers to your questions by the community
                         </p>
                       </div>
@@ -186,8 +186,8 @@ watch(useRoute(), () => {
                       class="group/link flex gap-4 items-center py-2.5 px-4 w-full rounded-lg hover:bg-indigo-50 transition-colors duration-200">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-700 lucide lucide-book-text"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/><path d="M8 11h8"/><path d="M8 7h6"/></svg>
                       <div>
-                        <div class="text-base text-black">Docs</div>
-                        <p class="text-sm text-gray-500 font-light max-w-80 group-hover/link:text-black">
+                        <div class="text-sm text-black">Docs</div>
+                        <p class="text-xs text-gray-500 font-light max-w-80 group-hover/link:text-black">
                           Learn deploying Activepieces or building pieces
                         </p>
                       </div>
@@ -198,8 +198,8 @@ watch(useRoute(), () => {
                       class="group/link flex gap-4 items-center py-2.5 px-4 w-full rounded-lg hover:bg-blue-50 transition-colors duration-200">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-notebook-pen text-blue-700"><path d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4"/><path d="M2 6h4"/><path d="M2 10h4"/><path d="M2 14h4"/><path d="M2 18h4"/><path d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"/></svg>
                       <div>
-                        <div class="text-base text-black">Blog</div>
-                        <p class="text-sm text-gray-500 font-light max-w-80 group-hover/link:text-black">
+                        <div class="text-sm text-black">Blog</div>
+                        <p class="text-xs text-gray-500 font-light max-w-80 group-hover/link:text-black">
                           Discover the latest trends in AI automation
                         </p>
                       </div>
@@ -210,15 +210,15 @@ watch(useRoute(), () => {
             </li>
             <li>
               <NuxtLink to="/pricing"
-                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 text-gray-500 hover:bg-gray-50 min-[1201px]:hover:bg-transparent min-[1201px]:border-0 min-[1201px]:hover:text-primary-600 min-[1201px]:p-0 dark:text-gray-400 min-[1201px]:dark:hover:text-primary-500 dark:hover:bg-gray-700 dark:hover:text-primary-500 min-[1201px]:dark:hover:bg-transparent dark:border-gray-700"
+                class="block py-2 pr-4 pl-3 text-gray-900 border-b border-gray-100 text-gray-500 hover:bg-gray-50 min-[1201px]:hover:bg-transparent min-[1201px]:border-0 min-[1201px]:hover:text-primary-600 min-[1201px]:p-0 dark:text-gray-400 min-[1201px]:dark:hover:text-primary-500 dark:hover:bg-gray-700 dark:hover:text-primary-500 min-[1201px]:dark:hover:bg-transparent dark:border-gray-700"
                 :class="{ 'text-primary-600': route.path.includes('/pricing') }">Pricing</NuxtLink>
             </li>
             <li>
               <NuxtLink to="/ai-transformation/preface"
-                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 text-gray-500 hover:bg-gray-50 min-[1201px]:hover:bg-transparent min-[1201px]:border-0 min-[1201px]:hover:text-primary-600 min-[1201px]:p-0 dark:text-gray-400 min-[1201px]:dark:hover:text-primary-500 dark:hover:bg-gray-700 dark:hover:text-primary-500 min-[1201px]:dark:hover:bg-transparent dark:border-gray-700"
+                class="block py-2 pr-4 pl-3 text-gray-900 border-b border-gray-100 text-gray-500 hover:bg-gray-50 min-[1201px]:hover:bg-transparent min-[1201px]:border-0 min-[1201px]:hover:text-primary-600 min-[1201px]:p-0 dark:text-gray-400 min-[1201px]:dark:hover:text-primary-500 dark:hover:bg-gray-700 dark:hover:text-primary-500 min-[1201px]:dark:hover:bg-transparent dark:border-gray-700"
                 :class="{
                   'text-primary-600': route.path.includes('/ai-transformation'),
-                }">Our Book</NuxtLink>
+                }">AI Transformation Book</NuxtLink>
             </li>
             <li>
               <a href="https://github.com/activepieces/activepieces" target="_blank"
