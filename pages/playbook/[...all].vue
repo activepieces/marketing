@@ -131,12 +131,14 @@ onMounted(() => {
   if (articleBody.value) {
     articleBody.value.addEventListener("mouseup", handleSelection);
   }
+  document.addEventListener("mousedown", handleClickOutside);
 });
 
 onBeforeUnmount(() => {
   if (articleBody.value) {
     articleBody.value.removeEventListener("mouseup", handleSelection);
   }
+  document.removeEventListener("mousedown", handleClickOutside);
 });
 
 // Text highlighting
@@ -146,19 +148,28 @@ const position = ref({ top: 0, left: 0 });
 const selectedText = ref("");
 
 const handleSelection = (event) => {
-  const selection = window.getSelection();
+  setTimeout(() => {
+    const selection = window.getSelection();
 
-  if (selection && selection.toString().length > 10) {
-    selectedText.value = selection.toString();
+    if (selection && selection.toString().length > 10) {
+      selectedText.value = selection.toString();
 
-    position.value = {
-      top: event.layerY + 25,
-      left: event.layerX + 25,
-    };
+      position.value = {
+        top: event.layerY + 25,
+        left: event.layerX + 25,
+      };
 
-    showShareButtons.value = true;
-  } else {
-    showShareButtons.value = false;
+      showShareButtons.value = true;
+    } else {
+      showShareButtons.value = false;
+    }
+  });
+};
+
+// Check if click is outside the container
+const handleClickOutside = (event) => {
+  if (articleBody.value && !articleBody.value.contains(event.target)) {
+    hideShareButtons();
   }
 };
 
