@@ -128,14 +128,19 @@ onMounted(() => {
     window.location.href = firstNavLink.href;
   }
 
-  document.addEventListener("mouseup", handleSelection);
+  if (articleBody.value) {
+    articleBody.value.addEventListener("mouseup", handleSelection);
+  }
 });
 
 onBeforeUnmount(() => {
-  document.removeEventListener("mouseup", handleSelection);
+  if (articleBody.value) {
+    articleBody.value.removeEventListener("mouseup", handleSelection);
+  }
 });
 
 // Text highlighting
+const articleBody = ref(null); // Ref to the article
 const showShareButtons = ref(false);
 const position = ref({ top: 0, left: 0 });
 const selectedText = ref("");
@@ -143,11 +148,7 @@ const selectedText = ref("");
 const handleSelection = (event) => {
   const selection = window.getSelection();
 
-  if (
-    selection &&
-    selection.toString().length > 10 &&
-    !selection.toString().toLowerCase().includes("minute read")
-  ) {
+  if (selection && selection.toString().length > 10) {
     selectedText.value = selection.toString();
 
     position.value = {
@@ -176,6 +177,7 @@ const hideShareButtons = () => {
         {{ readingTime }} minute read
       </p>
       <div
+        ref="articleBody"
         class="text-black flex flex-col gap-8 mt-6"
         v-html="htmlContent"
       ></div>
