@@ -127,11 +127,47 @@ onMounted(() => {
     )[0];
     window.location.href = firstNavLink.href;
   }
+
+  document.addEventListener("mouseup", handleSelection);
 });
+
+onBeforeUnmount(() => {
+  document.removeEventListener("mouseup", handleSelection);
+});
+
+// Text highlighting
+const showShareButtons = ref(false);
+const position = ref({ top: 0, left: 0 });
+const selectedText = ref("");
+
+const handleSelection = (event) => {
+  const selection = window.getSelection();
+
+  if (
+    selection &&
+    selection.toString().length > 10 &&
+    !selection.toString().toLowerCase().includes("minute read")
+  ) {
+    selectedText.value = selection.toString();
+
+    position.value = {
+      top: event.layerY + 25,
+      left: event.layerX + 25,
+    };
+
+    showShareButtons.value = true;
+  } else {
+    showShareButtons.value = false;
+  }
+};
+
+const hideShareButtons = () => {
+  showShareButtons.value = false;
+};
 </script>
 
 <template>
-  <div v-if="!isSlugEmpty">
+  <div v-if="!isSlugEmpty" class="relative">
     <article
       class="format flex-grow flex-1 max-w-[620px] text-xl font-light pb-20 relative z-0 pt-12 lg:pl-14 max-[555px]:py-6"
     >
@@ -144,6 +180,20 @@ onMounted(() => {
         v-html="htmlContent"
       ></div>
     </article>
+    <div
+      v-if="showShareButtons"
+      :style="{ top: `${position.top}px`, left: `${position.left}px` }"
+      class="flex flex-row gap-x-2 absolute z-[5] py-1 px-3 rounded-full bg-primary-100 shadow-md"
+      @mousedown.stop
+      @mouseup.stop
+      @click.stop
+    >
+      <PagesPlaybookSocialMediaShareButtons
+        source="article"
+        :hideShareButtons="hideShareButtons"
+        :selectedText="selectedText"
+      />
+    </div>
   </div>
 </template>
 
