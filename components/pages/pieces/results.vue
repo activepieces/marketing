@@ -137,7 +137,7 @@ onMounted(() => {
                                 class="flex cursor-default gap-0 bg-gradient-to-r from-blue-50 to-blue-100 text-blue-600 text-xs font-medium px-2.5 py-1 rounded dark:bg-blue-900 dark:text-blue-300"
                                 :class="{ 'hidden': !piece.categories?.includes('PREMIUM') }"
                                 :data-tooltip-target="`tooltip-enterprise-${pieceIndex}`">
-                                Enterprise
+                                Premium
                             </span>
                         </div>
                         <p v-if="piece.description != ''" class="hidden md:block font-light text-gray-500 dark:text-gray-400 mt-[4px]">{{ piece.description }}</p>

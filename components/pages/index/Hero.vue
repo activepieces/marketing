@@ -48,7 +48,7 @@ const { data: homepageAnnouncement } = await useFetch(
             <h1
               class="mb-4 font-extrabold leading-none tracking-tight text-gray-900 text-5xl xl:text-6xl xl:leading-tight dark:text-white"
             >
-            Become an <span class="colored-text">AI-first</span> enterprise, today
+            The <span class="colored-text">AI-first</span> automation tool for every team
               <!--Turn every department into an
               <span class="colored-text">AI Powerhouse</span>-->
             </h1>

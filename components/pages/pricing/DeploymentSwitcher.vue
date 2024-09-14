@@ -9,7 +9,7 @@ const handleSwitchChange = function (newValue) {
 
 <template>
 
-  <div class="flex gap-4 justify-center items-center mb-6">
+  <div class="flex gap-4 justify-center items-center">
 
     <div class="flex border border-primary-800 rounded-full bg-primary-50">
       <div>
