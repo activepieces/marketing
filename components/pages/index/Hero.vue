@@ -46,32 +46,32 @@ const { data: homepageAnnouncement } = await useFetch(
             </a>
 
             <h1
-              class="mb-4 font-bold leading-none tracking-tight text-gray-900 text-5xl xl:text-6xl xl:leading-tight dark:text-white"
+              class="mb-4 font-extrabold leading-none tracking-tight text-gray-900 text-5xl xl:text-6xl xl:leading-tight dark:text-white"
             >
-              Turn every department into an
-              <span class="colored-text">AI Powerhouse</span>
+            Become an <span class="colored-text">AI-first</span> enterprise, today
+              <!--Turn every department into an
+              <span class="colored-text">AI Powerhouse</span>-->
             </h1>
-            <p
-              class="max-w-xl mx-auto mb-6 font-light text-gray-900 lg:mx-0 xl:mb-8 md:text-lg xl:text-2xl dark:text-gray-400 max-[500px]:mb-[75px]"
-            >
-              Activepieces is the infrastructure for enterprise AI
-              transformation. The only automation software loved by both
-              technical and non-technical teams.
-            </p>
+            <div class="mt-8 max-w-xl mx-auto mb-6 font-normal text-black lg:mx-0 xl:mb-8 md:text-lg xl:text-2xl dark:text-gray-400 max-[500px]:mb-[75px]">
+              <p class="flex items-center gap-1"><img class="inline w-[24px] shrink-0" src="/sparkle.png"> Your <span class="font-bold">IT team</span> prepares the automation infra</p>
+              <p class="mt-2 flex items-center gap-1"><img class="inline w-[24px] shrink-0" src="/sparkle.png"> <span class="font-bold">Everyone</span> builds AI automations</p>
+            </div>
+          
             <div
               class="flex flex-col space-y-4 sm:flex-row sm:justify-left sm:space-y-0 sm:space-x-4 justify-center lg:justify-start"
             >
-              <router-link
-                to="/sales"
-                class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-white rounded-lg bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 dark:focus:ring-primary-900"
-                >Request demo</router-link
-              >
-              <a
+            <a
                 href="https://cloud.activepieces.com/sign-up"
-                class="inline-flex items-center justify-center px-5 py-3 text-base text-gray-700 font-medium text-center rounded-lg bg-white border border-gray-900 hover:bg-gray-50 focus:ring-4 focus:ring-blue-300 sm:mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+                class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-white rounded-lg bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 dark:focus:ring-primary-900"
               >
                 Start free
               </a>
+
+              <router-link
+                to="/sales"
+                class="inline-flex items-center justify-center px-5 py-3 text-base text-gray-700 font-medium text-center rounded-lg bg-white border border-gray-900 hover:bg-gray-50 focus:ring-4 focus:ring-blue-300 sm:mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+                >Talk to sales</router-link
+              >
             </div>
             <div
               class="flex flex-wrap items-center gap-x-8 gap-y-5 mt-7 max-[1023px]:justify-center"
@@ -102,15 +102,15 @@ const { data: homepageAnnouncement } = await useFetch(
         </div>
         <div class="lg:col-span-6 mt-10 lg:mt-0">
           <img
-            src="/hero.webp"
+            src="/hero.png"
             alt="hero"
             width="350"
             height="350"
-            class="max-w-[1280px] w-full max-h-[500px] object-contain rounded-xl"
+            class="max-w-[1280px] w-full max-h-[500px] object-contain rounded-xl shadow-[20px_10px_200px_40px_#daadff96]"
           />
         </div>
       </div>
-      <PagesIndexTrustSignals />
+      <PagesIndexCompanyLogos class="mt-10" />
     </div>
   </section>
 </template>
