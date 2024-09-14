@@ -85,7 +85,7 @@ const handleDeploymentModeChange = (newMode) => {
             <p class="mb-4 text-base">Unlimited users</p>
           </div>
           <a :href="deploymentMode === 'cloud' ? 'https://cloud.activepieces.com/sign-up' : 'https://www.activepieces.com/docs/install/options/overview'"
-            class="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-normal rounded-lg text-xl px-5 py-3 text-center dark:text-white dark:focus:ring-primary-900 border-2 border-primary">{{ deploymentMode === 'cloud' ? 'Start free' : 'Install for free' }}</a>
+            class="text-white bg-black hover:bg-primary-700 hover:border-primary-700 focus:ring-4 focus:ring-gray-200 font-normal rounded-lg text-xl px-5 py-3 text-center dark:text-white dark:focus:ring-primary-900 border-2 border-black">{{ deploymentMode === 'cloud' ? 'Start free' : 'Install for free' }}</a>
           <!-- List -->
           <ul role="list" class="space-y-4 text-left mt-4">
 
@@ -131,7 +131,7 @@ const handleDeploymentModeChange = (newMode) => {
           </div>
 
           <router-link to="/sales"
-            class="bg-white text-primary hover:bg-primary-700 hover:text-white focus:ring-4 focus:ring-primary-200 font-normal rounded-lg text-xl px-5 py-3 text-center border-2 border-primary">Talk to sales</router-link>
+            class="text-white bg-black hover:bg-primary-700 hover:border-primary-700 focus:ring-4 focus:ring-gray-200 font-normal rounded-lg text-xl px-5 py-3 text-center dark:text-white dark:focus:ring-primary-900 border-2 border-black">Talk to sales</router-link>
           <!-- List -->
           <ul role="list" class="space-y-4 text-left mt-4">
             <li class="flex items-center space-x-3">
@@ -174,7 +174,7 @@ const handleDeploymentModeChange = (newMode) => {
               <p class="mb-4 text-base">25 users then $10 per extra user</p>
             </div>
             <router-link to="/sales"
-              class="block bg-white text-primary hover:bg-primary-700 hover:text-white focus:ring-4 focus:ring-primary-200 font-normal rounded-lg text-xl px-5 py-3 text-center border-2 border-primary">Talk to sales</router-link>
+              class="block text-white bg-black hover:bg-primary-700 hover:border-primary-700 focus:ring-4 focus:ring-gray-200 font-normal rounded-lg text-xl px-5 py-3 text-center dark:text-white dark:focus:ring-primary-900 border-2 border-black">Talk to sales</router-link>
             <!-- List -->
             <ul role="list" class="space-y-4 text-left mt-4">
               <li class="flex items-center space-x-3">
