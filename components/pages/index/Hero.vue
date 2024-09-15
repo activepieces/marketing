@@ -53,8 +53,8 @@ const { data: homepageAnnouncement } = await useFetch(
               <span class="colored-text">AI Powerhouse</span>-->
             </h1>
             <div class="mt-10 max-w-xl mx-auto mb-6 font-normal text-black lg:mx-0 xl:mb-16 md:text-lg xl:text-2xl dark:text-gray-400 max-[500px]:mb-[40px]">
-              <p class="flex items-center gap-1 max-lg:justify-center"><img class="inline w-[24px] shrink-0" src="/sparkle.png"> Your <span class="font-bold">IT team</span> prepares the automation infra</p>
-              <p class="mt-2 flex items-center gap-1 max-lg:justify-center"><img class="inline w-[24px] shrink-0" src="/sparkle.png"> <span class="font-bold">Everyone</span> builds AI automations</p>
+              <p class="flex items-center gap-1 max-lg:justify-center"><img class="inline w-[24px] shrink-0" src="/sparkle.png"> Open source and secure, loved by <span class="font-bold">IT teams</span></p>
+              <p class="mt-2 flex items-center gap-1 max-lg:justify-center"><img class="inline w-[24px] shrink-0" src="/sparkle.png"> Magical interface loved by the <span class="font-bold">rest of your team</span></p>
             </div>
           
             <div
