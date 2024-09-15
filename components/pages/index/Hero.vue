@@ -8,9 +8,9 @@ const { data: homepageAnnouncement } = await useFetch(
 <template>
   <section class="animated-gradient dark:bg-gray-900 -mt-[62px]">
     <div
-      class="max-w-screen-xl px-4 pt-[150px] pb-[50px] mx-auto max-[500px]:pt-[125px]"
+      class="max-w-screen-xl px-4 pt-[120px] xl:pt-[180px] pb-[50px] mx-auto max-[500px]:pt-[125px]"
     >
-      <div class="lg:grid items-center pb-10 gap-8 lg:gap-12 lg:grid-cols-12">
+      <div class="lg:grid items-center pb-12 gap-8 lg:gap-12 lg:grid-cols-12">
         <div class="lg:col-span-6 text-center sm:mb-6 lg:text-left lg:mb-0">
           <div class="max-w-screen-sm mx-auto">
             <!--<a
@@ -52,9 +52,9 @@ const { data: homepageAnnouncement } = await useFetch(
               <!--Turn every department into an
               <span class="colored-text">AI Powerhouse</span>-->
             </h1>
-            <div class="mt-10 max-w-xl mx-auto mb-6 font-normal text-black lg:mx-0 xl:mb-16 md:text-lg xl:text-2xl dark:text-gray-400 max-[500px]:mb-[75px]">
-              <p class="flex items-center gap-1"><img class="inline w-[24px] shrink-0" src="/sparkle.png"> Your <span class="font-bold">IT team</span> prepares the automation infra</p>
-              <p class="mt-2 flex items-center gap-1"><img class="inline w-[24px] shrink-0" src="/sparkle.png"> <span class="font-bold">Everyone</span> builds AI automations</p>
+            <div class="mt-10 max-w-xl mx-auto mb-6 font-normal text-black lg:mx-0 xl:mb-16 md:text-lg xl:text-2xl dark:text-gray-400 max-[500px]:mb-[40px]">
+              <p class="flex items-center gap-1 max-lg:justify-center"><img class="inline w-[24px] shrink-0" src="/sparkle.png"> Your <span class="font-bold">IT team</span> prepares the automation infra</p>
+              <p class="mt-2 flex items-center gap-1 max-lg:justify-center"><img class="inline w-[24px] shrink-0" src="/sparkle.png"> <span class="font-bold">Everyone</span> builds AI automations</p>
             </div>
           
             <div
@@ -86,7 +86,7 @@ const { data: homepageAnnouncement } = await useFetch(
             alt="hero"
             width="350"
             height="350"
-            class="max-w-[1280px] w-full max-h-[500px] object-contain rounded-xl shadow-[20px_10px_200px_40px_#add0ff66]"
+            class="max-w-[1280px] w-full max-h-[500px] object-contain rounded-xl lg:shadow-[20px_10px_200px_40px_#add0ff66]"
           />
         </div>
       </div>

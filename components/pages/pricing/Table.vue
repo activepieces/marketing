@@ -58,11 +58,11 @@ const handleDeploymentModeChange = (newMode) => {
 <template>
   <section class="bg-white dark:bg-gray-900">
     <div class="py-6 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-      <div class="flex gap-1 justify-between align-center mb-10">
-        <h2 v-if="deploymentMode === 'cloud'" class="text-5xl tracking-tight font-extrabold text-gray-900 dark:text-white">Pay as you go, no commitments</h2>
-        <h2 v-else class="text-5xl tracking-tight font-extrabold text-gray-900 dark:text-white">Unlimited free tasks, on your own infra</h2>
+      <div class="flex max-lg:flex-col-reverse gap-1 justify-between max-lg:text-center align-center mb-10">
+        <h2 v-if="deploymentMode === 'cloud'" class="text-3xl lg:text-4xl xl:text-5xl tracking-tight font-extrabold text-gray-900 dark:text-white">Pay as you go, no commitments</h2>
+        <h2 v-else class="text-3xl lg:text-4xl xl:text-5xl tracking-tight font-extrabold text-gray-900 dark:text-white">Unlimited free tasks, on your own infra</h2>
 
-        <DeploymentSwitcher :deployment-mode="deploymentMode" @deployment-mode-changed="handleDeploymentModeChange" />
+        <DeploymentSwitcher :deployment-mode="deploymentMode" @deployment-mode-changed="handleDeploymentModeChange" class="max-lg:mb-3" />
       </div>
       <div class="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0 mt-4">
         <!-- Pricing Card -->
