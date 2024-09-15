@@ -90,7 +90,7 @@ const { data: homepageAnnouncement } = await useFetch(
           />
         </div>
       </div>
-      <PagesIndexCompanyLogos class="mt-10" />
+      <PagesIndexCompanyLogos class="relative z-10 mt-10" />
     </div>
   </section>
 </template>
