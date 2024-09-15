@@ -1,5 +1,5 @@
 <script setup>
-const pageTitle = "Become an AI-first enterprise today";
+const pageTitle = "AI-first automation for every team";
 const metaDesc =
   "Activepieces is the best way to build a self-driven AI culture across HR, finance, marketing, sales and more — under the supervision of your IT ninjas";
 const metaKeywords =

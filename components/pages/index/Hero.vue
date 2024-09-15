@@ -8,9 +8,9 @@ const { data: homepageAnnouncement } = await useFetch(
 <template>
   <section class="animated-gradient dark:bg-gray-900 -mt-[62px]">
     <div
-      class="max-w-screen-xl px-4 pt-[130px] pb-[50px] mx-auto max-[500px]:pt-[125px]"
+      class="max-w-screen-xl px-4 pt-[150px] pb-[50px] mx-auto max-[500px]:pt-[125px]"
     >
-      <div class="lg:grid items-center gap-8 lg:gap-12 lg:grid-cols-12">
+      <div class="lg:grid items-center pb-10 gap-8 lg:gap-12 lg:grid-cols-12">
         <div class="lg:col-span-6 text-center sm:mb-6 lg:text-left lg:mb-0">
           <div class="max-w-screen-sm mx-auto">
             <!--<a
@@ -48,7 +48,7 @@ const { data: homepageAnnouncement } = await useFetch(
             <h1
               class="mb-4 font-extrabold leading-none tracking-tight text-gray-900 text-5xl xl:text-6xl xl:leading-tight dark:text-white"
             >
-            <span class="colored-text">AI-first</span> automation<br>for every team
+            <span class="colored-text">AI-first automation</span> <br>for every team
               <!--Turn every department into an
               <span class="colored-text">AI Powerhouse</span>-->
             </h1>
@@ -74,7 +74,7 @@ const { data: homepageAnnouncement } = await useFetch(
               >
             </div>
             <div
-              class="flex flex-wrap text-sm text-gray-600 font-bold items-center gap-1.5 gap-y-5 mt-7 max-[1023px]:justify-center"
+              class="flex flex-wrap text-base text-gray-600 font-bold items-center gap-1.5 gap-y-5 mt-7 max-[1023px]:justify-center"
             >
             <img class="w-[20px]" src="/g2-logo.png"><img class="h-[23px]" src="/stars.png"><span>4.8</span>
             </div>
@@ -97,9 +97,32 @@ const { data: homepageAnnouncement } = await useFetch(
 
 <style scoped>
 .colored-text {
+  background: linear-gradient(
+    to right,
+    #6420AA,  /* Purple */
+    #FF3EA5,  /* Pink */
+    #1E9BF0,  /* Sky Blue */
+    #0070F3,  /* Bright Blue */
+    #6420AA   /* Purple */
+  );
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background: linear-gradient(to right, #6232cf 51%, #5b94f8 100%) text;
+  animation: gradientAnimation 22s ease infinite;
 }
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 
 @keyframes GradientBackground {
   0% {
