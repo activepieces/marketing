@@ -2,7 +2,7 @@
 
 <template>
   <div>
-    <Header />
+    <Header :hide-github-badge="true" />
 
     <slot />
     <Footer />

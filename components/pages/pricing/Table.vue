@@ -127,7 +127,7 @@ const handleDeploymentModeChange = (newMode) => {
                 <div class="font-bold">&nbsp;</div>
               </p>
             </Transition>
-            <p class="mb-4 text-base">Starts at $1,200 per month</p>
+            <p class="mb-4 text-base">Starts from $1,200 per month</p>
           </div>
 
           <router-link to="/sales"

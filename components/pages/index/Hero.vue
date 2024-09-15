@@ -13,7 +13,7 @@ const { data: homepageAnnouncement } = await useFetch(
       <div class="lg:grid items-center gap-8 lg:gap-12 lg:grid-cols-12">
         <div class="lg:col-span-6 text-center sm:mb-6 lg:text-left lg:mb-0">
           <div class="max-w-screen-sm mx-auto">
-            <a
+            <!--<a
               :href="homepageAnnouncement.data.attributes.url"
               v-if="homepageAnnouncement.data.attributes.content"
               class="inline-flex max-w-full items-center justify-between px-1 py-1 pr-4 mb-6 text-sm text-gray-700 bg-white shadow-sm rounded-full dark:bg-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 max-[500px]:pl-4"
@@ -43,16 +43,16 @@ const { data: homepageAnnouncement } = await useFetch(
                   clip-rule="evenodd"
                 ></path>
               </svg>
-            </a>
+            </a>-->
 
             <h1
               class="mb-4 font-extrabold leading-none tracking-tight text-gray-900 text-5xl xl:text-6xl xl:leading-tight dark:text-white"
             >
-            The <span class="colored-text">AI-first</span> automation tool for every team
+            <span class="colored-text">AI-first</span> automation<br>for every team
               <!--Turn every department into an
               <span class="colored-text">AI Powerhouse</span>-->
             </h1>
-            <div class="mt-8 max-w-xl mx-auto mb-6 font-normal text-black lg:mx-0 xl:mb-8 md:text-lg xl:text-2xl dark:text-gray-400 max-[500px]:mb-[75px]">
+            <div class="mt-10 max-w-xl mx-auto mb-6 font-normal text-black lg:mx-0 xl:mb-16 md:text-lg xl:text-2xl dark:text-gray-400 max-[500px]:mb-[75px]">
               <p class="flex items-center gap-1"><img class="inline w-[24px] shrink-0" src="/sparkle.png"> Your <span class="font-bold">IT team</span> prepares the automation infra</p>
               <p class="mt-2 flex items-center gap-1"><img class="inline w-[24px] shrink-0" src="/sparkle.png"> <span class="font-bold">Everyone</span> builds AI automations</p>
             </div>
@@ -74,29 +74,9 @@ const { data: homepageAnnouncement } = await useFetch(
               >
             </div>
             <div
-              class="flex flex-wrap items-center gap-x-8 gap-y-5 mt-7 max-[1023px]:justify-center"
+              class="flex flex-wrap text-sm text-gray-600 font-bold items-center gap-1.5 gap-y-5 mt-7 max-[1023px]:justify-center"
             >
-              <img
-                class="w-20 max-[500px]:w-16"
-                src="/badges/g2-top25-24.svg"
-                alt="g2 badge"
-                width="150"
-                height="150"
-              />
-              <img
-                class="w-20 max-[500px]:w-16"
-                src="/badges/g2-most-implementable-w24.svg"
-                alt="g2 badge"
-                width="150"
-                height="150"
-              />
-              <img
-                class="w-20 max-[500px]:w-16"
-                src="/badges/g2-high-performer-w24.svg"
-                alt="g2 badge"
-                width="150"
-                height="150"
-              />
+            <img class="w-[20px]" src="/g2-logo.png"><img class="h-[23px]" src="/stars.png"><span>4.8</span>
             </div>
           </div>
         </div>
@@ -106,7 +86,7 @@ const { data: homepageAnnouncement } = await useFetch(
             alt="hero"
             width="350"
             height="350"
-            class="max-w-[1280px] w-full max-h-[500px] object-contain rounded-xl shadow-[20px_10px_200px_40px_#daadff96]"
+            class="max-w-[1280px] w-full max-h-[500px] object-contain rounded-xl shadow-[20px_10px_200px_40px_#add0ff66]"
           />
         </div>
       </div>
