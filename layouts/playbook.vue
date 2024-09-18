@@ -3,6 +3,7 @@ import { useRoute } from "vue-router";
 import { whichPage } from "~/middleware/playbookRequest";
 import { onMounted, ref, nextTick } from "vue";
 import { initCollapses, Modal } from "flowbite";
+import { useCookieConsent } from '@/composables/useCookieConsent';
 const config = useRuntimeConfig();
 
 const route = useRoute();
@@ -107,6 +108,8 @@ const isLoading = ref(false);
 const errorMessage = ref('');
 const showDownloadPdfToast = ref(false);
 
+const { cookieConsent } = useCookieConsent();
+
 const openDownloadPdfModal = () => {
   email.value = '';
   errorMessage.value = '';
@@ -118,7 +121,7 @@ const openDownloadPdfModal = () => {
     }
   });
 
-  if (window.analytics) {
+  if (window.analytics && cookieConsent === true) {
     analytics.track('pdf_download.clicked', {
       bookName: 'harmony'
     });
@@ -150,7 +153,7 @@ const submitDownloadPdfForm = async () => {
       throw new Error('Something went wrong. Please try again.');
     }
 
-    if (window.analytics) {
+    if (window.analytics && cookieConsent === true) {
       window.analytics.identify({
         email: email.value
       });
@@ -187,6 +190,7 @@ onMounted(() => {
   <div class="bg-gradient-to-r from-[#6232cf24] to-[#5d8af324]">
     <Header :hide-github-badge="true" />
 
+    <CookieBanner />
     <section class="pt-6 relative max-[1100px]:pt-0">
       <div
         class="hidden sticky top-[62px] z-[9] px-6 py-2 bg-primary-300 shadow-md w-full max-[1100px]:block max-[1023px]:top-[60px] max-[1023px]:px-4"
