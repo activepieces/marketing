@@ -33,6 +33,7 @@ onMounted(() => {
 const acceptCookies = () => {
   showBanner.value = false;
   setCookieConsent(true);
+  location.reload();
 };
 
 const declineCookies = () => {
