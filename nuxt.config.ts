@@ -94,7 +94,7 @@ const getBlogUrls = async function () {
   let blogPosts = null;
 
   while (total == null || start < total) {
-    blogPostsUrl = `${process.env.STRAPI_URL}/api/posts?sort[0]=createdAt:desc&pagination[start]=${start}&pagination[limit]=${perPage}&populate=author,author.photo,categories`;
+    const blogPostsUrl = `${process.env.STRAPI_URL}/api/posts?sort=createdAt:desc&pagination[page]=${page}&pagination[pageSize]=${perPage}&populate[author][populate]=photo&populate=categories`;
     blogPostsResponse = await fetch(blogPostsUrl, {
       headers: {
         'Strapi-Response-Format': 'v4'
