@@ -1,8 +1,8 @@
 <script setup>
-const config = useRuntimeConfig();
+/*const config = useRuntimeConfig();
 const { data: homepageAnnouncement } = await useFetch(
   `${config.public.strapiUrl}/api/homepage-announcement`
-);
+);*/
 </script>
 
 <template>
@@ -13,7 +13,7 @@ const { data: homepageAnnouncement } = await useFetch(
       <div class="lg:grid items-center gap-8 lg:gap-12 lg:grid-cols-12">
         <div class="lg:col-span-6 text-center sm:mb-6 lg:text-left lg:mb-0">
           <div class="max-w-screen-sm mx-auto">
-            <a
+            <!--<a
               :href="homepageAnnouncement.data.attributes.url"
               v-if="homepageAnnouncement.data.attributes.content"
               class="inline-flex max-w-full items-center justify-between px-1 py-1 pr-4 mb-6 text-sm text-gray-700 bg-white shadow-md rounded-full dark:bg-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700"
@@ -50,7 +50,7 @@ const { data: homepageAnnouncement } = await useFetch(
                   clip-rule="evenodd"
                 ></path>
               </svg>
-            </a>
+            </a>-->
             <h1
               class="mb-4 font-bold leading-none tracking-tight text-gray-900 text-5xl xl:text-6xl dark:text-white"
             >

@@ -76,7 +76,7 @@ export default defineNuxtConfig({
 
   sitemap: {
     urls: async () => {
-      return [...(await getBlogUrls()), ...(await getPieceUrls())];
+      return [/*...(await getBlogUrls()), ...(await getPieceUrls())*/];
     },
   },
 });

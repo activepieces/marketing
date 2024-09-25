@@ -1,8 +1,8 @@
 <script setup>
-const config = useRuntimeConfig();
+/*const config = useRuntimeConfig();
 const { data: homepageAnnouncement } = await useFetch(
   `${config.public.strapiUrl}/api/homepage-announcement`
-);
+);*/
 </script>
 
 <template>
