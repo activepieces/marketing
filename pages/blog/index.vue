@@ -21,10 +21,18 @@ useHead({
   ]
 })
 
-const newPostsUrl = `${config.public.strapiUrl}/api/posts?sort[0]=createdAt:desc&pagination[limit]=2&populate=author,author.photo,categories`;
-const { data: newPostsResponse } = await useFetch(newPostsUrl);
+const newPostsUrl = `${config.public.strapiUrl}/api/posts?sort=createdAt:desc&pagination[limit]=2&populate[author][populate]=photo&populate=categories`;
+const { data: newPostsResponse } = await useFetch(newPostsUrl, {
+    headers: {
+      'Strapi-Response-Format': 'v4'
+    }
+  });
 
-const { data: categoriesResponse } = await useFetch(`${config.public.strapiUrl}/api/categories`);
+const { data: categoriesResponse } = await useFetch(`${config.public.strapiUrl}/api/categories`, {
+    headers: {
+      'Strapi-Response-Format': 'v4'
+    }
+  });
 const categories = categoriesResponse.value.data;
 
 const initialCategory = route.query.category || route.hash.replace('#', '')
@@ -49,8 +57,12 @@ const fetchPosts = async () => {
   const category = categories.find(cat => cat.attributes.slug === selectedCategory.value);
   if (!category) return;
 
-  const postsUrl = `${config.public.strapiUrl}/api/posts?filters[categories][id][$eq]=${category.id}&sort[0]=createdAt:desc&pagination[start]=${(page.value - 1) * perPage}&pagination[limit]=${perPage}&populate=featuredImage,author,author.photo,categories`;
-  const { data: postsResponse } = await useFetch(postsUrl);
+  const postsUrl = `${config.public.strapiUrl}/api/posts?filters[categories][id][$eq]=${category.id}&sort=createdAt:desc&pagination[page]=${page.value}&pagination[pageSize]=${perPage}&populate[featuredImage]=*&populate[author][populate]=photo&populate=categories`;
+  const { data: postsResponse } = await useFetch(postsUrl, {
+    headers: {
+      'Strapi-Response-Format': 'v4'
+    }
+  });
   posts.value = postsResponse.value;
   isLoading.value = false
 };

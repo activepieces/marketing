@@ -28,8 +28,8 @@ onMounted(() => {
   <PagesIndexHeroOpensource />
   <PagesIndexCompanyLogos />
   <PagesIndexMainValue />
-  <!--<PagesIndexUseCases />-->
+  <PagesIndexUseCases />
   <PagesIndexSocialProof />
-  <!--<PagesIndexFeatures />-->
+  <PagesIndexFeatures />
   <PagesIndexPieces />
 </template>

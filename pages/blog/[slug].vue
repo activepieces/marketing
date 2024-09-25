@@ -29,7 +29,14 @@ if (process.client) {
 
 const slug = route.params.slug;
 
-const { data: posts, error: postError } = await useFetch(`${config.public.strapiUrl}/api/posts?filters[slug][$eq]=${slug}&populate=categories,author,featuredImage`)
+const { data: posts, error: postError } = await useFetch(
+  `${config.public.strapiUrl}/api/posts?filters[slug][$eq]=${slug}&populate[categories]=*&populate[author]=*&populate[featuredImage]=*`,
+  {
+    headers: {
+      'Strapi-Response-Format': 'v4'
+    }
+  }
+);
 const post = posts.value.data[0];
 
 // Find related posts (from the same categories but not the current post)
@@ -42,7 +49,14 @@ const relatedPostsFilters = [
 
 const relatedPostsFiltersParams = relatedPostsFilters.join('&');
 
-const { data: relatedPosts, error: relatedPostsError } = await useFetch(`${config.public.strapiUrl}/api/posts?${relatedPostsFiltersParams}&populate=categories,author,featuredImage`)
+const { data: relatedPosts, error: relatedPostsError } = await useFetch(
+  `${config.public.strapiUrl}/api/posts?${relatedPostsFiltersParams}&populate[categories]=*&populate[author]=*&populate[featuredImage]=*`,
+  {
+    headers: {
+      'Strapi-Response-Format': 'v4'
+    }
+  }
+);
 
 const formatDate = function (dateString) {
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];

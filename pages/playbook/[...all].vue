@@ -109,7 +109,11 @@ const htmlContent = computed(() =>
 
 if (!isSlugEmpty.value) {
   const articleResponse = await useFetch(
-    `${config.public.strapiUrl}/api/playbook-articles?filters[slug][$eq]=${whichPageObj.articleSlug}`
+    `${config.public.strapiUrl}/api/playbook-articles?filters[slug][$eq]=${whichPageObj.articleSlug}`, {
+    headers: {
+      'Strapi-Response-Format': 'v4'
+    }
+  }
   );
 
   articles.value = articleResponse.data.value;

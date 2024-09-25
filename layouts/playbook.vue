@@ -14,12 +14,20 @@ onMounted(() => {
 });
 
 const { data: playbooks, error: playbookError } = await useFetch(
-  `${config.public.strapiUrl}/api/playbooks?filters[slug][$eq]=${whichPageObj.playbookName}`
+  `${config.public.strapiUrl}/api/playbooks?filters[slug][$eq]=${whichPageObj.playbookName}`, {
+    headers: {
+      'Strapi-Response-Format': 'v4'
+    }
+  }
 );
 const playbook = playbooks.value.data[0];
 
 const { data: chapters, error: chapterError } = await useFetch(
-  `${config.public.strapiUrl}/api/playbook-chapters?filters[playbook][id][$eq]=${playbook.id}&sort[0]=order:asc&populate[chapterArticles][populate][0]=parentArticle`
+  `${config.public.strapiUrl}/api/playbook-chapters?filters[playbook][id][$eq]=${playbook.id}&sort[0]=order:asc&populate[chapterArticles][populate][0]=parentArticle`, {
+    headers: {
+      'Strapi-Response-Format': 'v4'
+    }
+  }
 );
 
 let playbookName = ref(playbook.attributes.title);

@@ -1,6 +1,10 @@
 <script setup>
 const config = useRuntimeConfig()
-const { data: page, error: postError } = await useFetch(`${config.public.strapiUrl}/api/terms`)
+const { data: page, error: postError } = await useFetch(`${config.public.strapiUrl}/api/terms`, {
+    headers: {
+      'Strapi-Response-Format': 'v4'
+    }
+  })
 const terms = page.value.data.attributes;
 
 const pageTitle = terms.title;

@@ -76,7 +76,7 @@ export default defineNuxtConfig({
 
   sitemap: {
     urls: async () => {
-      return [/*...(await getBlogUrls()), ...(await getPieceUrls())*/];
+      return [...(await getBlogUrls()), ...(await getPieceUrls())];
     },
   },
 });
@@ -95,7 +95,11 @@ const getBlogUrls = async function () {
 
   while (total == null || start < total) {
     blogPostsUrl = `${process.env.STRAPI_URL}/api/posts?sort[0]=createdAt:desc&pagination[start]=${start}&pagination[limit]=${perPage}&populate=author,author.photo,categories`;
-    blogPostsResponse = await fetch(blogPostsUrl);
+    blogPostsResponse = await fetch(blogPostsUrl, {
+      headers: {
+        'Strapi-Response-Format': 'v4'
+      }
+    });
     blogPosts = await blogPostsResponse.json();
 
     allBlogUrls = [
@@ -115,7 +119,11 @@ const getBlogUrls = async function () {
 
 const getPieceUrls = async function () {
   const piecesUrl = "https://cloud.activepieces.com/api/v1/pieces";
-  const piecesResponse = await fetch(piecesUrl);
+  const piecesResponse = await fetch(piecesUrl, {
+    headers: {
+      'Strapi-Response-Format': 'v4'
+    }
+  });
   const pieces = await piecesResponse.json();
 
   return pieces.map(

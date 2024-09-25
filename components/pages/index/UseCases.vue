@@ -1,6 +1,10 @@
 <script setup>
 const config = useRuntimeConfig();
-const { data: marketingTemplates } = await useFetch(`${config.public.strapiUrl}/api/marketing-templates`);
+const { data: marketingTemplates } = await useFetch(`${config.public.strapiUrl}/api/marketing-templates`, {
+    headers: {
+      'Strapi-Response-Format': 'v4'
+    }
+  });
 </script>
 
 <template>

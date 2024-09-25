@@ -42,7 +42,12 @@ function groupFeaturesByCategory(features) {
 }
 
 const { data: features } = await useFetch(
-  `${config.public.strapiUrl}/api/features`
+  `${config.public.strapiUrl}/api/features`,
+  {
+    headers: {
+      'Strapi-Response-Format': 'v4'
+    }
+  }
 );
 const featureGroups = groupFeaturesByCategory(features.value.data);
 

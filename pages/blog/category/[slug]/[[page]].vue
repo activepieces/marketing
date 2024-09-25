@@ -36,10 +36,18 @@ if (process.server) {
 
 import { formatTimeAgo } from '@vueuse/core'
 
-const { data: categoryResponse } = await useFetch(`${config.public.strapiUrl}/api/categories?filters[slug][$eq]=${slug}`);
+const { data: categoryResponse } = await useFetch(`${config.public.strapiUrl}/api/categories?filters[slug][$eq]=${slug}`, {
+    headers: {
+      'Strapi-Response-Format': 'v4'
+    }
+  });
 let category = categoryResponse.value.data[0];
 
-const { data: postsResponse } = await useFetch(`${config.public.strapiUrl}/api/posts?filters[categories][id][$eq]=${category.id}&sort[0]=createdAt:desc&pagination[start]=${(page - 1) * perPage}&pagination[limit]=${perPage}&populate=featuredImage,author,author.photo,categories`);
+const { data: postsResponse } = await useFetch(`${config.public.strapiUrl}/api/posts?filters[categories][id][$eq]=${category.id}&sort[0]=createdAt:desc&pagination[start]=${(page - 1) * perPage}&pagination[limit]=${perPage}&populate=featuredImage,author,author.photo,categories`, {
+    headers: {
+      'Strapi-Response-Format': 'v4'
+    }
+  });
 
 const defaultImage = 'https://content.activepieces.com/uploads/placeholder_blog_de8c9fa735.png'
 const pagination = postsResponse.value.meta.pagination;
