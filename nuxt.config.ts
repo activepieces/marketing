@@ -95,17 +95,13 @@ const getBlogUrls = async function () {
 
   while (total == null || start < total) {
     const blogPostsUrl = `${process.env.STRAPI_URL}/api/posts?sort=createdAt:desc&pagination[page]=${start}&pagination[pageSize]=${perPage}&populate[author][populate]=photo&populate=categories`;
-    blogPostsResponse = await fetch(blogPostsUrl, {
-      headers: {
-        'Strapi-Response-Format': 'v4'
-      }
-    });
+    blogPostsResponse = await fetch(blogPostsUrl);
     blogPosts = await blogPostsResponse.json();
 
     allBlogUrls = [
       ...allBlogUrls,
       ...blogPosts.data.map((blog) => {
-        return `/blog/${blog.attributes.slug}`;
+        return `/blog/${blog.slug}`;
       }),
     ];
 
@@ -119,11 +115,7 @@ const getBlogUrls = async function () {
 
 const getPieceUrls = async function () {
   const piecesUrl = "https://cloud.activepieces.com/api/v1/pieces";
-  const piecesResponse = await fetch(piecesUrl, {
-    headers: {
-      'Strapi-Response-Format': 'v4'
-    }
-  });
+  const piecesResponse = await fetch(piecesUrl);
   const pieces = await piecesResponse.json();
 
   return pieces.map(

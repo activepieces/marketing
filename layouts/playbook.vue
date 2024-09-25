@@ -14,23 +14,15 @@ onMounted(() => {
 });
 
 const { data: playbooks, error: playbookError } = await useFetch(
-  `${config.public.strapiUrl}/api/playbooks?filters[slug][$eq]=${whichPageObj.playbookName}`, {
-    headers: {
-      'Strapi-Response-Format': 'v4'
-    }
-  }
+  `${config.public.strapiUrl}/api/playbooks?filters[slug][$eq]=${whichPageObj.playbookName}`
 );
 const playbook = playbooks.value.data[0];
 
 const { data: chapters, error: chapterError } = await useFetch(
-  `${config.public.strapiUrl}/api/playbook-chapters?filters[playbook][id][$eq]=${playbook.id}&sort[0]=order:asc&populate[chapterArticles][populate][0]=parentArticle`, {
-    headers: {
-      'Strapi-Response-Format': 'v4'
-    }
-  }
+  `${config.public.strapiUrl}/api/playbook-chapters?filters[playbook][id][$eq]=${playbook.id}&sort[0]=order:asc&populate[chapterArticles][populate][0]=parentArticle`
 );
 
-let playbookName = ref(playbook.attributes.title);
+let playbookName = ref(playbook.title);
 provide("playbookName", playbookName);
 
 function nestArticles(articles) {
@@ -54,15 +46,15 @@ function nestArticles(articles) {
 }
 
 const navItems = chapters.value.data.map((chapter) => {
-  const { title, chapterArticles } = chapter.attributes;
+  const { title, chapterArticles } = chapter;
 
-  const articles = chapterArticles.data
+  const articles = chapterArticles
     .map((article) => ({
       id: article.id,
-      title: article.attributes.title,
-      url: article.attributes.slug,
-      order: article.attributes.order,
-      parentArticle: article.attributes.parentArticle,
+      title: article.title,
+      url: article.slug,
+      order: article.order,
+      parentArticle: article.parentArticle,
     }))
     .sort((a, b) => a.order - b.order);
 
@@ -212,7 +204,7 @@ onMounted(() => {
           @click="isExpanded = !isExpanded"
         >
           <p class="text-sm text-gray-900">
-            <span class="font-bold"> {{ playbook.attributes.title }}</span
+            <span class="font-bold"> {{ playbook.title }}</span
             >: Table of Content
           </p>
           <button
@@ -289,7 +281,7 @@ onMounted(() => {
               ><h2
                 class="mb-4 text-4xl lg:text-3xl tracking-tight font-extrabold text-gray-700 dark:text-white hover:text-black"
               >
-                {{ playbook.attributes.title }}
+                {{ playbook.title }}
               </h2></NuxtLink
             >-->
             <div class="sidebar mt-10 text-sm">
@@ -333,7 +325,7 @@ onMounted(() => {
               <h1
                 class="text-[80px] tracking-tight font-medium max-[555px]:text-6xl"
               >
-                {{ playbook.attributes.title }}
+                {{ playbook.title }}
               </h1>
 
               <h2

@@ -36,18 +36,10 @@ if (process.server) {
 
 import { formatTimeAgo } from '@vueuse/core'
 
-const { data: categoryResponse } = await useFetch(`${config.public.strapiUrl}/api/categories?filters[slug][$eq]=${slug}`, {
-    headers: {
-      'Strapi-Response-Format': 'v4'
-    }
-  });
+const { data: categoryResponse } = await useFetch(`${config.public.strapiUrl}/api/categories?filters[slug][$eq]=${slug}`);
 let category = categoryResponse.value.data[0];
 
-const { data: postsResponse } = await useFetch(`${config.public.strapiUrl}/api/posts?filters[categories][id][$eq]=${category.id}&sort[0]=createdAt:desc&pagination[start]=${(page - 1) * perPage}&pagination[limit]=${perPage}&populate=featuredImage,author,author.photo,categories`, {
-    headers: {
-      'Strapi-Response-Format': 'v4'
-    }
-  });
+const { data: postsResponse } = await useFetch(`${config.public.strapiUrl}/api/posts?filters[categories][id][$eq]=${category.id}&sort[0]=createdAt:desc&pagination[start]=${(page - 1) * perPage}&pagination[limit]=${perPage}&populate=featuredImage,author,author.photo,categories`);
 
 const defaultImage = 'https://content.activepieces.com/uploads/placeholder_blog_de8c9fa735.png'
 const pagination = postsResponse.value.meta.pagination;
@@ -68,19 +60,19 @@ const totalPages = Math.ceil(totalPosts / limit);
             class="text-gray-400">/</span>
         </p>
         <h2 class="mb-4 text-3xl lg:text-5xl tracking-tight font-extrabold text-gray-900 dark:text-white">{{
-          category.attributes.name }}</h2>
+          category.name }}</h2>
         <p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">List of all blogs under {{
-          category.attributes.name }}</p>
+          category.name }}</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
         <div v-for="post in postsResponse.data" class="bg-white rounded-lg shadow-md overflow-hidden group">
-          <NuxtLink :to="`/blog/${post.attributes.slug}`">
+          <NuxtLink :to="`/blog/${post.slug}`">
             <div class="flex flex-col h-full">
               <div class="h-48">
                 <div class="overflow-hidden">
                   <img
-                    :src="post.attributes?.featuredImage?.data?.attributes?.url ? `${config.public.strapiUrl}${post.attributes.featuredImage.data.attributes.url}` : defaultImage"
+                    :src="post?.featuredImage?.data?.url ? `${config.public.strapiUrl}${post.featuredImage.data.url}` : defaultImage"
                     alt="Landscape"
                     class="w-full h-48 object-cover transition-transform duration-300 ease-in-out group-hover:scale-110">
                 </div>
@@ -89,23 +81,23 @@ const totalPages = Math.ceil(totalPosts / limit);
               <div class="p-6 flex flex-col h-full justify-between flex-grow">
                 <div>
                   <h3 class="text-xl font-semibold text-gray-800 mb-2 cursor-pointer">
-                    {{ post.attributes.title }}
+                    {{ post.title }}
                   </h3>
                   <p class="text-gray-600 mt-auto">{{
-                    post.attributes.content.replace(/(\*\*|__|\*|_|~~|`|#|>|-|\+|\[.*?\]\(.*?\)|!\[.*?\]\(.*?\))/g,
+                    post.content.replace(/(\*\*|__|\*|_|~~|`|#|>|-|\+|\[.*?\]\(.*?\)|!\[.*?\]\(.*?\))/g,
                       '').substring(0, 80) }}..</p>
                 </div>
                 <div class="flex flex-col justify-end flex-grow mt-4">
                   <div class="flex justify-between items-center">
                     <div class="flex items-center space-x-2">
                       <img class="w-5 h-5 rounded-full"
-                        :src="`${config.public.strapiUrl}${post.attributes.author.data?.attributes.photo.data.attributes.formats.thumbnail.url}`"
-                        :alt="post.attributes.author.data?.attributes.name">
+                        :src="`${config.public.strapiUrl}${post.author.data?.photo.data.formats.thumbnail.url}`"
+                        :alt="post.author.data?.name">
                       <span class="text-sm font-medium dark:text-white">
-                        {{ post.attributes.author.data?.attributes.name }}
+                        {{ post.author.data?.name }}
                       </span>
                     </div>
-                    <p class="text-gray-400 text-sm ml-auto">{{ formatTimeAgo(new Date(post.attributes.createdAt)) }}
+                    <p class="text-gray-400 text-sm ml-auto">{{ formatTimeAgo(new Date(post.createdAt)) }}
                     </p>
                   </div>
                 </div>
@@ -123,7 +115,7 @@ const totalPages = Math.ceil(totalPosts / limit);
           <span class="font-semibold text-gray-900 dark:text-white">{{ totalPosts }}</span> Blogs
         </span>
         <div class="flex mt-4">
-          <NuxtLink :to="`/blog/category/${category.attributes.slug}/${page - 1}`" v-if="currentPage > 1"
+          <NuxtLink :to="`/blog/category/${category.slug}/${page - 1}`" v-if="currentPage > 1"
             class="flex items-center justify-center px-4 h-10 me-3 text-base font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
             <svg class="w-3.5 h-3.5 me-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
               fill="none" viewBox="0 0 14 10">
@@ -132,7 +124,7 @@ const totalPages = Math.ceil(totalPosts / limit);
             </svg>
             Previous
           </NuxtLink>
-          <NuxtLink :to="`/blog/category/${category.attributes.slug}/${page + 1}`" v-if="currentPage < totalPages"
+          <NuxtLink :to="`/blog/category/${category.slug}/${page + 1}`" v-if="currentPage < totalPages"
             class="flex items-center justify-center px-4 h-10 text-base font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
             Next
             <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"

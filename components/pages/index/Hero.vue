@@ -1,11 +1,7 @@
 <script setup>
 const config = useRuntimeConfig();
 const { data: homepageAnnouncement } = await useFetch(
-  `${config.public.strapiUrl}/api/homepage-announcement`, {
-    headers: {
-      'Strapi-Response-Format': 'v4'
-    }
-  }
+  `${config.public.strapiUrl}/api/homepage-announcement`
 );
 </script>
 
@@ -18,8 +14,8 @@ const { data: homepageAnnouncement } = await useFetch(
         <div class="lg:col-span-6 text-center sm:mb-6 lg:text-left lg:mb-0">
           <div class="max-w-screen-sm mx-auto">
             <!--<a
-              :href="homepageAnnouncement.data.attributes.url"
-              v-if="homepageAnnouncement.data.attributes.content"
+              :href="homepageAnnouncement.data.url"
+              v-if="homepageAnnouncement.data.content"
               class="inline-flex max-w-full items-center justify-between px-1 py-1 pr-4 mb-6 text-sm text-gray-700 bg-white shadow-sm rounded-full dark:bg-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 max-[500px]:pl-4"
               role="alert"
             >
@@ -33,7 +29,7 @@ const { data: homepageAnnouncement } = await useFetch(
                   class="hidden text-primary-700 font-semibold max-[500px]:inline"
                   >New:</span
                 >
-                {{ homepageAnnouncement.data.attributes.content }}</span
+                {{ homepageAnnouncement.data.content }}</span
               >
               <svg
                 class="w-5 h-5 ml-2"

@@ -30,17 +30,12 @@ if (process.client) {
 const slug = route.params.slug;
 
 const { data: posts, error: postError } = await useFetch(
-  `${config.public.strapiUrl}/api/posts?filters[slug][$eq]=${slug}&populate[categories]=*&populate[author]=*&populate[featuredImage]=*`,
-  {
-    headers: {
-      'Strapi-Response-Format': 'v4'
-    }
-  }
+  `${config.public.strapiUrl}/api/posts?filters[slug][$eq]=${slug}&populate[categories]=*&populate[author]=*&populate[featuredImage]=*`
 );
 const post = posts.value.data[0];
 
 // Find related posts (from the same categories but not the current post)
-const categories = post.attributes.categories.data.map(item => item.id);
+const categories = post.categories.map(item => item.id);
 
 const relatedPostsFilters = [
     categories.map((categoryId, i) => `filters[categories][id][$in][${i}]=${categoryId}`).join('&'),
@@ -50,12 +45,7 @@ const relatedPostsFilters = [
 const relatedPostsFiltersParams = relatedPostsFilters.join('&');
 
 const { data: relatedPosts, error: relatedPostsError } = await useFetch(
-  `${config.public.strapiUrl}/api/posts?${relatedPostsFiltersParams}&populate[categories]=*&populate[author]=*&populate[featuredImage]=*`,
-  {
-    headers: {
-      'Strapi-Response-Format': 'v4'
-    }
-  }
+  `${config.public.strapiUrl}/api/posts?${relatedPostsFiltersParams}&populate[categories]=*&populate[author]=*&populate[featuredImage]=*`
 );
 
 const formatDate = function (dateString) {
@@ -91,7 +81,7 @@ const extractDate = function (dateString) {
     return `${year}-${month}-${day}`;
 }
 
-const pageTitle = post.attributes.title
+const pageTitle = post.title
 const metaDesc = '' // get meta description
 const metaKeywords = '' // get keywords
 
@@ -125,13 +115,13 @@ onMounted(() => {
 <template>
     <main class="py-8 lg:py-16 bg-white dark:bg-gray-900 antialiased">
         <meta name="discourse-username"
-            :content="post.attributes.author.data.attributes.discourseUsername !== null ? post.attributes.author.data.attributes.discourseUsername : 'system'">
+            :content="post.author.discourseUsername !== null ? post.author.discourseUsername : 'system'">
 
         <div class="flex justify-between mx-auto max-w-screen-xl">
             <aside class="flex-shrink flex-grow-0 hidden relative mx-auto xl:block" aria-labelledby="sidebar-label">
                 <div
                     class="sticky top-20 p-2 bg-gray-50 rounded-lg border border-gray-200 dark:border-gray-700 dark:bg-gray-800">
-                    <a :href="`https://twitter.com/intent/tweet?text=${post.attributes.title}+${currentUrl}`"
+                    <a :href="`https://twitter.com/intent/tweet?text=${post.title}+${currentUrl}`"
                         target="_blank" data-tooltip-target="share-twitter"
                         class="flex items-center p-2 mb-2 text-sm font-medium text-center text-gray-500 bg-gray-50 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                         type="button">
@@ -163,7 +153,7 @@ onMounted(() => {
                             </defs>
                         </svg>
                     </a>
-                    <a :href="`https://www.reddit.com/submit?url=${currentUrl}&title=${post.attributes.title}`"
+                    <a :href="`https://www.reddit.com/submit?url=${currentUrl}&title=${post.title}`"
                         target="_blank" data-tooltip-target="share-reddit"
                         class="flex items-center p-2 mb-2 text-sm font-medium text-center text-gray-500 bg-gray-50 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                         type="button">
@@ -248,28 +238,28 @@ onMounted(() => {
                         </ol>
                     </nav>
                     <div class="flex items-center my-4 md:my-6">
-                        <NuxtLink v-for="category in post.attributes.categories.data"
-                            :to="`/blog/category/${category.attributes.slug}`"
+                        <NuxtLink v-for="category in post.categories"
+                            :to="`/blog/category/${category.slug}`"
                             class="bg-primary-100 dark:hover:bg-primary-300 text-primary-800 text-sm font-medium mr-3 px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
-                            {{ category.attributes.name }}</NuxtLink>
+                            {{ category.name }}</NuxtLink>
                     </div>
                     <h1 class="mb-2 text-2xl font-extrabold leading-tight text-gray-900 lg:text-4xl dark:text-white">{{
-                        post.attributes.title }}</h1>
+                        post.title }}</h1>
                     <div class="flex justify-between items-center pb-4 border-gray-200 dark:border-gray-700">
                         <div class="mr-4 text-sm">
                             <address class="inline not-italic">By <span rel="author"
                                     class="text-gray-900 no-underline dark:text-white">{{
-                                        post.attributes.author.data.attributes.name }}</span></address>
-                            <span> on <time pubdate :datetime="extractDate(post.attributes.updatedAt)"
-                                    :title="formatDate(post.attributes.updatedAt)">{{
-                                    formatDate(post.attributes.updatedAt) }}</time></span>
+                                        post.author.name }}</span></address>
+                            <span> on <time pubdate :datetime="extractDate(post.updatedAt)"
+                                    :title="formatDate(post.updatedAt)">{{
+                                    formatDate(post.updatedAt) }}</time></span>
                         </div>
                     </div>
                 </header>
-                <img v-if="post.attributes.featuredImage.data"
-                    :src="`${config.public.strapiUrl}${post.attributes.featuredImage?.data?.attributes?.url}`"
+                <img v-if="post.featuredImage"
+                    :src="`${config.public.strapiUrl}${post.featuredImage?.url}`"
                     class="w-full rounded-lg">
-                <div v-html="marked.parse(post.attributes.content)"></div>
+                <div v-html="marked.parse(post.content)"></div>
                 <div id='discourse-comments'></div>
             </article>
             <aside class="shrink-0 hidden relative xl:block xl:w-80" aria-labelledby="sidebar-label">
@@ -294,18 +284,18 @@ onMounted(() => {
             <h2 class="mb-8 text-2xl font-bold text-gray-900 dark:text-white">Read Next</h2>
             <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
                 <article v-for="relatedPost in relatedPosts.data">
-                    <NuxtLink :to="`/blog/${relatedPost.attributes.slug}`"
+                    <NuxtLink :to="`/blog/${relatedPost.slug}`"
                         class="flex overflow-hidden justify-center items-center mb-5 w-full h-60 max-w-full rounded-lg">
-                        <img v-if="typeof relatedPost.attributes.featuredImage.data !== 'undefined'"
+                        <img v-if="typeof relatedPost.featuredImage !== 'undefined'"
                             class="min-w-full min-h-full object-cover w-auto h-auto"
-                            :src="`${config.public.strapiUrl}${relatedPost.attributes.featuredImage.data?.attributes?.formats.thumbnail.url}`"
+                            :src="`${config.public.strapiUrl}${relatedPost.featuredImage?.formats.thumbnail.url}`"
                             alt="Image 1">
                     </NuxtLink>
                     <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
-                        <NuxtLink :to="`/blog/${relatedPost.attributes.slug}`">{{ relatedPost.attributes.title }}
+                        <NuxtLink :to="`/blog/${relatedPost.slug}`">{{ relatedPost.title }}
                         </NuxtLink>
                     </h2>
-                    <NuxtLink :to="`/blog/${relatedPost.attributes.slug}`"
+                    <NuxtLink :to="`/blog/${relatedPost.slug}`"
                         class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline">
                         Read more
                     </NuxtLink>

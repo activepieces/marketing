@@ -1,10 +1,6 @@
 <script setup>
 const config = useRuntimeConfig();
-const { data: marketingTemplates } = await useFetch(`${config.public.strapiUrl}/api/marketing-templates`, {
-    headers: {
-      'Strapi-Response-Format': 'v4'
-    }
-  });
+const { data: marketingTemplates } = await useFetch(`${config.public.strapiUrl}/api/marketing-templates`);
 </script>
 
 <template>
@@ -38,11 +34,11 @@ const { data: marketingTemplates } = await useFetch(`${config.public.strapiUrl}/
                         <p class="font-light text-gray-500 my-8 sm:text-xl dark:text-gray-400">{{ category.description }}</p>
                     </div>
                     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                        <div v-for="template in marketingTemplates.data.filter((template) => template.attributes.category == category.id)" class="bg-white rounded-lg border border-gray-200 shadow-sm dark:bg-gray-800 dark:border-gray-700">
-                            <a :href="`https://cloud.activepieces.com/import-flow-uri-encoded?flow=${encodeURIComponent(template.attributes.template)}`" class="h-full group flex flex-col justify-between px-6 py-6">
+                        <div v-for="template in marketingTemplates.data.filter((template) => template.category == category.id)" class="bg-white rounded-lg border border-gray-200 shadow-sm dark:bg-gray-800 dark:border-gray-700">
+                            <a :href="`https://cloud.activepieces.com/import-flow-uri-encoded?flow=${encodeURIComponent(template.template)}`" class="h-full group flex flex-col justify-between px-6 py-6">
                                 <div>
                                     <ul class="flex space-x-2 sm:mt-0 mb-5">
-                                        <li v-for="piece in template.attributes.pieces.split(',')">
+                                        <li v-for="piece in template.pieces.split(',')">
                                             <span class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
                                                 <img :src="`https://cdn.activepieces.com/pieces/${piece}.png`" class="h-6">
                                             </span>
@@ -50,7 +46,7 @@ const { data: marketingTemplates } = await useFetch(`${config.public.strapiUrl}/
                                     </ul>
 
                                     <h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white mt-4">
-                                        <a href="#">{{ template.attributes.title }}</a>
+                                        <a href="#">{{ template.title }}</a>
                                     </h3>
                                 </div>
 

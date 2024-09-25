@@ -109,19 +109,15 @@ const htmlContent = computed(() =>
 
 if (!isSlugEmpty.value) {
   const articleResponse = await useFetch(
-    `${config.public.strapiUrl}/api/playbook-articles?filters[slug][$eq]=${whichPageObj.articleSlug}`, {
-    headers: {
-      'Strapi-Response-Format': 'v4'
-    }
-  }
+    `${config.public.strapiUrl}/api/playbook-articles?filters[slug][$eq]=${whichPageObj.articleSlug}`
   );
 
   articles.value = articleResponse.data.value;
   articlesError.value = articleResponse.error.value;
   article.value = articles.value.data[0];
-  markdown.value = article.value.attributes.content || "";
+  markdown.value = article.value.content || "";
   readingTime.value = calculateReadingTime(markdown.value);
-  pageTitle.value = article.value.attributes.title + " · " + playbookName.value;
+  pageTitle.value = article.value.title + " · " + playbookName.value;
 }
 
 onMounted(() => {
@@ -139,7 +135,7 @@ onMounted(() => {
     <article
       class="format flex-grow flex-1 max-w-[620px] text-xl font-light pb-20 relative z-0 pt-12 lg:pl-14 max-[555px]:py-6"
     >
-      <!--<h1>{{ article.attributes.title }}</h1>-->
+      <!--<h1>{{ article.title }}</h1>-->
       <p class="text-xs tracking-[0.6px] uppercase font-soehneMono">
         {{ readingTime }} minute read
       </p>

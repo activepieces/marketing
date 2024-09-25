@@ -1,11 +1,7 @@
 <script setup>
 const config = useRuntimeConfig()
-const { data: page, error: postError } = await useFetch(`${config.public.strapiUrl}/api/terms`, {
-    headers: {
-      'Strapi-Response-Format': 'v4'
-    }
-  })
-const terms = page.value.data.attributes;
+const { data: page, error: postError } = await useFetch(`${config.public.strapiUrl}/api/terms`)
+const terms = page.value.data;
 
 const pageTitle = terms.title;
 const metaDesc = 'Terms of Service to use Activepieces, the open source no-code business automation tool';

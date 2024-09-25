@@ -1,11 +1,7 @@
 <script setup>
 const config = useRuntimeConfig();
 const { data: homepageAnnouncement } = await useFetch(
-  `${config.public.strapiUrl}/api/homepage-announcement`, {
-    headers: {
-      'Strapi-Response-Format': 'v4'
-    }
-  }
+  `${config.public.strapiUrl}/api/homepage-announcement`
 );
 </script>
 
@@ -18,8 +14,8 @@ const { data: homepageAnnouncement } = await useFetch(
         <div class="lg:col-span-6 text-center sm:mb-6 lg:text-left lg:mb-0">
           <div class="max-w-screen-sm mx-auto">
             <!--<a
-              :href="homepageAnnouncement.data.attributes.url"
-              v-if="homepageAnnouncement.data.attributes.content"
+              :href="homepageAnnouncement.data.url"
+              v-if="homepageAnnouncement.data.content"
               class="inline-flex max-w-full items-center justify-between px-1 py-1 pr-4 mb-6 text-sm text-gray-700 bg-white shadow-md rounded-full dark:bg-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700"
               role="alert"
             >
@@ -27,10 +23,10 @@ const { data: homepageAnnouncement } = await useFetch(
                 class="px-3 py-1 mr-3 text-xs text-white rounded-full bg-primary-600 whitespace-nowrap"
                 >{{
                   new Date(
-                    homepageAnnouncement.data.attributes.updatedAt
+                    homepageAnnouncement.data.updatedAt
                   ).toDateString() === new Date().toDateString()
                     ? "Today"
-                    : new Date(homepageAnnouncement.data.attributes.updatedAt)
+                    : new Date(homepageAnnouncement.data.updatedAt)
                         .toLocaleDateString("en-US", {
                           month: "short",
                           day: "numeric",
@@ -40,7 +36,7 @@ const { data: homepageAnnouncement } = await useFetch(
               >
               <span
                 class="text-sm font-medium overflow-hidden whitespace-nowrap text-ellipsis max-w-full"
-                >{{ homepageAnnouncement.data.attributes.content }}</span
+                >{{ homepageAnnouncement.data.content }}</span
               >
               <svg
                 class="w-5 h-5 ml-2"

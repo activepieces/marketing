@@ -14,7 +14,7 @@ function groupFeaturesByCategory(features) {
 
   let featureIndex = 0;
   features.forEach((item) => {
-    const attributes = item.attributes;
+    const attributes = item;
     const category = attributes.cateogry; // Note the typo in 'category'
     let group = featureGroups.find((group) => group.name === category);
 
@@ -42,12 +42,7 @@ function groupFeaturesByCategory(features) {
 }
 
 const { data: features } = await useFetch(
-  `${config.public.strapiUrl}/api/features`,
-  {
-    headers: {
-      'Strapi-Response-Format': 'v4'
-    }
-  }
+  `${config.public.strapiUrl}/api/features`
 );
 const featureGroups = groupFeaturesByCategory(features.value.data);
 
