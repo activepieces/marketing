@@ -28,7 +28,6 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
-    "/subprocessors": { redirect: "https://trust.activepieces.com/subprocessors" },
     "/docs": { redirect: "/docs/getting-started/introduction" },
     "/docs/**": { proxy: "https://activepieces.mintlify.dev/docs/**" },
     "/plans": { redirect: "/pricing" },
@@ -50,6 +49,12 @@ export default defineNuxtConfig({
     "/school": {
       redirect:
         "https://community.activepieces.com/c/tutorials/automation-school/11",
+    },
+    "/subprocessors": {
+      redirect: "https://trust.activepieces.com/subprocessors"
+    },
+    "/security": {
+      redirect: "https://trust.activepieces.com"
     },
   },
 
