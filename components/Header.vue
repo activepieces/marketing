@@ -327,7 +327,7 @@ watch(useRoute(), () => {
                               </div>
                           </li>
                           <li>
-                            <a target="_blank" href="https://www.activepieces.com/docs/operations/git-sync">
+                            <a target="_blank" href="/docs/operations/git-sync">
                                 <div class="menu-item-hover flex p-2 -mx-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
                                   <svg class="shrink-0 mt-1  mr-2 w-4 h-4 text-[#006dff]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
                                   <div>
@@ -375,7 +375,7 @@ watch(useRoute(), () => {
                             </a>
                           </li>
                           <li>
-                            <a target="_blank" href="https://www.activepieces.com/docs/developers/building-pieces/overview">
+                            <a target="_blank" href="/docs/developers/building-pieces/overview">
                               <div class="menu-item-hover flex p-2 -mx-2 rounded-lg transition-all duration-700 relative overflow-hidden">
                                 <svg class="shrink-0 mt-1  mr-2 w-4 h-4 text-[#00b248]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                   <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
@@ -390,7 +390,7 @@ watch(useRoute(), () => {
                             </a>
                           </li>
                           <li>
-                            <a target="_blank" href="https://www.activepieces.com/docs/embedding/overview">
+                            <a target="_blank" href="/docs/embedding/overview">
                                 <div class="menu-item-hover flex p-2 -mx-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
                                   <svg class="shrink-0 mt-1  mr-2 w-4 h-4 text-[#00b248]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
                                   <div>
