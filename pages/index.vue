@@ -24,7 +24,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <PagesIndexHero />
+  <PagesIndexHero class="-mt-[62px]" />
   <PagesIndexStory />
   <PagesIndexEnterpriseValues />
   <PagesIndexDepartments />

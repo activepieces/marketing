@@ -1,4 +1,5 @@
 <script setup>
+import { useHead } from '@unhead/vue'
 import { useRoute } from "vue-router";
 import { whichPage } from "~/middleware/playbookRequest";
 import { onMounted, ref, nextTick } from "vue";
@@ -184,6 +185,12 @@ onMounted(() => {
   downloadPdfModal = new Modal(downloadPdfModalEl);
 });
 /* END - Send book to email */
+
+useHead({
+  bodyAttrs: {
+    class: 'pt-[62px]',
+  },
+})
 </script>
 
 <template>
@@ -191,7 +198,7 @@ onMounted(() => {
     <Header :hide-github-badge="true" />
 
     <CookieBanner />
-    <section class="pt-6 relative max-[1100px]:pt-0">
+    <section class="pt-6 relative max-[1100px]:pt-0 -mt-[62px]">
       <div
         class="hidden sticky top-[62px] z-[9] px-6 py-2 bg-primary-300 shadow-md w-full max-[1100px]:block max-[1023px]:top-[60px] max-[1023px]:px-4"
       >

@@ -6,7 +6,7 @@ const { data: homepageAnnouncement } = await useFetch(
 </script>
 
 <template>
-  <section class="animated-gradient dark:bg-gray-900 -mt-[62px]">
+  <section class="animated-gradient dark:bg-gray-900">
     <div
       class="max-w-screen-xl px-4 pt-[120px] xl:pt-[150px] pb-[50px] mx-auto max-[500px]:pt-[125px]"
     >

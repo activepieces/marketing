@@ -2,7 +2,7 @@
 import { onMounted, ref, defineProps } from "vue";
 import { useStorage, useScroll } from "@vueuse/core";
 import { useRoute } from "vue-router";
-import { initCollapses, initDropdowns } from "flowbite";
+import { initCollapses } from "flowbite";
 
 const route = useRoute();
 
@@ -40,7 +40,6 @@ onMounted(() => {
   document.head.appendChild(githubButtonsScript);
 
   initCollapses();
-  initDropdowns();
   menuExpanded.value = false; // reset collapse menu
 });
 
@@ -52,17 +51,17 @@ watch(useRoute(), () => {
 
 <template>
   <header
-    class="max-[1250px]:bg-white"
-    :class="`sticky top-0 z-10 transition-colors duration-300 ${
-      isScrolled ? 'bg-white shadow-md' : 'bg-transparent'
-    }`"
+    class="fixed top-0 z-50 w-full max-[1250px]:bg-white"
+    :class="`transition-colors duration-300`"
   >
-    <nav class="border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
+    <nav class="border-gray-200 px-4 h-[62px] lg:px-6 dark:bg-gray-800
+      max-[1250px]:bg-white" :class="{ 'bg-white': isScrolled, 'max-[1250px]:h-dvh max-[1250px]:overflow-visible': menuExpanded }">
       <div
-        class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl"
+        class="flex flex-wrap space-x-10 h-full items-stretch justify-between mx-auto max-w-screen-xl
+          max-[1250px]:space-x-0"
       >
         <div
-          class="flex flex-row items-center max-[555px]:overflow-hidden max-[555px]:w-[30px]"
+          class="flex flex-row h-[62px] flex-shrink-0 flex-grow-0 items-center max-[555px]:overflow-hidden max-[555px]:w-[30px]"
         >
           <NuxtLink to="/" class="flex items-center">
             <img
@@ -74,7 +73,7 @@ watch(useRoute(), () => {
             />
           </NuxtLink>
         </div>
-        <div class="flex items-center min-[1251px]:order-2">
+        <div class="flex items-center flex-grow-0 min-[1251px]:order-2">
           <a
             href="https://cloud.activepieces.com/sign-in"
             class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 lg:px-5 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800 max-[555px]:hidden"
@@ -100,7 +99,8 @@ watch(useRoute(), () => {
             ref="mobileMenu"
             data-collapse-toggle="mobile-menu-2"
             type="button"
-            class="inline-flex items-center p-2 ml-2 text-sm text-gray-500 rounded-lg hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 max-[1250px]:flex"
+            class="inline-flex items-center p-2 ms-2 text-sm text-gray-500 rounded-lg hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600
+              max-[1250px]:flex"
             aria-controls="mobile-menu-2"
             :aria-expanded="menuExpanded"
             @click="menuExpanded = !menuExpanded"
@@ -121,21 +121,23 @@ watch(useRoute(), () => {
           </button>
         </div>
         <div
-          class="hidden text-sm justify-between items-center w-full min-[1251px]:flex min-[1251px]:w-auto min-[1251px]:order-1"
+          class="flex flex-grow hidden text-base justify-between items-center w-full
+            min-[1251px]:flex min-[1251px]:w-auto min-[1251px]:order-1 max-[1250px]:bg-white max-[1250px]:w-full max-[1250px]:max-h-dvh max-[1250px]:flex-col max-[1250px]:justify-start max-[1250px]:items-stretch max-[1250px]:overflow-scroll max-[1250px]:!-mx-4 max-[1250px]:px-4 max-[1250px]:h-[calc(100vh_-_62px)]"
           id="mobile-menu-2"
         >
           <ul
-            class="flex flex-col mt-4 font-medium min-[1251px]:items-center min-[1251px]:flex-row min-[1251px]:space-x-6 min-[1251px]:mt-0"
+            class="flex flex-col h-full mt-4 items-stretch font-medium min-[1251px]:flex-row min-[1251px]:space-x-6 min-[1251px]:mt-0"
           >
-            <li class="group">
-              <button
-                id="product-nav-button"
-                data-dropdown-toggle="product-nav-menu"
-                class="flex justify-between items-center py-3 pr-4 pl-3 w-full font-medium text-gray-900 border-b border-gray-100 min-[1251px]:w-auto group-hover:text-black min-[1251px]:border-0 min-[1251px]:hover:text-primary-600 min-[1251px]:p-0 dark:text-gray-400 min-[1251px]:dark:hover:text-primary-500 dark:hover:bg-gray-700 dark:hover:text-primary-500 min-[1251px]:dark:hover:bg-transparent dark:border-gray-700 transition duration-400"
+            <li class="group/main flex items-center max-[1250px]:flex-col">
+              <input type="checkbox" name="nav-menu" id="nav-button-platform" class="hidden peer">
+              <label for="nav-button-platform"
+                id="platform-nav-button"
+                class="flex relative z-20 justify-between items-center py-3 ps-3 pe-4 w-full font-medium text-black border-b border-gray-100 min-[1251px]:w-auto group-hover:text-black min-[1251px]:border-0 min-[1251px]:group-hover/main:text-primary-600 min-[1251px]:p-0 dark:text-gray-400 min-[1251px]:dark:hover:text-primary-500 dark:hover:bg-gray-700 dark:hover:text-primary-500 min-[1251px]:dark:hover:bg-transparent dark:border-gray-700 transition duration-400 max-[1250px]:peer-checked:[&>svg]:rotate-180
+                  max-[1250px]:ps-0"
               >
-                Product
+                Platform
                 <svg
-                  class="ml-1 w-5 h-5 min-[1251px]:w-4 min-[1251px]:h-4 min-[1251px]:group-hover:-rotate-180 transition duration-300"
+                  class="ml-1 w-5 h-5 min-[1251px]:w-4 min-[1251px]:h-4 min-[1251px]:group-hover/main:-rotate-180 transition duration-300"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -146,98 +148,272 @@ watch(useRoute(), () => {
                     clip-rule="evenodd"
                   ></path>
                 </svg>
-              </button>
-              <div
-                id="product-nav-menu"
-                class="hidden max-min-[1251px]:!static !inset-x-auto !inset-y-auto !transform-none min-[1251px]:!block min-[1251px]:!opacity-0 min-[1251px]:!h-0 min-[1251px]:absolute z-10 bg-white rounded divide-y divide-gray-100 min-[1251px]:shadow-2xl dark:bg-gray-700 transition-opacity duration-[400ms] min-[1251px]:group-hover:!h-auto min-[1251px]:hover:!h-auto min-[1251px]:hover:!opacity-100 min-[1251px]:group-hover:!opacity-100 overflow-hidden"
-              >
-                <ul
-                  class="py-4 px-2 text-lg font-medium text-gray-500 dark:text-gray-400 overflow-hidden"
-                  aria-labelledby="dropdown-button2"
-                >
-                  <li>
-                    <NuxtLink
-                      to="/pieces"
-                      class="group/link flex gap-4 items-center py-2.5 px-4 w-full rounded-lg hover:bg-blue-50 transition-colors duration-200"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="lucide lucide-unplug text-blue-700"
-                      >
-                        <path d="m19 5 3-3" />
-                        <path d="m2 22 3-3" />
-                        <path
-                          d="M6.3 20.3a2.4 2.4 0 0 0 3.4 0L12 18l-6-6-2.3 2.3a2.4 2.4 0 0 0 0 3.4l2.6 2.6a2.4 2.4 0 0 0 3.4 0Z"
-                        />
-                        <path d="M7.5 13.5 10 11" />
-                        <path d="M10.5 16.5 13 14" />
-                        <path
-                          d="m12 6 6 6 2.3-2.3a2.4 2.4 0 0 0 0-3.4l-2.6-2.6a2.4 2.4 0 0 0-3.4 0Z"
-                        />
-                      </svg>
-                      <div>
-                        <div class="text-sm text-black">Pieces</div>
-                        <p
-                          class="text-xs text-gray-500 font-light max-w-80 group-hover/link:text-black"
-                        >
-                          Explore our catalog of utilities and connectors
-                        </p>
-                      </div>
-                    </NuxtLink>
-                  </li>
-                  <li>
-                    <NuxtLink
-                      to="https://www.activepieces.com/request-a-feature"
-                      class="group/link flex gap-4 items-center py-2.5 px-4 w-full rounded-lg hover:bg-amber-50 transition-colors duration-200"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="lucide lucide-lightbulb text-amber-700"
-                      >
-                        <path
-                          d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"
-                        />
-                        <path d="M9 18h6" />
-                        <path d="M10 22h4" />
-                      </svg>
-                      <div>
-                        <div class="text-sm text-black">Feature Requests</div>
-                        <p
-                          class="text-xs text-gray-500 font-light max-w-80 group-hover/link:text-black"
-                        >
-                          Request a feature or upvote an existing request
-                        </p>
-                      </div>
-                    </NuxtLink>
-                  </li>
-                </ul>
-              </div>
+              </label>
+
+              <div class="pointer-events-none -z-[1] fixed top-0 left-0 w-full h-[62px] bg-white opacity-0 group-hover/main:opacity-100 group-hover/main:transition-none transition-opacity duration-500
+                max-[1250px]:!hidden"></div>
+              <div class="hidden pointer-events-none -z-10 fixed top-0 bottom-0 left-0 right-0 bg-gray-500 opacity-0 transition-opacity group-hover/main:block group-hover/main:opacity-30
+                max-[1250px]:!hidden"></div>
+              <nav class="absolute -z-10 text-base transform transition-transform duration-200 [transform:translateY(calc(-101%-62px))] group-hover/main:[transform:translateY(0%)] w-full top-0 left-0 pt-[62px] bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-600
+                max-[1250px]:static max-[1250px]:z-auto max-[1250px]:transform-none max-[1250px]:transition-none max-[1250px]:transition-none max-[1250px]:pt-0 max-[1250px]:px-4 max-[1250px]:hidden max-[1250px]:peer-checked:block">
+                  <div class="grid border-t py-10 gap-x-4 mx-auto max-w-screen-xl text-gray-900 dark:text-white
+                    grid-cols-4 max-[1250px]:grid-cols-1 max-[1250px]:py-2 max-[1250px]:border-none max-[1250px]:space-y-6">
+                      <ul class="flex flex-col gap-2">
+                          <li class="uppercase mb-2 text-lg text-[#d21be4]
+                            max-[1250px]:text-base max-[1250px]:mb-0">
+                              Automate Work
+                          </li>
+                          <li class="group">
+                              <div>
+                                <div class="menu-item-hover relative text-gray-400 flex p-2 -mx-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                                  <svg class="shrink-0 mt-1 mr-2 w-4 h-4 text-[#d21be4]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                                  <div>
+                                      <div class="font-semibold">No-Code Automation</div>
+                                      <span class="font-light dark:text-gray-400">Enjoy a magical automation building experience</span>
+                                  </div>
+
+                                  <span class="hidden group-hover:block absolute w-auto left-1/2 bottom-5 transform -translate-x-1/2 text-sm text-center bg-black text-white rounded-lg p-1.5">
+                                    We're cooking this page
+                                    <span class="typing inline">  
+                                      <span class="dot"></span>
+                                      <span class="dot"></span>
+                                      <span class="dot"></span>
+                                    </span>
+                                  </span>
+                                </div>
+                              </div>
+                          </li>
+                          <li class="group">
+                            <div>
+                                <div class="menu-item-hover relative text-gray-400 flex p-2 -mx-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                                  <svg class="shrink-0 mt-1  mr-2 w-4 h-4 text-[#d21be4]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                                  <div>
+                                      <div class="font-semibold">Human Input</div>
+                                      <span class="font-light dark:text-gray-400">Request approvals or trigger automations by form entry</span>
+                                  </div>
+
+                                  <span class="hidden group-hover:block absolute w-auto left-1/2 bottom-5 transform -translate-x-1/2 text-sm text-center bg-black text-white rounded-lg p-1.5">
+                                    We're cooking this page
+                                    <span class="typing inline">  
+                                      <span class="dot"></span>
+                                      <span class="dot"></span>
+                                      <span class="dot"></span>
+                                    </span>
+                                  </span>
+                                </div>
+                              </div>
+                          </li>
+                          <li>
+                            <NuxtLink to="/pieces">
+                                <div class="menu-item-hover flex p-2 -mx-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                                  <svg class="shrink-0 mt-1  mr-2 w-4 h-4 text-[#d21be4]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                                  <div>
+                                      <div class="font-semibold">Pieces</div>
+                                      <span class="font-light text-gray-700 dark:text-gray-400">Connect to hundreds of apps you use everyday</span>
+                                  </div>
+                                </div>
+                            </NuxtLink>
+                          </li>
+                      </ul>
+                      <ul class="flex flex-col gap-2">
+                          <li class="uppercase mb-2 text-lg text-[#6807F9]
+                            max-[1250px]:text-base max-[1250px]:mb-0">
+                              Unlock AI
+                          </li>
+                          <li class="group">
+                            <div>
+                                <div class="menu-item-hover relative text-gray-400 flex p-2 -mx-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                                  <svg class="shrink-0 mt-1  mr-2 w-4 h-4 text-[#6807F9]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                                  <div>
+                                      <div class="font-semibold">AI Pieces</div>
+                                      <span class="font-light dark:text-gray-400">Create AI agents with our extremely simplified AI pieces</span>
+                                  </div>
+
+                                  <span class="hidden group-hover:block absolute w-auto left-1/2 bottom-5 transform -translate-x-1/2 text-sm text-center bg-black text-white rounded-lg p-1.5">
+                                    We're cooking this page
+                                    <span class="typing inline">  
+                                      <span class="dot"></span>
+                                      <span class="dot"></span>
+                                      <span class="dot"></span>
+                                    </span>
+                                  </span>
+                                </div>
+                              </div>
+                          </li>
+                          <li class="group">
+                            <div>
+                                <div class="menu-item-hover relative text-gray-400 flex p-2 -mx-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                                  <svg class="shrink-0 mt-1  mr-2 w-4 h-4 text-[#6807F9]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                                  <div>
+                                      <div class="font-semibold">Chat Interface</div>
+                                      <span class="font-light dark:text-gray-400">Build chat experiences with advanced logic</span>
+                                  </div>
+
+                                  <span class="hidden group-hover:block absolute w-auto left-1/2 bottom-5 transform -translate-x-1/2 text-sm text-center bg-black text-white rounded-lg p-1.5">
+                                    We're cooking this page
+                                    <span class="typing inline">  
+                                      <span class="dot"></span>
+                                      <span class="dot"></span>
+                                      <span class="dot"></span>
+                                    </span>
+                                  </span>
+                                </div>
+                              </div>
+                          </li>
+                          <li class="group">
+                            <div>
+                                <div class="menu-item-hover relative text-gray-400 flex p-2 -mx-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                                  <svg class="shrink-0 mt-1  mr-2 w-4 h-4 text-[#6807F9]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                                  <div>
+                                      <div class="font-semibold">Code Assistant</div>
+                                      <span class="font-light dark:text-gray-400">Supercharge your automations with AI-assisted code</span>
+                                  </div>
+
+                                  <span class="hidden group-hover:block absolute w-auto left-1/2 bottom-5 transform -translate-x-1/2 text-sm text-center bg-black text-white rounded-lg p-1.5">
+                                    We're cooking this page
+                                    <span class="typing inline">  
+                                      <span class="dot"></span>
+                                      <span class="dot"></span>
+                                      <span class="dot"></span>
+                                    </span>
+                                  </span>
+                                </div>
+                              </div>
+                          </li>
+                      </ul>
+                      <ul class="flex-col gap-2 flex">
+                          <li class="uppercase mb-2 text-lg text-[#006dff]
+                            max-[1250px]:text-base max-[1250px]:mb-0">
+                              Empower Team
+                          </li>
+                          <li class="group">
+                            <div>
+                                <div class="menu-item-hover relative text-gray-400 flex p-2 -mx-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                                  <svg class="shrink-0 mt-1  mr-2 w-4 h-4 text-[#006dff]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                                  <div>
+                                      <div class="font-semibold">Decentralized Innovation</div>
+                                      <span class="font-light dark:text-gray-400">Bring your team and unlock new levels of innovation</span>
+                                  </div>
+
+                                  <span class="hidden group-hover:block absolute w-auto left-1/2 bottom-5 transform -translate-x-1/2 text-sm text-center bg-black text-white rounded-lg p-1.5">
+                                    We're cooking this page
+                                    <span class="typing inline">  
+                                      <span class="dot"></span>
+                                      <span class="dot"></span>
+                                      <span class="dot"></span>
+                                    </span>
+                                  </span>
+                                </div>
+                              </div>
+                          </li>
+                          <li class="group">
+                            <div>
+                                <div class="menu-item-hover relative text-gray-400 flex p-2 -mx-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                                  <svg class="shrink-0 mt-1  mr-2 w-4 h-4 text-[#006dff]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                                  <div>
+                                      <div class="font-semibold">Governance</div>
+                                      <span class="font-light dark:text-gray-400">Implement all security practices and stay compliant</span>
+                                  </div>
+
+                                  <span class="hidden group-hover:block absolute w-auto left-1/2 bottom-5 transform -translate-x-1/2 text-sm text-center bg-black text-white rounded-lg p-1.5">
+                                    We're cooking this page
+                                    <span class="typing inline">  
+                                      <span class="dot"></span>
+                                      <span class="dot"></span>
+                                      <span class="dot"></span>
+                                    </span>
+                                  </span>
+                                </div>
+                              </div>
+                          </li>
+                          <li>
+                            <a target="_blank" href="https://www.activepieces.com/docs/operations/git-sync">
+                                <div class="menu-item-hover flex p-2 -mx-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                                  <svg class="shrink-0 mt-1  mr-2 w-4 h-4 text-[#006dff]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                                  <div>
+                                      <div class="font-semibold">Collaboration</div>
+                                      <span class="font-light text-gray-700 dark:text-gray-400">Set up the needed workflow to build & deploy automations</span>
+                                  </div>
+                                </div>
+                            </a>
+                          </li>
+                          <li class="group">
+                            <div>
+                                <div class="menu-item-hover relative text-gray-400 flex p-2 -mx-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                                  <svg class="shrink-0 mt-1  mr-2 w-4 h-4 text-[#006dff]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                                  <div>
+                                      <div class="font-semibold">Engagement</div>
+                                      <span class="font-light dark:text-gray-400">Find and grow your internal heroes with leaderboards</span>
+                                  </div>
+
+                                  <span class="hidden group-hover:block absolute w-auto left-1/2 bottom-5 transform -translate-x-1/2 text-sm text-center bg-black text-white rounded-lg p-1.5">
+                                    We're cooking this page
+                                    <span class="typing inline">  
+                                      <span class="dot"></span>
+                                      <span class="dot"></span>
+                                      <span class="dot"></span>
+                                    </span>
+                                  </span>
+                                </div>
+                              </div>
+                          </li>
+                      </ul>
+                      <ul class="flex-col gap-2 flex">
+                          <li class="uppercase mb-2 text-lg text-[#00b248]
+                            max-[1250px]:text-base max-[1250px]:mb-0">
+                              Extend Code
+                          </li>
+                          <li>
+                            <a target="_blank" href="https://github.com/activepieces/activepieces">
+                                <div class="menu-item-hover flex p-2 -mx-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                                  <svg class="shrink-0 mt-1  mr-2 w-4 h-4 text-[#00b248]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                                  <div>
+                                      <div class="font-semibold">Open Source</div>
+                                      <span class="font-light text-gray-700 dark:text-gray-400">Activepieces is MIT licensed with ~10k stars on GitHub</span>
+                                  </div>
+                                </div>
+                            </a>
+                          </li>
+                          <li>
+                            <a target="_blank" href="https://www.activepieces.com/docs/developers/building-pieces/overview">
+                              <div class="menu-item-hover flex p-2 -mx-2 rounded-lg transition-all duration-700 relative overflow-hidden">
+                                <svg class="shrink-0 mt-1  mr-2 w-4 h-4 text-[#00b248]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                  <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <div>
+                                  <div class="font-semibold">Pieces Framework</div>
+                                  <span class="font-light text-gray-700 dark:text-gray-400">
+                                    Devs love our TypeScript framework to build pieces
+                                  </span>
+                                </div>
+                              </div>
+                            </a>
+                          </li>
+                          <li>
+                            <a target="_blank" href="https://www.activepieces.com/docs/embedding/overview">
+                                <div class="menu-item-hover flex p-2 -mx-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                                  <svg class="shrink-0 mt-1  mr-2 w-4 h-4 text-[#00b248]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                                  <div>
+                                      <div class="font-semibold">Embed in SaaS</div>
+                                      <span class="font-light text-gray-700 dark:text-gray-400">Offer workflows in your SaaS with a few lines of code</span>
+                                  </div>
+                                </div>
+                            </a>
+                          </li>
+                      </ul>
+                  </div>
+              </nav>
             </li>
-            <li class="group">
-              <button
+            <li class="group/main flex items-center max-[1250px]:flex-col">
+              <input type="checkbox" name="nav-menu" id="nav-button-resources" class="hidden peer">
+              <label for="nav-button-resources"
                 id="resources-nav-button"
-                data-dropdown-toggle="resources-nav-menu"
-                class="flex justify-between items-center py-3 pr-4 pl-3 w-full font-medium text-gray-900 border-b border-gray-100 min-[1251px]:w-auto group-hover:text-black min-[1251px]:border-0 min-[1251px]:hover:text-primary-600 min-[1251px]:p-0 dark:text-gray-400 min-[1251px]:dark:hover:text-primary-500 dark:hover:bg-gray-700 dark:hover:text-primary-500 min-[1251px]:dark:hover:bg-transparent dark:border-gray-700 transition duration-400"
+                class="flex relative z-20 justify-between items-center py-3 ps-3 pe-4 w-full font-medium text-black border-b border-gray-100 min-[1251px]:w-auto group-hover:text-black min-[1251px]:border-0 min-[1251px]:group-hover/main:text-primary-600 min-[1251px]:p-0 dark:text-gray-400 min-[1251px]:dark:hover:text-primary-500 dark:hover:bg-gray-700 dark:hover:text-primary-500 min-[1251px]:dark:hover:bg-transparent dark:border-gray-700 transition duration-400 max-[1250px]:peer-checked:[&>svg]:rotate-180
+                  max-[1250px]:ps-0"
               >
                 Resources
                 <svg
-                  class="ml-1 w-5 h-5 min-[1251px]:w-4 min-[1251px]:h-4 min-[1251px]:group-hover:-rotate-180 transition duration-300"
+                  class="ml-1 w-5 h-5 min-[1251px]:w-4 min-[1251px]:h-4 min-[1251px]:group-hover/main:-rotate-180 transition duration-300"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -248,178 +424,125 @@ watch(useRoute(), () => {
                     clip-rule="evenodd"
                   ></path>
                 </svg>
-              </button>
-              <div
-                id="resources-nav-menu"
-                class="hidden max-min-[1251px]:!static !inset-x-auto !inset-y-auto !transform-none min-[1251px]:!block min-[1251px]:!opacity-0 min-[1251px]:!h-0 min-[1251px]:absolute z-10 bg-white rounded divide-y divide-gray-100 min-[1251px]:shadow-2xl dark:bg-gray-700 transition-opacity duration-[400ms] min-[1251px]:group-hover:!h-auto min-[1251px]:hover:!h-auto min-[1251px]:hover:!opacity-100 min-[1251px]:group-hover:!opacity-100 overflow-hidden"
-              >
-                <ul
-                  class="py-4 px-2 text-lg font-medium text-gray-500 dark:text-gray-400 overflow-hidden"
-                  aria-labelledby="dropdown-button2"
-                >
-                  <li>
-                    <NuxtLink
-                      to="https://community.activepieces.com/c/tutorials/10"
-                      class="group/link flex gap-4 items-center py-2.5 px-4 w-full rounded-lg hover:bg-green-50 transition-colors duration-200"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="lucide lucide-video text-green-700"
-                      >
-                        <path
-                          d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5"
-                        />
-                        <rect x="2" y="6" width="16" height="14" rx="2" />
-                      </svg>
+              </label>
 
-                      <div>
-                        <div class="text-sm text-black">Tutorials</div>
-                        <p
-                          class="text-xs text-gray-500 font-light max-w-80 group-hover/link:text-black"
-                        >
-                          Learn the best ways to automate your work
-                        </p>
+              <div class="pointer-events-none -z-[1] fixed top-0 left-0 w-full h-[62px] bg-white opacity-0 group-hover/main:opacity-100 group-hover/main:transition-none transition-opacity duration-500
+                max-[1250px]:!hidden"></div>
+              <div class="hidden pointer-events-none -z-10 fixed top-0 bottom-0 left-0 right-0 bg-gray-500 opacity-0 transition-opacity group-hover/main:block group-hover/main:opacity-30
+                max-[1250px]:!hidden"></div>
+              <nav class="absolute -z-10 text-base transform transition-transform duration-200 [transform:translateY(calc(-101%-62px))] group-hover/main:[transform:translateY(0%)] w-full top-0 left-0 pt-[62px] bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-600
+                max-[1250px]:static max-[1250px]:z-auto max-[1250px]:transform-none max-[1250px]:transition-none max-[1250px]:transition-none max-[1250px]:pt-0 max-[1250px]:px-4 max-[1250px]:hidden max-[1250px]:peer-checked:block">
+                  <div class="grid border-t py-10 gap-x-4 mx-auto max-w-screen-xl text-gray-900 dark:text-white
+                    grid-cols-4 max-[1250px]:grid-cols-1 max-[1250px]:py-2 max-[1250px]:border-none max-[1250px]:space-y-6">
+                      <div class="px-4">
+                          <NuxtLink to="/ai-transformation" class="block rounded-lg transition-transform duration-500 ease-in-out transform hover:scale-105 hover:-rotate-2 hover:shadow-2xl hover:shadow-gray-300
+                            max-[1250px]:max-w-[200px] max-[1250px]:!shadow-none max-[1250px]:!transform-none">
+                            <img src="/harmony.png">
+                          </NuxtLink>
                       </div>
-                    </NuxtLink>
-                  </li>
-                  <li>
-                    <NuxtLink
-                      to="https://community.activepieces.com/"
-                      class="group/link flex gap-4 items-center py-2.5 px-4 w-full rounded-lg hover:bg-pink-50 transition-colors duration-200"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="lucide lucide-messages-square text-pink-700"
-                      >
-                        <path
-                          d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2z"
-                        />
-                        <path
-                          d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"
-                        />
-                      </svg>
-                      <div>
-                        <div class="text-sm text-black">Community</div>
-                        <p
-                          class="text-xs text-gray-500 font-light max-w-80 group-hover/link:text-black"
-                        >
-                          Get answers to your questions by the community
-                        </p>
-                      </div>
-                    </NuxtLink>
-                  </li>
-                  <li>
-                    <NuxtLink
-                      to="https://www.activepieces.com/docs"
-                      class="group/link flex gap-4 items-center py-2.5 px-4 w-full rounded-lg hover:bg-indigo-50 transition-colors duration-200"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="text-indigo-700 lucide lucide-book-text"
-                      >
-                        <path
-                          d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"
-                        />
-                        <path d="M8 11h8" />
-                        <path d="M8 7h6" />
-                      </svg>
-                      <div>
-                        <div class="text-sm text-black">Docs</div>
-                        <p
-                          class="text-xs text-gray-500 font-light max-w-80 group-hover/link:text-black"
-                        >
-                          Learn deploying Activepieces or building pieces
-                        </p>
-                      </div>
-                    </NuxtLink>
-                  </li>
-                  <li>
-                    <NuxtLink
-                      to="/blog"
-                      class="group/link flex gap-4 items-center py-2.5 px-4 w-full rounded-lg hover:bg-blue-50 transition-colors duration-200"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="lucide lucide-notebook-pen text-blue-700"
-                      >
-                        <path
-                          d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4"
-                        />
-                        <path d="M2 6h4" />
-                        <path d="M2 10h4" />
-                        <path d="M2 14h4" />
-                        <path d="M2 18h4" />
-                        <path
-                          d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"
-                        />
-                      </svg>
-                      <div>
-                        <div class="text-sm text-black">Blog</div>
-                        <p
-                          class="text-xs text-gray-500 font-light max-w-80 group-hover/link:text-black"
-                        >
-                          Discover the latest trends in AI automation
-                        </p>
-                      </div>
-                    </NuxtLink>
-                  </li>
-                </ul>
-              </div>
+
+                      <ul class="flex flex-col gap-3 px-2">
+                          <li class="mb-2 text-2xl text-gray-400 px-4 pb-4 border-b border-gray-300">
+                              Learn
+                          </li>
+                          <li>
+                              <NuxtLink to="/docs" class="text-lg font-semibold relative text-black flex p-2 px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                                  Docs
+                              </NuxtLink>
+                          </li>
+                          <li>
+                              <div class="group text-lg font-semibold relative text-gray-500 flex p-2 px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                                  Activpieces 101 <span class="italic ms-1.5 py-1 px-2 rounded-lg bg-gray-100 text-sm group-hover:bg-black group-hover:text-white">soon</span>
+                              </div>
+                          </li>
+                          <li>
+                              <div class="group text-lg font-semibold relative text-gray-500 flex p-2 px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                                  AI Automation 101 <span class="italic ms-1.5 py-1 px-2 rounded-lg bg-gray-100 text-sm group-hover:bg-black group-hover:text-white">soon</span>
+                              </div>
+                          </li>
+                          <li>
+                              <div class="group text-lg font-semibold relative text-gray-500 flex p-2 px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                                  Internet 101 <span class="italic ms-1.5 py-1 px-2 rounded-lg bg-gray-100 text-sm group-hover:bg-black group-hover:text-white">soon</span>
+                              </div>
+                          </li>
+                          <li>
+                              <NuxtLink to="/ai-transformation" class="text-lg font-semibold relative text-black flex p-2 px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                                  AI Adoption
+                              </NuxtLink>
+                          </li>
+                          <li>
+                              <a href="https://community.activepieces.com/c/tutorials/10" class="text-lg font-semibold relative text-black flex p-2 px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                                  Community Tutorials
+                              </a>
+                          </li>
+                      </ul>
+                      <ul class="flex flex-col gap-3 px-2">
+                          <li class="mb-2 text-2xl text-gray-400 px-4 pb-4 border-b border-gray-300">
+                              Customers
+                          </li>
+                          <li>
+                              <a target="_blank" href="https://www.g2.com/products/activepieces/reviews" class="text-lg font-semibold relative text-black flex p-2 px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                                  Reviews
+                              </a>
+                          </li>
+                          <li>
+                              <div class="group text-lg font-semibold relative text-gray-500 flex p-2 px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                                  Story 1 <span class="italic ms-1.5 py-1 px-2 rounded-lg bg-gray-100 text-sm group-hover:bg-black group-hover:text-white">soon</span>
+                              </div>
+                          </li>
+                          <li>
+                              <div class="group text-lg font-semibold relative text-gray-500 flex p-2 px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                                  Story 2 <span class="italic ms-1.5 py-1 px-2 rounded-lg bg-gray-100 text-sm group-hover:bg-black group-hover:text-white">soon</span>
+                              </div>
+                          </li>
+                          <li>
+                              <div class="group text-lg font-semibold relative text-gray-500 flex p-2 px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                                  Story 3 <span class="italic ms-1.5 py-1 px-2 rounded-lg bg-gray-100 text-sm group-hover:bg-black group-hover:text-white">soon</span>
+                              </div>
+                          </li>
+                      </ul>
+                      <ul class="flex flex-col gap-3 px-2">
+                          <li class="mb-2 text-2xl text-gray-400 px-4 pb-4 border-b border-gray-300">
+                              Community
+                          </li>
+                          <li>
+                              <div class="group text-lg font-semibold relative text-gray-500 flex p-2 px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                                  Partners <span class="italic ms-1.5 py-1 px-2 rounded-lg bg-gray-100 text-sm group-hover:bg-black group-hover:text-white">soon</span>
+                              </div>
+                          </li>
+                          <li>
+                              <a href="https://community.activepieces.com" class="text-lg font-semibold relative text-black flex p-2 px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                                  Community Forum
+                              </a>
+                          </li>
+                          <li>
+                              <a target="_blank" href="https://discord.com/invite/2jUXBKDdP8" class="text-lg font-semibold relative text-black flex p-2 px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                                  Discord
+                              </a>
+                          </li>
+                          <li>
+                              <NuxtLink href="/blog" class="text-lg font-semibold relative text-black flex p-2 px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                                  Blog
+                              </NuxtLink>
+                          </li>
+                      </ul>
+                  </div>
+              </nav>
             </li>
-            <li>
+            <li class="flex items-center">
               <NuxtLink
                 to="/pricing"
-                class="block py-2 pr-4 pl-3 text-gray-900 border-b border-gray-100 text-gray-500 hover:bg-gray-50 min-[1251px]:hover:bg-transparent min-[1251px]:border-0 min-[1251px]:hover:text-primary-600 min-[1251px]:p-0 dark:text-gray-400 min-[1251px]:dark:hover:text-primary-500 dark:hover:bg-gray-700 dark:hover:text-primary-500 min-[1251px]:dark:hover:bg-transparent dark:border-gray-700"
+                class="flex relative z-20 justify-between items-center py-3 ps-3 pe-4 w-full font-medium text-black border-b border-gray-100 min-[1251px]:w-auto hover:text-primary-600 min-[1251px]:border-0 min-[1251px]:group-hover/main:text-primary-600 min-[1251px]:p-0 dark:text-gray-400 min-[1251px]:dark:hover:text-primary-500 dark:hover:bg-gray-700 dark:hover:text-primary-500
+                  max-[1250px]:ps-0"
                 :class="{ 'text-primary-600': route.path.includes('/pricing') }"
                 >Pricing</NuxtLink
               >
             </li>
-            <li>
-              <NuxtLink
-                to="/ai-transformation/preface"
-                class="block py-2 pr-4 pl-3 text-gray-900 border-b border-gray-100 text-gray-500 hover:bg-gray-50 min-[1251px]:hover:bg-transparent min-[1251px]:border-0 min-[1251px]:hover:text-primary-600 min-[1251px]:p-0 dark:text-gray-400 min-[1251px]:dark:hover:text-primary-500 dark:hover:bg-gray-700 dark:hover:text-primary-500 min-[1251px]:dark:hover:bg-transparent dark:border-gray-700"
-                :class="{
-                  'text-primary-600': route.path.includes('/ai-transformation'),
-                }"
-                >AI Book</NuxtLink
-              >
-            </li>
-            <li>
+            <li class="flex items-center">
               <a href="https://github.com/activepieces/activepieces"
                 target="_blank"
-                class="flex gap-1 py-2 pr-4 pl-3 text-gray-900 border-b border-gray-100 text-gray-500 hover:bg-gray-50 min-[1251px]:hover:bg-transparent min-[1251px]:border-0 min-[1251px]:hover:text-primary-600 min-[1251px]:p-0 dark:text-gray-400 min-[1251px]:dark:hover:text-primary-500 dark:hover:bg-gray-700 dark:hover:text-primary-500 min-[1251px]:dark:hover:bg-transparent dark:border-gray-700"
+                class="flex relative z-20 gap-1.5 items-center py-3 ps-3 pe-4 w-full font-medium text-black border-b border-gray-100 min-[1251px]:w-auto hover:text-primary-600 min-[1251px]:border-0 min-[1251px]:group-hover/main:text-primary-600 min-[1251px]:p-0 dark:text-gray-400 min-[1251px]:dark:hover:text-primary-500 dark:hover:bg-gray-700 dark:hover:text-primary-500
+                  max-[1250px]:ps-0"
                 :class="{
                   'text-primary-600': route.path.includes('/ai-transformation'),
                 }">            <svg
@@ -481,5 +604,79 @@ watch(useRoute(), () => {
 <style scoped>
 .read-the-docs {
   color: #888;
+}
+
+.menu-item-hover {
+  animation: menu-item-hover-colors 10s ease infinite;
+  background-size: 300% 300%;
+}
+
+/* When the user hovers, the background gradient becomes visible */
+.menu-item-hover:hover {
+  background: linear-gradient(45deg,
+    rgba(229, 225, 255, 0.5),
+    rgba(225, 239, 255, 0.5),
+    rgba(255, 225, 255, 0.5),
+    rgba(225, 255, 239, 0.5),
+    rgba(255, 255, 225, 0.5),
+    rgba(255, 225, 240, 0.5),
+    rgba(255, 240, 225, 0.5),
+    rgba(240, 225, 255, 0.5)
+  );
+  background-size: 300% 300%;
+}
+
+@keyframes menu-item-hover-colors {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.typing {
+  align-items: center;
+  height: 17px;
+}
+.typing .dot {
+  animation: mercuryTypingAnimation 1.8s infinite ease-in-out;
+  background-color: #6CAD96 ;
+  border-radius: 50%;
+  height: 4px;
+  margin-right: 2px;
+  vertical-align: middle;
+  width: 4px;
+  display: inline-block;
+}
+.typing .dot:nth-child(1) {
+  animation-delay: 200ms;
+}
+.typing .dot:nth-child(2) {
+  animation-delay: 300ms;
+}
+.typing .dot:nth-child(3) {
+  animation-delay: 400ms;
+}
+.typing .dot:last-child {
+  margin-right: 0;
+}
+
+@keyframes mercuryTypingAnimation {
+  0% {
+    transform: translateY(0px);
+    background-color:#6CAD96;
+  }
+  28% {
+    transform: translateY(-7px);
+    background-color:#9ECAB9;
+  }
+  44% {
+    transform: translateY(0px);
+    background-color: #B5D9CB;
+  }
 }
 </style>
