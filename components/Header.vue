@@ -446,9 +446,9 @@ watch(useRoute(), () => {
                               Learn
                           </li>
                           <li>
-                              <NuxtLink to="/docs" class="text-lg font-semibold relative text-black flex p-2 px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                              <a href="/docs" class="text-lg font-semibold relative text-black flex p-2 px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
                                   Docs
-                              </NuxtLink>
+                              </a>
                           </li>
                           <li>
                               <div class="group text-lg font-semibold relative text-gray-500 flex p-2 px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
