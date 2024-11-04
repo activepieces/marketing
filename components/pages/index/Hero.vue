@@ -34,7 +34,7 @@ onMounted(() => {
 
 <template>
   <section class="dark:bg-gray-900">
-    <div class="blur-background"></div>
+    <div class="blur-background hidden lg:block"></div>
     <div
       class="max-w-screen-xl px-4 pt-[120px] xl:pt-[150px] pb-[50px] mx-auto max-[500px]:pt-[125px]"
     >
