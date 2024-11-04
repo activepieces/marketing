@@ -135,7 +135,7 @@ onMounted(() => {
             playsinline
             width="350"
             height="350"
-            class="max-w-[1280px] w-full max-h-[500px] object-contain rounded-xl lg:shadow-[20px_10px_200px_40px_#add0ff66]"
+            class="max-w-[1280px] w-full max-h-[500px] object-contain rounded-xl"
           ></video>
         </div>
       </div>
@@ -161,7 +161,7 @@ onMounted(() => {
     filter: blur(100px);
     flex: none;
     height: 474px;
-    left: 750px;
+    right: 200px;
     overflow: hidden;
     position: absolute;
     top: -50px;
