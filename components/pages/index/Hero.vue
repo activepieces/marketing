@@ -93,7 +93,7 @@ onMounted(() => {
             <!--Automation software that's AI-first, no-code & open-source-->
             </h1>
             <div class="mt-10 max-w-xl mx-auto mb-6 font-normal text-black lg:mx-0 xl:mb-10 md:text-lg xl:text-2xl dark:text-gray-400 max-[500px]:mb-[40px]">
-              Companies use Activepieces to help their teams adopt AI faster — and you can, too!
+              Companies use Activepieces to help their teams use AI in their daily workflows — and you can, too!
             </div>
           
             <div
