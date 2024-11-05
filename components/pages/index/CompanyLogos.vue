@@ -6,7 +6,7 @@
   <section class="py-[10px] dark:bg-gray-900 max-w-[80%] mx-auto rounded-t-[20px]">
     <div class="mx-auto max-w-screen-xl px-4">
       <h2 class="mb-14 text-2xl tracking-tight font-bold text-gray-900 dark:text-white text-center">
-        Trusted by companies from startups to the Fortune 50
+        Trusted by companies from startups to Fortune 50
       </h2>
       <div class="grid grid-cols-1 gap-20 gap-y-14 text-gray-500 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 dark:text-gray-400 opacity-100 brightness-0">
         <!-- List of logos displayed directly -->
