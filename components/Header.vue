@@ -76,21 +76,21 @@ watch(useRoute(), () => {
         <div class="flex items-center flex-grow-0 min-[1251px]:order-2">
           <a
             href="https://cloud.activepieces.com/sign-in"
-            class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 lg:px-5 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800 max-[555px]:hidden"
+            class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-base px-4 py-2 lg:px-4 lg:py-2 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800 max-[555px]:hidden"
             >Login</a
           >
           <div class="flex flex-row gap-x-2">
             <router-link
               to="/sales"
               :class="
-                  'order-1 text-gray-700 bg-white border border-gray-700 hover:bg-gray-50 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 lg:px-5 lg:py-2.5 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800'
+                  'order-1 text-gray-700 border-2 border-gray-700 hover:bg-gray-50 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-base px-4 py-2 lg:px-4 lg:py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800'
               "
               >Talk to sales</router-link
             >
             <a
               href="https://cloud.activepieces.com/sign-up"
               :class="
-                  'order-2 text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 lg:px-5 lg:py-2.5 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800'
+                  'order-2 text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-base px-4 py-2 lg:px-4 lg:py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800'
               "
               >Start free</a
             >
