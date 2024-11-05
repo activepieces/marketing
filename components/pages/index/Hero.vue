@@ -135,7 +135,7 @@ onMounted(() => {
             playsinline
             width="350"
             height="350"
-            class="max-w-[1280px] w-full max-h-[500px] object-contain rounded-xl"
+            class="max-w-[1280px] w-full max-h-[500px] object-contain rounded-xl shadow-[0_0_80px_rgba(0,0,0,0.1)]"
           ></video>
         </div>
       </div>
@@ -155,8 +155,8 @@ onMounted(() => {
 
 <style scoped>
 .blur-background {
-  -webkit-filter: blur(100px);
-    background: linear-gradient(134deg, #c9ff95 15%, rgb(249, 247, 255) 42.34234234234234%, rgb(237 165 255) 100%);
+    -webkit-filter: blur(100px);
+    background: linear-gradient(134deg, #95ffc4 15%, #77f7ff99 42.34234234234234%, #d632ffc2);
     border-radius: 100%;
     filter: blur(100px);
     flex: none;
