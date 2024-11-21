@@ -41,10 +41,10 @@ onMounted(() => {
       <div class="lg:grid pb-12 gap-8 lg:gap-12 lg:grid-cols-12 items-start">
         <div class="lg:col-span-6 text-center sm:mb-6 lg:text-left lg:mb-0">
           <div class="max-w-screen-sm mx-auto">
-            <!--<a
+            <a
               :href="homepageAnnouncement.data.url"
               v-if="homepageAnnouncement.data.content"
-              class="inline-flex max-w-full items-center justify-between px-1 py-1 pr-4 mb-6 text-sm text-gray-700 bg-white shadow-sm rounded-full dark:bg-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 max-[500px]:pl-4"
+              class="inline-flex max-w-full items-center justify-between px-1 py-1 pr-4 mb-6 text-sm text-gray-700 bg-white shadow-lg rounded-full dark:bg-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 max-[500px]:pl-4"
               role="alert"
             >
               <span
@@ -71,7 +71,7 @@ onMounted(() => {
                   clip-rule="evenodd"
                 ></path>
               </svg>
-            </a>-->
+            </a>
 
             <h1
               class="magical-text mb-4 font-bold leading-none tracking-tight text-gray-900 text-5xl xl:text-[4.8rem] xl:leading-[5.2rem] dark:text-white"
@@ -119,7 +119,7 @@ onMounted(() => {
             </div>
           </div>
         </div>
-        <div class="lg:col-span-6 mt-10 lg:mt-0">
+        <div class="lg:col-span-6 mt-10 lg:mt-0 lg:pt-12">
           <!--<img
             src="/hero.png"
             alt="hero"
