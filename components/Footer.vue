@@ -101,6 +101,12 @@ const route = useRoute();
                 >MIT License</a
               >
             </li>
+            <li class="mb-4">
+              <NuxtLink
+                to="/oss-friends"
+                class="hover:underline"
+                >Open Source Friends</NuxtLink>
+            </li>
           </ul>
         </div>
         <div>
