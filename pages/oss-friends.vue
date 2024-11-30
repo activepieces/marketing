@@ -1,6 +1,4 @@
 <script setup>
-import { ref } from 'vue'
-
 const pageTitle = 'Open source friends';
 const metaDesc = 'Find a collection of awesome open source projects that you can use as part of your organizations\'s stack';
 const metaKeywords = 'open source projects, open source companies, open source friends, coss companies, coss projects, oss projects, oss companies';
@@ -29,7 +27,14 @@ const friends = data.value?.data || [];
       </div>
       <div class="m-4 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
         <div v-for="friend in friends" class="flex flex-col overflow-hidden rounded bg-slate-100 p-6 shadow-3xl dark:bg-slate-800">
-          <a :href="friend.href" target="_blank" class="mb-2 text-xl font-bold text-slate-900 dark:text-slate-100 hover:underline">{{ friend.name }}</a>
+          <a :href="friend.href" target="_blank" class="mb-2 text-xl font-bold text-slate-900 dark:text-slate-100 hover:underline">
+            <img 
+              :src="`https://img.logo.dev/${friend.href.replace(/^https?:\/\/(www\.)?/, '').split('/')[0]}?token=pk_Bq4a0G7zQUK8tPabM47Uzg&retina=true`" 
+              alt="Logo of {{ friend.name }}" 
+              class="mb-2 w-16 h-16"
+            >
+            <h2>{{ friend.name }}</h2>
+          </a>
           <p class="mt-4 text-base text-slate-700 dark:text-slate-300">{{ friend.description }}</p>
           <div class="mt-auto pt-6">
             <a target="_blank" :href="friend.href">
@@ -37,6 +42,10 @@ const friends = data.value?.data || [];
             </a>
           </div>
         </div>
+      </div>
+
+      <div class="text-center my-10">
+        <a target="_blank" href="https://logo.dev" alt="Logo API">Logos provided by Logo.dev</a>
       </div>
     </main>
   </div>
