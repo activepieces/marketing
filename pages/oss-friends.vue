@@ -1,5 +1,5 @@
 <script setup>
-const pageTitle = 'Open source friends';
+const pageTitle = 'Our awesome open source friends';
 const metaDesc = 'Find a collection of awesome open source projects that you can use as part of your organizations\'s stack';
 const metaKeywords = 'open source projects, open source companies, open source friends, coss companies, coss projects, oss projects, oss companies';
 
@@ -14,7 +14,8 @@ useHead({
 })
 
 const { data } = await useFetch('/api/oss-friends');
-const friends = data.value?.data || [];
+let friends = data.value?.data || [];
+friends = friends.filter(friend => friend.name !== 'Activepieces');
 </script>
 
 <template>
@@ -22,7 +23,7 @@ const friends = data.value?.data || [];
     <main class="py-10 px-4 mx-auto max-w-screen-xl sm:px-8 lg:px-10">
       <div class="px-4  text-center sm:px-6 lg:px-8 ">
         <h2 class="mb-4 py-10 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
-          Our Open Source Friends
+          Our Awesome Open Source Friends
         </h2>
       </div>
       <div class="m-4 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
