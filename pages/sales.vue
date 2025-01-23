@@ -8,6 +8,12 @@ const metaKeywords = '';
 const route = useRoute()
 const selectedPlanBase64 = route.query.selectedPlan;
 
+const firstName = route.query.firstName || '';
+const lastName = route.query.lastName || '';
+const email = route.query.email || '';
+const featureFlag = route.query.featureFlag || '';
+const flags = route.query.flags ? JSON.parse(atob(route.query.flags)) : '';
+
 useHead({
   title: pageTitle,
   meta: [
@@ -98,7 +104,11 @@ const submitSalesForm = async function() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(formData),
+      body: JSON.stringify({
+        ...formData,
+        flags: flags,
+        featureFlag: featureFlag
+      }),
     });
 
     sendingStatus.value = 'sent'
@@ -162,15 +172,15 @@ const validatePhoneInput = (event) => {
             <form id="sales-form" class="grid grid-cols-2 gap-4 mx-auto max-w-screen-md" :class="{ 'hidden': sendingStatus == 'sent' }" @submit.prevent="submitSalesForm">
                 <div>
                     <label for="sales-field-first-name" class="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-300">First Name *</label>
-                    <input type="text" name="first_name" id="sales-field-first-name" class="block p-3 w-full text-xl text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" required>
+                    <input type="text" name="first_name" id="sales-field-first-name" :value="firstName" class="block p-3 w-full text-xl text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" required>
                 </div>
                 <div>
                     <label for="sales-field-last-name" class="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-300">Last Name *</label>
-                    <input type="text" name="last_name" id="sales-field-last-name" class="block p-3 w-full text-xl text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" required>
+                    <input type="text" name="last_name" id="sales-field-last-name" :value="lastName" class="block p-3 w-full text-xl text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" required>
                 </div>
                 <div>
                     <label for="sales-field-email" class="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-300">Work Email *</label>
-                    <input type="email" name="email" id="sales-field-email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
+                    <input type="email" name="email" id="sales-field-email" :value="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
                     pattern="^[a-zA-Z0-9._%+-]+@(?!gmail\.com$|yahoo\.com$|hotmail\.com$|outlook\.com$|aol\.com$|icloud\.com$|mail\.com$|zoho\.com$|yandex\.com$|protonmail\.com$|gmx\.com$|tutanota\.com$|163\.com$|qq\.com$|126\.com$|sina\.com$|sohu\.com$|mail\.ru$|live\.com$|me\.com$|inbox\.com$|fastmail\.com$|hushmail\.com$|lavabit\.com$|rocketmail\.com$|lycos\.com$).+$" 
                     required>
                 </div>
