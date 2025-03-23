@@ -72,7 +72,7 @@ watch([selectedFeature, playFeatures], () => {
           <span v-if="route.path === '/open-source'">
             The most powerful tool in your stack
           </span>
-          <span v-else> Built on the best open source software </span>
+          <span v-else> Open source power, enterprise-ready </span>
         </h2>
       </div>
 
