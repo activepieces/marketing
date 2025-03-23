@@ -1,7 +1,7 @@
 <template>
   <a href="https://github.com/activepieces/activepieces" 
      target="_blank"
-     :title="stars ? `${stars.toLocaleString()} stars` : ''"
+     :title="displayTitle"
      class="inline-flex items-center text-[12px] font-semibold hover:no-underline">
     <span class="flex items-center gap-1.5 px-2.5 py-[3px] rounded-l-[4px] bg-[#f6f8fa] text-gray-700 border border-[#d0d7de] border-r-0">
       <svg class="fill-current" height="14" viewBox="0 0 16 16" version="1.1" width="14">
@@ -9,22 +9,63 @@
       </svg>
       Star
     </span>
-    <span class="flex items-center px-2.5 py-[3px] rounded-r-[4px] bg-[#f6f8fa] text-gray-700 border border-[#d0d7de]">
-      <span v-if="loading" class="flex items-center gap-0.5">
-        <div class="w-1 h-1 rounded-full bg-gray-400 animate-bounce"></div>
-        <div class="w-1 h-1 rounded-full bg-gray-400 animate-bounce [animation-delay:0.2s]"></div>
-        <div class="w-1 h-1 rounded-full bg-gray-400 animate-bounce [animation-delay:0.4s]"></div>
-      </span>
-      <span v-else-if="error" class="text-red-500">Error</span>
-      <span v-else>{{ formatStarCount(stars) }}</span>
+    <span class="flex items-center justify-center min-w-[32px] px-2.5 py-[3px] rounded-r-[4px] bg-[#f6f8fa] text-gray-700 border border-[#d0d7de]">
+      {{ displayCount }}
     </span>
   </a>
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { useGithubStars } from '~/composables/useGithubStars'
 
 const { stars, loading, error } = useGithubStars()
+
+// Try to get last cached count from localStorage if we have an error
+const lastCachedCount = computed(() => {
+  if (!error.value) return null
+  
+  try {
+    const cached = localStorage.getItem('github-stars-cache')
+    if (cached) {
+      const data = JSON.parse(cached)
+      return data.count
+    }
+  } catch (e) {
+    return null
+  }
+  return null
+})
+
+const displayCount = computed(() => {
+  // If still loading, show default value
+  if (loading.value) {
+    return '12k'
+  }
+  
+  // If error but we have cached data, use that
+  if (error.value && lastCachedCount.value) {
+    return formatStarCount(lastCachedCount.value)
+  }
+  
+  // If error and no cached data
+  if (error.value) {
+    return '12k'
+  }
+  
+  // Otherwise use the actual count
+  return formatStarCount(stars.value || 0)
+})
+
+const displayTitle = computed(() => {
+  if (stars.value) {
+    return `${stars.value.toLocaleString()} stars`
+  }
+  if (error.value && lastCachedCount.value) {
+    return `${lastCachedCount.value.toLocaleString()} stars (cached)`
+  }
+  return 'GitHub Stars'
+})
 
 const formatStarCount = (count: number): string => {
   if (count >= 1000) {
