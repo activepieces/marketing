@@ -7,7 +7,7 @@
             Get Activepieces now!
           </h2>
           <p class="text-gray-600 dark:text-gray-300 md:text-lg">
-            Join 70,000+ users from Google, Roblox, ClickUp and more building secure, open source AI automations. Start automating your work in minutes.
+            Join 75,000+ users from Google, Roblox, ClickUp and more building secure, open source AI automations. Start automating your work in minutes.
           </p>
         </div>
         <div class="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-6 justify-center md:justify-end shrink-0">
