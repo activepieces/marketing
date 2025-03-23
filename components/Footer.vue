@@ -7,29 +7,7 @@ const route = useRoute();
   <footer class="bg-white dark:bg-gray-800">
     <div class="p-4 mx-auto max-w-screen-xl sm:p-8 lg:p-10">
       <div class="pb-10">
-        <p class="text-4xl font-bold leading-tight text-center dark:text-white">
-          <span
-            >Go
-            <span class="colored-text">AI-first</span> today</span
-          >
-        </p>
-        <div class="flex justify-center items-center my-6">
-          <router-link
-            v-if="route.path === '/pricing'"
-            to="/sales"
-            class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-normal rounded-lg text-2xl px-20 lg:px-30 py-6 mr-2 mb-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
-            >Talk to sales</router-link
-          >
-          <a
-            v-else
-            href="https://cloud.activepieces.com/sign-up"
-            class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-normal rounded-lg text-2xl px-20 lg:px-30 py-6 mr-2 mb-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
-          >
-            <span v-if="route.path === '/pricing'">Talk to sales</span>
-            <span v-else>Start free</span>
-          </a>
-
-        </div>
+        <CTA />
       </div>
 
       <div
