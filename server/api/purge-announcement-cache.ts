@@ -51,7 +51,6 @@ export default defineEventHandler(async (event) => {
       }
     }
   } catch (error) {
-    console.error('Error purging cache:', error)
     return {
       success: false,
       error: error instanceof Error ? error.message : 'Unknown error occurred'

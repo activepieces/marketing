@@ -177,6 +177,7 @@ export default defineEventHandler(async (event) => {
               console.log(`Generated content: ${content}`);
               
               // Cache the result in Supabase if possible
+              console.log('sb key: '+ config.supabaseApiKey);
               if (config.supabaseUrl && config.supabaseApiKey) {
                 try {
                   console.log('Caching content in Supabase');
