@@ -1,7 +1,7 @@
 <script setup>
 const config = useRuntimeConfig();
 const { data: homepageAnnouncement } = await useFetch(
-  `${config.public.strapiUrl}/api/homepage-announcement`
+  `/api/announcement`
 );
 
 /* Magic Stars Effect */

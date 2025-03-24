@@ -22,6 +22,10 @@ export default defineNuxtConfig({
   vue: {},
 
   runtimeConfig: {
+    // Private server-side variables
+    supabaseUrl: process.env.SUPABASE_URL,
+    supabaseApiKey: process.env.SUPABASE_API_KEY,
+    openaiApiKey: process.env.OPENAI_API_KEY,
     public: {
       strapiUrl: process.env.STRAPI_URL,
     },
