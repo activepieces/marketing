@@ -1,7 +1,7 @@
 <script setup>
-const pageTitle = 'Integrate your apps · Connectors catalog';
-const metaDesc = 'Connect hundreds of apps like Slack, Airtable, Google Sheets, ClickUp and Gmail to automate your work and save hours every day.';
-const metaKeywords = 'connectors, integrations, no-code business automation';
+const pageTitle = '280+ Open Source MCPs — Use them on Activepieces now';
+const metaDesc = 'Give AI access to your apps with 280+ open source MCPs. Use them with Claude, Cursor, or Windsurf to let AI read your emails, manage your calendar, and more.';
+const metaKeywords = 'MCPs, AI tools, open source, self-host, automation, email, calendar, AI integration, Claude, Cursor, Windsurf';
 
 useHead({
   title: pageTitle,
