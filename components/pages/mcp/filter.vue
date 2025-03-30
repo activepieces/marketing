@@ -35,7 +35,7 @@ onMounted(() => {
     <h5
         class="inline-flex w-full py-4 bg-white justify-between items-center mb-4 mb-0 text-base font-semibold !text-gray-500 uppercase dark:text-gray-400"
         :data-accordion-target="`#filters-accordion-body-${$.uid}`" aria-expanded="true" :aria-controls="`filters-accordion-body-${$.uid}`">
-        Filter Pieces
+        Filter MCPs
         <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0 inline lg:!hidden" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
         </svg>
