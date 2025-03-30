@@ -93,17 +93,13 @@ useHead({
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1)_0%,transparent_70%)] dark:bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1)_0%,transparent_70%)]"></div>
     
     <div class="relative">
-      <div class="mx-auto max-w-screen-xl p-2 lg:p-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 space-x-0 space-y-6 md:space-x-6 md:space-y-0">
-          <div class="flex items-center">
-            <NuxtLink to="/mcp" class="inline-flex items-center text-gray-500 hover:text-gray-700">
-              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
-              </svg>
-              Back to MCP directory
-            </NuxtLink>
-          </div>
-        </div>
+      <div class="max-w-screen-xl mx-auto px-4">
+        <NuxtLink to="/mcp" class="inline-flex items-center text-gray-600 hover:text-gray-900 mb-8 mt-2">
+          <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          Back to MCP directory
+        </NuxtLink>
       </div>
 
       <div class="mx-auto max-w-screen-md">
