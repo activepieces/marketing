@@ -141,7 +141,7 @@ onMounted(() => {
         <div class="gap-8 grid grid-cols-1 md:grid-cols-2">
             <NuxtLink v-for="(mcp, mcpIndex) in displayedMcp" :to="`/mcp/${mcp.name.replace('@activepieces/piece-', '')}`"
                 class="flex flex-col justify-between p-6 transition duration-200 shadow hover:shadow-md hover:-translate-y-[2px] bg-white rounded dark:bg-gray-800">
-                <div :id="`tooltip-enterprise-${mcpIndex}`" role="tooltip" class="absolute invisible inline-block z-10 px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-lg tooltip opacity-0">
+                <div :id="`tooltip-enterprise-${mcpIndex}`" role="tooltip" class="absolute visible inline-block z-10 px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-lg tooltip opacity-0">
                     Requires a special license
                     <div class="tooltip-arrow" data-popper-arrow></div>
                 </div>
@@ -164,12 +164,17 @@ onMounted(() => {
                 <div class="mt-6 flex w-full justify-between border-t border-gray-200 pt-3">
                     <div class="flex justify-start gap-2.5 items-center min-w-0">
                         <div v-if="mcp.authors.length > 0" class="text-sm text-gray-500 flex items-center shrink-0">By</div>
-                        <div v-if="mcp.authors.length > 0" class="flex gap-1.5 overflow-x-auto scrollbar-hide">
+<div
+  v-if="mcp.authors.length > 0"
+  class="overflow-x-auto max-w-full w-full scrollbar-hide"
+  style="-webkit-overflow-scrolling: touch;"
+>
+  <div class="inline-flex gap-1.5">
                             <div v-for="(author, authorIndex) in mcp.authors" class="shrink-0">
                                 <img v-if="typeof author === 'string'" :src="`https://github.com/${author}.png?size=48`" class="w-10 h-10 bg-violet-100 rounded-lg cursor-default opacity-80" data-tooltip-style="light" :data-tooltip-target="`tooltip-${mcp.id}-${authorIndex}`" data-tooltip-placement="bottom" @click.stop.prevent>
                                 <img v-if="typeof author === 'object'" :src="`/ap-logo-purple-bg-48.png`" class="w-10 h-10 rounded-lg cursor-default opacity-80" data-tooltip-style="light" :data-tooltip-target="`tooltip-${mcp.id}-${authorIndex}`" data-tooltip-placement="bottom" @click.stop.prevent>
 
-                                <div :id="`tooltip-${mcp.id}-${authorIndex}`" role="tooltip" class="absolute invisible inline-block z-10 px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-lg tooltip opacity-0">
+                                <div :id="`tooltip-${mcp.id}-${authorIndex}`" role="tooltip" class="absolute visible inline-block z-10 px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-lg tooltip opacity-0">
                                     <template v-if="typeof author === 'object'">
                                         Other maintainers:<br>
                                         <div v-for="m in author.maintainers">@{{ m }}</div>
@@ -177,9 +182,9 @@ onMounted(() => {
                                     <template v-else>
                                         @{{author}}{{ maintainers.indexOf(author) != -1 ? ' (maintainer)' : '' }}
                                     </template>
-                                    <div class="tooltip-arrow" data-popper-arrow></div>
                                 </div>
                             </div>
+</div>
                         </div>
                     </div>
                     <div class="text-sm text-gray-500 flex items-center whitespace-nowrap ml-4">{{ sortBy === 'CREATED' ? formatTimeAgo(new Date(mcp.created)) : formatTimeAgo(new Date(mcp.updated)) }}</div>

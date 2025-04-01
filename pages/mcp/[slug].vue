@@ -154,7 +154,7 @@ useHead({
                       <div class="relative group">
                         <div class="transform transition-transform duration-200 group-hover:scale-105 flex flex-col items-center">
                           <img v-if="typeof author === 'string'" 
-                               :src="`https://github.com/${author}.png?size=48`" 
+                               :src="`https://github.com/${author}.png`" 
                                class="w-16 h-16 bg-violet-100 rounded-lg opacity-80 mb-2">
                           <img v-if="typeof author === 'object'" 
                                :src="`/ap-logo-purple-bg-48.png`" 
