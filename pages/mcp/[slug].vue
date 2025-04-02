@@ -209,11 +209,11 @@ useHead({
                   <div class="mt-8 flex flex-col sm:flex-row gap-4">
                     <a href="https://cloud.activepieces.com/sign-up?from=/mcp" 
                        class="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-200 border border-purple-200 hover:border-purple-300 hover:shadow-lg hover:shadow-purple-500/20 text-center">
-                      Use MCP on our cloud (free)
+                      Use cloud MCP (free)
                     </a>
-                    <a href="https://www.activepieces.com/docs/install/overview" 
+                    <a href="https://www.activepieces.com/docs/ai/mcp" 
                        class="bg-white dark:bg-gray-800 text-gray-900 dark:text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 hover:shadow-lg text-center">
-                      Self host MCP
+                      Self-host MCP
                     </a>
                   </div>
                 </div>
