@@ -36,10 +36,10 @@ const toggleTooltip = (event) => {
     const iconElement = event.target;
     const rect = iconElement.getBoundingClientRect();
     
-    // Calculate position relative to the viewport
+    // Calculate position relative to the viewport, adding a small offset for better alignment
     tooltipPosition.value = {
       x: rect.left + rect.width / 2,
-      y: rect.top
+      y: rect.top - 5 // Add a small offset to prevent any overlap
     };
   }
 }
@@ -417,7 +417,7 @@ onMounted(() => {
               </div>
               <div class="flex-grow text-center">
                 <h3 class="text-lg font-semibold text-white mb-4">Video Tutorial</h3>
-                <p class="text-gray-300 text-sm mb-4">Watch our community member's live coding session on building and publishing an MCP</p>
+                <p class="text-gray-300 text-sm mb-4 min-h-[3rem]">Watch our community member's live coding session on building and publishing an MCP</p>
                 <span class="text-cyan-400 group-hover:text-cyan-300 text-sm font-medium inline-flex items-center">
                   Watch Video
                   <svg class="ml-1 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -435,7 +435,7 @@ onMounted(() => {
               </div>
               <div class="flex-grow text-center">
                 <h3 class="text-lg font-semibold text-white mb-4">Documentation</h3>
-                <p class="text-gray-300 text-sm mb-6">Comprehensive guide on building pieces and MCPs</p>
+                <p class="text-gray-300 text-sm mb-6 min-h-[3rem]">Comprehensive guide on building pieces and MCPs</p>
                 <span class="text-cyan-400 group-hover:text-cyan-300 text-sm font-medium inline-flex items-center">
                   Read Docs
                   <svg class="ml-1 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -453,7 +453,7 @@ onMounted(() => {
               </div>
               <div class="flex-grow text-center">
                 <h3 class="text-lg font-semibold text-white mb-4">Discord Community</h3>
-                <p class="text-gray-300 text-sm mb-6">Join our community and ask questions in #building-pieces</p>
+                <p class="text-gray-300 text-sm mb-6 min-h-[3rem]">Join our community and ask questions in #building-pieces</p>
                 <span class="text-cyan-400 group-hover:text-cyan-300 text-sm font-medium inline-flex items-center">
                   Join Discord
                   <svg class="ml-1 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
