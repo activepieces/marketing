@@ -50,7 +50,47 @@ const closeVideo = () => {
 </script>
 
 <template>
-<section class="bg-white dark:bg-gray-900 my-8 md:my-16">
+<section class="bg-white dark:bg-gray-900 my-4 md:my-8">
+    <div class="mx-auto max-w-screen-lg text-center mb-8 px-4">
+      <NuxtLink to="/mcp/bounty" class="block">
+        <div class="bg-gradient-to-r from-purple-50 via-white to-pink-50 dark:from-purple-900/10 dark:via-gray-800/50 dark:to-pink-900/10 rounded-xl p-4 border border-purple-200/30 dark:border-purple-500/20 shadow-sm hover:shadow-md transition-all duration-300 group">
+          <div class="flex items-center justify-center gap-2 flex-wrap">
+            <div class="flex items-center shrink-0 gap-2">
+              <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse shadow-lg shadow-green-500/50"></div>
+              <span class="text-green-600 dark:text-green-400 font-medium">NEW</span>
+            </div>
+            <span class="text-gray-800 dark:text-gray-200 font-medium">Add your product as an MCP</span>
+            <span class="text-purple-600 dark:text-purple-400 font-medium group-hover:underline inline-flex items-center gap-1">
+              Join Bounty Program
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </span>
+          </div>
+          <div class="mt-2 flex items-center justify-center gap-4 text-xs text-gray-600 dark:text-gray-400">
+            <span class="flex items-center gap-1">
+              <svg class="w-3.5 h-3.5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              No technical effort
+            </span>
+            <span class="flex items-center gap-1">
+              <svg class="w-3.5 h-3.5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Open source
+            </span>
+            <span class="flex items-center gap-1">
+              <svg class="w-3.5 h-3.5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Co-marketing
+            </span>
+          </div>
+        </div>
+      </NuxtLink>
+    </div>
+
     <div class="mx-auto max-w-screen-lg text-center mb-8 lg:mb-12 px-4">
       <div class="bg-gradient-to-br from-gray-950 via-gray-900/90 to-gray-950 rounded-2xl p-6 md:p-12 shadow-lg border border-gray-800 relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-pink-500/5 to-purple-500/5"></div>
