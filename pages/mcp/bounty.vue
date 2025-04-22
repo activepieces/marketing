@@ -1,7 +1,7 @@
 <script setup>
 // import { algora } from "@algora/sdk";
 
-const pageTitle = 'MCP Bounty Program — Add Your Product to Activepieces';
+const pageTitle = 'Make your product AI Agent friendly - MCP Bounty Program';
 const metaDesc = 'Join our MCP Bounty Program to add your product\'s MCP to Activepieces. Get help from our contributors and make your product AI-ready.';
 const metaKeywords = 'MCP, bounty program, AI integration, Activepieces, contributors, product integration';
 
