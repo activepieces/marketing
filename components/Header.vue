@@ -59,9 +59,9 @@ watch(useRoute(), () => {
       <div v-if="isLoaded && !showAnnouncementBar" class="fixed top-0 left-0 right-0 z-[60] h-[40px] bg-gradient-to-r from-white via-purple-100 to-white text-gray-800">
         <div class="max-w-screen-xl mx-auto px-4 h-full flex items-center justify-between">
           <div class="flex-1"></div>
-          <NuxtLink to="/mcp" class="flex items-center justify-center gap-2 text-gray-800 text-sm font-medium hover:font-bold transition-all">
-            <span class="hidden md:inline">✨ 280+ Open Source MCPs — Use them on Activepieces now 🚀</span>
-            <span class="md:hidden">✨ New: 280+ Open Source MCPs</span>
+          <NuxtLink to="/mcp/bounty" class="flex items-center justify-center gap-2 text-gray-800 text-sm font-medium hover:font-bold transition-all">
+            <span class="hidden md:inline">✨ Make an MCP for your product - no technical effort 🚀</span>
+            <span class="md:hidden">✨ New: MCP for your product</span>
           </NuxtLink>
           <div class="flex-1 flex justify-end">
             <button 
