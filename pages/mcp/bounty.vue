@@ -838,7 +838,7 @@ const handleBlur = () => {
                         class="w-full px-6 py-3 bg-cyan-600 hover:bg-cyan-700 text-white rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         <span v-if="isSubmitting">Setting up your MCP...</span>
-                        <span v-else>Get your MCP built</span>
+                        <span v-else>Submit</span>
                       </button>
                     </div>
                   </div>
@@ -1212,26 +1212,26 @@ const handleBlur = () => {
 </div>
 
 <!-- GitHub Ranking Popup -->
-<div v-if="showGitHubPopup" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-white/90 backdrop-blur-md" @click="showGitHubPopup = false">
+<div v-if="showGitHubPopup" class="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-6 bg-white/90 backdrop-blur-md" @click="showGitHubPopup = false">
   <div class="relative w-full min-w-[320px] max-w-3xl bg-white rounded-2xl overflow-hidden popup-shadow flex flex-col max-h-[90vh] ring-1 ring-gray-200 ring-inset" @click.stop>
     <!-- Header -->
-    <div class="flex items-center justify-between p-4 border-b border-gray-200 sticky top-0 bg-white z-10">
-      <h3 class="text-xl font-semibold text-gray-900">#1 on GitHub for AI Agents & MCPs 👇</h3>
+    <div class="flex items-center justify-between p-4 sm:p-5 border-b border-gray-200 sticky top-0 bg-white z-10">
+      <h3 class="text-lg sm:text-xl font-semibold text-gray-900">#1 on GitHub for AI Agents & MCPs 👇</h3>
       <div class="flex items-center gap-2">
         <button @click="currentScreenshot = (currentScreenshot - 1 + screenshots.length) % screenshots.length" 
-                class="p-2 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                class="p-3 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
           </svg>
         </button>
         <button @click="currentScreenshot = (currentScreenshot + 1) % screenshots.length" 
-                class="p-2 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                class="p-3 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
           </svg>
         </button>
         <button @click="showGitHubPopup = false" 
-                class="p-2 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors">
+                class="p-3 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
@@ -1240,10 +1240,10 @@ const handleBlur = () => {
     </div>
     
     <!-- Content -->
-    <div class="flex-1 overflow-y-auto">
+    <div class="flex-1 overflow-y-auto p-2 sm:p-4">
       <div class="relative w-full">
         <img :src="screenshots[currentScreenshot]" 
-             class="w-full h-auto max-h-[70vh] object-contain" 
+             class="w-full h-auto max-h-[70vh] object-contain rounded-lg" 
              alt="GitHub ranking screenshot">
       </div>
       
@@ -1258,13 +1258,13 @@ const handleBlur = () => {
 </div>
 
 <!-- Dharmesh LinkedIn Post Popup -->
-<div v-if="showDharmeshPopup" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-white/90 backdrop-blur-md" @click="showDharmeshPopup = false">
+<div v-if="showDharmeshPopup" class="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-6 bg-white/90 backdrop-blur-md" @click="showDharmeshPopup = false">
   <div class="relative w-full min-w-[320px] max-w-2xl bg-white rounded-2xl overflow-hidden popup-shadow flex flex-col max-h-[90vh] ring-1 ring-gray-200 ring-inset" @click.stop>
     <!-- Header -->
-    <div class="flex items-center justify-between p-4 border-b border-gray-200 sticky top-0 bg-white z-10">
-      <h3 class="text-xl font-semibold text-gray-900">Dharmesh's LinkedIn Post 👇</h3>
+    <div class="flex items-center justify-between p-4 sm:p-5 border-b border-gray-200 sticky top-0 bg-white z-10">
+      <h3 class="text-lg sm:text-xl font-semibold text-gray-900">Dharmesh's LinkedIn Post 👇</h3>
       <button @click="showDharmeshPopup = false" 
-              class="p-2 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors">
+              class="p-3 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
@@ -1273,15 +1273,15 @@ const handleBlur = () => {
     
     <!-- Content -->
     <div class="flex-1 overflow-y-auto">
-      <div class="p-4">
+      <div class="p-2 sm:p-4">
         <img :src="dharmeshScreenshot" class="w-full rounded-lg shadow-lg" alt="Dharmesh's LinkedIn post about Activepieces">
       </div>
     </div>
     
     <!-- Footer -->
-    <div class="p-4 border-t border-gray-200 sticky bottom-0 bg-white">
+    <div class="p-4 sm:p-5 border-t border-gray-200 sticky bottom-0 bg-white">
       <a :href="dharmeshTweetUrl" target="_blank" rel="noopener noreferrer"
-         class="inline-flex items-center px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors">
+         class="inline-flex items-center h-12 px-6 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors text-base">
         View on LinkedIn
         <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -1317,9 +1317,9 @@ const handleBlur = () => {
   height: 700px;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 640px) {
   .calendly-wrapper {
-    height: 700px;
+    height: 600px;
   }
 }
 </style> 
