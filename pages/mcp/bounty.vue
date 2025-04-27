@@ -1171,14 +1171,13 @@ const handleBlur = () => {
             <div v-for="bounty in bounties.items" :key="bounty.id" class="bg-gray-800/50 rounded-xl p-6 border border-cyan-500/20 hover:border-cyan-500/40 transition-colors backdrop-blur-sm">
               <div class="flex flex-col h-full">
                 <div class="flex items-start mb-4">
-                  <h3 class="text-xl font-bold text-white flex-grow">{{ bounty.task.title }}</h3>
+                  <h3 class="text-xl font-bold text-white flex-grow">{{ bounty.task.title.replace(/\[Piece Request\]|\[MCP\]/g, '').trim() }}</h3>
                   <div class="text-3xl font-bold text-cyan-400 ml-4">
                   {{ bounty.reward_formatted }}
                   </div>
                 </div>
-                <p class="text-gray-300 text-sm mb-6 flex-grow">{{ bounty.task.body || 'Build an integration for ' + bounty.task.title }}</p>
                 <a :href="bounty.task.url" target="_blank" class="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white px-4 py-3 rounded-lg transition-colors inline-block text-center text-sm font-medium">
-                  View Details
+                  View on GitHub
                 </a>
               </div>
             </div>

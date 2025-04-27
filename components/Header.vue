@@ -60,8 +60,18 @@ watch(useRoute(), () => {
         <div class="max-w-screen-xl mx-auto px-4 h-full flex items-center justify-between">
           <div class="flex-1"></div>
           <NuxtLink to="/mcp/bounty" class="flex items-center justify-center gap-2 text-gray-800 text-sm font-medium hover:font-bold transition-all">
-            <span class="hidden md:inline">✨ Make an MCP for your product - no technical effort 🚀</span>
-            <span class="md:hidden">✨ New: MCP for your product</span>
+            <span class="hidden md:flex items-center gap-2">
+              <span class="flex items-center gap-1">
+                <span>💻</span>
+                <span>Devs: Earn $200 per MCP</span>
+              </span>
+              <span class="text-gray-400">-</span>
+              <span class="flex items-center gap-1">
+                <span>🤖</span>
+                <span>Product: Get your MCP built</span>
+              </span>
+            </span>
+            <span class="md:hidden">💰 New: MCP Bounties</span>
           </NuxtLink>
           <div class="flex-1 flex justify-end">
             <button 
