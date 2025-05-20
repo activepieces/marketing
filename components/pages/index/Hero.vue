@@ -74,10 +74,9 @@ onMounted(() => {
             </a>
 
             <h1
-              class="magical-text mb-4 font-bold leading-none tracking-tight text-gray-900 text-5xl xl:text-[4.8rem] xl:leading-[5.2rem] dark:text-white"
+              class="magical-text mb-8 font-extrabold leading-none tracking-tight text-gray-900 text-5xl xl:text-[4.6rem] xl:leading-[5.2rem] dark:text-white"
             >
-  Automation software that's
-            <span class="magic">
+              <span class="magic">
               <span
                 v-for="n in 3"
                 :key="n"
@@ -88,12 +87,29 @@ onMounted(() => {
                   <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
                 </svg>
               </span>
-              <span class="magic-text"> AI-first, no-code & open-source</span>
+              Powerful <span class="magic-text">AI Agents</span> anyone can build
             </span>
-            <!--Automation software that's AI-first, no-code & open-source-->
             </h1>
-            <div class="mt-10 max-w-xl mx-auto mb-6 font-normal text-black lg:mx-0 xl:mb-10 md:text-lg xl:text-2xl dark:text-gray-400 max-[500px]:mb-[40px]">
-              Companies use Activepieces to help their teams use AI in their daily workflows — and you can, too!
+
+            <div class="flex flex-col space-y-2 mb-10">
+              <div class="flex items-center text-gray-900 dark:text-white">
+                <svg class="w-5 h-5 mr-3 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="text-lg font-semibold">No-code — super easy for non-technical users</span>
+              </div>
+              <div class="flex items-center text-gray-900 dark:text-white">
+                <svg class="w-5 h-5 mr-3 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="text-lg font-semibold">Open source — flexible and secure</span>
+              </div>
+              <div class="flex items-center text-gray-900 dark:text-white">
+                <svg class="w-5 h-5 mr-3 text-blue-400" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+                </svg>
+                <span class="text-lg font-semibold">Hands-on training for teams to build agents quickly</span>
+              </div>
             </div>
           
             <div
@@ -101,14 +117,16 @@ onMounted(() => {
             >
             <a
                 href="https://cloud.activepieces.com/sign-up"
-                class="inline-flex items-center justify-center px-5 py-3 text-lg font-medium text-center text-white rounded-lg border-2 border-blue-600 bg-blue-600 hover:bg-blue-700 hover:border-blue-700 focus:ring-4 focus:ring-blue-300 dark:focus:ring-primary-900"
+                class="group relative inline-flex h-12 items-center justify-center rounded-lg px-5 py-3 text-lg font-medium text-white transition-all duration-300 hover:scale-105"
               >
-                Start free
+                <span class="absolute inset-0 rounded-lg bg-black"></span>
+                <span class="absolute -bottom-1 left-1/2 h-1/5 w-3/5 -translate-x-1/2 animate-rainbow rounded-full bg-gradient-to-r from-[#ff3ea5] via-[#1e9bf0] to-[#6420aa] blur-md"></span>
+                <span class="relative">Get started</span>
               </a>
 
               <router-link
                 to="/sales"
-                class="inline-flex items-center justify-center px-5 py-3 text-lg text-gray-700 font-bold text-center rounded-lg bg-white border-2 border-gray-900 hover:bg-gray-50 focus:ring-4 focus:ring-blue-300 sm:mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+                class="inline-flex h-12 items-center justify-center px-5 py-3 text-lg font-medium text-gray-700 text-center rounded-lg bg-white border-2 border-gray-900 hover:bg-gray-50 focus:ring-4 focus:ring-blue-300 sm:mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800 transition-all duration-300 hover:scale-105"
                 >Talk to sales</router-link
               >
             </div>
@@ -147,9 +165,9 @@ onMounted(() => {
 <style>
 /* Define global CSS variables without the scoped attribute */
 :root {  
-  --glow-color: rgb(134 194 255);
-  --default-color-1: rgb(36 99 235);
-  --default-color-2: rgb(129 66 227);
+  --glow-color: rgb(255, 182, 193); /* Light pink */
+  --default-color-1: rgb(255, 105, 180); /* Pure pink */
+  --default-color-2: rgb(255, 20, 147); /* Hot pink */
 }
 </style>
 
@@ -291,20 +309,38 @@ onMounted(() => {
 }
 
 .magical-text > .magic > .magic-star > svg > path {
-  fill: var(--default-color-1);
+  fill: var(--glow-color); /* Purple sparkles */
+}
+
+.magical-text > .magic > .magic-star > svg > path {
+  fill: var(--glow-color); /* Purple sparkles */
 }
 
 .magical-text > .magic > .magic-text {
-  animation: background-pan 3s linear infinite;
   background: linear-gradient(
     to right,
     var(--default-color-1),
-    var(--default-color-2),
-    var(--glow-color),
-    var(--default-color-1)
+    var(--default-color-2)
   );
-  background-size: 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes rainbow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-rainbow {
+  animation: rainbow 3s linear infinite;
+  background-size: 200% 200%;
 }
 </style>
