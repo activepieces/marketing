@@ -91,21 +91,21 @@ onMounted(() => {
             </span>
             </h1>
 
-            <div class="flex flex-col space-y-2 mb-10">
-              <div class="flex items-center text-gray-900 dark:text-white">
+            <div class="flex flex-col space-y-2 mb-10 max-[1023px]:items-center">
+              <div class="flex items-center text-gray-900 dark:text-white max-[1023px]:inline-flex">
                 <svg class="w-5 h-5 mr-3 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
                 </svg>
                 <span class="text-lg font-semibold">No-code — super easy for non-technical users</span>
               </div>
-              <div class="flex items-center text-gray-900 dark:text-white">
+              <div class="flex items-center text-gray-900 dark:text-white max-[1023px]:inline-flex">
                 <svg class="w-5 h-5 mr-3 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
                 </svg>
                 <span class="text-lg font-semibold">Open source — flexible and secure</span>
               </div>
-              <div class="flex items-center text-gray-900 dark:text-white">
-                <svg class="w-5 h-5 mr-3 text-blue-400" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <div class="flex items-center text-gray-900 dark:text-white max-[1023px]:inline-flex">
+                <svg class="w-5 h-5 mr-3 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
                 </svg>
                 <span class="text-lg font-semibold">Hands-on training for teams to build agents quickly</span>
