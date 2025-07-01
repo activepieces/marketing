@@ -1,4 +1,3 @@
-
 <script setup>
 const pageTitle = 'Pricing';
 const metaDesc = 'Self host Activepieces as an alternative to Zapier to run unlimited tasks for free, or use Activepieces Cloud at a fraction of Zapier or Workato cost.';
@@ -22,5 +21,5 @@ useHead({
 <template>
   <PagesPricingTable  />
   <PagesIndexCompanyLogos class="mt-10 mb-20" />
-  <PagesPricingFAQ />
+  <PagesPricingFAQ v-if="false" />
 </template>

@@ -12,6 +12,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'libre-baskerville': ['Libre Baskerville', 'serif'],
+      },
       filter: {
         'invert-0': 'invert(0)',
         'brightness-0': 'brightness(0)',
@@ -42,6 +45,7 @@ export default {
         'infinite-scroll': 'infinite-scroll 40s linear infinite',
         'infinite-scroll-30': 'infinite-scroll 30s linear infinite',
         'infinite-scroll-right-30': 'infinite-scroll-right 30s linear infinite',
+        'border': 'border 8s linear infinite',
       },
       keyframes: {
         'infinite-scroll': {
@@ -52,6 +56,9 @@ export default {
           from: { transform: 'translateX(0)' },
           to: { transform: 'translateX(100%)' },
         },
+        'border': {
+          to: { '--border-angle': '360deg' },
+        }
       }                    
     }
   },

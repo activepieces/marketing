@@ -2,6 +2,11 @@
 import "flowbite";
 
 useHead({
+  link: [
+    { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+    { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
+    { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap' },
+  ],
   meta: [
     { property: "og:site_name", content: "Activepieces" },
     { property: "og:image:alt", content: "Activepieces" },

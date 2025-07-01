@@ -1,5 +1,5 @@
 <template>
-  <span class="shining-text text-sm">
+  <span class="shining-text text-base">
     <slot />
   </span>
 </template>
@@ -10,7 +10,7 @@
   line-height: 1.25rem;
   padding: 0;
   margin: 0;
-  background: linear-gradient(110deg, #404040 30%, #fff 55%, #404040 70%, #404040);
+  background: linear-gradient(110deg, #000 30%, #fff 55%, #000 70%, #000);
   background-size: 600% 100%;
   background-clip: text;
   -webkit-background-clip: text;

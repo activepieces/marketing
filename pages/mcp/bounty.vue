@@ -941,7 +941,7 @@ const handleBlur = () => {
                   <div>
                     <h4 class="text-lg font-medium text-gray-900 dark:text-white mb-1">Launch and Marketing 🚀</h4>
                     <p class="text-gray-600 dark:text-gray-300">
-                      We'll launch a marketing campaign together to promote your integration to our 80,000+ users. This includes featuring your MCP in our marketplace, social media announcements, and potentially joint webinars. Make sure to fill out the marketing form (coming soon!) to provide your brand assets and preferences.
+                      We'll launch a marketing campaign together to promote your integration to our 100,000+ users. This includes featuring your MCP in our marketplace, social media announcements, and potentially joint webinars. Make sure to fill out the marketing form (coming soon!) to provide your brand assets and preferences.
                     </p>
                   </div>
                 </div>

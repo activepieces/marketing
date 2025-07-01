@@ -20,14 +20,14 @@ const handleDeploymentModeChange = (newMode) => {
       <div id="detailed-pricing" class="overflow-x-auto mt-8 w-full">
         <div class="overflow-hidden min-w-max">
           <div
-            class="grid grid-cols-4 gap-x-16 p-4 text-sm font-medium text-gray-900 bg-gray-100 border-t border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:text-white">
+            class="grid grid-cols-4 gap-x-2 sm:gap-x-8 md:gap-x-16 p-4 text-sm font-medium text-gray-900 bg-gray-100 border-t border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:text-white">
             <div class="flex items-center">Tailwind CSS code</div>
             <div>Community Edition</div>
             <div>Developer Edition</div>
             <div>Designer Edition</div>
           </div>
           <div
-            class="grid grid-cols-4 gap-x-16 py-5 px-4 text-sm text-gray-700 border-b border-gray-200 dark:border-gray-700">
+            class="grid grid-cols-4 gap-x-2 sm:gap-x-8 md:gap-x-16 py-5 px-4 text-sm text-gray-700 border-b border-gray-200 dark:border-gray-700">
             <div class="text-gray-500 dark:text-gray-400">
               Basic components (<a
                 href="https://flowbite.com/docs/components/alerts/"
@@ -73,7 +73,7 @@ const handleDeploymentModeChange = (newMode) => {
             </div>
           </div>
           <div
-            class="grid grid-cols-4 gap-x-16 py-5 px-4 text-sm text-gray-700 border-b border-gray-200 dark:border-gray-700">
+            class="grid grid-cols-4 gap-x-2 sm:gap-x-8 md:gap-x-16 py-5 px-4 text-sm text-gray-700 border-b border-gray-200 dark:border-gray-700">
             <div class="text-gray-500 dark:text-gray-400">
               Application UI (<a
                 href="/application-ui/preview/"
@@ -119,7 +119,7 @@ const handleDeploymentModeChange = (newMode) => {
             </div>
           </div>
           <div
-            class="grid grid-cols-4 gap-x-16 py-5 px-4 text-sm text-gray-700 border-b border-gray-200 dark:border-gray-700">
+            class="grid grid-cols-4 gap-x-2 sm:gap-x-8 md:gap-x-16 py-5 px-4 text-sm text-gray-700 border-b border-gray-200 dark:border-gray-700">
             <div class="text-gray-500 dark:text-gray-400">
               Marketing UI pre-order
             </div>
@@ -161,7 +161,7 @@ const handleDeploymentModeChange = (newMode) => {
             </div>
           </div>
           <div
-            class="grid grid-cols-4 gap-x-16 py-5 px-4 text-sm text-gray-700 border-b border-gray-200 dark:border-gray-700">
+            class="grid grid-cols-4 gap-x-2 sm:gap-x-8 md:gap-x-16 py-5 px-4 text-sm text-gray-700 border-b border-gray-200 dark:border-gray-700">
             <div class="text-gray-500 dark:text-gray-400">
               E-commerce UI pre-order
             </div>
@@ -203,14 +203,14 @@ const handleDeploymentModeChange = (newMode) => {
             </div>
           </div>
           <div
-            class="grid grid-cols-4 gap-x-16 p-4 text-sm font-medium text-gray-900 bg-gray-100 border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:text-white">
+            class="grid grid-cols-4 gap-x-2 sm:gap-x-8 md:gap-x-16 p-4 text-sm font-medium text-gray-900 bg-gray-100 border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:text-white">
             <div class="flex items-center">Figma design files</div>
             <div>Community Edition</div>
             <div>Developer Edition</div>
             <div>Designer Edition</div>
           </div>
           <div
-            class="grid grid-cols-4 gap-x-16 py-5 px-4 text-sm text-gray-700 border-b border-gray-200 dark:border-gray-700">
+            class="grid grid-cols-4 gap-x-2 sm:gap-x-8 md:gap-x-16 py-5 px-4 text-sm text-gray-700 border-b border-gray-200 dark:border-gray-700">
             <div class="text-gray-500 dark:text-gray-400">
               Free edition (<a href="#" class="text-primary-600 hover:underline"
                 >duplicate in Figma</a
@@ -254,7 +254,7 @@ const handleDeploymentModeChange = (newMode) => {
             </div>
           </div>
           <div
-            class="grid grid-cols-4 gap-x-16 py-5 px-4 text-sm text-gray-700 border-b border-gray-200 dark:border-gray-700">
+            class="grid grid-cols-4 gap-x-2 sm:gap-x-8 md:gap-x-16 py-5 px-4 text-sm text-gray-700 border-b border-gray-200 dark:border-gray-700">
             <div class="text-gray-500 dark:text-gray-400">
               Application UI (<a
                 href="#"
@@ -300,7 +300,7 @@ const handleDeploymentModeChange = (newMode) => {
             </div>
           </div>
           <div
-            class="grid grid-cols-4 gap-x-16 py-5 px-4 text-sm text-gray-700 border-b border-gray-200 dark:border-gray-700">
+            class="grid grid-cols-4 gap-x-2 sm:gap-x-8 md:gap-x-16 py-5 px-4 text-sm text-gray-700 border-b border-gray-200 dark:border-gray-700">
             <div class="text-gray-500 dark:text-gray-400">
               Marketing UI (<a href="#" class="text-primary-600 hover:underline"
                 >preview in Figma</a
@@ -344,7 +344,7 @@ const handleDeploymentModeChange = (newMode) => {
             </div>
           </div>
           <div
-            class="grid grid-cols-4 gap-x-16 py-5 px-4 text-sm text-gray-700 border-b border-gray-200 dark:border-gray-700">
+            class="grid grid-cols-4 gap-x-2 sm:gap-x-8 md:gap-x-16 py-5 px-4 text-sm text-gray-700 border-b border-gray-200 dark:border-gray-700">
             <div class="text-gray-500 dark:text-gray-400">
               E-commerce UI pre-order
             </div>
@@ -386,14 +386,14 @@ const handleDeploymentModeChange = (newMode) => {
             </div>
           </div>
           <div
-            class="grid grid-cols-4 gap-x-16 p-4 text-sm font-medium text-gray-900 bg-gray-100 border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:text-white">
+            class="grid grid-cols-4 gap-x-2 sm:gap-x-8 md:gap-x-16 p-4 text-sm font-medium text-gray-900 bg-gray-100 border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:text-white">
             <div class="flex items-center">HUGO templates</div>
             <div>Community Edition</div>
             <div>Developer Edition</div>
             <div>Designer Edition</div>
           </div>
           <div
-            class="grid grid-cols-4 gap-x-16 py-5 px-4 text-sm text-gray-700 border-b border-gray-200 dark:border-gray-700">
+            class="grid grid-cols-4 gap-x-2 sm:gap-x-8 md:gap-x-16 py-5 px-4 text-sm text-gray-700 border-b border-gray-200 dark:border-gray-700">
             <div class="text-gray-500 dark:text-gray-400">HUGO templates</div>
             <div>
               <svg
@@ -433,7 +433,7 @@ const handleDeploymentModeChange = (newMode) => {
             </div>
           </div>
           <div
-            class="grid grid-cols-4 gap-x-16 py-5 px-4 text-sm text-gray-700 border-b border-gray-200 dark:border-gray-700">
+            class="grid grid-cols-4 gap-x-2 sm:gap-x-8 md:gap-x-16 py-5 px-4 text-sm text-gray-700 border-b border-gray-200 dark:border-gray-700">
             <div class="text-gray-500 dark:text-gray-400">
               JSON data sources
             </div>
@@ -475,7 +475,7 @@ const handleDeploymentModeChange = (newMode) => {
             </div>
           </div>
           <div
-            class="grid grid-cols-4 gap-x-16 py-5 px-4 text-sm text-gray-700 border-b border-gray-200 dark:border-gray-700">
+            class="grid grid-cols-4 gap-x-2 sm:gap-x-8 md:gap-x-16 py-5 px-4 text-sm text-gray-700 border-b border-gray-200 dark:border-gray-700">
             <div class="text-gray-500 dark:text-gray-400"></div>
             <div>
               <a

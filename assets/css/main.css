@@ -7,3 +7,10 @@
         animation-play-state: paused;
     }
 }
+
+/* Animated gradient border support */
+@property --border-angle {
+    inherits: false;
+    initial-value: 0deg;
+    syntax: '<angle>';
+}
