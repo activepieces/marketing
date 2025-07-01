@@ -311,7 +311,7 @@ const detailedFeatures = [
   }
 ];
 
-const youtubeEmbedUrl = 'https://www.youtube.com/embed/Ts15B_PoA80?autoplay=1';
+const youtubeEmbedUrl = 'https://www.youtube.com/embed/xn-lu9CUhRE?autoplay=1';
 
 const { stars, loading: starsLoading } = useGithubStars()
 
@@ -621,7 +621,7 @@ onMounted(() => {
           <button @click="showVideoModal = true" class="p-0 flex flex-col items-start justify-start relative min-h-[300px] w-full focus:outline-none group mt-2">
             <div class="w-full">
               <div class="relative w-full aspect-w-16 aspect-h-9 rounded-2xl overflow-hidden">
-                <img src="https://img.youtube.com/vi/Ts15B_PoA80/hqdefault.jpg" alt="Watch announcement video" class="w-full h-full object-cover rounded-2xl group-hover:brightness-90 transition" />
+                <img src="https://img.youtube.com/vi/xn-lu9CUhRE/hqdefault.jpg" alt="Watch announcement video" class="w-full h-full object-cover rounded-2xl group-hover:brightness-90 transition" />
                 <div class="absolute inset-0 flex items-center justify-center">
                   <svg class="w-16 h-16 text-white bg-black bg-opacity-60 rounded-full p-3" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                 </div>
