@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref, defineProps } from "vue";
+import { onMounted, ref, defineProps, onBeforeUnmount } from "vue";
 import { useStorage, useScroll } from "@vueuse/core";
 import { useRoute } from "vue-router";
 import { initCollapses } from "flowbite";
@@ -7,7 +7,10 @@ import GithubStarBadge from "~/components/GithubStarBadge.vue";
 
 const route = useRoute();
 const isLoaded = ref(false);
-const showAnnouncementBar = useStorage('announcement-bar-closed', false);
+// Announcement bar slides up on scroll down, reappears on scroll up
+const showAnnouncementBar = ref(true);
+let lastScrollY = 0
+let ticking = false
 
 const props = defineProps({
   hideGithubBadge: {
@@ -43,6 +46,22 @@ const closeAllSections = () => {
   });
 };
 
+const handleScroll = () => {
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+      const currentY = window.scrollY
+      if (currentY > lastScrollY && currentY > 20) {
+        showAnnouncementBar.value = false
+      } else {
+        showAnnouncementBar.value = true
+      }
+      lastScrollY = currentY
+      ticking = false
+    })
+    ticking = true
+  }
+}
+
 onMounted(() => {
   isLoaded.value = true;
   if (
@@ -63,8 +82,34 @@ onMounted(() => {
 
   initCollapses();
   menuExpanded.value = false;
-});
 
+  // Minimal scroll handler for announcement bar
+  let lastScrollY = 0;
+  let ticking = false;
+  const bar = document.getElementById('announcement-bar');
+  function onScroll() {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        if (window.scrollY > lastScrollY && window.scrollY > 20) {
+          bar && bar.classList.add('hide');
+        } else {
+          bar && bar.classList.remove('hide');
+        }
+        lastScrollY = window.scrollY;
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+  window.addEventListener('scroll', onScroll);
+})
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
+
+watch(showAnnouncementBar, (val) => {
+  window.dispatchEvent(new CustomEvent('ap-announcement-bar', { detail: val }))
+})
 watch(useRoute(), () => {
   if (menuExpanded.value) {
     menuExpanded.value = false;
@@ -76,42 +121,8 @@ watch(useRoute(), () => {
 <template>
   <div>
     <ClientOnly>
-      <div v-if="isLoaded && !showAnnouncementBar" class="fixed top-0 left-0 right-0 z-[60] h-[40px] bg-gradient-to-r from-white via-purple-100 to-white text-gray-800">
-        <div class="max-w-screen-xl mx-auto px-4 h-full flex items-center justify-between">
-          <div class="flex-1"></div>
-          <NuxtLink to="/mcp/bounty" class="flex items-center justify-center gap-2 text-gray-800 text-sm font-medium hover:font-bold transition-all">
-            <span class="hidden md:flex items-center gap-2">
-              <span class="flex items-center gap-1">
-                <span>💻</span>
-                <span>Devs: Earn $200 per MCP</span>
-              </span>
-              <span class="text-gray-400">-</span>
-              <span class="flex items-center gap-1">
-                <span>🤖</span>
-                <span>Product: Get your MCP built</span>
-              </span>
-            </span>
-            <span class="md:hidden">💰 New: MCP Bounties</span>
-          </NuxtLink>
-          <div class="flex-1 flex justify-end">
-            <button 
-              @click="showAnnouncementBar = true"
-              class="text-gray-600 hover:text-gray-800 transition-colors"
-            >
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-    </ClientOnly>
-    <ClientOnly>
       <header
-        :class="[
-          'fixed z-50 w-full max-[905px]:bg-white transition-all duration-300',
-          showAnnouncementBar ? 'top-0' : 'top-[40px]'
-        ]"
+        class="sticky top-0 z-50 w-full max-[905px]:bg-white transition-all duration-300"
       >
         <nav class="border-gray-200 px-4 h-[62px] lg:px-6 dark:bg-gray-800
           max-[905px]:bg-white" :class="{ 'bg-white': isScrolled }">
@@ -127,7 +138,7 @@ watch(useRoute(), () => {
                   src="/activepieces-logo-hz-og.svg"
                   width="200"
                   height="100"
-                  class="mr-3 w-fit h-6 max-[555px]:h-8 max-[555px]:object-cover max-[555px]:object-left"
+                  class="mr-3 w-fit h-6 max-[555px]:h-8 max-[5555px]:object-cover max-[555px]:object-left"
                   alt="Activepieces Home"
                 />
               </NuxtLink>
@@ -1019,5 +1030,13 @@ watch(useRoute(), () => {
 .backdrop-blur-sm {
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
+}
+
+/* Hide announcement bar when .hide is applied */
+#announcement-bar {
+  transition: transform 0.3s;
+}
+#announcement-bar.hide {
+  transform: translateY(-100%);
 }
 </style>

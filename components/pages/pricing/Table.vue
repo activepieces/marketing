@@ -80,71 +80,71 @@ const showAppSumo = computed(() => route.fullPath.includes('appsumo'));
 
 const plans = computed(() => {
   const basePlans = [
-    {
-      key: 'free',
-      name: 'Free',
+  {
+    key: 'free',
+    name: 'Free',
+    price: '$0/mo',
+    cta: { text: 'Get started', href: 'https://cloud.activepieces.com/sign-up', style: 'gray' },
+    highlight: false,
+    features: {
       price: '$0/mo',
-      cta: { text: 'Get started', href: 'https://cloud.activepieces.com/sign-up', style: 'gray' },
-      highlight: false,
-      features: {
-        price: '$0/mo',
-        flows: '2',
-        agents: '1',
-        tasks: '1,000/mo',
-        users: '1',
-        tables: '1',
-        support: 'Community',
-      },
+      flows: '2',
+      agents: '1',
+      tasks: '1,000/mo',
+      users: '1',
+      tables: '1',
+      support: 'Community',
     },
-    {
-      key: 'plus',
-      name: 'Plus',
+  },
+  {
+    key: 'plus',
+    name: 'Plus',
+    price: '$25/mo',
+      cta: { text: 'Try free', href: 'https://cloud.activepieces.com/sign-up', style: 'blue' },
+    highlight: true,
+    features: {
       price: '$25/mo',
-      cta: { text: 'Try free', href: 'https://cloud.activepieces.com/sign-up', style: 'blue' },
-      highlight: true,
-      features: {
-        price: '$25/mo',
-        flows: '10',
-        agents: '5',
-        tasks: 'Unlimited',
-        users: '1',
-        tables: 'Unlimited',
-        support: 'Email',
-      },
+      flows: '10',
+      agents: '5',
+      tasks: 'Unlimited',
+      users: '1',
+      tables: 'Unlimited',
+      support: 'Email',
     },
-    {
-      key: 'business',
-      name: 'Business',
+  },
+  {
+    key: 'business',
+    name: 'Business',
+    price: '$150/mo',
+      cta: { text: 'Try free', href: 'https://cloud.activepieces.com/sign-up', style: 'blue' },
+    highlight: false,
+    features: {
       price: '$150/mo',
-      cta: { text: 'Try free', href: 'https://cloud.activepieces.com/sign-up', style: 'blue' },
-      highlight: false,
-      features: {
-        price: '$150/mo',
-        flows: '50',
-        agents: '20',
-        tasks: 'Unlimited',
-        users: '5+ ($20/user/mo)',
-        tables: 'Unlimited',
-        support: 'Email',
-      },
+      flows: '50',
+      agents: '20',
+      tasks: 'Unlimited',
+      users: '5+ ($20/user/mo)',
+      tables: 'Unlimited',
+      support: 'Email',
     },
-    {
-      key: 'enterprise',
-      name: 'Enterprise',
+  },
+  {
+    key: 'enterprise',
+    name: 'Enterprise',
+    price: 'Contact Sales',
+    cta: { text: 'Contact sales', href: '/sales', style: 'gray' },
+    highlight: false,
+    features: {
       price: 'Contact Sales',
-      cta: { text: 'Contact sales', href: '/sales', style: 'gray' },
-      highlight: false,
-      features: {
-        price: 'Contact Sales',
-        flows: 'Custom',
-        agents: 'Custom',
-        tasks: 'Higher Performance',
-        users: 'Custom',
-        tables: 'Custom',
-        support: 'Dedicated',
-      },
+      flows: 'Custom',
+      agents: 'Custom',
+      tasks: 'Higher Performance',
+      users: 'Custom',
+      tables: 'Custom',
+      support: 'Dedicated',
     },
-  ];
+  },
+];
   if (showAppSumo.value) {
     // Insert AppSumo plan at the start, remove Enterprise
     return [
@@ -508,9 +508,9 @@ onMounted(() => {
                 </div>
               </template>
               <template v-else>
-                <a :href="plan.cta.href" class="text-center text-white font-semibold rounded-lg text-base px-8 py-3.5 bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-900 transition">
+              <a :href="plan.cta.href" class="text-center text-white font-semibold rounded-lg text-base px-8 py-3.5 bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-900 transition">
                   {{ plan.cta.text }}
-                </a>
+              </a>
               </template>
             </div>
             <ul class="w-full flex-1 mt-2 mb-6 flex flex-col gap-0">
