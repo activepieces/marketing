@@ -4,6 +4,9 @@ const { data: homepageAnnouncement } = await useFetch(
   `/api/announcement`
 );
 
+const route = useRoute();
+const videoKey = computed(() => `hero-video-${route.path}`);
+
 /* Magic Stars Effect */
 const magicStars = ref([]);
 
@@ -146,6 +149,7 @@ onMounted(() => {
             class="max-w-[1280px] w-full max-h-[500px] object-contain rounded-xl lg:shadow-[20px_10px_200px_40px_#add0ff66]"
           />-->
           <video
+            :key="videoKey"
             src="/activepieces-agents-hero.mp4"
             autoplay
             muted
