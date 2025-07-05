@@ -150,7 +150,7 @@ onMounted(() => {
           />-->
           <video
             :key="videoKey"
-            src="/activepieces-agents-hero.mp4"
+            src="/activepieces-agents-demo.mp4"
             autoplay
             muted
             loop
