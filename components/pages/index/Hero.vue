@@ -74,7 +74,7 @@ onMounted(() => {
             </a>
 
             <h1
-              class="magical-text mb-8 font-extrabold leading-none tracking-tight text-gray-900 text-5xl xl:text-[4.6rem] xl:leading-[5.2rem] dark:text-white"
+              class="magical-text mb-8 font-libre-baskerville font-light leading-[1.45!important] tracking-tight text-gray-900 text-5xl xl:text-[4.3rem] xl:leading-[4.9rem] dark:text-white"
             >
               <span class="magic">
               <span
@@ -87,7 +87,7 @@ onMounted(() => {
                   <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
                 </svg>
               </span>
-              Powerful <span class="magic-text">AI Agents</span> anyone can build
+              <span class="magic-text">AI Agents</span> — smart & easy
             </span>
             </h1>
 
@@ -96,19 +96,19 @@ onMounted(() => {
                 <svg class="w-5 h-5 mr-3 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
                 </svg>
-                <span class="text-lg font-semibold">No-code — super easy for non-technical users</span>
+                <span class="text-lg font-medium">No-code – you click, it works</span>
               </div>
               <div class="flex items-center text-gray-900 dark:text-white max-[1023px]:inline-flex">
                 <svg class="w-5 h-5 mr-3 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
                 </svg>
-                <span class="text-lg font-semibold">Open source — flexible and secure</span>
+                <span class="text-lg font-medium">Open source – customizable and secure</span>
               </div>
               <div class="flex items-center text-gray-900 dark:text-white max-[1023px]:inline-flex">
                 <svg class="w-5 h-5 mr-3 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
                 </svg>
-                <span class="text-lg font-semibold">Hands-on training for teams to build agents quickly</span>
+                <span class="text-lg font-medium">Training – guided by us, built by your team</span>
               </div>
             </div>
           
@@ -146,7 +146,7 @@ onMounted(() => {
             class="max-w-[1280px] w-full max-h-[500px] object-contain rounded-xl lg:shadow-[20px_10px_200px_40px_#add0ff66]"
           />-->
           <video
-            src="/activepieces-quick-demo.mp4"
+            src="/activepieces-agents-hero.mp4"
             autoplay
             muted
             loop

@@ -352,7 +352,7 @@ onMounted(() => {
         ]">
           <!-- Badge for Plus plan -->
           <div v-if="plan.key === 'plus'" class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-rose-100 via-orange-100 to-amber-100 text-gray-800 text-xs font-bold px-4 py-1 rounded-full">
-            HOT 🔥
+            Recommended
           </div>
           
           <div :class="[
@@ -451,7 +451,7 @@ onMounted(() => {
         ]">
           <!-- Badge for Plus plan -->
           <div v-if="plan.key === 'plus'" class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-rose-100 via-orange-100 to-amber-100 text-gray-800 text-xs font-bold px-4 py-1 rounded-full">
-            HOT 🔥
+            Recommended
           </div>
           
           <div :class="[
