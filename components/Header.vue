@@ -149,7 +149,7 @@ watch(useRoute(), () => {
             </div>
             <div class="flex items-center flex-grow-0 min-[906px]:order-2">
               <a
-                href="https://cloud.activepieces.com/sign-in"
+                href="https://cloud.activepieces.com"
                 class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-base px-4 py-2 lg:px-4 lg:py-2 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800 max-[555px]:hidden"
                 >Login</a
               >
@@ -205,8 +205,8 @@ watch(useRoute(), () => {
                   <div class="absolute left-0 top-0 w-full h-[calc(100%+10px)] opacity-0"></div>
                   
                   <!-- Menu Button -->
-                  <button class="flex items-center gap-1 py-2 text-gray-700 group-hover:text-[#8142e3] transition-colors duration-200">
-                    <span class="font-semibold">Product</span>
+                  <button class="flex items-center gap-1 py-2 text-black group-hover:text-[#8142e3] transition-colors duration-200">
+                    <span class="font-normal">Product</span>
                     <svg class="w-4 h-4 transition-transform duration-200 ease-in-out transform origin-center group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
@@ -341,8 +341,8 @@ watch(useRoute(), () => {
                   <div class="absolute left-0 top-0 w-full h-[calc(100%+10px)] opacity-0"></div>
                   
                   <!-- Menu Button -->
-                  <button class="flex items-center gap-1 py-2 text-gray-700 group-hover:text-[#8142e3] transition-colors duration-200">
-                    <span class="font-semibold">Resources</span>
+                  <button class="flex items-center gap-1 py-2 text-black group-hover:text-[#8142e3] transition-colors duration-200">
+                    <span class="font-normal">Resources</span>
                     <svg class="w-4 h-4 transition-transform duration-200 ease-in-out transform origin-center group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
@@ -507,7 +507,7 @@ watch(useRoute(), () => {
 
                 <!-- Simple Menu Items -->
                 <li>
-                  <a href="/pricing" class="py-2 text-gray-700 hover:text-[#8142e3] transition-colors duration-200 font-semibold">Pricing</a>
+                  <a href="/pricing" class="py-2 text-black hover:text-[#8142e3] transition-colors duration-200 font-normal">Pricing</a>
                 </li>
               </ul>
             </div>
