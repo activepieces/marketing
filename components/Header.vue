@@ -4,6 +4,7 @@ import { useStorage, useScroll } from "@vueuse/core";
 import { useRoute } from "vue-router";
 import { initCollapses } from "flowbite";
 import GithubStarBadge from "~/components/GithubStarBadge.vue";
+import { usePiecesCount } from "~/composables/usePiecesCount";
 
 const route = useRoute();
 const isLoaded = ref(false);
@@ -25,6 +26,9 @@ const isScrolled = computed(() => y.value > 50);
 const showGitHubBadge = ref(!props.hideGithubBadge);
 const githubButtonsScriptLoaded = ref("false");
 const gitHubBadgeHidden = useStorage("github-badge-hidden");
+
+// Get pieces count dynamically
+const { piecesCount, pending: piecesCountPending } = usePiecesCount();
 
 // Mobile menu state
 let menuExpanded = ref(false);
@@ -222,7 +226,10 @@ watch(useRoute(), () => {
                         <div class="flex-1">
                           <div class="flex items-center gap-2">
                             <span class="font-semibold text-base text-gray-900">Integrations</span>
-                            <span class="bg-purple-100 text-purple-700 text-xs font-semibold rounded-full px-2 py-0.5 h-6 flex items-center">301</span>
+                            <span class="bg-purple-100 text-purple-700 text-xs font-semibold rounded-full px-2 py-0.5 h-6 flex items-center">
+                              <span v-if="piecesCountPending">...</span>
+                              <span v-else>{{ piecesCount || '301' }}</span>
+                            </span>
                           </div>
                           <div class="text-sm text-gray-500 group-hover/feature:text-gray-900 transition-colors duration-200">Build AI agents across your apps</div>
                         </div>
@@ -560,7 +567,10 @@ watch(useRoute(), () => {
                   <div>
                     <div class="flex items-center gap-2">
                       <h3 class="font-medium text-gray-900">Integrations</h3>
-                      <span class="bg-purple-100 text-purple-700 text-xs font-semibold rounded-full px-2 py-0.5 h-6 flex items-center">301</span>
+                      <span class="bg-purple-100 text-purple-700 text-xs font-semibold rounded-full px-2 py-0.5 h-6 flex items-center">
+                        <span v-if="piecesCountPending">...</span>
+                        <span v-else>{{ piecesCount || '301' }}</span>
+                      </span>
                     </div>
                     <p class="text-sm text-gray-500 mt-1">Build AI agents across your apps</p>
                   </div>
