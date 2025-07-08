@@ -509,6 +509,9 @@ watch(useRoute(), () => {
                 <li>
                   <a href="/pricing" class="py-2 text-black hover:text-[#8142e3] transition-colors duration-200 font-normal">Pricing</a>
                 </li>
+                <li>
+                  <a href="/enterprise" class="py-2 text-black hover:text-[#8142e3] transition-colors duration-200 font-normal">Enterprise</a>
+                </li>
               </ul>
             </div>
           </div>
