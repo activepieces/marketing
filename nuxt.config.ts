@@ -55,14 +55,15 @@ export default defineNuxtConfig({
         "https://community.activepieces.com/c/tutorials/automation-school/11",
     },
     "/subprocessors": {
-      redirect: "https://trust.activepieces.com/subprocessors"
+      redirect: "https://trust.activepieces.com/subprocessors",
     },
     "/security": {
-      redirect: "https://trust.activepieces.com"
+      redirect: "https://trust.activepieces.com",
     },
     "/spells": {
-      redirect: "https://community.activepieces.com/t/ai-spells-month-15-ai-use-case/7023"
-    }
+      redirect:
+        "https://community.activepieces.com/t/ai-spells-month-15-ai-use-case/7023",
+    },
   },
 
   hooks: {
