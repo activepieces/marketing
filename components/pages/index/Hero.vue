@@ -46,7 +46,7 @@ onMounted(() => {
           <div class="max-w-screen-sm mx-auto">
             <a
               :href="homepageAnnouncement.data.url"
-              v-if="homepageAnnouncement.data.content"
+              v-if="homepageAnnouncement.data.content && homepageAnnouncement.data.content !== 'NONE'"
               class="inline-flex max-w-full items-center justify-between px-1 py-1 pr-4 mb-6 text-sm text-gray-700 bg-white shadow-lg rounded-full dark:bg-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 max-[500px]:pl-4"
               role="alert"
             >
@@ -78,6 +78,7 @@ onMounted(() => {
 
             <h1
               class="magical-text mb-8 font-libre-baskerville font-light leading-[1.45!important] tracking-tight text-gray-900 text-5xl xl:text-[4.3rem] xl:leading-[4.9rem] dark:text-white"
+              :class="!homepageAnnouncement.data.content || homepageAnnouncement.data.content === 'NONE' ? 'mt-10' : ''"
             >
               <span class="magic">
               <span
@@ -133,11 +134,11 @@ onMounted(() => {
                 >Talk to sales</router-link
               >
             </div>
-            <div
+            <!--<div
               class="flex flex-wrap text-base text-gray-600 font-bold items-center gap-1.5 gap-y-5 mt-7 max-[1023px]:justify-center"
             >
             <img class="w-[20px]" src="/g2-logo.png"><img class="h-[23px]" src="/stars.png"><span>4.8</span>
-            </div>
+            </div>-->
           </div>
         </div>
         <div class="lg:col-span-6 mt-10 lg:mt-0 lg:pt-12">
