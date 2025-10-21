@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 const pageTitle = 'Contact Activepieces sales team';
 const metaDesc = '';
@@ -8,9 +8,12 @@ const metaKeywords = '';
 const route = useRoute()
 const selectedPlanBase64 = route.query.selectedPlan;
 
-const firstName = route.query.firstName || '';
-const lastName = route.query.lastName || '';
-const email = route.query.email || '';
+const firstName = ref(route.query.firstName || '');
+const lastName = ref(route.query.lastName || '');
+const email = ref(route.query.email || '');
+const company = ref('');
+const context = ref('');
+const source = ref('');
 const featureFlag = route.query.featureFlag || '';
 const flags = route.query.flags ? JSON.parse(atob(route.query.flags)) : '';
 
@@ -25,6 +28,20 @@ useHead({
 })
 
 const sendingStatus = ref('new')
+const otherSource = ref('')
+
+// Rotating testimonials
+const testimonials = [
+  "Funding Societies saved a full quarter of their year with Activepieces",
+  "Funding Societies built 700+ automations across every department",
+  "120+ Funding Societies team members automate confidently with Activepieces",
+  "Funding Societies made workflows 85% faster using Activepieces",
+  "Funding Societies boosted organic traffic by up to 30% through automation"
+]
+
+const currentTestimonial = ref(testimonials[0])
+const currentIndex = ref(0)
+const isTransitioning = ref(false)
 
 definePageMeta({
   layout: false
@@ -131,77 +148,237 @@ const validatePhoneInput = (event) => {
 
   event.target.value = input;
 };
+
+// Computed form validation - no reactive updates during typing
+const isFormValid = computed(() => {
+  const isBasicValid = email.value && firstName.value && lastName.value && company.value && context.value && source.value;
+  const isOtherValid = source.value !== 'Other' || (source.value === 'Other' && otherSource.value.trim());
+  return isBasicValid && isOtherValid;
+});
+
+// Rotate testimonials every 4 seconds with smooth transition
+onMounted(() => {
+  setInterval(() => {
+    isTransitioning.value = true
+    
+    setTimeout(() => {
+      currentIndex.value = (currentIndex.value + 1) % testimonials.length
+      currentTestimonial.value = testimonials[currentIndex.value]
+      isTransitioning.value = false
+    }, 300)
+  }, 4000)
+});
 </script>
 
 <template>
-  <div>
-    <section class="bg-white dark:bg-gray-900 my-16">
-      <div class="px-4 mx-auto max-w-screen-xl sm:px-8 lg:px-10">
-        <div class="text-center md:text-left">
-          <NuxtLink to="/" class="inline-block"><img src="/activepieces-logo-hz-og.svg" class="h-6 md:h-8" alt="Activepieces Home" /></NuxtLink>
-        </div>
-
-        <div class="mt-16 block md:flex gap-16 mb-36">
-          <div class="w-full md:w-1/2 text-center md:text-left">
-            <div class="text-4xl md:text-7xl font-extrabold">Explore AI Transformation</div>
-            <div class="max-w-none md:max-w-[30rem] leading-8 mt-4 text-lg md:text-xl font-light text-gray-900">See how Activepieces can help with transforming your organization into an AI-first company. AI is developing quickly and we can help you keep up.</div>
-            <div class="max-md:hidden">
-              <div class="w-[30rem] pt-16 grid grid-cols-2 justify-center items-center [&_img]:h-6 gap-y-10">
-                <img src="/logos/pipedrive.png" alt="Pipedrive" />
-                <img src="/logos/rakuten.png" alt="Rakuten" />
-                <img src="/logos/experiencecom.png" alt="Experience.com" />
-                <img src="/logos/roblox.png" alt="Roblox" />
-                <img src="/logos/exabeam.png" alt="Exabeam" />
-                <img src="/logos/alfred24.png" alt="Alfred24" />
-                <img src="/logos/contentful.png" alt="Contentful" />
-                <img src="/logos/vts.png" alt="VTS" />
-              </div>
-              <div class="mt-16 flex gap-4">
-                <img class="w-24" src="/badges/g2-top25-24.svg">
-                <img class="w-24" src="/badges/g2-most-implementable-w24.svg">
-                <img class="w-24" src="/badges/g2-high-performer-w24.svg">
-              </div>
+  <div class="min-h-screen bg-gray-50">
+    <!-- Main Content -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 items-stretch">
+      <!-- Left Column - Form (50%) -->
+      <div class="bg-gray-50 px-8 py-16">
+        <div class="max-w-lg mx-auto">
+            <!-- Activepieces Logo -->
+            <div class="mb-8">
+              <NuxtLink to="/" class="inline-block">
+                <img src="/activepieces-logo-hz-og.svg" class="h-6" alt="Activepieces Home" />
+              </NuxtLink>
             </div>
-          </div>
-
-          <div class="w-full md:w-1/2 max-md:pt-10 justify-center flex flex-col">
-            <div :class="{ 'hidden': sendingStatus != 'sent' }">
-              <img class="w-[20rem] mx-auto" src="/dancing-cat.gif">
-              <div class="text-3xl text-center mt-10">Thank you for contacting us. Someone in our team will reach out to you shortly.</div>
+            
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">
+              Demo with Activepieces
+            </h1>
+            <p class="text-lg text-gray-600 mb-8">See how Activepieces can help transform your organization into an AI-first company. Get a personalized demo tailored to your needs.</p>
+            
+            <!-- Success Message -->
+            <div :class="{ 'hidden': sendingStatus != 'sent' }" class="text-center py-16">
+              <img class="w-32 mx-auto mb-6" src="/dancing-cat.gif" alt="Success">
+              <h2 class="text-2xl font-semibold text-gray-900 mb-4">Thank you for contacting us!</h2>
+              <p class="text-lg text-gray-600">Someone from our team will reach out to you shortly.</p>
             </div>
-            <form id="sales-form" class="grid grid-cols-2 gap-4 mx-auto max-w-screen-md" :class="{ 'hidden': sendingStatus == 'sent' }" @submit.prevent="submitSalesForm">
-                <div>
-                    <label for="sales-field-first-name" class="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-300">First Name *</label>
-                    <input type="text" name="first_name" id="sales-field-first-name" :value="firstName" class="block p-3 w-full text-xl text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" required>
-                </div>
-                <div>
-                    <label for="sales-field-last-name" class="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-300">Last Name *</label>
-                    <input type="text" name="last_name" id="sales-field-last-name" :value="lastName" class="block p-3 w-full text-xl text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" required>
-                </div>
-                <div>
-                    <label for="sales-field-email" class="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-300">Work Email *</label>
-                    <input type="email" name="email" id="sales-field-email" :value="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
-                    pattern="^[a-zA-Z0-9._%+\-]+@(?!gmail\.com$|yahoo\.com$|hotmail\.com$|outlook\.com$|aol\.com$|icloud\.com$|mail\.com$|zoho\.com$|yandex\.com$|protonmail\.com$|gmx\.com$|tutanota\.com$|163\.com$|qq\.com$|126\.com$|sina\.com$|sohu\.com$|mail\.ru$|live\.com$|me\.com$|inbox\.com$|fastmail\.com$|hushmail\.com$|lavabit\.com$|rocketmail\.com$|lycos\.com$).+$" 
-                    required>
-                </div>
-                <div>
-                    <label for="sales-field-phone" class="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-300">Phone</label>
-                    <input type="tel" name="phone" id="sales-field-phone" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
-                      @input="validatePhoneInput">
-                </div>
-                <div class="col-span-2">
-                    <label for="sales-field-context" class="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-400">Additional context</label>
-                    <textarea name="context" id="sales-field-context" rows="2" class="block p-2.5 w-full text-xl text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"></textarea>
-                </div>
-                <div class="col-span-2 md:flex justify-start gap-4 items-center">
-                  <button type="submit" :disabled="sendingStatus == 'pending'" class="py-3 px-5 text-xl font-medium text-center text-white rounded-lg bg-primary-700 max-md:w-full hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Send</button>
-                  <div class="text-gray-500" :class="{ 'hidden': sendingStatus != 'pending' }">Loading..</div>
-                </div>
+
+            <!-- Form -->
+            <form id="sales-form" :class="{ 'hidden': sendingStatus == 'sent' }" @submit.prevent="submitSalesForm" class="space-y-6">
+              <div>
+                <label for="sales-field-email" class="block text-base font-medium text-gray-700 mb-2">Work Email *</label>
+                <input 
+                  type="email" 
+                  name="email" 
+                  id="sales-field-email" 
+                  v-model="email"
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-200"
+                  pattern="^[a-zA-Z0-9._%+\-]+@(?!gmail\.com$|yahoo\.com$|hotmail\.com$|outlook\.com$|aol\.com$|icloud\.com$|mail\.com$|zoho\.com$|yandex\.com$|protonmail\.com$|gmx\.com$|tutanota\.com$|163\.com$|qq\.com$|126\.com$|sina\.com$|sohu\.com$|mail\.ru$|live\.com$|me\.com$|inbox\.com$|fastmail\.com$|hushmail\.com$|lavabit\.com$|rocketmail\.com$|lycos\.com$).+$" 
+                  required
+                >
+              </div>
+              
+              <div>
+                <label for="sales-field-first-name" class="block text-base font-medium text-gray-700 mb-2">First Name *</label>
+                <input 
+                  type="text" 
+                  name="first_name" 
+                  id="sales-field-first-name" 
+                  v-model="firstName"
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-200"
+                  required
+                >
+              </div>
+              
+              <div>
+                <label for="sales-field-last-name" class="block text-base font-medium text-gray-700 mb-2">Last Name *</label>
+                <input 
+                  type="text" 
+                  name="last_name" 
+                  id="sales-field-last-name" 
+                  v-model="lastName"
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-200"
+                  required
+                >
+              </div>
+              
+              <div>
+                <label for="sales-field-company" class="block text-base font-medium text-gray-700 mb-2">Your Company *</label>
+                <input 
+                  type="text" 
+                  name="company" 
+                  id="sales-field-company" 
+                  v-model="company"
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-200"
+                  required
+                >
+              </div>
+
+              <div>
+                <label for="sales-field-context" class="block text-base font-medium text-gray-700 mb-2">What brings you to Activepieces? *</label>
+                <textarea 
+                  name="context" 
+                  id="sales-field-context" 
+                  rows="4" 
+                  v-model="context"
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 resize-none"
+                  required
+                ></textarea>
+              </div>
+
+              <div>
+                <label for="sales-field-source" class="block text-base font-medium text-gray-700 mb-2">Where did you hear about us? *</label>
+                <select 
+                  name="source" 
+                  id="sales-field-source" 
+                  v-model="source"
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-200"
+                  required
+                >
+                  <option value="">Select one...</option>
+                  <option value="GitHub">GitHub</option>
+                  <option value="Search">Search (Google, Bing, etc)</option>
+                  <option value="AI Search">AI Search (ChatGPT, Claude, etc)</option>
+                  <option value="Social Media">Social Media (X, Reddit, etc)</option>
+                  <option value="LinkedIn">LinkedIn</option>
+                  <option value="Referral from Customer">Referral from Customer</option>
+                  <option value="YC Directory">YC Directory</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <!-- Other source input (shown when "Other" is selected) -->
+              <div v-if="source === 'Other'" class="mt-4">
+                <label for="sales-field-other-source" class="block text-base font-medium text-gray-700 mb-2">Please specify *</label>
+                <input 
+                  type="text" 
+                  name="other_source" 
+                  id="sales-field-other-source" 
+                  v-model="otherSource"
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-200"
+                  placeholder="Please specify how you heard about us"
+                  required
+                >
+              </div>
+
+              <div class="flex items-center gap-4">
+                <button 
+                  type="submit" 
+                  :disabled="sendingStatus == 'pending' || !isFormValid" 
+                  class="px-8 py-3 bg-gradient-to-r from-primary-600 to-primary-700 text-white font-medium rounded-lg hover:from-primary-700 hover:to-primary-800 focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl transition-all duration-200"
+                >
+                  <span v-if="sendingStatus == 'pending'">Sending...</span>
+                  <span v-else>Submit</span>
+                </button>
+                <div v-if="sendingStatus == 'pending'" class="text-gray-500 text-sm">Please wait...</div>
+                <div v-else-if="!isFormValid" class="text-gray-500 text-sm">Please fill all required fields</div>
+              </div>
             </form>
+        </div>
+      </div>
+
+      <!-- Right Column - Trust Indicators (50%) -->
+      <div class="relative self-stretch">
+        <div class="sticky top-0 h-screen">
+          <div class="min-h-screen w-full bg-white relative flex flex-col h-full">
+            <!-- Dual Gradient Overlay (Top) Background -->
+            <div
+              class="absolute inset-0 z-0"
+              style="
+                background-image: 
+                  linear-gradient(to right, rgba(229,231,235,0.8) 1px, transparent 1px),
+                  linear-gradient(to bottom, rgba(229,231,235,0.8) 1px, transparent 1px),
+                  radial-gradient(circle 500px at 0% 20%, rgba(139,92,246,0.3), transparent),
+                  radial-gradient(circle 500px at 100% 0%, rgba(59,130,246,0.3), transparent);
+                background-size: 48px 48px, 48px 48px, 100% 100%, 100% 100%;
+              "
+            ></div>
+            <!-- Centered Testimonials Section -->
+            <div class="flex-1 flex items-center justify-center px-8 relative z-10">
+              <div class="text-center max-w-2xl mx-auto">
+                <div class="mb-1">
+                  <img src="/logos/fundingsocieties-sales.png" alt="Funding Societies" class="h-14 mx-auto opacity-90" />
+                </div>
+                <div class="text-2xl font-medium text-gray-700 leading-relaxed min-h-[160px] flex items-center justify-center relative max-w-lg mx-auto">
+                  <div 
+                    class="transition-all duration-500 ease-in-out"
+                    :class="{
+                      'opacity-0 transform translate-y-2': isTransitioning,
+                      'opacity-100 transform translate-y-0': !isTransitioning
+                    }"
+                    v-html="currentTestimonial"
+                  >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Trusted By Section - Fixed to Bottom -->
+            <div class="text-center px-8 py-12 relative z-10">
+              <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-8">TRUSTED BY</div>
+              <div class="grid grid-cols-4 gap-x-2 gap-y-6 items-center max-w-2xl mx-auto">
+                <div class="flex justify-center">
+                  <img src="/logos/pipedrive.png" alt="Pipedrive" class="h-5 filter brightness-0 contrast-150" />
+                </div>
+                <div class="flex justify-center">
+                  <img src="/logos/rakuten.png" alt="Rakuten" class="h-5 filter brightness-0 contrast-150" />
+                </div>
+                <div class="flex justify-center">
+                  <img src="/logos/alfred24.png" alt="Alfred24" class="h-5 filter brightness-0 contrast-150" />
+                </div>
+                <div class="flex justify-center">
+                  <img src="/logos/vts.png" alt="VTS" class="h-5 filter brightness-0 contrast-150" />
+                </div>
+                <div class="flex justify-center">
+                  <img src="/logos/exabeam.png" alt="Exabeam" class="h-5 filter brightness-0 contrast-150" />
+                </div>
+                <div class="flex justify-center">
+                  <img src="/logos/experiencecom.png" alt="Experience.com" class="h-5 filter brightness-0 contrast-150" />
+                </div>
+                <div class="flex justify-center">
+                  <img src="/logos/contentful.png" alt="Contentful" class="h-5 filter brightness-0 contrast-150" />
+                </div>
+                <div class="flex justify-center">
+                  <img src="/logos/roblox.png" alt="Roblox" class="h-5 filter brightness-0 contrast-150" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </section>
-    <Footer />
+    </div>
   </div>
 </template>
