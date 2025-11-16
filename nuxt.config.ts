@@ -130,7 +130,10 @@ const getPieceUrls = async function () {
   const piecesResponse = await fetch(piecesUrl);
   const pieces = await piecesResponse.json();
 
-  return pieces.map(
-    (piece) => `/pieces/${piece.name.match(/(?:^@[\w-]+\/piece-)([\w-]+)$/)[1]}`
-  );
+  return pieces
+    .map((piece) => {
+      const match = piece.name.match(/(?:^@[\w-]+\/piece-)([\w-]+)$/);
+      return match ? `/pieces/${match[1]}` : null;
+    })
+    .filter((url) => url !== null);
 };
