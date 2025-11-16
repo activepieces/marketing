@@ -22,6 +22,7 @@ const props = defineProps({
 
 const { y } = useScroll(window);
 const isScrolled = computed(() => y.value > 50);
+const isPricingPage = computed(() => route.path === '/pricing');
 
 const showGitHubBadge = ref(!props.hideGithubBadge);
 const githubButtonsScriptLoaded = ref("false");
@@ -123,13 +124,22 @@ watch(useRoute(), () => {
 </script>
 
 <template>
-  <div>
+  <div class="m-0 p-0">
     <ClientOnly>
       <header
-        class="sticky top-0 z-50 w-full max-[905px]:bg-white transition-all duration-300"
+        class="z-50 w-full transition-all duration-300 m-0"
+        :class="{ 
+          'sticky top-0': !isPricingPage, 
+          'fixed top-0': isPricingPage,
+          'bg-white max-[905px]:bg-white': isScrolled,
+          'bg-transparent max-[905px]:bg-transparent': !isScrolled
+        }"
       >
-        <nav class="border-gray-200 px-4 h-[62px] lg:px-6 dark:bg-gray-800
-          max-[905px]:bg-white" :class="{ 'bg-white': isScrolled }">
+        <nav class="border-gray-200 px-4 h-[62px] lg:px-6 dark:bg-gray-800 transition-all duration-300"
+          :class="{ 
+            'bg-white max-[905px]:bg-white': isScrolled,
+            'bg-transparent max-[905px]:bg-transparent': !isScrolled
+          }">
           <div
             class="flex flex-wrap space-x-10 h-full items-stretch justify-between mx-auto max-w-screen-xl
               max-[905px]:space-x-0"

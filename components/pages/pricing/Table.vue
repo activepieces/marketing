@@ -2,7 +2,7 @@
 import ProductSwitcher from './ProductSwitcher.vue'
 import ShiningText from './ShiningText.vue'
 import { initTooltips } from 'flowbite'
-import { nextTick } from 'vue'
+import { nextTick, watch, onUnmounted } from 'vue'
 import { useGithubStars } from '~/composables/useGithubStars'
 import { useRoute } from 'vue-router'
 
@@ -14,44 +14,49 @@ const ONE_DOLLAR_PER_1000_TASKS = '$1 per 1,000 extra tasks';
 
 // User-focused, benefit-driven highlight features for each plan (Typeform style)
 const planHighlights = {
-  free: [
-    'AI steps',
-    '1,000 tasks/mo included',
-    '2 active flows',
-    '200 AI credits',
-    // 4th line will be handled in template for higher plans
-    'Single user and project',
-    'Community support',
-  ],
-  plus: [
-    'AI agents and steps',
-    'Unlimited tasks',
-    '10 active flows',
-    '500 AI credits & buy more',
-    'Everything in Free',
+  standard: [
+    '10 free active flows – Build and run your first 10 automations 100% free of charge',
+    'Unlimited runs – We never charge for execution, like nowhere else',
+    'AI agents – AI that thinks and controls hundreds of apps in one place',
     'Unlimited MCP servers',
     'Unlimited tables',
     'Email support',
   ],
-  business: [
-    'AI agents and steps',
-    'Unlimited tasks',
-    '50 active flows',
-    '1,000 AI credits & buy more',
-    'Everything in Plus',
-    '5 users & add more',
-    '10 projects',
-    'API',
-  ],
-  enterprise: [
-    'Cloud or self hosted',
-    'Tailored seats and limits',
-    'Single Sign On (SSO)',
-    'Audit logs',
-    'Environments',
-    'Custom roles & permissions',
-    'Private pieces',
-    'Dedicated support',
+  ultimate: [
+    {
+      category: 'Security & Governance',
+      features: [
+        'Team & Personal Projects – Separate teams, data, and automations',
+        'Piece Access Controls – Choose which pieces each project can use',
+        'Global Connections – Shared service-account connections for all projects',
+        'Custom RBAC – Define granular roles and permissions',
+        'SSO – Centralized identity and secure access'
+      ]
+    },
+    {
+      category: 'Control & Compliance',
+      features: [
+        'Audit Logs – Track all user and system activity',
+        'Centralized AI Billing – Manage AI usage and costs in one place',
+        'Management APIs – Automate projects, flows, and connections'
+      ]
+    },
+    {
+      category: 'Delivery & Reliability',
+      features: [
+        'Git Sync – Sync flows with your Git repo',
+        'Release Management – Promote changes across environments',
+        'Private Pieces – Deploy internal or custom integrations'
+      ]
+    },
+    {
+      category: 'Enterprise Deployment & Success',
+      features: [
+        'Cloud or On-Prem – Run Activepieces where you need it',
+        'Dedicated Support – Priority help from our team',
+        'Training & Adoption Programs – Guided onboarding and enablement'
+      ]
+    }
   ]
 };
 
@@ -81,56 +86,24 @@ const showAppSumo = computed(() => route.fullPath.includes('appsumo'));
 const plans = computed(() => {
   const basePlans = [
   {
-    key: 'free',
-    name: 'Free',
-    price: '$0/mo',
-    cta: { text: 'Get started', href: 'https://cloud.activepieces.com/sign-up', style: 'gray' },
-    highlight: false,
-    features: {
-      price: '$0/mo',
-      flows: '2',
-      agents: '1',
-      tasks: '1,000/mo',
-      users: '1',
-      tables: '1',
-      support: 'Community',
-    },
-  },
-  {
-    key: 'plus',
-    name: 'Plus',
-    price: '$25/mo',
-      cta: { text: 'Try free', href: 'https://cloud.activepieces.com/sign-up', style: 'blue' },
+    key: 'standard',
+    name: 'Standard',
+    price: '10 flows free',
+    cta: { text: 'Start free', href: 'https://cloud.activepieces.com/sign-up', style: 'blue' },
     highlight: true,
     features: {
-      price: '$25/mo',
-      flows: '10',
-      agents: '5',
+      price: '10 flows free',
+      flows: '10 included, then $5/flow/mo',
+      agents: 'Unlimited',
       tasks: 'Unlimited',
-      users: '1',
+      users: 'Unlimited',
       tables: 'Unlimited',
       support: 'Email',
     },
   },
   {
-    key: 'business',
-    name: 'Business',
-    price: '$150/mo',
-      cta: { text: 'Try free', href: 'https://cloud.activepieces.com/sign-up', style: 'blue' },
-    highlight: false,
-    features: {
-      price: '$150/mo',
-      flows: '50',
-      agents: '20',
-      tasks: 'Unlimited',
-      users: '5+ ($20/user/mo)',
-      tables: 'Unlimited',
-      support: 'Email',
-    },
-  },
-  {
-    key: 'enterprise',
-    name: 'Enterprise',
+    key: 'ultimate',
+    name: 'Ultimate',
     price: 'Contact Sales',
     cta: { text: 'Contact sales', href: '/sales', style: 'gray' },
     highlight: false,
@@ -174,7 +147,7 @@ const plans = computed(() => {
           humanLoop: '✔️',
         },
       },
-      ...basePlans.filter(p => p.key !== 'enterprise'),
+      ...basePlans.filter(p => p.key !== 'ultimate'),
     ];
   }
   return basePlans;
@@ -223,10 +196,8 @@ const toggleDetailedTable = () => {
 
 // Add plan descriptions and yearly prices
 const planDescriptions = {
-  free: 'Get started with automation for individuals or hobbyists',
-  plus: 'Perfect for small teams and growing businesses',
-  business: 'Advanced features and collaboration for power users',
-  enterprise: 'Unlock limitless growth with advanced features and support',
+  standard: 'Perfect for teams getting started. 10 free active flows with unlimited runs, then $5 per additional active flow per month.',
+  ultimate: 'For organizations that need advanced security, compliance, and dedicated support. Custom limits and features tailored to your needs.',
 };
 
 const embedPlanDescriptions = {
@@ -235,38 +206,36 @@ const embedPlanDescriptions = {
 };
 
 const planYearlyPrices = {
-  free: '',
-  plus: '($300 total / yr)',
-  business: '($1,500 total / yr)',
-  enterprise: '',
+  standard: '',
+  ultimate: '',
 };
 
 // Define features as objects with name and per-plan values, matching the screenshot
 const cardFeatures = [
-  { key: 'activeFlows', label: 'Active Flows', free: '2', plus: '10', business: '50', enterprise: 'Custom' },
-  { key: 'aiAgents', label: 'AI Agents', free: '1', plus: '5', business: '20', enterprise: 'Custom' },
+  { key: 'activeFlows', label: 'Active Flows', standard: '10 included, then $5/flow/mo', ultimate: 'Custom' },
+  { key: 'aiAgents', label: 'AI Agents', standard: 'Unlimited', ultimate: 'Custom' },
   // Everything in X will be handled in the template as the 3rd line
-  { key: 'tasks', label: 'Tasks', free: '1,000/mo', plus: 'Unlimited (?)', business: 'Unlimited (?)', enterprise: 'Higher Performance, Dedicated Workers' },
-  { key: 'support', label: 'Support', free: 'Community', plus: 'Email', business: 'Email', enterprise: 'Dedicated Support (Slack)' },
-  { key: 'execution', label: 'Execution Speed', free: 'Normal', plus: 'Normal', business: 'Normal', enterprise: 'Blazing fast' },
-  { key: 'users', label: 'Users', free: '1', plus: '1', business: '5+ ($20/user/mo)', enterprise: 'Custom' },
-  { key: 'projects', label: 'Projects', free: '-', plus: '-', business: '10', enterprise: 'Custom' },
-  { key: 'multiAgent', label: 'Multi Agent Support', free: '-', plus: '✔️', business: '✔️', enterprise: '✔️' },
-  { key: 'aiCredits', label: 'AI Credits', free: '100', plus: '500+ (Spend Limit)', business: '1,000+ (Spend Limit, Bring Your Own Key)', enterprise: 'Custom' },
-  { key: 'userRoles', label: 'User Roles', free: 'Admin, Editor, Viewer', plus: '-', business: 'Admin, Editor, Viewer', enterprise: 'Custom' },
-  { key: 'mcpServers', label: 'MCP servers', free: '1', plus: '1', business: '✔️', enterprise: 'Custom' },
-  { key: 'pieces', label: 'Pieces', free: 'All', plus: 'All', business: 'All', enterprise: 'All' },
-  { key: 'runCode', label: 'Run Code', free: '✔️', plus: '✔️', business: '✔️', enterprise: '✔️' },
-  { key: 'tables', label: 'Tables', free: '1', plus: 'Unlimited', business: 'Unlimited', enterprise: 'Custom' },
-  { key: 'humanLoop', label: 'Human In The Loop', free: '✔️', plus: '✔️', business: '✔️', enterprise: '✔️' },
-  { key: 'sso', label: 'SSO', free: '-', plus: '-', business: '-', enterprise: '✔️' },
-  { key: 'apiAccess', label: 'API Access', free: '-', plus: '-', business: '-', enterprise: '✔️' },
-  { key: 'auditLogs', label: 'Audit Logs', free: '-', plus: '-', business: '-', enterprise: '✔️' },
-  { key: 'envGit', label: 'Environments and Git Sync', free: '-', plus: '-', business: '-', enterprise: '✔️' },
-  { key: 'customRoles', label: 'Custom Roles', free: '-', plus: '-', business: '-', enterprise: '✔️' },
-  { key: 'privatePieces', label: 'Private Pieces', free: '-', plus: '-', business: '1', enterprise: 'Custom' },
-  { key: 'contract', label: 'Contract and Invoicing', free: 'Standard', plus: 'Standard', business: 'Standard', enterprise: 'Custom' },
-  { key: 'finalSupport', label: 'Support', free: 'Community', plus: 'Email', business: 'Email', enterprise: 'Priority' },
+  { key: 'tasks', label: 'Tasks', standard: 'Unlimited', ultimate: 'Higher Performance, Dedicated Workers' },
+  { key: 'support', label: 'Support', standard: 'Email', ultimate: 'Dedicated Support (Slack)' },
+  { key: 'execution', label: 'Execution Speed', standard: 'Normal', ultimate: 'Blazing fast' },
+  { key: 'users', label: 'Users', standard: 'Unlimited', ultimate: 'Custom' },
+  { key: 'projects', label: 'Projects', standard: 'Unlimited', ultimate: 'Custom' },
+  { key: 'multiAgent', label: 'Multi Agent Support', standard: '✔️', ultimate: '✔️' },
+  { key: 'aiCredits', label: 'AI Credits', standard: 'Buy as needed', ultimate: 'Custom' },
+  { key: 'userRoles', label: 'User Roles', standard: 'Admin, Editor, Viewer', ultimate: 'Custom' },
+  { key: 'mcpServers', label: 'MCP servers', standard: 'Unlimited', ultimate: 'Custom' },
+  { key: 'pieces', label: 'Pieces', standard: 'All', ultimate: 'All' },
+  { key: 'runCode', label: 'Run Code', standard: '✔️', ultimate: '✔️' },
+  { key: 'tables', label: 'Tables', standard: 'Unlimited', ultimate: 'Custom' },
+  { key: 'humanLoop', label: 'Human In The Loop', standard: '✔️', ultimate: '✔️' },
+  { key: 'sso', label: 'SSO', standard: '-', ultimate: '✔️' },
+  { key: 'apiAccess', label: 'API Access', standard: '✔️', ultimate: '✔️' },
+  { key: 'auditLogs', label: 'Audit Logs', standard: '-', ultimate: '✔️' },
+  { key: 'envGit', label: 'Environments and Git Sync', standard: '-', ultimate: '✔️' },
+  { key: 'customRoles', label: 'Custom Roles', standard: '-', ultimate: '✔️' },
+  { key: 'privatePieces', label: 'Private Pieces', standard: '-', ultimate: 'Custom' },
+  { key: 'contract', label: 'Contract and Invoicing', standard: 'Standard', ultimate: 'Custom' },
+  { key: 'finalSupport', label: 'Support', standard: 'Email', ultimate: 'Priority' },
 ];
 
 // Define detailed features for the comparison table
@@ -274,39 +243,39 @@ const detailedFeatures = [
   {
     category: 'Core Features',
     features: [
-      { name: 'Active Flows', free: '2', plus: '10', business: '50', enterprise: 'Custom' },
-      { name: 'AI Steps/Agents', free: 'AI steps', plus: 'AI agents & steps', business: 'AI agents & steps', enterprise: 'Custom' },
-      { name: 'Tasks', free: '1,000/mo', plus: 'Unlimited', business: 'Unlimited', enterprise: 'Higher Performance' },
-      { name: 'Users', free: '1', plus: '1', business: '5+ (add more)', enterprise: 'Custom' },
-      { name: 'Tables', free: '1', plus: 'Unlimited', business: 'Unlimited', enterprise: 'Custom' },
-      { name: 'MCP Servers', free: '-', plus: 'Unlimited', business: 'Unlimited', enterprise: 'Custom' },
-      { name: 'Projects', free: '-', plus: '-', business: '10', enterprise: 'Custom' },
+      { name: 'Active Flows', standard: '10 included, then $5/flow/mo', ultimate: 'Custom' },
+      { name: 'AI Steps/Agents', standard: 'AI agents & steps', ultimate: 'Custom' },
+      { name: 'Tasks', standard: 'Unlimited', ultimate: 'Higher Performance' },
+      { name: 'Users', standard: 'Unlimited', ultimate: 'Custom' },
+      { name: 'Tables', standard: 'Unlimited', ultimate: 'Custom' },
+      { name: 'MCP Servers', standard: 'Unlimited', ultimate: 'Custom' },
+      { name: 'Projects', standard: 'Unlimited', ultimate: 'Custom' },
     ]
   },
   {
     category: 'AI & Credits',
     features: [
-      { name: 'AI Credits', free: '200', plus: '500 (buy more)', business: '1,000 (buy more)', enterprise: 'Custom' },
-      { name: 'Buy AI Credits', free: '-', plus: '✔️', business: '✔️', enterprise: '✔️' },
+      { name: 'AI Credits', standard: 'Buy as needed', ultimate: 'Custom' },
+      { name: 'Buy AI Credits', standard: '✔️', ultimate: '✔️' },
     ]
   },
   {
     category: 'Support & Collaboration',
     features: [
-      { name: 'Support', free: 'Community', plus: 'Email', business: 'Email', enterprise: 'Dedicated' },
-      { name: 'User Roles', free: 'Admin, Editor, Viewer', plus: '-', business: 'Admin, Editor, Viewer', enterprise: 'Custom' },
-      { name: 'Human in the Loop', free: '✔️', plus: '✔️', business: '✔️', enterprise: '✔️' },
+      { name: 'Support', standard: 'Email', ultimate: 'Dedicated' },
+      { name: 'User Roles', standard: 'Admin, Editor, Viewer', ultimate: 'Custom' },
+      { name: 'Human in the Loop', standard: '✔️', ultimate: '✔️' },
     ]
   },
   {
     category: 'Advanced & Security',
     features: [
-      { name: 'API Access', free: '-', plus: '-', business: '✔️', enterprise: '✔️' },
-      { name: 'SSO', free: '-', plus: '-', business: '-', enterprise: '✔️' },
-      { name: 'Audit Logs', free: '-', plus: '-', business: '-', enterprise: '✔️' },
-      { name: 'Custom Roles', free: '-', plus: '-', business: '-', enterprise: '✔️' },
-      { name: 'Private Pieces', free: '-', plus: '-', business: '1', enterprise: 'Custom' },
-      { name: 'Unlimited MCP Servers', free: '-', plus: '✔️', business: '✔️', enterprise: '✔️' },
+      { name: 'API Access', standard: '✔️', ultimate: '✔️' },
+      { name: 'SSO', standard: '-', ultimate: '✔️' },
+      { name: 'Audit Logs', standard: '-', ultimate: '✔️' },
+      { name: 'Custom Roles', standard: '-', ultimate: '✔️' },
+      { name: 'Private Pieces', standard: '-', ultimate: 'Custom' },
+      { name: 'Unlimited MCP Servers', standard: '✔️', ultimate: '✔️' },
     ]
   }
 ];
@@ -315,260 +284,541 @@ const youtubeEmbedUrl = 'https://www.youtube.com/embed/xn-lu9CUhRE?autoplay=1';
 
 const { stars, loading: starsLoading } = useGithubStars()
 
+// Helper function to parse feature text (main text – description)
+const parseFeature = (featureText) => {
+  const parts = featureText.split(' – ');
+  return {
+    main: parts[0],
+    description: parts[1] || null
+  };
+};
+
+// Track tooltip state
+const activeTooltip = ref(null);
+const tooltipShown = ref(false);
+let tooltipTimeout = null;
+const tooltipPositions = ref({});
+
+// Track if features list is expanded
+const isFeaturesExpanded = ref(false);
+
+// Track if we're on mobile (for collapsible behavior)
+const isMobile = ref(false);
+const checkMobile = () => {
+  isMobile.value = window.innerWidth < 768; // md breakpoint
+  // On mobile, always show all features
+  if (isMobile.value) {
+    isFeaturesExpanded.value = true;
+  }
+};
+
+
+const showTooltip = (featureId, description, event) => {
+  if (!description) return;
+  
+  // Calculate tooltip position
+  if (event) {
+    const rect = event.target.getBoundingClientRect();
+    const isMobileScreen = window.innerWidth < 640; // sm breakpoint
+    const tooltipWidth = isMobileScreen ? window.innerWidth - 32 : 288; // Full width minus padding on mobile
+    const spacing = 8; // mb-2 = 0.5rem = 8px
+    let left = rect.left;
+    
+    // On mobile, center the tooltip
+    if (isMobileScreen) {
+      left = (window.innerWidth - tooltipWidth) / 2;
+    } else {
+      // Adjust if tooltip would overflow on the right
+      if (left + tooltipWidth > window.innerWidth) {
+        left = window.innerWidth - tooltipWidth - 16; // 16px padding from edge
+      }
+      
+      // Adjust if tooltip would overflow on the left
+      if (left < 16) {
+        left = 16;
+      }
+    }
+    
+    tooltipPositions.value[featureId] = {
+      top: isMobileScreen ? rect.bottom + spacing : rect.top - spacing,
+      left: left,
+      bottom: isMobileScreen ? 'auto' : 'auto',
+      width: isMobileScreen ? tooltipWidth : undefined
+    };
+  }
+  
+  // If already showing a tooltip, switch instantly
+  if (activeTooltip.value !== null) {
+    activeTooltip.value = featureId;
+    // Update position if event is provided
+    if (event) {
+      const rect = event.target.getBoundingClientRect();
+      const isMobileScreen = window.innerWidth < 640; // sm breakpoint
+      const tooltipWidth = isMobileScreen ? Math.min(window.innerWidth - 16, 320) : 288; // Full width minus padding on mobile, max 320px
+      const spacing = 8; // mb-2 = 0.5rem = 8px
+      let left = rect.left;
+      
+      // On mobile, center the tooltip
+      if (isMobileScreen) {
+        left = (window.innerWidth - tooltipWidth) / 2;
+      } else {
+        // Adjust if tooltip would overflow on the right
+        if (left + tooltipWidth > window.innerWidth) {
+          left = window.innerWidth - tooltipWidth - 16; // 16px padding from edge
+        }
+        
+        // Adjust if tooltip would overflow on the left
+        if (left < 16) {
+          left = 16;
+        }
+      }
+      
+      tooltipPositions.value[featureId] = {
+        top: isMobileScreen ? rect.bottom + spacing : rect.top - spacing,
+        left: left,
+        bottom: isMobileScreen ? 'auto' : 'auto',
+        width: isMobileScreen ? tooltipWidth : undefined
+      };
+    }
+    return;
+  }
+  
+  // Clear any existing timeout
+  if (tooltipTimeout) {
+    clearTimeout(tooltipTimeout);
+  }
+  
+  // First tooltip in the group has delay, subsequent ones are instant
+  const delay = tooltipShown.value ? 0 : 400;
+  
+  tooltipTimeout = setTimeout(() => {
+    activeTooltip.value = featureId;
+    tooltipShown.value = true;
+  }, delay);
+};
+
+const getTooltipStyle = (featureId) => {
+  const pos = tooltipPositions.value[featureId];
+  if (!pos) return {};
+  
+  const isMobileScreen = window.innerWidth < 640;
+  
+  return {
+    top: pos.top ? `${pos.top}px` : 'auto',
+    bottom: pos.bottom ? `${pos.bottom}px` : 'auto',
+    left: `${pos.left}px`,
+    width: pos.width ? `${pos.width}px` : undefined,
+    transform: isMobileScreen ? 'none' : 'translateY(-100%)'
+  };
+};
+
+const hideTooltip = () => {
+  if (tooltipTimeout) {
+    clearTimeout(tooltipTimeout);
+    tooltipTimeout = null;
+  }
+  activeTooltip.value = null;
+};
+
+// Handle touch/click for mobile
+const handleTooltipInteraction = (featureId, description, event) => {
+  const isMobileScreen = window.innerWidth < 640;
+  
+  if (isMobileScreen) {
+    // On mobile, toggle on tap (no delay)
+    if (activeTooltip.value === featureId) {
+      hideTooltip();
+    } else {
+      // Clear any existing timeout
+      if (tooltipTimeout) {
+        clearTimeout(tooltipTimeout);
+        tooltipTimeout = null;
+      }
+      // Show immediately on mobile
+      activeTooltip.value = featureId;
+      tooltipShown.value = true;
+      // Calculate position
+      if (event) {
+        const rect = event.target.getBoundingClientRect();
+        const tooltipWidth = Math.min(window.innerWidth - 16, 320);
+        const spacing = 8;
+        const left = (window.innerWidth - tooltipWidth) / 2;
+        
+        tooltipPositions.value[featureId] = {
+          top: rect.bottom + spacing,
+          left: left,
+          bottom: 'auto',
+          width: tooltipWidth
+        };
+      }
+    }
+  } else {
+    // On desktop, use hover behavior
+    showTooltip(featureId, description, event);
+  }
+};
+
+// Close tooltip when clicking outside on mobile
+const handleClickOutside = (event) => {
+  const isMobileScreen = window.innerWidth < 640;
+  if (isMobileScreen && activeTooltip.value) {
+    // Check if click is on a tooltip element
+    const tooltipElement = event.target.closest('[data-tooltip]');
+    // Check if click is on a feature item with tooltip
+    const featureItem = event.target.closest('[data-feature-item]');
+    
+    // If click is neither on tooltip nor on feature item, hide tooltip
+    if (!tooltipElement && !featureItem) {
+      hideTooltip();
+    }
+  }
+};
+
 onMounted(() => {
   initTooltips();
-})
+  checkMobile();
+  window.addEventListener('resize', checkMobile);
+  // Add click outside handler for mobile
+  document.addEventListener('click', handleClickOutside);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('resize', checkMobile);
+  document.removeEventListener('click', handleClickOutside);
+});
+
+const onFeaturesGroupLeave = () => {
+  // Reset tooltipShown when mouse leaves the entire features group
+  hideTooltip();
+  tooltipShown.value = false;
+};
+
+// Determine which categories/features to show based on expansion state
+const getVisibleCategories = (categories) => {
+  if (isFeaturesExpanded.value) {
+    return categories.map((cat, idx) => ({ ...cat, originalIndex: idx }));
+  }
+  
+  // Show first category fully, second category up to half (first feature)
+  const visible = [];
+  if (categories.length > 0) {
+    visible.push({
+      ...categories[0],
+      features: categories[0].features,
+      originalIndex: 0
+    });
+  }
+  if (categories.length > 1) {
+    const secondCategory = categories[1];
+    const halfPoint = Math.floor(secondCategory.features.length / 2);
+    visible.push({
+      ...secondCategory,
+      features: secondCategory.features.slice(0, halfPoint),
+      originalIndex: 1
+    });
+  }
+  
+  return visible;
+};
+
+const expandFeatures = () => {
+  isFeaturesExpanded.value = true;
+};
+
+// Reset expanded state when switching product modes
+watch(productMode, () => {
+  isFeaturesExpanded.value = false;
+  // Re-check mobile state after mode change
+  checkMobile();
+});
+
 </script>
 
 <template>
-  <section class="bg-white dark:bg-gray-900">
-    <div class="py-6 w-full lg:py-16 px-4 lg:px-6">
+  <div class="w-full bg-white relative overflow-x-hidden">
+    <!-- Pink Glow Background -->
+    <div
+      class="absolute top-0 left-0 right-0 z-0 h-screen"
+      :style="{
+        backgroundImage: 'radial-gradient(125% 125% at 50% 90%, #ffffff 40%, #fed7aa 100%)',
+        backgroundSize: '100% 100%',
+      }"
+    />
+    <section class="relative z-10 pt-[62px] overflow-x-hidden">
+      <div class="py-6 w-full lg:py-16 px-4 lg:px-6 overflow-x-hidden">
+      <div class="max-w-6xl mx-auto px-2 sm:px-4 md:px-2">
       <div class="text-center mb-16 mt-8">
-        <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-libre-baskerville font-light text-gray-900 dark:text-white leading-[1.45!important]">
-          Stop counting,<br>
-          it's unlimited.
+          <h1 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-libre-baskerville font-light text-gray-900 dark:text-white leading-[1.45!important]">
+            Unlimited runs. Empower every team with AI.
         </h1>
       </div>
-      <div class="flex justify-center mb-6">
+        <div class="flex justify-center mb-10">
         <ProductSwitcher :product-mode="productMode" @product-mode-changed="handleProductModeChange" />
       </div>
-      <div class="text-center mt-10 mb-14">
-        <p v-if="productMode === 'automate'" class="text-xl text-gray-900 dark:text-gray-100 mx-auto">
-          Automate tasks across marketing, sales, support, and more<br>
-          with AI agents to help at every step.
-        </p>
-        <p v-else class="text-xl text-gray-900 dark:text-gray-100 mx-auto">
-          Power your product with an AI workflow builder or arm your AI agent with MCPs.<br>
-          Let users build and run their own AI agents.
-        </p>
       </div>
       
-      <!-- Main Pricing Cards (Typeform-style) -->
-      <div v-if="productMode === 'embed'" class="grid grid-cols-1 sm:grid-cols-2 gap-4 gap-y-10 md:gap-6 justify-center max-w-4xl mx-auto px-2">
-        <div v-for="plan in embedPlans" :key="plan.key" :class="[
-          'flex flex-col bg-white dark:bg-gray-800 rounded-2xl border shadow-sm p-6 items-start relative transition-all min-h-[320px] md:min-h-[500px] w-full',
-          'border-gray-300 dark:border-gray-600',
-          'md:max-w-sm md:mx-auto'
-        ]">
-          <!-- Badge for Plus plan -->
-          <div v-if="plan.key === 'plus'" class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-rose-100 via-orange-100 to-amber-100 text-gray-800 text-xs font-bold px-4 py-1 rounded-full">
-            Recommended
+      <!-- Embed Plan (Single Plan) -->
+      <div v-if="productMode === 'embed'" class="w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-2 overflow-x-hidden">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl border-2 border-gray-300 dark:border-gray-600 shadow-lg overflow-hidden w-full sm:max-w-2xl mx-auto">
+          <div class="relative py-8 sm:py-10 md:py-12 px-4 sm:px-6 md:px-2 bg-white dark:bg-gray-800">
+            <!-- Plan Header -->
+            <div class="text-center mb-6">
+              <!-- Plan Icon -->
+              <div class="flex justify-center mb-2">
+                <img src="/icons/kharbosheh-3.png" alt="Activepieces Embed icon" class="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain" />
           </div>
-          
-          <div :class="[
-            'w-full h-full rounded-2xl flex flex-col',
-            plan.key === 'plus' ? '' : 'bg-white dark:bg-gray-800'
-          ]">
-            <h3 class="text-3xl font-semibold text-gray-900 dark:text-white mb-1 mt-2 text-center">
-              <span v-if="plan.key === 'embed-light'" class="flex items-center justify-center whitespace-pre">
-                Embed<span class="italic font-serif font-light text-gray-500 dark:text-gray-400"> light</span>
-                <svg v-if="plan.key === 'free' || plan.key === 'plus' || plan.key === 'business' || plan.key === 'embed-light'" class="w-5 h-5 ml-2 text-blue-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" :data-tooltip-target="`cloud-tooltip-${plan.key}`" data-tooltip-placement="top">
-                  <path d="M5.5 16a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 16h-8z"/>
-                </svg>
-              </span>
-              <span v-else class="flex items-center justify-center">
-                {{ plan.name }}
-                <svg v-if="plan.key === 'free' || plan.key === 'plus' || plan.key === 'business' || plan.key === 'embed-light'" class="w-5 h-5 ml-2 text-blue-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" :data-tooltip-target="`cloud-tooltip-${plan.key}`" data-tooltip-placement="top">
-                  <path d="M5.5 16a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 16h-8z"/>
-                </svg>
-              </span>
+              <h3 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900 dark:text-white mb-2">
+                Activepieces Embed
             </h3>
-            <div class="text-base text-gray-500 dark:text-gray-400 mb-4 text-center">
-              {{ embedPlanDescriptions[plan.key] }}
+              <div class="text-sm sm:text-base text-gray-500 dark:text-gray-400 mb-6 sm:mb-8 font-medium">
+                Annual contract
+              </div>
             </div>
-            <div class="flex items-end mb-2 h-16 justify-center text-center">
-              <span v-if="plan.key === 'embed-enterprise'" class="text-lg font-medium text-gray-900 dark:text-white w-full block mt-2">Starts at $2.5k/mo (billed yearly)</span>
-              <span v-else class="text-5xl font-medium text-gray-900 dark:text-white">{{ plan.key === 'embed-enterprise' ? 'Starts at $30k/year' : plan.price.replace('/mo','') }}</span>
-              <span v-if="plan.key !== 'enterprise' && plan.key !== 'embed-enterprise' && plan.key !== 'appsumo'" class="ml-1 text-base text-gray-500 dark:text-gray-400 font-normal">/mo</span>
+            
+            <!-- Separator -->
+            <div class="border-t border-gray-200 dark:border-gray-700 mb-8 sm:mb-10 mx-auto w-24"></div>
+            
+            <!-- Price -->
+            <div class="text-center mb-8 sm:mb-10">
+              <div class="text-3xl sm:text-4xl md:text-5xl text-gray-900 dark:text-white break-words">Contact Sales</div>
+              <div class="text-base sm:text-lg md:text-xl text-gray-500 dark:text-gray-400 mt-1 mb-4">Starts at $30k/year</div>
             </div>
-            <div class="flex justify-center w-full mt-2 mb-6">
-              <template v-if="plan.key === 'appsumo'">
-                <div class="h-[56px] w-full flex items-center justify-center">
-                  <button type="button"
-                    class="flex items-center justify-center w-12 h-12 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm hover:bg-pink-50 dark:hover:bg-pink-900/20 transition"
-                    :data-tooltip-target="'appsumo-heart-tooltip'" data-tooltip-placement="top"
-                    aria-label="Show message">
-                    <svg class="w-7 h-7 text-pink-500" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                    </svg>
-                  </button>
-                  <div id="appsumo-heart-tooltip" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700 max-w-xs text-left">
-                    <div>Thanks for your support! ❤️</div>
-                    <div class="mt-2 text-xs text-gray-200 dark:text-gray-300 leading-snug">
-                      To build a growing business out of Activepieces, we have to experiment a lot on our pricing, so we added this plan to clarify how the AppSumo plan is evolving as we improve over time.
-                    </div>
-                    <div class="tooltip-arrow" data-popper-arrow></div>
-                  </div>
-                </div>
-              </template>
-              <template v-else>
-                <a :href="plan.cta.href" class="text-center text-white font-semibold rounded-lg text-base px-8 py-3.5 bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-900 transition">
-                  {{ plan.cta.text }}
+            
+            <!-- CTA Button -->
+            <div class="flex justify-center mb-6 sm:mb-8">
+              <div class="w-full sm:max-w-xs">
+                <a href="/sales" class="text-center font-semibold rounded-lg text-sm sm:text-base px-6 sm:px-8 py-3.5 min-h-[44px] transition w-full border-2 bg-gray-700 hover:bg-gray-600 text-white border-transparent flex items-center justify-center">
+                  Contact Sales
                 </a>
-              </template>
+              </div>
             </div>
-            <ul class="w-full flex-1 mt-2 mb-6 flex flex-col gap-0">
-              <template v-for="(feature, idx) in embedPlanHighlights[plan.key]" :key="feature">
-                <li :class="[
-                  'flex items-center w-full',
-                  'border-t border-gray-300 dark:border-gray-600',
-                  'py-2',
-                  idx === 0 ? '' : ''
-                ]">
-                  <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0 align-middle" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                  <span class="text-gray-900 dark:text-white text-base" v-html="feature"></span>
+            
+            <!-- Features List -->
+            <div class="flex justify-center">
+              <ul class="space-y-2.5 sm:space-y-3 w-full sm:max-w-xs">
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 sm:w-6 sm:h-6 text-green-500 mr-2 sm:mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="text-gray-900 dark:text-white text-sm sm:text-base md:text-lg">Embedded Automation Builder</span>
                 </li>
-              </template>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 sm:w-6 sm:h-6 text-green-500 mr-2 sm:mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="text-gray-900 dark:text-white text-sm sm:text-base md:text-lg">Embedded AI Agents</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 sm:w-6 sm:h-6 text-green-500 mr-2 sm:mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="text-gray-900 dark:text-white text-sm sm:text-base md:text-lg">JavaScript SDK</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 sm:w-6 sm:h-6 text-green-500 mr-2 sm:mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="text-gray-900 dark:text-white text-sm sm:text-base md:text-lg">Custom Templates & Branding</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 sm:w-6 sm:h-6 text-green-500 mr-2 sm:mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="text-gray-900 dark:text-white text-sm sm:text-base md:text-lg">Piece Management</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 sm:w-6 sm:h-6 text-green-500 mr-2 sm:mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="text-gray-900 dark:text-white text-sm sm:text-base md:text-lg">Private Pieces</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 sm:w-6 sm:h-6 text-green-500 mr-2 sm:mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="text-gray-900 dark:text-white text-sm sm:text-base md:text-lg">Cloud or Self-Hosted</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 sm:w-6 sm:h-6 text-green-500 mr-2 sm:mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="text-gray-900 dark:text-white text-sm sm:text-base md:text-lg">Dedicated Support</span>
+                </li>
             </ul>
-            <div class="w-full flex-1"></div>
           </div>
-          
-          <!-- Individual tooltip for each cloud plan -->
-          <div v-if="plan.key === 'free' || plan.key === 'plus' || plan.key === 'business' || plan.key === 'embed-light'" :id="`cloud-tooltip-${plan.key}`" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
-            Activepieces Cloud
-            <div class="tooltip-arrow" data-popper-arrow></div>
-          </div>
-          
-          <!-- Tooltip for unlimited tasks -->
-          <div v-if="(plan.key === 'plus' || plan.key === 'business') && productMode === 'automate'" :id="`unlimited-tasks-tooltip-${plan.key}`" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
-            You don't pay per task, it's unlimited. Fair usage applies to let all users enjoy it!
-            <div class="tooltip-arrow" data-popper-arrow></div>
-          </div>
-          
-          <!-- Tooltip for users -->
-          <div v-if="plan.key === 'business' && productMode === 'automate'" id="users-tooltip" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
-            And you can add more
-            <div class="tooltip-arrow" data-popper-arrow></div>
           </div>
         </div>
       </div>
-      <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 gap-y-10 h-full items-stretch justify-between mx-auto max-w-7xl px-2">
-        <div v-for="plan in plans" :key="plan.key" :class="[
-          'flex flex-col bg-white dark:bg-gray-800 rounded-2xl border shadow-sm p-6 items-start relative transition-all min-h-[320px] md:min-h-[500px] w-full',
-          plan.key === 'plus' ? 'border [background:linear-gradient(45deg,#fefefe,theme(colors.gray.50)_50%,#fefefe)_padding-box,conic-gradient(from_var(--border-angle),theme(colors.gray.300)_60%,_theme(colors.cyan.500)_75%,_theme(colors.blue.600)_85%,_theme(colors.gray.300))_border-box] dark:[background:linear-gradient(45deg,theme(colors.gray.800),theme(colors.gray.700)_50%,theme(colors.gray.800))_padding-box,conic-gradient(from_var(--border-angle),theme(colors.gray.600)_60%,_theme(colors.cyan.500)_75%,_theme(colors.blue.600)_85%,_theme(colors.gray.600))_border-box] rounded-2xl border-transparent animate-border'
-            : plan.key === 'appsumo' ? 'border-2 border-yellow-400 bg-yellow-50 dark:bg-yellow-900/30 shadow-lg' 
-            : (plan.highlight ? 'border-2 border-gray-300 shadow-md' : 'border-gray-300 dark:border-gray-600')
-        ]">
-          <!-- Badge for Plus plan -->
-          <div v-if="plan.key === 'plus'" class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-rose-100 via-orange-100 to-amber-100 text-gray-800 text-xs font-bold px-4 py-1 rounded-full">
-            Recommended
-          </div>
-          
-          <div :class="[
-            'w-full h-full rounded-2xl flex flex-col',
-            plan.key === 'appsumo' ? 'bg-yellow-50 dark:bg-yellow-900/30' : (plan.key === 'plus' ? '' : 'bg-white dark:bg-gray-800')
-          ]">
-            <h3 class="text-3xl font-semibold text-gray-900 dark:text-white mb-1 mt-2 text-center">
-              <span v-if="plan.key === 'embed-light'" class="flex items-center justify-center whitespace-pre">
-                Embed<span class="italic font-serif font-light text-gray-500 dark:text-gray-400"> light</span>
-                <svg v-if="plan.key === 'free' || plan.key === 'plus' || plan.key === 'business' || plan.key === 'embed-light'" class="w-5 h-5 ml-2 text-blue-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" :data-tooltip-target="`cloud-tooltip-${plan.key}`" data-tooltip-placement="top">
-                  <path d="M5.5 16a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 16h-8z"/>
-                </svg>
-              </span>
-              <span v-else class="flex items-center justify-center">
-                {{ plan.name }}
-                <svg v-if="plan.key === 'free' || plan.key === 'plus' || plan.key === 'business' || plan.key === 'embed-light'" class="w-5 h-5 ml-2 text-blue-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" :data-tooltip-target="`cloud-tooltip-${plan.key}`" data-tooltip-placement="top">
-                  <path d="M5.5 16a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 16h-8z"/>
-                </svg>
-              </span>
-            </h3>
-            <div v-if="plan.key === 'appsumo'" class="text-base text-yellow-900 dark:text-yellow-200 mb-4 text-center font-medium">
-               For our Sumolings—clarity as we grow.
-            </div>
-            <div v-else class="text-base text-gray-500 dark:text-gray-400 mb-4 text-center">
-              {{ planDescriptions[plan.key] }}
-            </div>
-            <div class="flex items-end mb-2 h-16 justify-center text-center">
-              <span v-if="plan.key === 'enterprise'" class="text-5xl text-gray-900 dark:text-white flex items-center justify-center w-full">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-yellow-500 dark:text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2L15.09 8.26L22 9L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9L8.91 8.26L12 2Z" />
-                </svg>
-              </span>
-              <span v-else class="text-5xl font-medium text-gray-900 dark:text-white">{{ plan.key === 'embed-enterprise' ? 'Starts at $30k/year' : plan.price.replace('/mo','') }}</span>
-              <span v-if="plan.key !== 'enterprise' && plan.key !== 'embed-enterprise' && plan.key !== 'appsumo'" class="ml-1 text-base text-gray-500 dark:text-gray-400 font-normal">/mo</span>
-            </div>
-            <div class="flex justify-center w-full mt-2 mb-6">
-              <template v-if="plan.key === 'appsumo'">
-                <div class="h-[56px] w-full flex items-center justify-center">
-                  <button type="button"
-                    class="flex items-center justify-center w-12 h-12 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm hover:bg-pink-50 dark:hover:bg-pink-900/20 transition"
-                    :data-tooltip-target="'appsumo-heart-tooltip'" data-tooltip-placement="top"
-                    aria-label="Show message">
-                    <svg class="w-7 h-7 text-pink-500" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                    </svg>
-                  </button>
-                  <div id="appsumo-heart-tooltip" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700 max-w-xs text-left">
-                    <div>Thanks for your support! ❤️</div>
-                    <div class="mt-2 text-xs text-gray-200 dark:text-gray-300 leading-snug">
-                      To build a growing business out of Activepieces, we have to experiment a lot on our pricing, so we added this plan to clarify how the AppSumo plan is evolving as we improve over time.
+      <div v-else class="w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-2 overflow-x-hidden">
+        <!-- Modern table layout -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl border-2 border-gray-300 dark:border-gray-600 shadow-lg overflow-hidden">
+          <div class="grid grid-cols-1 md:grid-cols-2 divide-x-0 md:divide-x divide-gray-200 dark:divide-gray-700 gap-6 md:gap-0">
+            <div v-for="(plan, planIndex) in plans" :key="plan.key" :class="[
+              'relative py-8 sm:py-10 md:py-12 px-4 sm:px-6 md:px-2',
+              plan.key === 'standard' ? 'bg-gray-50 dark:bg-gray-800/50' : 'bg-white dark:bg-gray-800'
+            ]">
+              <!-- Plan Header -->
+              <div class="text-center mb-6">
+                <!-- Plan Icon -->
+                <div class="flex justify-center mb-2">
+                  <img v-if="plan.key === 'standard'" src="/icons/kharbosheh-1.png" alt="Standard plan icon" class="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain" />
+                  <img v-else-if="plan.key === 'ultimate'" src="/icons/kharbosheh-2.png" alt="Ultimate plan icon" class="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain" />
+                </div>
+                <h3 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900 dark:text-white mb-2">
+                  {{ plan.name }}
+                </h3>
+                <!-- Plan type labels -->
+                <div v-if="plan.key === 'standard'" class="text-sm sm:text-base text-gray-500 dark:text-gray-400 mb-6 sm:mb-8 font-medium">
+                  Usage based
+                </div>
+                <div v-else-if="plan.key === 'ultimate'" class="text-sm sm:text-base text-gray-500 dark:text-gray-400 mb-6 sm:mb-8 font-medium">
+                  Annual contract
+                </div>
+              </div>
+              
+              <!-- Separator -->
+              <div class="border-t border-gray-200 dark:border-gray-700 mb-8 sm:mb-10 mx-auto w-24"></div>
+              
+              <!-- Price -->
+              <div class="text-center mb-8 sm:mb-10">
+                <div v-if="plan.key === 'ultimate'" class="text-center">
+                  <div class="text-3xl sm:text-4xl md:text-5xl text-gray-900 dark:text-white break-words">Contact Sales</div>
+                  <div class="hidden sm:block text-base sm:text-lg md:text-xl text-gray-500 dark:text-gray-400 mt-1 mb-4">&nbsp;</div>
+                </div>
+                <div v-else-if="plan.key === 'standard'" class="text-center">
+                  <div class="text-3xl sm:text-4xl md:text-5xl text-gray-900 dark:text-white break-words">Free</div>
+                  <div class="text-base sm:text-lg md:text-xl text-gray-500 dark:text-gray-400 mt-1 mb-4">then $5 per active flow per month</div>
+                </div>
+                <div v-else class="text-5xl font-medium text-gray-900 dark:text-white">
+                  {{ plan.key === 'embed-enterprise' ? 'Starts at $30k/year' : plan.price.replace('/mo','') }}
+                  <span v-if="plan.key !== 'ultimate' && plan.key !== 'embed-enterprise' && plan.key !== 'appsumo' && plan.key !== 'standard'" class="ml-1 text-base text-gray-500 dark:text-gray-400 font-normal">/mo</span>
+                </div>
+              </div>
+              
+              <!-- CTA Button -->
+              <div class="flex justify-center mb-6 sm:mb-8">
+                <div class="w-full sm:max-w-xs">
+                <a :href="plan.cta.href" :class="[
+                    'text-center font-semibold rounded-lg text-sm sm:text-base px-6 sm:px-8 py-3.5 min-h-[44px] transition w-full border-2 flex items-center justify-center',
+                  plan.key === 'standard' ? 'border-gray-900 text-gray-900 dark:border-gray-100 dark:text-gray-100 hover:bg-gray-900 hover:text-white dark:hover:bg-gray-100 dark:hover:text-gray-900' : 'bg-gray-700 hover:bg-gray-600 text-white border-transparent'
+                ]">
+                  {{ plan.cta.text }}
+                </a>
+                </div>
+              </div>
+              
+              <!-- Features List -->
+              <div class="flex justify-center">
+                <div 
+                  v-if="plan.key === 'ultimate'" 
+                  class="w-full sm:max-w-xs relative"
+                  @mouseleave="onFeaturesGroupLeave"
+                >
+                  <div class="space-y-4 sm:space-y-6 transition-all duration-300" :class="{ 'overflow-hidden max-h-[400px] sm:max-h-[500px] md:max-h-[600px]': !isFeaturesExpanded && !isMobile }">
+                    <template v-for="(category, catIdx) in getVisibleCategories(planHighlights[plan.key])" :key="catIdx">
+                      <div>
+                        <h4 class="text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 sm:mb-3 uppercase tracking-wide">
+                          {{ category.category }}
+                        </h4>
+                        <ul class="space-y-2.5 sm:space-y-3">
+                          <template v-for="(feature, idx) in category.features" :key="idx">
+                            <li class="flex items-start relative group">
+                              <svg class="w-5 h-5 sm:w-6 sm:h-6 text-green-500 mr-2 sm:mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                              </svg>
+                              <div class="flex-1 relative">
+                                <span 
+                                  :class="[
+                                    'text-gray-900 dark:text-white text-sm sm:text-base md:text-lg',
+                                    parseFeature(feature).description ? 'border-b border-dotted border-gray-400 dark:border-gray-500 cursor-help' : ''
+                                  ]"
+                                  data-feature-item
+                                  @mouseenter="showTooltip(`${category.originalIndex}-${idx}`, parseFeature(feature).description, $event)"
+                                  @touchstart.prevent="handleTooltipInteraction(`${category.originalIndex}-${idx}`, parseFeature(feature).description, $event)"
+                                >
+                                  {{ parseFeature(feature).main }}
+                                </span>
+                                <!-- Tooltip -->
+                                <Teleport to="body">
+                                  <Transition name="tooltip-fade">
+                                    <div 
+                                      v-if="activeTooltip === `${category.originalIndex}-${idx}` && parseFeature(feature).description"
+                                      data-tooltip
+                                      class="fixed w-[calc(100vw-1rem)] sm:w-72 max-w-sm p-3 sm:p-4 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 text-xs sm:text-sm rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.15)] border-2 border-indigo-200 dark:border-indigo-700 z-[9999] pointer-events-auto"
+                                      :style="getTooltipStyle(`${category.originalIndex}-${idx}`)"
+                                    >
+                                      <div class="leading-relaxed">
+                                        {{ parseFeature(feature).description }}
+                                      </div>
+                                    </div>
+                                  </Transition>
+                                </Teleport>
+                              </div>
+                            </li>
+                          </template>
+                        </ul>
+                      </div>
+                    </template>
+                  </div>
+                  <!-- Gradient Overlay - Hidden on mobile -->
+                  <div 
+                    v-if="!isFeaturesExpanded"
+                    @click="expandFeatures"
+                    @mouseenter="hideTooltip"
+                    class="hidden md:block absolute bottom-0 left-0 right-0 h-24 sm:h-28 md:h-32 cursor-pointer pointer-events-auto z-10"
+                    :style="{
+                      background: 'linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.7) 50%, rgba(255, 255, 255, 1) 100%)'
+                    }"
+                  >
+                    <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20">
+                      <span class="text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-3 py-1.5 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
+                        Show all
+                      </span>
                     </div>
-                    <div class="tooltip-arrow" data-popper-arrow></div>
                   </div>
                 </div>
-              </template>
-              <template v-else>
-              <a :href="plan.cta.href" class="text-center text-white font-semibold rounded-lg text-base px-8 py-3.5 bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-900 transition">
-                  {{ plan.cta.text }}
-              </a>
-              </template>
+                <ul v-else class="space-y-2.5 sm:space-y-3 w-full sm:max-w-xs">
+                <template v-for="(feature, idx) in planHighlights[plan.key]" :key="feature">
+                  <li class="flex items-start">
+                      <svg class="w-5 h-5 sm:w-6 sm:h-6 text-green-500 mr-2 sm:mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                      <div class="flex-1 relative">
+                        <span 
+                          v-if="plan.key === 'standard' && (idx === 0 || idx === 1 || idx === 2)"
+                          :class="[
+                            'text-sm sm:text-base md:text-lg font-semibold',
+                            parseFeature(feature).description ? 'border-b border-dotted border-gray-400 dark:border-gray-500 cursor-help' : ''
+                          ]"
+                          data-feature-item
+                          @mouseenter="showTooltip(`standard-${idx}`, parseFeature(feature).description, $event)"
+                          @mouseleave="hideTooltip"
+                          @touchstart.prevent="handleTooltipInteraction(`standard-${idx}`, parseFeature(feature).description, $event)"
+                        >
+                          <span class="bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">{{ parseFeature(feature).main }}</span>
+                        </span>
+                        <span v-else class="text-gray-900 dark:text-white text-sm sm:text-base md:text-lg" v-html="feature"></span>
+                        <!-- Tooltip for Standard plan -->
+                        <Teleport v-if="plan.key === 'standard' && (idx === 0 || idx === 1 || idx === 2)" to="body">
+                          <Transition name="tooltip-fade">
+                            <div 
+                              v-if="activeTooltip === `standard-${idx}` && parseFeature(feature).description"
+                              data-tooltip
+                              class="fixed w-[calc(100vw-1rem)] sm:w-72 max-w-sm p-3 sm:p-4 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 text-xs sm:text-sm rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.15)] border-2 border-indigo-200 dark:border-indigo-700 z-[9999] pointer-events-auto"
+                              :style="getTooltipStyle(`standard-${idx}`)"
+                            >
+                              <div class="leading-relaxed">
+                                {{ parseFeature(feature).description }}
+                              </div>
+                            </div>
+                          </Transition>
+                        </Teleport>
+                      </div>
+                  </li>
+                </template>
+              </ul>
+              </div>
             </div>
-            <ul class="w-full flex-1 mt-2 mb-6 flex flex-col gap-0">
-              <template v-if="plan.key === 'appsumo'">
-                <li class="flex items-center w-full border-t border-gray-300 dark:border-gray-600 py-2"><span class="text-gray-900 dark:text-white text-base font-semibold">AI steps and 5 AI agents</span></li>
-                <li class="flex items-center w-full border-t border-gray-300 dark:border-gray-600 py-2"><span class="text-gray-900 dark:text-white text-base font-semibold">Tasks as per tier</span></li>
-                <li class="flex items-center w-full border-t border-gray-300 dark:border-gray-600 py-2"><span class="text-gray-900 dark:text-white text-base font-semibold">Unlimited active flows</span></li>
-                <li class="flex items-center w-full border-t border-gray-300 dark:border-gray-600 py-2"><span class="text-gray-900 dark:text-white text-base font-semibold">200 AI credits</span></li>
-                <li class="flex items-center w-full border-t border-gray-300 dark:border-gray-600 py-2"><span class="text-gray-900 dark:text-white text-base font-semibold">Users as per tier</span></li>
-                <li class="flex items-center w-full border-t border-gray-300 dark:border-gray-600 py-2"><span class="text-gray-900 dark:text-white text-base font-semibold">Unlimited todos</span></li>
-                <li class="flex items-center w-full border-t border-gray-300 dark:border-gray-600 py-2"><span class="text-gray-900 dark:text-white text-base font-semibold">1 table</span></li>
-                <li class="flex items-center w-full border-t border-gray-300 dark:border-gray-600 py-2"><span class="text-gray-900 dark:text-white text-base font-semibold">1 MCP server</span></li>
-                <li class="flex items-center w-full border-t border-gray-300 dark:border-gray-600 py-2"><span class="text-gray-900 dark:text-white text-base font-semibold">Community support</span></li>
-              </template>
-              <template v-else v-for="(feature, idx) in planHighlights[plan.key]" :key="feature">
-                <li :class="[
-                  'flex items-center w-full',
-                  'border-t border-gray-300 dark:border-gray-600', // darker, thicker separator
-                  'py-2', // more compact vertical padding
-                  idx === 0 ? '' : '' // always show border, even before first
-                ]">
-                  <span v-if="(plan.key === 'plus' || plan.key === 'business') && idx < 2 && productMode === 'automate'" class="w-5 h-5 mr-2 flex-shrink-0 flex items-center justify-center text-lg">✨</span>
-                  <span v-else-if="plan.key === 'embed-light' && idx < 2 && productMode === 'embed'" class="w-5 h-5 mr-2 flex-shrink-0 flex items-center justify-center text-lg">🔗</span>
-                  <svg v-else class="w-5 h-5 text-gray-900 dark:text-white mr-2 flex-shrink-0 align-middle" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                  <span v-if="plan.key === 'plus' && idx < 2 && productMode === 'automate'">
-                    <ShiningText>{{ feature }}</ShiningText>
-                  </span>
-                  <span v-else-if="feature.includes('Everything in')" class="text-gray-900 dark:text-white text-base font-semibold" v-html="feature"></span>
-                  <span v-else class="text-gray-900 dark:text-white text-base" v-html="feature"></span>
-                  <!-- Add (?) tooltips for specific features -->
-                  <span v-if="(plan.key === 'plus' || plan.key === 'business') && feature === 'Unlimited tasks' && productMode === 'automate'"
-                        class="ml-2 cursor-default align-middle inline-flex items-center justify-center rounded-full border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-blue-500 font-semibold text-[12px] w-5 h-5 transition-shadow shadow-sm hover:shadow-md"
-                        :data-tooltip-target="`unlimited-tasks-tooltip-${plan.key}`" data-tooltip-placement="top">
-                    ?
-                  </span>
-                  <span v-if="plan.key === 'business' && feature === '5 users' && productMode === 'automate'" class="ml-1 text-blue-500 cursor-help" data-tooltip-target="users-tooltip" data-tooltip-placement="top">(?)</span>
-                </li>
-              </template>
-            </ul>
-            <div class="w-full flex-1"></div>
-          </div>
-          
-          <!-- Individual tooltip for each cloud plan -->
-          <div v-if="plan.key === 'free' || plan.key === 'plus' || plan.key === 'business' || plan.key === 'embed-light'" :id="`cloud-tooltip-${plan.key}`" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
-            Activepieces Cloud
-            <div class="tooltip-arrow" data-popper-arrow></div>
-          </div>
-          
-          <!-- Tooltip for unlimited tasks -->
-          <div v-if="(plan.key === 'plus' || plan.key === 'business') && productMode === 'automate'" :id="`unlimited-tasks-tooltip-${plan.key}`" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
-            You don't pay per task, it's unlimited. Fair usage applies to let all users enjoy it!
-            <div class="tooltip-arrow" data-popper-arrow></div>
-          </div>
-          
-          <!-- Tooltip for users -->
-          <div v-if="plan.key === 'business' && productMode === 'automate'" id="users-tooltip" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
-            And you can add more
-            <div class="tooltip-arrow" data-popper-arrow></div>
           </div>
         </div>
       </div>
@@ -656,71 +906,45 @@ onMounted(() => {
         <div v-if="false" class="mt-12 flex justify-center">
           <div class="w-full max-w-5xl bg-white dark:bg-gray-900 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
             <!-- Table Header -->
-            <div class="grid grid-cols-5 gap-4 p-6 text-base font-semibold text-gray-900 bg-gray-50 dark:bg-gray-800 dark:text-white border-b border-gray-200 dark:border-gray-700">
+            <div class="grid grid-cols-3 gap-4 p-6 text-base font-semibold text-gray-900 bg-gray-50 dark:bg-gray-800 dark:text-white border-b border-gray-200 dark:border-gray-700">
               <div class="text-left">Feature</div>
-              <div class="text-center">Free</div>
-              <div class="text-center">Plus</div>
-              <div class="text-center">Business</div>
-              <div class="text-center">Enterprise</div>
+              <div class="text-center">Standard</div>
+              <div class="text-center">Ultimate</div>
             </div>
 
             <!-- Table Body -->
             <div v-for="category in detailedFeatures" :key="category.category" class="border-b border-gray-200 dark:border-gray-700">
               <!-- Category Header -->
-              <div class="grid grid-cols-5 gap-4 p-4 text-sm font-semibold text-gray-700 bg-gray-100 dark:bg-gray-900/60 dark:text-gray-200">
+              <div class="grid grid-cols-3 gap-4 p-4 text-sm font-semibold text-gray-700 bg-gray-100 dark:bg-gray-900/60 dark:text-gray-200">
                 <div class="text-left">{{ category.category }}</div>
-                <div></div>
-                <div></div>
                 <div></div>
                 <div></div>
               </div>
 
               <!-- Features in Category -->
-              <div v-for="feature in category.features" :key="feature.name" class="grid grid-cols-5 gap-4 p-4 text-base text-gray-700 dark:text-gray-300 border-b border-gray-100 dark:border-gray-800 even:bg-gray-50 even:dark:bg-gray-800/60">
+              <div v-for="feature in category.features" :key="feature.name" class="grid grid-cols-3 gap-4 p-4 text-base text-gray-700 dark:text-gray-300 border-b border-gray-100 dark:border-gray-800 even:bg-gray-50 even:dark:bg-gray-800/60">
                 <div class="text-left font-medium">{{ feature.name }}</div>
                 <div class="text-center">
-                  <span v-if="typeof feature.free === 'boolean'">
-                    <svg v-if="feature.free" class="inline-block w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <span v-if="typeof feature.standard === 'boolean'">
+                    <svg v-if="feature.standard" class="inline-block w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                       <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                     </svg>
                     <svg v-else class="inline-block w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                       <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                     </svg>
                   </span>
-                  <span v-else class="text-gray-900 dark:text-white">{{ feature.free }}</span>
+                  <span v-else class="text-gray-900 dark:text-white">{{ feature.standard }}</span>
                 </div>
                 <div class="text-center">
-                  <span v-if="typeof feature.plus === 'boolean'">
-                    <svg v-if="feature.plus" class="inline-block w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <span v-if="typeof feature.ultimate === 'boolean'">
+                    <svg v-if="feature.ultimate" class="inline-block w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                       <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                     </svg>
                     <svg v-else class="inline-block w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                       <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                     </svg>
                   </span>
-                  <span v-else class="text-gray-900 dark:text-white">{{ feature.plus }}</span>
-                </div>
-                <div class="text-center">
-                  <span v-if="typeof feature.business === 'boolean'">
-                    <svg v-if="feature.business" class="inline-block w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                    </svg>
-                    <svg v-else class="inline-block w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                      <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                    </svg>
-                  </span>
-                  <span v-else class="text-gray-900 dark:text-white">{{ feature.business }}</span>
-                </div>
-                <div class="text-center">
-                  <span v-if="typeof feature.enterprise === 'boolean'">
-                    <svg v-if="feature.enterprise" class="inline-block w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                    </svg>
-                    <svg v-else class="inline-block w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                      <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                    </svg>
-                  </span>
-                  <span v-else class="text-gray-900 dark:text-white">{{ feature.enterprise }}</span>
+                  <span v-else class="text-gray-900 dark:text-white">{{ feature.ultimate }}</span>
                 </div>
               </div>
             </div>
@@ -729,6 +953,7 @@ onMounted(() => {
       </Transition>
     </div>
   </section>
+  </div>
 </template>
 
 <style>
@@ -744,5 +969,19 @@ onMounted(() => {
 .slide-fade-leave-to {
   transform: translateY(-10px);
   opacity: 0;
+}
+
+.tooltip-fade-enter-active {
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+}
+
+.tooltip-fade-leave-active {
+  transition: opacity 0.15s ease-in, transform 0.15s ease-in;
+}
+
+.tooltip-fade-enter-from,
+.tooltip-fade-leave-to {
+  opacity: 0;
+  transform: translateY(4px);
 }
 </style>
