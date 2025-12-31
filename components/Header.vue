@@ -18,11 +18,25 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  transparent: {
+    type: Boolean,
+    default: false,
+  },
 });
 
-const { y } = useScroll(window);
-const isScrolled = computed(() => y.value > 50);
+const { y } = process.client ? useScroll(window) : { y: ref(0) };
+const isScrolled = computed(() => process.client && isLoaded.value && y.value > 50);
 const isPricingPage = computed(() => route.path === '/pricing');
+
+// Show white/transparent styling only when transparent prop is true AND not scrolled
+// On initial load, if transparent is true, start transparent (don't wait for isLoaded)
+const showTransparent = computed(() => {
+  if (!props.transparent) return false;
+  // If not loaded yet, assume transparent (will update after mount)
+  if (!isLoaded.value) return true;
+  // After loaded, check scroll position
+  return !isScrolled.value;
+});
 
 const showGitHubBadge = ref(!props.hideGithubBadge);
 const githubButtonsScriptLoaded = ref("false");
@@ -125,23 +139,23 @@ watch(useRoute(), () => {
 
 <template>
   <div class="m-0 p-0">
-    <ClientOnly>
-      <header
-        class="z-50 w-full transition-all duration-300 m-0"
-        :class="{ 
-          'sticky top-0': !isPricingPage, 
-          'fixed top-0': isPricingPage,
-          'bg-white max-[905px]:bg-white': isScrolled,
-          'bg-transparent max-[905px]:bg-transparent': !isScrolled
-        }"
-      >
-        <nav class="border-gray-200 px-4 h-[62px] lg:px-6 dark:bg-gray-800 transition-all duration-300"
+    <header
+      class="z-50 w-full transition-all duration-300 m-0 group/header overflow-visible"
+      :class="{ 
+        'sticky top-0': !isPricingPage, 
+        'fixed top-0': isPricingPage,
+        'bg-white max-[905px]:bg-white': !showTransparent || isScrolled,
+        'bg-transparent max-[905px]:bg-transparent': showTransparent && !isScrolled
+      }"
+    >
+        <nav class="border-gray-200 px-4 h-[62px] lg:px-6 dark:bg-gray-800 transition-all duration-300 overflow-visible"
           :class="{ 
-            'bg-white max-[905px]:bg-white': isScrolled,
-            'bg-transparent max-[905px]:bg-transparent': !isScrolled
+            'group-hover/header:bg-white': showTransparent,
+            'bg-white max-[905px]:bg-white': !showTransparent || isScrolled,
+            'bg-transparent max-[905px]:bg-transparent': showTransparent && !isScrolled
           }">
           <div
-            class="flex flex-wrap space-x-10 h-full items-stretch justify-between mx-auto max-w-screen-xl
+            class="flex flex-wrap space-x-10 h-full items-stretch justify-between w-full overflow-visible
               max-[905px]:space-x-0"
           >
             <div
@@ -152,15 +166,25 @@ watch(useRoute(), () => {
                   src="/activepieces-logo-hz-og.svg"
                   width="200"
                   height="100"
-                  class="mr-3 w-fit h-6 max-[555px]:h-8 max-[5555px]:object-cover max-[555px]:object-left"
+                  class="mr-3 w-fit h-6 max-[555px]:h-8 max-[5555px]:object-cover max-[555px]:object-left transition-all duration-300"
+                  :class="{
+                    'brightness-0 invert group-hover/header:brightness-100 group-hover/header:invert-0': showTransparent
+                  }"
                   alt="Activepieces Home"
                 />
               </NuxtLink>
             </div>
             <div class="flex items-center flex-grow-0 min-[906px]:order-2">
+              <NuxtLink
+                to="/reseller"
+                class="text-base px-3 py-2 max-[555px]:hidden transition-colors duration-200 hover:text-[#8142e3]"
+                :class="{'text-white group-hover/header:text-gray-600': showTransparent, 'text-gray-600': !showTransparent}"
+                >Become a Reseller</NuxtLink
+              >
               <a
                 href="https://cloud.activepieces.com"
-                class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-base px-4 py-2 lg:px-4 lg:py-2 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800 max-[555px]:hidden"
+                class="text-base px-3 py-2 mr-2 max-[555px]:hidden transition-colors duration-200 hover:text-[#8142e3]"
+                :class="{'text-white group-hover/header:text-gray-600': showTransparent, 'text-gray-600': !showTransparent}"
                 >Login</a
               >
               <div class="flex flex-row gap-x-2">
@@ -204,121 +228,96 @@ watch(useRoute(), () => {
               </button>
             </div>
             <div
-              class="flex flex-grow hidden text-base justify-between items-center w-full
+              class="flex flex-grow hidden text-base justify-between items-center w-full overflow-visible
                 min-[906px]:flex min-[906px]:w-auto min-[906px]:order-1 max-[905px]:bg-white max-[905px]:w-full max-[905px]:max-h-dvh max-[905px]:flex-col max-[905px]:justify-start max-[905px]:items-stretch max-[905px]:overflow-scroll max-[905px]:!-mx-4 max-[905px]:px-4 max-[905px]:h-[calc(100vh_-_62px)]"
               id="mobile-menu-2"
             >
-              <ul class="flex flex-col min-[906px]:flex-row min-[906px]:items-center min-[906px]:space-x-8 max-[905px]:w-full">
+              <ul class="flex flex-col min-[906px]:flex-row min-[906px]:items-center min-[906px]:space-x-8 max-[905px]:w-full overflow-visible">
+                <!-- Mission -->
+                <li>
+                  <NuxtLink to="/story" class="py-2 transition-colors duration-200 font-normal hover:!text-[#8142e3]"
+                    :class="{ 
+                      'text-white group-hover/header:text-gray-900': showTransparent,
+                      'text-gray-900': !showTransparent
+                    }">Mission</NuxtLink>
+                </li>
+
                 <!-- Product Mega Menu -->
-                <li class="relative group">
+                <li class="relative group/menu">
                   <!-- Hover Bridge -->
-                  <div class="absolute left-0 top-0 w-full h-[calc(100%+10px)] opacity-0"></div>
+                  <div class="absolute left-0 top-0 w-full h-[calc(100%+10px)] opacity-0 pointer-events-auto z-10"></div>
                   
                   <!-- Menu Button -->
-                  <button class="flex items-center gap-1 py-2 text-black group-hover:text-[#8142e3] transition-colors duration-200">
-                    <span class="font-normal">Product</span>
-                    <svg class="w-4 h-4 transition-transform duration-200 ease-in-out transform origin-center group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <button class="flex items-center gap-1 py-2 transition-colors duration-200"
+                    :class="{ 
+                      'text-white group-hover/header:text-gray-900': showTransparent,
+                      'text-gray-900': !showTransparent
+                    }">
+                    <span class="font-normal button-text" :class="{ 
+                      'text-white group-hover/header:text-gray-900': showTransparent,
+                      'text-gray-900': !showTransparent
+                    }">Platform</span>
+                    <svg class="w-4 h-4 transition-transform duration-200 ease-in-out transform origin-center group-hover/menu:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
 
                   <!-- Mega Menu Content -->
-                  <div class="absolute left-0 top-full z-50 w-[700px] rounded-2xl shadow-2xl bg-white p-6 grid grid-cols-[3fr_2fr] gap-6 block transition-all duration-300 delay-200 transform translate-y-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 group-hover:delay-0 border border-gray-100 pointer-events-none group-hover:pointer-events-auto">
-                    <!-- Left Column: Features -->
+                  <div class="absolute left-0 top-full z-[60] w-[700px] rounded-2xl shadow-2xl bg-white p-6 grid grid-cols-[3fr_2fr] gap-6 block transition-all duration-300 delay-200 transform translate-y-2 opacity-0 group-hover/menu:opacity-100 group-hover/menu:translate-y-0 group-hover/menu:delay-0 border border-gray-100 pointer-events-none group-hover/menu:pointer-events-auto">
+                    <!-- Left Column: Product Pages -->
                     <div class="flex min-w-0 flex flex-col gap-0">
-                      <!-- Feature Row 1 -->
-                      <a href="/pieces" class="flex items-center gap-4 h-20 rounded-xl hover:bg-gray-100 transition px-4 py-4 group/feature">
+                      <!-- Adoption & Training -->
+                      <NuxtLink to="/product/ai-adoption" class="flex items-center gap-4 h-20 rounded-xl hover:bg-gray-100 transition px-4 py-4 group/feature">
                         <div class="w-10 h-10 flex items-center justify-center rounded-xl bg-gradient-to-br from-purple-100 to-purple-200">
                           <svg class="w-6 h-6" fill="#A259FF" viewBox="0 0 24 24">
-                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                           </svg>
                         </div>
                         <div class="flex-1">
-                          <div class="flex items-center gap-2">
-                            <span class="font-semibold text-base text-gray-900">Integrations</span>
-                            <span class="bg-purple-100 text-purple-700 text-xs font-semibold rounded-full px-2 py-0.5 h-6 flex items-center">
-                              <span v-if="piecesCountPending">...</span>
-                              <span v-else>{{ piecesCount || '301' }}</span>
-                            </span>
-                          </div>
-                          <div class="text-sm text-gray-500 group-hover/feature:text-gray-900 transition-colors duration-200">Build AI agents across your apps</div>
+                          <span class="font-semibold text-base text-gray-900">Adoption & Training</span>
+                          <div class="text-sm text-gray-500 group-hover/feature:text-gray-900 transition-colors duration-200">Tools to get your AI adoption rolling</div>
                         </div>
-                      </a>
-                      <!-- Feature Row 2 -->
-                      <a href="/docs/install/overview" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 h-20 rounded-xl hover:bg-gray-100 transition px-4 py-4 group/feature">
+                      </NuxtLink>
+                      <!-- AI Agents -->
+                      <NuxtLink to="/product/ai-agent-builder" class="flex items-center gap-4 h-20 rounded-xl hover:bg-gray-100 transition px-4 py-4 group/feature">
                         <div class="w-10 h-10 flex items-center justify-center rounded-xl bg-gradient-to-br from-pink-100 to-pink-200">
                           <svg class="w-6 h-6" fill="#EC4899" viewBox="0 0 24 24">
-                            <path d="M8 5v14l11-7z"/>
+                            <path d="M21 10.12h-6.78l2.74-2.82c-2.73-2.7-7.15-2.8-9.88-.1-2.73 2.71-2.73 7.08 0 9.79s7.15 2.71 9.88 0C18.32 15.65 19 14.08 19 12.1h2c0 1.98-.88 4.55-2.64 6.29-3.51 3.48-9.21 3.48-12.72 0-3.5-3.47-3.53-9.11-.02-12.58s9.14-3.47 12.65 0L21 3v7.12zM12.5 8v4.25l3.5 2.08-.72 1.21L11 13V8h1.5z"/>
                           </svg>
                         </div>
                         <div class="flex-1">
-                          <div class="flex items-center gap-2">
-                            <span class="font-semibold text-base text-gray-900">Get Started</span>
-                            <span class="bg-gray-50 text-gray-500 text-xs font-medium rounded-full px-2 py-0.5 h-6 flex items-center border border-gray-200">DOCS</span>
-                          </div>
-                          <div class="text-sm text-gray-500 group-hover/feature:text-gray-900 transition-colors duration-200">Start on our cloud or self-host with Docker</div>
+                          <span class="font-semibold text-base text-gray-900">AI Agents</span>
+                          <div class="text-sm text-gray-500 group-hover/feature:text-gray-900 transition-colors duration-200">Build everyday and advanced AI agents</div>
                         </div>
-                      </a>
-                      <!-- Feature Row 3 -->
-                      <a href="https://www.activepieces.com/docs/embedding/overview" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 h-20 rounded-xl hover:bg-gray-100 transition px-4 py-4 group/feature">
+                      </NuxtLink>
+                      <!-- Control & Governance -->
+                      <NuxtLink to="/product/governance-and-management" class="flex items-center gap-4 h-20 rounded-xl hover:bg-gray-100 transition px-4 py-4 group/feature">
                         <div class="w-10 h-10 flex items-center justify-center rounded-xl bg-gradient-to-br from-green-100 to-green-200">
                           <svg class="w-6 h-6" fill="#34C759" viewBox="0 0 24 24">
-                            <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>
-                          </svg>
-                        </div>
-                        <div class="flex-1">
-                          <div class="flex items-center gap-2">
-                            <span class="font-semibold text-base text-gray-900">Activepieces Embed</span>
-                            <span class="bg-gray-50 text-gray-500 text-xs font-medium rounded-full px-2 py-0.5 h-6 flex items-center border border-gray-200">DOCS</span>
-                          </div>
-                          <div class="text-sm text-gray-500 group-hover/feature:text-gray-900 transition-colors duration-200">Our impressive builder in your app</div>
-                        </div>
-                      </a>
-                      <!-- Feature Row 4 -->
-                      <a href="https://www.activepieces.com/docs/security/practices" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 h-20 rounded-xl hover:bg-gray-100 transition px-4 py-4 group/feature">
-                        <div class="w-10 h-10 flex items-center justify-center rounded-xl bg-gradient-to-br from-indigo-100 to-indigo-200">
-                          <svg class="w-6 h-6" fill="#6366F1" viewBox="0 0 24 24">
                             <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
                           </svg>
                         </div>
                         <div class="flex-1">
-                          <div class="flex items-center gap-2">
-                            <span class="font-semibold text-base text-gray-900">Security</span>
-                            <span class="bg-gray-50 text-gray-500 text-xs font-medium rounded-full px-2 py-0.5 h-6 flex items-center border border-gray-200">DOCS</span>
-                          </div>
-                          <div class="text-sm text-gray-500 group-hover/feature:text-gray-900 transition-colors duration-200">We're SOC 2 Type II compliant</div>
+                          <span class="font-semibold text-base text-gray-900">Control & Governance</span>
+                          <div class="text-sm text-gray-500 group-hover/feature:text-gray-900 transition-colors duration-200">IT and leadership control tools</div>
                         </div>
-                      </a>
+                      </NuxtLink>
+                      <!-- Deployment & Cost -->
+                      <NuxtLink to="/product/deployment-options" class="flex items-center gap-4 h-20 rounded-xl hover:bg-gray-100 transition px-4 py-4 group/feature">
+                        <div class="w-10 h-10 flex items-center justify-center rounded-xl bg-gradient-to-br from-indigo-100 to-indigo-200">
+                          <svg class="w-6 h-6" fill="#6366F1" viewBox="0 0 24 24">
+                            <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM19 18H6c-2.21 0-4-1.79-4-4s1.79-4 4-4h.71C7.37 7.69 9.48 6 12 6c3.04 0 5.5 2.46 5.5 5.5v.5H19c1.66 0 3 1.34 3 3s-1.34 3-3 3z"/>
+                          </svg>
+                        </div>
+                        <div class="flex-1">
+                          <span class="font-semibold text-base text-gray-900">Deployment & Cost</span>
+                          <div class="text-sm text-gray-500 group-hover/feature:text-gray-900 transition-colors duration-200">Maximum security deployment choices</div>
+                        </div>
+                      </NuxtLink>
                     </div>
                     <!-- Right Column: Apps -->
                     <div class="flex min-w-0 flex flex-col gap-0">
-                      <!-- Promotional Box -->
-                      <a href="/mcp" class="block mb-4">
-                        <div class="p-4 rounded-xl bg-gradient-to-br from-slate-800 via-slate-700 to-slate-800 border border-slate-500 w-fit hover:from-slate-900 hover:via-slate-800 hover:to-slate-900 hover:border-slate-700 transition-all duration-300 relative overflow-hidden">
-                          <!-- Animated background elements -->
-                          <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(100,116,139,0.1),transparent_50%)] animate-pulse"></div>
-                          <div class="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(100,116,139,0.1)_50%,transparent_75%)] bg-[length:250%_250%] animate-gradient"></div>
-                          
-                          <!-- Neural network lines -->
-                          <div class="absolute inset-0 opacity-20">
-                            <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-                              <path d="M0,50 Q25,25 50,50 T100,50" stroke="slate" fill="none" stroke-width="0.5" stroke-dasharray="2,2"/>
-                              <path d="M0,30 Q25,55 50,30 T100,30" stroke="slate" fill="none" stroke-width="0.5" stroke-dasharray="2,2"/>
-                              <path d="M0,70 Q25,45 50,70 T100,70" stroke="slate" fill="none" stroke-width="0.5" stroke-dasharray="2,2"/>
-                            </svg>
-                          </div>
-
-                          <!-- Content -->
-                          <div class="relative">
-                            <div class="flex items-center gap-2">
-                              <span class="font-bold text-white text-lg tracking-tight">MCP for Agents</span>
-                              <span class="bg-gradient-to-r from-slate-400/30 via-slate-300/30 to-slate-200/30 text-white text-xs font-semibold rounded-full px-2 py-0.5 h-6 flex items-center backdrop-blur-sm border border-slate-400/30">NEW</span>
-                            </div>
-                            <div class="text-xs text-white/80 mt-1 font-light">Give your AI superpowers and let it do the work for you</div>
-                          </div>
-                        </div>
-                      </a>
-                      <div class="text-xs font-medium text-gray-500 uppercase tracking-wider mt-4 mb-2">By Integration</div>
+                      <div class="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2">By Integration</div>
                       <div class="flex flex-col">
                         <a href="/pieces/gmail" class="flex items-center gap-2 h-10 rounded-xl hover:bg-gray-100 transition -ml-4 px-4">
                           <span class="w-6 h-6 flex items-center justify-center"><img src="https://cdn.activepieces.com/pieces/gmail.png" class="w-5 h-5" alt="Gmail" /></span>
@@ -331,6 +330,14 @@ watch(useRoute(), () => {
                         <a href="/pieces/slack" class="flex items-center gap-2 h-10 rounded-xl hover:bg-gray-100 transition -ml-4 px-4">
                           <span class="w-6 h-6 flex items-center justify-center"><img src="https://cdn.activepieces.com/pieces/slack.png" class="w-5 h-5" alt="Slack" /></span>
                           <span class="text-sm text-gray-800">Slack</span>
+                        </a>
+                        <a href="/pieces/notion" class="flex items-center gap-2 h-10 rounded-xl hover:bg-gray-100 transition -ml-4 px-4">
+                          <span class="w-6 h-6 flex items-center justify-center"><img src="https://cdn.activepieces.com/pieces/notion.png" class="w-5 h-5" alt="Notion" /></span>
+                          <span class="text-sm text-gray-800">Notion</span>
+                        </a>
+                        <a href="/pieces/hubspot" class="flex items-center gap-2 h-10 rounded-xl hover:bg-gray-100 transition -ml-4 px-4">
+                          <span class="w-6 h-6 flex items-center justify-center"><img src="https://cdn.activepieces.com/pieces/hubspot.png" class="w-5 h-5" alt="HubSpot" /></span>
+                          <span class="text-sm text-gray-800">HubSpot</span>
                         </a>
                         <a href="/pieces" class="flex items-center h-10 -ml-4 px-4 group/all-integrations">
                           <div class="flex items-center gap-2">
@@ -346,20 +353,27 @@ watch(useRoute(), () => {
                 </li>
 
                 <!-- Resources Mega Menu -->
-                <li class="relative group">
+                <li class="relative group/menu">
                   <!-- Hover Bridge -->
-                  <div class="absolute left-0 top-0 w-full h-[calc(100%+10px)] opacity-0"></div>
+                  <div class="absolute left-0 top-0 w-full h-[calc(100%+10px)] opacity-0 pointer-events-auto z-10"></div>
                   
                   <!-- Menu Button -->
-                  <button class="flex items-center gap-1 py-2 text-black group-hover:text-[#8142e3] transition-colors duration-200">
-                    <span class="font-normal">Resources</span>
-                    <svg class="w-4 h-4 transition-transform duration-200 ease-in-out transform origin-center group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <button class="flex items-center gap-1 py-2 transition-colors duration-200"
+                    :class="{ 
+                      'text-white group-hover/header:text-gray-900': showTransparent,
+                      'text-gray-900': !showTransparent
+                    }">
+                    <span class="font-normal button-text" :class="{ 
+                      'text-white group-hover/header:text-gray-900': showTransparent,
+                      'text-gray-900': !showTransparent
+                    }">Resources</span>
+                    <svg class="w-4 h-4 transition-transform duration-200 ease-in-out transform origin-center group-hover/menu:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
 
                   <!-- Mega Menu Content -->
-                  <div class="absolute left-0 top-full z-50 w-[800px] rounded-2xl shadow-2xl bg-white p-6 grid grid-cols-3 gap-6 block transition-all duration-300 delay-200 transform translate-y-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 group-hover:delay-0 border border-gray-100 pointer-events-none group-hover:pointer-events-auto">
+                  <div class="absolute left-0 top-full z-[60] w-[800px] rounded-2xl shadow-2xl bg-white p-6 grid grid-cols-3 gap-6 block transition-all duration-300 delay-200 transform translate-y-2 opacity-0 group-hover/menu:opacity-100 group-hover/menu:translate-y-0 group-hover/menu:delay-0 border border-gray-100 pointer-events-none group-hover/menu:pointer-events-auto">
                     <!-- Using Activepieces Section -->
                     <div class="flex flex-col gap-2">
                       <h3 class="text-sm font-semibold text-gray-500 mb-2">Use Activepieces</h3>
@@ -517,14 +531,17 @@ watch(useRoute(), () => {
 
                 <!-- Simple Menu Items -->
                 <li>
-                  <a href="/pricing" class="py-2 text-black hover:text-[#8142e3] transition-colors duration-200 font-normal">Pricing</a>
+                  <a href="/pricing" class="py-2 transition-colors duration-200 font-normal hover:!text-[#8142e3]"
+                    :class="{ 
+                      'text-white group-hover/header:text-gray-900': showTransparent,
+                      'text-gray-900': !showTransparent
+                    }">Pricing</a>
                 </li>
               </ul>
             </div>
           </div>
         </nav>
       </header>
-    </ClientOnly>
 
     <!-- Mobile Menu Overlay -->
     <div
@@ -551,7 +568,7 @@ watch(useRoute(), () => {
               class="flex items-center justify-between w-full py-3 text-lg font-medium"
               @click="toggleSection('product')"
             >
-              Product
+              Platform
               <svg 
                 class="w-5 h-5 transform transition-transform duration-200"
                 :class="{ 'rotate-180': openSections.product }"
@@ -567,78 +584,57 @@ watch(useRoute(), () => {
               :class="{ 'max-h-0': !openSections.product, 'max-h-[1000px]': openSections.product }"
             >
               <div class="py-4 space-y-4">
-                <!-- Product Features -->
-                <a href="/pieces" class="flex items-start space-x-4 p-4 rounded-lg hover:bg-gray-50">
+                <!-- Product Pages -->
+                <NuxtLink to="/product/ai-adoption" class="flex items-start space-x-4 p-4 rounded-lg hover:bg-gray-50">
                   <div class="p-2 bg-purple-50 rounded-lg">
-                    <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    <svg class="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                     </svg>
                   </div>
                   <div>
-                    <div class="flex items-center gap-2">
-                      <h3 class="font-medium text-gray-900">Integrations</h3>
-                      <span class="bg-purple-100 text-purple-700 text-xs font-semibold rounded-full px-2 py-0.5 h-6 flex items-center">
-                        <span v-if="piecesCountPending">...</span>
-                        <span v-else>{{ piecesCount || '301' }}</span>
-                      </span>
-                    </div>
-                    <p class="text-sm text-gray-500 mt-1">Build AI agents across your apps</p>
+                    <h3 class="font-medium text-gray-900">Adoption & Training</h3>
+                    <p class="text-sm text-gray-500 mt-1">Tools to get your AI adoption rolling</p>
                   </div>
-                </a>
+                </NuxtLink>
 
-                <a href="/docs/install/overview" class="flex items-start space-x-4 p-4 rounded-lg hover:bg-gray-50">
+                <NuxtLink to="/product/ai-agent-builder" class="flex items-start space-x-4 p-4 rounded-lg hover:bg-gray-50">
                   <div class="p-2 bg-pink-50 rounded-lg">
-                    <svg class="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5v14l11-7z"/>
+                    <svg class="w-6 h-6 text-pink-600" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M21 10.12h-6.78l2.74-2.82c-2.73-2.7-7.15-2.8-9.88-.1-2.73 2.71-2.73 7.08 0 9.79s7.15 2.71 9.88 0C18.32 15.65 19 14.08 19 12.1h2c0 1.98-.88 4.55-2.64 6.29-3.51 3.48-9.21 3.48-12.72 0-3.5-3.47-3.53-9.11-.02-12.58s9.14-3.47 12.65 0L21 3v7.12zM12.5 8v4.25l3.5 2.08-.72 1.21L11 13V8h1.5z"/>
                     </svg>
                   </div>
                   <div>
-                    <h3 class="font-medium text-gray-900">Get Started</h3>
-                    <p class="text-sm text-gray-500 mt-1">Start on our cloud or self-host with Docker</p>
+                    <h3 class="font-medium text-gray-900">AI Agents</h3>
+                    <p class="text-sm text-gray-500 mt-1">Build everyday and advanced AI agents</p>
                   </div>
-                </a>
+                </NuxtLink>
 
-                <a href="https://www.activepieces.com/docs/embedding/overview" class="flex items-start space-x-4 p-4 rounded-lg hover:bg-gray-50">
+                <NuxtLink to="/product/governance-and-management" class="flex items-start space-x-4 p-4 rounded-lg hover:bg-gray-50">
                   <div class="p-2 bg-green-50 rounded-lg">
-                    <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>
+                    <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
                     </svg>
                   </div>
                   <div>
-                    <h3 class="font-medium text-gray-900">Activepieces Embed</h3>
-                    <p class="text-sm text-gray-500 mt-1">Our impressive builder in your app</p>
+                    <h3 class="font-medium text-gray-900">Control & Governance</h3>
+                    <p class="text-sm text-gray-500 mt-1">IT and leadership control tools</p>
                   </div>
-                </a>
+                </NuxtLink>
 
-                <a href="https://www.activepieces.com/docs/security/practices" class="flex items-start space-x-4 p-4 rounded-lg hover:bg-gray-50">
+                <NuxtLink to="/product/deployment-options" class="flex items-start space-x-4 p-4 rounded-lg hover:bg-gray-50">
                   <div class="p-2 bg-indigo-50 rounded-lg">
-                    <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+                    <svg class="w-6 h-6 text-indigo-600" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM19 18H6c-2.21 0-4-1.79-4-4s1.79-4 4-4h.71C7.37 7.69 9.48 6 12 6c3.04 0 5.5 2.46 5.5 5.5v.5H19c1.66 0 3 1.34 3 3s-1.34 3-3 3z"/>
                     </svg>
                   </div>
                   <div>
-                    <h3 class="font-medium text-gray-900">Security</h3>
-                    <p class="text-sm text-gray-500 mt-1">We're SOC 2 Type II compliant</p>
+                    <h3 class="font-medium text-gray-900">Deployment & Cost</h3>
+                    <p class="text-sm text-gray-500 mt-1">Maximum security deployment choices</p>
                   </div>
-                </a>
-
-                <!-- MCP Promo -->
-                <a href="/mcp" class="block mb-4">
-                  <div class="p-4 rounded-xl bg-gradient-to-br from-slate-800 via-slate-700 to-slate-800 border border-slate-500 w-fit hover:from-slate-900 hover:via-slate-800 hover:to-slate-900 hover:border-slate-700 transition-all duration-300 relative overflow-hidden">
-                    <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(100,116,139,0.1),transparent_50%)] animate-pulse"></div>
-                    <div class="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(100,116,139,0.1)_50%,transparent_75%)] bg-[length:250%_250%] animate-gradient"></div>
-                    <div class="relative">
-                      <div class="flex items-center gap-2">
-                        <span class="font-bold text-white text-lg tracking-tight">MCP for Agents</span>
-                        <span class="bg-gradient-to-r from-slate-400/30 via-slate-300/30 to-slate-200/30 text-white text-xs font-semibold rounded-full px-2 py-0.5 h-6 flex items-center backdrop-blur-sm border border-slate-400/30">NEW</span>
-                      </div>
-                      <div class="text-xs text-white/80 mt-1 font-light">Give your AI superpowers and let it do the work for you</div>
-                    </div>
-                  </div>
-                </a>
+                </NuxtLink>
 
                 <!-- By Integration -->
-                <div class="text-xs font-medium text-gray-500 uppercase tracking-wider mt-4 mb-2">By Integration</div>
+                <div class="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2">By Integration</div>
                 <div class="flex flex-col">
                   <a href="/pieces/gmail" class="flex items-center gap-2 h-10 rounded-xl hover:bg-gray-100 transition -ml-4 px-4">
                     <span class="w-6 h-6 flex items-center justify-center"><img src="https://cdn.activepieces.com/pieces/gmail.png" class="w-5 h-5" alt="Gmail" /></span>
@@ -651,6 +647,14 @@ watch(useRoute(), () => {
                   <a href="/pieces/slack" class="flex items-center gap-2 h-10 rounded-xl hover:bg-gray-100 transition -ml-4 px-4">
                     <span class="w-6 h-6 flex items-center justify-center"><img src="https://cdn.activepieces.com/pieces/slack.png" class="w-5 h-5" alt="Slack" /></span>
                     <span class="text-sm text-gray-800">Slack</span>
+                  </a>
+                  <a href="/pieces/notion" class="flex items-center gap-2 h-10 rounded-xl hover:bg-gray-100 transition -ml-4 px-4">
+                    <span class="w-6 h-6 flex items-center justify-center"><img src="https://cdn.activepieces.com/pieces/notion.png" class="w-5 h-5" alt="Notion" /></span>
+                    <span class="text-sm text-gray-800">Notion</span>
+                  </a>
+                  <a href="/pieces/hubspot" class="flex items-center gap-2 h-10 rounded-xl hover:bg-gray-100 transition -ml-4 px-4">
+                    <span class="w-6 h-6 flex items-center justify-center"><img src="https://cdn.activepieces.com/pieces/hubspot.png" class="w-5 h-5" alt="HubSpot" /></span>
+                    <span class="text-sm text-gray-800">HubSpot</span>
                   </a>
                   <a href="/pieces" class="flex items-center h-10 -ml-4 px-4 group/all-integrations">
                     <div class="flex items-center gap-2">
@@ -899,6 +903,12 @@ watch(useRoute(), () => {
   color: #888;
 }
 
+/* Ensure button text and icon hover works correctly */
+button:hover .button-text,
+button:hover svg {
+  color: #8142e3 !important;
+}
+
 .menu-item-hover {
   animation: menu-item-hover-colors 10s ease infinite;
   background-size: 300% 300%;
@@ -983,45 +993,13 @@ watch(useRoute(), () => {
   position: relative;
 }
 
-.group:hover .group-hover\:block {
-  display: block;
-  animation: menuSlideIn 0.3s ease-out;
-}
-
-.group-hover\:block {
-  display: none;
-  transition-delay: 200ms;
-}
-
-.group-hover\:opacity-100 {
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  transition-delay: 200ms;
-}
-
-.group:hover .group-hover\:opacity-100 {
-  opacity: 1;
-  transition-delay: 0s;
-}
-
-.group-hover\:translate-y-0 {
-  transform: translateY(10px);
-  transition: transform 0.3s ease;
-  transition-delay: 200ms;
-}
-
-.group:hover .group-hover\:translate-y-0 {
-  transform: translateY(0);
-  transition-delay: 0s;
-}
-
-/* Hover Bridge Styles */
-.group:hover .group-hover\:pointer-events-auto {
-  pointer-events: auto;
-}
-
-.group .group-hover\:pointer-events-none {
-  pointer-events: none;
+/* Ensure header and containers allow overflow for dropdowns */
+header,
+header nav,
+header nav > div,
+header ul,
+li[class*="group/menu"] {
+  overflow: visible !important;
 }
 
 /* Remove desktop hover effects on mobile */

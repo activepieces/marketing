@@ -5,13 +5,27 @@ const route = useRoute();
 
 <template>
   <footer class="bg-white dark:bg-gray-800">
-    <div class="p-4 mx-auto max-w-screen-xl sm:p-8 lg:p-10">
-      <div class="pb-10">
-        <CTA />
+    <div class="px-4 pt-0 pb-4 mx-auto max-w-screen-xl sm:px-8 sm:pb-8 lg:px-10 lg:pb-10">
+      
+      <!-- Brand section at top -->
+      <div class="relative flex items-center justify-center pt-8 sm:pt-12 pb-4 sm:pb-6 mb-6 sm:mb-8 px-8">
+        <!-- Logo + Brand name in same line with same gradient -->
+        <div class="flex items-baseline justify-center gap-1 sm:gap-2 select-none brand-container group/brand cursor-default">
+          <div class="brand-logo-wrapper">
+            <img 
+              src="/ap-logo-black-sq.svg" 
+              alt="Activepieces" 
+              class="brand-logo"
+            />
+          </div>
+          <span class="brand-text font-extrabold tracking-tighter leading-none">
+            ACTIVEPIECES
+          </span>
+        </div>
       </div>
 
       <div
-        class="grid grid-cols-2 gap-8 mt-8 sm:mt-16 sm:grid-cols-3 lg:grid-cols-4 sm:space-y-0"
+        class="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-4 sm:space-y-0"
       >
         <div>
           <h3
@@ -179,8 +193,65 @@ const route = useRoute();
 </template>
 
 <style scoped>
-.colored-text {
-  -webkit-text-fill-color: transparent;
-  background: linear-gradient(to right, #6232cf 51%, #5b94f8 100%) text;
+.brand-container {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: clamp(3rem, 12vw, 9rem);
+  line-height: 1;
+}
+
+/* Default state - grey gradient */
+.brand-text {
+  font-size: 1em;
+  line-height: 1;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, transparent 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  padding-right: 0.15em;
+}
+
+.brand-logo-wrapper {
+  /* 1cap = exact cap-height of the font (Inter = 72.7% of font-size) */
+  height: 1cap;
+  /* Cropped SVG viewBox: 344x315 */
+  aspect-ratio: 344 / 315;
+  position: relative;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 60%, transparent 100%);
+  mask-image: url('/ap-logo-black-sq-cropped.svg');
+  -webkit-mask-image: url('/ap-logo-black-sq-cropped.svg');
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+}
+
+/* Hide the img, we use the wrapper as the logo now */
+.brand-logo {
+  display: none;
+}
+
+/* Hover state - AI gradient, instant change */
+.group\/brand:hover .brand-text {
+  background: linear-gradient(
+    to bottom,
+    #6366f1 0%, #6366f1 25%,
+    #22d3ee 25%, #22d3ee 50%,
+    #f472b6 50%, #f472b6 75%,
+    #facc15 75%, #facc15 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.group\/brand:hover .brand-logo-wrapper {
+  background: linear-gradient(
+    to bottom,
+    #6366f1 0%, #6366f1 25%,
+    #22d3ee 25%, #22d3ee 50%,
+    #f472b6 50%, #f472b6 75%,
+    #facc15 75%, #facc15 100%
+  );
+  mask-image: url('/ap-logo-black-sq-cropped.svg');
+  -webkit-mask-image: url('/ap-logo-black-sq-cropped.svg');
 }
 </style>

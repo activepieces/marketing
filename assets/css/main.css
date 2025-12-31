@@ -14,3 +14,14 @@
     initial-value: 0deg;
     syntax: '<angle>';
 }
+
+/* Prevent layout shift on page load */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Ensure header doesn't cause layout shift */
+header {
+    min-height: 62px;
+    /* Removed contain property as it was clipping dropdown menus */
+}
