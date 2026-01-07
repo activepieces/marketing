@@ -174,17 +174,31 @@ watch(useRoute(), () => {
                 />
               </NuxtLink>
             </div>
-            <div class="flex items-center flex-grow-0 min-[906px]:order-2">
-              <NuxtLink
-                to="/reseller"
-                class="text-base px-3 py-2 max-[555px]:hidden transition-colors duration-200 hover:text-[#8142e3]"
-                :class="{'text-white group-hover/header:text-gray-600': showTransparent, 'text-gray-600': !showTransparent}"
-                >Become a Reseller</NuxtLink
-              >
+            <div class="flex items-center flex-grow-0 min-[906px]:order-2 gap-4">
+              <!-- Partners Section -->
+              <div class="flex items-center gap-3 max-[905px]:hidden">
+                <NuxtLink
+                  to="/reseller"
+                  class="px-3 py-2 transition-colors duration-200 font-normal hover:!text-[#8142e3]"
+                  :class="{'text-white group-hover/header:text-gray-900': showTransparent, 'text-gray-900': !showTransparent}"
+                  >Become a Reseller</NuxtLink
+                >
+                <NuxtLink
+                  to="/content-creators"
+                  class="px-3 py-2 transition-colors duration-200 font-normal hover:!text-[#8142e3]"
+                  :class="{'text-white group-hover/header:text-gray-900': showTransparent, 'text-gray-900': !showTransparent}"
+                  >Content Creators</NuxtLink
+                >
+              </div>
+              
+              <!-- Vertical Separator -->
+              <div class="h-6 w-px bg-gray-300 max-[905px]:hidden"
+                :class="{'bg-white/30 group-hover/header:bg-gray-300': showTransparent}"></div>
+              
               <a
                 href="https://cloud.activepieces.com"
-                class="text-base px-3 py-2 mr-2 max-[555px]:hidden transition-colors duration-200 hover:text-[#8142e3]"
-                :class="{'text-white group-hover/header:text-gray-600': showTransparent, 'text-gray-600': !showTransparent}"
+                class="px-3 py-2 max-[555px]:hidden transition-colors duration-200 font-normal hover:!text-[#8142e3]"
+                :class="{'text-white group-hover/header:text-gray-900': showTransparent, 'text-gray-900': !showTransparent}"
                 >Login</a
               >
               <div class="flex flex-row gap-x-2">
@@ -263,84 +277,68 @@ watch(useRoute(), () => {
                   </button>
 
                   <!-- Mega Menu Content -->
-                  <div class="absolute left-0 top-full z-[60] w-[700px] rounded-2xl shadow-2xl bg-white p-6 grid grid-cols-[3fr_2fr] gap-6 block transition-all duration-300 delay-200 transform translate-y-2 opacity-0 group-hover/menu:opacity-100 group-hover/menu:translate-y-0 group-hover/menu:delay-0 border border-gray-100 pointer-events-none group-hover/menu:pointer-events-auto">
+                  <div class="absolute left-0 top-full z-[60] w-[500px] rounded-xl shadow-xl bg-white p-4 grid grid-cols-[3fr_2fr] gap-0 block transition-all duration-300 delay-200 transform translate-y-2 opacity-0 group-hover/menu:opacity-100 group-hover/menu:translate-y-0 group-hover/menu:delay-0 border border-gray-100 pointer-events-none group-hover/menu:pointer-events-auto overflow-hidden">
                     <!-- Left Column: Product Pages -->
-                    <div class="flex min-w-0 flex flex-col gap-0">
+                    <div class="flex min-w-0 flex flex-col gap-0 pr-4 group/list">
                       <!-- Adoption & Training -->
-                      <NuxtLink to="/product/ai-adoption" class="flex items-center gap-4 h-20 rounded-xl hover:bg-gray-100 transition px-4 py-4 group/feature">
-                        <div class="w-10 h-10 flex items-center justify-center rounded-xl bg-gradient-to-br from-purple-100 to-purple-200">
-                          <svg class="w-6 h-6" fill="#A259FF" viewBox="0 0 24 24">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                      <NuxtLink to="/product/ai-adoption" class="flex items-center gap-2.5 px-2 py-3 transition group/feature border-b border-gray-100">
+                        <div class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"></div>
+                        <span class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight">Adoption & Training</span>
+                        <svg class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                           </svg>
-                        </div>
-                        <div class="flex-1">
-                          <span class="font-semibold text-base text-gray-900">Adoption & Training</span>
-                          <div class="text-sm text-gray-500 group-hover/feature:text-gray-900 transition-colors duration-200">Tools to get your AI adoption rolling</div>
-                        </div>
                       </NuxtLink>
                       <!-- AI Agents -->
-                      <NuxtLink to="/product/ai-agent-builder" class="flex items-center gap-4 h-20 rounded-xl hover:bg-gray-100 transition px-4 py-4 group/feature">
-                        <div class="w-10 h-10 flex items-center justify-center rounded-xl bg-gradient-to-br from-pink-100 to-pink-200">
-                          <svg class="w-6 h-6" fill="#EC4899" viewBox="0 0 24 24">
-                            <path d="M21 10.12h-6.78l2.74-2.82c-2.73-2.7-7.15-2.8-9.88-.1-2.73 2.71-2.73 7.08 0 9.79s7.15 2.71 9.88 0C18.32 15.65 19 14.08 19 12.1h2c0 1.98-.88 4.55-2.64 6.29-3.51 3.48-9.21 3.48-12.72 0-3.5-3.47-3.53-9.11-.02-12.58s9.14-3.47 12.65 0L21 3v7.12zM12.5 8v4.25l3.5 2.08-.72 1.21L11 13V8h1.5z"/>
+                      <NuxtLink to="/product/ai-agent-builder" class="flex items-center gap-2.5 px-2 py-3 transition group/feature border-b border-gray-100">
+                        <div class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"></div>
+                        <span class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight">AI Agents</span>
+                        <svg class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                           </svg>
-                        </div>
-                        <div class="flex-1">
-                          <span class="font-semibold text-base text-gray-900">AI Agents</span>
-                          <div class="text-sm text-gray-500 group-hover/feature:text-gray-900 transition-colors duration-200">Build everyday and advanced AI agents</div>
-                        </div>
                       </NuxtLink>
                       <!-- Control & Governance -->
-                      <NuxtLink to="/product/governance-and-management" class="flex items-center gap-4 h-20 rounded-xl hover:bg-gray-100 transition px-4 py-4 group/feature">
-                        <div class="w-10 h-10 flex items-center justify-center rounded-xl bg-gradient-to-br from-green-100 to-green-200">
-                          <svg class="w-6 h-6" fill="#34C759" viewBox="0 0 24 24">
-                            <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+                      <NuxtLink to="/product/governance-and-management" class="flex items-center gap-2.5 px-2 py-3 transition group/feature border-b border-gray-100">
+                        <div class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"></div>
+                        <span class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight">Control & Governance</span>
+                        <svg class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                           </svg>
-                        </div>
-                        <div class="flex-1">
-                          <span class="font-semibold text-base text-gray-900">Control & Governance</span>
-                          <div class="text-sm text-gray-500 group-hover/feature:text-gray-900 transition-colors duration-200">IT and leadership control tools</div>
-                        </div>
                       </NuxtLink>
                       <!-- Deployment & Cost -->
-                      <NuxtLink to="/product/deployment-options" class="flex items-center gap-4 h-20 rounded-xl hover:bg-gray-100 transition px-4 py-4 group/feature">
-                        <div class="w-10 h-10 flex items-center justify-center rounded-xl bg-gradient-to-br from-indigo-100 to-indigo-200">
-                          <svg class="w-6 h-6" fill="#6366F1" viewBox="0 0 24 24">
-                            <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM19 18H6c-2.21 0-4-1.79-4-4s1.79-4 4-4h.71C7.37 7.69 9.48 6 12 6c3.04 0 5.5 2.46 5.5 5.5v.5H19c1.66 0 3 1.34 3 3s-1.34 3-3 3z"/>
+                      <NuxtLink to="/product/deployment-options" class="flex items-center gap-2.5 px-2 py-3 transition group/feature">
+                        <div class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"></div>
+                        <span class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight">Deployment & Cost</span>
+                        <svg class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                           </svg>
-                        </div>
-                        <div class="flex-1">
-                          <span class="font-semibold text-base text-gray-900">Deployment & Cost</span>
-                          <div class="text-sm text-gray-500 group-hover/feature:text-gray-900 transition-colors duration-200">Maximum security deployment choices</div>
-                        </div>
                       </NuxtLink>
                     </div>
                     <!-- Right Column: Apps -->
-                    <div class="flex min-w-0 flex flex-col gap-0">
-                      <div class="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2">By Integration</div>
-                      <div class="flex flex-col">
-                        <a href="/pieces/gmail" class="flex items-center gap-2 h-10 rounded-xl hover:bg-gray-100 transition -ml-4 px-4">
-                          <span class="w-6 h-6 flex items-center justify-center"><img src="https://cdn.activepieces.com/pieces/gmail.png" class="w-5 h-5" alt="Gmail" /></span>
+                    <div class="flex min-w-0 flex flex-col gap-0 bg-gray-50 -mr-4 -mt-4 -mb-4 p-3">
+                      <div class="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 px-2">By Integration</div>
+                      <div class="flex flex-col gap-1">
+                        <a href="/pieces/gmail" class="flex items-center gap-2.5 h-9 rounded-lg hover:bg-white transition px-2.5">
+                          <span class="w-5 h-5 flex items-center justify-center flex-shrink-0"><img src="https://cdn.activepieces.com/pieces/gmail.png" class="w-5 h-5" alt="Gmail" /></span>
                           <span class="text-sm text-gray-800">Gmail</span>
                         </a>
-                        <a href="/pieces/openai" class="flex items-center gap-2 h-10 rounded-xl hover:bg-gray-100 transition -ml-4 px-4">
-                          <span class="w-6 h-6 flex items-center justify-center"><img src="https://cdn.activepieces.com/pieces/openai.png" class="w-5 h-5" alt="OpenAI" /></span>
+                        <a href="/pieces/openai" class="flex items-center gap-2.5 h-9 rounded-lg hover:bg-white transition px-2.5">
+                          <span class="w-5 h-5 flex items-center justify-center flex-shrink-0"><img src="https://cdn.activepieces.com/pieces/openai.png" class="w-5 h-5" alt="OpenAI" /></span>
                           <span class="text-sm text-gray-800">OpenAI</span>
                         </a>
-                        <a href="/pieces/slack" class="flex items-center gap-2 h-10 rounded-xl hover:bg-gray-100 transition -ml-4 px-4">
-                          <span class="w-6 h-6 flex items-center justify-center"><img src="https://cdn.activepieces.com/pieces/slack.png" class="w-5 h-5" alt="Slack" /></span>
+                        <a href="/pieces/slack" class="flex items-center gap-2.5 h-9 rounded-lg hover:bg-white transition px-2.5">
+                          <span class="w-5 h-5 flex items-center justify-center flex-shrink-0"><img src="https://cdn.activepieces.com/pieces/slack.png" class="w-5 h-5" alt="Slack" /></span>
                           <span class="text-sm text-gray-800">Slack</span>
                         </a>
-                        <a href="/pieces/notion" class="flex items-center gap-2 h-10 rounded-xl hover:bg-gray-100 transition -ml-4 px-4">
-                          <span class="w-6 h-6 flex items-center justify-center"><img src="https://cdn.activepieces.com/pieces/notion.png" class="w-5 h-5" alt="Notion" /></span>
+                        <a href="/pieces/notion" class="flex items-center gap-2.5 h-9 rounded-lg hover:bg-white transition px-2.5">
+                          <span class="w-5 h-5 flex items-center justify-center flex-shrink-0"><img src="https://cdn.activepieces.com/pieces/notion.png" class="w-5 h-5" alt="Notion" /></span>
                           <span class="text-sm text-gray-800">Notion</span>
                         </a>
-                        <a href="/pieces/hubspot" class="flex items-center gap-2 h-10 rounded-xl hover:bg-gray-100 transition -ml-4 px-4">
-                          <span class="w-6 h-6 flex items-center justify-center"><img src="https://cdn.activepieces.com/pieces/hubspot.png" class="w-5 h-5" alt="HubSpot" /></span>
+                        <a href="/pieces/hubspot" class="flex items-center gap-2.5 h-9 rounded-lg hover:bg-white transition px-2.5">
+                          <span class="w-5 h-5 flex items-center justify-center flex-shrink-0"><img src="https://cdn.activepieces.com/pieces/hubspot.png" class="w-5 h-5" alt="HubSpot" /></span>
                           <span class="text-sm text-gray-800">HubSpot</span>
                         </a>
-                        <a href="/pieces" class="flex items-center h-10 -ml-4 px-4 group/all-integrations">
-                          <div class="flex items-center gap-2">
+                        <a href="/pieces" class="flex items-center h-9 px-2.5 group/all-integrations">
+                          <div class="flex items-center gap-1.5">
                             <span class="text-sm text-gray-900 group-hover/all-integrations:text-blue-600 transition-colors duration-300">All integrations</span>
                             <svg class="w-4 h-4 text-gray-900 group-hover/all-integrations:text-blue-600 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -373,159 +371,28 @@ watch(useRoute(), () => {
                   </button>
 
                   <!-- Mega Menu Content -->
-                  <div class="absolute left-0 top-full z-[60] w-[800px] rounded-2xl shadow-2xl bg-white p-6 grid grid-cols-3 gap-6 block transition-all duration-300 delay-200 transform translate-y-2 opacity-0 group-hover/menu:opacity-100 group-hover/menu:translate-y-0 group-hover/menu:delay-0 border border-gray-100 pointer-events-none group-hover/menu:pointer-events-auto">
-                    <!-- Using Activepieces Section -->
-                    <div class="flex flex-col gap-2">
-                      <h3 class="text-sm font-semibold text-gray-500 mb-2">Use Activepieces</h3>
-                      <a href="https://www.activepieces.com/docs/flows/building-flows" class="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50 group/item">
-                        <div class="w-8 h-8 flex items-center justify-center rounded-lg bg-blue-50 group-hover/item:bg-blue-100 transition-colors">
-                          <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                  <div class="absolute left-0 top-full z-[60] w-[260px] rounded-xl shadow-xl bg-white p-3 flex flex-col gap-0 block transition-all duration-300 delay-200 transform translate-y-2 opacity-0 group-hover/menu:opacity-100 group-hover/menu:translate-y-0 group-hover/menu:delay-0 border border-gray-100 pointer-events-none group-hover/menu:pointer-events-auto group/list">
+                      <a href="https://www.activepieces.com/docs" class="flex items-center gap-2.5 px-2 py-3 transition group/feature border-b border-gray-100">
+                        <div class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"></div>
+                        <span class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight">Docs</span>
+                        <svg class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                           </svg>
-                        </div>
-                        <div>
-                          <div class="text-base font-semibold text-gray-900">Concepts</div>
-                          <div class="text-sm text-gray-500">Learn how Activepieces works</div>
-                        </div>
                       </a>
-                      <a href="https://www.youtube.com/playlist?list=PLczrB0CK7kLKRlt_VSM2p5VaVSO1FSPG-" target="_blank" rel="noopener noreferrer" class="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50 group/item">
-                        <div class="w-8 h-8 flex items-center justify-center rounded-lg bg-blue-50 group-hover/item:bg-blue-100 transition-colors">
-                          <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                          </svg>
-                        </div>
-                        <div>
-                          <div class="text-base font-semibold text-gray-900">Activepieces 101</div>
-                          <div class="text-sm text-gray-500">Get up and running in minutes</div>
-                        </div>
-                        <svg class="w-4 h-4 text-gray-400 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                      <a href="https://community.activepieces.com" class="flex items-center gap-2.5 px-2 py-3 transition group/feature border-b border-gray-100">
+                        <div class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"></div>
+                        <span class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight">Support Forum</span>
+                        <svg class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                         </svg>
                       </a>
-                      <a href="https://www.youtube.com/playlist?list=PLczrB0CK7kLJzlRmHL7c8sMYo6L3CbyjI" target="_blank" rel="noopener noreferrer" class="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50 group/item">
-                        <div class="w-8 h-8 flex items-center justify-center rounded-lg bg-blue-50 group-hover/item:bg-blue-100 transition-colors">
-                          <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                          </svg>
-                        </div>
-                        <div>
-                          <div class="text-base font-semibold text-gray-900">AI Use Cases</div>
-                          <div class="text-sm text-gray-500">See AI automation in action</div>
-                        </div>
-                        <svg class="w-4 h-4 text-gray-400 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                      <a href="https://discord.com/invite/2jUXBKDdP8" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 px-2 py-3 transition group/feature">
+                        <div class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"></div>
+                        <span class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight">Discord</span>
+                        <svg class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                         </svg>
                       </a>
-                      <a href="https://community.activepieces.com/c/tutorials/10" class="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50 group/item">
-                        <div class="w-8 h-8 flex items-center justify-center rounded-lg bg-blue-50 group-hover/item:bg-blue-100 transition-colors">
-                          <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                          </svg>
-                        </div>
-                        <div>
-                          <div class="text-base font-semibold text-gray-900">Community Tutorials</div>
-                          <div class="text-sm text-gray-500">Learn from other users</div>
-                        </div>
-                      </a>
-                    </div>
-
-                    <!-- IT Section -->
-                    <div class="flex flex-col gap-2">
-                      <h3 class="text-sm font-semibold text-gray-500 mb-2">Technical</h3>
-                      <a href="https://www.activepieces.com/docs/install/overview" class="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50 group/item">
-                        <div class="w-8 h-8 flex items-center justify-center rounded-lg bg-purple-50 group-hover/item:bg-purple-100 transition-colors">
-                          <svg class="w-5 h-5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
-                          </svg>
-                        </div>
-                        <div>
-                          <div class="text-base font-semibold text-gray-900">Deployment</div>
-                          <div class="text-sm text-gray-500">Set up on your servers</div>
-                        </div>
-                      </a>
-                      <a href="https://www.activepieces.com/docs" class="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50 group/item">
-                        <div class="w-8 h-8 flex items-center justify-center rounded-lg bg-purple-50 group-hover/item:bg-purple-100 transition-colors">
-                          <svg class="w-5 h-5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                          </svg>
-                        </div>
-                        <div>
-                          <div class="text-base font-semibold text-gray-900">Docs</div>
-                          <div class="text-sm text-gray-500">Everything you need to know</div>
-                        </div>
-                      </a>
-                      <a href="/docs/pieces/overview" class="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50 group/item">
-                        <div class="w-8 h-8 flex items-center justify-center rounded-lg bg-purple-50 group-hover/item:bg-purple-100 transition-colors">
-                          <svg class="w-5 h-5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                          </svg>
-                        </div>
-                        <div>
-                          <div class="text-base font-semibold text-gray-900">Develop Pieces</div>
-                          <div class="text-sm text-gray-500">Build your own integrations</div>
-                        </div>
-                      </a>
-                      <a href="/docs/embedding/overview" class="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50 group/item">
-                        <div class="w-8 h-8 flex items-center justify-center rounded-lg bg-purple-50 group-hover/item:bg-purple-100 transition-colors">
-                          <svg class="w-5 h-5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                          </svg>
-                        </div>
-                        <div>
-                          <div class="text-base font-semibold text-gray-900">Embed In Your App</div>
-                          <div class="text-sm text-gray-500">Add to your product</div>
-                        </div>
-                      </a>
-                      <a href="/docs/security/practices" class="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50 group/item">
-                        <div class="w-8 h-8 flex items-center justify-center rounded-lg bg-purple-50 group-hover/item:bg-purple-100 transition-colors">
-                          <svg class="w-5 h-5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                          </svg>
-                        </div>
-                        <div>
-                          <div class="text-base font-semibold text-gray-900">Security</div>
-                          <div class="text-sm text-gray-500">Keep your data safe</div>
-                        </div>
-                      </a>
-                    </div>
-
-                    <!-- Support Section -->
-                    <div class="flex flex-col gap-2">
-                      <h3 class="text-sm font-semibold text-gray-500 mb-2">Support</h3>
-                      <a href="https://community.activepieces.com" class="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50 group/item">
-                        <div class="w-8 h-8 flex items-center justify-center rounded-lg bg-green-50 group-hover/item:bg-green-100 transition-colors">
-                          <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
-                          </svg>
-                        </div>
-                        <div>
-                          <div class="text-base font-semibold text-gray-900">Forum</div>
-                          <div class="text-sm text-gray-500">Chat with other users</div>
-                        </div>
-                      </a>
-                      <a href="https://discord.com/invite/2jUXBKDdP8" target="_blank" rel="noopener noreferrer" class="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50 group/item">
-                        <div class="w-8 h-8 flex items-center justify-center rounded-lg bg-green-50 group-hover/item:bg-green-100 transition-colors">
-                          <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                          </svg>
-                        </div>
-                        <div>
-                          <div class="text-base font-semibold text-gray-900">Discord</div>
-                          <div class="text-sm text-gray-500">Join our live community</div>
-                        </div>
-                      </a>
-                      <a href="/blog" class="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50 group/item">
-                        <div class="w-8 h-8 flex items-center justify-center rounded-lg bg-green-50 group-hover/item:bg-green-100 transition-colors">
-                          <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
-                          </svg>
-                        </div>
-                        <div>
-                          <div class="text-base font-semibold text-gray-900">Blog</div>
-                          <div class="text-sm text-gray-500">Latest news and updates</div>
-                        </div>
-                      </a>
-                    </div>
                   </div>
                 </li>
 
@@ -583,81 +450,65 @@ watch(useRoute(), () => {
               class="overflow-hidden transition-all duration-200"
               :class="{ 'max-h-0': !openSections.product, 'max-h-[1000px]': openSections.product }"
             >
-              <div class="py-4 space-y-4">
+              <div class="py-3 space-y-0 group/list">
                 <!-- Product Pages -->
-                <NuxtLink to="/product/ai-adoption" class="flex items-start space-x-4 p-4 rounded-lg hover:bg-gray-50">
-                  <div class="p-2 bg-purple-50 rounded-lg">
-                    <svg class="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                <NuxtLink to="/product/ai-adoption" class="flex items-center gap-2.5 px-2.5 py-3 transition group/feature border-b border-gray-100">
+                  <div class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"></div>
+                  <span class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight">Adoption & Training</span>
+                  <svg class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
-                  </div>
-                  <div>
-                    <h3 class="font-medium text-gray-900">Adoption & Training</h3>
-                    <p class="text-sm text-gray-500 mt-1">Tools to get your AI adoption rolling</p>
-                  </div>
                 </NuxtLink>
 
-                <NuxtLink to="/product/ai-agent-builder" class="flex items-start space-x-4 p-4 rounded-lg hover:bg-gray-50">
-                  <div class="p-2 bg-pink-50 rounded-lg">
-                    <svg class="w-6 h-6 text-pink-600" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M21 10.12h-6.78l2.74-2.82c-2.73-2.7-7.15-2.8-9.88-.1-2.73 2.71-2.73 7.08 0 9.79s7.15 2.71 9.88 0C18.32 15.65 19 14.08 19 12.1h2c0 1.98-.88 4.55-2.64 6.29-3.51 3.48-9.21 3.48-12.72 0-3.5-3.47-3.53-9.11-.02-12.58s9.14-3.47 12.65 0L21 3v7.12zM12.5 8v4.25l3.5 2.08-.72 1.21L11 13V8h1.5z"/>
+                <NuxtLink to="/product/ai-agent-builder" class="flex items-center gap-2.5 px-2.5 py-3 transition group/feature border-b border-gray-100">
+                  <div class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"></div>
+                  <span class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight">AI Agents</span>
+                  <svg class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
-                  </div>
-                  <div>
-                    <h3 class="font-medium text-gray-900">AI Agents</h3>
-                    <p class="text-sm text-gray-500 mt-1">Build everyday and advanced AI agents</p>
-                  </div>
                 </NuxtLink>
 
-                <NuxtLink to="/product/governance-and-management" class="flex items-start space-x-4 p-4 rounded-lg hover:bg-gray-50">
-                  <div class="p-2 bg-green-50 rounded-lg">
-                    <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+                <NuxtLink to="/product/governance-and-management" class="flex items-center gap-2.5 px-2.5 py-3 transition group/feature border-b border-gray-100">
+                  <div class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"></div>
+                  <span class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight">Control & Governance</span>
+                  <svg class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
-                  </div>
-                  <div>
-                    <h3 class="font-medium text-gray-900">Control & Governance</h3>
-                    <p class="text-sm text-gray-500 mt-1">IT and leadership control tools</p>
-                  </div>
                 </NuxtLink>
 
-                <NuxtLink to="/product/deployment-options" class="flex items-start space-x-4 p-4 rounded-lg hover:bg-gray-50">
-                  <div class="p-2 bg-indigo-50 rounded-lg">
-                    <svg class="w-6 h-6 text-indigo-600" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM19 18H6c-2.21 0-4-1.79-4-4s1.79-4 4-4h.71C7.37 7.69 9.48 6 12 6c3.04 0 5.5 2.46 5.5 5.5v.5H19c1.66 0 3 1.34 3 3s-1.34 3-3 3z"/>
+                <NuxtLink to="/product/deployment-options" class="flex items-center gap-2.5 px-2.5 py-3 transition group/feature">
+                  <div class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"></div>
+                  <span class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight">Deployment & Cost</span>
+                  <svg class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
-                  </div>
-                  <div>
-                    <h3 class="font-medium text-gray-900">Deployment & Cost</h3>
-                    <p class="text-sm text-gray-500 mt-1">Maximum security deployment choices</p>
-                  </div>
                 </NuxtLink>
 
                 <!-- By Integration -->
-                <div class="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2">By Integration</div>
-                <div class="flex flex-col">
-                  <a href="/pieces/gmail" class="flex items-center gap-2 h-10 rounded-xl hover:bg-gray-100 transition -ml-4 px-4">
-                    <span class="w-6 h-6 flex items-center justify-center"><img src="https://cdn.activepieces.com/pieces/gmail.png" class="w-5 h-5" alt="Gmail" /></span>
+                <div class="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 mt-3 px-2.5">By Integration</div>
+                <div class="flex flex-col gap-1">
+                  <a href="/pieces/gmail" class="flex items-center gap-2.5 h-9 rounded-lg hover:bg-gray-50 transition px-2.5">
+                    <span class="w-5 h-5 flex items-center justify-center flex-shrink-0"><img src="https://cdn.activepieces.com/pieces/gmail.png" class="w-5 h-5" alt="Gmail" /></span>
                     <span class="text-sm text-gray-800">Gmail</span>
                   </a>
-                  <a href="/pieces/openai" class="flex items-center gap-2 h-10 rounded-xl hover:bg-gray-100 transition -ml-4 px-4">
-                    <span class="w-6 h-6 flex items-center justify-center"><img src="https://cdn.activepieces.com/pieces/openai.png" class="w-5 h-5" alt="OpenAI" /></span>
+                  <a href="/pieces/openai" class="flex items-center gap-2.5 h-9 rounded-lg hover:bg-gray-50 transition px-2.5">
+                    <span class="w-5 h-5 flex items-center justify-center flex-shrink-0"><img src="https://cdn.activepieces.com/pieces/openai.png" class="w-5 h-5" alt="OpenAI" /></span>
                     <span class="text-sm text-gray-800">OpenAI</span>
                   </a>
-                  <a href="/pieces/slack" class="flex items-center gap-2 h-10 rounded-xl hover:bg-gray-100 transition -ml-4 px-4">
-                    <span class="w-6 h-6 flex items-center justify-center"><img src="https://cdn.activepieces.com/pieces/slack.png" class="w-5 h-5" alt="Slack" /></span>
+                  <a href="/pieces/slack" class="flex items-center gap-2.5 h-9 rounded-lg hover:bg-gray-50 transition px-2.5">
+                    <span class="w-5 h-5 flex items-center justify-center flex-shrink-0"><img src="https://cdn.activepieces.com/pieces/slack.png" class="w-5 h-5" alt="Slack" /></span>
                     <span class="text-sm text-gray-800">Slack</span>
                   </a>
-                  <a href="/pieces/notion" class="flex items-center gap-2 h-10 rounded-xl hover:bg-gray-100 transition -ml-4 px-4">
-                    <span class="w-6 h-6 flex items-center justify-center"><img src="https://cdn.activepieces.com/pieces/notion.png" class="w-5 h-5" alt="Notion" /></span>
+                  <a href="/pieces/notion" class="flex items-center gap-2.5 h-9 rounded-lg hover:bg-gray-50 transition px-2.5">
+                    <span class="w-5 h-5 flex items-center justify-center flex-shrink-0"><img src="https://cdn.activepieces.com/pieces/notion.png" class="w-5 h-5" alt="Notion" /></span>
                     <span class="text-sm text-gray-800">Notion</span>
                   </a>
-                  <a href="/pieces/hubspot" class="flex items-center gap-2 h-10 rounded-xl hover:bg-gray-100 transition -ml-4 px-4">
-                    <span class="w-6 h-6 flex items-center justify-center"><img src="https://cdn.activepieces.com/pieces/hubspot.png" class="w-5 h-5" alt="HubSpot" /></span>
+                  <a href="/pieces/hubspot" class="flex items-center gap-2.5 h-9 rounded-lg hover:bg-gray-50 transition px-2.5">
+                    <span class="w-5 h-5 flex items-center justify-center flex-shrink-0"><img src="https://cdn.activepieces.com/pieces/hubspot.png" class="w-5 h-5" alt="HubSpot" /></span>
                     <span class="text-sm text-gray-800">HubSpot</span>
                   </a>
-                  <a href="/pieces" class="flex items-center h-10 -ml-4 px-4 group/all-integrations">
-                    <div class="flex items-center gap-2">
+                  <a href="/pieces" class="flex items-center h-9 px-2.5 group/all-integrations">
+                    <div class="flex items-center gap-1.5">
                       <span class="text-sm text-gray-900 group-hover/all-integrations:text-blue-600 transition-colors duration-300">All integrations</span>
                       <svg class="w-4 h-4 text-gray-900 group-hover/all-integrations:text-blue-600 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -690,166 +541,41 @@ watch(useRoute(), () => {
               class="overflow-hidden transition-all duration-200"
               :class="{ 'max-h-0': !openSections.resources, 'max-h-[1000px]': openSections.resources }"
             >
-              <div class="py-4 space-y-4">
-                <!-- Use Activepieces Section -->
-                <div>
-                  <h3 class="text-sm font-semibold text-gray-500 mb-2 px-4">Use Activepieces</h3>
-                  <div class="space-y-2">
-                    <a href="https://www.activepieces.com/docs/flows/building-flows" class="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50 group/item">
-                      <div class="w-8 h-8 flex items-center justify-center rounded-lg bg-blue-50 group-hover/item:bg-blue-100 transition-colors">
-                        <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <div class="text-base font-semibold text-gray-900">Concepts</div>
-                        <div class="text-sm text-gray-500">Learn how Activepieces works</div>
-                      </div>
-                    </a>
-                    <a href="https://www.youtube.com/playlist?list=PLczrB0CK7kLKRlt_VSM2p5VaVSO1FSPG-" target="_blank" rel="noopener noreferrer" class="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50 group/item">
-                      <div class="w-8 h-8 flex items-center justify-center rounded-lg bg-blue-50 group-hover/item:bg-blue-100 transition-colors">
-                        <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                        </svg>
-                      </div>
-                      <div>
-                        <div class="text-base font-semibold text-gray-900">Activepieces 101</div>
-                        <div class="text-sm text-gray-500">Get up and running in minutes</div>
-                      </div>
-                      <svg class="w-4 h-4 text-gray-400 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                      </svg>
-                    </a>
-                    <a href="https://www.youtube.com/playlist?list=PLczrB0CK7kLJzlRmHL7c8sMYo6L3CbyjI" target="_blank" rel="noopener noreferrer" class="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50 group/item">
-                      <div class="w-8 h-8 flex items-center justify-center rounded-lg bg-blue-50 group-hover/item:bg-blue-100 transition-colors">
-                        <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <div class="text-base font-semibold text-gray-900">AI Use Cases</div>
-                        <div class="text-sm text-gray-500">See AI automation in action</div>
-                      </div>
-                      <svg class="w-4 h-4 text-gray-400 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                      </svg>
-                    </a>
-                    <a href="https://community.activepieces.com/c/tutorials/10" class="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50 group/item">
-                      <div class="w-8 h-8 flex items-center justify-center rounded-lg bg-blue-50 group-hover/item:bg-blue-100 transition-colors">
-                        <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <div class="text-base font-semibold text-gray-900">Community Tutorials</div>
-                        <div class="text-sm text-gray-500">Learn from other users</div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-
-                <!-- Technical Section -->
-                <div>
-                  <h3 class="text-sm font-semibold text-gray-500 mb-2 px-4">Technical</h3>
-                  <div class="space-y-2">
-                    <a href="https://www.activepieces.com/docs/install/overview" class="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50 group/item">
-                      <div class="w-8 h-8 flex items-center justify-center rounded-lg bg-purple-50 group-hover/item:bg-purple-100 transition-colors">
-                        <svg class="w-5 h-5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
-                        </svg>
-                      </div>
-                      <div>
-                        <div class="text-base font-semibold text-gray-900">Deployment</div>
-                        <div class="text-sm text-gray-500">Set up on your servers</div>
-                      </div>
-                    </a>
-                    <a href="https://www.activepieces.com/docs" class="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50 group/item">
-                      <div class="w-8 h-8 flex items-center justify-center rounded-lg bg-purple-50 group-hover/item:bg-purple-100 transition-colors">
-                        <svg class="w-5 h-5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                        </svg>
-                      </div>
-                      <div>
-                        <div class="text-base font-semibold text-gray-900">Docs</div>
-                        <div class="text-sm text-gray-500">Everything you need to know</div>
-                      </div>
-                    </a>
-                    <a href="/docs/pieces/overview" class="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50 group/item">
-                      <div class="w-8 h-8 flex items-center justify-center rounded-lg bg-purple-50 group-hover/item:bg-purple-100 transition-colors">
-                        <svg class="w-5 h-5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                        </svg>
-                      </div>
-                      <div>
-                        <div class="text-base font-semibold text-gray-900">Develop Pieces</div>
-                        <div class="text-sm text-gray-500">Build your own integrations</div>
-                      </div>
-                    </a>
-                    <a href="/docs/embedding/overview" class="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50 group/item">
-                      <div class="w-8 h-8 flex items-center justify-center rounded-lg bg-purple-50 group-hover/item:bg-purple-100 transition-colors">
-                        <svg class="w-5 h-5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <div class="text-base font-semibold text-gray-900">Embed In Your App</div>
-                        <div class="text-sm text-gray-500">Add to your product</div>
-                      </div>
-                    </a>
-                    <a href="/docs/security/practices" class="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50 group/item">
-                      <div class="w-8 h-8 flex items-center justify-center rounded-lg bg-purple-50 group-hover/item:bg-purple-100 transition-colors">
-                        <svg class="w-5 h-5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <div class="text-base font-semibold text-gray-900">Security</div>
-                        <div class="text-sm text-gray-500">Keep your data safe</div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-
-                <!-- Support Section -->
-                <div>
-                  <h3 class="text-sm font-semibold text-gray-500 mb-2 px-4">Support</h3>
-                  <div class="space-y-2">
-                    <a href="https://community.activepieces.com" class="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50 group/item">
-                      <div class="w-8 h-8 flex items-center justify-center rounded-lg bg-green-50 group-hover/item:bg-green-100 transition-colors">
-                        <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <div class="text-base font-semibold text-gray-900">Forum</div>
-                        <div class="text-sm text-gray-500">Chat with other users</div>
-                      </div>
-                    </a>
-                    <a href="https://discord.com/invite/2jUXBKDdP8" target="_blank" rel="noopener noreferrer" class="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50 group/item">
-                      <div class="w-8 h-8 flex items-center justify-center rounded-lg bg-green-50 group-hover/item:bg-green-100 transition-colors">
-                        <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <div class="text-base font-semibold text-gray-900">Discord</div>
-                        <div class="text-sm text-gray-500">Join our live community</div>
-                      </div>
-                    </a>
-                    <a href="/blog" class="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50 group/item">
-                      <div class="w-8 h-8 flex items-center justify-center rounded-lg bg-green-50 group-hover/item:bg-green-100 transition-colors">
-                        <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <div class="text-base font-semibold text-gray-900">Blog</div>
-                        <div class="text-sm text-gray-500">Latest news and updates</div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
+              <div class="py-3 space-y-0 group/list">
+                <a href="https://www.activepieces.com/docs" class="flex items-center gap-2.5 px-2.5 py-3 transition group/feature border-b border-gray-100">
+                  <div class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"></div>
+                  <span class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight">Docs</span>
+                  <svg class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </a>
+                <a href="https://community.activepieces.com" class="flex items-center gap-2.5 px-2.5 py-3 transition group/feature border-b border-gray-100">
+                  <div class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"></div>
+                  <span class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight">Support Forum</span>
+                  <svg class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </a>
+                <a href="https://discord.com/invite/2jUXBKDdP8" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 px-2.5 py-3 transition group/feature">
+                  <div class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"></div>
+                  <span class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight">Discord</span>
+                  <svg class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </a>
               </div>
+            </div>
+          </li>
+
+          <!-- Partners Links in Mobile -->
+          <li class="border-t border-gray-200 pt-4 mt-4">
+            <div class="px-2 space-y-2">
+              <NuxtLink to="/reseller" class="block py-2 text-base font-medium text-gray-700 hover:text-[#8142e3]">
+                Become a Reseller
+              </NuxtLink>
+              <NuxtLink to="/content-creators" class="block py-2 text-base font-medium text-gray-700 hover:text-[#8142e3]">
+                Content Creators
+              </NuxtLink>
             </div>
           </li>
 
@@ -1036,5 +762,39 @@ li[class*="group/menu"] {
 }
 #announcement-bar.hide {
   transform: translateY(-100%);
+}
+
+/* Grey out other items when one is hovered */
+.group\/list:has(.group\/feature:hover) .group\/feature:not(:hover) {
+  opacity: 0.7;
+}
+
+.group\/list .group\/feature {
+  transition: opacity 0.2s ease;
+}
+
+/* Grey out text in non-hovered items */
+.group\/list:has(.group\/feature:hover) .group\/feature:not(:hover) span {
+  color: rgb(107 114 128) !important; /* text-gray-500 */
+}
+
+/* Grey out arrows in non-hovered items, but don't interfere with hovered item's arrow animation */
+.group\/list:has(.group\/feature:hover) .group\/feature:not(:hover) svg {
+  color: rgb(107 114 128) !important; /* text-gray-500 */
+}
+
+/* Grey out shapes in non-hovered items */
+.group\/list:has(.group\/feature:hover) .group\/feature:not(:hover) div[class*="rounded-sm"] {
+  background-color: rgb(107 114 128) !important; /* bg-gray-500 */
+}
+
+/* Ensure hovered item's arrow animation works properly */
+.group\/list .group\/feature:hover svg {
+  color: rgb(17 24 39) !important; /* text-gray-900 - keep it black */
+}
+
+/* Ensure hovered item's shape stays black */
+.group\/list .group\/feature:hover div[class*="rounded-sm"] {
+  background-color: rgb(17 24 39) !important; /* bg-gray-900 - keep it black */
 }
 </style>

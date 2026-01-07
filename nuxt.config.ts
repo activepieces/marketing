@@ -26,8 +26,11 @@ export default defineNuxtConfig({
     supabaseUrl: process.env.SUPABASE_URL,
     supabaseApiKey: process.env.SUPABASE_API_KEY,
     openaiApiKey: process.env.OPENAI_API_KEY,
+    brandfetchApiKey: process.env.BRANDFETCH_API_KEY,
+    brandfetchClientId: process.env.BRANDFETCH_CLIENT_ID || '1id8CNBriO6auYJK5I7',
     public: {
       strapiUrl: process.env.STRAPI_URL,
+      brandfetchClientId: process.env.BRANDFETCH_CLIENT_ID || '1id8CNBriO6auYJK5I7',
     },
   },
 
