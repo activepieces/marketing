@@ -90,9 +90,11 @@ useHead({
           <h1 class="text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-[1.1] mb-6">
             Turn your entire organization into AI builders
           </h1>
-          <p class="text-xl text-gray-300 leading-relaxed mb-8">
-            Most AI initiatives fail because adoption stalls after the pilot. Our AI Adoption Program gives every team the templates, guidance, and motivation to build—while giving leadership full visibility into progress.
-          </p>
+          <div class="flex justify-center my-12">
+            <div class="w-full max-w-[90%]">
+              <PagesIndexCompanyLogos class="relative z-10" />
+            </div>
+          </div>
           <div class="flex flex-wrap justify-center gap-4">
             <a href="https://cloud.activepieces.com/sign-up" class="inline-flex items-center px-6 py-3 text-base font-semibold text-black bg-white rounded-lg hover:bg-gray-100 transition-colors">
               Start free
@@ -114,34 +116,25 @@ useHead({
       ></div>
       <div class="max-w-[1230px] mx-auto px-4 relative z-10">
         <div class="text-center max-w-3xl mx-auto mb-16">
-          <div class="flex flex-col items-center gap-4 mb-6">
+          <div class="flex flex-col items-center gap-4">
             <component :is="getIcon('network')" class="text-gray-700" />
             <h2 class="text-4xl lg:text-5xl font-bold text-gray-900">
-              Make it yours, get everyone in
+              Your AI home. Zero friction.
             </h2>
           </div>
-          <p class="text-xl text-gray-600 leading-relaxed">
-            Before teams can adopt AI, they need to see it as part of your organization—not some external tool. Set up branding and onboarding so it feels native from day one.
-          </p>
         </div>
 
         <!-- Feature 1: Branding -->
         <div class="grid lg:grid-cols-2 gap-12 items-center mb-20">
-          <div class="order-2 lg:order-1 bg-gray-100 border-2 border-dashed border-gray-300 rounded-2xl p-8 min-h-[350px] flex items-center justify-center">
-            <div class="text-center text-gray-500">
-              <p class="font-semibold mb-2">📸 SCREENSHOT</p>
-              <p class="text-sm max-w-sm">Activepieces interface showing custom branding: company logo in header, custom color scheme matching the organization's brand</p>
-            </div>
+          <div class="order-2 lg:order-1">
+            <PagesProductAdoptionBrandingComparison />
           </div>
           <div class="order-1 lg:order-2">
-            <span class="inline-block px-3 py-1 text-sm font-medium text-pink-700 bg-pink-100 rounded-full mb-4">
-              White-Label Experience
-            </span>
             <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
-              Make it look like yours—because it is
+              Your brand, your platform
             </h3>
             <p class="text-lg text-gray-600 mb-6">
-              Since Activepieces is a culture-building tool, it should feel like part of your organization. Add your logo and brand colors so every interaction reinforces your company identity.
+              When employees see your logo and colors, they trust it. White-label Activepieces with your branding so AI adoption feels like an internal initiative—not another external tool to learn.
             </p>
             <ul class="space-y-3">
               <li class="flex items-start gap-3">
@@ -150,7 +143,7 @@ useHead({
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                 </div>
-                <span class="text-gray-700"><strong>Custom logo</strong>—your brand in the header</span>
+                <span class="text-gray-700"><strong>Your logo</strong> in the header builds immediate trust</span>
               </li>
               <li class="flex items-start gap-3">
                 <div class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -158,7 +151,7 @@ useHead({
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                 </div>
-                <span class="text-gray-700"><strong>Brand colors</strong>—match your visual identity</span>
+                <span class="text-gray-700"><strong>Your colors</strong> make it feel like home</span>
               </li>
               <li class="flex items-start gap-3">
                 <div class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -166,7 +159,7 @@ useHead({
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                 </div>
-                <span class="text-gray-700"><strong>Seamless integration</strong>—feels native to your stack</span>
+                <span class="text-gray-700"><strong>Custom domain</strong> keeps everything under your roof</span>
               </li>
             </ul>
           </div>
@@ -175,14 +168,11 @@ useHead({
         <!-- Feature 2: Easy Onboarding -->
         <div class="grid lg:grid-cols-2 gap-12 items-center">
           <div>
-            <span class="inline-block px-3 py-1 text-sm font-medium text-blue-700 bg-blue-100 rounded-full mb-4">
-              Seamless Onboarding
-            </span>
             <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
-              Invite users, watch adoption roll
+              Get everyone in with one click
             </h3>
             <p class="text-lg text-gray-600 mb-6">
-              Getting started shouldn't be complicated. Our onboarding tools make it easy to invite your entire team. Everyone gets their own personal space to experiment on day one, and you can create team projects for collaboration.
+              No IT tickets. No complex provisioning. Invite your whole team instantly—each person gets their own workspace to experiment, plus shared spaces for team collaboration.
             </p>
             <ul class="space-y-3">
               <li class="flex items-start gap-3">
@@ -191,7 +181,7 @@ useHead({
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                 </div>
-                <span class="text-gray-700"><strong>Easy invites</strong>—bulk import or one-by-one onboarding</span>
+                <span class="text-gray-700"><strong>Bulk invites</strong> via CSV or SSO integration</span>
               </li>
               <li class="flex items-start gap-3">
                 <div class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -199,7 +189,7 @@ useHead({
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                 </div>
-                <span class="text-gray-700"><strong>Personal spaces</strong>—everyone can start experimenting immediately</span>
+                <span class="text-gray-700"><strong>Personal sandboxes</strong> so everyone can learn safely</span>
               </li>
               <li class="flex items-start gap-3">
                 <div class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -207,15 +197,12 @@ useHead({
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                 </div>
-                <span class="text-gray-700"><strong>Team projects</strong>—create shared workspaces for collaboration</span>
+                <span class="text-gray-700"><strong>Team projects</strong> for cross-functional collaboration</span>
               </li>
             </ul>
           </div>
-          <div class="bg-gray-200 border-2 border-dashed border-gray-400 rounded-2xl p-8 min-h-[350px] flex items-center justify-center">
-            <div class="text-center text-gray-500">
-              <p class="font-semibold mb-2">📸 SCREENSHOT</p>
-              <p class="text-sm max-w-sm">Onboarding flow showing user invitation interface, personal dashboard view, and project creation/management</p>
-            </div>
+          <div>
+            <PagesProductAdoptionOnboardingFlow />
           </div>
         </div>
       </div>
@@ -223,30 +210,19 @@ useHead({
 
     <!-- Section 2: Give Teams What to Build -->
     <section id="enable-building" class="py-24 bg-[#f8fafc] border-t border-gray-200 relative overflow-hidden">
-      <!-- Bottom Fade Grid Background -->
-      <div
-        class="absolute inset-0 z-0"
-        style="background-image: linear-gradient(to right, #e2e8f0 1px, transparent 1px), linear-gradient(to bottom, #e2e8f0 1px, transparent 1px); background-size: 20px 30px; -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 100%, #000 60%, transparent 100%); mask-image: radial-gradient(ellipse 70% 60% at 50% 100%, #000 60%, transparent 100%);"
-      ></div>
       <div class="max-w-[1230px] mx-auto px-4 relative z-10">
         <div class="text-center max-w-3xl mx-auto mb-16">
-          <div class="flex flex-col items-center gap-4 mb-6">
+          <div class="flex flex-col items-center gap-4">
             <component :is="getIcon('users')" class="text-gray-700" />
             <h2 class="text-4xl lg:text-5xl font-bold text-gray-900">
-              Show them what to do, guide them how to do it
+              Clear path forward. Built-in guidance.
             </h2>
           </div>
-          <p class="text-xl text-gray-600 leading-relaxed">
-            Teams don't need generic training—they need concrete ideas and personalized guidance. Give them templates to start with and smart suggestions to keep building.
-          </p>
         </div>
 
         <!-- Feature 1: Templates -->
         <div class="grid lg:grid-cols-2 gap-12 items-center mb-20">
           <div>
-            <span class="inline-block px-3 py-1 text-sm font-medium text-blue-700 bg-blue-100 rounded-full mb-4">
-              Ready-to-Use Templates
-            </span>
             <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
               Every team knows exactly what to build
             </h3>
@@ -280,11 +256,8 @@ useHead({
               </li>
             </ul>
           </div>
-          <div class="bg-gray-100 border-2 border-dashed border-gray-300 rounded-2xl p-8 min-h-[350px] flex items-center justify-center">
-            <div class="text-center text-gray-500">
-              <p class="font-semibold mb-2">📸 SCREENSHOT</p>
-              <p class="text-sm max-w-sm">Templates gallery with department tabs, showing cards with difficulty levels (Everyday/Advanced) and estimated build time</p>
-            </div>
+          <div class="flex items-center justify-center min-h-[350px]">
+            <PagesProductAdoptionTemplateCards />
           </div>
         </div>
 
@@ -297,9 +270,6 @@ useHead({
             </div>
           </div>
           <div class="order-1 lg:order-2">
-            <span class="inline-block px-3 py-1 text-sm font-medium text-green-700 bg-green-100 rounded-full mb-4">
-              Personalized Guidance
-            </span>
             <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
               Every team member gets their own AI coach
             </h3>
@@ -346,23 +316,17 @@ useHead({
       ></div>
       <div class="max-w-[1230px] mx-auto px-4 relative z-10">
         <div class="text-center max-w-3xl mx-auto mb-16">
-          <div class="flex flex-col items-center gap-4 mb-6">
+          <div class="flex flex-col items-center gap-4">
             <component :is="getIcon('star')" class="text-gray-700" />
             <h2 class="text-4xl lg:text-5xl font-bold text-gray-900">
-              Motivate, recognize, celebrate
+              Visible progress. Real motivation.
             </h2>
           </div>
-          <p class="text-xl text-gray-600 leading-relaxed">
-            Adoption isn't just about tools—it's about changing behavior. Use leaderboards to spark competition and badges to celebrate progress, turning the journey into an achievement.
-          </p>
         </div>
 
         <!-- Feature 1: Leaderboard -->
         <div class="grid lg:grid-cols-2 gap-12 items-center mb-20">
           <div>
-            <span class="inline-block px-3 py-1 text-sm font-medium text-orange-700 bg-orange-100 rounded-full mb-4">
-              Leaderboard
-            </span>
             <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
               Discover the AI heroes hiding in your organization
             </h3>
@@ -413,9 +377,6 @@ useHead({
             </div>
           </div>
           <div class="order-1 lg:order-2">
-            <span class="inline-block px-3 py-1 text-sm font-medium text-purple-700 bg-purple-100 rounded-full mb-4">
-              Badges & Recognition
-            </span>
             <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
               Make progress feel rewarding
             </h3>
@@ -455,22 +416,14 @@ useHead({
 
     <!-- Section 4: Track Success & Support -->
     <section id="track-support" class="py-24 bg-[#f9fafb] border-t border-gray-200 relative overflow-hidden">
-      <!-- Diagonal Fade Bottom Grid Left Background -->
-      <div
-        class="absolute inset-0 z-0"
-        style="background-image: linear-gradient(to right, #d1d5db 1px, transparent 1px), linear-gradient(to bottom, #d1d5db 1px, transparent 1px); background-size: 32px 32px; -webkit-mask-image: radial-gradient(ellipse 80% 80% at 0% 100%, #000 50%, transparent 90%); mask-image: radial-gradient(ellipse 80% 80% at 0% 100%, #000 50%, transparent 90%);"
-      ></div>
       <div class="max-w-[1230px] mx-auto px-4 relative z-10">
         <div class="text-center max-w-3xl mx-auto mb-16">
-          <div class="flex flex-col items-center gap-4 mb-6">
+          <div class="flex flex-col items-center gap-4">
             <component :is="getIcon('analytics')" class="text-gray-700" />
             <h2 class="text-4xl lg:text-5xl font-bold text-gray-900">
-              Measure impact, provide help
+              Full visibility. Expert backup.
             </h2>
           </div>
-          <p class="text-xl text-gray-600 leading-relaxed">
-            Leadership needs visibility into adoption progress. Teams need support when they get stuck. Give both what they need without creating overhead for your organization.
-          </p>
         </div>
 
         <!-- Feature 1: Impact Analytics -->
@@ -482,9 +435,6 @@ useHead({
             </div>
           </div>
           <div class="order-1 lg:order-2">
-            <span class="inline-block px-3 py-1 text-sm font-medium text-indigo-700 bg-indigo-100 rounded-full mb-4">
-              Impact Analytics
-            </span>
             <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
               Finally, leadership can see AI adoption happening
             </h3>
@@ -523,9 +473,6 @@ useHead({
         <!-- Feature 2: Expert Support -->
         <div class="grid lg:grid-cols-2 gap-12 items-center">
           <div>
-            <span class="inline-block px-3 py-1 text-sm font-medium text-purple-700 bg-purple-100 rounded-full mb-4">
-              Expert Support
-            </span>
             <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
               Your teams get instant support—you don't have to provide it
             </h3>
