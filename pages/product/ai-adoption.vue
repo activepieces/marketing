@@ -263,11 +263,8 @@ useHead({
 
         <!-- Feature 2: Personalized Guidance -->
         <div class="grid lg:grid-cols-2 gap-12 items-center">
-          <div class="order-2 lg:order-1 bg-gray-100 border-2 border-dashed border-gray-300 rounded-2xl p-8 min-h-[350px] flex items-center justify-center">
-            <div class="text-center text-gray-500">
-              <p class="font-semibold mb-2">📸 SCREENSHOT</p>
-              <p class="text-sm max-w-sm">Personal dashboard showing "Suggested for you" section with automation ideas, learning resources, and "Continue where you left off" prompts</p>
-            </div>
+          <div class="order-2 lg:order-1">
+            <PagesProductAdoptionCoachingEmails />
           </div>
           <div class="order-1 lg:order-2">
             <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
@@ -302,6 +299,50 @@ useHead({
                 <span class="text-gray-700"><strong>Gentle nudges</strong> to re-engage inactive users</span>
               </li>
             </ul>
+          </div>
+        </div>
+
+        <!-- Feature 3: Expert Support -->
+        <div class="grid lg:grid-cols-2 gap-12 items-center mt-20">
+          <div>
+            <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
+              Your teams get instant support—you don't have to provide it
+            </h3>
+            <p class="text-lg text-gray-600 mb-6">
+              When your users get stuck, they don't need to come to you. Our AI Automation Specialists are available directly inside the platform—your teams can book calls, get help, and keep building without burdening your IT or support teams.
+            </p>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-3 h-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <span class="text-gray-700"><strong>In-app support</strong>—no tickets, no escalations to your team</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-3 h-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <span class="text-gray-700"><strong>Instant access</strong>—book calls directly from the platform</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-3 h-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <span class="text-gray-700"><strong>Zero overhead</strong>—we handle all user support, you focus on adoption</span>
+              </li>
+            </ul>
+          </div>
+          <div class="bg-gray-200 border-2 border-dashed border-gray-400 rounded-2xl p-8 min-h-[350px] flex items-center justify-center">
+            <div class="text-center text-gray-500">
+              <p class="font-semibold mb-2">📸 SCREENSHOT</p>
+              <p class="text-sm max-w-sm">In-app support interface showing "Get Help" button, booking modal with available time slots, or a live chat/support widget</p>
+            </div>
           </div>
         </div>
       </div>
@@ -360,11 +401,8 @@ useHead({
               </li>
             </ul>
           </div>
-          <div class="bg-gray-100 border-2 border-dashed border-gray-300 rounded-2xl p-8 min-h-[350px] flex items-center justify-center">
-            <div class="text-center text-gray-500">
-              <p class="font-semibold mb-2">📸 SCREENSHOT</p>
-              <p class="text-sm max-w-sm">Leaderboard UI showing top builders with avatars, names, departments, automation count, and badges earned</p>
-            </div>
+          <div>
+            <PagesProductAdoptionLeaderboard />
           </div>
         </div>
 
@@ -467,50 +505,6 @@ useHead({
                 <span class="text-gray-700"><strong>ROI metrics</strong>—hours saved, tasks automated, efficiency gains</span>
               </li>
             </ul>
-          </div>
-        </div>
-
-        <!-- Feature 2: Expert Support -->
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
-              Your teams get instant support—you don't have to provide it
-            </h3>
-            <p class="text-lg text-gray-600 mb-6">
-              When your users get stuck, they don't need to come to you. Our AI Automation Specialists are available directly inside the platform—your teams can book calls, get help, and keep building without burdening your IT or support teams.
-            </p>
-            <ul class="space-y-3">
-              <li class="flex items-start gap-3">
-                <div class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg class="w-3 h-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                  </svg>
-                </div>
-                <span class="text-gray-700"><strong>In-app support</strong>—no tickets, no escalations to your team</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <div class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg class="w-3 h-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                  </svg>
-                </div>
-                <span class="text-gray-700"><strong>Instant access</strong>—book calls directly from the platform</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <div class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg class="w-3 h-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                  </svg>
-                </div>
-                <span class="text-gray-700"><strong>Zero overhead</strong>—we handle all user support, you focus on adoption</span>
-              </li>
-            </ul>
-          </div>
-          <div class="bg-gray-200 border-2 border-dashed border-gray-400 rounded-2xl p-8 min-h-[350px] flex items-center justify-center">
-            <div class="text-center text-gray-500">
-              <p class="font-semibold mb-2">📸 SCREENSHOT</p>
-              <p class="text-sm max-w-sm">In-app support interface showing "Get Help" button, booking modal with available time slots, or a live chat/support widget</p>
-            </div>
           </div>
         </div>
       </div>

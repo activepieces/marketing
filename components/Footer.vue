@@ -18,7 +18,7 @@ const route = useRoute();
               class="brand-logo"
             />
           </div>
-          <span class="brand-text font-extrabold tracking-tighter leading-none">
+          <span class="brand-text font-extrabold tracking-tighter leading-none" data-text="ACTIVEPIECES">
             ACTIVEPIECES
           </span>
         </div>
@@ -199,6 +199,16 @@ const route = useRoute();
   line-height: 1;
 }
 
+/* Rolling color animation - top to bottom */
+@keyframes roll-colors {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 60px;
+  }
+}
+
 /* Default state - grey gradient */
 .brand-text {
   font-size: 1em;
@@ -208,6 +218,30 @@ const route = useRoute();
   background-clip: text;
   color: transparent;
   padding-right: 0.15em;
+  position: relative;
+}
+
+/* Colored overlay for text - hidden by default */
+.brand-text::before {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    #6366f1 0, #6366f1 15px,
+    #22d3ee 15px, #22d3ee 30px,
+    #f472b6 30px, #f472b6 45px,
+    #facc15 45px, #facc15 60px
+  );
+  background-size: 100% 60px;
+  background-attachment: fixed;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: roll-colors 3s linear infinite;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  will-change: background-position, opacity;
 }
 
 .brand-logo-wrapper {
@@ -225,33 +259,40 @@ const route = useRoute();
   -webkit-mask-repeat: no-repeat;
 }
 
+/* Colored overlay for logo - hidden by default */
+.brand-logo-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    #6366f1 0, #6366f1 15px,
+    #22d3ee 15px, #22d3ee 30px,
+    #f472b6 30px, #f472b6 45px,
+    #facc15 45px, #facc15 60px
+  );
+  background-size: 100% 60px;
+  background-attachment: fixed;
+  mask-image: url('/ap-logo-black-sq-cropped.svg');
+  -webkit-mask-image: url('/ap-logo-black-sq-cropped.svg');
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  animation: roll-colors 3s linear infinite;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  will-change: background-position, opacity;
+}
+
 /* Hide the img, we use the wrapper as the logo now */
 .brand-logo {
   display: none;
 }
 
-/* Hover state - AI gradient, instant change */
-.group\/brand:hover .brand-text {
-  background: linear-gradient(
-    to bottom,
-    #6366f1 0%, #6366f1 25%,
-    #22d3ee 25%, #22d3ee 50%,
-    #f472b6 50%, #f472b6 75%,
-    #facc15 75%, #facc15 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-}
-
-.group\/brand:hover .brand-logo-wrapper {
-  background: linear-gradient(
-    to bottom,
-    #6366f1 0%, #6366f1 25%,
-    #22d3ee 25%, #22d3ee 50%,
-    #f472b6 50%, #f472b6 75%,
-    #facc15 75%, #facc15 100%
-  );
-  mask-image: url('/ap-logo-black-sq-cropped.svg');
-  -webkit-mask-image: url('/ap-logo-black-sq-cropped.svg');
+/* Hover state - fade in the colored overlays */
+.group\/brand:hover .brand-text::before,
+.group\/brand:hover .brand-logo-wrapper::before {
+  opacity: 1;
 }
 </style>
