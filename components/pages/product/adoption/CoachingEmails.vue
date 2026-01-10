@@ -5,8 +5,7 @@
     @mouseleave="handleMouseLeave"
   >
     <!-- Default view: Scattered cards -->
-    <Transition name="fade">
-      <div v-if="!isHovered || isClosing" class="absolute inset-0">
+    <div class="absolute inset-0 transition-opacity duration-300" :class="isExpanded ? 'opacity-0 pointer-events-none' : 'opacity-100'">
         <!-- Greeting text -->
         <div class="absolute top-8 left-0 right-0 text-center z-10 pointer-events-none">
           <h2 class="text-3xl font-semibold text-gray-700/80">
@@ -94,15 +93,46 @@
             </div>
           </div>
         </div>
-      </div>
-    </Transition>
 
-    <!-- Hover view: Email inbox or detail -->
-    <Transition name="slide-up">
+        </div>
+
+    <!-- Coach drawer - peeks from bottom on hover, expands on click -->
+    <div 
+      class="absolute left-0 right-0 bg-white rounded-t-2xl shadow-[0_-8px_30px_rgba(0,0,0,0.12)] cursor-pointer z-50 overflow-hidden drawer-base"
+      :class="[
+        !isTransitioning && isExpanded ? 'drawer-expanded' : '',
+        !isTransitioning && !isExpanded && isHovering ? 'bar-breathe' : '',
+        !isTransitioning && !isExpanded && !isHovering ? 'h-0' : '',
+        isTransitioning ? 'drawer-transitioning' : ''
+      ]"
+      :style="{ bottom: 0, height: drawerHeight }"
+      @click="!isExpanded && expandCoach()"
+    >
+      <!-- Peek bar (visible when collapsed but hovering) -->
       <div 
-        v-if="isHovered" 
-        class="absolute inset-0 bg-white flex flex-col transition-all duration-500"
-        :class="isClosing ? 'closing-animation' : ''"
+        v-if="!isExpanded && isHovering"
+        class="absolute inset-x-0 bottom-0 top-0 flex flex-col items-center peek-bar-content"
+      >
+        <!-- Grey handle - at very top, bobs with height -->
+        <div class="w-10 h-1 bg-gray-300 rounded-full mt-3 flex-shrink-0"></div>
+        
+        <!-- Content - fixed position from bottom -->
+        <div class="absolute bottom-4 left-0 right-0 flex flex-col items-center">
+          <div class="flex items-center gap-2">
+            <span class="text-xl">✨</span>
+            <span class="font-semibold text-gray-800">Your AI Coach</span>
+            <svg class="w-4 h-4 text-violet-500" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+            </svg>
+          </div>
+          <span class="text-[11px] text-gray-400 mt-1">Click to expand</span>
+        </div>
+      </div>
+
+      <!-- Expanded content -->
+      <div 
+        v-if="isExpanded" 
+        class="h-full flex flex-col"
       >
         
         <!-- Email List View -->
@@ -114,7 +144,7 @@
               <span class="text-lg font-medium text-gray-800">Your AI Coach</span>
             </div>
             <button 
-              @click="closeInbox"
+              @click.stop="closeInbox"
               class="w-7 h-7 rounded-full hover:bg-gray-100 flex items-center justify-center transition-colors text-gray-300 hover:text-gray-500"
             >
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -153,7 +183,7 @@
                 <div 
                   v-if="!email.placeholder"
                   class="py-2 px-3 -mx-1 rounded-xl hover:bg-gray-50 transition-colors cursor-pointer group"
-                  @click="selectedEmail = email"
+                  @click.stop="selectedEmail = email"
                 >
                   <p class="font-medium text-gray-800 text-sm truncate group-hover:text-purple-600 transition-colors">{{ email.subject }}</p>
                   <p class="text-xs text-gray-400 line-clamp-1 mt-0.5">{{ email.preview }}</p>
@@ -177,7 +207,7 @@
           <!-- Detail header -->
           <div class="flex items-center gap-3 px-4 py-3 border-b border-gray-100 flex-shrink-0">
             <button 
-              @click="selectedEmail = null"
+              @click.stop="selectedEmail = null"
               class="w-8 h-8 rounded-full hover:bg-gray-100 flex items-center justify-center transition-colors"
             >
               <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -241,7 +271,7 @@
                 v-for="reaction in reactions"
                 :key="reaction.emoji"
                 class="relative w-11 h-11 rounded-xl flex items-center justify-center text-xl transition-all duration-200 hover:scale-125 hover:bg-gray-100 active:scale-90"
-                @click="triggerCelebration(reaction.emoji, $event)"
+                @click.stop="triggerCelebration(reaction.emoji, $event)"
               >
                 {{ reaction.emoji }}
               </button>
@@ -269,15 +299,16 @@
           </div>
         </template>
       </div>
-    </Transition>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 
-const isHovered = ref(false)
-const isClosing = ref(false)
+const isExpanded = ref(false)
+const isHovering = ref(false)
+const isTransitioning = ref(false)
 const selectedEmail = ref(null)
 const celebrationParticles = ref([])
 let particleId = 0
@@ -310,52 +341,67 @@ onUnmounted(() => {
   if (nameInterval) {
     clearInterval(nameInterval)
   }
+  if (leaveTimeout) {
+    clearTimeout(leaveTimeout)
+  }
 })
 
 const handleMouseEnter = () => {
-  // Cancel any pending reset
   if (leaveTimeout) {
     clearTimeout(leaveTimeout)
     leaveTimeout = null
   }
-  isClosing.value = false
-  isHovered.value = true
+  isHovering.value = true
 }
 
 const handleMouseLeave = () => {
-  // Delay the reset by 1.5 seconds
-  leaveTimeout = setTimeout(() => {
-    triggerClose()
-  }, 1500)
+  // If expanded, wait 2 seconds before collapsing
+  if (isExpanded.value) {
+    leaveTimeout = setTimeout(() => {
+      isExpanded.value = false
+      isHovering.value = false
+      selectedEmail.value = null
+      celebrationParticles.value = []
+    }, 2000)
+  } else {
+    isHovering.value = false
+  }
+}
+
+const drawerHeight = ref(null)
+
+const expandCoach = () => {
+  // Set explicit starting height to enable smooth transition
+  drawerHeight.value = '85px'
+  isTransitioning.value = true
+  
+  // Next tick: set to full height to trigger transition
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      drawerHeight.value = '100%'
+      isExpanded.value = true
+      
+      // Clear transitioning after animation completes
+      setTimeout(() => {
+        isTransitioning.value = false
+        drawerHeight.value = null
+      }, 500)
+    })
+  })
 }
 
 const closeInbox = () => {
-  // Cancel any pending timeout
-  if (leaveTimeout) {
-    clearTimeout(leaveTimeout)
-    leaveTimeout = null
-  }
-  triggerClose()
-}
-
-const triggerClose = () => {
-  // Trigger cool close animation
-  isClosing.value = true
-  
-  // After animation completes, reset state
-  setTimeout(() => {
-    isHovered.value = false
-    isClosing.value = false
-    selectedEmail.value = null
-    celebrationParticles.value = []
-  }, 400)
+  isExpanded.value = false
+  selectedEmail.value = null
+  celebrationParticles.value = []
 }
 
 const sizes = ['text-2xl', 'text-3xl', 'text-4xl', 'text-5xl']
 
 const triggerCelebration = (emoji, event) => {
-  // Get button position relative to the email detail container
-  const container = event.target.closest('.bg-white.flex.flex-col')
+  // Get button position relative to the drawer container
+  const container = event.target.closest('.drawer-base')
+  if (!container) return
   const containerRect = container.getBoundingClientRect()
   const rect = event.target.getBoundingClientRect()
   const baseX = rect.left - containerRect.left + rect.width / 2
@@ -614,6 +660,57 @@ const emailList = [
   100% {
     transform: translateY(var(--height)) translateX(var(--drift)) scale(1);
     opacity: 0;
+  }
+}
+
+/* Base drawer - smooth transitions always */
+.drawer-base {
+  transition: height 0.5s cubic-bezier(0.32, 0.72, 0, 1), 
+              border-radius 0.3s ease;
+}
+
+/* Expanded state */
+.drawer-expanded {
+  height: 100%;
+  border-radius: 0;
+  animation: none !important;
+}
+
+/* During transition - no animation, just smooth transition */
+.drawer-transitioning {
+  animation: none !important;
+  transition: height 0.5s cubic-bezier(0.32, 0.72, 0, 1), 
+              border-radius 0.3s ease !important;
+}
+
+/* Peek bar content fade in */
+.peek-bar-content {
+  animation: fade-slide-in 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+@keyframes fade-slide-in {
+  from { 
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Bar height breathing animation */
+.bar-breathe {
+  animation: breathe 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  height: 85px; /* Base height for animation */
+}
+
+@keyframes breathe {
+  0%, 100% {
+    height: 85px;
+  }
+  50% {
+    height: 100px;
   }
 }
 </style>

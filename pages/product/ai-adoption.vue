@@ -338,11 +338,8 @@ useHead({
               </li>
             </ul>
           </div>
-          <div class="bg-gray-200 border-2 border-dashed border-gray-400 rounded-2xl p-8 min-h-[350px] flex items-center justify-center">
-            <div class="text-center text-gray-500">
-              <p class="font-semibold mb-2">📸 SCREENSHOT</p>
-              <p class="text-sm max-w-sm">In-app support interface showing "Get Help" button, booking modal with available time slots, or a live chat/support widget</p>
-            </div>
+          <div class="flex items-center justify-center min-h-[350px]">
+            <PagesProductAdoptionSupportBooking />
           </div>
         </div>
       </div>
@@ -408,11 +405,8 @@ useHead({
 
         <!-- Feature 2: Badges -->
         <div class="grid lg:grid-cols-2 gap-12 items-center">
-          <div class="order-2 lg:order-1 bg-gray-100 border-2 border-dashed border-gray-300 rounded-2xl p-8 min-h-[350px] flex items-center justify-center">
-            <div class="text-center text-gray-500">
-              <p class="font-semibold mb-2">📸 BADGE SHOWCASE IMAGE</p>
-              <p class="text-sm max-w-lg">Collection of badges: "First Automation", "Team Player" (shared automation), "10x Builder", "AI Pioneer", "Department Champion", "Efficiency Expert" etc. with visual badge designs</p>
-            </div>
+          <div class="order-2 lg:order-1">
+            <PagesProductAdoptionBadgeChallenge />
           </div>
           <div class="order-1 lg:order-2">
             <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
@@ -453,60 +447,23 @@ useHead({
     </section>
 
     <!-- Section 4: Track Success & Support -->
-    <section id="track-support" class="py-24 bg-[#f9fafb] border-t border-gray-200 relative overflow-hidden">
-      <div class="max-w-[1230px] mx-auto px-4 relative z-10">
-        <div class="text-center max-w-3xl mx-auto mb-16">
+    <section id="track-support" class="py-24 bg-gradient-to-b from-[#f9fafb] to-white border-t border-gray-200 relative overflow-hidden">
+      <div class="max-w-[1400px] mx-auto px-4 relative z-10">
+        <!-- Header -->
+        <div class="text-center max-w-3xl mx-auto mb-12">
           <div class="flex flex-col items-center gap-4">
             <component :is="getIcon('analytics')" class="text-gray-700" />
             <h2 class="text-4xl lg:text-5xl font-bold text-gray-900">
               Full visibility. Expert backup.
             </h2>
           </div>
+          <p class="text-lg text-gray-600 mt-6 max-w-2xl mx-auto">
+            Finally, leadership can see AI adoption happening in real-time. No more guessing if your investment is paying off.
+          </p>
         </div>
 
-        <!-- Feature 1: Impact Analytics -->
-        <div class="grid lg:grid-cols-2 gap-12 items-center mb-20">
-          <div class="order-2 lg:order-1 bg-gray-200 border-2 border-dashed border-gray-400 rounded-2xl p-8 min-h-[350px] flex items-center justify-center">
-            <div class="text-center text-gray-500">
-              <p class="font-semibold mb-2">📸 SCREENSHOT</p>
-              <p class="text-sm max-w-sm">Leadership dashboard with charts: adoption rate over time, automations by department, hours saved, active builders count</p>
-            </div>
-          </div>
-          <div class="order-1 lg:order-2">
-            <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
-              Finally, leadership can see AI adoption happening
-            </h3>
-            <p class="text-lg text-gray-600 mb-6">
-              No more guessing if your AI investment is paying off. Real-time dashboards show exactly how quickly teams are adopting, which departments are leading, and the tangible impact on productivity.
-            </p>
-            <ul class="space-y-3">
-              <li class="flex items-start gap-3">
-                <div class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg class="w-3 h-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                  </svg>
-                </div>
-                <span class="text-gray-700"><strong>Adoption velocity</strong>—see how fast teams are building</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <div class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg class="w-3 h-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                  </svg>
-                </div>
-                <span class="text-gray-700"><strong>Depth of adoption</strong>—from first automation to power user</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <div class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg class="w-3 h-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                  </svg>
-                </div>
-                <span class="text-gray-700"><strong>ROI metrics</strong>—hours saved, tasks automated, efficiency gains</span>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <!-- Full-width Interactive Dashboard -->
+        <PagesProductAdoptionAnalyticsDashboard />
       </div>
     </section>
 

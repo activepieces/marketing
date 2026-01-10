@@ -12,3 +12,4 @@ import CookieBanner from '~/components/CookieBanner.vue'
   <Footer />
 </template>
 
+
