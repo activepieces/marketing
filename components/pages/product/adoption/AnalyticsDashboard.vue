@@ -1,43 +1,231 @@
 <template>
-  <div class="relative">
-    <!-- Screenshot-style frame -->
+  <div class="relative" style="height: 620px;">
+    <!-- Hidden windows (were already open behind) -->
     <div 
-      class="w-full bg-white rounded-2xl relative overflow-hidden"
-      style="box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 12px 24px -8px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.05);"
+      v-if="browserClosed" 
+      class="absolute inset-0 z-5 overflow-hidden"
     >
-      <!-- macOS-style window bar -->
-      <div class="bg-gray-100 px-4 py-3 flex items-center gap-2 border-b border-gray-200">
-        <div class="flex gap-2">
-          <div class="w-3 h-3 rounded-full bg-red-400"></div>
-          <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
-          <div class="w-3 h-3 rounded-full bg-green-400"></div>
-        </div>
-        <div class="flex-1 flex justify-center">
+      <!-- Countdown on LEFT -->
+      <div 
+        class="absolute left-8 top-1/2 -translate-y-1/2 z-5"
+        style="width: 160px;"
+      >
+        <div class="text-center">
+          <div class="text-xs text-gray-500 mb-3">
+            Taking you back to<br/>Impact Analytics
+          </div>
           <div 
-            class="relative bg-white/80 rounded-md text-xs border border-gray-200/60 cursor-text"
-            style="min-width: 220px; height: 24px;"
-            @click="startEditingUrl"
+            class="text-[110px] font-light tabular-nums leading-none transition-colors duration-300"
+            :class="countdownPaused ? 'text-violet-500' : 'text-gray-400'"
           >
-            <input 
-              ref="urlInput"
-              v-model="urlValue"
-              type="text"
-              spellcheck="false"
-              class="absolute inset-0 px-3 bg-transparent text-xs text-center text-gray-600 rounded-md selection:bg-blue-500 selection:text-white"
-              style="outline: none; border: none;"
-              @blur="cancelEditingUrl"
-              @keyup.enter="navigateUrl"
-              @keyup.escape="cancelEditingUrl"
-            />
+            {{ sneakyCountdown }}
+          </div>
+          <button 
+            @click="toggleCountdownPause"
+            class="mt-4 flex items-center justify-center gap-2 mx-auto px-4 py-2 rounded-lg transition-all duration-200 hover:bg-gray-100"
+            :class="countdownPaused ? 'text-violet-600' : 'text-gray-500'"
+          >
+            <svg v-if="countdownPaused" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+            <svg v-else class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+            </svg>
+            <span class="text-sm">{{ countdownPaused ? 'Resume' : 'Pause' }}</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Modern Notes window - center-left -->
+      <div 
+        class="absolute bg-white rounded-xl overflow-hidden sneaky-window-1"
+        style="width: 260px; top: 8%; left: 280px; box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.2), 0 8px 16px -4px rgba(0, 0, 0, 0.1);"
+      >
+        <!-- Clean titlebar -->
+        <div class="bg-gray-50 px-3 py-2 flex items-center border-b border-gray-100">
+          <div class="flex gap-1.5">
+            <div class="w-2.5 h-2.5 rounded-full bg-red-400"></div>
+            <div class="w-2.5 h-2.5 rounded-full bg-yellow-400"></div>
+            <div class="w-2.5 h-2.5 rounded-full bg-green-400"></div>
+          </div>
+          <div class="flex-1 text-center">
+            <span class="text-[11px] font-medium text-gray-400">Notes</span>
+          </div>
+          <div class="w-12"></div>
+        </div>
+        <!-- Notes content - larger text -->
+        <div class="p-5" style="min-height: 380px;">
+          <h3 class="text-base font-semibold text-gray-900 mb-5">Why Activepieces wins</h3>
+          <div class="space-y-5">
+            <div class="flex items-start gap-3">
+              <span class="text-red-400 mt-1">✗</span>
+              <div>
+                <p class="font-medium text-gray-800 text-[15px]">n8n</p>
+                <p class="text-gray-500 text-sm">Engineers only.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-red-400 mt-1">✗</span>
+              <div>
+                <p class="font-medium text-gray-800 text-[15px]">Zapier</p>
+                <p class="text-gray-500 text-sm">Cloud-only. No onboarding.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 mt-6 pt-5 border-t border-gray-100">
+              <span class="text-green-500 mt-1">✓</span>
+              <div>
+                <p class="font-medium text-violet-600 text-[15px]">Activepieces</p>
+                <p class="text-gray-500 text-sm">Self-host or cloud. Built for orgs. We train your teams.</p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-6 pt-5 border-t border-gray-100">
+            <p class="text-base font-medium text-violet-600">
+              The complete package.
+            </p>
           </div>
         </div>
-        <div class="w-16"></div>
       </div>
-      
-      <!-- Web page content (everything below browser bar) -->
-      <div class="relative">
-        <!-- CONTENT OVERLAYS - cover web content only, not browser chrome -->
+
+      <!-- n8n.com window - next to notes, top -->
+      <div 
+        class="absolute bg-white rounded-xl overflow-hidden sneaky-window-2"
+        style="width: 280px; top: 3%; left: 570px; box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.25), 0 6px 12px -4px rgba(0, 0, 0, 0.1);"
+      >
+        <div class="bg-gray-100 px-3 py-2 flex items-center gap-1.5 border-b border-gray-200">
+          <div class="flex gap-1.5">
+            <div class="w-2.5 h-2.5 rounded-full bg-red-400"></div>
+            <div class="w-2.5 h-2.5 rounded-full bg-yellow-400"></div>
+            <div class="w-2.5 h-2.5 rounded-full bg-green-400"></div>
+          </div>
+          <div class="flex-1 flex justify-center">
+            <div class="bg-white/80 rounded px-3 py-0.5 text-[10px] text-gray-500 border border-gray-200/60">
+              n8n.io
+            </div>
+          </div>
+        </div>
+        <div class="p-5 bg-gradient-to-br from-[#1a1a2e] to-[#0d0d1a]" style="min-height: 170px;">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-7 h-7 rounded-lg bg-[#ff6d5a] flex items-center justify-center text-white font-bold text-[10px]">n8n</div>
+            <span class="text-white font-semibold text-sm">n8n</span>
+          </div>
+          <p class="text-white/80 text-sm mb-4">
+            For technical teams
+          </p>
+          <div class="space-y-2">
+            <div class="h-2 bg-white/10 rounded w-full"></div>
+            <div class="h-2 bg-white/10 rounded w-4/5"></div>
+            <div class="h-2 bg-white/10 rounded w-3/5"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- zapier.com window - next to notes, bottom, slightly offset right -->
+      <div 
+        class="absolute bg-white rounded-xl overflow-hidden sneaky-window-3"
+        style="width: 280px; bottom: 10%; left: 600px; box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.25), 0 6px 12px -4px rgba(0, 0, 0, 0.1);"
+      >
+        <div class="bg-gray-100 px-3 py-2 flex items-center gap-1.5 border-b border-gray-200">
+          <div class="flex gap-1.5">
+            <div class="w-2.5 h-2.5 rounded-full bg-red-400"></div>
+            <div class="w-2.5 h-2.5 rounded-full bg-yellow-400"></div>
+            <div class="w-2.5 h-2.5 rounded-full bg-green-400"></div>
+          </div>
+          <div class="flex-1 flex justify-center">
+            <div class="bg-white/80 rounded px-3 py-0.5 text-[10px] text-gray-500 border border-gray-200/60">
+              zapier.com
+            </div>
+          </div>
+        </div>
+        <div class="p-5 bg-gradient-to-br from-[#ff4a00] to-[#ff8c00]" style="min-height: 170px;">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-7 h-7 rounded-lg bg-white flex items-center justify-center">
+              <span class="text-[#ff4a00] font-bold text-base">⚡</span>
+            </div>
+            <span class="text-white font-semibold text-sm">Zapier</span>
+          </div>
+          <p class="text-white/90 text-sm mb-4">
+            10+ products. Figure it out.
+          </p>
+          <div class="space-y-2">
+            <div class="h-2 bg-white/20 rounded w-full"></div>
+            <div class="h-2 bg-white/20 rounded w-3/4"></div>
+            <div class="h-2 bg-white/20 rounded w-1/2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Screenshot-style frame -->
+    <Transition name="browser-close">
+      <div 
+        v-if="!browserClosed"
+        class="w-full bg-white rounded-2xl relative overflow-hidden"
+        style="box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 12px 24px -8px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.05);"
+      >
+        <!-- macOS-style window bar -->
+        <div class="bg-gray-100 px-4 py-3 flex items-center gap-2 border-b border-gray-200">
+          <div class="flex gap-2 group/traffic">
+            <div 
+              class="w-3 h-3 rounded-full bg-red-400 flex items-center justify-center cursor-pointer hover:bg-red-500 transition-colors relative"
+              @click="triggerCloseSuprise"
+            >
+              <svg 
+                class="w-2 h-2 text-red-900/0 group-hover/traffic:text-red-900/80 transition-all" 
+                viewBox="0 0 12 12" 
+                fill="none" 
+                stroke="currentColor" 
+                stroke-width="1.5"
+              >
+                <path d="M3 3l6 6M9 3l-6 6" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="w-3 h-3 rounded-full bg-yellow-400 flex items-center justify-center">
+              <svg 
+                class="w-2 h-2 text-yellow-900/0 group-hover/traffic:text-yellow-900/60 transition-all" 
+                viewBox="0 0 12 12" 
+                fill="none" 
+                stroke="currentColor" 
+                stroke-width="1.5"
+              >
+                <path d="M2 6h8" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="w-3 h-3 rounded-full bg-green-400 flex items-center justify-center">
+              <svg 
+                class="w-1.5 h-1.5 text-green-900/0 group-hover/traffic:text-green-900/60 transition-all" 
+                viewBox="0 0 12 12" 
+                fill="currentColor"
+              >
+                <path d="M2 4l4 4 4-4" />
+              </svg>
+            </div>
+          </div>
+          <div class="flex-1 flex justify-center">
+            <div 
+              class="relative bg-white/80 rounded-md text-xs border border-gray-200/60 cursor-text"
+              style="min-width: 220px; height: 24px;"
+              @click="startEditingUrl"
+            >
+              <input 
+                ref="urlInput"
+                v-model="urlValue"
+                type="text"
+                spellcheck="false"
+                class="absolute inset-0 px-3 bg-transparent text-xs text-center text-gray-600 rounded-md selection:bg-blue-500 selection:text-white"
+                style="outline: none; border: none;"
+                @blur="cancelEditingUrl"
+                @keyup.enter="navigateUrl"
+                @keyup.escape="cancelEditingUrl"
+              />
+            </div>
+          </div>
+          <div class="w-16"></div>
+        </div>
         
+        <!-- Web page content (everything below browser bar) -->
+        <div class="relative">
+
         <!-- URL Navigation Joke Overlay -->
         <Transition name="modal">
           <div 
@@ -47,7 +235,7 @@
             <div class="text-center">
               <p class="text-gray-400 text-lg font-medium tracking-wide mb-4">Wait wait wait</p>
               <h2 class="text-4xl font-semibold text-gray-900 tracking-tight mb-3">This isn't Safari.</h2>
-              <p class="text-xl text-gray-400 font-light">Even AI has its limits.</p>
+              <p class="text-xl text-gray-400 font-light">But we can automate your actual browser. Just saying. 👀</p>
               
               <div class="mt-12">
                 <p class="text-gray-300 text-base tabular-nums">{{ countdown }}</p>
@@ -551,6 +739,7 @@
       </div>
       </div>
     </div>
+    </Transition>
   </div>
 </template>
 
@@ -580,6 +769,10 @@ const dragPosition = ref({ x: 0, y: 0 })
 const dragStartY = ref(0)
 const deptContainer = ref(null)
 const isOverDropZone = ref(false)
+const browserClosed = ref(false)
+const sneakyCountdown = ref(10)
+const countdownPaused = ref(false)
+let sneakyCountdownInterval = null
 
 const confettiColors = ['#8b5cf6', '#f59e0b', '#10b981', '#ec4899', '#3b82f6', '#f472b6', '#fbbf24', '#34d399']
 
@@ -724,6 +917,36 @@ const navigateUrl = () => {
       }
     }, 1000)
   }
+}
+
+const triggerCloseSuprise = () => {
+  // Close the browser - reveals competitor research windows
+  browserClosed.value = true
+  sneakyCountdown.value = 10
+  countdownPaused.value = false
+  
+  // Start countdown
+  if (sneakyCountdownInterval) clearInterval(sneakyCountdownInterval)
+  sneakyCountdownInterval = setInterval(() => {
+    if (!countdownPaused.value) {
+      sneakyCountdown.value--
+      if (sneakyCountdown.value <= 0) {
+        closeSneakyWindows()
+      }
+    }
+  }, 1000)
+}
+
+const toggleCountdownPause = () => {
+  countdownPaused.value = !countdownPaused.value
+}
+
+const closeSneakyWindows = () => {
+  if (sneakyCountdownInterval) {
+    clearInterval(sneakyCountdownInterval)
+    sneakyCountdownInterval = null
+  }
+  browserClosed.value = false
 }
 
 const getThiefPosition = (i) => {
@@ -935,6 +1158,7 @@ onUnmounted(() => {
   if (animationFrame) cancelAnimationFrame(animationFrame)
   if (activityInterval) clearInterval(activityInterval)
   if (countdownInterval) clearInterval(countdownInterval)
+  if (sneakyCountdownInterval) clearInterval(sneakyCountdownInterval)
   document.removeEventListener('mousemove', onMouseMove)
   document.removeEventListener('mouseup', onMouseUp)
 })
@@ -1117,6 +1341,53 @@ onUnmounted(() => {
 .drop-zone {
   transition: all 0.2s ease;
 }
+
+/* Browser close/open transitions - smooth genie effect */
+.browser-close-enter-active {
+  animation: browser-open 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 20;
+}
+.browser-close-leave-active {
+  animation: browser-close 0.4s cubic-bezier(0.5, 0, 0.75, 0) forwards;
+  z-index: 20;
+  position: relative;
+}
+@keyframes browser-close {
+  0% { 
+    transform: scale(1) translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  30% {
+    transform: scale(0.98) translateY(10px) rotate(0.5deg);
+    opacity: 1;
+  }
+  100% { 
+    transform: scale(0.2) translateY(-200px) rotate(-2deg);
+    opacity: 0;
+  }
+}
+@keyframes browser-open {
+  0% { 
+    transform: scale(0.2) translateY(-200px) rotate(-2deg);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.02) translateY(5px) rotate(0deg);
+    opacity: 1;
+  }
+  100% { 
+    transform: scale(1) translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* Sneaky windows - no animation, they were already there */
+.sneaky-window-1,
+.sneaky-window-2,
+.sneaky-window-3 {
+  /* Static - already open behind the main window */
+}
+
 
 </style>
 
