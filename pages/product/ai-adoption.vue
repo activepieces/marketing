@@ -467,28 +467,6 @@ useHead({
       </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="py-20 bg-white">
-      <div class="max-w-[1230px] mx-auto px-4">
-        <div class="bg-gradient-to-r from-purple-600 to-indigo-600 rounded-3xl p-12 lg:p-16 text-center text-white">
-          <h2 class="text-3xl lg:text-4xl font-bold mb-6">
-            Ready to make AI adoption actually stick?
-          </h2>
-          <p class="text-lg text-purple-100 mb-8 max-w-2xl mx-auto">
-            Join organizations that have turned their entire workforce into AI builders—not just the tech team.
-          </p>
-          <div class="flex flex-wrap justify-center gap-4">
-            <a href="https://cloud.activepieces.com/sign-up" class="inline-flex items-center px-8 py-4 text-base font-semibold text-purple-600 bg-white rounded-lg hover:bg-purple-50 transition-colors">
-              Start free
-            </a>
-            <a href="/sales" class="inline-flex items-center px-8 py-4 text-base font-semibold text-white border-2 border-white/30 rounded-lg hover:bg-white/10 transition-colors">
-              Talk to sales
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Prev/Next Navigation -->
     <ProductNavigation />
 

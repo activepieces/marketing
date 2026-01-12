@@ -262,6 +262,70 @@ const getIcon = (iconName) => {
         d: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z'
       })
     ]),
+    // AI Agents page icons
+    plug: () => h('svg', {
+      class: 'w-4 h-4',
+      fill: 'none',
+      stroke: 'currentColor',
+      viewBox: '0 0 24 24'
+    }, [
+      // Grid of dots - app grid style
+      h('circle', { cx: '5', cy: '5', r: '1.5', fill: 'currentColor' }),
+      h('circle', { cx: '12', cy: '5', r: '1.5', fill: 'currentColor' }),
+      h('circle', { cx: '19', cy: '5', r: '1.5', fill: 'currentColor' }),
+      h('circle', { cx: '5', cy: '12', r: '1.5', fill: 'currentColor' }),
+      h('circle', { cx: '12', cy: '12', r: '1.5', fill: 'currentColor' }),
+      h('circle', { cx: '19', cy: '12', r: '1.5', fill: 'currentColor' }),
+      h('circle', { cx: '5', cy: '19', r: '1.5', fill: 'currentColor' }),
+      h('circle', { cx: '12', cy: '19', r: '1.5', fill: 'currentColor' }),
+      h('circle', { cx: '19', cy: '19', r: '1.5', fill: 'currentColor' })
+    ]),
+    cube: () => h('svg', {
+      class: 'w-4 h-4',
+      fill: 'none',
+      stroke: 'currentColor',
+      viewBox: '0 0 24 24'
+    }, [
+      // Sparkles/magic icon
+      h('path', {
+        'stroke-linecap': 'round',
+        'stroke-linejoin': 'round',
+        'stroke-width': '2',
+        d: 'M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z'
+      }),
+      h('path', {
+        'stroke-linecap': 'round',
+        'stroke-linejoin': 'round',
+        'stroke-width': '2',
+        d: 'M18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z'
+      })
+    ]),
+    table: () => h('svg', {
+      class: 'w-4 h-4',
+      fill: 'none',
+      stroke: 'currentColor',
+      viewBox: '0 0 24 24'
+    }, [
+      h('path', {
+        'stroke-linecap': 'round',
+        'stroke-linejoin': 'round',
+        'stroke-width': '2',
+        d: 'M3 10h18M3 14h18M10 3v18M14 3v18M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2z'
+      })
+    ]),
+    hand: () => h('svg', {
+      class: 'w-4 h-4',
+      fill: 'none',
+      stroke: 'currentColor',
+      viewBox: '0 0 24 24'
+    }, [
+      h('path', {
+        'stroke-linecap': 'round',
+        'stroke-linejoin': 'round',
+        'stroke-width': '2',
+        d: 'M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11'
+      })
+    ]),
     // Keep old icons as fallback
     settings: () => h('svg', {
       class: 'w-4 h-4',

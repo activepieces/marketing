@@ -315,35 +315,33 @@ watch(useRoute(), () => {
                     </div>
                     <!-- Right Column: Apps -->
                     <div class="flex min-w-0 flex flex-col gap-0 bg-gray-50 -mr-4 -mt-4 -mb-4 p-3">
-                      <div class="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 px-2">By Integration</div>
-                      <div class="flex flex-col gap-1">
-                        <a href="/pieces/gmail" class="flex items-center gap-2.5 h-9 rounded-lg hover:bg-white transition px-2.5">
-                          <span class="w-5 h-5 flex items-center justify-center flex-shrink-0"><img src="https://cdn.activepieces.com/pieces/gmail.png" class="w-5 h-5" alt="Gmail" /></span>
-                          <span class="text-sm text-gray-800">Gmail</span>
+                      <div class="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 px-2"><span v-if="!piecesCountPending">{{ piecesCount }}+</span> Integrations</div>
+                      <div class="flex flex-col gap-0">
+                        <a href="/pieces/gmail" class="group/app flex items-center gap-2.5 h-9 px-2">
+                          <span class="w-5 h-5 flex items-center justify-center flex-shrink-0"><img src="https://cdn.activepieces.com/pieces/gmail.png" class="w-5 h-5 transition duration-200 group-hover/app:drop-shadow-md" alt="Gmail" /></span>
+                          <span class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-gray-900">Gmail</span>
                         </a>
-                        <a href="/pieces/openai" class="flex items-center gap-2.5 h-9 rounded-lg hover:bg-white transition px-2.5">
-                          <span class="w-5 h-5 flex items-center justify-center flex-shrink-0"><img src="https://cdn.activepieces.com/pieces/openai.png" class="w-5 h-5" alt="OpenAI" /></span>
-                          <span class="text-sm text-gray-800">OpenAI</span>
+                        <a href="/pieces/openai" class="group/app flex items-center gap-2.5 h-9 px-2">
+                          <span class="w-5 h-5 flex items-center justify-center flex-shrink-0"><img src="https://cdn.activepieces.com/pieces/openai.png" class="w-5 h-5 transition duration-200 group-hover/app:drop-shadow-md" alt="OpenAI" /></span>
+                          <span class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-gray-900">OpenAI</span>
                         </a>
-                        <a href="/pieces/slack" class="flex items-center gap-2.5 h-9 rounded-lg hover:bg-white transition px-2.5">
-                          <span class="w-5 h-5 flex items-center justify-center flex-shrink-0"><img src="https://cdn.activepieces.com/pieces/slack.png" class="w-5 h-5" alt="Slack" /></span>
-                          <span class="text-sm text-gray-800">Slack</span>
+                        <a href="/pieces/slack" class="group/app flex items-center gap-2.5 h-9 px-2">
+                          <span class="w-5 h-5 flex items-center justify-center flex-shrink-0"><img src="https://cdn.activepieces.com/pieces/slack.png" class="w-5 h-5 transition duration-200 group-hover/app:drop-shadow-md" alt="Slack" /></span>
+                          <span class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-gray-900">Slack</span>
                         </a>
-                        <a href="/pieces/notion" class="flex items-center gap-2.5 h-9 rounded-lg hover:bg-white transition px-2.5">
-                          <span class="w-5 h-5 flex items-center justify-center flex-shrink-0"><img src="https://cdn.activepieces.com/pieces/notion.png" class="w-5 h-5" alt="Notion" /></span>
-                          <span class="text-sm text-gray-800">Notion</span>
+                        <a href="/pieces/notion" class="group/app flex items-center gap-2.5 h-9 px-2">
+                          <span class="w-5 h-5 flex items-center justify-center flex-shrink-0"><img src="https://cdn.activepieces.com/pieces/notion.png" class="w-5 h-5 transition duration-200 group-hover/app:drop-shadow-md" alt="Notion" /></span>
+                          <span class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-gray-900">Notion</span>
                         </a>
-                        <a href="/pieces/hubspot" class="flex items-center gap-2.5 h-9 rounded-lg hover:bg-white transition px-2.5">
-                          <span class="w-5 h-5 flex items-center justify-center flex-shrink-0"><img src="https://cdn.activepieces.com/pieces/hubspot.png" class="w-5 h-5" alt="HubSpot" /></span>
-                          <span class="text-sm text-gray-800">HubSpot</span>
+                        <a href="/pieces/hubspot" class="group/app flex items-center gap-2.5 h-9 px-2">
+                          <span class="w-5 h-5 flex items-center justify-center flex-shrink-0"><img src="https://cdn.activepieces.com/pieces/hubspot.png" class="w-5 h-5 transition duration-200 group-hover/app:drop-shadow-md" alt="HubSpot" /></span>
+                          <span class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-gray-900">HubSpot</span>
                         </a>
-                        <a href="/pieces" class="flex items-center h-9 px-2.5 group/all-integrations">
-                          <div class="flex items-center gap-1.5">
-                            <span class="text-sm text-gray-900 group-hover/all-integrations:text-blue-600 transition-colors duration-300">All integrations</span>
-                            <svg class="w-4 h-4 text-gray-900 group-hover/all-integrations:text-blue-600 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                            </svg>
-                          </div>
+                        <a href="/pieces" class="group/app flex items-center gap-1 h-9 px-2 mt-1 pt-1 border-t border-gray-200">
+                          <span class="text-sm text-gray-500 transition-colors duration-200 group-hover/app:text-gray-900">View all</span>
+                          <svg class="w-3.5 h-3.5 text-gray-400 transition-all duration-200 group-hover/app:text-gray-900 group-hover/app:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                          </svg>
                         </a>
                       </div>
                     </div>
@@ -485,35 +483,33 @@ watch(useRoute(), () => {
                 </NuxtLink>
 
                 <!-- By Integration -->
-                <div class="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 mt-3 px-2.5">By Integration</div>
-                <div class="flex flex-col gap-1">
-                  <a href="/pieces/gmail" class="flex items-center gap-2.5 h-9 rounded-lg hover:bg-gray-50 transition px-2.5">
+                <div class="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 mt-3 px-2.5"><span v-if="!piecesCountPending">{{ piecesCount }}+</span> Integrations</div>
+                <div class="flex flex-col gap-0">
+                  <a href="/pieces/gmail" class="group/app flex items-center gap-2.5 h-10 px-2.5">
                     <span class="w-5 h-5 flex items-center justify-center flex-shrink-0"><img src="https://cdn.activepieces.com/pieces/gmail.png" class="w-5 h-5" alt="Gmail" /></span>
-                    <span class="text-sm text-gray-800">Gmail</span>
+                    <span class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-gray-900">Gmail</span>
                   </a>
-                  <a href="/pieces/openai" class="flex items-center gap-2.5 h-9 rounded-lg hover:bg-gray-50 transition px-2.5">
+                  <a href="/pieces/openai" class="group/app flex items-center gap-2.5 h-10 px-2.5">
                     <span class="w-5 h-5 flex items-center justify-center flex-shrink-0"><img src="https://cdn.activepieces.com/pieces/openai.png" class="w-5 h-5" alt="OpenAI" /></span>
-                    <span class="text-sm text-gray-800">OpenAI</span>
+                    <span class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-gray-900">OpenAI</span>
                   </a>
-                  <a href="/pieces/slack" class="flex items-center gap-2.5 h-9 rounded-lg hover:bg-gray-50 transition px-2.5">
+                  <a href="/pieces/slack" class="group/app flex items-center gap-2.5 h-10 px-2.5">
                     <span class="w-5 h-5 flex items-center justify-center flex-shrink-0"><img src="https://cdn.activepieces.com/pieces/slack.png" class="w-5 h-5" alt="Slack" /></span>
-                    <span class="text-sm text-gray-800">Slack</span>
+                    <span class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-gray-900">Slack</span>
                   </a>
-                  <a href="/pieces/notion" class="flex items-center gap-2.5 h-9 rounded-lg hover:bg-gray-50 transition px-2.5">
+                  <a href="/pieces/notion" class="group/app flex items-center gap-2.5 h-10 px-2.5">
                     <span class="w-5 h-5 flex items-center justify-center flex-shrink-0"><img src="https://cdn.activepieces.com/pieces/notion.png" class="w-5 h-5" alt="Notion" /></span>
-                    <span class="text-sm text-gray-800">Notion</span>
+                    <span class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-gray-900">Notion</span>
                   </a>
-                  <a href="/pieces/hubspot" class="flex items-center gap-2.5 h-9 rounded-lg hover:bg-gray-50 transition px-2.5">
+                  <a href="/pieces/hubspot" class="group/app flex items-center gap-2.5 h-10 px-2.5">
                     <span class="w-5 h-5 flex items-center justify-center flex-shrink-0"><img src="https://cdn.activepieces.com/pieces/hubspot.png" class="w-5 h-5" alt="HubSpot" /></span>
-                    <span class="text-sm text-gray-800">HubSpot</span>
+                    <span class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-gray-900">HubSpot</span>
                   </a>
-                  <a href="/pieces" class="flex items-center h-9 px-2.5 group/all-integrations">
-                    <div class="flex items-center gap-1.5">
-                      <span class="text-sm text-gray-900 group-hover/all-integrations:text-blue-600 transition-colors duration-300">All integrations</span>
-                      <svg class="w-4 h-4 text-gray-900 group-hover/all-integrations:text-blue-600 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                      </svg>
-                    </div>
+                  <a href="/pieces" class="group/app flex items-center gap-1 h-10 px-2.5 mt-1 pt-1 border-t border-gray-200">
+                    <span class="text-sm text-gray-500 transition-colors duration-200 group-hover/app:text-gray-900">View all</span>
+                    <svg class="w-3.5 h-3.5 text-gray-400 transition-all duration-200 group-hover/app:text-gray-900 group-hover/app:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
                   </a>
                 </div>
               </div>

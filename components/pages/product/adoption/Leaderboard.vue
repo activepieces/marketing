@@ -182,7 +182,25 @@
 
         <!-- WEEK COMPLETE: Clean Results Screen -->
         <Transition name="results">
-          <div v-if="weekComplete" class="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-b from-violet-50 to-purple-50/50 rounded-xl">
+          <div v-if="weekComplete" class="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-b from-violet-50 to-purple-50/50 rounded-xl overflow-hidden">
+            <!-- Floating names background -->
+            <div class="absolute inset-0 pointer-events-none overflow-hidden">
+              <div
+                v-for="floatName in floatingNames"
+                :key="floatName.id"
+                class="absolute font-bold text-violet-400 whitespace-nowrap"
+                :class="floatName.visible ? 'floating-name-pop' : 'opacity-0 scale-0'"
+                :style="{
+                  left: floatName.x + '%',
+                  top: floatName.y + '%',
+                  fontSize: floatName.size + 'px',
+                  '--rotation': floatName.rotation + 'deg',
+                  '--final-opacity': floatName.opacity,
+                }"
+              >
+                {{ floatName.text }}
+              </div>
+            </div>
             <!-- Podium: Top 3 -->
             <div class="flex items-end justify-center gap-3">
               <!-- 2nd place -->
@@ -191,23 +209,36 @@
                   class="w-14 h-14 rounded-full mx-auto mb-2 flex items-center justify-center text-white font-semibold shadow-md"
                   :style="{ backgroundColor: leaderboardData[1]?.color }"
                 >
-                  {{ leaderboardData[1]?.initials }}
+                  {{ customWinnerInitials || leaderboardData[1]?.initials }}
                 </div>
-                <p class="font-medium text-gray-800 text-sm">{{ leaderboardData[1]?.name?.split(' ')[0] }}</p>
+                <p class="font-medium text-gray-800 text-sm max-w-[70px] truncate">{{ customWinnerName || leaderboardData[1]?.name?.split(' ')[0] }}</p>
                 <p class="text-xs text-gray-400 mb-2">{{ formatHours(leaderboardData[1]?.hours) }}</p>
                 <div class="w-16 h-16 bg-gray-200 rounded-t-lg flex items-center justify-center text-2xl">🥈</div>
               </div>
 
-              <!-- 1st place -->
-              <div class="text-center podium-item podium-1">
+              <!-- 1st place - clickable with wink -->
+              <div 
+                class="text-center podium-item podium-1 relative group cursor-pointer"
+                @click="!showNameInput && (showNameInput = true)"
+              >
                 <div class="text-2xl mb-1">👑</div>
-                <div 
-                  class="w-18 h-18 w-[72px] h-[72px] rounded-full mx-auto mb-2 flex items-center justify-center text-white text-lg font-bold shadow-lg ring-2 ring-violet-400"
-                  :style="{ backgroundColor: leaderboardData[0]?.color }"
-                >
-                  {{ leaderboardData[0]?.initials }}
+                <div class="relative w-[72px] h-[72px] mx-auto mb-2">
+                  <!-- Avatar -->
+                  <div 
+                    class="w-full h-full rounded-full flex items-center justify-center text-white text-lg font-bold shadow-lg ring-2 ring-violet-400 transition-all duration-200 group-hover:opacity-20"
+                    :style="{ backgroundColor: leaderboardData[0]?.color }"
+                  >
+                    {{ customWinnerInitials || leaderboardData[0]?.initials }}
+                  </div>
+                  <!-- Wink overlay on hover -->
+                  <div 
+                    class="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200"
+                  >
+                    <span class="text-3xl">😉</span>
+                    <span class="text-[8px] font-bold text-gray-600 tracking-wider">CLICK</span>
+                  </div>
                 </div>
-                <p class="font-bold text-gray-800">{{ leaderboardData[0]?.name?.split(' ')[0] }}</p>
+                <p class="font-bold text-gray-800 max-w-[80px] truncate">{{ customWinnerName || leaderboardData[0]?.name?.split(' ')[0] }}</p>
                 <p class="text-xs text-gray-400 mb-2">{{ formatHours(leaderboardData[0]?.hours) }}</p>
                 <div class="w-16 h-24 bg-violet-400 rounded-t-lg flex items-center justify-center text-3xl">🏆</div>
               </div>
@@ -218,9 +249,9 @@
                   class="w-14 h-14 rounded-full mx-auto mb-2 flex items-center justify-center text-white font-semibold shadow-md"
                   :style="{ backgroundColor: leaderboardData[2]?.color }"
                 >
-                  {{ leaderboardData[2]?.initials }}
+                  {{ customWinnerInitials || leaderboardData[2]?.initials }}
                 </div>
-                <p class="font-medium text-gray-800 text-sm">{{ leaderboardData[2]?.name?.split(' ')[0] }}</p>
+                <p class="font-medium text-gray-800 text-sm max-w-[70px] truncate">{{ customWinnerName || leaderboardData[2]?.name?.split(' ')[0] }}</p>
                 <p class="text-xs text-gray-400 mb-2">{{ formatHours(leaderboardData[2]?.hours) }}</p>
                 <div class="w-16 h-12 bg-violet-300 rounded-t-lg flex items-center justify-center text-2xl">🥉</div>
               </div>
@@ -229,6 +260,32 @@
         </Transition>
       </div>
     </div>
+
+    <!-- Centered name input modal -->
+    <Transition name="modal">
+      <div 
+        v-if="showNameInput"
+        class="absolute inset-0 flex items-center justify-center z-50"
+        @click.self="showNameInput = false; nameInput = ''"
+      >
+        <div class="bg-white rounded-2xl shadow-2xl p-5 w-[220px]">
+          <input 
+            ref="nameInputRef"
+            v-model="nameInput"
+            @keyup.enter="setCustomName"
+            type="text"
+            placeholder="Enter your name..."
+            class="w-full px-4 py-3 text-sm border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-violet-400 mb-3 text-center"
+          />
+          <button 
+            @click="setCustomName"
+            class="w-full px-4 py-2.5 bg-gradient-to-r from-violet-500 to-purple-500 text-white text-sm font-semibold rounded-xl hover:opacity-90 transition-opacity"
+          >
+            I deserve #1 👑
+          </button>
+        </div>
+      </div>
+    </Transition>
 
     <!-- Working people illustration at bottom -->
     <div 
@@ -268,13 +325,124 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, watch } from 'vue'
+import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue'
 
 const isEnabled = ref(false)
 const celebration = ref(null)
 const updatedNumbers = ref({})
 const weekComplete = ref(false)
 const progressKey = ref(0)
+
+// Custom winner name feature
+const showNameInput = ref(false)
+const nameInputRef = ref(null)
+const nameInput = ref('')
+const customWinnerName = ref('')
+const customWinnerInitials = ref('')
+const floatingNames = ref([])
+
+const setCustomName = () => {
+  if (nameInput.value.trim()) {
+    const name = nameInput.value.trim()
+    customWinnerName.value = name
+    
+    // Generate initials from name
+    const parts = name.split(' ')
+    let initials
+    if (parts.length >= 2) {
+      initials = (parts[0][0] + parts[1][0]).toUpperCase()
+    } else {
+      initials = name.substring(0, 2).toUpperCase()
+    }
+    customWinnerInitials.value = initials
+    
+    // Change ALL players' names to the custom name
+    leaderboardData.value.forEach((person) => {
+      person.name = name
+      person.initials = initials
+    })
+    
+    // Generate floating names for background
+    generateFloatingNames(name)
+  }
+  showNameInput.value = false
+  nameInput.value = ''
+  triggerCelebration('🎉')
+}
+
+const generateFloatingNames = (name) => {
+  const cheers = [
+    `${name} is king 👑`,
+    `${name} rules!`,
+    `Go ${name}! 🚀`,
+    `${name} #1`,
+    `${name} 🔥`,
+    `MVP: ${name}`,
+    `${name} wins!`,
+    `Legend ${name}`,
+    `${name} 💪`,
+    `${name} forever`,
+    `All hail ${name}`,
+    `${name} supremacy`,
+    `${name} ⭐`,
+    `Bow to ${name}`,
+    `${name} the GOAT 🐐`,
+    `${name}!!!`,
+    `Team ${name}`,
+    `${name} rocks`,
+    `${name} FTW`,
+    `Chef ${name} 👨‍🍳`,
+    `${name} mode 😎`,
+    `${name} vibes ✨`,
+    `${name} energy`,
+    `King ${name}`,
+    `Queen ${name} 👸`,
+  ]
+  
+  const names = []
+  
+  // Create a grid-based layout with jitter for better distribution
+  const cols = 5
+  const rows = 5
+  const cellWidth = 80 / cols  // Leave margins
+  const cellHeight = 80 / rows
+  
+  let index = 0
+  for (let row = 0; row < rows; row++) {
+    for (let col = 0; col < cols; col++) {
+      // Base position from grid + random jitter within cell
+      const baseX = 10 + col * cellWidth
+      const baseY = 10 + row * cellHeight
+      const jitterX = (Math.random() - 0.5) * cellWidth * 0.6
+      const jitterY = (Math.random() - 0.5) * cellHeight * 0.6
+      
+      names.push({
+        id: index,
+        text: cheers[index % cheers.length],
+        x: baseX + jitterX,
+        y: baseY + jitterY,
+        size: Math.random() * 12 + 10, // 10-22px
+        rotation: Math.random() * 30 - 15, // Less extreme rotation
+        opacity: Math.random() * 0.2 + 0.12,
+        visible: false,
+      })
+      index++
+    }
+  }
+  
+  // Shuffle the array for random pop-in order
+  names.sort(() => Math.random() - 0.5)
+  
+  floatingNames.value = names
+  
+  // Stagger the visibility of each name
+  names.forEach((item, idx) => {
+    setTimeout(() => {
+      const found = floatingNames.value.find(n => n.id === item.id)
+      if (found) found.visible = true
+    }, idx * 50)
+  })
+}
 
 // Initial state for reset
 const getInitialData = () => [
@@ -294,6 +462,11 @@ const resetLeaderboard = () => {
   celebration.value = null
   weekComplete.value = false
   progressKey.value++
+  customWinnerName.value = ''
+  customWinnerInitials.value = ''
+  showNameInput.value = false
+  nameInput.value = ''
+  floatingNames.value = []
 }
 
 const restartLeaderboard = () => {
@@ -453,6 +626,14 @@ watch(isEnabled, (val) => {
   } else {
     stopLiveUpdates()
     resetLeaderboard()
+  }
+})
+
+// Auto-focus input when modal opens
+watch(showNameInput, async (val) => {
+  if (val) {
+    await nextTick()
+    nameInputRef.value?.focus()
   }
 })
 
@@ -802,6 +983,83 @@ const formatHours = (h) => h + 'h'
   }
   100% {
     width: 100%;
+  }
+}
+
+/* Modal transition */
+.modal-enter-active {
+  animation: modal-in 0.2s ease-out;
+}
+
+.modal-leave-active {
+  animation: modal-out 0.15s ease-in;
+}
+
+@keyframes modal-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes modal-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.modal-enter-active > div {
+  animation: modal-scale-in 0.2s ease-out;
+}
+
+.modal-leave-active > div {
+  animation: modal-scale-out 0.15s ease-in;
+}
+
+@keyframes modal-scale-in {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes modal-scale-out {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+}
+
+/* Floating names animation */
+.floating-name-pop {
+  animation: float-pop-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes float-pop-in {
+  0% {
+    opacity: 0;
+    transform: rotate(var(--rotation, 0deg)) scale(0);
+  }
+  60% {
+    opacity: var(--final-opacity, 0.3);
+    transform: rotate(var(--rotation, 0deg)) scale(1.3);
+  }
+  100% {
+    opacity: var(--final-opacity, 0.3);
+    transform: rotate(var(--rotation, 0deg)) scale(1);
   }
 }
 </style>

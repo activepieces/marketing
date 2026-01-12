@@ -326,28 +326,6 @@ useHead({
       </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="py-20 bg-gray-50">
-      <div class="max-w-[1230px] mx-auto px-4">
-        <div class="bg-gradient-to-r from-green-600 to-emerald-600 rounded-3xl p-12 lg:p-16 text-center text-white">
-          <h2 class="text-3xl lg:text-4xl font-bold mb-6">
-            Ready to take control of your AI adoption?
-          </h2>
-          <p class="text-lg text-green-100 mb-8 max-w-2xl mx-auto">
-            Give IT the governance they need while empowering your team to build. Enterprise controls, simplified.
-          </p>
-          <div class="flex flex-wrap justify-center gap-4">
-            <a href="https://cloud.activepieces.com/sign-up" class="inline-flex items-center px-8 py-4 text-base font-semibold text-green-600 bg-white rounded-lg hover:bg-green-50 transition-colors">
-              Start free
-            </a>
-            <a href="/sales" class="inline-flex items-center px-8 py-4 text-base font-semibold text-white border-2 border-white/30 rounded-lg hover:bg-white/10 transition-colors">
-              Talk to sales
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Prev/Next Navigation -->
     <ProductNavigation />
   </div>
