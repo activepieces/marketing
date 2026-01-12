@@ -3,7 +3,7 @@ const route = useRoute();
 
 const productPages = [
   { 
-    name: 'Adoption & Training', 
+    name: 'AI Adoption Stack', 
     path: '/product/ai-adoption',
     description: 'Templates, analytics & gamification to drive adoption',
     icon: '🚀'

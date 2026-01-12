@@ -280,10 +280,10 @@ watch(useRoute(), () => {
                   <div class="absolute left-0 top-full z-[60] w-[500px] rounded-xl shadow-xl bg-white p-4 grid grid-cols-[3fr_2fr] gap-0 block transition-all duration-300 delay-200 transform translate-y-2 opacity-0 group-hover/menu:opacity-100 group-hover/menu:translate-y-0 group-hover/menu:delay-0 border border-gray-100 pointer-events-none group-hover/menu:pointer-events-auto overflow-hidden">
                     <!-- Left Column: Product Pages -->
                     <div class="flex min-w-0 flex flex-col gap-0 pr-4 group/list">
-                      <!-- Adoption & Training -->
+                      <!-- AI Adoption Stack -->
                       <NuxtLink to="/product/ai-adoption" class="flex items-center gap-2.5 px-2 py-3 transition group/feature border-b border-gray-100">
                         <div class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"></div>
-                        <span class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight">Adoption & Training</span>
+                        <span class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight">AI Adoption Stack</span>
                         <svg class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                           </svg>
@@ -452,7 +452,7 @@ watch(useRoute(), () => {
                 <!-- Product Pages -->
                 <NuxtLink to="/product/ai-adoption" class="flex items-center gap-2.5 px-2.5 py-3 transition group/feature border-b border-gray-100">
                   <div class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"></div>
-                  <span class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight">Adoption & Training</span>
+                  <span class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight">AI Adoption Stack</span>
                   <svg class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>

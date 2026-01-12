@@ -26,7 +26,7 @@ const chipExpanded = ref(false);
 
 // Product pages mapping
 const productPages = [
-  { name: 'Adoption & Training', path: '/product/ai-adoption' },
+  { name: 'AI Adoption Stack', path: '/product/ai-adoption' },
   { name: 'AI Agents', path: '/product/ai-agent-builder' },
   { name: 'Control & Governance', path: '/product/governance-and-management' },
   { name: 'Deployment & Cost', path: '/product/deployment-options' },

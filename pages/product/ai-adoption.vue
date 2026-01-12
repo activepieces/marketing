@@ -67,7 +67,7 @@ const getIcon = (iconName) => {
 };
 
 useHead({
-  title: 'Adoption & Training',
+  title: 'AI Adoption Stack',
   meta: [
     { name: 'description', content: 'Turn your entire organization into AI builders. Templates, analytics, and support to drive adoption from day one.' }
   ]
