@@ -3,11 +3,40 @@
 @tailwind utilities;
 
 /* ============================================
+   SENTIENT FONT FAMILY
+   ============================================ */
+
+/* Sentient Variable Font - supports weights 200-700 */
+@font-face {
+  font-family: 'Sentient';
+  src: url('~/assets/fonts/sentient/Sentient-Variable.woff2') format('woff2-variations'),
+       url('~/assets/fonts/sentient/Sentient-Variable.woff') format('woff-variations');
+  font-weight: 200 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+/* Sentient Medium (500) - fallback for browsers with limited variable font support */
+@font-face {
+  font-family: 'Sentient';
+  src: url('~/assets/fonts/sentient/Sentient-Medium.woff2') format('woff2'),
+       url('~/assets/fonts/sentient/Sentient-Medium.woff') format('woff');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+
+/* ============================================
    AI ADOPTION PAGE - MODERN DESIGN SYSTEM
    ============================================ */
 
 @layer components {
   /* Typography Components */
+  .font-sentient-hero {
+    font-family: 'Sentient', serif;
+    font-weight: 500;
+  }
+
   .headline-hero {
     font-family: 'Instrument Serif', serif;
     font-size: clamp(2.5rem, 8vw, 4.5rem);

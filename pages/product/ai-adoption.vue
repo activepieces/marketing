@@ -112,7 +112,7 @@ useHead({
       <div class="max-w-[1230px] mx-auto px-4 relative z-10">
         <ProductSubmenu />
         <div class="max-w-4xl mx-auto text-center pt-16 lg:pt-28">
-          <h1 class="headline-hero text-white mb-8 text-balance">
+          <h1 class="headline-hero text-white mb-8 text-balance font-sentient font-medium">
             Turn your entire organization into AI builders
           </h1>
           <p class="body-large text-gray-400 max-w-2xl mx-auto mb-10">
