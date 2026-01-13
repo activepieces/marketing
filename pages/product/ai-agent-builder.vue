@@ -170,12 +170,7 @@ useHead({
               </li>
             </ul>
           </div>
-          <div class="bg-gray-100 border-2 border-dashed border-gray-300 rounded-2xl p-8 min-h-[350px] flex items-center justify-center">
-            <div class="text-center text-gray-500">
-              <p class="font-semibold mb-2">📸 SCREENSHOT</p>
-              <p class="text-sm max-w-sm">Grid of integration logos (Slack, Gmail, Notion, HubSpot, Salesforce, OpenAI, Anthropic, Google Sheets, etc.)</p>
-            </div>
-          </div>
+          <PagesProductAiAgentsIntegrationHunt />
         </div>
       </div>
     </section>
