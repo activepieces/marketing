@@ -190,11 +190,8 @@ useHead({
 
         <!-- Subsection 1: Build in Minutes -->
         <div class="grid lg:grid-cols-2 gap-12 items-center mb-24">
-          <div class="order-2 lg:order-1 bg-gray-100 border-2 border-dashed border-gray-300 rounded-2xl p-8 min-h-[320px] flex items-center justify-center">
-            <div class="text-center text-gray-500">
-              <p class="font-semibold mb-2">📸 SCREENSHOT</p>
-              <p class="text-sm max-w-sm">AI chat interface where a user describes what they want to automate, and the system builds the flow for them</p>
-            </div>
+          <div class="order-2 lg:order-1">
+            <PagesProductAiAgentsAgentBuilder />
           </div>
           <div class="order-1 lg:order-2">
             <span class="inline-block px-3 py-1 text-sm font-medium text-purple-700 bg-purple-100 rounded-full mb-4">
