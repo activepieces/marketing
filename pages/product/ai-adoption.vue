@@ -144,7 +144,7 @@ useHead({
     <!-- Section 1: Roll Out -->
     <section
       id="setup"
-      class="py-24 section-warm border-t border-gray-100 relative overflow-hidden"
+      class="py-24 section-warm border-t border-gray-100 relative overflow-hidden rounded-t-3xl -mt-8 z-10"
     >
       <div class="absolute inset-0 gradient-mesh z-0"></div>
       <div class="max-w-[1230px] mx-auto px-4 relative z-10">
