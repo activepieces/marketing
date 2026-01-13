@@ -32,11 +32,6 @@
 
 @layer components {
   /* Typography Components */
-  .font-sentient-hero {
-    font-family: 'Sentient', serif;
-    font-weight: 500;
-  }
-
   .headline-hero {
     font-family: 'Instrument Serif', serif;
     font-size: clamp(2.5rem, 8vw, 4.5rem);
