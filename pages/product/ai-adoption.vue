@@ -109,34 +109,36 @@ useHead({
         alt=""
         class="absolute inset-0 w-full h-full object-cover z-0"
       />
-      <div class="max-w-[1230px] mx-auto px-4 relative z-10">
-        <ProductSubmenu />
-        <div class="max-w-4xl mx-auto text-center pt-16 lg:pt-28">
-          <h1 class="headline-hero text-white mb-8 text-balance font-sentient font-medium">
+      <div
+        class="max-w-7xl mx-auto py-20 px-4 relative z-10 flex flex-col gap-12"
+      >
+        <div class="flex flex-col gap-4">
+          <h1
+            class="text-white text-balance text-7xl font-sentient font-medium"
+          >
             Turn your entire organization into AI builders
           </h1>
-          <p class="body-large text-gray-400 max-w-2xl mx-auto mb-10">
+          <p class="text-white/80 text-2xl text-balance">
             Templates, analytics, and support to drive adoption from day one
           </p>
-          <div class="flex justify-center mb-12">
-            <div class="w-full max-w-[85%]">
-              <PagesIndexCompanyLogos class="relative z-10" />
-            </div>
-          </div>
-          <div class="flex flex-wrap justify-center gap-4">
-            <a
-              href="https://cloud.activepieces.com/sign-up"
-              class="inline-flex items-center px-7 py-3.5 text-base font-semibold text-gray-900 bg-white rounded-full hover:bg-gray-100 transition-all hover:scale-105 shadow-lg shadow-white/10"
-            >
-              Start free
-            </a>
-            <a
-              href="/sales"
-              class="inline-flex items-center px-7 py-3.5 text-base font-semibold text-white border border-white/20 rounded-full hover:bg-white/10 transition-all hover:border-white/40"
-            >
-              Talk to sales
-            </a>
-          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-4">
+          <a
+            href="https://cloud.activepieces.com/sign-up"
+            class="inline-flex items-center px-7 py-3.5 text-base font-semibold text-gray-900 bg-white rounded-full hover:bg-gray-100 transition-all hover:scale-105 shadow-lg shadow-white/10"
+          >
+            Start free
+          </a>
+          <a
+            href="/sales"
+            class="inline-flex items-center px-7 py-3.5 text-base font-semibold text-white border border-white/20 rounded-full hover:bg-white/10 transition-all hover:border-white/40"
+          >
+            Talk to sales
+          </a>
+        </div>
+        <div class="w-full max-w-full shrink-0">
+          <PagesIndexCompanyLogos class="relative z-10" />
         </div>
       </div>
     </section>
