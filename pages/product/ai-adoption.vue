@@ -104,16 +104,11 @@ useHead({
 
     <!-- Hero Section -->
     <section class="w-full relative section-hero-dark pt-4 pb-16 lg:pb-24">
-      <div
-        class="absolute inset-0 z-0"
-        style="
-          background: radial-gradient(
-            ellipse 60% 40% at 50% 0%,
-            rgba(110, 65, 226, 0.25),
-            transparent 60%
-          );
-        "
-      ></div>
+      <img
+        src="/images/ai-adoption-stack/ai-adoption-stack-hero.png"
+        alt=""
+        class="absolute inset-0 w-full h-full object-cover z-0"
+      />
       <div class="max-w-[1230px] mx-auto px-4 relative z-10">
         <ProductSubmenu />
         <div class="max-w-4xl mx-auto text-center pt-16 lg:pt-28">
