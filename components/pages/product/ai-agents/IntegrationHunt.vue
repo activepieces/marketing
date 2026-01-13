@@ -33,7 +33,7 @@
       <div
         v-for="target in activeTargets"
         :key="target.id"
-        class="absolute flex items-center gap-2 px-3 py-2 rounded-xl"
+        class="absolute flex items-center gap-2 px-3 py-2 rounded-xl transition-transform"
         :class="getTargetClasses(target)"
         :style="getTargetStyle(target)"
       >
@@ -41,8 +41,15 @@
           <img
             v-if="target.logoUrl && !target.isMalware"
             :src="target.logoUrl"
-            class="w-6 h-6 rounded"
-            :class="target.caught ? 'grayscale opacity-50' : ''"
+            class="rounded"
+            :class="[
+              target.caught ? 'grayscale opacity-50' : '',
+              target.isTiny
+                ? 'w-4 h-4'
+                : target.isGiant
+                ? 'w-10 h-10'
+                : 'w-6 h-6',
+            ]"
             :alt="target.displayName"
           />
           <span v-if="target.isMalware" class="text-lg">{{
@@ -50,23 +57,38 @@
           }}</span>
         </div>
         <span
-          class="text-sm font-medium whitespace-nowrap"
-          :class="getTargetTextClass(target)"
+          class="font-medium whitespace-nowrap"
+          :class="[
+            getTargetTextClass(target),
+            target.isTiny
+              ? 'text-xs'
+              : target.isGiant
+              ? 'text-base'
+              : 'text-sm',
+          ]"
         >
           {{ target.isMalware ? "BUG!" : target.displayName }}
         </span>
+        <!-- Health indicator for armored/giant -->
         <span
-          v-if="target.maxHealth === 2 && !target.caught"
+          v-if="target.maxHealth > 1 && !target.caught"
           class="text-xs font-bold px-1.5 py-0.5 rounded"
-          :class="
-            target.health === 2
+          :class="[
+            target.isGiant
+              ? target.health > 2
+                ? 'bg-orange-500 text-white'
+                : 'bg-red-500 text-white animate-pulse'
+              : target.health === target.maxHealth
               ? 'bg-blue-500 text-white'
-              : 'bg-orange-500 text-white animate-pulse'
-          "
+              : 'bg-orange-500 text-white animate-pulse',
+          ]"
         >
-          {{ target.health }}x
+          {{ target.health }}×
         </span>
+        <!-- Type indicators -->
         <span v-if="target.isFast && !target.caught" class="text-xs">⚡</span>
+        <span v-if="target.isZigzag && !target.caught" class="text-xs">〰️</span>
+        <span v-if="target.isGiant && !target.caught" class="text-sm">👑</span>
       </div>
 
       <!-- Angry founder popups -->
@@ -281,47 +303,62 @@
         ></div>
       </div>
 
-      <!-- Start screen -->
+      <!-- Start prompt with subtle overlay -->
       <div
         v-if="!gameStarted"
-        class="absolute inset-0 bg-white/80 backdrop-blur-sm flex items-center justify-center z-20"
+        class="absolute inset-0 flex items-center justify-center z-10 bg-white/70"
       >
-        <div class="text-center px-8">
-          <div class="text-5xl mb-4">🎯</div>
-          <p class="text-purple-600 font-bold text-xl mb-2">
-            Integration Hunter
-          </p>
-          <p class="text-purple-400 text-sm mb-4">
-            Catch them all! Don't let them escape!
-          </p>
-          <div class="space-y-1 text-purple-300 text-xs mb-4">
-            <p>
-              <span class="font-mono bg-purple-100 px-1.5 py-0.5 rounded"
-                >Mouse</span
-              >
-              or
-              <span class="font-mono bg-purple-100 px-1.5 py-0.5 rounded"
-                >← →</span
-              >
-              move
-            </p>
-            <p>
-              <span class="font-mono bg-purple-100 px-2 py-0.5 rounded"
-                >Space</span
-              >
-              /
-              <span class="font-mono bg-purple-100 px-1.5 py-0.5 rounded"
-                >Click</span
-              >
-              shoot
-            </p>
+        <!-- Floating mini apps in background -->
+        <div class="absolute inset-0 pointer-events-none overflow-hidden">
+          <div
+            class="absolute top-8 left-8 text-2xl opacity-20 animate-float-random"
+          >
+            📱
           </div>
+          <div
+            class="absolute top-12 right-12 text-xl opacity-15 animate-float-random"
+            style="animation-delay: 0.5s"
+          >
+            💬
+          </div>
+          <div
+            class="absolute bottom-16 left-16 text-2xl opacity-20 animate-float-random"
+            style="animation-delay: 1s"
+          >
+            📊
+          </div>
+          <div
+            class="absolute bottom-10 right-10 text-xl opacity-15 animate-float-random"
+            style="animation-delay: 1.5s"
+          >
+            📧
+          </div>
+          <div
+            class="absolute top-1/3 left-6 text-lg opacity-10 animate-float-random"
+            style="animation-delay: 0.8s"
+          >
+            🗂️
+          </div>
+          <div
+            class="absolute top-1/4 right-8 text-lg opacity-10 animate-float-random"
+            style="animation-delay: 1.2s"
+          >
+            📅
+          </div>
+        </div>
+
+        <div class="text-center relative z-10">
+          <div class="text-5xl mb-3 animate-bounce-slow">👾</div>
+          <h2 class="text-slate-800 font-black text-2xl mb-5">
+            Integration Invasion
+          </h2>
           <button
             @click.stop="startGame"
-            class="px-8 py-3 bg-purple-600 hover:bg-purple-700 text-white font-bold text-lg rounded-lg shadow-lg transform hover:scale-105 transition-all uppercase tracking-wider"
+            class="px-8 py-3 bg-slate-900 hover:bg-slate-800 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95 transition-all"
           >
-            Start Hunt
+            Defend
           </button>
+          <p class="text-slate-400 text-xs mt-4">🖱️ move · space shoot</p>
         </div>
       </div>
 
@@ -382,6 +419,54 @@
                 >
                   <span class="text-4xl animate-wiggle-continuous">💀</span>
                 </div>
+                <div
+                  v-if="challengeType === 'ghost'"
+                  class="animate-badge-fade ml-2"
+                >
+                  <span class="text-5xl opacity-40 animate-pulse">👻</span>
+                </div>
+                <div
+                  v-if="challengeType === 'tiny'"
+                  class="animate-badge-zoom ml-2"
+                >
+                  <span class="text-2xl drop-shadow-xl">🔬</span>
+                </div>
+                <div
+                  v-if="challengeType === 'zigzag'"
+                  class="animate-badge-shake ml-2"
+                >
+                  <span class="text-5xl animate-zigzag">〰️</span>
+                </div>
+                <div
+                  v-if="challengeType === 'giant'"
+                  class="animate-badge-drop ml-2"
+                >
+                  <span
+                    class="text-2xl font-black px-4 py-2 rounded-xl bg-orange-500 text-white shadow-xl animate-pulse-glow"
+                    >5×</span
+                  >
+                  <span class="text-4xl ml-2">👑</span>
+                </div>
+                <div
+                  v-if="challengeType === 'swarm'"
+                  class="animate-badge-zoom ml-2 flex gap-1"
+                >
+                  <span
+                    class="text-3xl animate-bounce"
+                    style="animation-delay: 0s"
+                    >📦</span
+                  >
+                  <span
+                    class="text-3xl animate-bounce"
+                    style="animation-delay: 0.1s"
+                    >📦</span
+                  >
+                  <span
+                    class="text-3xl animate-bounce"
+                    style="animation-delay: 0.2s"
+                    >📦</span
+                  >
+                </div>
               </div>
             </div>
 
@@ -422,23 +507,83 @@
       </Transition>
 
       <!-- Game over -->
-      <div
-        v-if="gameOver"
-        class="absolute inset-0 bg-gray-900/90 backdrop-blur-sm flex items-center justify-center z-20"
-      >
-        <div class="text-center">
-          <div class="text-5xl mb-4">💔</div>
-          <p class="text-white font-bold text-2xl mb-2">GAME OVER</p>
-          <p class="text-gray-300 text-lg mb-1">You ran out of hearts!</p>
-          <p class="text-gray-400 text-sm mb-6">Final score: {{ score }}</p>
-          <button
-            @click.stop="startGame"
-            class="px-8 py-3 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-lg shadow-lg transform hover:scale-105 transition-all uppercase tracking-wider"
-          >
-            Try Again
-          </button>
+      <Transition name="gameover">
+        <div
+          v-if="gameOver"
+          class="absolute inset-0 flex items-center justify-center z-20 overflow-hidden"
+          :style="getGameOverBg"
+        >
+          <!-- Floating emojis background -->
+          <div class="absolute inset-0 pointer-events-none overflow-hidden">
+            <div
+              v-for="i in 12"
+              :key="i"
+              class="absolute text-3xl opacity-20 animate-float-random"
+              :style="{
+                left: i * 8 + '%',
+                top: 10 + (i % 5) * 18 + '%',
+                animationDelay: i * 0.2 + 's',
+              }"
+            >
+              {{ getGameOverEmoji(i) }}
+            </div>
+          </div>
+
+          <div class="text-center relative z-10">
+            <!-- Big dramatic emoji based on score -->
+            <div class="text-8xl mb-2 animate-bounce-slow">
+              {{ getMainGameOverEmoji }}
+            </div>
+
+            <!-- Title based on score -->
+            <p
+              class="text-white/80 text-lg font-bold uppercase tracking-widest mb-4"
+            >
+              {{ getGameOverTitle }}
+            </p>
+
+            <!-- Score with flair -->
+            <div class="mb-4">
+              <p
+                class="text-white font-black text-7xl tabular-nums drop-shadow-lg"
+              >
+                {{ score }}
+              </p>
+              <p class="text-white/60 text-sm uppercase tracking-widest mt-1">
+                integrations hunted
+              </p>
+            </div>
+
+            <!-- Unlocked challenges showcase -->
+            <div
+              v-if="unlockedChallengesCount > 0"
+              class="mb-6 flex justify-center gap-2 flex-wrap"
+            >
+              <span v-if="armoredActive" class="text-2xl" title="Armored"
+                >🛡️</span
+              >
+              <span v-if="speedActive" class="text-2xl" title="Speedy">⚡</span>
+              <span v-if="bugsActive" class="text-2xl" title="Bugs">🐛</span>
+              <span v-if="ghostActive" class="text-2xl" title="Ghosts">👻</span>
+              <span v-if="tinyActive" class="text-2xl" title="Tiny">🔬</span>
+              <span v-if="zigzagActive" class="text-2xl" title="Zigzag"
+                >〰️</span
+              >
+              <span v-if="giantActive" class="text-2xl" title="Giant">👑</span>
+              <span v-if="swarmActive" class="text-2xl" title="Swarm">🌊</span>
+            </div>
+
+            <!-- Retry button -->
+            <button
+              @click.stop="startGame"
+              class="px-12 py-4 font-black text-xl rounded-xl shadow-2xl transform hover:scale-110 active:scale-95 transition-all uppercase tracking-wider border-b-4"
+              :class="getGameOverButtonClass"
+            >
+              {{ getGameOverButtonText }}
+            </button>
+          </div>
         </div>
-      </div>
+      </Transition>
 
       <!-- Total count watermark -->
       <div
@@ -497,6 +642,11 @@ const maxAmmo = 6;
 const armoredActive = ref(false);
 const speedActive = ref(false);
 const bugsActive = ref(false);
+const ghostActive = ref(false);
+const tinyActive = ref(false);
+const zigzagActive = ref(false);
+const giantActive = ref(false);
+const swarmActive = ref(false);
 
 // Challenge overlay
 const showChallengeOverlay = ref(false);
@@ -508,6 +658,92 @@ const challengePreviewClass = ref("");
 const challengePreviewTextClass = ref("");
 const challengeButtonClass = ref("");
 const challengeButtonGlow = ref("");
+
+// Game over computed properties
+const unlockedChallengesCount = computed(() => {
+  let count = 0;
+  if (armoredActive.value) count++;
+  if (speedActive.value) count++;
+  if (bugsActive.value) count++;
+  if (ghostActive.value) count++;
+  if (tinyActive.value) count++;
+  if (zigzagActive.value) count++;
+  if (giantActive.value) count++;
+  if (swarmActive.value) count++;
+  return count;
+});
+
+const getGameOverBg = computed(() => {
+  if (score.value >= 125)
+    return "background: radial-gradient(circle at center, rgba(168, 85, 247, 0.95), rgba(88, 28, 135, 0.98))";
+  if (score.value >= 80)
+    return "background: radial-gradient(circle at center, rgba(234, 88, 12, 0.95), rgba(124, 45, 18, 0.98))";
+  if (score.value >= 45)
+    return "background: radial-gradient(circle at center, rgba(59, 130, 246, 0.95), rgba(30, 58, 138, 0.98))";
+  if (score.value >= 20)
+    return "background: radial-gradient(circle at center, rgba(34, 197, 94, 0.9), rgba(22, 101, 52, 0.98))";
+  return "background: radial-gradient(circle at center, rgba(127, 29, 29, 0.95), rgba(0, 0, 0, 0.98))";
+});
+
+const getMainGameOverEmoji = computed(() => {
+  if (score.value >= 125) return "🏆";
+  if (score.value >= 100) return "🔥";
+  if (score.value >= 80) return "⭐";
+  if (score.value >= 60) return "😎";
+  if (score.value >= 45) return "💪";
+  if (score.value >= 30) return "👍";
+  if (score.value >= 15) return "😅";
+  return "😵";
+});
+
+const getGameOverTitle = computed(() => {
+  if (score.value >= 125) return "LEGENDARY HUNTER!";
+  if (score.value >= 100) return "UNSTOPPABLE!";
+  if (score.value >= 80) return "INTEGRATION MASTER!";
+  if (score.value >= 60) return "SERIOUSLY SKILLED!";
+  if (score.value >= 45) return "IMPRESSIVE RUN!";
+  if (score.value >= 30) return "SOLID EFFORT!";
+  if (score.value >= 15) return "GETTING THERE!";
+  return "GAME OVER";
+});
+
+const getGameOverButtonClass = computed(() => {
+  if (score.value >= 80)
+    return "bg-purple-600 hover:bg-purple-500 text-white border-purple-800";
+  if (score.value >= 45)
+    return "bg-blue-600 hover:bg-blue-500 text-white border-blue-800";
+  if (score.value >= 20)
+    return "bg-green-600 hover:bg-green-500 text-white border-green-800";
+  return "bg-red-600 hover:bg-red-500 text-white border-red-800";
+});
+
+const getGameOverButtonText = computed(() => {
+  if (score.value >= 100) return "👑 GO AGAIN!";
+  if (score.value >= 60) return "🔥 BEAT IT!";
+  if (score.value >= 30) return "💪 TRY AGAIN!";
+  return "🔄 RETRY";
+});
+
+const getGameOverEmoji = (index) => {
+  const pool =
+    score.value >= 60
+      ? ["🎯", "✨", "🚀", "💫", "⭐", "🔥", "💎", "🎮", "🏆", "👑", "🌟", "💪"]
+      : [
+          "😵",
+          "💀",
+          "😢",
+          "🪦",
+          "💔",
+          "😭",
+          "🐛",
+          "👻",
+          "😰",
+          "🥺",
+          "😿",
+          "💨",
+        ];
+  return pool[index % pool.length];
+};
 
 // Player
 const playerX = ref(260);
@@ -541,14 +777,24 @@ for (let i = 0; i < 30; i++) {
   });
 }
 
-// Watch score for challenges - 7, 15, 25
+// Watch score for challenges - spread out unlocks for pacing
 watch(score, (newScore) => {
-  if (newScore === 7 && !armoredActive.value) {
+  if (newScore === 8 && !armoredActive.value) {
     showChallenge("armored");
-  } else if (newScore === 15 && !speedActive.value) {
+  } else if (newScore === 18 && !speedActive.value) {
     showChallenge("speed");
-  } else if (newScore === 25 && !bugsActive.value) {
+  } else if (newScore === 30 && !bugsActive.value) {
     showChallenge("bugs");
+  } else if (newScore === 45 && !ghostActive.value) {
+    showChallenge("ghost");
+  } else if (newScore === 60 && !tinyActive.value) {
+    showChallenge("tiny");
+  } else if (newScore === 80 && !zigzagActive.value) {
+    showChallenge("zigzag");
+  } else if (newScore === 100 && !giantActive.value) {
+    showChallenge("giant");
+  } else if (newScore === 125 && !swarmActive.value) {
+    showChallenge("swarm");
   }
 });
 
@@ -590,6 +836,64 @@ const showChallenge = (type) => {
     challengeButtonClass.value =
       "bg-red-600 hover:bg-red-500 text-white shadow-xl border-red-800";
     challengeButtonGlow.value = "bg-red-400 blur-sm";
+  } else if (type === "ghost") {
+    ghostActive.value = true;
+    challengeTitle.value = "GHOST MODE!";
+    challengeDesc.value = "Semi-transparent targets incoming";
+    challengeBg.value =
+      "linear-gradient(135deg, rgba(107, 114, 128, 0.95), rgba(156, 163, 175, 0.95))";
+    challengePreviewClass.value =
+      "bg-gray-50 border-2 border-gray-300 opacity-40";
+    challengePreviewTextClass.value = "text-gray-500";
+    challengeButtonClass.value =
+      "bg-gray-600 hover:bg-gray-500 text-white shadow-xl border-gray-800";
+    challengeButtonGlow.value = "bg-gray-400 blur-sm";
+  } else if (type === "tiny") {
+    tinyActive.value = true;
+    challengeTitle.value = "TINY TERRORS!";
+    challengeDesc.value = "Smaller targets. Aim carefully!";
+    challengeBg.value =
+      "linear-gradient(135deg, rgba(168, 85, 247, 0.95), rgba(192, 132, 252, 0.95))";
+    challengePreviewClass.value =
+      "bg-purple-50 border-2 border-purple-300 scale-75";
+    challengePreviewTextClass.value = "text-purple-600";
+    challengeButtonClass.value =
+      "bg-purple-600 hover:bg-purple-500 text-white shadow-xl border-purple-800";
+    challengeButtonGlow.value = "bg-purple-400 blur-sm";
+  } else if (type === "zigzag") {
+    zigzagActive.value = true;
+    challengeTitle.value = "ZIGZAG!";
+    challengeDesc.value = "They're dodging now. Predict their path!";
+    challengeBg.value =
+      "linear-gradient(135deg, rgba(6, 182, 212, 0.95), rgba(34, 211, 238, 0.95))";
+    challengePreviewClass.value = "bg-cyan-50 border-2 border-cyan-300";
+    challengePreviewTextClass.value = "text-cyan-600";
+    challengeButtonClass.value =
+      "bg-cyan-600 hover:bg-cyan-500 text-white shadow-xl border-cyan-800";
+    challengeButtonGlow.value = "bg-cyan-400 blur-sm";
+  } else if (type === "giant") {
+    giantActive.value = true;
+    challengeTitle.value = "BOSS TIME!";
+    challengeDesc.value = "Big one incoming. 5 hits to catch!";
+    challengeBg.value =
+      "linear-gradient(135deg, rgba(234, 88, 12, 0.95), rgba(249, 115, 22, 0.95))";
+    challengePreviewClass.value =
+      "bg-orange-50 border-2 border-orange-400 scale-125";
+    challengePreviewTextClass.value = "text-orange-600 font-black";
+    challengeButtonClass.value =
+      "bg-orange-600 hover:bg-orange-500 text-white shadow-xl border-orange-800";
+    challengeButtonGlow.value = "bg-orange-400 blur-sm";
+  } else if (type === "swarm") {
+    swarmActive.value = true;
+    challengeTitle.value = "SWARM INCOMING!";
+    challengeDesc.value = "Multiple targets at once!";
+    challengeBg.value =
+      "linear-gradient(135deg, rgba(236, 72, 153, 0.95), rgba(244, 114, 182, 0.95))";
+    challengePreviewClass.value = "bg-pink-50 border-2 border-pink-300";
+    challengePreviewTextClass.value = "text-pink-600";
+    challengeButtonClass.value =
+      "bg-pink-600 hover:bg-pink-500 text-white shadow-xl border-pink-800";
+    challengeButtonGlow.value = "bg-pink-400 blur-sm";
   }
 };
 
@@ -667,9 +971,15 @@ const startGame = () => {
   hitEffects.value = [];
   angryFounders.value = [];
   devilPopups.value = [];
+  // Reset all challenge states
   armoredActive.value = false;
   speedActive.value = false;
   bugsActive.value = false;
+  ghostActive.value = false;
+  tinyActive.value = false;
+  zigzagActive.value = false;
+  giantActive.value = false;
+  swarmActive.value = false;
 
   gameStarted.value = true;
   gameContainer.value?.focus();
@@ -696,47 +1006,103 @@ const startGame = () => {
 const spawnTarget = () => {
   if (pieces.value.length === 0) return;
 
-  // Prioritize pieces with founder photos (80% chance)
-  let piece;
-  if (piecesWithFounders.value.length > 0 && Math.random() < 0.8) {
-    piece =
-      piecesWithFounders.value[
-        Math.floor(Math.random() * piecesWithFounders.value.length)
-      ];
-  } else if (piecesWithoutFounders.value.length > 0) {
-    piece =
-      piecesWithoutFounders.value[
-        Math.floor(Math.random() * piecesWithoutFounders.value.length)
-      ];
-  } else {
-    piece = pieces.value[Math.floor(Math.random() * pieces.value.length)];
+  // Swarm mode - spawn 3 at once
+  const spawnCount = swarmActive.value && Math.random() < 0.25 ? 3 : 1;
+
+  for (let s = 0; s < spawnCount; s++) {
+    // Prioritize pieces with founder photos (80% chance)
+    let piece;
+    if (piecesWithFounders.value.length > 0 && Math.random() < 0.8) {
+      piece =
+        piecesWithFounders.value[
+          Math.floor(Math.random() * piecesWithFounders.value.length)
+        ];
+    } else if (piecesWithoutFounders.value.length > 0) {
+      piece =
+        piecesWithoutFounders.value[
+          Math.floor(Math.random() * piecesWithoutFounders.value.length)
+        ];
+    } else {
+      piece = pieces.value[Math.floor(Math.random() * pieces.value.length)];
+    }
+
+    // Build weighted pool of possible types
+    const typePool = [];
+
+    // Normal pieces always available (weight decreases as game progresses)
+    const normalWeight = Math.max(30, 70 - score.value);
+    for (let i = 0; i < normalWeight; i++) typePool.push("normal");
+
+    // Add special types based on what's unlocked
+    if (armoredActive.value) {
+      for (let i = 0; i < 15; i++) typePool.push("armored");
+    }
+    if (speedActive.value) {
+      for (let i = 0; i < 18; i++) typePool.push("fast");
+    }
+    if (bugsActive.value) {
+      for (let i = 0; i < 12; i++) typePool.push("bug");
+    }
+    if (ghostActive.value) {
+      for (let i = 0; i < 16; i++) typePool.push("ghost");
+    }
+    if (tinyActive.value) {
+      for (let i = 0; i < 18; i++) typePool.push("tiny");
+    }
+    if (zigzagActive.value) {
+      for (let i = 0; i < 20; i++) typePool.push("zigzag");
+    }
+    if (giantActive.value) {
+      for (let i = 0; i < 5; i++) typePool.push("giant");
+    }
+
+    // Pick random type from pool
+    const selectedType = typePool[Math.floor(Math.random() * typePool.length)];
+
+    const isMalware = selectedType === "bug";
+    const isFast = selectedType === "fast";
+    const isArmored = selectedType === "armored";
+    const isGhost = selectedType === "ghost";
+    const isTiny = selectedType === "tiny";
+    const isZigzag = selectedType === "zigzag";
+    const isGiant = selectedType === "giant";
+
+    // Base speed increases with difficulty
+    let baseSpeed = 1;
+    if (isFast) baseSpeed = 3.5;
+    else if (isZigzag) baseSpeed = 1.8;
+    else if (score.value > 80) baseSpeed = 2;
+    else if (score.value > 50) baseSpeed = 1.6;
+    else if (score.value > 30) baseSpeed = 1.3;
+
+    // Health - giants take 5 hits, armored take 2
+    let health = 1;
+    if (isGiant) health = 5;
+    else if (isArmored) health = 2;
+
+    activeTargets.value.push({
+      id: targetIdCounter++,
+      displayName: piece.displayName,
+      logoUrl: piece.logoUrl,
+      founderPhoto: piece.founderPhoto,
+      founderName: piece.founderName,
+      isMalware,
+      isFast,
+      isGhost,
+      isTiny,
+      isZigzag,
+      isGiant,
+      health,
+      maxHealth: health,
+      x: Math.random() * 360 + 70,
+      y: -45,
+      vx: (Math.random() - 0.5) * (isFast ? 5 : isZigzag ? 1 : 2.5),
+      vy: Math.random() * baseSpeed + baseSpeed * 0.6,
+      zigzagPhase: Math.random() * Math.PI * 2,
+      caught: false,
+      fadeOut: false,
+    });
   }
-
-  const rand = Math.random();
-
-  const isMalware = bugsActive.value && rand < 0.15;
-  const isFast = !isMalware && speedActive.value && rand < 0.28;
-  const isArmored = !isMalware && !isFast && armoredActive.value && rand < 0.22;
-
-  const baseSpeed = isFast ? 3 : 1;
-
-  activeTargets.value.push({
-    id: targetIdCounter++,
-    displayName: piece.displayName,
-    logoUrl: piece.logoUrl,
-    founderPhoto: piece.founderPhoto,
-    founderName: piece.founderName,
-    isMalware,
-    isFast,
-    health: isArmored ? 2 : 1,
-    maxHealth: isArmored ? 2 : 1,
-    x: Math.random() * 360 + 70,
-    y: -45,
-    vx: (Math.random() - 0.5) * (isFast ? 5 : 2.5),
-    vy: Math.random() * baseSpeed + baseSpeed * 0.6,
-    caught: false,
-    fadeOut: false,
-  });
 };
 
 const shoot = () => {
@@ -788,6 +1154,12 @@ const update = (currentTime) => {
   // Move targets
   activeTargets.value.forEach((target) => {
     if (!target.caught) {
+      // Zigzag movement
+      if (target.isZigzag) {
+        target.zigzagPhase += 0.15 * deltaTime;
+        target.x += Math.sin(target.zigzagPhase) * 4 * deltaTime;
+      }
+
       target.x += target.vx * deltaTime;
       target.y += target.vy * deltaTime;
 
@@ -957,6 +1329,18 @@ const getTargetClasses = (target) => {
   if (target.isMalware) {
     return "bg-red-100 border-2 border-red-400 shadow-lg shadow-red-200/50";
   }
+  if (target.isGiant) {
+    return "bg-gradient-to-br from-orange-100 to-amber-50 border-2 border-orange-400 shadow-xl shadow-orange-300/50 scale-110";
+  }
+  if (target.isGhost) {
+    return "bg-gray-50/60 border border-gray-300/50 shadow-sm backdrop-blur-sm";
+  }
+  if (target.isTiny) {
+    return "bg-purple-50 border border-purple-300 shadow-sm scale-90";
+  }
+  if (target.isZigzag) {
+    return "bg-cyan-50 border border-cyan-300 shadow-md";
+  }
   if (target.isFast) {
     return "bg-amber-50 border border-amber-300 shadow-md";
   }
@@ -983,6 +1367,7 @@ const getTargetStyle = (target) => {
     top: target.y + "px",
     transform: target.caught ? "rotate(8deg)" : "",
     transition: target.caught ? "all 0.3s ease-out" : "none",
+    opacity: target.isGhost && !target.caught ? 0.4 : undefined,
   };
 };
 
@@ -1310,6 +1695,183 @@ onUnmounted(() => {
   }
   50% {
     transform: scale(1.15);
+  }
+}
+
+@keyframes badgeFade {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+}
+
+@keyframes zigzag {
+  0%,
+  100% {
+    transform: translateX(-10px);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+}
+
+@keyframes floatRandom {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.15;
+  }
+  25% {
+    transform: translateY(-20px) rotate(-5deg);
+    opacity: 0.25;
+  }
+  50% {
+    transform: translateY(-10px) rotate(5deg);
+    opacity: 0.1;
+  }
+  75% {
+    transform: translateY(-25px) rotate(-3deg);
+    opacity: 0.2;
+  }
+}
+
+@keyframes bounceSlow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes gameoverIn {
+  0% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-badge-fade {
+  animation: badgeFade 0.6s ease-out forwards;
+}
+
+.animate-zigzag {
+  animation: zigzag 0.4s ease-in-out infinite;
+}
+
+.animate-float-random {
+  animation: floatRandom 4s ease-in-out infinite;
+}
+
+.animate-bounce-slow {
+  animation: bounceSlow 1.5s ease-in-out infinite;
+}
+
+@keyframes fallDown {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(520px);
+    opacity: 0;
+  }
+}
+
+.animate-fall-down {
+  animation: fallDown 5s linear infinite;
+}
+
+@keyframes pingSlow {
+  0% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+.animate-ping-slow {
+  animation: pingSlow 2s ease-out infinite;
+}
+
+@keyframes previewFall {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(140px);
+    opacity: 0;
+  }
+}
+
+.animate-preview-fall {
+  animation: previewFall 2s ease-in infinite;
+}
+
+.gameover-enter-active {
+  animation: gameoverIn 0.4s ease-out;
+}
+
+.gameover-leave-active {
+  animation: challengeOut 0.3s ease-in;
+}
+
+.startscreen-enter-active {
+  animation: fadeIn 0.4s ease-out;
+}
+
+.startscreen-leave-active {
+  animation: fadeOut 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }
 </style>
