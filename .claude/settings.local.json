@@ -5,7 +5,8 @@
       "Bash(grep:*)",
       "Bash(git checkout:*)",
       "Bash(yarn dev)",
-      "Bash(npm run dev:*)"
+      "Bash(npm run dev:*)",
+      "Bash(git push:*)"
     ]
   }
 }
