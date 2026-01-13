@@ -17,6 +17,9 @@ export default {
       },
       fontFamily: {
         'libre-baskerville': ['Libre Baskerville', 'serif'],
+        'instrument': ['Instrument Serif', 'serif'],
+        'space': ['Space Grotesk', 'sans-serif'],
+        'dm': ['DM Sans', 'sans-serif'],
       },
       filter: {
         'invert-0': 'invert(0)',

@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(frontend-design)",
+      "Bash(grep:*)",
+      "Bash(git checkout:*)",
+      "Bash(yarn dev)",
+      "Bash(npm run dev:*)"
+    ]
+  }
+}
