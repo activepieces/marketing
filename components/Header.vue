@@ -149,7 +149,7 @@ watch(useRoute(), () => {
       }"
     >
       <nav
-        class="max-w-7xl mx-auto rounded-full pl-6 pr-2 py-2 dark:bg-gray-800 transition-all duration-300 overflow-visible max-[1280px]:mx-2 max-[1280px]:mt-2 shadow-sm"
+        class="max-w-7xl mx-auto rounded-full pl-6 pr-2 py-1.5 dark:bg-gray-800 transition-all duration-300 overflow-visible max-[1280px]:mx-2 max-[1280px]:mt-2 shadow-sm"
         :class="{
           'group-hover/header:bg-white': showTransparent,
           'bg-white max-[905px]:bg-white': !showTransparent || isScrolled,
@@ -182,7 +182,7 @@ watch(useRoute(), () => {
             <div class="flex items-center gap-3 max-[905px]:hidden">
               <NuxtLink
                 to="/reseller"
-                class="px-3 py-2 transition-colors duration-200 font-normal hover:!text-[#8142e3]"
+                class="px-3 py-1.5 transition-colors duration-200 font-normal hover:!text-[#8142e3]"
                 :class="{
                   'text-white group-hover/header:text-gray-900':
                     showTransparent,
@@ -192,7 +192,7 @@ watch(useRoute(), () => {
               >
               <NuxtLink
                 to="/content-creators"
-                class="px-3 py-2 transition-colors duration-200 font-normal hover:!text-[#8142e3]"
+                class="px-3 py-1.5 transition-colors duration-200 font-normal hover:!text-[#8142e3]"
                 :class="{
                   'text-white group-hover/header:text-gray-900':
                     showTransparent,
@@ -212,7 +212,7 @@ watch(useRoute(), () => {
 
             <a
               href="https://cloud.activepieces.com"
-              class="px-3 py-2 max-[555px]:hidden transition-colors duration-200 font-normal hover:!text-[#8142e3]"
+              class="px-3 py-1.5 max-[555px]:hidden transition-colors duration-200 font-normal hover:!text-[#8142e3]"
               :class="{
                 'text-white group-hover/header:text-gray-900': showTransparent,
                 'text-gray-900': !showTransparent,
@@ -222,12 +222,12 @@ watch(useRoute(), () => {
             <div class="flex flex-row gap-1">
               <router-link
                 to="/sales"
-                class="px-4 py-2 rounded-full border border-slate-300"
+                class="px-4 py-1.5 rounded-full border border-slate-300"
                 >Talk to sales</router-link
               >
               <a
                 href="https://cloud.activepieces.com/sign-up"
-                class="group relative inline-flex items-center justify-center rounded-full px-4 py-2 text-base font-medium text-white transition-all duration-200 ring-0 ring-primary-dark hover:ring-2 bg-primary-dark"
+                class="group relative inline-flex items-center justify-center rounded-full px-4 py-1.5 text-base font-medium text-white transition-all duration-200 ring-0 ring-primary-dark hover:ring-2 bg-primary-dark"
               >
                 Start free
               </a>
@@ -685,7 +685,7 @@ watch(useRoute(), () => {
               <li>
                 <a
                   href="/pricing"
-                  class="py-2 transition-colors duration-200 font-normal hover:!text-[#8142e3]"
+                  class="py-1.5 transition-colors duration-200 font-normal hover:!text-[#8142e3]"
                   :class="{
                     'text-white group-hover/header:text-gray-900':
                       showTransparent,
@@ -1123,13 +1123,13 @@ watch(useRoute(), () => {
             <div class="px-2 space-y-2">
               <NuxtLink
                 to="/reseller"
-                class="block py-2 text-base font-medium text-gray-700 hover:text-[#8142e3]"
+                class="block py-1.5 text-base font-medium text-gray-700 hover:text-[#8142e3]"
               >
                 Become a Reseller
               </NuxtLink>
               <NuxtLink
                 to="/content-creators"
-                class="block py-2 text-base font-medium text-gray-700 hover:text-[#8142e3]"
+                class="block py-1.5 text-base font-medium text-gray-700 hover:text-[#8142e3]"
               >
                 Content Creators
               </NuxtLink>
