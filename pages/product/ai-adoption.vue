@@ -146,16 +146,19 @@ useHead({
     <!-- Section 1: Roll Out -->
     <section
       id="setup"
-      class="py-24 section-warm border-t border-gray-100 relative overflow-hidden rounded-t-3xl -mt-8 z-10"
+      class="py-24 bg-white relative overflow-hidden rounded-t-3xl -mt-8 z-10"
     >
-      <div class="absolute inset-0 gradient-mesh z-0"></div>
       <div class="max-w-[1230px] mx-auto px-4 relative z-10">
-        <div class="text-center max-w-3xl mx-auto mb-20">
-          <div class="flex flex-col items-center gap-5">
-            <h2 class="text-5xl font-sentient font-medium text-primary-dark">
-              Your AI home. Zero friction.
-            </h2>
-          </div>
+        <div
+          class="text-center w-full mx-auto mb-20 rounded-2xl flex gap-8 items-center"
+        >
+          <div class="w-full h-1 bg-primary-dark/10 rounded-full"></div>
+          <h2
+            class="text-6xl font-sentient font-medium text-primary-dark text-balance shrink-0"
+          >
+            Your AI home. Zero friction.
+          </h2>
+          <div class="w-full h-1 bg-primary-dark/10 rounded-full"></div>
         </div>
 
         <!-- Feature 1: Branding -->
@@ -169,7 +172,7 @@ useHead({
             <div class="p-12">
               <div class="flex flex-col gap-4">
                 <h3
-                  class="text-primary-dark text-3xl font-sentient font-medium"
+                  class="text-primary-dark text-3xl font-sentient font-medium text-balance"
                 >
                   Your brand, your platform
                 </h3>
@@ -180,42 +183,37 @@ useHead({
                   learn.
                 </p>
               </div>
-              <ol class="flex flex-col gap-2">
+              <ol class="flex flex-col gap-2 p-2 rounded-lg">
                 <li
-                  class="numbered-list-item rounded-full flex items-center bg-primary-50 p-2"
+                  class="flex gap-4 items-center pb-4 text-lg border-b border-primary-dark/5"
                 >
                   <span
-                    class="bg-white rounded-full px-4 py-0.5 text-primary-dark/80 font-semibold"
+                    class="border border-primary-dark/10 rounded-full px-3 py-0.5 text-primary-dark/80 flex items-center font-mono text-sm font-semibold"
                     >1</span
                   >
                   <span class="text-primary-dark/80 font-dm"
-                    ><strong class="font-semibold">Your logo</strong> in the
-                    header builds immediate trust</span
+                    >Your logo in the header builds immediate trust</span
                   >
                 </li>
                 <li
-                  class="numbered-list-item rounded-full flex items-center bg-primary-50 p-2"
+                  class="flex gap-4 items-center p-2 text-lg border-b border-primary-dark/5"
                 >
                   <span
-                    class="bg-white rounded-full px-4 py-0.5 text-primary-dark/80 font-semibold"
+                    class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono text-sm font-semibold"
                     >2</span
                   >
                   <span class="text-primary-dark/80 font-dm"
-                    ><strong class="font-semibold">Your colors</strong> make it
-                    feel like home
-                  </span>
+                    >Your colors make it feel like home</span
+                  >
                 </li>
-                <li
-                  class="numbered-list-item rounded-full flex items-center bg-primary-50 p-2"
-                >
+                <li class="flex gap-4 items-center p-2 text-lg">
                   <span
-                    class="bg-white rounded-full px-4 py-0.5 text-primary-dark/80 font-semibold"
+                    class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono text-sm font-semibold"
                     >3</span
                   >
                   <span class="text-primary-dark/80 font-dm"
-                    ><strong class="font-semibold">Custom domain</strong> keeps
-                    everything under your roof
-                  </span>
+                    >Custom domain keeps everything under your roof</span
+                  >
                 </li>
               </ol>
             </div>
