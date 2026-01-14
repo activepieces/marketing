@@ -149,7 +149,7 @@ watch(useRoute(), () => {
       }"
     >
       <nav
-        class="max-w-7xl mx-auto rounded-full pl-6 pr-2 py-1.5 dark:bg-gray-800 transition-all duration-300 overflow-visible max-[1280px]:mx-2 max-[1280px]:mt-2 shadow-sm"
+        class="max-w-7xl mx-auto rounded-full pl-6 pr-2 py-2 dark:bg-gray-800 transition-all duration-300 overflow-visible max-[1280px]:mx-2 max-[1280px]:mt-2 shadow-sm"
         :class="{
           'group-hover/header:bg-white': showTransparent,
           'bg-white max-[905px]:bg-white': !showTransparent || isScrolled,
@@ -178,38 +178,6 @@ watch(useRoute(), () => {
             </NuxtLink>
           </div>
           <div class="flex items-center flex-grow-0 min-[906px]:order-2 gap-4">
-            <!-- Partners Section -->
-            <div class="flex items-center gap-3 max-[905px]:hidden">
-              <NuxtLink
-                to="/reseller"
-                class="px-3 py-1.5 transition-colors duration-200 font-normal hover:!text-[#8142e3]"
-                :class="{
-                  'text-white group-hover/header:text-gray-900':
-                    showTransparent,
-                  'text-gray-900': !showTransparent,
-                }"
-                >Become a Reseller</NuxtLink
-              >
-              <NuxtLink
-                to="/content-creators"
-                class="px-3 py-1.5 transition-colors duration-200 font-normal hover:!text-[#8142e3]"
-                :class="{
-                  'text-white group-hover/header:text-gray-900':
-                    showTransparent,
-                  'text-gray-900': !showTransparent,
-                }"
-                >Content Creators</NuxtLink
-              >
-            </div>
-
-            <!-- Vertical Separator -->
-            <div
-              class="h-6 w-px bg-gray-300 max-[905px]:hidden"
-              :class="{
-                'bg-white/30 group-hover/header:bg-gray-300': showTransparent,
-              }"
-            ></div>
-
             <a
               href="https://cloud.activepieces.com"
               class="px-3 py-1.5 max-[555px]:hidden transition-colors duration-200 font-normal hover:!text-[#8142e3]"
@@ -655,7 +623,7 @@ watch(useRoute(), () => {
                     href="https://discord.com/invite/2jUXBKDdP8"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="flex items-center gap-2.5 px-2 py-3 transition group/feature"
+                    class="flex items-center gap-2.5 px-2 py-3 transition group/feature border-b border-gray-100"
                   >
                     <div
                       class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
@@ -678,6 +646,56 @@ watch(useRoute(), () => {
                       />
                     </svg>
                   </a>
+                  <NuxtLink
+                    to="/reseller"
+                    class="flex items-center gap-2.5 px-2 py-3 transition group/feature border-b border-gray-100"
+                  >
+                    <div
+                      class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
+                    ></div>
+                    <span
+                      class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
+                      >Become a Reseller</span
+                    >
+                    <svg
+                      class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      stroke-width="2.5"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M13 7l5 5m0 0l-5 5m5-5H6"
+                      />
+                    </svg>
+                  </NuxtLink>
+                  <NuxtLink
+                    to="/content-creators"
+                    class="flex items-center gap-2.5 px-2 py-3 transition group/feature"
+                  >
+                    <div
+                      class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
+                    ></div>
+                    <span
+                      class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
+                      >Content Creators</span
+                    >
+                    <svg
+                      class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      stroke-width="2.5"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M13 7l5 5m0 0l-5 5m5-5H6"
+                      />
+                    </svg>
+                  </NuxtLink>
                 </div>
               </li>
 
@@ -1091,7 +1109,7 @@ watch(useRoute(), () => {
                   href="https://discord.com/invite/2jUXBKDdP8"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="flex items-center gap-2.5 px-2.5 py-3 transition group/feature"
+                  class="flex items-center gap-2.5 px-2.5 py-3 transition group/feature border-b border-gray-100"
                 >
                   <div
                     class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
@@ -1114,25 +1132,57 @@ watch(useRoute(), () => {
                     />
                   </svg>
                 </a>
+                <NuxtLink
+                  to="/reseller"
+                  class="flex items-center gap-2.5 px-2.5 py-3 transition group/feature border-b border-gray-100"
+                >
+                  <div
+                    class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
+                  ></div>
+                  <span
+                    class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
+                    >Become a Reseller</span
+                  >
+                  <svg
+                    class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    stroke-width="2.5"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M13 7l5 5m0 0l-5 5m5-5H6"
+                    />
+                  </svg>
+                </NuxtLink>
+                <NuxtLink
+                  to="/content-creators"
+                  class="flex items-center gap-2.5 px-2.5 py-3 transition group/feature"
+                >
+                  <div
+                    class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
+                  ></div>
+                  <span
+                    class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
+                    >Content Creators</span
+                  >
+                  <svg
+                    class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    stroke-width="2.5"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M13 7l5 5m0 0l-5 5m5-5H6"
+                    />
+                  </svg>
+                </NuxtLink>
               </div>
-            </div>
-          </li>
-
-          <!-- Partners Links in Mobile -->
-          <li class="border-t border-gray-200 pt-4 mt-4">
-            <div class="px-2 space-y-2">
-              <NuxtLink
-                to="/reseller"
-                class="block py-1.5 text-base font-medium text-gray-700 hover:text-[#8142e3]"
-              >
-                Become a Reseller
-              </NuxtLink>
-              <NuxtLink
-                to="/content-creators"
-                class="block py-1.5 text-base font-medium text-gray-700 hover:text-[#8142e3]"
-              >
-                Content Creators
-              </NuxtLink>
             </div>
           </li>
 
