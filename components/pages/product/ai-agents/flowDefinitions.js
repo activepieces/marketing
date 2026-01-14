@@ -343,6 +343,113 @@ export const flows = {
         icon: 'zendesk'
       }
     ]
+  },
+
+  // Advanced AI Lead Pipeline - demonstrates Agent within a larger business workflow
+  // Shortest path to condition: Trigger → HTTP → Agent → Condition
+  // Additional features in branches: Loop, Code, Date Helper
+  'ai-lead-pipeline': {
+    id: 'ai-lead-pipeline',
+    name: 'AI Lead Processing Pipeline',
+    nodes: [
+      // 1. Trigger: New lead arrives
+      {
+        id: 'trigger',
+        step: 1,
+        type: 'trigger',
+        label: 'New Lead',
+        app: 'HubSpot',
+        icon: 'hubspot'
+      },
+      // 2. HTTP Request: Enrich via external API
+      {
+        id: 'http-enrich',
+        step: 2,
+        type: 'action',
+        label: 'Enrich via API',
+        app: 'HTTP Request',
+        icon: 'http'
+      },
+      // 3. AI Agent: Research & qualify
+      {
+        id: 'ai-agent',
+        step: 3,
+        type: 'action',
+        label: 'Research Lead',
+        app: 'AI Agent',
+        icon: 'agent'
+      },
+      // 4. Branch: Route based on qualification
+      {
+        id: 'check-qualified',
+        step: 4,
+        type: 'condition',
+        label: 'Qualified?',
+        app: 'Condition',
+        icon: 'condition',
+        leftBranch: ['add-crm'],
+        rightBranch: ['nurture-loop']
+      },
+      // Left branch: Qualified → Add to CRM
+      {
+        id: 'add-crm',
+        step: 5,
+        type: 'action',
+        label: 'Add to CRM',
+        app: 'Salesforce',
+        icon: 'salesforce',
+        branch: 'check-qualified',
+        branchSide: 'left'
+      },
+      // Right branch: Not qualified → Nurture loop with utilities
+      {
+        id: 'nurture-loop',
+        step: 5,
+        type: 'loop',
+        label: 'Nurture Steps',
+        app: 'Loop',
+        icon: 'loop',
+        branch: 'check-qualified',
+        branchSide: 'right',
+        children: ['calc-score', 'date-calc', 'send-drip']
+      },
+      {
+        id: 'calc-score',
+        step: 6,
+        type: 'action',
+        label: 'Score Lead',
+        app: 'Code',
+        icon: 'code',
+        parent: 'nurture-loop'
+      },
+      {
+        id: 'date-calc',
+        step: 7,
+        type: 'action',
+        label: 'Set Follow-up',
+        app: 'Date Helper',
+        icon: 'date-helper',
+        parent: 'nurture-loop'
+      },
+      {
+        id: 'send-drip',
+        step: 8,
+        type: 'action',
+        label: 'Send Email',
+        app: 'Gmail',
+        icon: 'gmail',
+        parent: 'nurture-loop'
+      },
+      // After merge: Notify team
+      {
+        id: 'notify',
+        step: 9,
+        type: 'action',
+        label: 'Notify Team',
+        app: 'Slack',
+        icon: 'slack'
+      }
+    ]
   }
 }
 
@@ -359,15 +466,19 @@ export const iconMap = {
   'segment': 'https://cdn.activepieces.com/pieces/segment.png',
   'zendesk': 'https://cdn.activepieces.com/pieces/zendesk.png',
   'hubspot': 'https://cdn.activepieces.com/pieces/hubspot.png',
+  'salesforce': 'https://cdn.activepieces.com/pieces/salesforce.png',
   'openai': 'https://cdn.activepieces.com/pieces/openai.png',
   'http': 'https://cdn.activepieces.com/pieces/http.png',
+  'mailchimp': 'https://cdn.activepieces.com/pieces/mailchimp.png',
   
   // Built-in icons (will use SVG)
   'schedule': 'builtin:schedule',
   'loop': 'builtin:loop',
   'code': 'builtin:code',
   'data-mapper': 'builtin:data-mapper',
-  'condition': 'builtin:condition'
+  'condition': 'builtin:condition',
+  'date-helper': 'builtin:date-helper',
+  'agent': 'builtin:agent'
 }
 
 // Color schemes for different node types
