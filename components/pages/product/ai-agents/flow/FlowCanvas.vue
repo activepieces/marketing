@@ -83,6 +83,11 @@
       :node="node"
       :position="nodePositions[node.id]"
       :is-child="!!node.parent || !!node.branch"
+      :is-expanded="hoveredNodeId === node.id"
+      :card-data="getCardDataForNode(node)"
+      :expand-direction="getExpandDirection(node)"
+      @node-hover="handleNodeHover"
+      @node-leave="handleNodeLeave"
     />
   </div>
 </template>
@@ -97,10 +102,87 @@ const props = defineProps({
   flowDefinition: {
     type: Object,
     required: true
+  },
+  hoveredNodeId: {
+    type: String,
+    default: null
+  },
+  cardDataMap: {
+    type: Object,
+    default: () => ({})
+  },
+  viewport: {
+    type: Object,
+    default: () => ({ offsetX: 0, offsetY: 0, width: 600, height: 480 })
   }
 })
 
-const emit = defineEmits(['canvas-size'])
+const emit = defineEmits(['canvas-size', 'node-hover', 'node-leave'])
+
+// Get card data for a specific node
+const getCardDataForNode = (node) => {
+  if (node.type === 'loop') return props.cardDataMap.loop
+  if (node.type === 'condition') return props.cardDataMap.condition
+  if (node.icon === 'code') return props.cardDataMap.code
+  if (node.icon === 'http') return props.cardDataMap.http
+  if (node.icon === 'date-helper') return props.cardDataMap['date-helper']
+  if (node.icon === 'agent') return props.cardDataMap.agent
+  return null
+}
+
+// Card dimensions
+const CARD_WIDTH = 230
+const CARD_HEIGHT = 175
+
+// Determine which direction the card should expand based on node's position in visible viewport
+const getExpandDirection = (node) => {
+  const pos = nodePositions.value[node.id]
+  if (!pos) return { horizontal: 'right', vertical: 'down' }
+  
+  const { offsetX, offsetY, width: viewW, height: viewH } = props.viewport
+  
+  // Node's position in the visible viewport (accounting for scroll offset)
+  const visibleX = pos.x + offsetX
+  const visibleY = pos.y + offsetY
+  const nodeWidth = pos.width || 160
+  const nodeHeight = pos.height || 48
+  
+  // Check horizontal space
+  const spaceRight = viewW - (visibleX + nodeWidth)
+  const spaceLeft = visibleX
+  
+  // Check vertical space
+  const spaceBelow = viewH - (visibleY + nodeHeight)
+  const spaceAbove = visibleY
+  
+  // Determine best horizontal direction
+  let horizontal = 'right'
+  if (spaceRight < CARD_WIDTH && spaceLeft >= CARD_WIDTH) {
+    horizontal = 'left'
+  } else if (spaceRight < CARD_WIDTH && spaceLeft < CARD_WIDTH) {
+    // Not enough space on either side - use the side with more space
+    horizontal = spaceRight >= spaceLeft ? 'right' : 'left'
+  }
+  
+  // Determine best vertical direction (for positioning adjustment)
+  let vertical = 'down'
+  if (spaceBelow < CARD_HEIGHT && spaceAbove >= CARD_HEIGHT) {
+    vertical = 'up'
+  } else if (spaceBelow < CARD_HEIGHT && spaceAbove < CARD_HEIGHT) {
+    vertical = spaceBelow >= spaceAbove ? 'down' : 'up'
+  }
+  
+  return { horizontal, vertical }
+}
+
+// Forward hover events to parent
+const handleNodeHover = (data) => {
+  emit('node-hover', data)
+}
+
+const handleNodeLeave = () => {
+  emit('node-leave')
+}
 
 // Convert to ref for composables
 const flowDefRef = toRef(props, 'flowDefinition')
