@@ -227,13 +227,9 @@ watch(useRoute(), () => {
               >
               <a
                 href="https://cloud.activepieces.com/sign-up"
-                class="group relative inline-flex h-10 items-center justify-center rounded-lg px-4 py-2 text-base font-medium text-white transition-all duration-300 hover:scale-105"
+                class="group relative inline-flex items-center justify-center rounded-full px-4 py-2 text-base font-medium text-white transition-all duration-300 hover:scale-105 bg-black"
               >
-                <span class="absolute inset-0 rounded-full bg-black"></span>
-                <span
-                  class="absolute -bottom-1 left-1/2 h-1/5 w-3/5 -translate-x-1/2 animate-rainbow rounded-full bg-gradient-to-r from-[#ff3ea5] via-[#1e9bf0] to-[#6420aa] blur-md"
-                ></span>
-                <span class="relative">Start free</span>
+                Start free
               </a>
             </div>
             <button
