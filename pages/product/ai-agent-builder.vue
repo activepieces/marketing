@@ -271,12 +271,7 @@ useHead({
               </li>
             </ul>
           </div>
-          <div class="bg-gray-100 border-2 border-dashed border-gray-300 rounded-2xl p-8 min-h-[320px] flex items-center justify-center">
-            <div class="text-center text-gray-500">
-              <p class="font-semibold mb-2">📸 SCREENSHOT</p>
-              <p class="text-sm max-w-sm">Flow builder showing a complex workflow with AI step, if/else branches, loop, and code piece</p>
-            </div>
-          </div>
+          <PagesProductAiAgentsFlowBuilder />
         </div>
 
         <!-- Subsection 3: Full Visibility -->
