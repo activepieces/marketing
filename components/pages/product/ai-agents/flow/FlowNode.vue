@@ -55,7 +55,7 @@
     <!-- Expanded Card (absolutely positioned, fades in when expanded) -->
     <div 
       v-if="cardData"
-      class="expanded-card absolute overflow-hidden"
+      class="expanded-card absolute overflow-hidden cursor-default"
       :class="expandedCardClasses"
       :style="expandedCardStyle"
     >
@@ -71,12 +71,12 @@
         :class="isExpanded ? 'opacity-100' : 'opacity-0'"
         :style="{ 
           transitionDelay: isExpanded ? '30ms' : '0ms',
-          backgroundColor: '#111827'
+          backgroundColor: '#0f172a'
         }"
       >
-        <div class="p-4" style="width: 230px; height: 175px;">
+        <div class="p-4 space-y-2.5" style="width: 230px;">
           <!-- Header with SAME icon as the step -->
-          <div class="flex items-center gap-3 mb-2.5">
+          <div class="flex items-center gap-3">
             <div 
               class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
               :class="cardData.iconBg"
@@ -85,12 +85,12 @@
             </div>
             <div class="flex-1 min-w-0">
               <div class="text-white text-[15px] font-semibold leading-tight">{{ cardData.title }}</div>
-              <div class="text-[11px] text-gray-400 mt-0.5">{{ cardData.subtitle }}</div>
+              <div class="text-[11.5px] text-gray-300 mt-0.5 leading-snug">{{ cardData.subtitle }}</div>
             </div>
           </div>
           
           <!-- Description - fixed height with overflow handling -->
-          <div class="text-[12px] text-gray-300 leading-[1.5]" style="height: 90px; overflow: hidden;">
+          <div class="text-[13.5px] text-gray-100 leading-[1.55]">
             {{ cardData.description }}
           </div>
         </div>
@@ -286,8 +286,10 @@ const expandedCardClasses = computed(() => {
 const expandedCardStyle = computed(() => {
   return {
     width: props.isExpanded ? `${CARD_WIDTH}px` : `${props.position.width}px`,
-    height: props.isExpanded ? `${CARD_HEIGHT}px` : `${props.position.height || 48}px`,
-    transition: 'width 180ms ease-out, height 180ms ease-out',
+    minHeight: props.isExpanded ? '160px' : `${props.position.height || 48}px`,
+    height: props.isExpanded ? 'auto' : `${props.position.height || 48}px`,
+    maxHeight: props.isExpanded ? '240px' : `${props.position.height || 48}px`,
+    transition: 'width 180ms ease-out, min-height 180ms ease-out',
     borderRadius: '12px'
   }
 })
@@ -323,6 +325,11 @@ const displayLabel = computed(() => {
 <style scoped>
 .flow-node {
   pointer-events: auto;
+}
+
+.expanded-card,
+.expanded-card * {
+  cursor: default !important;
 }
 
 .z-1 {
