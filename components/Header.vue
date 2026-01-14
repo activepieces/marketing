@@ -229,7 +229,7 @@ watch(useRoute(), () => {
             id="mobile-menu-2"
           >
             <ul
-              class="flex flex-col min-[906px]:flex-row min-[906px]:items-center min-[906px]:space-x-8 max-[905px]:w-full overflow-visible"
+              class="flex flex-col min-[906px]:flex-row min-[906px]:items-center max-[905px]:w-full overflow-visible"
             >
               <!-- Product Mega Menu -->
               <li class="relative group/menu">
@@ -240,7 +240,7 @@ watch(useRoute(), () => {
 
                 <!-- Menu Button -->
                 <button
-                  class="flex items-center gap-1 py-2 transition-colors duration-200"
+                  class="flex items-center gap-1 px-3 py-1.5 bg-slate-200 transition-colors duration-200"
                   :class="{
                     'text-white group-hover/header:text-gray-900':
                       showTransparent,
@@ -248,7 +248,7 @@ watch(useRoute(), () => {
                   }"
                 >
                   <span
-                    class="font-normal button-text"
+                    class="button-text"
                     :class="{
                       'text-white group-hover/header:text-gray-900':
                         showTransparent,
@@ -509,7 +509,7 @@ watch(useRoute(), () => {
 
                 <!-- Menu Button -->
                 <button
-                  class="flex items-center gap-1 py-2 transition-colors duration-200"
+                  class="flex items-center gap-1 bg-slate-200 px-3 py-1.5 transition-colors duration-200"
                   :class="{
                     'text-white group-hover/header:text-gray-900':
                       showTransparent,
@@ -703,7 +703,7 @@ watch(useRoute(), () => {
               <li>
                 <a
                   href="/pricing"
-                  class="py-1.5 transition-colors duration-200 font-normal hover:!text-[#8142e3]"
+                  class="px-3 py-1.5 bg-slate-200 transition-colors duration-200 hover:!text-[#8142e3]"
                   :class="{
                     'text-white group-hover/header:text-gray-900':
                       showTransparent,
