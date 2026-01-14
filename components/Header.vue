@@ -703,7 +703,7 @@ watch(useRoute(), () => {
               <li>
                 <a
                   href="/pricing"
-                  class="px-3 py-1.5 bg-slate-200 transition-colors duration-200 hover:!text-[#8142e3]"
+                  class="flex items-center px-3 py-1.5 bg-slate-200 transition-colors duration-200 hover:!text-[#8142e3]"
                   :class="{
                     'text-white group-hover/header:text-gray-900':
                       showTransparent,

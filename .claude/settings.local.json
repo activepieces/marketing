@@ -13,7 +13,8 @@
       "mcp__chrome-devtools__press_key",
       "mcp__chrome-devtools__resize_page",
       "mcp__chrome-devtools__take_snapshot",
-      "mcp__chrome-devtools__hover"
+      "mcp__chrome-devtools__hover",
+      "mcp__chrome-devtools__evaluate_script"
     ]
   }
 }
