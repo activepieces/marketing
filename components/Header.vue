@@ -227,7 +227,7 @@ watch(useRoute(), () => {
               >
               <a
                 href="https://cloud.activepieces.com/sign-up"
-                class="group relative inline-flex items-center justify-center rounded-full px-4 py-2 text-base font-medium text-white transition-all duration-300 hover:scale-105 bg-black"
+                class="group relative inline-flex items-center justify-center rounded-full px-4 py-2 text-base font-medium text-white transition-all duration-200 ring-0 ring-primary-dark hover:ring-2 bg-primary-dark"
               >
                 Start free
               </a>

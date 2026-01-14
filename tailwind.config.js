@@ -45,6 +45,9 @@ export default {
           950: '#281560',
           DEFAULT: '#6e41e2'
         },
+        'primary-dark': {
+          DEFAULT: '#190041',
+        },
         secondary: colors.teal,
         rose: colors.rose
       },
