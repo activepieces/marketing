@@ -152,49 +152,70 @@ useHead({
       <div class="max-w-[1230px] mx-auto px-4 relative z-10">
         <div class="text-center max-w-3xl mx-auto mb-20">
           <div class="flex flex-col items-center gap-5">
-            <component :is="getIcon('network')" class="text-sky-500" />
-            <h2 class="headline-section text-primary-dark">
+            <h2 class="text-5xl font-sentient font-medium text-primary-dark">
               Your AI home. Zero friction.
             </h2>
           </div>
         </div>
 
         <!-- Feature 1: Branding -->
-        <div class="rounded-3xl bg-white/60 backdrop-blur-sm border border-white/40 shadow-xl shadow-gray-200/50 p-8 lg:p-10 hover:shadow-2xl hover:bg-white/70 transition-all duration-300 mb-24">
-          <div class="grid lg:grid-cols-2 gap-16 items-center accent-sky">
-            <div class="order-2 lg:order-1">
+        <div
+          class="rounded-3xl bg-white border border-primary-dark/10 mb-24 overflow-hidden"
+        >
+          <div class="grid grid-cols-[2fr_1fr] items-center">
+            <div class="bg-primary-dark/5 h-full flex flex-col justify-center">
               <PagesProductAdoptionBrandingComparison />
             </div>
-            <div class="order-1 lg:order-2">
-              <h3 class="headline-feature text-primary-dark mb-4">
-                Your brand, your platform
-              </h3>
-              <p class="body-large text-gray-600 mb-8">
-                When employees see your logo and colors, they trust it.
-                White-label Activepieces with your branding so AI adoption feels
-                like an internal initiative—not another external tool to learn.
-              </p>
-              <ol class="numbered-list">
-                <li class="numbered-list-item">
-                  <span class="numbered-list-number">01</span>
-                  <span class="text-gray-700 font-dm"
+            <div class="p-12">
+              <div class="flex flex-col gap-4">
+                <h3
+                  class="text-primary-dark text-3xl font-sentient font-medium"
+                >
+                  Your brand, your platform
+                </h3>
+                <p class="text-sm text-primary-dark/60 mb-8">
+                  When employees see your logo and colors, they trust it.
+                  White-label Activepieces with your branding so AI adoption
+                  feels like an internal initiative—not another external tool to
+                  learn.
+                </p>
+              </div>
+              <ol class="flex flex-col gap-2">
+                <li
+                  class="numbered-list-item rounded-full flex items-center bg-primary-50 p-2"
+                >
+                  <span
+                    class="bg-white rounded-full px-4 py-0.5 text-primary-dark/80 font-semibold"
+                    >1</span
+                  >
+                  <span class="text-primary-dark/80 font-dm"
                     ><strong class="font-semibold">Your logo</strong> in the
                     header builds immediate trust</span
                   >
                 </li>
-                <li class="numbered-list-item">
-                  <span class="numbered-list-number">02</span>
-                  <span class="text-gray-700 font-dm"
+                <li
+                  class="numbered-list-item rounded-full flex items-center bg-primary-50 p-2"
+                >
+                  <span
+                    class="bg-white rounded-full px-4 py-0.5 text-primary-dark/80 font-semibold"
+                    >2</span
+                  >
+                  <span class="text-primary-dark/80 font-dm"
                     ><strong class="font-semibold">Your colors</strong> make it
-                    feel like home</span
-                  >
+                    feel like home
+                  </span>
                 </li>
-                <li class="numbered-list-item">
-                  <span class="numbered-list-number">03</span>
-                  <span class="text-gray-700 font-dm"
-                    ><strong class="font-semibold">Custom domain</strong> keeps
-                    everything under your roof</span
+                <li
+                  class="numbered-list-item rounded-full flex items-center bg-primary-50 p-2"
+                >
+                  <span
+                    class="bg-white rounded-full px-4 py-0.5 text-primary-dark/80 font-semibold"
+                    >3</span
                   >
+                  <span class="text-primary-dark/80 font-dm"
+                    ><strong class="font-semibold">Custom domain</strong> keeps
+                    everything under your roof
+                  </span>
                 </li>
               </ol>
             </div>
@@ -202,7 +223,9 @@ useHead({
         </div>
 
         <!-- Feature 2: Easy Onboarding -->
-        <div class="rounded-3xl bg-white/60 backdrop-blur-sm border border-white/40 shadow-xl shadow-gray-200/50 p-8 lg:p-10 hover:shadow-2xl hover:bg-white/70 transition-all duration-300">
+        <div
+          class="rounded-3xl bg-white/60 backdrop-blur-sm border border-white/40 shadow-xl shadow-gray-200/50 p-8 lg:p-10 hover:shadow-2xl hover:bg-white/70 transition-all duration-300"
+        >
           <div class="grid lg:grid-cols-2 gap-16 items-center accent-sky">
             <div>
               <h3 class="headline-feature text-primary-dark mb-4">
@@ -210,8 +233,8 @@ useHead({
               </h3>
               <p class="body-large text-gray-600 mb-8">
                 No IT tickets. No complex provisioning. Invite your whole team
-                instantly—each person gets their own workspace to experiment, plus
-                shared spaces for team collaboration.
+                instantly—each person gets their own workspace to experiment,
+                plus shared spaces for team collaboration.
               </p>
               <ol class="numbered-list">
                 <li class="numbered-list-item">
@@ -224,8 +247,8 @@ useHead({
                 <li class="numbered-list-item">
                   <span class="numbered-list-number">02</span>
                   <span class="text-gray-700 font-dm"
-                    ><strong class="font-semibold">Personal sandboxes</strong> so
-                    everyone can learn safely</span
+                    ><strong class="font-semibold">Personal sandboxes</strong>
+                    so everyone can learn safely</span
                   >
                 </li>
                 <li class="numbered-list-item">
@@ -262,7 +285,9 @@ useHead({
         </div>
 
         <!-- Feature 1: Templates -->
-        <div class="rounded-3xl bg-white/70 backdrop-blur-sm border border-white/40 shadow-xl shadow-gray-200/50 p-8 lg:p-10 hover:shadow-2xl hover:bg-white/80 transition-all duration-300 mb-24">
+        <div
+          class="rounded-3xl bg-white/70 backdrop-blur-sm border border-white/40 shadow-xl shadow-gray-200/50 p-8 lg:p-10 hover:shadow-2xl hover:bg-white/80 transition-all duration-300 mb-24"
+        >
           <div class="grid lg:grid-cols-2 gap-16 items-center accent-amber">
             <div>
               <h3 class="headline-feature text-primary-dark mb-4">
@@ -285,8 +310,8 @@ useHead({
                 <li class="numbered-list-item">
                   <span class="numbered-list-number">02</span>
                   <span class="text-gray-700 font-dm"
-                    ><strong class="font-semibold">Advanced workflows</strong> for
-                    power users ready to level up</span
+                    ><strong class="font-semibold">Advanced workflows</strong>
+                    for power users ready to level up</span
                   >
                 </li>
                 <li class="numbered-list-item">
@@ -305,7 +330,9 @@ useHead({
         </div>
 
         <!-- Feature 2: Personalized Guidance -->
-        <div class="rounded-3xl bg-white/70 backdrop-blur-sm border border-white/40 shadow-xl shadow-gray-200/50 p-8 lg:p-10 hover:shadow-2xl hover:bg-white/80 transition-all duration-300 mb-24">
+        <div
+          class="rounded-3xl bg-white/70 backdrop-blur-sm border border-white/40 shadow-xl shadow-gray-200/50 p-8 lg:p-10 hover:shadow-2xl hover:bg-white/80 transition-all duration-300 mb-24"
+        >
           <div class="grid lg:grid-cols-2 gap-16 items-center accent-amber">
             <div class="order-2 lg:order-1">
               <PagesProductAdoptionCoachingEmails />
@@ -317,8 +344,8 @@ useHead({
               <p class="body-large text-gray-600 mb-8">
                 Generic training doesn't work. Our platform learns each user's
                 role, skill level, and past activity to deliver personalized
-                automation ideas, targeted resources, and timely nudges that keep
-                momentum going.
+                automation ideas, targeted resources, and timely nudges that
+                keep momentum going.
               </p>
               <ol class="numbered-list">
                 <li class="numbered-list-item">
@@ -348,15 +375,17 @@ useHead({
         </div>
 
         <!-- Feature 3: Expert Support -->
-        <div class="rounded-3xl bg-white/70 backdrop-blur-sm border border-white/40 shadow-xl shadow-gray-200/50 p-8 lg:p-10 hover:shadow-2xl hover:bg-white/80 transition-all duration-300">
+        <div
+          class="rounded-3xl bg-white/70 backdrop-blur-sm border border-white/40 shadow-xl shadow-gray-200/50 p-8 lg:p-10 hover:shadow-2xl hover:bg-white/80 transition-all duration-300"
+        >
           <div class="grid lg:grid-cols-2 gap-16 items-center accent-amber">
             <div>
               <h3 class="headline-feature text-primary-dark mb-4">
                 Your teams get instant support—you don't have to provide it
               </h3>
               <p class="body-large text-gray-600 mb-8">
-                When your users get stuck, they don't need to come to you. Our AI
-                Automation Specialists are available directly inside the
+                When your users get stuck, they don't need to come to you. Our
+                AI Automation Specialists are available directly inside the
                 platform—your teams can book calls, get help, and keep building
                 without burdening your IT or support teams.
               </p>
@@ -408,7 +437,9 @@ useHead({
         </div>
 
         <!-- Feature 1: Leaderboard -->
-        <div class="rounded-3xl bg-white/80 backdrop-blur-sm border border-white/40 shadow-xl shadow-gray-200/50 p-8 lg:p-10 hover:shadow-2xl hover:bg-white/90 transition-all duration-300 mb-24">
+        <div
+          class="rounded-3xl bg-white/80 backdrop-blur-sm border border-white/40 shadow-xl shadow-gray-200/50 p-8 lg:p-10 hover:shadow-2xl hover:bg-white/90 transition-all duration-300 mb-24"
+        >
           <div class="grid lg:grid-cols-2 gap-16 items-center accent-pink">
             <div>
               <h3 class="headline-feature text-primary-dark mb-4">
@@ -417,22 +448,22 @@ useHead({
               <p class="body-large text-gray-600 mb-8">
                 Every organization has hidden champions—people who naturally
                 embrace new technology and inspire others. Our leaderboard
-                surfaces these heroes so you can celebrate them, learn from them,
-                and amplify their impact.
+                surfaces these heroes so you can celebrate them, learn from
+                them, and amplify their impact.
               </p>
               <ol class="numbered-list">
                 <li class="numbered-list-item">
                   <span class="numbered-list-number">01</span>
                   <span class="text-gray-700 font-dm"
-                    ><strong class="font-semibold">Top builders</strong> ranked by
-                    automations created and impact</span
+                    ><strong class="font-semibold">Top builders</strong> ranked
+                    by automations created and impact</span
                   >
                 </li>
                 <li class="numbered-list-item">
                   <span class="numbered-list-number">02</span>
                   <span class="text-gray-700 font-dm"
-                    ><strong class="font-semibold">Department rankings</strong> to
-                    spark healthy competition</span
+                    ><strong class="font-semibold">Department rankings</strong>
+                    to spark healthy competition</span
                   >
                 </li>
                 <li class="numbered-list-item">
@@ -451,7 +482,9 @@ useHead({
         </div>
 
         <!-- Feature 2: Badges -->
-        <div class="rounded-3xl bg-white/80 backdrop-blur-sm border border-white/40 shadow-xl shadow-gray-200/50 p-8 lg:p-10 hover:shadow-2xl hover:bg-white/90 transition-all duration-300">
+        <div
+          class="rounded-3xl bg-white/80 backdrop-blur-sm border border-white/40 shadow-xl shadow-gray-200/50 p-8 lg:p-10 hover:shadow-2xl hover:bg-white/90 transition-all duration-300"
+        >
           <div class="grid lg:grid-cols-2 gap-16 items-center accent-pink">
             <div class="order-2 lg:order-1">
               <PagesProductAdoptionBadgeChallenge />
