@@ -110,9 +110,9 @@ useHead({
         class="absolute inset-0 w-full h-full object-cover z-0"
       />
       <div
-        class="max-w-7xl mx-auto pt-40 pb-10 px-4 relative z-10 flex flex-col gap-12"
+        class="max-w-7xl mx-auto pt-40 pb-10 px-4 relative z-10 flex flex-col gap-16"
       >
-        <div class="flex flex-col gap-4">
+        <div class="flex flex-col gap-8">
           <h1
             class="text-white text-balance text-7xl font-sentient font-medium"
           >
@@ -123,16 +123,16 @@ useHead({
           </p>
         </div>
 
-        <div class="flex flex-wrap gap-4">
+        <div class="flex flex-wrap gap-2">
           <a
             href="https://cloud.activepieces.com/sign-up"
-            class="inline-flex items-center px-7 py-3.5 text-base font-semibold text-gray-900 bg-white rounded-full hover:bg-gray-100 transition-all hover:scale-105 shadow-lg shadow-white/10"
+            class="inline-flex items-center justify-center min-w-60 px-6 py-4 text-xl font-semibold text-gray-900 bg-white rounded-full hover:bg-gray-100 ring-0 ring-white transition-all duration-200 hover:ring-2 shadow-lg shadow-white/10"
           >
             Start free
           </a>
           <a
             href="/sales"
-            class="inline-flex items-center px-7 py-3.5 text-base font-semibold text-white border border-white/20 rounded-full hover:bg-white/10 transition-all hover:border-white/40"
+            class="inline-flex items-center px-8 py-4 text-xl font-semibold text-white border-2 border-white/20 rounded-full hover:bg-white/10 transition-all hover:border-white/40"
           >
             Talk to sales
           </a>
