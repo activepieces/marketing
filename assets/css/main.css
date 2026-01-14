@@ -41,18 +41,19 @@
   }
 
   .headline-section {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(2rem, 5vw, 3rem);
+    font-family: 'Sentient', serif;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
     font-weight: 500;
     line-height: 1.15;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
   }
 
   .headline-feature {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(1.25rem, 3vw, 1.75rem);
-    font-weight: 600;
+    font-family: 'Sentient', serif;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 500;
     line-height: 1.25;
+    letter-spacing: -0.01em;
   }
 
   .body-large {
