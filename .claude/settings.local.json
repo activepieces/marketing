@@ -6,7 +6,12 @@
       "Bash(git checkout:*)",
       "Bash(yarn dev)",
       "Bash(npm run dev:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "mcp__chrome-devtools__list_pages",
+      "mcp__chrome-devtools__navigate_page",
+      "mcp__chrome-devtools__take_screenshot",
+      "mcp__chrome-devtools__press_key",
+      "mcp__chrome-devtools__resize_page"
     ]
   }
 }

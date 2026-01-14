@@ -110,7 +110,7 @@ useHead({
         class="absolute inset-0 w-full h-full object-cover z-0"
       />
       <div
-        class="max-w-7xl mx-auto py-20 px-4 relative z-10 flex flex-col gap-12"
+        class="max-w-7xl mx-auto pt-40 pb-10 px-4 relative z-10 flex flex-col gap-12"
       >
         <div class="flex flex-col gap-4">
           <h1
