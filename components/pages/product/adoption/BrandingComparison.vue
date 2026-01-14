@@ -1,7 +1,7 @@
 <template>
-  <div class="flex items-center justify-center">
+  <div class="w-full h-full flex items-center justify-center pt-8 pl-8">
     <div
-      class="flex items-center gap-6"
+      class="flex items-center gap-6 h-full w-full"
       @mouseenter="handleAreaEnter"
       @mouseleave="handleMouseLeave"
     >
@@ -22,11 +22,11 @@
       </div>
 
       <div
-        class="relative w-full max-w-sm h-[280px] overflow-visible"
+        class="relative w-full h-full min-h-[280px] overflow-visible"
         @mouseenter="handleBoardEnter"
       >
         <div
-          class="h-full w-full bg-white rounded-tl-2xl overflow-hidden shadow-2xl transition-all duration-300"
+          class="h-full w-full bg-white rounded-tl-2xl overflow-hidden transition-all duration-300 flex flex-col"
           :style="{
             background: `linear-gradient(135deg, ${activeColor.light}15 0%, ${activeColor.dark}15 100%)`,
             border: '1px solid rgba(0,0,0,0.1)',
@@ -68,9 +68,7 @@
           </div>
 
           <!-- Content area -->
-          <div
-            class="p-4 relative h-[calc(100%-72px)] flex items-center justify-center"
-          >
+          <div class="p-4 relative h-full flex items-center justify-center">
             <!-- Normal content -->
             <div
               v-show="!showCanvas"
@@ -156,8 +154,14 @@
             >
               <!-- Text label (below canvas, can be covered) -->
               <div
-                class="absolute bottom-[9px] left-[30px] text-[10px] text-gray-400 font-medium pointer-events-none z-0"
+                class="absolute bottom-2 left-2 text-xs text-primary-dark/40 font-medium pointer-events-none z-0"
               >
+                <span
+                  class="text-base origin-center inline-block emoji-scale text-primary-dark"
+                  :class="labelEmoji === '😡' ? 'shake-angry' : ''"
+                  :style="{ '--emoji-scale': emojiScale }"
+                  >{{ labelEmoji }}</span
+                >
                 Your top secret drawing board
               </div>
 
@@ -170,18 +174,6 @@
                 @mouseup="stopDrawing"
                 @mouseleave="stopDrawing"
               ></canvas>
-
-              <!-- Emoji (above canvas, can't be covered) -->
-              <div
-                class="absolute bottom-[5px] left-3 pointer-events-none z-20"
-              >
-                <span
-                  class="text-base origin-center inline-block emoji-scale"
-                  :class="labelEmoji === '😡' ? 'shake-angry' : ''"
-                  :style="{ '--emoji-scale': emojiScale }"
-                  >{{ labelEmoji }}</span
-                >
-              </div>
 
               <!-- Clear button (above canvas) -->
               <button

@@ -166,49 +166,45 @@ useHead({
           class="rounded-3xl bg-white border border-primary-dark/10 mb-24 overflow-hidden"
         >
           <div class="grid grid-cols-[2fr_1fr] items-center">
-            <div class="bg-primary-dark/5 h-full flex flex-col justify-center">
+            <div class="h-full flex flex-col border-r border-primary-dark/10">
               <PagesProductAdoptionBrandingComparison />
             </div>
-            <div class="p-12">
+            <div class="p-12 flex flex-col gap-4">
               <div class="flex flex-col gap-4">
                 <h3
-                  class="text-primary-dark text-3xl font-sentient font-medium text-balance"
+                  class="text-primary-dark text-4xl font-sentient font-medium text-balance"
                 >
                   Your brand, your platform
                 </h3>
-                <p class="text-sm text-primary-dark/60 mb-8">
+                <p class="text-sm text-primary-dark/80 mb-8">
                   When employees see your logo and colors, they trust it.
                   White-label Activepieces with your branding so AI adoption
                   feels like an internal initiative—not another external tool to
                   learn.
                 </p>
               </div>
-              <ol class="flex flex-col gap-2 p-2 rounded-lg">
-                <li
-                  class="flex gap-4 items-center pb-4 text-lg border-b border-primary-dark/5"
-                >
+              <ol class="flex flex-col gap-4 rounded-lg">
+                <li class="flex gap-2 items-center text-sm">
                   <span
-                    class="border border-primary-dark/10 rounded-full px-3 py-0.5 text-primary-dark/80 flex items-center font-mono text-sm font-semibold"
+                    class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono"
                     >1</span
                   >
                   <span class="text-primary-dark/80 font-dm"
                     >Your logo in the header builds immediate trust</span
                   >
                 </li>
-                <li
-                  class="flex gap-4 items-center p-2 text-lg border-b border-primary-dark/5"
-                >
+                <li class="flex gap-2 items-center text-sm">
                   <span
-                    class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono text-sm font-semibold"
+                    class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono"
                     >2</span
                   >
                   <span class="text-primary-dark/80 font-dm"
                     >Your colors make it feel like home</span
                   >
                 </li>
-                <li class="flex gap-4 items-center p-2 text-lg">
+                <li class="flex gap-2 items-center text-sm">
                   <span
-                    class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono text-sm font-semibold"
+                    class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono"
                     >3</span
                   >
                   <span class="text-primary-dark/80 font-dm"
