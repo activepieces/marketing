@@ -178,11 +178,11 @@
               <!-- Clear button (above canvas) -->
               <button
                 @click="clearCanvas"
-                class="absolute top-2 right-2 w-6 h-6 rounded-full bg-white/80 hover:bg-white shadow-sm flex items-center justify-center transition-all hover:scale-110 z-20"
+                class="absolute top-2 right-2 p-2 rounded-full bg-white/80 hover:bg-white shadow-sm flex items-center justify-center transition-all ring-0 ring-white hover:ring-2 z-20"
                 title="Clear"
               >
                 <svg
-                  class="w-3.5 h-3.5 text-gray-500"
+                  class="w-4 h-4 text-primary-dark/60"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
