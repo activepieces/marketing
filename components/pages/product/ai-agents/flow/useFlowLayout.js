@@ -446,6 +446,11 @@ export function useFlowLayout(flowDefinition) {
     if (minX === Infinity) minX = 0
     if (minY === Infinity) minY = 0
     
+    // Get first node (trigger) position for centering
+    // This must be relative to canvas origin (0,0) because CSS transform operates on that origin
+    const firstNodePos = nodePositions.value['trigger'] || Object.values(nodePositions.value)[0]
+    const firstNodeCenterX = firstNodePos ? firstNodePos.x + (firstNodePos.width / 2) : 0
+    
     // Apply SYMMETRIC padding on all sides
     return {
       width: maxX + LAYOUT.CANVAS_PADDING,
@@ -453,7 +458,8 @@ export function useFlowLayout(flowDefinition) {
       contentMinX: minX - LAYOUT.CANVAS_PADDING,
       contentMaxX: maxX + LAYOUT.CANVAS_PADDING,
       contentMinY: minY - LAYOUT.CANVAS_PADDING,
-      contentMaxY: maxY + LAYOUT.CANVAS_PADDING
+      contentMaxY: maxY + LAYOUT.CANVAS_PADDING,
+      firstNodeCenterX
     }
   })
   
