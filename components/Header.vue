@@ -180,7 +180,7 @@ watch(useRoute(), () => {
           <div class="flex items-center flex-grow-0 min-[906px]:order-2 gap-4">
             <a
               href="https://cloud.activepieces.com"
-              class="px-3 py-1.5 max-[555px]:hidden transition-colors duration-200 font-normal hover:!text-[#8142e3]"
+              class="flex items-center px-4 py-1.5 rounded-full max-[555px]:hidden transition-colors duration-200 font-normal hover:!text-[#8142e3]"
               :class="{
                 'text-white group-hover/header:text-gray-900': showTransparent,
                 'text-gray-900': !showTransparent,
@@ -229,7 +229,7 @@ watch(useRoute(), () => {
             id="mobile-menu-2"
           >
             <ul
-              class="flex flex-col min-[906px]:flex-row min-[906px]:items-center max-[905px]:w-full overflow-visible"
+              class="flex flex-col min-[906px]:flex-row min-[906px]:items-center min-[906px]:gap-1 max-[905px]:w-full overflow-visible"
             >
               <!-- Product Mega Menu -->
               <li class="relative group/menu">
@@ -240,7 +240,7 @@ watch(useRoute(), () => {
 
                 <!-- Menu Button -->
                 <button
-                  class="flex items-center gap-1 px-3 py-1.5 bg-slate-200 transition-colors duration-200"
+                  class="flex items-center gap-1 px-4 py-1.5 rounded-full transition-colors duration-200"
                   :class="{
                     'text-white group-hover/header:text-gray-900':
                       showTransparent,
@@ -509,7 +509,7 @@ watch(useRoute(), () => {
 
                 <!-- Menu Button -->
                 <button
-                  class="flex items-center gap-1 bg-slate-200 px-3 py-1.5 transition-colors duration-200"
+                  class="flex items-center gap-1 rounded-full px-4 py-1.5 transition-colors duration-200"
                   :class="{
                     'text-white group-hover/header:text-gray-900':
                       showTransparent,
@@ -703,7 +703,7 @@ watch(useRoute(), () => {
               <li>
                 <a
                   href="/pricing"
-                  class="flex items-center px-3 py-1.5 bg-slate-200 transition-colors duration-200 hover:!text-[#8142e3]"
+                  class="flex items-center px-4 py-1.5 rounded-full transition-colors duration-200 hover:!text-[#8142e3]"
                   :class="{
                     'text-white group-hover/header:text-gray-900':
                       showTransparent,
