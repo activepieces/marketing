@@ -169,20 +169,21 @@ useHead({
             <div class="h-full flex flex-col border-r border-primary-dark/10">
               <PagesProductAdoptionBrandingComparison />
             </div>
-            <div class="p-12 flex flex-col gap-4">
+            <div class="p-12 flex flex-col gap-12">
               <div class="flex flex-col gap-4">
                 <h3
                   class="text-primary-dark text-4xl font-sentient font-medium text-balance"
                 >
                   Your brand, your platform
                 </h3>
-                <p class="text-sm text-primary-dark/80 mb-8">
+                <p class="text-sm text-primary-dark/80">
                   When employees see your logo and colors, they trust it.
                   White-label Activepieces with your branding so AI adoption
                   feels like an internal initiative—not another external tool to
                   learn.
                 </p>
               </div>
+              <div class="h-1 w-full bg-primary-dark/5"></div>
               <ol class="flex flex-col gap-4 rounded-lg">
                 <li class="flex gap-2 items-center text-sm">
                   <span
