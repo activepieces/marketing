@@ -1,6 +1,6 @@
 <template>
-  <div 
-    class="relative w-full max-w-lg mx-auto h-[400px] flex items-center justify-center overflow-hidden rounded-3xl bg-gradient-to-br from-gray-50 via-white to-gray-50 border border-gray-200/60 shadow-sm"
+  <div
+    class="relative w-full h-full flex items-center justify-center overflow-hidden rounded-3xl bg-gradient-to-br from-gray-50 via-white to-gray-50 border border-gray-200/60 shadow-sm"
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
   >

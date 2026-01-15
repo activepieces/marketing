@@ -1,5 +1,5 @@
 <template>
-  <div class="relative w-full max-w-md mx-auto h-[400px] flex items-center justify-center overflow-hidden">
+  <div class="relative w-full h-full flex items-center justify-center overflow-hidden">
     <!-- Creative background composition -->
     <div class="absolute inset-0 pointer-events-none">
       <!-- Main blob - layered for depth -->

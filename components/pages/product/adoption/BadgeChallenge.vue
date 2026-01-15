@@ -1,6 +1,6 @@
 <template>
-  <div 
-    class="relative w-full max-w-md mx-auto h-[420px] rounded-2xl overflow-hidden bg-[#0a0a0a]"
+  <div
+    class="relative w-full h-full rounded-2xl overflow-hidden bg-[#0a0a0a]"
     style="transform: rotate(-0.5deg);"
   >
     <!-- Subtle grid pattern -->

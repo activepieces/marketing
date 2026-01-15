@@ -1,5 +1,5 @@
 <template>
-  <div class="relative w-full max-w-lg mx-auto h-[380px]">
+  <div class="relative w-full h-full">
     <!-- Background shapes (non-interactive) -->
     <div
       v-for="(bg, index) in backgroundShapes"

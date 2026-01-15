@@ -1,8 +1,8 @@
 <template>
-  <div class="relative w-full max-w-md mx-auto">
+  <div class="relative w-full h-full">
     <!-- Main container -->
-    <div 
-      class="relative rounded-3xl overflow-hidden shadow-2xl h-[400px]"
+    <div
+      class="relative rounded-3xl overflow-hidden shadow-2xl h-full"
       style="transform: rotate(-1deg);"
       :class="screenBg"
     >
