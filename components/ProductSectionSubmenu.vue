@@ -358,7 +358,7 @@ const getIcon = (iconName) => {
 </script>
 
 <template>
-  <div v-if="showSubmenu && effectiveSections.length > 0" class="w-full z-30 relative" style="height: 57px;">
+  <div v-if="showSubmenu && effectiveSections.length > 0" class="w-full z-30 relative mt-2" style="height: 46px;">
     <Transition
       enter-active-class="transition-opacity duration-300 ease-out"
       enter-from-class="opacity-0"
@@ -369,7 +369,7 @@ const getIcon = (iconName) => {
     >
       <div class="absolute inset-0 w-full">
         <div class="max-w-7xl mx-auto h-full max-[1280px]:mx-2">
-          <div class="h-full bg-gray-100 rounded-full px-6 shadow-sm flex items-center">
+          <div class="h-full bg-gray-100 rounded-full px-5 shadow-sm flex items-center">
             <nav class="flex items-center justify-center gap-4 overflow-x-auto scrollbar-hide w-full relative">
           <div class="flex items-center gap-8">
             <!-- Current Product Page as Title (expanded from chip) -->
@@ -402,7 +402,7 @@ const getIcon = (iconName) => {
                   :key="section.id"
                   :href="`#${section.id}`"
                   @click.prevent="scrollToSection(section.id)"
-                  class="relative py-4 flex items-center gap-1.5 text-sm font-medium whitespace-nowrap transition-colors duration-200"
+                  class="relative py-2 flex items-center gap-1.5 text-sm font-medium whitespace-nowrap transition-colors duration-200"
                   :class="[
                     activeSection === section.id
                       ? 'text-gray-900'
