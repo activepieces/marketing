@@ -10,7 +10,7 @@
       @mousemove="handleMouseMove"
       @mouseup="handleMouseUp"
       @mouseleave="handleMouseLeave"
-      @wheel.prevent="handleWheel"
+      @wheel="handleWheel"
     >
       <!-- Artistic background - layered abstract composition -->
       <div class="absolute inset-0 pointer-events-none overflow-hidden">
@@ -86,13 +86,12 @@
         ></div>
       </div>
       
-      <!-- Canvas container - NO transition for instant drag response -->
+      <!-- Canvas container -->
       <!-- Hidden until positioned to prevent initial flicker -->
       <div 
         class="absolute will-change-transform"
         :style="{
           transform: `translate(${offsetX}px, ${offsetY}px)`,
-          transition: 'none',
           opacity: canvasReady ? 1 : 0
         }"
       >
@@ -268,8 +267,11 @@ const cursorClass = computed(() => {
 })
 
 const handleMouseDown = (e) => {
-  // Only start drag if clicking on the canvas background, not on nodes
-  if (e.target.closest('.flow-node')) return
+  // Block drag on special nodes and expanded ID cards - allow drag on regular nodes
+  if (e.target.closest('.special-card') || e.target.closest('.expanded-card')) return
+  
+  // Cancel any bounce animation when starting to drag
+  isAnimatingBack.value = false
   
   isDragging.value = true
   dragStartX.value = e.clientX
@@ -307,13 +309,53 @@ const handleMouseLeave = () => {
   hoveredNodeId.value = null
 }
 
-// Wheel/touchpad scrolling
+// Wheel/touchpad scrolling with scroll chaining to page
+// Detects gesture boundaries: block entire gesture at edge, only NEW gesture propagates
+let lastScrollTime = 0
+let wasAtEdge = false
+const GESTURE_GAP = 150 // ms gap to consider a new gesture (user lifted finger)
+
 const handleWheel = (e) => {
-  offsetX.value -= e.deltaX
-  offsetY.value -= e.deltaY
-  
-  offsetX.value = Math.max(minOffsetX.value, Math.min(maxOffsetX.value, offsetX.value))
-  offsetY.value = Math.max(minOffsetY.value, Math.min(maxOffsetY.value, offsetY.value))
+  const now = Date.now()
+  const timeSinceLastScroll = now - lastScrollTime
+  lastScrollTime = now
+
+  const deltaX = e.deltaX
+  const deltaY = e.deltaY
+
+  // Determine primary scroll axis
+  const primaryIsY = Math.abs(deltaY) >= Math.abs(deltaX)
+
+  const canScrollLeft = deltaX < 0 && offsetX.value < maxOffsetX.value
+  const canScrollRight = deltaX > 0 && offsetX.value > minOffsetX.value
+  const canScrollUp = deltaY < 0 && offsetY.value < maxOffsetY.value
+  const canScrollDown = deltaY > 0 && offsetY.value > minOffsetY.value
+
+  const canScrollX = canScrollLeft || canScrollRight
+  const canScrollY = canScrollUp || canScrollDown
+  const canScrollInPrimaryDirection = primaryIsY ? canScrollY : canScrollX
+
+  // Can scroll inside the box - do it
+  if (canScrollInPrimaryDirection) {
+    e.preventDefault()
+    wasAtEdge = false
+
+    const nextX = offsetX.value - deltaX
+    const nextY = offsetY.value - deltaY
+    offsetX.value = Math.max(minOffsetX.value, Math.min(maxOffsetX.value, nextX))
+    offsetY.value = Math.max(minOffsetY.value, Math.min(maxOffsetY.value, nextY))
+    return
+  }
+
+  // At edge: if this is a NEW gesture (gap since last scroll), propagate to page
+  if (wasAtEdge && timeSinceLastScroll > GESTURE_GAP) {
+    wasAtEdge = false
+    return // let page scroll
+  }
+
+  // Same gesture continuing at edge - block it
+  e.preventDefault()
+  wasAtEdge = true
 }
 
 // Reset when flow changes
