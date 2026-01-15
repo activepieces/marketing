@@ -5,6 +5,7 @@ import { useRoute } from "vue-router";
 import { initCollapses } from "flowbite";
 import GithubStarBadge from "~/components/GithubStarBadge.vue";
 import { usePiecesCount } from "~/composables/usePiecesCount";
+import { useProductSubmenu } from "~/composables/useProductSubmenu";
 
 const route = useRoute();
 const isLoaded = ref(false);
@@ -46,6 +47,9 @@ const gitHubBadgeHidden = useStorage("github-badge-hidden");
 
 // Get pieces count dynamically
 const { piecesCount, pending: piecesCountPending } = usePiecesCount();
+
+// Get product submenu sections
+const { sections: productSubmenuSections } = useProductSubmenu();
 
 // Mobile menu state
 let menuExpanded = ref(false);
@@ -716,6 +720,9 @@ watch(useRoute(), () => {
           </div>
         </div>
       </nav>
+
+      <!-- Product Section Submenu - rendered as part of header -->
+      <ProductSectionSubmenu v-if="productSubmenuSections.length > 0" />
     </header>
 
     <!-- Mobile Menu Overlay -->

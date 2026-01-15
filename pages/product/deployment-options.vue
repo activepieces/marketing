@@ -1,4 +1,9 @@
 <script setup>
+import { onMounted, onUnmounted } from 'vue';
+import { useProductSubmenu } from '~/composables/useProductSubmenu';
+
+const { setSections, clearSections } = useProductSubmenu();
+
 const sections = [
   // Sections will be added when content is created
 ];
@@ -9,11 +14,19 @@ useHead({
     { name: 'description', content: 'Deployment options with maximum security' }
   ]
 });
+
+// Set sections for the header submenu
+onMounted(() => {
+  setSections(sections);
+});
+
+onUnmounted(() => {
+  clearSections();
+});
 </script>
 
 <template>
   <div>
-    <ProductSubmenuContainer :sections="sections" />
     <!-- Hero Section -->
     <section class="w-full relative bg-black pt-4 pb-16 lg:pb-20">
       <div

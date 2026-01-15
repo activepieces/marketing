@@ -1,4 +1,9 @@
 <script setup>
+import { onMounted, onUnmounted } from 'vue';
+import { useProductSubmenu } from '~/composables/useProductSubmenu';
+
+const { setSections, clearSections } = useProductSubmenu();
+
 const sections = [
   { id: 'ai-provider-management', name: 'AI Provider Management' },
   { id: 'global-connections', name: 'Global Connections' },
@@ -13,12 +18,19 @@ useHead({
     { name: 'description', content: 'IT controls, permissions, and oversight tools for enterprise AI adoption' }
   ]
 });
+
+// Set sections for the header submenu
+onMounted(() => {
+  setSections(sections);
+});
+
+onUnmounted(() => {
+  clearSections();
+});
 </script>
 
 <template>
   <div>
-    <ProductSubmenuContainer :sections="sections" />
-    
     <!-- Hero Section -->
     <section class="w-full relative bg-black pt-4 pb-16 lg:pb-20">
       <div

@@ -1,5 +1,8 @@
 <script setup>
-import { h } from "vue";
+import { h, onMounted, onUnmounted } from "vue";
+import { useProductSubmenu } from "~/composables/useProductSubmenu";
+
+const { setSections, clearSections } = useProductSubmenu();
 
 const sections = [
   { id: "setup", name: "Roll Out", icon: "network" },
@@ -96,12 +99,19 @@ useHead({
     },
   ],
 });
+
+// Set sections for the header submenu
+onMounted(() => {
+  setSections(sections);
+});
+
+onUnmounted(() => {
+  clearSections();
+});
 </script>
 
 <template>
   <div>
-    <ProductSubmenuContainer :sections="sections" />
-
     <!-- Hero Section -->
     <section class="w-full relative section-hero-dark pt-4 pb-16 lg:pb-24">
       <img
