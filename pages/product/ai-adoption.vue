@@ -148,9 +148,9 @@ useHead({
       id="setup"
       class="py-24 bg-white relative overflow-hidden rounded-t-3xl -mt-8 z-10"
     >
-      <div class="max-w-[1230px] mx-auto px-4 relative z-10">
+      <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col gap-20">
         <div
-          class="text-center w-full mx-auto mb-20 rounded-2xl flex gap-8 items-center"
+          class="text-center w-full mx-auto rounded-2xl flex gap-8 items-center"
         >
           <div class="w-full h-1 bg-primary-dark/10 rounded-full"></div>
           <h2
@@ -161,113 +161,117 @@ useHead({
           <div class="w-full h-1 bg-primary-dark/10 rounded-full"></div>
         </div>
 
-        <!-- Feature 1: Branding -->
-        <div
-          class="rounded-3xl bg-white border border-primary-dark/10 mb-24 overflow-hidden"
-        >
-          <div class="grid grid-cols-[2fr_1fr] items-center">
-            <div class="h-full flex flex-col border-r border-primary-dark/10">
-              <PagesProductAdoptionBrandingComparison />
-            </div>
-            <div class="p-12 flex flex-col gap-12">
-              <div class="flex flex-col gap-4">
-                <h3
-                  class="text-primary-dark text-4xl font-sentient font-medium text-balance"
-                >
-                  Your brand, your platform
-                </h3>
-                <p class="text-sm text-primary-dark/80">
-                  When employees see your logo and colors, they trust it.
-                  White-label Activepieces with your branding so AI adoption
-                  feels like an internal initiative—not another external tool to
-                  learn.
-                </p>
+        <div class="flex flex-col gap-8">
+          <!-- Feature 1: Branding -->
+          <div
+            class="rounded-3xl bg-white border border-primary-dark/10 overflow-hidden"
+          >
+            <div class="grid grid-cols-[2fr_1fr] items-center">
+              <div class="h-full flex flex-col border-r border-primary-dark/10">
+                <PagesProductAdoptionBrandingComparison />
               </div>
-              <div class="h-1 w-full bg-primary-dark/5"></div>
-              <ol class="flex flex-col gap-4 rounded-lg">
-                <li class="flex gap-2 items-center text-sm">
-                  <span
-                    class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono"
-                    >1</span
+              <div class="p-12 flex flex-col gap-12">
+                <div class="flex flex-col gap-4">
+                  <h3
+                    class="text-primary-dark text-4xl font-sentient font-medium text-balance"
                   >
-                  <span class="text-primary-dark/80 font-dm"
-                    >Your logo in the header builds immediate trust</span
-                  >
-                </li>
-                <li class="flex gap-2 items-center text-sm">
-                  <span
-                    class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono"
-                    >2</span
-                  >
-                  <span class="text-primary-dark/80 font-dm"
-                    >Your colors make it feel like home</span
-                  >
-                </li>
-                <li class="flex gap-2 items-center text-sm">
-                  <span
-                    class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono"
-                    >3</span
-                  >
-                  <span class="text-primary-dark/80 font-dm"
-                    >Custom domain keeps everything under your roof</span
-                  >
-                </li>
-              </ol>
+                    Your brand, your platform
+                  </h3>
+                  <p class="text-sm text-primary-dark/80">
+                    When employees see your logo and colors, they trust it.
+                    White-label Activepieces with your branding so AI adoption
+                    feels like an internal initiative—not another external tool
+                    to learn.
+                  </p>
+                </div>
+                <div class="h-1 w-full bg-primary-dark/5"></div>
+                <ol class="flex flex-col gap-4 rounded-lg">
+                  <li class="flex gap-2 items-center text-sm">
+                    <span
+                      class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono"
+                      >1</span
+                    >
+                    <span class="text-primary-dark/80 font-dm"
+                      >Your logo in the header builds immediate trust</span
+                    >
+                  </li>
+                  <li class="flex gap-2 items-center text-sm">
+                    <span
+                      class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono"
+                      >2</span
+                    >
+                    <span class="text-primary-dark/80 font-dm"
+                      >Your colors make it feel like home</span
+                    >
+                  </li>
+                  <li class="flex gap-2 items-center text-sm">
+                    <span
+                      class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono"
+                      >3</span
+                    >
+                    <span class="text-primary-dark/80 font-dm"
+                      >Custom domain keeps everything under your roof</span
+                    >
+                  </li>
+                </ol>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Feature 2: Easy Onboarding -->
-        <div
-          class="rounded-3xl bg-white border border-primary-dark/10 overflow-hidden"
-        >
-          <div class="grid grid-cols-[1fr_2fr] items-center">
-            <div class="p-12 flex flex-col gap-12 border-r border-primary-dark/10">
-              <div class="flex flex-col gap-4">
-                <h3
-                  class="text-primary-dark text-4xl font-sentient font-medium text-balance"
-                >
-                  Get everyone in with one click
-                </h3>
-                <p class="text-sm text-primary-dark/80">
-                  No IT tickets. No complex provisioning. Invite your whole team
-                  instantly—each person gets their own workspace to experiment,
-                  plus shared spaces for team collaboration.
-                </p>
+          <!-- Feature 2: Easy Onboarding -->
+          <div
+            class="rounded-3xl bg-white border border-primary-dark/10 overflow-hidden"
+          >
+            <div class="grid grid-cols-[1fr_2fr] items-center">
+              <div
+                class="p-12 flex flex-col gap-12 border-r border-primary-dark/10"
+              >
+                <div class="flex flex-col gap-4">
+                  <h3
+                    class="text-primary-dark text-4xl font-sentient font-medium text-balance"
+                  >
+                    Get everyone in with one click
+                  </h3>
+                  <p class="text-sm text-primary-dark/80">
+                    No IT tickets. No complex provisioning. Invite your whole
+                    team instantly—each person gets their own workspace to
+                    experiment, plus shared spaces for team collaboration.
+                  </p>
+                </div>
+                <div class="h-1 w-full bg-primary-dark/5"></div>
+                <ol class="flex flex-col gap-4 rounded-lg">
+                  <li class="flex gap-2 items-center text-sm">
+                    <span
+                      class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono"
+                      >1</span
+                    >
+                    <span class="text-primary-dark/80 font-dm"
+                      >Bulk invites via CSV or SSO integration</span
+                    >
+                  </li>
+                  <li class="flex gap-2 items-center text-sm">
+                    <span
+                      class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono"
+                      >2</span
+                    >
+                    <span class="text-primary-dark/80 font-dm"
+                      >Personal sandboxes so everyone can learn safely</span
+                    >
+                  </li>
+                  <li class="flex gap-2 items-center text-sm">
+                    <span
+                      class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono"
+                      >3</span
+                    >
+                    <span class="text-primary-dark/80 font-dm"
+                      >Team projects for cross-functional collaboration</span
+                    >
+                  </li>
+                </ol>
               </div>
-              <div class="h-1 w-full bg-primary-dark/5"></div>
-              <ol class="flex flex-col gap-4 rounded-lg">
-                <li class="flex gap-2 items-center text-sm">
-                  <span
-                    class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono"
-                    >1</span
-                  >
-                  <span class="text-primary-dark/80 font-dm"
-                    >Bulk invites via CSV or SSO integration</span
-                  >
-                </li>
-                <li class="flex gap-2 items-center text-sm">
-                  <span
-                    class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono"
-                    >2</span
-                  >
-                  <span class="text-primary-dark/80 font-dm"
-                    >Personal sandboxes so everyone can learn safely</span
-                  >
-                </li>
-                <li class="flex gap-2 items-center text-sm">
-                  <span
-                    class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono"
-                    >3</span
-                  >
-                  <span class="text-primary-dark/80 font-dm"
-                    >Team projects for cross-functional collaboration</span
-                  >
-                </li>
-              </ol>
-            </div>
-            <div class="h-full flex flex-col">
-              <PagesProductAdoptionOnboardingFlow />
+              <div class="h-full flex flex-col">
+                <PagesProductAdoptionOnboardingFlow />
+              </div>
             </div>
           </div>
         </div>
@@ -277,14 +281,12 @@ useHead({
     <!-- Section 2: Onboard & Coach -->
     <section
       id="enable-building"
-      class="py-24 section-cool border-t border-gray-200 relative overflow-hidden"
+      class="py-24 relative overflow-hidden rounded-t-3xl bg-primary-900/5"
     >
-      <div class="absolute inset-0 gradient-mesh z-0"></div>
       <div class="max-w-[1230px] mx-auto px-4 relative z-10">
         <div class="text-center max-w-3xl mx-auto mb-20">
           <div class="flex flex-col items-center gap-5">
-            <component :is="getIcon('users')" class="text-amber-500" />
-            <h2 class="headline-section text-primary-dark">
+            <h2 class="headline-section text-primary-dark text-balance">
               Clear path forward. Built-in guidance.
             </h2>
           </div>
@@ -295,7 +297,9 @@ useHead({
           class="rounded-3xl bg-white border border-primary-dark/10 mb-24 overflow-hidden"
         >
           <div class="grid grid-cols-[1fr_2fr] items-center">
-            <div class="p-12 flex flex-col gap-12 border-r border-primary-dark/10">
+            <div
+              class="p-12 flex flex-col gap-12 border-r border-primary-dark/10"
+            >
               <div class="flex flex-col gap-4">
                 <h3
                   class="text-primary-dark text-4xl font-sentient font-medium text-balance"
@@ -303,10 +307,10 @@ useHead({
                   Every team knows exactly what to build
                 </h3>
                 <p class="text-sm text-primary-dark/80">
-                  Stop waiting for teams to "figure out" AI. Our curated template
-                  library gives HR, Finance, Marketing, Sales, and Operations
-                  concrete automations to build—from simple everyday tasks to
-                  advanced multi-step workflows.
+                  Stop waiting for teams to "figure out" AI. Our curated
+                  template library gives HR, Finance, Marketing, Sales, and
+                  Operations concrete automations to build—from simple everyday
+                  tasks to advanced multi-step workflows.
                 </p>
               </div>
               <div class="h-1 w-full bg-primary-dark/5"></div>
@@ -407,7 +411,9 @@ useHead({
           class="rounded-3xl bg-white border border-primary-dark/10 overflow-hidden"
         >
           <div class="grid grid-cols-[1fr_2fr] items-center">
-            <div class="p-12 flex flex-col gap-12 border-r border-primary-dark/10">
+            <div
+              class="p-12 flex flex-col gap-12 border-r border-primary-dark/10"
+            >
               <div class="flex flex-col gap-4">
                 <h3
                   class="text-primary-dark text-4xl font-sentient font-medium text-balance"
@@ -417,8 +423,8 @@ useHead({
                 <p class="text-sm text-primary-dark/80">
                   When your users get stuck, they don't need to come to you. Our
                   AI Automation Specialists are available directly inside the
-                  platform—your teams can book calls, get help, and keep building
-                  without burdening your IT or support teams.
+                  platform—your teams can book calls, get help, and keep
+                  building without burdening your IT or support teams.
                 </p>
               </div>
               <div class="h-1 w-full bg-primary-dark/5"></div>
@@ -429,7 +435,8 @@ useHead({
                     >1</span
                   >
                   <span class="text-primary-dark/80 font-dm"
-                    >In-app support—no tickets, no escalations to your team</span
+                    >In-app support—no tickets, no escalations to your
+                    team</span
                   >
                 </li>
                 <li class="flex gap-2 items-center text-sm">
@@ -447,7 +454,8 @@ useHead({
                     >3</span
                   >
                   <span class="text-primary-dark/80 font-dm"
-                    >Zero overhead—we handle all user support, you focus on adoption</span
+                    >Zero overhead—we handle all user support, you focus on
+                    adoption</span
                   >
                 </li>
               </ol>
@@ -480,7 +488,9 @@ useHead({
           class="rounded-3xl bg-white border border-primary-dark/10 mb-24 overflow-hidden"
         >
           <div class="grid grid-cols-[1fr_2fr] items-center">
-            <div class="p-12 flex flex-col gap-12 border-r border-primary-dark/10">
+            <div
+              class="p-12 flex flex-col gap-12 border-r border-primary-dark/10"
+            >
               <div class="flex flex-col gap-4">
                 <h3
                   class="text-primary-dark text-4xl font-sentient font-medium text-balance"
@@ -559,7 +569,8 @@ useHead({
                     >1</span
                   >
                   <span class="text-primary-dark/80 font-dm"
-                    >Personal milestones—first automation, 10 workflows, 100 hours saved</span
+                    >Personal milestones—first automation, 10 workflows, 100
+                    hours saved</span
                   >
                 </li>
                 <li class="flex gap-2 items-center text-sm">
@@ -568,7 +579,8 @@ useHead({
                     >2</span
                   >
                   <span class="text-primary-dark/80 font-dm"
-                    >Team achievements—helping teammates, sharing automations</span
+                    >Team achievements—helping teammates, sharing
+                    automations</span
                   >
                 </li>
                 <li class="flex gap-2 items-center text-sm">
