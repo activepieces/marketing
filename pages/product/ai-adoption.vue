@@ -146,7 +146,7 @@ useHead({
     <!-- Section 1: Roll Out -->
     <section
       id="setup"
-      class="py-24 bg-[#0A1C32] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
+      class="py-24 bg-[#031225] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
     >
       <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col gap-20">
         <div
@@ -217,51 +217,47 @@ useHead({
           </div>
 
           <!-- Feature 2: Easy Onboarding -->
-          <div
-            class="rounded-3xl bg-white border border-primary-dark/10 overflow-hidden"
-          >
+          <div class="rounded-3xl overflow-hidden border-4 border-white/10">
             <div class="grid grid-cols-[1fr_2fr] items-center">
-              <div
-                class="p-12 flex flex-col gap-12 border-r border-primary-dark/10"
-              >
+              <div class="p-12 flex flex-col gap-12 border-r-4 border-white/10">
                 <div class="flex flex-col gap-4">
                   <h3
-                    class="text-primary-dark text-4xl font-sentient font-medium text-balance"
+                    class="text-white text-4xl font-sentient font-medium text-balance"
                   >
                     Get everyone in with one click
                   </h3>
-                  <p class="text-sm text-primary-dark/80">
+                  <p class="text-sm text-white/80">
                     No IT tickets. No complex provisioning. Invite your whole
                     team instantly—each person gets their own workspace to
                     experiment, plus shared spaces for team collaboration.
                   </p>
                 </div>
-                <div class="h-1 w-full bg-primary-dark/5"></div>
+                <div class="h-1 w-full bg-white/5"></div>
                 <ol class="flex flex-col gap-4 rounded-lg">
                   <li class="flex gap-2 items-center text-sm">
                     <span
-                      class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono"
+                      class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
                       >1</span
                     >
-                    <span class="text-primary-dark/80 font-dm"
+                    <span class="text-white/80 font-dm"
                       >Bulk invites via CSV or SSO integration</span
                     >
                   </li>
                   <li class="flex gap-2 items-center text-sm">
                     <span
-                      class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono"
+                      class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
                       >2</span
                     >
-                    <span class="text-primary-dark/80 font-dm"
+                    <span class="text-white/80 font-dm"
                       >Personal sandboxes so everyone can learn safely</span
                     >
                   </li>
                   <li class="flex gap-2 items-center text-sm">
                     <span
-                      class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono"
+                      class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
                       >3</span
                     >
-                    <span class="text-primary-dark/80 font-dm"
+                    <span class="text-white/80 font-dm"
                       >Team projects for cross-functional collaboration</span
                     >
                   </li>
@@ -279,64 +275,64 @@ useHead({
     <!-- Section 2: Onboard & Coach -->
     <section
       id="enable-building"
-      class="py-24 relative overflow-hidden rounded-t-3xl bg-primary-900/5"
+      class="py-24 bg-[#021D38] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
     >
-      <div class="max-w-[1230px] mx-auto px-4 relative z-10">
-        <div class="text-center max-w-3xl mx-auto mb-20">
-          <div class="flex flex-col items-center gap-5">
-            <h2 class="headline-section text-primary-dark text-balance">
-              Clear path forward. Built-in guidance.
-            </h2>
-          </div>
+      <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col gap-20">
+        <div
+          class="text-center w-full mx-auto rounded-2xl flex gap-8 items-center"
+        >
+          <div class="w-full h-1 bg-white/10 rounded-full"></div>
+          <h2
+            class="text-6xl font-sentient font-medium text-white text-balance shrink-0"
+          >
+            Clear path forward. Built-in guidance.
+          </h2>
+          <div class="w-full h-1 bg-white/10 rounded-full"></div>
         </div>
 
         <!-- Feature 1: Templates -->
-        <div
-          class="rounded-3xl bg-white border border-primary-dark/10 mb-24 overflow-hidden"
-        >
+        <div class="rounded-3xl overflow-hidden border-4 border-white/10">
           <div class="grid grid-cols-[1fr_2fr] items-center">
-            <div
-              class="p-12 flex flex-col gap-12 border-r border-primary-dark/10"
-            >
+            <div class="p-12 flex flex-col gap-12 border-r-4 border-white/10">
               <div class="flex flex-col gap-4">
                 <h3
-                  class="text-primary-dark text-4xl font-sentient font-medium text-balance"
+                  class="text-white text-4xl font-sentient font-medium text-balance"
                 >
                   Every team knows exactly what to build
                 </h3>
-                <p class="text-sm text-primary-dark/80">
+                <p class="text-sm text-white/80">
                   Stop waiting for teams to "figure out" AI. Our curated
                   template library gives HR, Finance, Marketing, Sales, and
                   Operations concrete automations to build—from simple everyday
                   tasks to advanced multi-step workflows.
                 </p>
               </div>
-              <div class="h-1 w-full bg-primary-dark/5"></div>
+              <div class="h-1 w-full bg-white/5"></div>
               <ol class="flex flex-col gap-4 rounded-lg">
                 <li class="flex gap-2 items-center text-sm">
                   <span
-                    class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono"
+                    class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
                     >1</span
                   >
-                  <span class="text-primary-dark/80 font-dm"
+                  <span class="text-white/80 font-dm"
                     >Everyday automations anyone can build in minutes</span
                   >
                 </li>
                 <li class="flex gap-2 items-center text-sm">
                   <span
-                    class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono"
+                    class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
                     >2</span
                   >
-                  <span class="text-primary-dark/80 font-dm"
+                  <span class="text-white/80 font-dm"
                     >Advanced workflows for power users ready to level up</span
                   >
                 </li>
                 <li class="flex gap-2 items-center text-sm">
                   <span
-                    class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono"
+                    class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
                     >3</span
                   >
-                  <span class="text-primary-dark/80 font-dm"
+                  <span class="text-white/80 font-dm"
                     >Department-specific ideas that actually make sense</span
                   >
                 </li>
@@ -349,53 +345,51 @@ useHead({
         </div>
 
         <!-- Feature 2: Personalized Guidance -->
-        <div
-          class="rounded-3xl bg-white border border-primary-dark/10 mb-24 overflow-hidden"
-        >
+        <div class="rounded-3xl overflow-hidden border-4 border-white/10">
           <div class="grid grid-cols-[2fr_1fr] items-center">
-            <div class="h-full flex flex-col border-r border-primary-dark/10">
+            <div class="h-full flex flex-col border-r-4 border-white/10">
               <PagesProductAdoptionCoachingEmails />
             </div>
             <div class="p-12 flex flex-col gap-12">
               <div class="flex flex-col gap-4">
                 <h3
-                  class="text-primary-dark text-4xl font-sentient font-medium text-balance"
+                  class="text-white text-4xl font-sentient font-medium text-balance"
                 >
                   Every team member gets their own AI coach
                 </h3>
-                <p class="text-sm text-primary-dark/80">
+                <p class="text-sm text-white/80">
                   Generic training doesn't work. Our platform learns each user's
                   role, skill level, and past activity to deliver personalized
                   automation ideas, targeted resources, and timely nudges that
                   keep momentum going.
                 </p>
               </div>
-              <div class="h-1 w-full bg-primary-dark/5"></div>
+              <div class="h-1 w-full bg-white/5"></div>
               <ol class="flex flex-col gap-4 rounded-lg">
                 <li class="flex gap-2 items-center text-sm">
                   <span
-                    class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono"
+                    class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
                     >1</span
                   >
-                  <span class="text-primary-dark/80 font-dm"
+                  <span class="text-white/80 font-dm"
                     >Smart suggestions based on role and department</span
                   >
                 </li>
                 <li class="flex gap-2 items-center text-sm">
                   <span
-                    class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono"
+                    class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
                     >2</span
                   >
-                  <span class="text-primary-dark/80 font-dm"
+                  <span class="text-white/80 font-dm"
                     >Learning paths that adapt to current skill level</span
                   >
                 </li>
                 <li class="flex gap-2 items-center text-sm">
                   <span
-                    class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono"
+                    class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
                     >3</span
                   >
-                  <span class="text-primary-dark/80 font-dm"
+                  <span class="text-white/80 font-dm"
                     >Gentle nudges to re-engage inactive users</span
                   >
                 </li>
@@ -405,53 +399,49 @@ useHead({
         </div>
 
         <!-- Feature 3: Expert Support -->
-        <div
-          class="rounded-3xl bg-white border border-primary-dark/10 overflow-hidden"
-        >
+        <div class="rounded-3xl overflow-hidden border-4 border-white/10">
           <div class="grid grid-cols-[1fr_2fr] items-center">
-            <div
-              class="p-12 flex flex-col gap-12 border-r border-primary-dark/10"
-            >
+            <div class="p-12 flex flex-col gap-12 border-r-4 border-white/10">
               <div class="flex flex-col gap-4">
                 <h3
-                  class="text-primary-dark text-4xl font-sentient font-medium text-balance"
+                  class="text-white text-4xl font-sentient font-medium text-balance"
                 >
                   Your teams get instant support—you don't have to provide it
                 </h3>
-                <p class="text-sm text-primary-dark/80">
+                <p class="text-sm text-white/80">
                   When your users get stuck, they don't need to come to you. Our
                   AI Automation Specialists are available directly inside the
                   platform—your teams can book calls, get help, and keep
                   building without burdening your IT or support teams.
                 </p>
               </div>
-              <div class="h-1 w-full bg-primary-dark/5"></div>
+              <div class="h-1 w-full bg-white/5"></div>
               <ol class="flex flex-col gap-4 rounded-lg">
                 <li class="flex gap-2 items-center text-sm">
                   <span
-                    class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono"
+                    class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
                     >1</span
                   >
-                  <span class="text-primary-dark/80 font-dm"
+                  <span class="text-white/80 font-dm"
                     >In-app support—no tickets, no escalations to your
                     team</span
                   >
                 </li>
                 <li class="flex gap-2 items-center text-sm">
                   <span
-                    class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono"
+                    class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
                     >2</span
                   >
-                  <span class="text-primary-dark/80 font-dm"
+                  <span class="text-white/80 font-dm"
                     >Instant access—book calls directly from the platform</span
                   >
                 </li>
                 <li class="flex gap-2 items-center text-sm">
                   <span
-                    class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono"
+                    class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
                     >3</span
                   >
-                  <span class="text-primary-dark/80 font-dm"
+                  <span class="text-white/80 font-dm"
                     >Zero overhead—we handle all user support, you focus on
                     adoption</span
                   >
@@ -469,65 +459,64 @@ useHead({
     <!-- Section 3: Grow Champions -->
     <section
       id="drive-engagement"
-      class="py-24 section-clean border-t border-gray-100 relative overflow-hidden"
+      class="py-24 bg-[#152D5D] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
     >
-      <div class="max-w-[1230px] mx-auto px-4 relative z-10">
-        <div class="text-center max-w-3xl mx-auto mb-20">
-          <div class="flex flex-col items-center gap-5">
-            <component :is="getIcon('star')" class="text-pink-500" />
-            <h2 class="headline-section text-primary-dark">
-              Visible progress. Real motivation.
-            </h2>
-          </div>
+      <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col gap-20">
+        <div
+          class="text-center w-full mx-auto rounded-2xl flex gap-8 items-center"
+        >
+          <div class="w-full h-1 bg-white/10 rounded-full"></div>
+          <h2
+            class="text-6xl font-sentient font-medium text-white text-balance shrink-0"
+          >
+            Visible progress. Real motivation.
+          </h2>
+          <div class="w-full h-1 bg-white/10 rounded-full"></div>
         </div>
 
         <!-- Feature 1: Leaderboard -->
-        <div
-          class="rounded-3xl bg-white border border-primary-dark/10 mb-24 overflow-hidden"
-        >
+        <div class="rounded-3xl overflow-hidden border-4 border-white/10">
           <div class="grid grid-cols-[1fr_2fr] items-center">
-            <div
-              class="p-12 flex flex-col gap-12 border-r border-primary-dark/10"
-            >
+            <div class="p-12 flex flex-col gap-12 border-r-4 border-white/10">
               <div class="flex flex-col gap-4">
                 <h3
-                  class="text-primary-dark text-4xl font-sentient font-medium text-balance"
+                  class="text-white text-4xl font-sentient font-medium text-balance"
                 >
                   Discover the AI heroes hiding in your organization
                 </h3>
-                <p class="text-sm text-primary-dark/80">
+                <p class="text-sm text-white/80">
                   Every organization has hidden champions—people who naturally
                   embrace new technology and inspire others. Our leaderboard
                   surfaces these heroes so you can celebrate them, learn from
                   them, and amplify their impact.
                 </p>
               </div>
-              <div class="h-1 w-full bg-primary-dark/5"></div>
+              <div class="h-1 w-full bg-white/5"></div>
               <ol class="flex flex-col gap-4 rounded-lg">
                 <li class="flex gap-2 items-center text-sm">
                   <span
-                    class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono"
+                    class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
                     >1</span
                   >
-                  <span class="text-primary-dark/80 font-dm"
+                  <span class="text-white/80 font-dm"
                     >Top builders ranked by automations created and impact</span
                   >
                 </li>
                 <li class="flex gap-2 items-center text-sm">
                   <span
-                    class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono"
+                    class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
                     >2</span
                   >
-                  <span class="text-primary-dark/80 font-dm"
+                  <span class="text-white/80 font-dm"
                     >Department rankings to spark healthy competition</span
                   >
                 </li>
                 <li class="flex gap-2 items-center text-sm">
                   <span
-                    class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono"
+                    class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
                     >3</span
                   >
-                  <span class="text-primary-dark/80 font-dm"
+                  <span class="text-white/80 font-dm"
                     >Rising stars—spot newcomers making rapid progress</span
                   >
                 </li>
@@ -540,53 +529,51 @@ useHead({
         </div>
 
         <!-- Feature 2: Badges -->
-        <div
-          class="rounded-3xl bg-white border border-primary-dark/10 overflow-hidden"
-        >
+        <div class="rounded-3xl overflow-hidden border-4 border-white/10">
           <div class="grid grid-cols-[2fr_1fr] items-center">
-            <div class="h-full flex flex-col border-r border-primary-dark/10">
+            <div class="h-full flex flex-col border-r-4 border-white/10">
               <PagesProductAdoptionBadgeChallenge />
             </div>
             <div class="p-12 flex flex-col gap-12">
               <div class="flex flex-col gap-4">
                 <h3
-                  class="text-primary-dark text-4xl font-sentient font-medium text-balance"
+                  class="text-white text-4xl font-sentient font-medium text-balance"
                 >
                   Make progress feel rewarding
                 </h3>
-                <p class="text-sm text-primary-dark/80">
+                <p class="text-sm text-white/80">
                   Our badge system turns the journey into an achievement,
                   celebrating milestones and motivating continued growth.
                 </p>
               </div>
-              <div class="h-1 w-full bg-primary-dark/5"></div>
+              <div class="h-1 w-full bg-white/5"></div>
               <ol class="flex flex-col gap-4 rounded-lg">
                 <li class="flex gap-2 items-center text-sm">
                   <span
-                    class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono"
+                    class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
                     >1</span
                   >
-                  <span class="text-primary-dark/80 font-dm"
+                  <span class="text-white/80 font-dm"
                     >Personal milestones—first automation, 10 workflows, 100
                     hours saved</span
                   >
                 </li>
                 <li class="flex gap-2 items-center text-sm">
                   <span
-                    class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono"
+                    class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
                     >2</span
                   >
-                  <span class="text-primary-dark/80 font-dm"
+                  <span class="text-white/80 font-dm"
                     >Team achievements—helping teammates, sharing
                     automations</span
                   >
                 </li>
                 <li class="flex gap-2 items-center text-sm">
                   <span
-                    class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono"
+                    class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
                     >3</span
                   >
-                  <span class="text-primary-dark/80 font-dm"
+                  <span class="text-white/80 font-dm"
                     >Skill progression—level up from Beginner to Expert</span
                   >
                 </li>
@@ -600,25 +587,30 @@ useHead({
     <!-- Section 4: Measure Impact -->
     <section
       id="track-support"
-      class="py-24 section-warm border-t border-gray-200 relative overflow-hidden"
+      class="py-24 bg-[#35387F] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
     >
-      <div class="max-w-[1400px] mx-auto px-4 relative z-10">
+      <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col gap-20">
         <!-- Header -->
-        <div class="text-center max-w-3xl mx-auto mb-16">
-          <div class="flex flex-col items-center gap-5">
-            <component :is="getIcon('analytics')" class="text-emerald-500" />
-            <h2 class="headline-section text-primary-dark">
+        <div class="flex flex-col gap-8">
+          <div
+            class="text-center w-full mx-auto rounded-2xl flex gap-8 items-center"
+          >
+            <div class="w-full h-1 bg-white/10 rounded-full"></div>
+            <h2
+              class="text-6xl font-sentient font-medium text-white text-balance shrink-0"
+            >
               Full visibility. Expert backup.
             </h2>
+            <div class="w-full h-1 bg-white/10 rounded-full"></div>
           </div>
-          <p class="body-large text-gray-600 mt-6 max-w-2xl mx-auto">
+          <p class="text-xl text-white/80 text-center max-w-2xl mx-auto">
             Finally, leadership can see AI adoption happening in real-time. No
             more guessing if your investment is paying off.
           </p>
         </div>
 
         <!-- Full-width Interactive Dashboard -->
-        <div class="rounded-2xl overflow-hidden shadow-xl shadow-gray-200/50">
+        <div class="rounded-3xl overflow-hidden border-4 border-white/10">
           <PagesProductAdoptionAnalyticsDashboard />
         </div>
       </div>
