@@ -146,70 +146,68 @@ useHead({
     <!-- Section 1: Roll Out -->
     <section
       id="setup"
-      class="py-24 bg-white relative overflow-hidden rounded-t-3xl -mt-8 z-10"
+      class="py-24 bg-[#0A1C32] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
     >
       <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col gap-20">
         <div
           class="text-center w-full mx-auto rounded-2xl flex gap-8 items-center"
         >
-          <div class="w-full h-1 bg-primary-dark/10 rounded-full"></div>
+          <div class="w-full h-1 bg-white/10 rounded-full"></div>
           <h2
-            class="text-6xl font-sentient font-medium text-primary-dark text-balance shrink-0"
+            class="text-6xl font-sentient font-medium text-white text-balance shrink-0"
           >
             Your AI home. Zero friction.
           </h2>
-          <div class="w-full h-1 bg-primary-dark/10 rounded-full"></div>
+          <div class="w-full h-1 bg-white/10 rounded-full"></div>
         </div>
 
         <div class="flex flex-col gap-8">
           <!-- Feature 1: Branding -->
-          <div
-            class="rounded-3xl bg-white border border-primary-dark/10 overflow-hidden"
-          >
+          <div class="rounded-3xl overflow-hidden border-4 border-white/10">
             <div class="grid grid-cols-[2fr_1fr] items-center">
-              <div class="h-full flex flex-col border-r border-primary-dark/10">
+              <div class="h-full flex flex-col border-r-4 border-white/10">
                 <PagesProductAdoptionBrandingComparison />
               </div>
               <div class="p-12 flex flex-col gap-12">
                 <div class="flex flex-col gap-4">
                   <h3
-                    class="text-primary-dark text-4xl font-sentient font-medium text-balance"
+                    class="text-white text-4xl font-sentient font-medium text-balance"
                   >
                     Your brand, your platform
                   </h3>
-                  <p class="text-sm text-primary-dark/80">
+                  <p class="text-sm text-white/80">
                     When employees see your logo and colors, they trust it.
                     White-label Activepieces with your branding so AI adoption
                     feels like an internal initiative—not another external tool
                     to learn.
                   </p>
                 </div>
-                <div class="h-1 w-full bg-primary-dark/5"></div>
+                <div class="h-1 w-full bg-white/5"></div>
                 <ol class="flex flex-col gap-4 rounded-lg">
                   <li class="flex gap-2 items-center text-sm">
                     <span
-                      class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono"
+                      class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
                       >1</span
                     >
-                    <span class="text-primary-dark/80 font-dm"
+                    <span class="text-white/80 font-dm"
                       >Your logo in the header builds immediate trust</span
                     >
                   </li>
                   <li class="flex gap-2 items-center text-sm">
                     <span
-                      class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono"
+                      class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
                       >2</span
                     >
-                    <span class="text-primary-dark/80 font-dm"
+                    <span class="text-white/80 font-dm"
                       >Your colors make it feel like home</span
                     >
                   </li>
                   <li class="flex gap-2 items-center text-sm">
                     <span
-                      class="border border-primary-dark/10 rounded-full px-2 py-0.5 text-primary-dark/80 flex items-center font-mono"
+                      class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
                       >3</span
                     >
-                    <span class="text-primary-dark/80 font-dm"
+                    <span class="text-white/80 font-dm"
                       >Custom domain keeps everything under your roof</span
                     >
                   </li>
