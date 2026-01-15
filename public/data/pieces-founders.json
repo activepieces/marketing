@@ -28,7 +28,7 @@
     "founder": {
       "name": "Jason Vandeboom",
       "title": "Founder & CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/D5603AQG93irXChPNHQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1731443569163?e=2147483647&v=beta&t=tZbdOMPRmk1Vhk6qhx_Mnfb8vZP3XEWh92KRIoihK5E",
+      "photo": "/founders/jason-vandeboom.jpg",
       "linkedin": "http://www.linkedin.com/in/jvandeboom"
     }
   },
@@ -45,7 +45,7 @@
     "founder": {
       "name": "Gavin Zuchlinski",
       "title": "Founder",
-      "photo": "https://media.licdn.com/dms/image/v2/C4E03AQEsae1of7JlVA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1516953007982?e=2147483647&v=beta&t=En_0_7LCwCkBTTcF92GiMmg_8P1KZBZBtnmM0NntqS0",
+      "photo": "/founders/gavin-zuchlinski.jpg",
       "linkedin": "http://www.linkedin.com/in/gavin-zuchlinski-30b06885"
     }
   },
@@ -98,7 +98,7 @@
     "founder": {
       "name": "Howie Liu",
       "title": "Cofounder, CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/C5603AQGPMB0LygE5oA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1516287842053?e=2147483647&v=beta&t=kC16ml_79m8tyfL9k--zKxnUARFqxTtKRm-5lMcY-Fw",
+      "photo": "/founders/howie-liu.jpg",
       "linkedin": "http://www.linkedin.com/in/howieliu"
     }
   },
@@ -132,7 +132,7 @@
     "founder": {
       "name": "Andy Jassy",
       "title": "President and CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/C5603AQGSl0b1ZCh2sQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1631724420241?e=2147483647&v=beta&t=mQqtYNtJ6SQC4z58ko0HZ36zJPj_RKWWpY6GdpC5qNs",
+      "photo": "/founders/andy-jassy.jpg",
       "linkedin": "http://www.linkedin.com/in/andy-jassy-8b1615"
     }
   },
@@ -155,7 +155,7 @@
     "founder": {
       "name": "Andy Jassy",
       "title": "President and CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/C5603AQGSl0b1ZCh2sQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1631724420241?e=2147483647&v=beta&t=mQqtYNtJ6SQC4z58ko0HZ36zJPj_RKWWpY6GdpC5qNs",
+      "photo": "/founders/andy-jassy.jpg",
       "linkedin": "http://www.linkedin.com/in/andy-jassy-8b1615"
     }
   },
@@ -172,7 +172,7 @@
     "founder": {
       "name": "Dario Amodei",
       "title": "CEO and Co-Founder",
-      "photo": "https://media.licdn.com/dms/image/v2/C4E03AQECbcb08RljmQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1517688882191?e=2147483647&v=beta&t=AXB4yyRAkYfX4UoMw7S0R27yEAb4iD0vYLlHmRn8w-M",
+      "photo": "/founders/dario-amodei.jpg",
       "linkedin": "http://www.linkedin.com/in/dario-amodei-3934934"
     }
   },
@@ -195,7 +195,7 @@
     "founder": {
       "name": "Andy Jassy",
       "title": "President and CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/C5603AQGSl0b1ZCh2sQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1631724420241?e=2147483647&v=beta&t=mQqtYNtJ6SQC4z58ko0HZ36zJPj_RKWWpY6GdpC5qNs",
+      "photo": "/founders/andy-jassy.jpg",
       "linkedin": "http://www.linkedin.com/in/andy-jassy-8b1615"
     }
   },
@@ -212,7 +212,7 @@
     "founder": {
       "name": "Jan Curn",
       "title": "Founder and CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/D4E03AQGVYzvGHp9zhw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1688982177437?e=2147483647&v=beta&t=Ka7Wkn_WPKg6mCXO8StPDwZHy_ceo3VHPPsNuOfdNkc",
+      "photo": "/founders/jan-curn.jpg",
       "linkedin": "http://www.linkedin.com/in/jancurn"
     }
   },
@@ -252,7 +252,7 @@
     "founder": {
       "name": "Benji Encz",
       "title": "Building people software for high growth companies.",
-      "photo": "https://media.licdn.com/dms/image/v2/C5603AQGMIdWC-nO6Yg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1516772516601?e=2147483647&v=beta&t=Sd4Q5QIT9zTyo2sW8oEuxvxR-LRSZ67xGR_PuzvFiGI",
+      "photo": "/founders/benji-encz.jpg",
       "linkedin": null
     }
   },
@@ -263,7 +263,7 @@
     "founder": {
       "name": "Dustin Moskovitz",
       "title": "CEO & Co-Founder",
-      "photo": "https://media.licdn.com/dms/image/v2/C5603AQGvw1l1jj_DZQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1545077468610?e=2147483647&v=beta&t=Owmn7KG3d7lOMQlSH-1442C65HCFxaAFlOy-I1Wn4-0",
+      "photo": "/founders/dustin-moskovitz.jpg",
       "linkedin": "http://www.linkedin.com/in/dmoskov"
     }
   },
@@ -286,7 +286,7 @@
     "founder": {
       "name": "Dylan Fox",
       "title": "Founder/CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/D4E03AQFESlwI7g2IMg/profile-displayphoto-shrink_200_200/B4EZTbrpYfHcAY-/0/1738852439888?e=2147483647&v=beta&t=_O9w9gtgJ_8BYnNTYrITo0SIe_7s4MeSqFWLh_h4XzQ",
+      "photo": "/founders/dylan-fox.jpg",
       "linkedin": "http://www.linkedin.com/in/dylanbfox"
     }
   },
@@ -325,7 +325,7 @@
     "founder": {
       "name": "Satya Nadella",
       "title": "Chairman and CEO, Member Board of Trustees",
-      "photo": "https://media.licdn.com/dms/image/v2/C5603AQHHUuOSlRVA1w/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1579726625398?e=2147483647&v=beta&t=Rr7WT9uBM0byOij0oT_KirejIMVE4HK4r8NGIp0zjdI",
+      "photo": "/founders/satya-nadella.jpg",
       "linkedin": "http://www.linkedin.com/in/satyanadella"
     }
   },
@@ -336,7 +336,7 @@
     "founder": {
       "name": "Ben Peterson",
       "title": "Co-founder and Co-chairman",
-      "photo": "https://media.licdn.com/dms/image/v2/C4E03AQGNsxEipk9rog/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1516189872394?e=2147483647&v=beta&t=z2-RdNAhpzHNyLwJyoCnRvn3butkHFqloU6Y8sInWLM",
+      "photo": "/founders/ben-peterson.jpg",
       "linkedin": "http://www.linkedin.com/in/petersonben"
     }
   },
@@ -358,7 +358,7 @@
     "founder": {
       "name": "Satya Nadella",
       "title": "Chairman and CEO, Member Board of Trustees",
-      "photo": "https://media.licdn.com/dms/image/v2/C5603AQHHUuOSlRVA1w/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1579726625398?e=2147483647&v=beta&t=Rr7WT9uBM0byOij0oT_KirejIMVE4HK4r8NGIp0zjdI",
+      "photo": "/founders/satya-nadella.jpg",
       "linkedin": "http://www.linkedin.com/in/satyanadella"
     }
   },
@@ -375,7 +375,7 @@
     "founder": {
       "name": "Satya Nadella",
       "title": "Chairman and CEO, Member Board of Trustees",
-      "photo": "https://media.licdn.com/dms/image/v2/C5603AQHHUuOSlRVA1w/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1579726625398?e=2147483647&v=beta&t=Rr7WT9uBM0byOij0oT_KirejIMVE4HK4r8NGIp0zjdI",
+      "photo": "/founders/satya-nadella.jpg",
       "linkedin": "http://www.linkedin.com/in/satyanadella"
     }
   },
@@ -392,7 +392,7 @@
     "founder": {
       "name": "Josh Pigford",
       "title": "Founder",
-      "photo": "https://media.licdn.com/dms/image/v2/D4E03AQGjHG0_L8v_0A/profile-displayphoto-scale_400_400/B4EZkp5z1rHgAo-/0/1757344645468?e=1769040000&v=beta&t=OAu3FAIq5Ynrf_e9jd8l-69zW7fO2YwTW1gu9gSesng",
+      "photo": "/founders/josh-pigford.jpg",
       "linkedin": "http://www.linkedin.com/in/joshpigford"
     }
   },
@@ -414,7 +414,7 @@
     "founder": {
       "name": "Bram Wiepjes",
       "title": "CEO and Founder",
-      "photo": "https://media.licdn.com/dms/image/v2/C4E03AQHkZlLIC6nRow/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1657056952258?e=2147483647&v=beta&t=d9dKJGwZfdHb4UD7U4cdKQNYT6xegWZoOPOz3_ux158",
+      "photo": "/founders/bram-wiepjes.jpg",
       "linkedin": "http://www.linkedin.com/in/bram-wiepjes-a197a5129"
     }
   },
@@ -431,7 +431,7 @@
     "founder": {
       "name": "Eddie Machaalani",
       "title": "Angel Investor",
-      "photo": "https://media.licdn.com/dms/image/v2/D5603AQG-auKZFNnh3g/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1709851707815?e=2147483647&v=beta&t=JXdStahsj3wNlZlZHKGFCQ24cJRpoNm0x0bLQYETGpc",
+      "photo": "/founders/eddie-machaalani.jpg",
       "linkedin": "http://www.linkedin.com/in/machaalani"
     }
   },
@@ -442,7 +442,7 @@
     "founder": {
       "name": "Tyler Denk",
       "title": "Chief Executive Officer",
-      "photo": "https://media.licdn.com/dms/image/v2/D4D03AQGEny01ENCrCw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1684362532506?e=2147483647&v=beta&t=m4eboZ6kL2UOUedkWyDJCwkb1_knqAXtE8LBr_htARU",
+      "photo": "/founders/tyler-denk.jpg",
       "linkedin": "http://www.linkedin.com/in/tyler-denk"
     }
   },
@@ -499,7 +499,7 @@
     "founder": {
       "name": "Changpeng Zhao",
       "title": "Binance Founder",
-      "photo": "https://media.licdn.com/dms/image/v2/C4E03AQE3e-WfDNxcnw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1516287993713?e=2147483647&v=beta&t=tltp8gU_9XvC59sEiiMAIbEMKQt7goRqCrbOABTaHXg",
+      "photo": "/founders/changpeng-zhao.jpg",
       "linkedin": "http://www.linkedin.com/in/cpzhao"
     }
   },
@@ -510,7 +510,7 @@
     "founder": {
       "name": "John Borthwick",
       "title": "CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/C4D03AQGHCwr_lQI0Jw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1527021021023?e=2147483647&v=beta&t=8ShBSyUK0XKrzp4gR7T0ZwI6n7wuOX-Xk3yUaKu1BYI",
+      "photo": "/founders/john-borthwick.jpg",
       "linkedin": "http://www.linkedin.com/in/jborthwick"
     }
   },
@@ -521,7 +521,7 @@
     "founder": {
       "name": "Jay Love",
       "title": "Active Angel Investor, Former CEO, Tech Entrepreneur/Founder, Fundraiser, Board Member, Keynote Speaker and Author",
-      "photo": "https://media.licdn.com/dms/image/v2/C4E03AQHsR34LV5ug8A/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1516236549916?e=2147483647&v=beta&t=ZIGNKu_09CCQQjsyhjYlZX15wpDjyQhqIpK3AJUgk1E",
+      "photo": "/founders/jay-love.jpg",
       "linkedin": null
     }
   },
@@ -555,7 +555,7 @@
     "founder": {
       "name": "Jay Graber",
       "title": "CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/D5603AQHXmy7Jz6uilg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1707430857180?e=2147483647&v=beta&t=xlkvrZ1DG4XzuMLg1We4-AXhWZGD4ceEnoynLRHRvqI",
+      "photo": "/founders/jay-graber.jpg",
       "linkedin": "http://www.linkedin.com/in/jaygraber"
     }
   },
@@ -583,7 +583,7 @@
     "founder": {
       "name": "Matthew Barnett",
       "title": "Papa Bear",
-      "photo": "https://media.licdn.com/dms/image/v2/C4E03AQG17sTSMFNTsA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1517745322532?e=2147483647&v=beta&t=rfhXV6cAna4MVBmW0djkhG7R_KGd1KZDe61EgA72ok8",
+      "photo": "/founders/matthew-barnett.jpg",
       "linkedin": "http://www.linkedin.com/in/mbjbarnett"
     }
   },
@@ -594,7 +594,7 @@
     "founder": {
       "name": "Aaron Levie",
       "title": "CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/C5603AQFIzAABLLfSqQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1521701872806?e=2147483647&v=beta&t=vCn3PFeLdnT7GpT3cQ3IzvAY_2YoM_3I5BUnqLLeOyc",
+      "photo": "/founders/aaron-levie.jpg",
       "linkedin": "http://www.linkedin.com/in/boxaaron"
     }
   },
@@ -652,7 +652,7 @@
     "founder": {
       "name": "Tope Awotona",
       "title": "CEO + Founder",
-      "photo": "https://media.licdn.com/dms/image/v2/C4D03AQGqc93TzhJlOA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1617987310456?e=2147483647&v=beta&t=2dafcsEzWxFHFK_swUUZBmtpi8bo2_Z3ry6qyBuVgps",
+      "photo": "/founders/tope-awotona.jpg",
       "linkedin": "http://www.linkedin.com/in/bawotona"
     }
   },
@@ -680,7 +680,7 @@
     "founder": {
       "name": "Dave Greiner",
       "title": "Co-founder",
-      "photo": "https://media.licdn.com/dms/image/v2/C5603AQGWYkJc-Ck5Vw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1517668158802?e=2147483647&v=beta&t=9YIjsZddMtP5I5SyxD1gOMSo-QWpmDQtFOuoaAUl6gQ",
+      "photo": "/founders/dave-greiner.jpg",
       "linkedin": "http://www.linkedin.com/in/davegreiner"
     }
   },
@@ -708,7 +708,7 @@
     "founder": {
       "name": "Duncan Stockdill",
       "title": "Co-founder & Director",
-      "photo": "https://media.licdn.com/dms/image/v2/C4D03AQElUWZr52Sh6A/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1642707153147?e=2147483647&v=beta&t=8XRMbP8XFOZWBnn6qd2YnIR2BrOJuQtZ1Fgu1LB_ljU",
+      "photo": "/founders/duncan-stockdill.jpg",
       "linkedin": "http://www.linkedin.com/in/duncanstockdill"
     }
   },
@@ -778,7 +778,7 @@
     "founder": {
       "name": "Yasser Elsaid",
       "title": "CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/D5603AQFkZhkvGOqamg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1730311724144?e=2147483647&v=beta&t=dup5RexaXpVX3tG68FppJaauHkhJuGE1vbHjvJvlzDs",
+      "photo": "/founders/yasser-elsaid.jpg",
       "linkedin": "http://www.linkedin.com/in/yasserelsaid"
     }
   },
@@ -806,8 +806,8 @@
     "domain": "clarifai.com",
     "founder": {
       "name": "Matthew Zeiler",
-      "title": "Founder and CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/C4D03AQGYnwlE7EFvIg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1516495475134?e=1768435200&v=beta&t=AfD4yvKK8hX-4XJayWnYHgn1E4tfb_nrZVq53nvUcTg",
+      "title": "Founder & CEO",
+      "photo": "/founders/matt-zeiler.jpg",
       "linkedin": "http://www.linkedin.com/in/mattzeiler"
     }
   },
@@ -852,7 +852,7 @@
     "founder": {
       "name": "Russell Brunson",
       "title": "Owner",
-      "photo": "https://media.licdn.com/dms/image/v2/D4E03AQHYeHmsi_a7Tg/profile-displayphoto-shrink_200_200/B4EZZtY7kKGYAg-/0/1745591974688?e=2147483647&v=beta&t=Hqieln2Hqe-5iOaEsdmRan-OxNDu5PGjPsy2Krqg8Ls",
+      "photo": "/founders/russell-brunson.jpg",
       "linkedin": "http://www.linkedin.com/in/russellbrunson"
     }
   },
@@ -913,7 +913,7 @@
     "founder": {
       "name": "Josias Montag",
       "title": "Founder of Lunaweb GmbH",
-      "photo": "https://media.licdn.com/dms/image/v2/D4D03AQHwRxDnx6X1Tg/profile-displayphoto-shrink_200_200/B4DZN2.Y5rG0AY-/0/1732867887100?e=2147483647&v=beta&t=lnoEAUzJREY-WMp56j1z1WJ4OBqS3Y5OXpeWrgfXYKI",
+      "photo": "/founders/josias-montag.jpg",
       "linkedin": null
     }
   },
@@ -924,7 +924,7 @@
     "founder": {
       "name": "Zeb Evans",
       "title": "Founder & CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/D5603AQE5_esptRyORg/profile-displayphoto-scale_200_200/B56ZtHNBRoIAAY-/0/1766426155122?e=2147483647&v=beta&t=dSMxN6oSCJscic4vw56WMc6QWZF9ZYmdoyErP3R-ZMw",
+      "photo": "/founders/zeb-evans.jpg",
       "linkedin": "http://www.linkedin.com/in/zebevansclickup"
     }
   },
@@ -935,7 +935,7 @@
     "founder": {
       "name": "Steli Efti",
       "title": "CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/D4E03AQGws4uW4nFHXw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1726403639409?e=2147483647&v=beta&t=gy0V90U8j-AycJZbVzDRv1EOxckWP89lW3S04crqLZE",
+      "photo": "/founders/steli-efti.jpg",
       "linkedin": "http://www.linkedin.com/in/steliefti"
     }
   },
@@ -969,7 +969,7 @@
     "founder": {
       "name": "Shishir Mehrotra",
       "title": "CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/D5603AQGkK2tVPPJXig/profile-displayphoto-scale_200_200/B56ZowBn6UHQAY-/0/1761742323889?e=2147483647&v=beta&t=4QhWip_kDisM6DpXSUZcTOozukpo-V4UdPbL0-cy3lY",
+      "photo": "/founders/shishir-mehrotra.jpg",
       "linkedin": "http://www.linkedin.com/in/shishirmehrotra"
     }
   },
@@ -991,7 +991,7 @@
     "founder": {
       "name": "Randy Parker",
       "title": "small biz marketing software -  founder Brevi & Constant Contact - St Pete FL and Boston MA",
-      "photo": "https://media.licdn.com/dms/image/v2/D4E03AQHYHlPpfbyZfQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1726952676520?e=2147483647&v=beta&t=UxLTq3h0tDqhf1NeB4txLN954KVweh2hi4NusTSIwS0",
+      "photo": "/founders/randy-parker.jpg",
       "linkedin": "http://www.linkedin.com/in/randyparker"
     }
   },
@@ -1008,7 +1008,7 @@
     "founder": {
       "name": "Mike Cannon-Brookes",
       "title": "Principal",
-      "photo": "https://media.licdn.com/dms/image/v2/D5603AQF4s6VyoESSFw/profile-displayphoto-shrink_200_200/B56ZYaXATrHEAY-/0/1744198960981?e=2147483647&v=beta&t=wjRO5ggq7jgVieyP4gUgpxYb2X1hu1ENx44gdUxufMo",
+      "photo": "/founders/mike-cannon-brookes.jpg",
       "linkedin": "http://www.linkedin.com/in/mcannonbrookes"
     }
   },
@@ -1031,7 +1031,7 @@
     "founder": {
       "name": "Nathan Barry",
       "title": "Chief Executive Officer",
-      "photo": "https://media.licdn.com/dms/image/v2/D5603AQHsPMCNplqFkQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1728075476068?e=2147483647&v=beta&t=FJrQysrQV5sk7IYDq-o2ZuOhKtKfWFAOvc6bps3n6vg",
+      "photo": "/founders/nathan-barry.jpg",
       "linkedin": "http://www.linkedin.com/in/nathanbarry"
     }
   },
@@ -1048,7 +1048,7 @@
     "founder": {
       "name": "Jon Lee",
       "title": "Entrepreneur and Investor",
-      "photo": "https://media.licdn.com/dms/image/v2/D5603AQG7h1_ZXqcZzw/profile-displayphoto-scale_200_200/B56ZthWR4oG0AY-/0/1766864789788?e=2147483647&v=beta&t=GG1tu3yVhak8qpB3dz_eLMYoYpu5J5XDbYuCB9MTY0g",
+      "photo": "/founders/jon-lee.jpg",
       "linkedin": null
     }
   },
@@ -1065,7 +1065,7 @@
     "founder": {
       "name": "Sascha Konietzke",
       "title": "Chief Strategy Officer, Board Member, Co-Founder",
-      "photo": "https://media.licdn.com/dms/image/v2/D4E03AQE1AQUh34nGvQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1677061534203?e=2147483647&v=beta&t=e7KnzpYfVAuEqFcBWmkg5Swmn_NVf8_pmHa_w7QZz6A",
+      "photo": "/founders/sascha-konietzke.jpg",
       "linkedin": "http://www.linkedin.com/in/konietzke"
     }
   },
@@ -1099,7 +1099,7 @@
     "founder": {
       "name": "Chris Lu",
       "title": "Founder/CTO",
-      "photo": "https://media.licdn.com/dms/image/v2/D5603AQHg6aDvlaRXiQ/profile-displayphoto-shrink_200_200/B56ZPbCXLDGsAY-/0/1734546650149?e=2147483647&v=beta&t=nsD_0s1Y9-rdYimCDdoad1-4_cCwyPRrjU337BpvsuI",
+      "photo": "/founders/chris-lu.jpg",
       "linkedin": "http://www.linkedin.com/in/chris-lu11"
     }
   },
@@ -1116,7 +1116,7 @@
     "founder": {
       "name": "Michael Truell",
       "title": "Building Cursor",
-      "photo": "https://media.licdn.com/dms/image/v2/D5603AQGR6kL43z6wxg/profile-displayphoto-scale_200_200/B56ZqffxW.JsAc-/0/1763612497719?e=2147483647&v=beta&t=32DmVcofDJIQFJy6CPReZ9utODepLEYYPRpGDrz9jFM",
+      "photo": "/founders/michael-truell.jpg",
       "linkedin": null
     }
   },
@@ -1127,7 +1127,7 @@
     "founder": {
       "name": "Colin Nederkoorn",
       "title": "Founder & CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/D5603AQEzTE5HQP6Yeg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1721690852476?e=2147483647&v=beta&t=4VVf4MW9c1Q9K4c-8PQBP3-6YEbh2gRWca-k4QbjMts",
+      "photo": "/founders/colin-nederkoorn.jpg",
       "linkedin": "http://www.linkedin.com/in/colinnederkoorn"
     }
   },
@@ -1175,7 +1175,7 @@
     "founder": {
       "name": "Olivier Pomel",
       "title": "Co-founder, CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/C4D03AQGT4XBYu6wSKA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1516240718912?e=2147483647&v=beta&t=huxgmXeeTAOgHqTGUV3XjXETZf1vFDL-1Rat4VUlZaM",
+      "photo": "/founders/olivier-pomel.jpg",
       "linkedin": "http://www.linkedin.com/in/olivierpomel"
     }
   },
@@ -1200,7 +1200,7 @@
     "founder": {
       "name": "Scott Stephenson",
       "title": "Co-Founder, CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/C5603AQEtRBViD5cRjw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1633714732709?e=1769644800&v=beta&t=dDCxOuu3qg9alQKfDEzgeDcw7jLQ0YNrE4fj9vB3z-o",
+      "photo": "/founders/scott-stephenson.jpg",
       "linkedin": "http://www.linkedin.com/in/scott-stephenson-"
     }
   },
@@ -1250,7 +1250,7 @@
     "founder": {
       "name": "Jason Citron",
       "title": "Board Member & Advisor to the CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/C5103AQEaJr-MfhgGrQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1516259586349?e=2147483647&v=beta&t=WeyWyAga0bxoK67aSLMxUI0KzNQZ59nVg_xiMniEhUQ",
+      "photo": "/founders/jason-citron.jpg",
       "linkedin": "http://www.linkedin.com/in/jasoncitron"
     }
   },
@@ -1290,7 +1290,7 @@
     "founder": {
       "name": "Tom Gonser",
       "title": "Founder",
-      "photo": "https://media.licdn.com/dms/image/v2/D5603AQGr3ix4dF_Mdw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1707858065185?e=2147483647&v=beta&t=wmXPe7BpNcIg960gLepnfIqjzZwlgwCWVuxnIpfP4jw",
+      "photo": "/founders/tom-gonser.jpg",
       "linkedin": "http://www.linkedin.com/in/tgonser"
     }
   },
@@ -1310,7 +1310,7 @@
     "founder": {
       "name": "Drew Houston",
       "title": "Founder & CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/C4E03AQEsyp2JYhee5w/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1516218529035?e=2147483647&v=beta&t=JzLiH9K4eUnr0RqHuMg6iQOuu1_7Cg-Y3ty3I2tNyOg",
+      "photo": "/founders/drew-houston.jpg",
       "linkedin": "http://www.linkedin.com/in/drew-houston-a46206"
     }
   },
@@ -1355,7 +1355,7 @@
     "founder": {
       "name": "Piotr Dabkowski",
       "title": "Co-Founder",
-      "photo": "https://media.licdn.com/dms/image/v2/C5603AQGl4tBRJF5ZAQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1516930466144?e=2147483647&v=beta&t=Aq8HGEE4U4yvDugWIXF2fF-Qcva09xgKiVO6Ztg7CL4",
+      "photo": "/founders/piotr-dabkowski.jpg",
       "linkedin": "http://www.linkedin.com/in/piotr-dabkowski-50222bba"
     }
   },
@@ -1380,7 +1380,7 @@
     "founder": {
       "name": "Will Bryk",
       "title": "Co-Founder and CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/D5603AQGqTD9aT-xIdA/profile-displayphoto-shrink_200_200/B56ZdmlTgFHoAg-/0/1749772745007?e=2147483647&v=beta&t=B4eQQpPm3jqxDplwaex3a-Nk9HuUHmo7ipChV8pCKDA",
+      "photo": "/founders/will-bryk.jpg",
       "linkedin": "http://www.linkedin.com/in/william-bryk"
     }
   },
@@ -1435,7 +1435,7 @@
     "founder": {
       "name": "Dylan Field",
       "title": "CEO & Co-founder of Figma",
-      "photo": "https://media.licdn.com/dms/image/v2/D5603AQFssJhINmn3_Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1699465855464?e=2147483647&v=beta&t=9X4ILQpVpFP0sopXgWwscKezh6yGZJRma3I6l5YlVTA",
+      "photo": "/founders/dylan-field.jpg",
       "linkedin": "http://www.linkedin.com/in/dylanfield"
     }
   },
@@ -1460,7 +1460,7 @@
     "founder": {
       "name": "Eric Ciarla",
       "title": "Co-Founder",
-      "photo": "https://media.licdn.com/dms/image/v2/D4E03AQEgdMS2jQFIHQ/profile-displayphoto-scale_200_200/B4EZm.2kVBGUAY-/0/1759843601037?e=2147483647&v=beta&t=bObhBk68hpp6-R-YCDVnpJVyIHjsP0bY2GSlzDrK8rc",
+      "photo": "/founders/eric-ciarla.jpg",
       "linkedin": "http://www.linkedin.com/in/eric-ciarla"
     }
   },
@@ -1470,7 +1470,7 @@
     "founder": {
       "name": "Krish Ramineni",
       "title": "CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/D5603AQENkYdPZxZsFg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1721493676174?e=2147483647&v=beta&t=K7LDSn4MRT5Vdl3ShIjom7aQSb_ACZ8ny5psPd8uCbg",
+      "photo": "/founders/krish-ramineni.jpg",
       "linkedin": "http://www.linkedin.com/in/krishramineni"
     }
   },
@@ -1495,7 +1495,7 @@
     "founder": {
       "name": "Henry Heng",
       "title": "Co-Founder & CEO FlowiseAI, Acquired by Workday",
-      "photo": "https://media.licdn.com/dms/image/v2/C4E03AQHNZT0O-iWkDA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1599844459980?e=2147483647&v=beta&t=bJq232fBlCJM_Xz8_AyyqcFYmnL4SSYVjK0hqSug7lk",
+      "photo": "/founders/henry-heng.jpg",
       "linkedin": null
     }
   },
@@ -1550,7 +1550,7 @@
     "founder": {
       "name": "Ade Olonoh",
       "title": "Board Member",
-      "photo": "https://media.licdn.com/dms/image/v2/C4E03AQFnsYgimYVHQg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1577927045278?e=2147483647&v=beta&t=HBDevz2LQAsHHq9LMibZbQQqTDqWjxyKZdTRspjSGjU",
+      "photo": "/founders/ade-olonoh.jpg",
       "linkedin": "http://www.linkedin.com/in/adeolonoh"
     }
   },
@@ -1605,7 +1605,7 @@
     "founder": {
       "name": "Mathilde Collin",
       "title": "Board Member",
-      "photo": "https://media.licdn.com/dms/image/v2/D5603AQHGEhMGYy_DtQ/profile-displayphoto-scale_200_200/B56Zk13w4WG0AY-/0/1757545437091?e=1769644800&v=beta&t=acrn6MHvKvw7EUNh3smn1TDUk5p9X2Z7W3VoThZTCZw",
+      "photo": "/founders/mathilde-collin.jpg",
       "linkedin": "http://www.linkedin.com/in/mathilde-collin-bb59492a"
     }
   },
@@ -1615,7 +1615,7 @@
     "founder": {
       "name": "Tatu Ylonen",
       "title": "Senior AI and cybersecurity professional & entrepreneur",
-      "photo": "https://media.licdn.com/dms/image/v2/D4D03AQH-xjMJKqosGA/profile-displayphoto-shrink_200_200/B4DZXmNOOrHsAY-/0/1743323981072?e=2147483647&v=beta&t=G_qj5DaPQM-3g4YTlBKWJd77hSQXDVTC6qih87hzCJ4",
+      "photo": "/founders/tatu-ylonen.jpg",
       "linkedin": null
     }
   },
@@ -1660,7 +1660,7 @@
     "founder": {
       "name": "Tom Preston-Werner",
       "title": "Cofounder/GP",
-      "photo": "https://media.licdn.com/dms/image/v2/D5603AQHNrMiP6MmuLg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1719128306777?e=2147483647&v=beta&t=lDlt96YRUZNKr0YAn6NKQKoLYMVmYb08GLi6qV1w4ls",
+      "photo": "/founders/tom-preston-werner.jpg",
       "linkedin": "http://www.linkedin.com/in/mojombo"
     }
   },
@@ -1670,7 +1670,7 @@
     "founder": {
       "name": "Sid Sijbrandij",
       "title": "Co-founder & Executive Chair at GitLab Inc. (nasdaq: GTLB). Co-founder",
-      "photo": "https://media.licdn.com/dms/image/v2/C4E03AQG0rfcdnkkTnA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1516318609526?e=2147483647&v=beta&t=2jTeHtEqLK6kHjGUdbK_pJZvqN89IRxz8qYpa5oWAHg",
+      "photo": "/founders/sid-sijbrandij.jpg",
       "linkedin": "http://www.linkedin.com/in/sijbrandij"
     }
   },
@@ -1700,7 +1700,7 @@
     "founder": {
       "name": "Sundar Pichai",
       "title": "CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/D4E03AQFrmDuWUxQoMg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1715645354619?e=1768435200&v=beta&t=efb5Qqt0HaijJhlcjp68gni1W0PdsbHkORnAw1Uu3GE"
+      "photo": "/founders/sundar-pichai.jpg"
     }
   },
   "googlechat": {
@@ -1719,7 +1719,7 @@
     "founder": {
       "name": "Sundar Pichai",
       "title": "CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/D4E03AQFrmDuWUxQoMg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1715645354619?e=1768435200&v=beta&t=efb5Qqt0HaijJhlcjp68gni1W0PdsbHkORnAw1Uu3GE"
+      "photo": "/founders/sundar-pichai.jpg"
     }
   },
   "google-docs": {
@@ -1728,7 +1728,7 @@
     "founder": {
       "name": "Sundar Pichai",
       "title": "Google",
-      "photo": "https://media.licdn.com/dms/image/v2/D4E03AQFrmDuWUxQoMg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1715645354619?e=1768435200&v=beta&t=efb5Qqt0HaijJhlcjp68gni1W0PdsbHkORnAw1Uu3GE",
+      "photo": "/founders/sundar-pichai.jpg",
       "linkedin": "http://www.linkedin.com/in/sundarpichai"
     }
   },
@@ -1738,7 +1738,7 @@
     "founder": {
       "name": "Sundar Pichai",
       "title": "CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/D4E03AQFrmDuWUxQoMg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1715645354619?e=1768435200&v=beta&t=efb5Qqt0HaijJhlcjp68gni1W0PdsbHkORnAw1Uu3GE"
+      "photo": "/founders/sundar-pichai.jpg"
     }
   },
   "google-forms": {
@@ -1747,7 +1747,7 @@
     "founder": {
       "name": "Sundar Pichai",
       "title": "CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/D4E03AQFrmDuWUxQoMg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1715645354619?e=1768435200&v=beta&t=efb5Qqt0HaijJhlcjp68gni1W0PdsbHkORnAw1Uu3GE"
+      "photo": "/founders/sundar-pichai.jpg"
     }
   },
   "google-gemini": {
@@ -1756,7 +1756,7 @@
     "founder": {
       "name": "Sundar Pichai",
       "title": "Google",
-      "photo": "https://media.licdn.com/dms/image/v2/D4E03AQFrmDuWUxQoMg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1715645354619?e=1768435200&v=beta&t=efb5Qqt0HaijJhlcjp68gni1W0PdsbHkORnAw1Uu3GE",
+      "photo": "/founders/sundar-pichai.jpg",
       "linkedin": "http://www.linkedin.com/in/sundarpichai"
     }
   },
@@ -1766,7 +1766,7 @@
     "founder": {
       "name": "Sundar Pichai",
       "title": "CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/D4E03AQFrmDuWUxQoMg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1715645354619?e=1768435200&v=beta&t=efb5Qqt0HaijJhlcjp68gni1W0PdsbHkORnAw1Uu3GE"
+      "photo": "/founders/sundar-pichai.jpg"
     }
   },
   "google-search-console": {
@@ -1775,7 +1775,7 @@
     "founder": {
       "name": "Sundar Pichai",
       "title": "CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/D4E03AQFrmDuWUxQoMg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1715645354619?e=1768435200&v=beta&t=efb5Qqt0HaijJhlcjp68gni1W0PdsbHkORnAw1Uu3GE"
+      "photo": "/founders/sundar-pichai.jpg"
     }
   },
   "google-sheets": {
@@ -1784,7 +1784,7 @@
     "founder": {
       "name": "Sundar Pichai",
       "title": "CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/D4E03AQFrmDuWUxQoMg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1715645354619?e=1768435200&v=beta&t=efb5Qqt0HaijJhlcjp68gni1W0PdsbHkORnAw1Uu3GE"
+      "photo": "/founders/sundar-pichai.jpg"
     }
   },
   "google-slides": {
@@ -1793,7 +1793,7 @@
     "founder": {
       "name": "Sundar Pichai",
       "title": "CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/D4E03AQFrmDuWUxQoMg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1715645354619?e=1768435200&v=beta&t=efb5Qqt0HaijJhlcjp68gni1W0PdsbHkORnAw1Uu3GE"
+      "photo": "/founders/sundar-pichai.jpg"
     }
   },
   "google-tasks": {
@@ -1802,7 +1802,7 @@
     "founder": {
       "name": "Sundar Pichai",
       "title": "Google",
-      "photo": "https://media.licdn.com/dms/image/v2/D4E03AQFrmDuWUxQoMg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1715645354619?e=1768435200&v=beta&t=efb5Qqt0HaijJhlcjp68gni1W0PdsbHkORnAw1Uu3GE",
+      "photo": "/founders/sundar-pichai.jpg",
       "linkedin": "http://www.linkedin.com/in/sundarpichai"
     }
   },
@@ -1857,7 +1857,7 @@
     "founder": {
       "name": "Jonathan Ross",
       "title": "CEO + Founder",
-      "photo": "https://media.licdn.com/dms/image/v2/D5603AQG6Y9Lqxp_32A/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1722922863870?e=2147483647&v=beta&t=lzNWt3wjy7Ywt1_XbXaEkCULz6EdRHHNZpmmMQZZsd0",
+      "photo": "/founders/jonathan-ross.jpg",
       "linkedin": "http://www.linkedin.com/in/ross-jonathan"
     }
   },
@@ -1877,7 +1877,7 @@
     "founder": {
       "name": "Danny Wen",
       "title": "Co-founder and former CEO of Harvest",
-      "photo": "https://media.licdn.com/dms/image/v2/C4D03AQE3hKoFoi4NAQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1516261499599?e=2147483647&v=beta&t=068k3La5dn5U79NNgF1BjJjS92T0n3RHPret0oth0rM",
+      "photo": "/founders/danny-wen.jpg",
       "linkedin": "http://www.linkedin.com/in/dannywen"
     }
   },
@@ -1907,7 +1907,7 @@
     "founder": {
       "name": "Nick Francis",
       "title": "Chairman",
-      "photo": "https://media.licdn.com/dms/image/v2/D5603AQFChWCk36hmVg/profile-displayphoto-scale_200_200/B56ZoSGZwWJwAY-/0/1761240260089?e=2147483647&v=beta&t=rAqaEU453WqjekrSZoQQCxdT5QNiYU5pNT4nq06BRdw",
+      "photo": "/founders/nick-francis.jpg",
       "linkedin": "http://www.linkedin.com/in/nickfrancis1"
     }
   },
@@ -1917,7 +1917,7 @@
     "founder": {
       "name": "Joshua Xu",
       "title": "Co-Founder and CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/D5603AQGj6uUcmAcEVA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1714369509103?e=2147483647&v=beta&t=SgNk59ta4C-9gtrIPNUmfBcflCDny7XFAKNvJ0OMPec",
+      "photo": "/founders/joshua-xu.jpg",
       "linkedin": "http://www.linkedin.com/in/buffxz"
     }
   },
@@ -1947,7 +1947,7 @@
     "founder": {
       "name": "Brian Halligan",
       "title": "Co-founder & Partner",
-      "photo": "https://media.licdn.com/dms/image/v2/D4E03AQHIgx9cjBuDYA/profile-displayphoto-scale_200_200/B4EZqjxhPaKgAg-/0/1763684266243?e=2147483647&v=beta&t=blUn_u_pc164CAhEbhqtqrurSfzPiSf3ubniKrs9iQc",
+      "photo": "/founders/brian-halligan.jpg",
       "linkedin": "http://www.linkedin.com/in/brianhalligan"
     }
   },
@@ -2052,7 +2052,7 @@
     "founder": {
       "name": "Eoghan McCabe",
       "title": "CEO, Chairman, and Co-founder",
-      "photo": "https://media.licdn.com/dms/image/v2/C5603AQHm6KZjsDFqVA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1597670651052?e=2147483647&v=beta&t=zliH8WZYjPi6Uo_NV8kSw-YogwaOjo3hBrWyfiRBoHM",
+      "photo": "/founders/eoghan-mccabe.jpg",
       "linkedin": "http://www.linkedin.com/in/eoghanmccabe"
     }
   },
@@ -2062,7 +2062,7 @@
     "founder": {
       "name": "Hillel Coren",
       "title": "Co-Founder",
-      "photo": "https://media.licdn.com/dms/image/v2/C5603AQG5GpbIB3ecHQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1517614282464?e=2147483647&v=beta&t=fC6DiuE7InuUMAaiKq8BpdodolzLMW2HqSkgfy1GNUk",
+      "photo": "/founders/hillel-coren.jpg",
       "linkedin": "http://www.linkedin.com/in/hillelcoren"
     }
   },
@@ -2077,7 +2077,7 @@
     "founder": {
       "name": "Mike Cannon-Brookes",
       "title": "Principal",
-      "photo": "https://media.licdn.com/dms/image/v2/D5603AQF4s6VyoESSFw/profile-displayphoto-shrink_200_200/B56ZYaXATrHEAY-/0/1744198960981?e=2147483647&v=beta&t=wjRO5ggq7jgVieyP4gUgpxYb2X1hu1ENx44gdUxufMo",
+      "photo": "/founders/mike-cannon-brookes.jpg",
       "linkedin": "http://www.linkedin.com/in/mcannonbrookes"
     }
   },
@@ -2092,7 +2092,7 @@
     "founder": {
       "name": "Aytekin Tank",
       "title": "Founder and CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/C4E03AQGRvcNDKN9S-w/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1517428649436?e=2147483647&v=beta&t=1WYzwCil1mHLMoXz8QyLLiopPQukb8cCHcus-Nn_0ks",
+      "photo": "/founders/aytekin-tank.jpg",
       "linkedin": "http://www.linkedin.com/in/aytekintank"
     }
   },
@@ -2167,7 +2167,7 @@
     "founder": {
       "name": "Guillaume Moubeche",
       "title": "Founder @ Lemlist",
-      "photo": "https://media.licdn.com/dms/image/v2/D4E03AQH3dh0aXwwvaA/profile-displayphoto-shrink_200_200/B4EZNuVMRsGYAg-/0/1732722870494?e=2147483647&v=beta&t=Vf6BjUsQZmOMM8bo3CJkYRJ2uhNNNuQGeg04REoR-jg",
+      "photo": "/founders/guillaume-moubeche.jpg",
       "linkedin": "http://www.linkedin.com/in/guillaume-moubeche-a026541b2"
     }
   },
@@ -2187,7 +2187,7 @@
     "founder": {
       "name": "Sarah Nahm",
       "title": "Founder of Lever & Diversity Advocate",
-      "photo": "https://media.licdn.com/dms/image/v2/C4E03AQFs4KsISAHLYw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1517655340653?e=2147483647&v=beta&t=NqQctppAeDZld7S7vtPLzgUo4TpXecGqnYfbDXZL75I",
+      "photo": "/founders/sarah-nahm.jpg",
       "linkedin": "http://www.linkedin.com/in/sarahnahm"
     }
   },
@@ -2262,7 +2262,7 @@
     "founder": {
       "name": "Matthew Arbesfeld",
       "title": "CEO & Co-Founder",
-      "photo": "https://media.licdn.com/dms/image/v2/D4E03AQEr7LAPwljvOQ/profile-displayphoto-scale_200_200/B4EZrC3ff6KkAY-/0/1764205918947?e=2147483647&v=beta&t=Jc6WA4ce4cVAMp4-dwJ-mggdv0RK0lfyPjGTWdAt31E",
+      "photo": "/founders/matthew-arbesfeld.jpg",
       "linkedin": "http://www.linkedin.com/in/matthew-arbesfeld-04b5429b"
     }
   },
@@ -2307,7 +2307,7 @@
     "founder": {
       "name": "Ben Chestnut",
       "title": "Founder, fmr CEO of Mailchimp.",
-      "photo": "https://media.licdn.com/dms/image/v2/D4E03AQFQsWTAaW_R-A/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1724588130609?e=2147483647&v=beta&t=ZB3DlC3Ig9Y-YpcmOW9UezL9bKsDzVTl8xCs9zRy8SE",
+      "photo": "/founders/ben-chestnut.jpg",
       "linkedin": "http://www.linkedin.com/in/ben-chestnut-02a2501"
     }
   },
@@ -2332,7 +2332,7 @@
     "founder": {
       "name": "Wilfried Durand",
       "title": "Partner",
-      "photo": "https://media.licdn.com/dms/image/v2/D4D03AQHm3opfgbxcTA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1680590891461?e=2147483647&v=beta&t=XpCYcQEmRF_AKmMz1o-HGt8q6s3V8AUbLoMkhi6l_Sk",
+      "photo": "/founders/wilfried-durand.jpg",
       "linkedin": "http://www.linkedin.com/in/wilfrieddurand"
     }
   },
@@ -2347,7 +2347,7 @@
     "founder": {
       "name": "Mikael Yan",
       "title": "Co-founder / CEO @ Manychat",
-      "photo": "https://media.licdn.com/dms/image/v2/D5603AQEJhyrMk__2Nw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1682476993169?e=2147483647&v=beta&t=zdLvxXhPkqV03WXyqaTImWPrZNG-NEYzQeaQE4rAU4A",
+      "photo": "/founders/mikael-yan.jpg",
       "linkedin": null
     }
   },
@@ -2427,7 +2427,7 @@
     "founder": {
       "name": "Sameer Al-Sakran",
       "title": "CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/C4E03AQFLKW6msd311A/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1516293231759?e=2147483647&v=beta&t=v2dYWEFtg-3Gs-oPgZ5yh45YnZ5BLCj73ah2RKwrmHk",
+      "photo": "/founders/sameer-al-sakran.jpg",
       "linkedin": "http://www.linkedin.com/in/salsakran"
     }
   },
@@ -2452,7 +2452,7 @@
     "founder": {
       "name": "Satya Nadella",
       "title": "Chairman and CEO, Member Board of Trustees",
-      "photo": "https://media.licdn.com/dms/image/v2/C5603AQHHUuOSlRVA1w/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1579726625398?e=2147483647&v=beta&t=Rr7WT9uBM0byOij0oT_KirejIMVE4HK4r8NGIp0zjdI",
+      "photo": "/founders/satya-nadella.jpg",
       "linkedin": "http://www.linkedin.com/in/satyanadella"
     }
   },
@@ -2467,7 +2467,7 @@
     "founder": {
       "name": "Satya Nadella",
       "title": "Chairman and CEO, Member Board of Trustees",
-      "photo": "https://media.licdn.com/dms/image/v2/C5603AQHHUuOSlRVA1w/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1579726625398?e=2147483647&v=beta&t=Rr7WT9uBM0byOij0oT_KirejIMVE4HK4r8NGIp0zjdI",
+      "photo": "/founders/satya-nadella.jpg",
       "linkedin": "http://www.linkedin.com/in/satyanadella"
     }
   },
@@ -2477,7 +2477,7 @@
     "founder": {
       "name": "Satya Nadella",
       "title": "Chairman and CEO, Member Board of Trustees",
-      "photo": "https://media.licdn.com/dms/image/v2/C5603AQHHUuOSlRVA1w/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1579726625398?e=2147483647&v=beta&t=Rr7WT9uBM0byOij0oT_KirejIMVE4HK4r8NGIp0zjdI",
+      "photo": "/founders/satya-nadella.jpg",
       "linkedin": "http://www.linkedin.com/in/satyanadella"
     }
   },
@@ -2497,7 +2497,7 @@
     "founder": {
       "name": "Satya Nadella",
       "title": "Chairman and CEO, Member Board of Trustees",
-      "photo": "https://media.licdn.com/dms/image/v2/C5603AQHHUuOSlRVA1w/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1579726625398?e=2147483647&v=beta&t=Rr7WT9uBM0byOij0oT_KirejIMVE4HK4r8NGIp0zjdI",
+      "photo": "/founders/satya-nadella.jpg",
       "linkedin": "http://www.linkedin.com/in/satyanadella"
     }
   },
@@ -2512,7 +2512,7 @@
     "founder": {
       "name": "Satya Nadella",
       "title": "Chairman and CEO, Member Board of Trustees",
-      "photo": "https://media.licdn.com/dms/image/v2/C5603AQHHUuOSlRVA1w/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1579726625398?e=2147483647&v=beta&t=Rr7WT9uBM0byOij0oT_KirejIMVE4HK4r8NGIp0zjdI",
+      "photo": "/founders/satya-nadella.jpg",
       "linkedin": "http://www.linkedin.com/in/satyanadella"
     }
   },
@@ -2522,7 +2522,7 @@
     "founder": {
       "name": "Satya Nadella",
       "title": "Chairman and CEO, Member Board of Trustees",
-      "photo": "https://media.licdn.com/dms/image/v2/C5603AQHHUuOSlRVA1w/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1579726625398?e=2147483647&v=beta&t=Rr7WT9uBM0byOij0oT_KirejIMVE4HK4r8NGIp0zjdI",
+      "photo": "/founders/satya-nadella.jpg",
       "linkedin": "http://www.linkedin.com/in/satyanadella"
     }
   },
@@ -2577,7 +2577,7 @@
     "founder": {
       "name": "Roy Mann",
       "title": "CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/D4D03AQG111706cRjCw/profile-displayphoto-shrink_200_200/B4DZTqxLBFHAAY-/0/1739105547020?e=2147483647&v=beta&t=odm3JI8eaJPPbCqyvN0mKeFlrihx5-tlBFwAPpO5uLE",
+      "photo": "/founders/roy-mann.jpg",
       "linkedin": "http://www.linkedin.com/in/manroy"
     }
   },
@@ -2587,7 +2587,7 @@
     "founder": {
       "name": "Dev Ittycheria",
       "title": "Lead Independent Director",
-      "photo": "https://media.licdn.com/dms/image/v2/D4E03AQF3VUBdGUBfiw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1705154250903?e=2147483647&v=beta&t=zUV3SsHklrMNupWVcQ70M5_XdF4Mc5MJX-SZml4ClaE",
+      "photo": "/founders/dev-ittycheria.jpg",
       "linkedin": "http://www.linkedin.com/in/dittycheria"
     }
   },
@@ -2632,7 +2632,7 @@
     "founder": {
       "name": "Michael Widenius",
       "title": "Chief Technology Officer",
-      "photo": "https://media.licdn.com/dms/image/v2/C4E03AQFQeqoH2_jSxg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1517715848677?e=1769644800&v=beta&t=DdpKoQ4cydHeaZSdu0gZgL3tpLThzXki5sPkfNkmqmM",
+      "photo": "/founders/michael-widenius.jpg",
       "linkedin": "http://www.linkedin.com/in/montywi"
     }
   },
@@ -2682,7 +2682,7 @@
     "founder": {
       "name": "Ivan Zhao",
       "title": "Chief Executive Officer",
-      "photo": "https://media.licdn.com/dms/image/v2/C5603AQFAeZE7FH21tg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1543342081776?e=2147483647&v=beta&t=7dPcTp3cqaJw1bfQoJKPFL6wrrYEr4UME6m7lkuGWWI",
+      "photo": "/founders/ivan-zhao.jpg",
       "linkedin": "http://www.linkedin.com/in/ivanhzhao"
     }
   },
@@ -2707,7 +2707,7 @@
     "founder": {
       "name": "Fabien Pinckaers",
       "title": "CEO & Founder",
-      "photo": "https://media.licdn.com/dms/image/v2/C4D03AQGji2MOk7SZ1A/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1516621511153?e=2147483647&v=beta&t=JegMgL-gLyzuMzjnhb6RKZARxDk6LIOOf0b8Ix0c0Qs",
+      "photo": "/founders/fabien-pinckaers.jpg",
       "linkedin": "http://www.linkedin.com/in/fpodoo"
     }
   },
@@ -2742,7 +2742,7 @@
     "founder": {
       "name": "Khaled Naim",
       "title": "Co-Founder & CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/C5603AQHY6cimlR6TQg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1582245587747?e=2147483647&v=beta&t=UpuWHjva7uxdLoVD2L2sb9itce4DcTcE_-gudWdy7ZM",
+      "photo": "/founders/khaled-naim.jpg",
       "linkedin": "http://www.linkedin.com/in/knaim"
     }
   },
@@ -2802,7 +2802,7 @@
     "founder": {
       "name": "Mikita Mikado",
       "title": "Product",
-      "photo": "https://media.licdn.com/dms/image/v2/C5603AQHGDJZtJfkKVQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1569875064901?e=2147483647&v=beta&t=B2nEHm9CtA6Su1jLQUddl_nGQ175qm81SakE1ZkiajQ",
+      "photo": "/founders/mikita-mikado.jpg",
       "linkedin": "http://www.linkedin.com/in/mikitamikado"
     }
   },
@@ -2867,7 +2867,7 @@
     "founder": {
       "name": "Aravind Srinivas",
       "title": "Cofounder, President, CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/D5603AQGINw7AFdLiFg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1695070644773?e=1768435200&v=beta&t=A-2CV40ensw0GSAYaUDXpb5mRGPof3gbG7nhs1wEp_k",
+      "photo": "/founders/aravind-srinivas.jpg",
       "linkedin": "http://www.linkedin.com/in/aravind-srinivas-16051987"
     }
   },
@@ -2907,7 +2907,7 @@
     "founder": {
       "name": "Edo Liberty",
       "title": "Chief Scientist",
-      "photo": "https://media.licdn.com/dms/image/v2/D4E03AQESgaiTQQRW-A/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1727202765147?e=2147483647&v=beta&t=A8AFaZSMTyIpXLlthUoTUeDUwt9gOcj3Gp7hXYtu0GI",
+      "photo": "/founders/edo-liberty.jpg",
       "linkedin": "http://www.linkedin.com/in/edoliberty"
     }
   },
@@ -2967,7 +2967,7 @@
     "founder": {
       "name": "James Hawkins",
       "title": "hedge honcho / co-ceo at posthog",
-      "photo": "https://media.licdn.com/dms/image/v2/D4E03AQFQnWRd64tKuw/profile-displayphoto-shrink_200_200/B4EZOG3goKGQAc-/0/1733134519175?e=2147483647&v=beta&t=jc9GtZxB8dy-ER4J1-dI8gi81E4FlHql4B-Pt575mNk",
+      "photo": "/founders/james-hawkins.jpg",
       "linkedin": null
     }
   },
@@ -2987,7 +2987,7 @@
     "founder": {
       "name": "Hubert Palan",
       "title": "Founder & CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/C5103AQF_IIJ3zpkBoA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1516314539081?e=2147483647&v=beta&t=8FiWlT_kxD7Hqcx5gZsT7ZgobpuV6tYXupaKYn-gBAE",
+      "photo": "/founders/hubert-palan.jpg",
       "linkedin": "http://www.linkedin.com/in/hubertpalan"
     }
   },
@@ -3027,7 +3027,7 @@
     "founder": {
       "name": "Andre Zayarni",
       "title": "Co-founder & CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/D4E03AQEsVK5fc8T50A/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1698407654395?e=2147483647&v=beta&t=zjmK20pqNvF1KBXkYLQ1-iH7SK5EgJVfZC9YzfMZgRE",
+      "photo": "/founders/andre-zayarni.jpg",
       "linkedin": "http://www.linkedin.com/in/zayarni"
     }
   },
@@ -3097,7 +3097,7 @@
     "founder": {
       "name": "Harshil Mathur",
       "title": "CEO & Co-Founder",
-      "photo": "https://media.licdn.com/dms/image/v2/D5603AQFH_sAd90HumQ/profile-displayphoto-shrink_200_200/B56ZUfhnBMGsAY-/0/1739990659965?e=2147483647&v=beta&t=Ti3-FC8BMwL6tFR2OgLB0yhZQ2ytbkpgQ9FGDVXiTuY",
+      "photo": "/founders/harshil-mathur.jpg",
       "linkedin": "http://www.linkedin.com/in/harshilmathur"
     }
   },
@@ -3222,7 +3222,7 @@
     "founder": {
       "name": "Marc Benioff",
       "title": "Chair & CEO at Salesforce",
-      "photo": "https://media.licdn.com/dms/image/v2/D5603AQHnSx2OOgzsSA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1730225996766?e=2147483647&v=beta&t=7pDHP77XRRhSJVB5eXk3f0WNI9J19x9BuPAlrVLUAh4",
+      "photo": "/founders/marc-benioff.jpg",
       "linkedin": "http://www.linkedin.com/in/marcbenioff"
     }
   },
@@ -3262,7 +3262,7 @@
     "founder": {
       "name": "Peter Reinhardt",
       "title": "CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/D5603AQHe9MwkIkFPTg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1695960432935?e=2147483647&v=beta&t=3XttqWA3NgBiVBNl8dRfRIhQLsHum57X60QnzCXZ4e0",
+      "photo": "/founders/peter-reinhardt.jpg",
       "linkedin": "http://www.linkedin.com/in/peterreinhardt"
     }
   },
@@ -3342,7 +3342,7 @@
     "founder": {
       "name": "Tobias Lutke",
       "title": "CEO, Shopify",
-      "photo": "https://media.licdn.com/dms/image/v2/C4E03AQHHfSEKxV4FAw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1516345880962?e=2147483647&v=beta&t=4uah5KwiJGmwa75FnSz6K6wFeJdeg840tYHuvWPHkjs",
+      "photo": "/founders/tobias-lutke.jpg",
       "linkedin": null
     }
   },
@@ -3357,7 +3357,7 @@
     "founder": {
       "name": "Michael Krens",
       "title": "Senior Staff Engineer",
-      "photo": "https://media.licdn.com/dms/image/v2/C4D03AQGzPYyK8Fibmg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1539250619766?e=2147483647&v=beta&t=Br9kKCGxeoYRhA2bIGcHFH9VKjT6rRdrkLl-B-spCro",
+      "photo": "/founders/michael-krens.jpg",
       "linkedin": "http://www.linkedin.com/in/mkrens"
     }
   },
@@ -3392,7 +3392,7 @@
     "founder": {
       "name": "Suchintan Singh",
       "title": "Co-Founder",
-      "photo": "https://media.licdn.com/dms/image/v2/C4E03AQEvZMuR7q9DVQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1553633532117?e=2147483647&v=beta&t=2ZUgo_-hJ7q2fM-1DaVNFvaNY5qu6weOf8EAyvlREAA",
+      "photo": "/founders/suchintan-singh.jpg",
       "linkedin": "http://www.linkedin.com/in/suchintansingh"
     }
   },
@@ -3402,7 +3402,7 @@
     "founder": {
       "name": "Stewart Butterfield",
       "title": "Slack CEO. Love making software and love to learn.",
-      "photo": "https://media.licdn.com/dms/image/v2/C5603AQE6IvibUy3C5Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1586988400302?e=2147483647&v=beta&t=HFBn_fb_3GTLvkOoqeCS0j4uYCrjZh9udDQHZ0JR48U",
+      "photo": "/founders/stewart-butterfield.jpg",
       "linkedin": "http://www.linkedin.com/in/butterfield"
     }
   },
@@ -3422,7 +3422,7 @@
     "founder": {
       "name": "Mark Mader",
       "title": "President & CEO, Smartsheet Inc. | Blackstone / Vista",
-      "photo": "https://media.licdn.com/dms/image/v2/D5603AQFXRsq2DOctkQ/profile-displayphoto-scale_200_200/B56ZpMhQPnHYAY-/0/1762220381214?e=2147483647&v=beta&t=Fmuvs901L1de3UGARc25b1g-4mdzOtxiAdlK9v8b7gE",
+      "photo": "/founders/mark-mader.jpg",
       "linkedin": "http://www.linkedin.com/in/markmader"
     }
   },
@@ -3547,7 +3547,7 @@
     "founder": {
       "name": "Patrick Collison",
       "title": "Co-Founder & Chief Executive Officer",
-      "photo": "https://media.licdn.com/dms/image/v2/D5603AQF87s-bD1PjDw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1639336707466?e=1769644800&v=beta&t=xhDAYXkE0ZLdZiaqATFueBn0E6Bc-0Tjf6Wk_xzhWNg",
+      "photo": "/founders/patrick-collison.jpg",
       "linkedin": "http://www.linkedin.com/in/patrickcollison"
     }
   },
@@ -3562,7 +3562,7 @@
     "founder": {
       "name": "Paul Copplestone",
       "title": "CEO & Co-Founder",
-      "photo": "https://media.licdn.com/dms/image/v2/D4D03AQFNvX26tlq1OQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1680947996308?e=2147483647&v=beta&t=2W4doktGu5bDN3uya1kcEENYRgtINiPOLf02SIu2Az8",
+      "photo": "/founders/paul-copplestone.jpg",
       "linkedin": "http://www.linkedin.com/in/paulcopplestone"
     }
   },
@@ -3602,7 +3602,7 @@
     "founder": {
       "name": "Victor Riparbelli",
       "title": "CEO & Co-founder",
-      "photo": "https://media.licdn.com/dms/image/v2/D4D03AQHQEGWRQBFMEw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1732104002263?e=2147483647&v=beta&t=kdhdTlVv2LIBkg82SQERJvD5UafF07QGY_gWj2CgYqE",
+      "photo": "/founders/victor-riparbelli.jpg",
       "linkedin": "http://www.linkedin.com/in/victorriparbelli"
     }
   },
@@ -3617,7 +3617,7 @@
     "founder": {
       "name": "Chris Stolte",
       "title": "Co-Founder",
-      "photo": "https://media.licdn.com/dms/image/v2/D5603AQHp-2wQv4TKPA/profile-displayphoto-shrink_200_200/B56ZblZqpdHgAY-/0/1747605433177?e=2147483647&v=beta&t=TYY4L5hbg82ea8ilS4BemLkG_xaiEQJOr0yK8DQqpZ4",
+      "photo": "/founders/chris-stolte.jpg",
       "linkedin": "http://www.linkedin.com/in/cstolte"
     }
   },
@@ -3642,7 +3642,7 @@
     "founder": {
       "name": "Marie Martens",
       "title": "Co-Founder",
-      "photo": "https://media.licdn.com/dms/image/v2/D4E03AQHlkTnc4u1CRg/profile-displayphoto-shrink_200_200/B4EZNzUCVAHsAc-/0/1732806453068?e=2147483647&v=beta&t=0zsN8g9ug9gIVV2V00fDmFIPyhG1gB-5oqmUSuE4OXc",
+      "photo": "/founders/marie-martens.jpg",
       "linkedin": "http://www.linkedin.com/in/mariemartens"
     }
   },
@@ -3657,7 +3657,7 @@
     "founder": {
       "name": "John Xie",
       "title": "Co-Founder and CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/C4E03AQGUW7yx6qf5yg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1584168840743?e=2147483647&v=beta&t=5338rWjfuNzkDzJZjFC3igmdlL9ZNmy_K_dSBh7HCHw",
+      "photo": "/founders/john-xie.jpg",
       "linkedin": "http://www.linkedin.com/in/johnxie"
     }
   },
@@ -3757,7 +3757,7 @@
     "founder": {
       "name": "Amir Salihefendic",
       "title": "Founder and CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/C5103AQHPIxegJszWDg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1516347421984?e=2147483647&v=beta&t=abt0zNJqhjknRtg-xsLzF-fd0eKI6Z1bykJFWEfozSA",
+      "photo": "/founders/amir-salihefendic.jpg",
       "linkedin": "http://www.linkedin.com/in/amix3k"
     }
   },
@@ -3782,7 +3782,7 @@
     "founder": {
       "name": "Joel Spolsky",
       "title": "Co-Founder",
-      "photo": "https://media.licdn.com/dms/image/v2/C4E03AQFjyFhw4zfP_Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1575239790838?e=2147483647&v=beta&t=YKATdJoBkELls3PCqdJ4mWzz6t9rKIwLMPX1TZrpPhs",
+      "photo": "/founders/joel-spolsky.jpg",
       "linkedin": "http://www.linkedin.com/in/joelspolsky"
     }
   },
@@ -3797,7 +3797,7 @@
     "founder": {
       "name": "Jeff Lawson",
       "title": "Chief Executive Officer",
-      "photo": "https://media.licdn.com/dms/image/v2/D5603AQHhHJIp6okZ-w/profile-displayphoto-scale_200_200/B56ZjrhmcdH8Ac-/0/1756298115631?e=2147483647&v=beta&t=Fe0cGvxYnbmSmQtVyC4BkuZtSwasNGzSSGpApUDDKOc",
+      "photo": "/founders/jeff-lawson.jpg",
       "linkedin": "http://www.linkedin.com/in/jeffiel"
     }
   },
@@ -3832,7 +3832,7 @@
     "founder": {
       "name": "David Okuniev",
       "title": "Co-Founder",
-      "photo": "https://media.licdn.com/dms/image/v2/D4D03AQGbQEJwd-r0wQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1731528157578?e=2147483647&v=beta&t=TjlFOKNOC1MguKPQCc7v-sK_L2bq_-VarT-BWwBCIyU",
+      "photo": "/founders/david-okuniev.jpg",
       "linkedin": "http://www.linkedin.com/in/david-okuniev-a845b66"
     }
   },
@@ -3867,7 +3867,7 @@
     "founder": {
       "name": "Chris Hexton",
       "title": "CEO and Co-Founder",
-      "photo": "https://media.licdn.com/dms/image/v2/C4E03AQEPP3NQiCrteA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1623914926440?e=2147483647&v=beta&t=567_mFRvzlmJ2o9Kz8bah51EQ73DUNzhWePDkGyG8PY",
+      "photo": "/founders/chris-hexton.jpg",
       "linkedin": "http://www.linkedin.com/in/chexton"
     }
   },
@@ -3902,7 +3902,7 @@
     "founder": {
       "name": "Anjali Sud",
       "title": "CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/D4E03AQF2R2o5VqSTxw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1718313649645?e=2147483647&v=beta&t=adNqWVsMFsiYSE74Pweivrzd2EtE2OO_faJhmp8myDk",
+      "photo": "/founders/anjali-sud.jpg",
       "linkedin": "http://www.linkedin.com/in/anjalisud"
     }
   },
@@ -3947,7 +3947,7 @@
     "founder": {
       "name": "Vlad Magdalin",
       "title": "Co-founder & Chairman",
-      "photo": "https://media.licdn.com/dms/image/v2/C5103AQFo_0ER3V6oQQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1516341806513?e=2147483647&v=beta&t=lD9cPTdyBgiyCvLJmK3j-YJ0XuI-aaGrAJshQfB-NJo",
+      "photo": "/founders/vlad-magdalin.jpg",
       "linkedin": "http://www.linkedin.com/in/vladmagdalin"
     }
   },
@@ -4027,7 +4027,7 @@
     "founder": {
       "name": "Matt Mullenweg",
       "title": "CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/C4E03AQEWr2CoKEhceg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1516166436483?e=2147483647&v=beta&t=8ohBqHJbwtup8_nUoNnL_8lxl0-iDM-UnN0HaItVaxE",
+      "photo": "/founders/matt-mullenweg.jpg",
       "linkedin": "http://www.linkedin.com/in/mattm"
     }
   },
@@ -4037,7 +4037,7 @@
     "founder": {
       "name": "Nikos Moraitakis",
       "title": "CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/D4D03AQGIfk_0ZVEvSQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1681354773608?e=2147483647&v=beta&t=roevBDowQ75E8rjo_3eujPkTCeOupVK97UPiexUhHkM",
+      "photo": "/founders/nikos-moraitakis.jpg",
       "linkedin": "http://www.linkedin.com/in/moraitakis"
     }
   },
@@ -4092,7 +4092,7 @@
     "founder": {
       "name": "Chad Hurley",
       "title": "Founder & CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/C5603AQGbdA-OrLDUTA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1656087918895?e=2147483647&v=beta&t=H_0GB_HpRrK5FQghmk6iGuHBgAuvKBdN0XZn7CTB21o",
+      "photo": "/founders/chad-hurley.jpg",
       "linkedin": "http://www.linkedin.com/in/chadhurley"
     }
   },
@@ -4107,7 +4107,7 @@
     "founder": {
       "name": "Mikkel Svane",
       "title": "CEO daddy",
-      "photo": "https://media.licdn.com/dms/image/v2/D5603AQGaKhrqai68mg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1718490569624?e=2147483647&v=beta&t=tJbp772Bf8bxREABgRlEcfStfZyjSO39daIiGSLDpvo",
+      "photo": "/founders/mikkel-svane.jpg",
       "linkedin": "http://www.linkedin.com/in/mikkelsvane"
     }
   },
@@ -4192,7 +4192,7 @@
     "founder": {
       "name": "Eric Yuan",
       "title": "Founder & CEO",
-      "photo": "https://media.licdn.com/dms/image/v2/D5603AQGNJcc-bCEvJA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1692899470721?e=2147483647&v=beta&t=v0oLcAlceJdLsAvLVVXCN0TOvGJ9R2u5CiURwxKZDzg",
+      "photo": "/founders/eric-yuan.jpg",
       "linkedin": "http://www.linkedin.com/in/ericsyuan"
     }
   },
