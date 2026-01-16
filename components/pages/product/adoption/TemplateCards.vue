@@ -1,120 +1,125 @@
 <template>
-  <div class="relative w-full h-full">
-    <!-- Background shapes (non-interactive) -->
+  <div class="relative w-full h-full flex items-center justify-center">
     <div
-      v-for="(bg, index) in backgroundShapes"
-      :key="'bg-' + index"
-      class="absolute rounded-md bg-shape"
-      :style="{
-        left: bg.x + 'px',
-        top: bg.y + 'px',
-        width: PILL_WIDTH + 'px',
-        height: PILL_HEIGHT + 'px',
-        backgroundColor: 'transparent',
-        border: '1px solid rgba(255, 255, 255, 0.1)',
-      }"
-    />
-
-    <!-- Special shape (interactive) -->
-    <div
-      v-if="specialShape"
-      class="absolute"
-      :style="{
-        left: specialShape.x + 'px',
-        top: specialShape.y + 'px',
-        zIndex: hoveredSpecial ? 100 : 1,
-      }"
+      class="relative"
+      :style="{ width: shapeWidth + 'px', height: shapeHeight + 'px' }"
     >
+      <!-- Background shapes (non-interactive) -->
       <div
-        class="special-wrapper"
+        v-for="(bg, index) in backgroundShapes"
+        :key="'bg-' + index"
+        class="absolute rounded-md bg-shape"
         :style="{
-          width: hoveredSpecial ? '140px' : PILL_WIDTH + 'px',
-          height: hoveredSpecial ? '140px' : PILL_HEIGHT + 'px',
-          marginLeft: hoveredSpecial ? `-${(140 - PILL_WIDTH) / 2}px` : '0',
-          marginTop: hoveredSpecial ? `-${(140 - PILL_HEIGHT) / 2}px` : '0',
+          left: bg.x + 'px',
+          top: bg.y + 'px',
+          width: PILL_WIDTH + 'px',
+          height: PILL_HEIGHT + 'px',
+          backgroundColor: 'transparent',
+          border: '1px solid rgba(255, 255, 255, 0.1)',
         }"
-        @mouseenter="hoveredSpecial = true"
-        @mouseleave="hoveredSpecial = false"
+      />
+
+      <!-- Special shape (interactive) -->
+      <div
+        v-if="specialShape"
+        class="absolute"
+        :style="{
+          left: specialShape.x + 'px',
+          top: specialShape.y + 'px',
+          zIndex: hoveredSpecial ? 100 : 1,
+        }"
       >
-        <!-- Base square -->
         <div
-          class="special-bubble absolute inset-0 cursor-pointer"
-          :class="{ 'star-rotate': hoveredSpecial }"
+          class="special-wrapper"
           :style="{
-            borderRadius: hoveredSpecial ? '20%' : '6px',
-            backgroundColor: hoveredSpecial ? '#0a0a0a' : '#5eead4',
-            border: 'none',
+            width: hoveredSpecial ? '140px' : PILL_WIDTH + 'px',
+            height: hoveredSpecial ? '140px' : PILL_HEIGHT + 'px',
+            marginLeft: hoveredSpecial ? `-${(140 - PILL_WIDTH) / 2}px` : '0',
+            marginTop: hoveredSpecial ? `-${(140 - PILL_HEIGHT) / 2}px` : '0',
           }"
-        />
-        <!-- Rotated square (only when hovered) -->
-        <div
-          v-if="hoveredSpecial"
-          class="special-bubble-rotated absolute inset-0"
-          :style="{
-            borderRadius: '20%',
-            backgroundColor: '#0a0a0a',
-            transform: 'rotate(45deg)',
-          }"
-        />
-        <!-- Text content -->
-        <div
-          v-if="hoveredSpecial"
-          class="absolute inset-0 flex items-center justify-center text-content z-10"
+          @mouseenter="hoveredSpecial = true"
+          @mouseleave="hoveredSpecial = false"
         >
-          <div class="w-[85px] px-2">
-            <p class="text-white font-bold text-base leading-tight text-center">
-              AI Agents for Everyone
-            </p>
+          <!-- Base square -->
+          <div
+            class="special-bubble absolute inset-0 cursor-pointer"
+            :class="{ 'star-rotate': hoveredSpecial }"
+            :style="{
+              borderRadius: hoveredSpecial ? '20%' : '6px',
+              backgroundColor: hoveredSpecial ? '#0a0a0a' : '#5eead4',
+              border: 'none',
+            }"
+          />
+          <!-- Rotated square (only when hovered) -->
+          <div
+            v-if="hoveredSpecial"
+            class="special-bubble-rotated absolute inset-0"
+            :style="{
+              borderRadius: '20%',
+              backgroundColor: '#0a0a0a',
+              transform: 'rotate(45deg)',
+            }"
+          />
+          <!-- Text content -->
+          <div
+            v-if="hoveredSpecial"
+            class="absolute inset-0 flex items-center justify-center text-content z-10"
+          >
+            <div class="w-[85px] px-2">
+              <p class="text-white font-bold text-base leading-tight text-center">
+                AI Agents for Everyone
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Logo shapes (interactive) -->
-    <div
-      v-for="(circle, index) in circles"
-      :key="index"
-      class="absolute"
-      :style="{
-        left: circle.x + 'px',
-        top: circle.y + 'px',
-        zIndex: hoveredCircle === index ? 100 : 2,
-      }"
-    >
+      <!-- Logo shapes (interactive) -->
       <div
-        class="circle-bubble flex items-center justify-center cursor-pointer text-center overflow-hidden"
+        v-for="(circle, index) in circles"
+        :key="index"
+        class="absolute"
         :style="{
-          width: hoveredCircle === index ? '160px' : PILL_WIDTH + 'px',
-          height: hoveredCircle === index ? '160px' : PILL_HEIGHT + 'px',
-          borderRadius: hoveredCircle === index ? '80px' : '6px',
-          backgroundColor:
-            hoveredCircle === index ? '#0a0a0a' : colors[circle.colorIndex],
-          boxShadow:
-            hoveredCircle === index ? '0 12px 40px rgba(0,0,0,0.4)' : 'none',
-          transform:
-            hoveredCircle === index
-              ? 'translate(-50%, -50%)'
-              : 'translate(0, 0)',
-          marginLeft: hoveredCircle === index ? PILL_WIDTH / 2 + 'px' : '0',
-          marginTop: hoveredCircle === index ? PILL_HEIGHT / 2 + 'px' : '0',
+          left: circle.x + 'px',
+          top: circle.y + 'px',
+          zIndex: hoveredCircle === index ? 100 : 2,
         }"
-        @mouseenter="hoveredCircle = index"
-        @mouseleave="hoveredCircle = null"
       >
         <div
-          v-if="hoveredCircle === index"
-          class="w-[130px] flex flex-col items-center justify-center text-content"
+          class="circle-bubble flex items-center justify-center cursor-pointer text-center overflow-hidden"
+          :style="{
+            width: hoveredCircle === index ? '160px' : PILL_WIDTH + 'px',
+            height: hoveredCircle === index ? '160px' : PILL_HEIGHT + 'px',
+            borderRadius: hoveredCircle === index ? '80px' : '6px',
+            backgroundColor:
+              hoveredCircle === index ? '#0a0a0a' : colors[circle.colorIndex],
+            boxShadow:
+              hoveredCircle === index ? '0 12px 40px rgba(0,0,0,0.4)' : 'none',
+            transform:
+              hoveredCircle === index
+                ? 'translate(-50%, -50%)'
+                : 'translate(0, 0)',
+            marginLeft: hoveredCircle === index ? PILL_WIDTH / 2 + 'px' : '0',
+            marginTop: hoveredCircle === index ? PILL_HEIGHT / 2 + 'px' : '0',
+          }"
+          @mouseenter="hoveredCircle = index"
+          @mouseleave="hoveredCircle = null"
         >
           <div
-            class="text-[10px] font-bold uppercase tracking-widest text-white/60 pb-1 mb-2 border-b border-white/30"
+            v-if="hoveredCircle === index"
+            class="w-[130px] flex flex-col items-center justify-center text-content"
           >
-            {{ departments[circle.deptIndex].short }}
+            <div
+              class="text-[10px] font-bold uppercase tracking-widest text-white/60 pb-1 mb-2 border-b border-white/30"
+            >
+              {{ departments[circle.deptIndex].short }}
+            </div>
+            <p
+              class="text-white font-semibold text-base leading-tight text-center"
+            >
+              {{ departments[circle.deptIndex].useCases[circle.useCaseIndex] }}
+            </p>
           </div>
-          <p
-            class="text-white font-semibold text-base leading-tight text-center"
-          >
-            {{ departments[circle.deptIndex].useCases[circle.useCaseIndex] }}
-          </p>
         </div>
       </div>
     </div>
@@ -274,13 +279,11 @@ const parseAsciiArt = () => {
   };
   const rng = seed(42);
 
-  // Center in container
+  // Calculate total dimensions (positions relative to 0,0 for CSS centering)
   const totalWidth = ASCII_WIDTH * CELL_X;
   const totalHeight = ASCII_HEIGHT * CELL_Y;
-  const containerWidth = 540;
-  const containerHeight = 360;
-  const offsetX = (containerWidth - totalWidth) / 2;
-  const offsetY = (containerHeight - totalHeight) / 2;
+  const offsetX = 0;
+  const offsetY = 0;
 
   // Find bounds for gradient calculation
   const maxDiagonal = ASCII_WIDTH + ASCII_HEIGHT;
@@ -372,13 +375,15 @@ const parseAsciiArt = () => {
   );
   if (specialIdx !== -1) bgList.splice(specialIdx, 1);
 
-  return { circles: circlesList, background: bgList, special };
+  return { circles: circlesList, background: bgList, special, totalWidth, totalHeight };
 };
 
 const {
   circles,
   background: backgroundShapes,
   special: specialShape,
+  totalWidth: shapeWidth,
+  totalHeight: shapeHeight,
 } = parseAsciiArt();
 </script>
 

@@ -15,7 +15,9 @@
       "mcp__chrome-devtools__take_snapshot",
       "mcp__chrome-devtools__hover",
       "mcp__chrome-devtools__evaluate_script",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "mcp__chrome-devtools__new_page",
+      "mcp__chrome-devtools__close_page"
     ]
   }
 }
