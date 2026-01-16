@@ -131,15 +131,15 @@ class ButtonParticle {
   }
 
   reset() {
-    // Spawn from bottom, on left or right side
+    // Spawn from bottom, on left or right side (closer to center)
     const baseX = this.side === 'left'
-      ? this.canvasWidth * 0.25
-      : this.canvasWidth * 0.75;
+      ? this.canvasWidth * 0.35
+      : this.canvasWidth * 0.65;
     this.x = baseX + (Math.random() - 0.5) * 60;
     this.startX = this.x;
     this.y = this.canvasHeight - 30; // Start near bottom
     this.progress = 0;
-    this.duration = 4000 + Math.random() * 1000; // 4-5 seconds
+    this.duration = 8000 + Math.random() * 2000; // 8-10 seconds (half speed)
     this.startTime = performance.now();
     this.baseRotation = this.side === 'left' ? -0.05 : 0.05; // Slight tilt based on side
     this.rotationAmplitude = 0.08; // ±5 degrees oscillation
@@ -217,12 +217,28 @@ class ButtonParticle {
   }
 }
 
+// AI automation project names
+const projectNames = [
+  'Summarize Emails',
+  'Enrich Leads',
+  'Sync CRM Data',
+  'Tag Support Tickets',
+  'Route Inquiries',
+  'Score Prospects',
+  'Extract Invoices',
+  'Update Contacts',
+  'Notify on Mentions',
+  'Archive Old Chats',
+  'Log Meeting Notes',
+  'Send Reminders',
+];
+
 // Particle system
 let particles = [];
 let lastSpawnTime = 0;
 let nextSpawnSide = 'left';
-const spawnInterval = 2000; // Slower spawn for sparse feel
-const maxParticles = 4; // 2 per side max
+const spawnInterval = 800; // Faster spawn for more buttons
+const maxParticles = 8; // More particles visible
 
 const setHovered = (id) => {
   hoveredAvatar.value = id;
@@ -281,7 +297,7 @@ const animate = (currentTime) => {
 
   // Spawn new particles if needed (alternating between left and right)
   if (particles.length < maxParticles && currentTime - lastSpawnTime > spawnInterval) {
-    const text = nextSpawnSide === 'left' ? 'Personal Project' : 'Team Projects';
+    const text = projectNames[Math.floor(Math.random() * projectNames.length)];
     particles.push(new ButtonParticle(dims.width, dims.height, text, nextSpawnSide));
     nextSpawnSide = nextSpawnSide === 'left' ? 'right' : 'left';
     lastSpawnTime = currentTime;
