@@ -11,7 +11,7 @@
     />
 
     <!-- Avatar grid container -->
-    <div class="grid grid-cols-2 gap-[20px] relative z-10" style="width: 20%">
+    <div class="grid grid-cols-4 gap-4 relative z-10 w-[50%]">
       <div
         v-for="(avatar, index) in avatars"
         :key="index"
@@ -20,7 +20,9 @@
           'avatar-hovered': hoveredAvatar === index + 1,
           'avatar-pulse': isPulsing(index + 1),
         }"
-        @mouseenter="avatar.isVideo ? onVideoEnter(index + 1) : setHovered(index + 1)"
+        @mouseenter="
+          avatar.isVideo ? onVideoEnter(index + 1) : setHovered(index + 1)
+        "
         @mouseleave="avatar.isVideo ? onVideoLeave() : clearHovered"
       >
         <video
@@ -53,10 +55,35 @@ let pulseInterval = null;
 
 // Avatar data for the 2x2 grid
 const avatars = [
-  { src: 'https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_5.png', isVideo: false },
-  { src: '/avatar-6.mp4', isVideo: true },
-  { src: 'https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_7.png', isVideo: false },
-  { src: 'https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_8.png', isVideo: false },
+  {
+    src: "https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_1.png",
+    isVideo: false,
+  },
+  {
+    src: "https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_2.png",
+    isVideo: false,
+  },
+  {
+    src: "https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_3.png",
+    isVideo: false,
+  },
+  {
+    src: "https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_4.png",
+    isVideo: false,
+  },
+  {
+    src: "https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_5.png",
+    isVideo: false,
+  },
+  { src: "/avatar-6.mp4", isVideo: true },
+  {
+    src: "https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_7.png",
+    isVideo: false,
+  },
+  {
+    src: "https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_8.png",
+    isVideo: false,
+  },
 ];
 
 // Canvas ref (single full-background canvas)
@@ -232,7 +259,9 @@ const onVideoEnter = (id) => {
   hoveredAvatar.value = id;
   if (avatarVideo.value) {
     // avatarVideo is an array when using v-for with ref
-    const video = Array.isArray(avatarVideo.value) ? avatarVideo.value[0] : avatarVideo.value;
+    const video = Array.isArray(avatarVideo.value)
+      ? avatarVideo.value[0]
+      : avatarVideo.value;
     if (video) video.play();
   }
 };
@@ -240,7 +269,9 @@ const onVideoEnter = (id) => {
 const onVideoLeave = () => {
   hoveredAvatar.value = null;
   if (avatarVideo.value) {
-    const video = Array.isArray(avatarVideo.value) ? avatarVideo.value[0] : avatarVideo.value;
+    const video = Array.isArray(avatarVideo.value)
+      ? avatarVideo.value[0]
+      : avatarVideo.value;
     if (video) {
       video.pause();
       video.currentTime = 0;
@@ -351,23 +382,19 @@ onBeforeUnmount(() => {
 <style scoped>
 .avatar-bubble {
   border-radius: 50%;
-  border: 2px solid rgba(236, 72, 153, 0.4);
-  background: rgba(236, 72, 153, 0.1);
+  background: rgba(255, 255, 255, 0.1);
   overflow: hidden;
   transform: scale(1);
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
-    border-radius 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.4s ease,
-    border-width 0.4s ease, box-shadow 0.4s ease;
+    border-radius 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   will-change: transform, border-radius;
 }
 
 .avatar-bubble.avatar-hovered {
-  transform: scale(3);
-  border-radius: 20px;
-  border-color: rgba(236, 72, 153, 1);
-  border-width: 1px;
+  transform: scale(2.2);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
   z-index: 50;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
 }
 
 .avatar-bubble.avatar-pulse:not(.avatar-hovered) {
