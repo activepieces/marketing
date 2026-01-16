@@ -2,93 +2,23 @@
   <div
     class="relative w-full h-full flex items-center justify-center overflow-hidden bg-white/5"
   >
-    <!-- Creative background composition -->
-    <div class="absolute inset-0 pointer-events-none">
-      <!-- Main blob - layered for depth -->
-      <svg
-        class="absolute top-1/2 left-1/2 w-80 h-80"
-        style="transform: translate(-50%, -55%)"
-        viewBox="0 0 200 200"
-      >
-        <!-- Outer glow blob -->
-        <circle cx="100" cy="100" r="80" fill="rgba(255,255,255, 0.06)" />
-        <!-- Inner blob -->
-        <circle cx="100" cy="100" r="60" fill="rgba(255,255,255, 0.06)" />
-      </svg>
+    <!-- Canvas animations for floating buttons -->
+    <canvas
+      ref="leftCanvas"
+      class="absolute left-0 inset-y-0 w-1/3 pointer-events-none"
+    />
+    <canvas
+      ref="rightCanvas"
+      class="absolute right-0 inset-y-0 w-1/3 pointer-events-none"
+    />
 
-      <!-- Abstract team member circles - varied sizes, positioned around avatars -->
-      <div
-        class="absolute top-[20%] left-[18%] w-7 h-7 rounded-full"
-        style="background: #6366f1; opacity: 0.7"
-      ></div>
-      <div
-        class="absolute top-[18%] right-[16%] w-2 h-2 rounded-full"
-        style="background: #f97316; opacity: 0.7"
-      ></div>
-      <div
-        class="absolute top-[62%] left-[16%] w-3 h-3 rounded-full"
-        style="background: #10b981; opacity: 0.65"
-      ></div>
-      <div
-        class="absolute top-[64%] right-[14%] w-8 h-8 rounded-full"
-        style="background: #8b5cf6; opacity: 0.65"
-      ></div>
-      <div
-        class="absolute top-[24%] left-[42%] w-1.5 h-1.5 rounded-full"
-        style="background: #f43f5e; opacity: 0.7"
-      ></div>
-      <div
-        class="absolute top-[22%] right-[40%] w-5 h-5 rounded-full"
-        style="background: #14b8a6; opacity: 0.6"
-      ></div>
-      <div
-        class="absolute top-[60%] left-[44%] w-2.5 h-2.5 rounded-full"
-        style="background: #eab308; opacity: 0.65"
-      ></div>
-      <div
-        class="absolute top-[66%] right-[42%] w-4 h-4 rounded-full"
-        style="background: #3b82f6; opacity: 0.6"
-      ></div>
-      <div
-        class="absolute top-[40%] left-[12%] w-6 h-6 rounded-full"
-        style="background: #ec4899; opacity: 0.55"
-      ></div>
-
-      <!-- Curved connection lines -->
-
-      <!-- Small rings for extra visual interest -->
-      <div
-        class="absolute top-[30%] left-[18%] w-6 h-6 rounded-full border"
-        style="border-color: rgba(236, 72, 153, 0.15)"
-      ></div>
-      <div
-        class="absolute top-[65%] right-[12%] w-5 h-5 rounded-full border"
-        style="border-color: rgba(236, 72, 153, 0.12)"
-      ></div>
-    </div>
-
-    <!-- Plus icon in center with bubble circles radiating out -->
+    <!-- Avatar bubbles in center -->
     <div class="relative z-10">
-      <!-- Plus icon -->
-      <div
-        class="w-16 h-16 rounded-lg flex items-center justify-center relative z-10"
-      >
-        <svg
-          class="w-8 h-8 text-white"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="3"
-            d="M12 4v16m8-8H4"
-          ></path>
-        </svg>
+      <div class="w-16 h-16 flex items-center justify-center relative z-10">
+        <!-- Empty center space where avatars radiate from -->
       </div>
 
-      <!-- Bubble circles radiating out from plus icon -->
+      <!-- Bubble circles radiating out from center -->
       <div class="absolute inset-0 flex items-center justify-center">
         <!-- Bubble 1 - top left (smaller) -->
         <div
@@ -166,21 +96,17 @@
     <!-- Tilted UI elements for projects -->
     <div class="absolute bottom-8 left-0 right-0 flex justify-around">
       <!-- Personal Project -->
-      <!-- Add tailwind css class to decrease line height -->
       <div
         class="border-2 border-white/10 rounded-full px-4 py-2 shadow-lg bg-white/5 text-sm font-semibold text-white -rotate-3 flex items-center justify-center h-fit"
       >
         Personal Project
       </div>
 
-      <!-- Team Projects -->
+      <!-- Team Projects - now matching Personal Project style -->
       <div
-        class="bg-white border-2 rounded-lg px-4 py-3 shadow-lg"
-        style="border-color: rgba(236, 72, 153, 0.3); transform: rotate(2deg)"
+        class="border-2 border-white/10 rounded-full px-4 py-2 shadow-lg bg-white/5 text-sm font-semibold text-white rotate-3 flex items-center justify-center h-fit"
       >
-        <div class="text-sm font-semibold" style="color: #ec4899">
-          Team Projects
-        </div>
+        Team Projects
       </div>
     </div>
   </div>
@@ -193,6 +119,111 @@ const avatarVideo = ref(null);
 const hoveredAvatar = ref(null);
 const pulsingAvatar = ref(1);
 let pulseInterval = null;
+
+// Canvas refs
+const leftCanvas = ref(null);
+const rightCanvas = ref(null);
+let animationFrameId = null;
+
+// Button particle class
+class ButtonParticle {
+  constructor(canvasWidth, canvasHeight, text) {
+    this.text = text;
+    this.canvasWidth = canvasWidth;
+    this.canvasHeight = canvasHeight;
+    this.reset();
+  }
+
+  reset() {
+    // Start from bottom
+    this.x = this.canvasWidth * (0.3 + Math.random() * 0.4);
+    this.y = this.canvasHeight + 50;
+    this.progress = 0;
+    this.duration = 4000 + Math.random() * 1000; // 4-5 seconds
+    this.startTime = performance.now();
+    this.baseRotation = (Math.random() - 0.5) * 0.1; // Base rotation
+    this.rotationAmplitude = 0.08; // ±5 degrees oscillation
+    this.horizontalDrift = (Math.random() - 0.5) * 30; // Horizontal drift range
+    this.scale = 0.8 + Math.random() * 0.3;
+  }
+
+  update(currentTime) {
+    const elapsed = currentTime - this.startTime;
+    this.progress = Math.min(elapsed / this.duration, 1);
+
+    // Move upward
+    const totalDistance = this.canvasHeight + 100;
+    this.y = this.canvasHeight + 50 - totalDistance * this.progress;
+
+    // Sinusoidal horizontal drift
+    this.x =
+      this.canvasWidth * 0.5 +
+      Math.sin(this.progress * Math.PI * 2) * this.horizontalDrift;
+
+    // Rotation oscillation
+    this.rotation =
+      this.baseRotation +
+      Math.sin(this.progress * Math.PI * 4) * this.rotationAmplitude;
+
+    // Opacity curve: fade in (0-15%), full (15-70%), fade out (70-100%)
+    if (this.progress < 0.15) {
+      this.opacity = this.progress / 0.15;
+    } else if (this.progress < 0.7) {
+      this.opacity = 1;
+    } else {
+      this.opacity = 1 - (this.progress - 0.7) / 0.3;
+    }
+
+    return this.progress < 1;
+  }
+
+  draw(ctx) {
+    ctx.save();
+    ctx.translate(this.x, this.y);
+    ctx.rotate(this.rotation);
+    ctx.scale(this.scale, this.scale);
+    ctx.globalAlpha = this.opacity * 0.9;
+
+    // Measure text
+    ctx.font = "600 14px system-ui, -apple-system, sans-serif";
+    const textMetrics = ctx.measureText(this.text);
+    const textWidth = textMetrics.width;
+    const paddingX = 16;
+    const paddingY = 10;
+    const width = textWidth + paddingX * 2;
+    const height = 36;
+    const radius = height / 2;
+
+    // Draw pill shape
+    ctx.beginPath();
+    ctx.roundRect(-width / 2, -height / 2, width, height, radius);
+
+    // Fill
+    ctx.fillStyle = "rgba(255, 255, 255, 0.05)";
+    ctx.fill();
+
+    // Stroke
+    ctx.strokeStyle = "rgba(255, 255, 255, 0.1)";
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    // Text
+    ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(this.text, 0, 1);
+
+    ctx.restore();
+  }
+}
+
+// Particle systems
+let leftParticles = [];
+let rightParticles = [];
+let lastSpawnTimeLeft = 0;
+let lastSpawnTimeRight = 0;
+const spawnInterval = 1500; // Spawn new button every 1.5 seconds
+const maxParticles = 3; // Max 2-3 visible at once
 
 const setHovered = (id) => {
   hoveredAvatar.value = id;
@@ -221,17 +252,110 @@ const onAvatar2Leave = () => {
   }
 };
 
+const setupCanvas = (canvas) => {
+  if (!canvas) return;
+  const rect = canvas.getBoundingClientRect();
+  const dpr = window.devicePixelRatio || 1;
+  canvas.width = rect.width * dpr;
+  canvas.height = rect.height * dpr;
+  const ctx = canvas.getContext("2d");
+  ctx.scale(dpr, dpr);
+  return { width: rect.width, height: rect.height };
+};
+
+const animate = (currentTime) => {
+  // Setup canvases if needed
+  const leftCtx = leftCanvas.value?.getContext("2d");
+  const rightCtx = rightCanvas.value?.getContext("2d");
+
+  if (!leftCtx || !rightCtx) {
+    animationFrameId = requestAnimationFrame(animate);
+    return;
+  }
+
+  const leftDims = {
+    width: leftCanvas.value.width / (window.devicePixelRatio || 1),
+    height: leftCanvas.value.height / (window.devicePixelRatio || 1),
+  };
+  const rightDims = {
+    width: rightCanvas.value.width / (window.devicePixelRatio || 1),
+    height: rightCanvas.value.height / (window.devicePixelRatio || 1),
+  };
+
+  // Clear canvases
+  leftCtx.clearRect(0, 0, leftDims.width, leftDims.height);
+  rightCtx.clearRect(0, 0, rightDims.width, rightDims.height);
+
+  // Spawn new particles if needed (left)
+  if (
+    leftParticles.length < maxParticles &&
+    currentTime - lastSpawnTimeLeft > spawnInterval
+  ) {
+    leftParticles.push(
+      new ButtonParticle(leftDims.width, leftDims.height, "Personal Project")
+    );
+    lastSpawnTimeLeft = currentTime;
+  }
+
+  // Spawn new particles if needed (right)
+  if (
+    rightParticles.length < maxParticles &&
+    currentTime - lastSpawnTimeRight > spawnInterval
+  ) {
+    rightParticles.push(
+      new ButtonParticle(rightDims.width, rightDims.height, "Team Projects")
+    );
+    lastSpawnTimeRight = currentTime;
+  }
+
+  // Update and draw left particles
+  leftParticles = leftParticles.filter((p) => {
+    const alive = p.update(currentTime);
+    if (alive) p.draw(leftCtx);
+    return alive;
+  });
+
+  // Update and draw right particles
+  rightParticles = rightParticles.filter((p) => {
+    const alive = p.update(currentTime);
+    if (alive) p.draw(rightCtx);
+    return alive;
+  });
+
+  animationFrameId = requestAnimationFrame(animate);
+};
+
 onMounted(() => {
+  // Avatar pulse animation
   pulseInterval = setInterval(() => {
     pulsingAvatar.value =
       pulsingAvatar.value >= 4 ? 1 : pulsingAvatar.value + 1;
   }, 800);
+
+  // Setup canvases
+  if (leftCanvas.value) setupCanvas(leftCanvas.value);
+  if (rightCanvas.value) setupCanvas(rightCanvas.value);
+
+  // Start animation
+  animationFrameId = requestAnimationFrame(animate);
+
+  // Handle resize
+  window.addEventListener("resize", handleResize);
 });
+
+const handleResize = () => {
+  if (leftCanvas.value) setupCanvas(leftCanvas.value);
+  if (rightCanvas.value) setupCanvas(rightCanvas.value);
+};
 
 onBeforeUnmount(() => {
   if (pulseInterval) {
     clearInterval(pulseInterval);
   }
+  if (animationFrameId) {
+    cancelAnimationFrame(animationFrameId);
+  }
+  window.removeEventListener("resize", handleResize);
 });
 </script>
 
