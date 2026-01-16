@@ -13,83 +13,33 @@
           </h2>
         </div>
 
-        <!-- Background illustration - AI modern mesh -->
-        <svg class="absolute -inset-4 w-[calc(100%+32px)] h-[calc(100%+32px)] pointer-events-none" viewBox="0 0 500 400" preserveAspectRatio="xMidYMid slice" fill="none">
-          <defs>
-            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
-              <feMerge>
-                <feMergeNode in="coloredBlur"/>
-                <feMergeNode in="SourceGraphic"/>
-              </feMerge>
-            </filter>
-            <radialGradient id="meshGlow1" cx="30%" cy="30%">
-              <stop offset="0%" stop-color="#c084fc" stop-opacity="0.4" />
-              <stop offset="100%" stop-color="#c084fc" stop-opacity="0" />
-            </radialGradient>
-            <radialGradient id="meshGlow2" cx="70%" cy="70%">
-              <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.35" />
-              <stop offset="100%" stop-color="#60a5fa" stop-opacity="0" />
-            </radialGradient>
-            <radialGradient id="meshGlow3" cx="80%" cy="20%">
-              <stop offset="0%" stop-color="#f472b6" stop-opacity="0.3" />
-              <stop offset="100%" stop-color="#f472b6" stop-opacity="0" />
-            </radialGradient>
-            <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#c084fc" stop-opacity="0.6" />
-              <stop offset="50%" stop-color="#818cf8" stop-opacity="0.4" />
-              <stop offset="100%" stop-color="#60a5fa" stop-opacity="0.6" />
-            </linearGradient>
-          </defs>
-          <ellipse cx="120" cy="100" rx="180" ry="140" fill="url(#meshGlow1)" />
-          <ellipse cx="380" cy="300" rx="160" ry="130" fill="url(#meshGlow2)" />
-          <ellipse cx="420" cy="80" rx="120" ry="100" fill="url(#meshGlow3)" />
-          <g filter="url(#glow)" opacity="0.5">
-            <path d="M 40 320 Q 120 280 180 300 Q 260 320 300 260" stroke="url(#lineGrad)" stroke-width="1.5" fill="none" stroke-linecap="round" />
-            <path d="M 300 260 Q 340 200 400 220 Q 460 240 480 180" stroke="url(#lineGrad)" stroke-width="1.5" fill="none" stroke-linecap="round" />
-            <path d="M 60 200 Q 140 160 200 180 Q 280 200 320 140" stroke="url(#lineGrad)" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.6" />
-          </g>
-          <g filter="url(#glow)">
-            <circle cx="180" cy="300" r="4" fill="#c084fc" opacity="0.8" />
-            <circle cx="300" cy="260" r="5" fill="#818cf8" opacity="0.9" />
-            <circle cx="400" cy="220" r="3" fill="#60a5fa" opacity="0.7" />
-            <circle cx="200" cy="180" r="3" fill="#f472b6" opacity="0.6" />
-            <circle cx="320" cy="140" r="4" fill="#34d399" opacity="0.8" />
-          </g>
-          <circle cx="100" cy="150" r="2" fill="#c084fc" opacity="0.4">
-            <animate attributeName="cy" values="150;140;150" dur="4s" repeatCount="indefinite" />
-          </circle>
-          <circle cx="350" cy="100" r="1.5" fill="#818cf8" opacity="0.5">
-            <animate attributeName="cy" values="100;110;100" dur="3s" repeatCount="indefinite" />
-          </circle>
-          <circle cx="450" cy="300" r="2" fill="#60a5fa" opacity="0.4">
-            <animate attributeName="cy" values="300;290;300" dur="5s" repeatCount="indefinite" />
-          </circle>
-        </svg>
-
-        <!-- Scattered email cards -->
-        <div
-          v-for="(card, index) in cards"
-          :key="index"
-          class="absolute email-card overflow-hidden rounded-xl"
-          :style="card.style"
-        >
-          <div 
-            class="w-full h-full p-2.5 border bg-white flex flex-col rounded-xl"
-            :style="{ borderColor: card.color + '60' }"
-          >
-            <div 
-              class="inline-block px-2 py-0.5 rounded-md text-white text-[9px] font-bold mb-1.5 self-start flex-shrink-0"
-              :style="{ backgroundColor: card.color }"
+        <!-- 3x3 Card Grid -->
+        <div class="absolute inset-0 flex items-center justify-center p-8 pt-20">
+          <div class="grid grid-cols-3 gap-3">
+            <div
+              v-for="(card, index) in gridCards"
+              :key="index"
+              class="email-card overflow-hidden rounded-xl w-[110px] h-[85px]"
+              :style="{ transform: `rotate(${card.rotation}deg)` }"
             >
-              Day {{ card.day }}
-            </div>
-            <p class="font-semibold text-gray-700 text-[11px] leading-tight mb-1.5 flex-shrink-0">
-              {{ card.title }}
-            </p>
-            <div class="space-y-1 flex-shrink-0">
-              <div class="h-1 rounded-full bg-gray-100 w-full"></div>
-              <div class="h-1 rounded-full bg-gray-100 w-3/4"></div>
+              <div
+                class="w-full h-full p-2.5 border bg-white flex flex-col rounded-xl"
+                :style="{ borderColor: card.color + '60' }"
+              >
+                <div
+                  class="inline-block px-2 py-0.5 rounded-md text-white text-[9px] font-bold mb-1.5 self-start flex-shrink-0"
+                  :style="{ backgroundColor: card.color }"
+                >
+                  Day {{ card.day }}
+                </div>
+                <p class="font-semibold text-gray-700 text-[11px] leading-tight mb-1.5 flex-shrink-0">
+                  {{ card.title }}
+                </p>
+                <div class="space-y-1 flex-shrink-0">
+                  <div class="h-1 rounded-full bg-gray-100 w-full"></div>
+                  <div class="h-1 rounded-full bg-gray-100 w-3/4"></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -441,62 +391,16 @@ const triggerCelebration = (emoji, event) => {
   }, 3000)
 }
 
-const cards = [
-  { 
-    day: 1, 
-    title: 'Welcome', 
-    color: '#f472b6',
-    style: { 
-      width: '120px', height: '95px',
-      left: '5%', top: '22%',
-      transform: 'rotate(-7deg)',
-      zIndex: 3
-    }
-  },
-  { 
-    day: 6, 
-    title: 'First badge!', 
-    color: '#a855f7',
-    style: { 
-      width: '115px', height: '90px',
-      right: '8%', top: '18%',
-      transform: 'rotate(5deg)',
-      zIndex: 2
-    }
-  },
-  { 
-    day: 13, 
-    title: 'Leaderboard', 
-    color: '#3b82f6',
-    style: { 
-      width: '125px', height: '100px',
-      left: '8%', bottom: '12%',
-      transform: 'rotate(4deg)',
-      zIndex: 4
-    }
-  },
-  { 
-    day: 22, 
-    title: 'AI agents', 
-    color: '#10b981',
-    style: { 
-      width: '130px', height: '105px',
-      left: '50%', top: '55%',
-      transform: 'translate(-50%, -50%) rotate(-2deg)',
-      zIndex: 5
-    }
-  },
-  { 
-    day: 30, 
-    title: 'AI Hero! 🏆', 
-    color: '#34d399',
-    style: { 
-      width: '115px', height: '95px',
-      right: '5%', bottom: '18%',
-      transform: 'rotate(-4deg)',
-      zIndex: 2
-    }
-  },
+const gridCards = [
+  { day: 1, title: 'Welcome', color: '#f472b6', rotation: -3 },
+  { day: 4, title: 'First flow', color: '#a855f7', rotation: 2 },
+  { day: 6, title: 'Badge!', color: '#8b5cf6', rotation: -1 },
+  { day: 9, title: 'Add AI', color: '#6366f1', rotation: 1 },
+  { day: 13, title: 'Leaderboard', color: '#3b82f6', rotation: -2 },
+  { day: 19, title: 'Share', color: '#0ea5e9', rotation: 3 },
+  { day: 22, title: 'AI agents', color: '#10b981', rotation: -1 },
+  { day: 24, title: 'Impact', color: '#059669', rotation: 2 },
+  { day: 30, title: 'AI Hero! 🏆', color: '#34d399', rotation: -2 },
 ]
 
 const emailList = [
