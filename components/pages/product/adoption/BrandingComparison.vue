@@ -102,7 +102,7 @@
               <div class="space-y-4">
                 <!-- Simple card -->
                 <div
-                  class="bg-white border-2 border-dashed rounded-lg p-3 transition-all duration-300"
+                  class="bg-white/5 border-2 border-dashed rounded-lg p-3 transition-all duration-300"
                   :style="{ borderColor: `${activeColor.light}50` }"
                 >
                   <div

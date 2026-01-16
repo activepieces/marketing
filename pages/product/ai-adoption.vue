@@ -227,9 +227,9 @@ onUnmounted(() => {
           </div>
 
           <!-- Feature 2: Easy Onboarding -->
-          <div class="rounded-3xl overflow-hidden border-4 border-white/10">
+          <div class="rounded-3xl overflow-hidden">
             <div class="grid grid-cols-[1fr_2fr] items-center">
-              <div class="p-12 flex flex-col gap-12 border-r-4 border-white/10">
+              <div class="p-12 flex flex-col gap-12 bg-white/5">
                 <div class="flex flex-col gap-4">
                   <h3
                     class="text-white text-4xl font-sentient font-medium text-balance"
