@@ -6,22 +6,14 @@
     <div class="absolute inset-0 pointer-events-none">
       <!-- Main blob - layered for depth -->
       <svg
-        class="absolute top-1/2 left-1/2 w-[380px] h-[340px]"
+        class="absolute top-1/2 left-1/2 w-80 h-80"
         style="transform: translate(-50%, -55%)"
         viewBox="0 0 200 200"
       >
         <!-- Outer glow blob -->
-        <path
-          d="M45,-60C55.5,-50.5,59.5,-33,62,-16.5C64.5,0,65.5,15.5,59,28C52.5,40.5,38.5,50,23,57C7.5,64,-9.5,68.5,-26,66C-42.5,63.5,-58.5,54,-67,39.5C-75.5,25,-76.5,5.5,-72,-12C-67.5,-29.5,-57.5,-45,-44,-55.5C-30.5,-66,-15.25,-71.5,1.5,-73.5C18.25,-75.5,34.5,-69.5,45,-60Z"
-          transform="translate(100 100) scale(1.1)"
-          fill="rgba(236, 72, 153, 0.06)"
-        />
+        <circle cx="100" cy="100" r="80" fill="rgba(255,255,255, 0.06)" />
         <!-- Inner blob -->
-        <path
-          d="M45,-60C55.5,-50.5,59.5,-33,62,-16.5C64.5,0,65.5,15.5,59,28C52.5,40.5,38.5,50,23,57C7.5,64,-9.5,68.5,-26,66C-42.5,63.5,-58.5,54,-67,39.5C-75.5,25,-76.5,5.5,-72,-12C-67.5,-29.5,-57.5,-45,-44,-55.5C-30.5,-66,-15.25,-71.5,1.5,-73.5C18.25,-75.5,34.5,-69.5,45,-60Z"
-          transform="translate(100 100)"
-          fill="rgba(236, 72, 153, 0.1)"
-        />
+        <circle cx="100" cy="100" r="60" fill="rgba(255,255,255, 0.06)" />
       </svg>
 
       <!-- Abstract team member circles - varied sizes, positioned around avatars -->
@@ -63,37 +55,6 @@
       ></div>
 
       <!-- Curved connection lines -->
-      <svg class="absolute inset-0 w-full h-full" viewBox="0 0 400 400">
-        <!-- Flowing curve from center outward -->
-        <path
-          d="M200 180 Q 280 150 320 100"
-          stroke="rgba(236, 72, 153, 0.15)"
-          stroke-width="1.5"
-          fill="none"
-          stroke-linecap="round"
-        />
-        <path
-          d="M200 180 Q 120 140 70 120"
-          stroke="rgba(236, 72, 153, 0.12)"
-          stroke-width="1.5"
-          fill="none"
-          stroke-linecap="round"
-        />
-        <path
-          d="M200 220 Q 130 260 90 300"
-          stroke="rgba(236, 72, 153, 0.1)"
-          stroke-width="1.5"
-          fill="none"
-          stroke-linecap="round"
-        />
-        <path
-          d="M200 220 Q 270 270 310 320"
-          stroke="rgba(236, 72, 153, 0.12)"
-          stroke-width="1.5"
-          fill="none"
-          stroke-linecap="round"
-        />
-      </svg>
 
       <!-- Small rings for extra visual interest -->
       <div
@@ -111,10 +72,6 @@
       <!-- Plus icon -->
       <div
         class="w-16 h-16 rounded-lg flex items-center justify-center relative z-10"
-        style="
-          background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
-          transform: rotate(-2deg);
-        "
       >
         <svg
           class="w-8 h-8 text-white"
@@ -209,13 +166,11 @@
     <!-- Tilted UI elements for projects -->
     <div class="absolute bottom-8 left-0 right-0 flex justify-around">
       <!-- Personal Project -->
+      <!-- Add tailwind css class to decrease line height -->
       <div
-        class="bg-white border-2 rounded-lg px-4 py-3 shadow-lg"
-        style="border-color: rgba(236, 72, 153, 0.3); transform: rotate(-3deg)"
+        class="border-2 border-white/10 rounded-full px-4 py-2 shadow-lg bg-white/5 text-sm font-semibold text-white -rotate-3 flex items-center justify-center h-fit"
       >
-        <div class="text-sm font-semibold" style="color: #ec4899">
-          Personal Project
-        </div>
+        Personal Project
       </div>
 
       <!-- Team Projects -->
