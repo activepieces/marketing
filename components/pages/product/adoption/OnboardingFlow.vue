@@ -5,7 +5,9 @@
     <!-- Canvas animation for floating buttons (full background) -->
     <canvas
       ref="animationCanvas"
-      class="absolute inset-0 w-full h-full pointer-events-none"
+      class="absolute inset-0 w-full h-full"
+      @mousemove="onCanvasMouseMove"
+      @mouseleave="onCanvasMouseLeave"
     />
 
     <!-- Avatar bubbles in center -->
@@ -88,23 +90,6 @@
         </div>
       </div>
     </div>
-
-    <!-- Tilted UI elements for projects -->
-    <div class="absolute bottom-8 left-0 right-0 flex justify-around">
-      <!-- Personal Project -->
-      <div
-        class="border-2 border-white/10 rounded-full px-4 py-2 shadow-lg bg-white/5 text-sm font-semibold text-white -rotate-3 flex items-center justify-center h-fit"
-      >
-        Personal Project
-      </div>
-
-      <!-- Team Projects - now matching Personal Project style -->
-      <div
-        class="border-2 border-white/10 rounded-full px-4 py-2 shadow-lg bg-white/5 text-sm font-semibold text-white rotate-3 flex items-center justify-center h-fit"
-      >
-        Team Projects
-      </div>
-    </div>
   </div>
 </template>
 
@@ -120,6 +105,9 @@ let pulseInterval = null;
 const animationCanvas = ref(null);
 let animationFrameId = null;
 
+// Mouse position for hover detection
+const mousePos = ref({ x: -1000, y: -1000 });
+
 // Button particle class
 class ButtonParticle {
   constructor(canvasWidth, canvasHeight, text, side) {
@@ -127,33 +115,49 @@ class ButtonParticle {
     this.canvasWidth = canvasWidth;
     this.canvasHeight = canvasHeight;
     this.side = side; // 'left' or 'right'
+    this.hoverScale = 1; // For smooth hover animation
+    this.hoverBrightness = 0; // For smooth hover brightness
     this.reset();
   }
 
   reset() {
     // Spawn from bottom, on left or right side (closer to center)
-    const baseX = this.side === 'left'
-      ? this.canvasWidth * 0.35
-      : this.canvasWidth * 0.65;
+    const baseX =
+      this.side === "left" ? this.canvasWidth * 0.35 : this.canvasWidth * 0.65;
     this.x = baseX + (Math.random() - 0.5) * 60;
     this.startX = this.x;
     this.y = this.canvasHeight - 30; // Start near bottom
     this.progress = 0;
     this.duration = 8000 + Math.random() * 2000; // 8-10 seconds (half speed)
     this.startTime = performance.now();
-    this.baseRotation = this.side === 'left' ? -0.05 : 0.05; // Slight tilt based on side
+    this.baseRotation = this.side === "left" ? -0.05 : 0.05; // Slight tilt based on side
     this.rotationAmplitude = 0.08; // ±5 degrees oscillation
     this.horizontalDrift = (Math.random() - 0.5) * 30; // Horizontal drift range
     this.scale = 0.8 + Math.random() * 0.3;
+    this.width = 0; // Will be calculated in draw
+    this.height = 36;
   }
 
-  update(currentTime) {
+  // Check if mouse is hovering over this button
+  isHovered(mx, my) {
+    // Get approximate bounds (accounting for rotation would be complex, so use simple box)
+    const halfWidth = (this.width * this.scale) / 2;
+    const halfHeight = (this.height * this.scale) / 2;
+    return (
+      mx >= this.x - halfWidth &&
+      mx <= this.x + halfWidth &&
+      my >= this.y - halfHeight &&
+      my <= this.y + halfHeight
+    );
+  }
+
+  update(currentTime, mx, my) {
     const elapsed = currentTime - this.startTime;
     this.progress = Math.min(elapsed / this.duration, 1);
 
     // Move upward (decrease Y)
     const totalDistance = this.canvasHeight + 80;
-    this.y = (this.canvasHeight - 30) - totalDistance * this.progress;
+    this.y = this.canvasHeight - 30 - totalDistance * this.progress;
 
     // Sinusoidal horizontal drift around starting X position
     this.x =
@@ -174,6 +178,13 @@ class ButtonParticle {
       this.opacity = 1 - (this.progress - 0.7) / 0.3;
     }
 
+    // Smooth hover animation
+    const isHovered = this.isHovered(mx, my);
+    const targetScale = isHovered ? 1.12 : 1;
+    const targetBrightness = isHovered ? 1 : 0;
+    this.hoverScale += (targetScale - this.hoverScale) * 0.15;
+    this.hoverBrightness += (targetBrightness - this.hoverBrightness) * 0.15;
+
     return this.progress < 1;
   }
 
@@ -181,7 +192,7 @@ class ButtonParticle {
     ctx.save();
     ctx.translate(this.x, this.y);
     ctx.rotate(this.rotation);
-    ctx.scale(this.scale, this.scale);
+    ctx.scale(this.scale * this.hoverScale, this.scale * this.hoverScale);
     ctx.globalAlpha = this.opacity * 0.9;
 
     // Measure text
@@ -194,16 +205,21 @@ class ButtonParticle {
     const height = 36;
     const radius = height / 2;
 
+    // Store width for hover detection
+    this.width = width;
+
     // Draw pill shape
     ctx.beginPath();
     ctx.roundRect(-width / 2, -height / 2, width, height, radius);
 
-    // Fill
-    ctx.fillStyle = "rgba(255, 255, 255, 0.05)";
+    // Fill with hover brightness
+    const fillAlpha = 0.05 + this.hoverBrightness * 0.08;
+    ctx.fillStyle = `rgba(255, 255, 255, ${fillAlpha})`;
     ctx.fill();
 
-    // Stroke
-    ctx.strokeStyle = "rgba(255, 255, 255, 0.1)";
+    // Stroke with hover brightness
+    const strokeAlpha = 0.1 + this.hoverBrightness * 0.2;
+    ctx.strokeStyle = `rgba(255, 255, 255, ${strokeAlpha})`;
     ctx.lineWidth = 2;
     ctx.stroke();
 
@@ -217,26 +233,112 @@ class ButtonParticle {
   }
 }
 
+// Static button class for bottom buttons
+class StaticButton {
+  constructor(text, rotation) {
+    this.text = text;
+    this.rotation = rotation;
+    this.x = 0;
+    this.y = 0;
+    this.width = 0;
+    this.height = 36;
+    this.hoverScale = 1;
+    this.hoverBrightness = 0;
+  }
+
+  setPosition(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+
+  isHovered(mx, my) {
+    const halfWidth = this.width / 2;
+    const halfHeight = this.height / 2;
+    return (
+      mx >= this.x - halfWidth &&
+      mx <= this.x + halfWidth &&
+      my >= this.y - halfHeight &&
+      my <= this.y + halfHeight
+    );
+  }
+
+  update(mx, my) {
+    const isHovered = this.isHovered(mx, my);
+    const targetScale = isHovered ? 1.08 : 1;
+    const targetBrightness = isHovered ? 1 : 0;
+    this.hoverScale += (targetScale - this.hoverScale) * 0.15;
+    this.hoverBrightness += (targetBrightness - this.hoverBrightness) * 0.15;
+  }
+
+  draw(ctx) {
+    ctx.save();
+    ctx.translate(this.x, this.y);
+    ctx.rotate(this.rotation);
+    ctx.scale(this.hoverScale, this.hoverScale);
+    ctx.globalAlpha = 1;
+
+    // Measure text
+    ctx.font = "600 14px system-ui, -apple-system, sans-serif";
+    const textMetrics = ctx.measureText(this.text);
+    const textWidth = textMetrics.width;
+    const paddingX = 16;
+    const width = textWidth + paddingX * 2;
+    const height = 36;
+    const radius = height / 2;
+
+    this.width = width;
+
+    // Draw pill shape
+    ctx.beginPath();
+    ctx.roundRect(-width / 2, -height / 2, width, height, radius);
+
+    // Fill with hover brightness
+    const fillAlpha = 0.05 + this.hoverBrightness * 0.08;
+    ctx.fillStyle = `rgba(255, 255, 255, ${fillAlpha})`;
+    ctx.fill();
+
+    // Stroke with hover brightness
+    const strokeAlpha = 0.1 + this.hoverBrightness * 0.2;
+    ctx.strokeStyle = `rgba(255, 255, 255, ${strokeAlpha})`;
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    // Text
+    ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(this.text, 0, 1);
+
+    ctx.restore();
+  }
+}
+
+// Static buttons at bottom
+const staticButtons = [
+  new StaticButton("Personal Projects", 0),
+  new StaticButton("Team Projects", 0),
+];
+
 // AI automation project names
 const projectNames = [
-  'Summarize Emails',
-  'Enrich Leads',
-  'Sync CRM Data',
-  'Tag Support Tickets',
-  'Route Inquiries',
-  'Score Prospects',
-  'Extract Invoices',
-  'Update Contacts',
-  'Notify on Mentions',
-  'Archive Old Chats',
-  'Log Meeting Notes',
-  'Send Reminders',
+  "Summarize Emails",
+  "Enrich Leads",
+  "Sync CRM Data",
+  "Tag Support Tickets",
+  "Route Inquiries",
+  "Score Prospects",
+  "Extract Invoices",
+  "Update Contacts",
+  "Notify on Mentions",
+  "Archive Old Chats",
+  "Log Meeting Notes",
+  "Send Reminders",
 ];
 
 // Particle system
 let particles = [];
 let lastSpawnTime = 0;
-let nextSpawnSide = 'left';
+let nextSpawnSide = "left";
 const spawnInterval = 800; // Faster spawn for more buttons
 const maxParticles = 8; // More particles visible
 
@@ -292,22 +394,38 @@ const animate = (currentTime) => {
     height: animationCanvas.value.height / (window.devicePixelRatio || 1),
   };
 
+  const mx = mousePos.value.x;
+  const my = mousePos.value.y;
+
   // Clear canvas
   ctx.clearRect(0, 0, dims.width, dims.height);
 
   // Spawn new particles if needed (alternating between left and right)
-  if (particles.length < maxParticles && currentTime - lastSpawnTime > spawnInterval) {
+  if (
+    particles.length < maxParticles &&
+    currentTime - lastSpawnTime > spawnInterval
+  ) {
     const text = projectNames[Math.floor(Math.random() * projectNames.length)];
-    particles.push(new ButtonParticle(dims.width, dims.height, text, nextSpawnSide));
-    nextSpawnSide = nextSpawnSide === 'left' ? 'right' : 'left';
+    particles.push(
+      new ButtonParticle(dims.width, dims.height, text, nextSpawnSide)
+    );
+    nextSpawnSide = nextSpawnSide === "left" ? "right" : "left";
     lastSpawnTime = currentTime;
   }
 
   // Update and draw particles
   particles = particles.filter((p) => {
-    const alive = p.update(currentTime);
+    const alive = p.update(currentTime, mx, my);
     if (alive) p.draw(ctx);
     return alive;
+  });
+
+  // Update and draw static buttons at bottom
+  staticButtons[0].setPosition(dims.width * 0.3, dims.height - 32);
+  staticButtons[1].setPosition(dims.width * 0.7, dims.height - 32);
+  staticButtons.forEach((btn) => {
+    btn.update(mx, my);
+    btn.draw(ctx);
   });
 
   animationFrameId = requestAnimationFrame(animate);
@@ -332,6 +450,20 @@ onMounted(() => {
 
 const handleResize = () => {
   if (animationCanvas.value) setupCanvas(animationCanvas.value);
+};
+
+const onCanvasMouseMove = (event) => {
+  const canvas = animationCanvas.value;
+  if (!canvas) return;
+  const rect = canvas.getBoundingClientRect();
+  mousePos.value = {
+    x: event.clientX - rect.left,
+    y: event.clientY - rect.top,
+  };
+};
+
+const onCanvasMouseLeave = () => {
+  mousePos.value = { x: -1000, y: -1000 };
 };
 
 onBeforeUnmount(() => {
