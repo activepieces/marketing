@@ -6,13 +6,11 @@
   >
     <!-- Default view: Scattered cards -->
     <div
-      class="absolute inset-0 transition-opacity duration-300"
+      class="flex flex-col items-center w-full h-full transition-opacity duration-300"
       :class="isExpanded ? 'opacity-0 pointer-events-none' : 'opacity-100'"
     >
       <!-- Greeting text -->
-      <div
-        class="absolute top-8 left-0 right-0 text-center z-10 pointer-events-none"
-      >
+      <div class="text-center pt-8 pb-4 pointer-events-none">
         <h2 class="text-3xl font-semibold text-gray-700/80">
           Hey
           <span
@@ -25,7 +23,7 @@
       </div>
 
       <!-- 3x3 Card Grid -->
-      <div class="absolute inset-0 flex items-center justify-center p-8 pt-32">
+      <div class="flex-1 flex items-center justify-center p-4 w-full">
         <div class="grid grid-cols-3 gap-8 w-full h-full">
           <div
             v-for="(card, index) in gridCards"
@@ -63,16 +61,15 @@
       class="absolute left-0 right-0 bg-white rounded-t-2xl shadow-[0_-8px_30px_rgba(0,0,0,0.12)] cursor-pointer z-50 overflow-hidden drawer-base"
       :class="[
         !isTransitioning && isExpanded ? 'drawer-expanded' : '',
-        !isTransitioning && !isExpanded && isHovering ? 'bar-breathe' : '',
-        !isTransitioning && !isExpanded && !isHovering ? 'h-0' : '',
+        !isTransitioning && !isExpanded ? 'bar-breathe' : '',
         isTransitioning ? 'drawer-transitioning' : '',
       ]"
       :style="{ bottom: 0, height: drawerHeight }"
       @click="!isExpanded && expandCoach()"
     >
-      <!-- Peek bar (visible when collapsed but hovering) -->
+      <!-- Peek bar (visible when collapsed) -->
       <div
-        v-if="!isExpanded && isHovering"
+        v-if="!isExpanded"
         class="absolute inset-x-0 bottom-0 top-0 flex flex-col items-center peek-bar-content"
       >
         <!-- Grey handle - at very top, bobs with height -->
