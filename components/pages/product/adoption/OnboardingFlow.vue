@@ -136,6 +136,8 @@ class ButtonParticle {
     this.scale = 0.8 + Math.random() * 0.3;
     this.width = 0; // Will be calculated in draw
     this.height = 36;
+    this.opacity = 0; // Start invisible, fade in smoothly
+    this.rotation = this.baseRotation; // Start at base rotation
   }
 
   // Check if mouse is hovering over this button
@@ -232,92 +234,6 @@ class ButtonParticle {
     ctx.restore();
   }
 }
-
-// Static button class for bottom buttons
-class StaticButton {
-  constructor(text, rotation) {
-    this.text = text;
-    this.rotation = rotation;
-    this.x = 0;
-    this.y = 0;
-    this.width = 0;
-    this.height = 36;
-    this.hoverScale = 1;
-    this.hoverBrightness = 0;
-  }
-
-  setPosition(x, y) {
-    this.x = x;
-    this.y = y;
-  }
-
-  isHovered(mx, my) {
-    const halfWidth = this.width / 2;
-    const halfHeight = this.height / 2;
-    return (
-      mx >= this.x - halfWidth &&
-      mx <= this.x + halfWidth &&
-      my >= this.y - halfHeight &&
-      my <= this.y + halfHeight
-    );
-  }
-
-  update(mx, my) {
-    const isHovered = this.isHovered(mx, my);
-    const targetScale = isHovered ? 1.08 : 1;
-    const targetBrightness = isHovered ? 1 : 0;
-    this.hoverScale += (targetScale - this.hoverScale) * 0.15;
-    this.hoverBrightness += (targetBrightness - this.hoverBrightness) * 0.15;
-  }
-
-  draw(ctx) {
-    ctx.save();
-    ctx.translate(this.x, this.y);
-    ctx.rotate(this.rotation);
-    ctx.scale(this.hoverScale, this.hoverScale);
-    ctx.globalAlpha = 1;
-
-    // Measure text
-    ctx.font = "600 14px system-ui, -apple-system, sans-serif";
-    const textMetrics = ctx.measureText(this.text);
-    const textWidth = textMetrics.width;
-    const paddingX = 16;
-    const width = textWidth + paddingX * 2;
-    const height = 36;
-    const radius = height / 2;
-
-    this.width = width;
-
-    // Draw pill shape
-    ctx.beginPath();
-    ctx.roundRect(-width / 2, -height / 2, width, height, radius);
-
-    // Fill with hover brightness
-    const fillAlpha = 0.05 + this.hoverBrightness * 0.08;
-    ctx.fillStyle = `rgba(255, 255, 255, ${fillAlpha})`;
-    ctx.fill();
-
-    // Stroke with hover brightness
-    const strokeAlpha = 0.1 + this.hoverBrightness * 0.2;
-    ctx.strokeStyle = `rgba(255, 255, 255, ${strokeAlpha})`;
-    ctx.lineWidth = 2;
-    ctx.stroke();
-
-    // Text
-    ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.fillText(this.text, 0, 1);
-
-    ctx.restore();
-  }
-}
-
-// Static buttons at bottom
-const staticButtons = [
-  new StaticButton("Personal Projects", 0),
-  new StaticButton("Team Projects", 0),
-];
 
 // AI automation project names
 const projectNames = [
@@ -418,14 +334,6 @@ const animate = (currentTime) => {
     const alive = p.update(currentTime, mx, my);
     if (alive) p.draw(ctx);
     return alive;
-  });
-
-  // Update and draw static buttons at bottom
-  staticButtons[0].setPosition(dims.width * 0.3, dims.height - 32);
-  staticButtons[1].setPosition(dims.width * 0.7, dims.height - 32);
-  staticButtons.forEach((btn) => {
-    btn.update(mx, my);
-    btn.draw(ctx);
   });
 
   animationFrameId = requestAnimationFrame(animate);
