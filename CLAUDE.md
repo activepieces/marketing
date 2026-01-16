@@ -10,19 +10,19 @@ This is the Activepieces marketing website built with Nuxt 3, Vue 3, and Tailwin
 
 ```bash
 # Install dependencies
-yarn install
+npm install
 
 # Development server (http://localhost:3000)
-yarn dev
+npm run dev
 
 # Production build
-yarn build
+npm run build
 
 # Preview production build
-yarn preview
+npm run preview
 
 # Static site generation
-yarn generate
+npm run generate
 ```
 
 ## Architecture
