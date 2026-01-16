@@ -10,84 +10,34 @@
       @mouseleave="onCanvasMouseLeave"
     />
 
-    <!-- Avatar bubbles in center -->
-    <div class="relative z-10">
-      <div class="w-16 h-16 flex items-center justify-center relative z-10">
-        <!-- Empty center space where avatars radiate from -->
-      </div>
-
-      <!-- Bubble circles radiating out from center -->
-      <div class="absolute inset-0 flex items-center justify-center">
-        <!-- Bubble 1 - top left (smaller) -->
-        <div
-          class="avatar-bubble absolute -top-8 -left-12 w-10 h-10 cursor-pointer"
-          :class="{
-            'avatar-hovered': hoveredAvatar === 1,
-            'avatar-pulse': isPulsing(1),
-          }"
-          @mouseenter="setHovered(1)"
-          @mouseleave="clearHovered"
-        >
-          <img
-            src="https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_5.png"
-            alt="User"
-            class="w-full h-full object-cover"
-          />
-        </div>
-
-        <!-- Bubble 2 - top right (larger) - VIDEO -->
-        <div
-          class="avatar-bubble absolute -top-6 -right-10 w-14 h-14 cursor-pointer"
-          :class="{
-            'avatar-hovered': hoveredAvatar === 2,
-            'avatar-pulse': isPulsing(2),
-          }"
-          @mouseenter="onAvatar2Enter"
-          @mouseleave="onAvatar2Leave"
-        >
-          <video
-            ref="avatarVideo"
-            src="/avatar-6.mp4"
-            class="w-full h-full object-cover"
-            muted
-            loop
-            playsinline
-          />
-        </div>
-
-        <!-- Bubble 3 - bottom left (medium) -->
-        <div
-          class="avatar-bubble absolute top-16 -left-8 w-12 h-12 cursor-pointer"
-          :class="{
-            'avatar-hovered': hoveredAvatar === 3,
-            'avatar-pulse': isPulsing(3),
-          }"
-          @mouseenter="setHovered(3)"
-          @mouseleave="clearHovered"
-        >
-          <img
-            src="https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_7.png"
-            alt="User"
-            class="w-full h-full object-cover"
-          />
-        </div>
-
-        <!-- Bubble 4 - bottom right (smaller) -->
-        <div
-          class="avatar-bubble absolute top-20 -right-6 w-11 h-11 cursor-pointer"
-          :class="{
-            'avatar-hovered': hoveredAvatar === 4,
-            'avatar-pulse': isPulsing(4),
-          }"
-          @mouseenter="setHovered(4)"
-          @mouseleave="clearHovered"
-        >
-          <img
-            src="https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_8.png"
-            alt="User"
-            class="w-full h-full object-cover"
-          />
-        </div>
+    <!-- Avatar grid container -->
+    <div class="grid grid-cols-2 gap-[20px] relative z-10" style="width: 20%">
+      <div
+        v-for="(avatar, index) in avatars"
+        :key="index"
+        class="avatar-bubble aspect-square w-full cursor-pointer"
+        :class="{
+          'avatar-hovered': hoveredAvatar === index + 1,
+          'avatar-pulse': isPulsing(index + 1),
+        }"
+        @mouseenter="avatar.isVideo ? onVideoEnter(index + 1) : setHovered(index + 1)"
+        @mouseleave="avatar.isVideo ? onVideoLeave() : clearHovered"
+      >
+        <video
+          v-if="avatar.isVideo"
+          ref="avatarVideo"
+          :src="avatar.src"
+          class="w-full h-full object-cover"
+          muted
+          loop
+          playsinline
+        />
+        <img
+          v-else
+          :src="avatar.src"
+          alt="User"
+          class="w-full h-full object-cover"
+        />
       </div>
     </div>
   </div>
@@ -100,6 +50,14 @@ const avatarVideo = ref(null);
 const hoveredAvatar = ref(null);
 const pulsingAvatar = ref(1);
 let pulseInterval = null;
+
+// Avatar data for the 2x2 grid
+const avatars = [
+  { src: 'https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_5.png', isVideo: false },
+  { src: '/avatar-6.mp4', isVideo: true },
+  { src: 'https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_7.png', isVideo: false },
+  { src: 'https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_8.png', isVideo: false },
+];
 
 // Canvas ref (single full-background canvas)
 const animationCanvas = ref(null);
@@ -270,18 +228,23 @@ const isPulsing = (id) => {
   return pulsingAvatar.value === id && hoveredAvatar.value === null;
 };
 
-const onAvatar2Enter = () => {
-  hoveredAvatar.value = 2;
+const onVideoEnter = (id) => {
+  hoveredAvatar.value = id;
   if (avatarVideo.value) {
-    avatarVideo.value.play();
+    // avatarVideo is an array when using v-for with ref
+    const video = Array.isArray(avatarVideo.value) ? avatarVideo.value[0] : avatarVideo.value;
+    if (video) video.play();
   }
 };
 
-const onAvatar2Leave = () => {
+const onVideoLeave = () => {
   hoveredAvatar.value = null;
   if (avatarVideo.value) {
-    avatarVideo.value.pause();
-    avatarVideo.value.currentTime = 0;
+    const video = Array.isArray(avatarVideo.value) ? avatarVideo.value[0] : avatarVideo.value;
+    if (video) {
+      video.pause();
+      video.currentTime = 0;
+    }
   }
 };
 
