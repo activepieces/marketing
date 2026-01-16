@@ -2,14 +2,10 @@
   <div
     class="relative w-full h-full flex items-center justify-center overflow-hidden bg-white/5"
   >
-    <!-- Canvas animations for floating buttons -->
+    <!-- Canvas animation for floating buttons (full background) -->
     <canvas
-      ref="leftCanvas"
-      class="absolute left-0 inset-y-0 w-1/3 pointer-events-none"
-    />
-    <canvas
-      ref="rightCanvas"
-      class="absolute right-0 inset-y-0 w-1/3 pointer-events-none"
+      ref="animationCanvas"
+      class="absolute inset-0 w-full h-full pointer-events-none"
     />
 
     <!-- Avatar bubbles in center -->
@@ -120,28 +116,32 @@ const hoveredAvatar = ref(null);
 const pulsingAvatar = ref(1);
 let pulseInterval = null;
 
-// Canvas refs
-const leftCanvas = ref(null);
-const rightCanvas = ref(null);
+// Canvas ref (single full-background canvas)
+const animationCanvas = ref(null);
 let animationFrameId = null;
 
 // Button particle class
 class ButtonParticle {
-  constructor(canvasWidth, canvasHeight, text) {
+  constructor(canvasWidth, canvasHeight, text, side) {
     this.text = text;
     this.canvasWidth = canvasWidth;
     this.canvasHeight = canvasHeight;
+    this.side = side; // 'left' or 'right'
     this.reset();
   }
 
   reset() {
-    // Start from bottom
-    this.x = this.canvasWidth * (0.3 + Math.random() * 0.4);
-    this.y = this.canvasHeight + 50;
+    // Spawn from bottom, on left or right side
+    const baseX = this.side === 'left'
+      ? this.canvasWidth * 0.25
+      : this.canvasWidth * 0.75;
+    this.x = baseX + (Math.random() - 0.5) * 60;
+    this.startX = this.x;
+    this.y = this.canvasHeight - 30; // Start near bottom
     this.progress = 0;
     this.duration = 4000 + Math.random() * 1000; // 4-5 seconds
     this.startTime = performance.now();
-    this.baseRotation = (Math.random() - 0.5) * 0.1; // Base rotation
+    this.baseRotation = this.side === 'left' ? -0.05 : 0.05; // Slight tilt based on side
     this.rotationAmplitude = 0.08; // ±5 degrees oscillation
     this.horizontalDrift = (Math.random() - 0.5) * 30; // Horizontal drift range
     this.scale = 0.8 + Math.random() * 0.3;
@@ -151,13 +151,13 @@ class ButtonParticle {
     const elapsed = currentTime - this.startTime;
     this.progress = Math.min(elapsed / this.duration, 1);
 
-    // Move upward
-    const totalDistance = this.canvasHeight + 100;
-    this.y = this.canvasHeight + 50 - totalDistance * this.progress;
+    // Move upward (decrease Y)
+    const totalDistance = this.canvasHeight + 80;
+    this.y = (this.canvasHeight - 30) - totalDistance * this.progress;
 
-    // Sinusoidal horizontal drift
+    // Sinusoidal horizontal drift around starting X position
     this.x =
-      this.canvasWidth * 0.5 +
+      this.startX +
       Math.sin(this.progress * Math.PI * 2) * this.horizontalDrift;
 
     // Rotation oscillation
@@ -217,13 +217,12 @@ class ButtonParticle {
   }
 }
 
-// Particle systems
-let leftParticles = [];
-let rightParticles = [];
-let lastSpawnTimeLeft = 0;
-let lastSpawnTimeRight = 0;
-const spawnInterval = 1500; // Spawn new button every 1.5 seconds
-const maxParticles = 3; // Max 2-3 visible at once
+// Particle system
+let particles = [];
+let lastSpawnTime = 0;
+let nextSpawnSide = 'left';
+const spawnInterval = 2000; // Slower spawn for sparse feel
+const maxParticles = 4; // 2 per side max
 
 const setHovered = (id) => {
   hoveredAvatar.value = id;
@@ -264,61 +263,34 @@ const setupCanvas = (canvas) => {
 };
 
 const animate = (currentTime) => {
-  // Setup canvases if needed
-  const leftCtx = leftCanvas.value?.getContext("2d");
-  const rightCtx = rightCanvas.value?.getContext("2d");
+  // Setup canvas if needed
+  const ctx = animationCanvas.value?.getContext("2d");
 
-  if (!leftCtx || !rightCtx) {
+  if (!ctx) {
     animationFrameId = requestAnimationFrame(animate);
     return;
   }
 
-  const leftDims = {
-    width: leftCanvas.value.width / (window.devicePixelRatio || 1),
-    height: leftCanvas.value.height / (window.devicePixelRatio || 1),
-  };
-  const rightDims = {
-    width: rightCanvas.value.width / (window.devicePixelRatio || 1),
-    height: rightCanvas.value.height / (window.devicePixelRatio || 1),
+  const dims = {
+    width: animationCanvas.value.width / (window.devicePixelRatio || 1),
+    height: animationCanvas.value.height / (window.devicePixelRatio || 1),
   };
 
-  // Clear canvases
-  leftCtx.clearRect(0, 0, leftDims.width, leftDims.height);
-  rightCtx.clearRect(0, 0, rightDims.width, rightDims.height);
+  // Clear canvas
+  ctx.clearRect(0, 0, dims.width, dims.height);
 
-  // Spawn new particles if needed (left)
-  if (
-    leftParticles.length < maxParticles &&
-    currentTime - lastSpawnTimeLeft > spawnInterval
-  ) {
-    leftParticles.push(
-      new ButtonParticle(leftDims.width, leftDims.height, "Personal Project")
-    );
-    lastSpawnTimeLeft = currentTime;
+  // Spawn new particles if needed (alternating between left and right)
+  if (particles.length < maxParticles && currentTime - lastSpawnTime > spawnInterval) {
+    const text = nextSpawnSide === 'left' ? 'Personal Project' : 'Team Projects';
+    particles.push(new ButtonParticle(dims.width, dims.height, text, nextSpawnSide));
+    nextSpawnSide = nextSpawnSide === 'left' ? 'right' : 'left';
+    lastSpawnTime = currentTime;
   }
 
-  // Spawn new particles if needed (right)
-  if (
-    rightParticles.length < maxParticles &&
-    currentTime - lastSpawnTimeRight > spawnInterval
-  ) {
-    rightParticles.push(
-      new ButtonParticle(rightDims.width, rightDims.height, "Team Projects")
-    );
-    lastSpawnTimeRight = currentTime;
-  }
-
-  // Update and draw left particles
-  leftParticles = leftParticles.filter((p) => {
+  // Update and draw particles
+  particles = particles.filter((p) => {
     const alive = p.update(currentTime);
-    if (alive) p.draw(leftCtx);
-    return alive;
-  });
-
-  // Update and draw right particles
-  rightParticles = rightParticles.filter((p) => {
-    const alive = p.update(currentTime);
-    if (alive) p.draw(rightCtx);
+    if (alive) p.draw(ctx);
     return alive;
   });
 
@@ -332,9 +304,8 @@ onMounted(() => {
       pulsingAvatar.value >= 4 ? 1 : pulsingAvatar.value + 1;
   }, 800);
 
-  // Setup canvases
-  if (leftCanvas.value) setupCanvas(leftCanvas.value);
-  if (rightCanvas.value) setupCanvas(rightCanvas.value);
+  // Setup canvas
+  if (animationCanvas.value) setupCanvas(animationCanvas.value);
 
   // Start animation
   animationFrameId = requestAnimationFrame(animate);
@@ -344,8 +315,7 @@ onMounted(() => {
 });
 
 const handleResize = () => {
-  if (leftCanvas.value) setupCanvas(leftCanvas.value);
-  if (rightCanvas.value) setupCanvas(rightCanvas.value);
+  if (animationCanvas.value) setupCanvas(animationCanvas.value);
 };
 
 onBeforeUnmount(() => {
