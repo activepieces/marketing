@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref, defineProps, onBeforeUnmount } from "vue";
+import { onMounted, ref, onBeforeUnmount } from "vue";
 import { useStorage, useScroll } from "@vueuse/core";
 import { useRoute } from "vue-router";
 import { initCollapses } from "flowbite";

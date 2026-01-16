@@ -17,7 +17,10 @@
       "mcp__chrome-devtools__evaluate_script",
       "Bash(curl:*)",
       "mcp__chrome-devtools__new_page",
-      "mcp__chrome-devtools__close_page"
+      "mcp__chrome-devtools__close_page",
+      "Bash(npm install:*)",
+      "Bash(npx update-browserslist-db@latest:*)",
+      "Bash(npm audit:*)"
     ]
   }
 }
