@@ -30,6 +30,7 @@ onMounted(() => {
 
 <template>
   <PagesIndexHero class="-mt-[62px]" />
+  <PagesIndexCaseStudies />
   <ProductsShowcase />
   <!--<PagesIndexStory />
   <PagesIndexEnterpriseValues />

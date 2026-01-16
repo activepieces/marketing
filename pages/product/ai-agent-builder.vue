@@ -276,11 +276,8 @@ useHead({
 
         <!-- Subsection 3: Full Visibility -->
         <div class="grid lg:grid-cols-2 gap-12 items-center">
-          <div class="order-2 lg:order-1 bg-gray-100 border-2 border-dashed border-gray-300 rounded-2xl p-8 min-h-[320px] flex items-center justify-center">
-            <div class="text-center text-gray-500">
-              <p class="font-semibold mb-2">📸 SCREENSHOT</p>
-              <p class="text-sm max-w-sm">Run logs interface showing executions with status, expandable step details, and bulk retry button</p>
-            </div>
+          <div class="order-2 lg:order-1">
+            <PagesProductAiAgentsExecutionInspector />
           </div>
           <div class="order-1 lg:order-2">
             <span class="inline-block px-3 py-1 text-sm font-medium text-orange-700 bg-orange-100 rounded-full mb-4">
@@ -337,11 +334,8 @@ useHead({
         </div>
 
         <div class="grid lg:grid-cols-2 gap-12 items-center">
-          <div class="order-2 lg:order-1 bg-gray-100 border-2 border-dashed border-gray-300 rounded-2xl p-8 min-h-[350px] flex items-center justify-center">
-            <div class="text-center text-gray-500">
-              <p class="font-semibold mb-2">📸 SCREENSHOT</p>
-              <p class="text-sm max-w-sm">Activepieces Tables interface showing a data table with rows, and a connected flow that reads/writes to the table</p>
-            </div>
+          <div class="order-2 lg:order-1">
+            <PagesProductAiAgentsTablesDemo />
           </div>
           <div class="order-1 lg:order-2">
             <p class="text-lg text-gray-600 mb-6">
@@ -423,12 +417,7 @@ useHead({
               </li>
             </ul>
           </div>
-          <div class="bg-gray-100 border-2 border-dashed border-gray-300 rounded-2xl p-8 min-h-[350px] flex items-center justify-center">
-            <div class="text-center text-gray-500">
-              <p class="font-semibold mb-2">📸 SCREENSHOT</p>
-              <p class="text-sm max-w-sm">Human in the loop interface showing an agent paused at an approval step with "Approve" and "Reject" buttons</p>
-            </div>
-          </div>
+          <PagesProductAiAgentsHumanInTheLoop />
         </div>
       </div>
     </section>
