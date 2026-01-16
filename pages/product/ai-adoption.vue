@@ -156,7 +156,7 @@ onUnmounted(() => {
     <!-- Section 1: Roll Out -->
     <section
       id="setup"
-      class="py-24 bg-[#031225] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
+      class="py-24 bg-[#081635] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
     >
       <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col gap-20">
         <div
@@ -285,7 +285,7 @@ onUnmounted(() => {
     <!-- Section 2: Onboard & Coach -->
     <section
       id="enable-building"
-      class="py-24 bg-[#021D38] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
+      class="py-24 bg-[#082c41] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
     >
       <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col gap-20">
         <div
@@ -469,7 +469,7 @@ onUnmounted(() => {
     <!-- Section 3: Grow Champions -->
     <section
       id="drive-engagement"
-      class="py-24 bg-[#152D5D] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
+      class="py-24 bg-[#064448] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
     >
       <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col gap-20">
         <div
@@ -597,7 +597,7 @@ onUnmounted(() => {
     <!-- Section 4: Measure Impact -->
     <section
       id="track-support"
-      class="py-24 bg-[#35387F] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
+      class="py-24 bg-[#275d43] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
     >
       <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col gap-20">
         <!-- Header -->
