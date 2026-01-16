@@ -1,5 +1,10 @@
 <template>
-  <div class="w-full h-full flex items-center justify-center pt-8 pl-8">
+  <div
+    class="w-full h-full flex items-center justify-center pt-8 pl-8 !important]"
+    :style="{
+      background: `linear-gradient(135deg, ${activeColor.dark}25 0%, ${activeColor.dark}60 100%)`,
+    }"
+  >
     <div
       class="flex items-center gap-6 h-full w-full"
       @mouseenter="handleAreaEnter"
@@ -28,16 +33,14 @@
         <div
           class="h-full w-full bg-white rounded-tl-2xl overflow-hidden transition-all duration-300 flex flex-col"
           :style="{
-            background: `linear-gradient(135deg, ${activeColor.light}15 0%, ${activeColor.dark}15 100%)`,
+            background: `linear-gradient(0deg, ${activeColor.light}15 0%, ${activeColor.dark}15 100%)`,
             border: '1px solid rgba(0,0,0,0.1)',
             borderRight: 'none',
             borderBottom: 'none',
           }"
         >
           <!-- Safari Browser Top Bar -->
-          <div
-            class="bg-gray-100 border-b border-gray-300 pl-3 pr-0 py-2 relative"
-          >
+          <div class="bg-white/10 pl-3 pr-0 py-2 relative">
             <!-- Traffic lights -->
             <div class="flex items-center gap-1.5 mb-2">
               <div class="w-3 h-3 rounded-full bg-red-400"></div>
@@ -47,7 +50,7 @@
 
             <!-- Address bar - naturally cut off by browser edge -->
             <div
-              class="bg-white border border-gray-300 rounded-lg px-3 py-1.5 flex items-center gap-2 relative overflow-hidden"
+              class="bg-black/40 rounded-md p-2 flex items-center gap-2 relative overflow-hidden"
               style="margin-right: -12px; padding-right: 15px"
             >
               <div
@@ -68,7 +71,9 @@
           </div>
 
           <!-- Content area -->
-          <div class="p-4 relative h-full flex items-center justify-center">
+          <div
+            class="p-4 relative h-full flex items-center justify-center border-l-2 border-white/10"
+          >
             <!-- Normal content -->
             <div
               v-show="!showCanvas"
@@ -138,7 +143,7 @@
                 <div
                   class="h-8 rounded-lg flex items-center justify-center transition-all duration-300"
                   :style="{
-                    background: `linear-gradient(135deg, ${activeColor.light} 0%, ${activeColor.dark} 100%)`,
+                    background: `linear-gradient(135deg, ${activeColor.light} 0%, ${activeColor.dark} 100%, black 100%)`,
                   }"
                 >
                   <div class="h-2 w-16 bg-white opacity-80 rounded"></div>
@@ -154,7 +159,7 @@
             >
               <!-- Text label (below canvas, can be covered) -->
               <div
-                class="absolute bottom-2 left-2 text-xs text-primary-dark/40 font-medium pointer-events-none z-0"
+                class="absolute bottom-2 left-2 text-xs text-white/40 font-medium pointer-events-none z-0"
               >
                 <span
                   class="text-base origin-center inline-block emoji-scale text-primary-dark"
@@ -178,11 +183,11 @@
               <!-- Clear button (above canvas) -->
               <button
                 @click="clearCanvas"
-                class="absolute top-2 right-2 p-2 rounded-full bg-white/80 hover:bg-white shadow-sm flex items-center justify-center transition-all ring-0 ring-white hover:ring-2 z-20"
+                class="absolute top-2 right-2 p-2 rounded-full bg-white/10 hover:bg-white/20 shadow-sm flex items-center justify-center transition-all ring-0 ring-white/20 hover:ring-2 z-20 group"
                 title="Clear"
               >
                 <svg
-                  class="w-4 h-4 text-primary-dark/60"
+                  class="w-4 h-4 text-white/80 group-hover:text-white"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -196,20 +201,6 @@
                 </svg>
               </button>
             </div>
-
-            <!-- Cut off indicators -->
-            <div
-              class="absolute right-0 top-0 bottom-0 w-6 pointer-events-none transition-all duration-300"
-              :style="{
-                background: `linear-gradient(to left, ${activeColor.light}10 0%, transparent 100%)`,
-              }"
-            ></div>
-            <div
-              class="absolute left-0 right-0 bottom-0 h-6 pointer-events-none transition-all duration-300"
-              :style="{
-                background: `linear-gradient(to top, ${activeColor.light}10 0%, transparent 100%)`,
-              }"
-            ></div>
           </div>
         </div>
       </div>
@@ -508,7 +499,7 @@ const checkLabelZone = (pos) => {
 
 <style scoped>
 .pencil-cursor {
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23374151' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z'%3E%3C/path%3E%3C/svg%3E")
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z'%3E%3C/path%3E%3C/svg%3E")
       0 24,
     crosshair;
 }
