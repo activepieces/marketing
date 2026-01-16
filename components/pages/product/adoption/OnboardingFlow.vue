@@ -23,7 +23,7 @@
         @mouseenter="
           avatar.isVideo ? onVideoEnter(index + 1) : setHovered(index + 1)
         "
-        @mouseleave="avatar.isVideo ? onVideoLeave() : clearHovered"
+        @mouseleave="avatar.isVideo ? onVideoLeave() : clearHovered()"
       >
         <video
           v-if="avatar.isVideo"
