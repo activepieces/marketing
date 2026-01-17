@@ -59,10 +59,10 @@
             <!-- Floating AI support button - centered at bottom -->
             <button
               @click="currentScreen = 'calendar'"
-              class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white/10 border border-white/20 text-white/80 px-5 py-3 rounded-full flex items-center gap-1 group ring-0 ring-white/5 hover:ring-8 hover:border-white/40 hover:gap-2 hover:text-white transition-all duration-200"
+              class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white/10 border border-white/20 text-white/80 px-5 py-3 rounded-full flex items-center gap-1 group ring-0 ring-white/5 hover:ring-8 hover:border-white/40 hover:gap-2 hover:text-white transition-all duration-200 font-semibold text-sm"
             >
               <PhRobot class="text-white" weight="fill" size="20" />
-              <span class="font-semibold text-sm">Talk to AI Expert</span>
+              Talk to AI Expert
             </button>
           </div>
         </div>
