@@ -2,10 +2,28 @@
   <div class="relative w-full h-full">
     <!-- Main container -->
     <div
-      class="relative rounded-3xl overflow-hidden shadow-2xl h-full"
+      class="relative rounded-3xl overflow-hidden shadow-2xl h-full flex flex-col"
       :class="screenBg"
     >
-      <!-- Initial Widget State -->
+      <!-- Safari Browser Top Bar -->
+      <div class="bg-white/10 px-3 py-2 flex-shrink-0">
+        <!-- Traffic lights -->
+        <div class="flex items-center gap-1.5 mb-2">
+          <div class="w-2.5 h-2.5 rounded-full bg-red-400"></div>
+          <div class="w-2.5 h-2.5 rounded-full bg-yellow-400"></div>
+          <div class="w-2.5 h-2.5 rounded-full bg-green-400"></div>
+        </div>
+
+        <!-- Address bar -->
+        <div class="bg-black/40 rounded-md py-1.5 px-2 flex items-center gap-2">
+          <div class="w-4 h-4 rounded bg-gradient-to-br from-violet-500 to-purple-600 flex-shrink-0"></div>
+          <div class="h-2.5 flex-1 bg-white/20 rounded"></div>
+        </div>
+      </div>
+
+      <!-- Content Area -->
+      <div class="flex-1 overflow-hidden relative">
+        <!-- Initial Widget State -->
       <div v-if="currentScreen === 'widget'" class="p-6 h-full flex flex-col">
         <!-- Mock app header -->
         <div class="flex items-center gap-3 mb-4 pb-4 border-b border-white/10">
@@ -120,7 +138,7 @@
 
       <!-- Modern Video Call State -->
       <Transition name="cinematic-bg">
-        <div v-if="currentScreen === 'connected'" class="absolute inset-0 bg-gray-900 flex flex-col z-20 rounded-3xl overflow-hidden">
+        <div v-if="currentScreen === 'connected'" class="absolute inset-0 bg-gray-900 flex flex-col z-20 overflow-hidden">
         <!-- Call header -->
         <div class="flex items-center justify-between px-5 py-4">
           <div class="flex items-center gap-3">
@@ -249,6 +267,8 @@
         </Transition>
         </div>
       </Transition>
+
+      </div> <!-- End Content Area -->
 
     </div>
 
