@@ -169,7 +169,7 @@
           <span class="relative z-10">Start Collecting</span>
           <!-- Shine effect -->
           <div
-            class="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent intro-btn-shine"
+            class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent intro-btn-shine"
           ></div>
         </button>
       </div>
@@ -181,9 +181,7 @@
       class="relative h-full flex flex-col p-5"
     >
       <!-- Compact Question Area - Lighter background -->
-      <div
-        class="bg-white/[0.08] border border-white/10 rounded-xl p-4 mb-4 shadow-lg"
-      >
+      <div class="bg-white/5 border border-white/10 rounded-xl p-4 mb-4">
         <!-- Difficulty Tabs -->
         <div class="flex items-center gap-1 mb-3 pb-3 border-b border-white/5">
           <button
@@ -194,7 +192,7 @@
             :class="
               difficulty === index
                 ? mode.activeClass
-                : 'text-gray-500 hover:text-gray-400 hover:bg-white/5'
+                : 'text-white/60 hover:text-white/80 hover:bg-white/5'
             "
           >
             {{ mode.label }}
@@ -360,7 +358,7 @@
 
       <!-- Badges Section - Now the main focus -->
       <div
-        class="flex-1 flex flex-col bg-gradient-to-b from-violet-500/5 to-violet-500/10 -mx-5 -mb-5 px-5 pb-5 pt-4 rounded-t-3xl border-t border-violet-500/20"
+        class="flex-1 flex flex-col bg-black/20 -mx-5 -mb-5 px-5 pb-5 pt-4 rounded-t-3xl"
       >
         <div class="flex items-center justify-between mb-3">
           <div class="flex items-center gap-2">
