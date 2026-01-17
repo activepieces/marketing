@@ -53,7 +53,7 @@
 
     <!-- Coach drawer - peeks from bottom on hover, expands on click -->
     <div
-      class="absolute left-0 right-0 bg-white/20 backdrop-blur-lg rounded-t-2xl shadow-[0_-8px_30px_rgba(0,0,0,0.12)] cursor-pointer z-50 overflow-hidden drawer-base"
+      class="absolute left-0 right-0 bg-white/10 backdrop-blur-lg cursor-pointer z-50 overflow-hidden drawer-base rounded-md"
       :class="[
         !isTransitioning && isExpanded ? 'drawer-expanded' : '',
         !isTransitioning && !isExpanded ? 'bar-breathe' : '',
@@ -68,12 +68,14 @@
         class="absolute inset-x-0 bottom-0 top-0 flex flex-col items-center peek-bar-content"
       >
         <!-- Grey handle - at very top, bobs with height -->
-        <div class="w-10 h-1 bg-gray-300 rounded-full mt-3 flex-shrink-0"></div>
+        <div class="w-10 h-1 bg-white/40 rounded-full mt-2 flex-shrink-0"></div>
 
         <!-- Content - fixed position from bottom -->
         <div
           class="absolute bottom-4 left-0 right-0 flex flex-col items-center"
         >
+          <!-- Icon goes here -->
+          <PhStarFour class="text-white/80 mt-1" weight="fill" size="16" />
           <div class="flex items-center gap-1">
             <span class="font-semibold text-white/80">Your AI Coach</span>
           </div>
@@ -296,6 +298,7 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
+import { PhStarFour } from "@phosphor-icons/vue";
 
 const isExpanded = ref(false);
 const isHovering = ref(false);
@@ -761,10 +764,10 @@ const emailList = [
 @keyframes breathe {
   0%,
   100% {
-    height: 85px;
+    height: 100px;
   }
   50% {
-    height: 100px;
+    height: 120px;
   }
 }
 </style>

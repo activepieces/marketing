@@ -23,6 +23,7 @@
   "dependencies": {
     "@algora/sdk": "^0.3.1",
     "@gtm-support/vue-gtm": "^3.0.1",
+    "@phosphor-icons/vue": "^2.2.1",
     "@vueuse/core": "^10.11.1",
     "@vueuse/head": "^2.0.0",
     "flowbite": "^2.2.0",
