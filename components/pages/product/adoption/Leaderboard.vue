@@ -24,25 +24,42 @@
         <!-- Disabled state: Big toggle + placeholder -->
         <div
           class="absolute inset-0 flex flex-col items-center justify-center p-8 transition-all duration-500"
-          :class="isEnabled ? 'opacity-0 pointer-events-none scale-95' : 'opacity-100'"
+          :class="
+            isEnabled ? 'opacity-0 pointer-events-none scale-95' : 'opacity-100'
+          "
         >
           <!-- Animated background glow -->
           <div class="absolute inset-0 overflow-hidden">
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-violet-500/20 via-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse-glow"></div>
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-gradient-to-r from-purple-600/15 to-violet-600/15 rounded-full blur-2xl animate-pulse-glow-delayed"></div>
+            <div
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-violet-500/20 via-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse-glow"
+            ></div>
+            <div
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-gradient-to-r from-purple-600/15 to-violet-600/15 rounded-full blur-2xl animate-pulse-glow-delayed"
+            ></div>
           </div>
 
           <!-- Floating particles with Phosphor icons -->
           <div class="absolute inset-0 overflow-hidden pointer-events-none">
-            <PhSparkle class="particle particle-1 text-violet-400" weight="fill" />
+            <PhSparkle
+              class="particle particle-1 text-violet-400"
+              weight="fill"
+            />
             <PhStar class="particle particle-2 text-purple-400" weight="fill" />
-            <PhSparkle class="particle particle-3 text-pink-400" weight="fill" />
+            <PhSparkle
+              class="particle particle-3 text-pink-400"
+              weight="fill"
+            />
             <PhStar class="particle particle-4 text-violet-300" weight="fill" />
-            <PhSparkle class="particle particle-5 text-purple-300" weight="fill" />
+            <PhSparkle
+              class="particle particle-5 text-purple-300"
+              weight="fill"
+            />
           </div>
 
           <!-- Placeholder leaderboard (blurred/faded) -->
-          <div class="absolute inset-4 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 overflow-hidden">
+          <div
+            class="absolute inset-4 rounded-md bg-white/5 backdrop-blur-sm border border-white/10 overflow-hidden"
+          >
             <div class="p-4 space-y-3 opacity-40">
               <div class="flex items-center gap-3">
                 <div class="w-8 h-8 rounded-full bg-white/10"></div>
@@ -70,9 +87,14 @@
           <!-- Big toggle prompt -->
           <div class="relative z-10 text-center">
             <div class="mb-3 animate-bounce-subtle trophy-glow">
-              <PhTrophy class="w-14 h-14 text-amber-400 mx-auto" weight="fill" />
+              <PhTrophy
+                class="w-14 h-14 text-amber-400 mx-auto"
+                weight="fill"
+              />
             </div>
-            <p class="text-white/80 font-semibold text-lg mb-6">Enable Leaderboard</p>
+            <p class="text-white/80 font-semibold text-lg mb-6">
+              Enable Leaderboard
+            </p>
             <button
               @click="isEnabled = true"
               class="group relative w-24 h-12 rounded-full bg-gradient-to-r from-violet-500/30 to-purple-500/30 border border-white/20 transition-all duration-300 hover:from-violet-500/50 hover:to-purple-500/50 shadow-lg hover:shadow-xl hover:scale-105 toggle-pulse"
@@ -80,7 +102,10 @@
               <div
                 class="absolute top-1.5 left-1.5 w-9 h-9 rounded-full bg-white/90 shadow-md transition-all duration-300 group-hover:shadow-lg group-hover:shadow-violet-500/50 flex items-center justify-center knob-eager"
               >
-                <PhLightning class="w-5 h-5 text-violet-500 transition-transform duration-300 group-hover:scale-125 group-hover:rotate-12" weight="fill" />
+                <PhLightning
+                  class="w-5 h-5 text-violet-500 transition-transform duration-300 group-hover:scale-125 group-hover:rotate-12"
+                  weight="fill"
+                />
               </div>
             </button>
           </div>
@@ -89,7 +114,11 @@
         <!-- Enabled state: Active leaderboard -->
         <div
           class="absolute inset-0 flex flex-col transition-all duration-500"
-          :class="isEnabled ? 'opacity-100' : 'opacity-0 pointer-events-none scale-105'"
+          :class="
+            isEnabled
+              ? 'opacity-100'
+              : 'opacity-0 pointer-events-none scale-105'
+          "
         >
           <!-- Header with small toggle -->
           <div class="flex items-center justify-between px-5 py-4">
@@ -113,7 +142,10 @@
                 class="w-6 h-6 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-200 hover:rotate-180"
                 title="Restart"
               >
-                <PhArrowCounterClockwise class="w-3.5 h-3.5 text-white/60" weight="bold" />
+                <PhArrowCounterClockwise
+                  class="w-3.5 h-3.5 text-white/60"
+                  weight="bold"
+                />
               </button>
               <button
                 @click="isEnabled = false"
@@ -129,17 +161,43 @@
           <!-- Leaderboard list -->
           <div class="flex-1 px-5 pb-4 overflow-hidden relative">
             <!-- Bottom fade gradient -->
-            <div v-if="!weekComplete" class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/40 via-black/20 to-transparent pointer-events-none z-30"></div>
+            <div
+              v-if="!weekComplete"
+              class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/40 via-black/20 to-transparent pointer-events-none z-30"
+            ></div>
             <!-- Celebration overlay (during race) -->
             <Transition name="celebration">
-              <div v-if="celebration && !weekComplete" class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
-                <component :is="getCelebrationIcon(celebration)" class="w-16 h-16 animate-bounce-celebration" :class="getCelebrationColor(celebration)" weight="fill" />
+              <div
+                v-if="celebration && !weekComplete"
+                class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none"
+              >
+                <component
+                  :is="getCelebrationIcon(celebration)"
+                  class="w-16 h-16 animate-bounce-celebration"
+                  :class="getCelebrationColor(celebration)"
+                  weight="fill"
+                />
                 <div class="absolute inset-0 flex items-center justify-center">
-                  <PhConfetti class="confetti confetti-1 text-pink-400" weight="fill" />
-                  <PhSparkle class="confetti confetti-2 text-violet-400" weight="fill" />
-                  <PhConfetti class="confetti confetti-3 text-amber-400" weight="fill" />
-                  <PhStar class="confetti confetti-4 text-purple-400" weight="fill" />
-                  <PhConfetti class="confetti confetti-5 text-pink-400" weight="fill" />
+                  <PhConfetti
+                    class="confetti confetti-1 text-pink-400"
+                    weight="fill"
+                  />
+                  <PhSparkle
+                    class="confetti confetti-2 text-violet-400"
+                    weight="fill"
+                  />
+                  <PhConfetti
+                    class="confetti confetti-3 text-amber-400"
+                    weight="fill"
+                  />
+                  <PhStar
+                    class="confetti confetti-4 text-purple-400"
+                    weight="fill"
+                  />
+                  <PhConfetti
+                    class="confetti confetti-5 text-pink-400"
+                    weight="fill"
+                  />
                 </div>
               </div>
             </Transition>
@@ -153,10 +211,24 @@
                 >
                   <!-- Rank -->
                   <div class="w-7 h-7 flex items-center justify-center">
-                    <PhMedal v-if="index === 0" class="w-6 h-6 text-amber-400" weight="fill" />
-                    <PhMedal v-else-if="index === 1" class="w-6 h-6 text-gray-300" weight="fill" />
-                    <PhMedal v-else-if="index === 2" class="w-6 h-6 text-amber-600" weight="fill" />
-                    <span v-else class="text-xs font-medium text-white/40">{{ index + 1 }}</span>
+                    <PhMedal
+                      v-if="index === 0"
+                      class="w-6 h-6 text-amber-400"
+                      weight="fill"
+                    />
+                    <PhMedal
+                      v-else-if="index === 1"
+                      class="w-6 h-6 text-gray-300"
+                      weight="fill"
+                    />
+                    <PhMedal
+                      v-else-if="index === 2"
+                      class="w-6 h-6 text-amber-600"
+                      weight="fill"
+                    />
+                    <span v-else class="text-xs font-medium text-white/40">{{
+                      index + 1
+                    }}</span>
                   </div>
 
                   <!-- Avatar -->
@@ -169,7 +241,9 @@
 
                   <!-- Name & Department -->
                   <div class="flex-1 min-w-0">
-                    <p class="font-medium text-white/80 text-sm truncate">{{ person.name }}</p>
+                    <p class="font-medium text-white/80 text-sm truncate">
+                      {{ person.name }}
+                    </p>
                     <p class="text-xs text-white/40">{{ person.dept }}</p>
                   </div>
 
@@ -177,7 +251,11 @@
                   <div class="text-right">
                     <p
                       class="font-bold text-white/80 text-sm tabular-nums"
-                      :class="updatedNumbers[person.name + '-hours'] ? 'number-flip' : ''"
+                      :class="
+                        updatedNumbers[person.name + '-hours']
+                          ? 'number-flip'
+                          : ''
+                      "
                     >
                       {{ formatHours(person.hours) }}
                     </p>
@@ -188,7 +266,11 @@
                   <div class="text-right min-w-[40px]">
                     <p
                       class="font-bold text-white/80 text-sm tabular-nums"
-                      :class="updatedNumbers[person.name + '-flows'] ? 'number-flip' : ''"
+                      :class="
+                        updatedNumbers[person.name + '-flows']
+                          ? 'number-flip'
+                          : ''
+                      "
                     >
                       {{ person.flows }}
                     </p>
@@ -200,14 +282,23 @@
 
             <!-- WEEK COMPLETE: Clean Results Screen -->
             <Transition name="results">
-              <div v-if="weekComplete" class="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-b from-violet-900/30 to-purple-900/20 rounded-xl overflow-hidden">
+              <div
+                v-if="weekComplete"
+                class="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-b from-violet-900/30 to-purple-900/20 rounded-xl overflow-hidden"
+              >
                 <!-- Floating names background -->
-                <div class="absolute inset-0 pointer-events-none overflow-hidden">
+                <div
+                  class="absolute inset-0 pointer-events-none overflow-hidden"
+                >
                   <div
                     v-for="floatName in floatingNames"
                     :key="floatName.id"
                     class="absolute font-bold text-violet-400/60 whitespace-nowrap"
-                    :class="floatName.visible ? 'floating-name-pop' : 'opacity-0 scale-0'"
+                    :class="
+                      floatName.visible
+                        ? 'floating-name-pop'
+                        : 'opacity-0 scale-0'
+                    "
                     :style="{
                       left: floatName.x + '%',
                       top: floatName.y + '%',
@@ -229,9 +320,20 @@
                     >
                       {{ customWinnerInitials || leaderboardData[1]?.initials }}
                     </div>
-                    <p class="font-medium text-white/80 text-sm max-w-[70px] truncate">{{ customWinnerName || leaderboardData[1]?.name?.split(' ')[0] }}</p>
-                    <p class="text-xs text-white/40 mb-2">{{ formatHours(leaderboardData[1]?.hours) }}</p>
-                    <div class="w-16 h-16 bg-white/10 border border-white/20 rounded-t-lg flex items-center justify-center">
+                    <p
+                      class="font-medium text-white/80 text-sm max-w-[70px] truncate"
+                    >
+                      {{
+                        customWinnerName ||
+                        leaderboardData[1]?.name?.split(" ")[0]
+                      }}
+                    </p>
+                    <p class="text-xs text-white/40 mb-2">
+                      {{ formatHours(leaderboardData[1]?.hours) }}
+                    </p>
+                    <div
+                      class="w-16 h-16 bg-white/10 border border-white/20 rounded-t-lg flex items-center justify-center"
+                    >
                       <PhMedal class="w-8 h-8 text-gray-300" weight="fill" />
                     </div>
                   </div>
@@ -241,27 +343,50 @@
                     class="text-center podium-item podium-1 relative group cursor-pointer"
                     @click="!showNameInput && (showNameInput = true)"
                   >
-                    <PhCrown class="w-7 h-7 text-amber-400 mx-auto mb-1" weight="fill" />
+                    <PhCrown
+                      class="w-7 h-7 text-amber-400 mx-auto mb-1"
+                      weight="fill"
+                    />
                     <div class="relative w-[72px] h-[72px] mx-auto mb-2">
                       <!-- Avatar -->
                       <div
                         class="w-full h-full rounded-full flex items-center justify-center text-white text-lg font-bold shadow-lg ring-2 ring-violet-400 transition-all duration-200 group-hover:opacity-20"
                         :style="{ backgroundColor: leaderboardData[0]?.color }"
                       >
-                        {{ customWinnerInitials || leaderboardData[0]?.initials }}
+                        {{
+                          customWinnerInitials || leaderboardData[0]?.initials
+                        }}
                       </div>
                       <!-- Wink overlay on hover -->
                       <div
                         class="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200"
                       >
-                        <PhSmiley class="w-8 h-8 text-amber-400" weight="fill" />
-                        <span class="text-[8px] font-bold text-white/60 tracking-wider">CLICK</span>
+                        <PhSmiley
+                          class="w-8 h-8 text-amber-400"
+                          weight="fill"
+                        />
+                        <span
+                          class="text-[8px] font-bold text-white/60 tracking-wider"
+                          >CLICK</span
+                        >
                       </div>
                     </div>
-                    <p class="font-bold text-white max-w-[80px] truncate">{{ customWinnerName || leaderboardData[0]?.name?.split(' ')[0] }}</p>
-                    <p class="text-xs text-white/40 mb-2">{{ formatHours(leaderboardData[0]?.hours) }}</p>
-                    <div class="w-16 h-24 bg-gradient-to-br from-violet-500 to-purple-600 rounded-t-lg flex items-center justify-center">
-                      <PhTrophy class="w-10 h-10 text-amber-300" weight="fill" />
+                    <p class="font-bold text-white max-w-[80px] truncate">
+                      {{
+                        customWinnerName ||
+                        leaderboardData[0]?.name?.split(" ")[0]
+                      }}
+                    </p>
+                    <p class="text-xs text-white/40 mb-2">
+                      {{ formatHours(leaderboardData[0]?.hours) }}
+                    </p>
+                    <div
+                      class="w-16 h-24 bg-gradient-to-br from-violet-500 to-purple-600 rounded-t-lg flex items-center justify-center"
+                    >
+                      <PhTrophy
+                        class="w-10 h-10 text-amber-300"
+                        weight="fill"
+                      />
                     </div>
                   </div>
 
@@ -273,9 +398,20 @@
                     >
                       {{ customWinnerInitials || leaderboardData[2]?.initials }}
                     </div>
-                    <p class="font-medium text-white/80 text-sm max-w-[70px] truncate">{{ customWinnerName || leaderboardData[2]?.name?.split(' ')[0] }}</p>
-                    <p class="text-xs text-white/40 mb-2">{{ formatHours(leaderboardData[2]?.hours) }}</p>
-                    <div class="w-16 h-12 bg-white/10 border border-white/20 rounded-t-lg flex items-center justify-center">
+                    <p
+                      class="font-medium text-white/80 text-sm max-w-[70px] truncate"
+                    >
+                      {{
+                        customWinnerName ||
+                        leaderboardData[2]?.name?.split(" ")[0]
+                      }}
+                    </p>
+                    <p class="text-xs text-white/40 mb-2">
+                      {{ formatHours(leaderboardData[2]?.hours) }}
+                    </p>
+                    <div
+                      class="w-16 h-12 bg-white/10 border border-white/20 rounded-t-lg flex items-center justify-center"
+                    >
                       <PhMedal class="w-7 h-7 text-amber-600" weight="fill" />
                     </div>
                   </div>
@@ -290,9 +426,14 @@
           <div
             v-if="showNameInput"
             class="absolute inset-0 flex items-center justify-center z-50 bg-black/40 backdrop-blur-sm"
-            @click.self="showNameInput = false; nameInput = ''"
+            @click.self="
+              showNameInput = false;
+              nameInput = '';
+            "
           >
-            <div class="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl shadow-2xl p-5 w-[220px]">
+            <div
+              class="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl shadow-2xl p-5 w-[220px]"
+            >
               <input
                 ref="nameInputRef"
                 v-model="nameInput"
@@ -318,7 +459,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue'
+import { ref, onMounted, onUnmounted, watch, nextTick } from "vue";
 import {
   PhTrophy,
   PhMedal,
@@ -329,50 +470,50 @@ import {
   PhConfetti,
   PhSmiley,
   PhArrowCounterClockwise,
-} from '@phosphor-icons/vue'
+} from "@phosphor-icons/vue";
 
-const isEnabled = ref(false)
-const celebration = ref(null)
-const updatedNumbers = ref({})
-const weekComplete = ref(false)
-const progressKey = ref(0)
+const isEnabled = ref(false);
+const celebration = ref(null);
+const updatedNumbers = ref({});
+const weekComplete = ref(false);
+const progressKey = ref(0);
 
 // Custom winner name feature
-const showNameInput = ref(false)
-const nameInputRef = ref(null)
-const nameInput = ref('')
-const customWinnerName = ref('')
-const customWinnerInitials = ref('')
-const floatingNames = ref([])
+const showNameInput = ref(false);
+const nameInputRef = ref(null);
+const nameInput = ref("");
+const customWinnerName = ref("");
+const customWinnerInitials = ref("");
+const floatingNames = ref([]);
 
 const setCustomName = () => {
   if (nameInput.value.trim()) {
-    const name = nameInput.value.trim()
-    customWinnerName.value = name
-    
+    const name = nameInput.value.trim();
+    customWinnerName.value = name;
+
     // Generate initials from name
-    const parts = name.split(' ')
-    let initials
+    const parts = name.split(" ");
+    let initials;
     if (parts.length >= 2) {
-      initials = (parts[0][0] + parts[1][0]).toUpperCase()
+      initials = (parts[0][0] + parts[1][0]).toUpperCase();
     } else {
-      initials = name.substring(0, 2).toUpperCase()
+      initials = name.substring(0, 2).toUpperCase();
     }
-    customWinnerInitials.value = initials
-    
+    customWinnerInitials.value = initials;
+
     // Change ALL players' names to the custom name
     leaderboardData.value.forEach((person) => {
-      person.name = name
-      person.initials = initials
-    })
-    
+      person.name = name;
+      person.initials = initials;
+    });
+
     // Generate floating names for background
-    generateFloatingNames(name)
+    generateFloatingNames(name);
   }
-  showNameInput.value = false
-  nameInput.value = ''
-  triggerCelebration('🎉')
-}
+  showNameInput.value = false;
+  nameInput.value = "";
+  triggerCelebration("🎉");
+};
 
 const generateFloatingNames = (name) => {
   const cheers = [
@@ -401,25 +542,25 @@ const generateFloatingNames = (name) => {
     `${name} energy`,
     `King ${name}`,
     `Queen ${name} 👸`,
-  ]
-  
-  const names = []
-  
+  ];
+
+  const names = [];
+
   // Create a grid-based layout with jitter for better distribution
-  const cols = 5
-  const rows = 5
-  const cellWidth = 80 / cols  // Leave margins
-  const cellHeight = 80 / rows
-  
-  let index = 0
+  const cols = 5;
+  const rows = 5;
+  const cellWidth = 80 / cols; // Leave margins
+  const cellHeight = 80 / rows;
+
+  let index = 0;
   for (let row = 0; row < rows; row++) {
     for (let col = 0; col < cols; col++) {
       // Base position from grid + random jitter within cell
-      const baseX = 10 + col * cellWidth
-      const baseY = 10 + row * cellHeight
-      const jitterX = (Math.random() - 0.5) * cellWidth * 0.6
-      const jitterY = (Math.random() - 0.5) * cellHeight * 0.6
-      
+      const baseX = 10 + col * cellWidth;
+      const baseY = 10 + row * cellHeight;
+      const jitterX = (Math.random() - 0.5) * cellWidth * 0.6;
+      const jitterY = (Math.random() - 0.5) * cellHeight * 0.6;
+
       names.push({
         id: index,
         text: cheers[index % cheers.length],
@@ -429,238 +570,283 @@ const generateFloatingNames = (name) => {
         rotation: Math.random() * 30 - 15, // Less extreme rotation
         opacity: Math.random() * 0.2 + 0.12,
         visible: false,
-      })
-      index++
+      });
+      index++;
     }
   }
-  
+
   // Shuffle the array for random pop-in order
-  names.sort(() => Math.random() - 0.5)
-  
-  floatingNames.value = names
-  
+  names.sort(() => Math.random() - 0.5);
+
+  floatingNames.value = names;
+
   // Stagger the visibility of each name
   names.forEach((item, idx) => {
     setTimeout(() => {
-      const found = floatingNames.value.find(n => n.id === item.id)
-      if (found) found.visible = true
-    }, idx * 50)
-  })
-}
+      const found = floatingNames.value.find((n) => n.id === item.id);
+      if (found) found.visible = true;
+    }, idx * 50);
+  });
+};
 
 // Initial state for reset
 const getInitialData = () => [
-  { name: 'Sarah Chen', initials: 'SC', dept: 'Marketing', hours: 3, flows: 2, color: '#f472b6', momentum: 1 },
-  { name: 'Alex Kumar', initials: 'AK', dept: 'Engineering', hours: 2, flows: 1, color: '#60a5fa', momentum: 1 },
-  { name: 'Emma Wilson', initials: 'EW', dept: 'Sales', hours: 2, flows: 1, color: '#34d399', momentum: 1 },
-  { name: 'James Park', initials: 'JP', dept: 'Operations', hours: 1, flows: 1, color: '#a78bfa', momentum: 1 },
-  { name: 'Maya Roberts', initials: 'MR', dept: 'HR', hours: 1, flows: 0, color: '#fbbf24', momentum: 1 },
-]
+  {
+    name: "Sarah Chen",
+    initials: "SC",
+    dept: "Marketing",
+    hours: 3,
+    flows: 2,
+    color: "#f472b6",
+    momentum: 1,
+  },
+  {
+    name: "Alex Kumar",
+    initials: "AK",
+    dept: "Engineering",
+    hours: 2,
+    flows: 1,
+    color: "#60a5fa",
+    momentum: 1,
+  },
+  {
+    name: "Emma Wilson",
+    initials: "EW",
+    dept: "Sales",
+    hours: 2,
+    flows: 1,
+    color: "#34d399",
+    momentum: 1,
+  },
+  {
+    name: "James Park",
+    initials: "JP",
+    dept: "Operations",
+    hours: 1,
+    flows: 1,
+    color: "#a78bfa",
+    momentum: 1,
+  },
+  {
+    name: "Maya Roberts",
+    initials: "MR",
+    dept: "HR",
+    hours: 1,
+    flows: 0,
+    color: "#fbbf24",
+    momentum: 1,
+  },
+];
 
 // Leaderboard data with momentum
-const leaderboardData = ref(getInitialData())
+const leaderboardData = ref(getInitialData());
 
 const resetLeaderboard = () => {
-  leaderboardData.value = getInitialData()
-  updatedNumbers.value = {}
-  celebration.value = null
-  weekComplete.value = false
-  progressKey.value++
-  customWinnerName.value = ''
-  customWinnerInitials.value = ''
-  showNameInput.value = false
-  nameInput.value = ''
-  floatingNames.value = []
-}
+  leaderboardData.value = getInitialData();
+  updatedNumbers.value = {};
+  celebration.value = null;
+  weekComplete.value = false;
+  progressKey.value++;
+  customWinnerName.value = "";
+  customWinnerInitials.value = "";
+  showNameInput.value = false;
+  nameInput.value = "";
+  floatingNames.value = [];
+};
 
 const restartLeaderboard = () => {
-  stopLiveUpdates()
-  resetLeaderboard()
-  startLiveUpdates()
-}
+  stopLiveUpdates();
+  resetLeaderboard();
+  startLiveUpdates();
+};
 
 // Real-time updates with momentum system
-let mainLoop = null
-let weekTimeout = null
+let mainLoop = null;
+let weekTimeout = null;
 
 const triggerCelebration = (emoji) => {
-  celebration.value = emoji
+  celebration.value = emoji;
   setTimeout(() => {
-    celebration.value = null
-  }, 1500)
-}
+    celebration.value = null;
+  }, 1500);
+};
 
 const updatePerson = (person, field, amount = 1) => {
-  if (!isEnabled.value) return
-  
-  const oldFirst = leaderboardData.value[0].name
-  const oldRanks = leaderboardData.value.map(p => p.name)
-  
+  if (!isEnabled.value) return;
+
+  const oldFirst = leaderboardData.value[0].name;
+  const oldRanks = leaderboardData.value.map((p) => p.name);
+
   // Increment the stat
-  person[field] += amount
-  
+  person[field] += amount;
+
   // Trigger flip animation for this specific field
-  updatedNumbers.value = { 
-    ...updatedNumbers.value, 
-    [person.name + '-' + field]: true 
-  }
-  
+  updatedNumbers.value = {
+    ...updatedNumbers.value,
+    [person.name + "-" + field]: true,
+  };
+
   setTimeout(() => {
-    const newUpdates = { ...updatedNumbers.value }
-    delete newUpdates[person.name + '-' + field]
-    updatedNumbers.value = newUpdates
-  }, 400)
-  
+    const newUpdates = { ...updatedNumbers.value };
+    delete newUpdates[person.name + "-" + field];
+    updatedNumbers.value = newUpdates;
+  }, 400);
+
   // Re-sort the data
-  leaderboardData.value.sort((a, b) => b.hours - a.hours)
-  const newFirst = leaderboardData.value[0].name
-  
+  leaderboardData.value.sort((a, b) => b.hours - a.hours);
+  const newFirst = leaderboardData.value[0].name;
+
   // Celebrate if leader changed!
   if (oldFirst !== newFirst) {
-    triggerCelebration('👑')
+    triggerCelebration("👑");
   }
-}
+};
 
 const shuffleMomentum = () => {
   // Randomly boost/reduce momentum to create drama
-  leaderboardData.value.forEach(person => {
-    const roll = Math.random()
+  leaderboardData.value.forEach((person) => {
+    const roll = Math.random();
     if (roll > 0.85) {
       // Hot streak! Boost momentum
-      person.momentum = Math.min(person.momentum + 0.5, 3)
+      person.momentum = Math.min(person.momentum + 0.5, 3);
     } else if (roll < 0.15) {
       // Cool down
-      person.momentum = Math.max(person.momentum - 0.3, 0.5)
+      person.momentum = Math.max(person.momentum - 0.3, 0.5);
     }
-  })
-  
+  });
+
   // Every so often, give an underdog a big boost
   if (Math.random() > 0.7) {
-    const sortedByHours = [...leaderboardData.value].sort((a, b) => a.hours - b.hours)
-    const underdog = sortedByHours[Math.floor(Math.random() * 2)] // Pick from bottom 2
-    underdog.momentum = 2.5
+    const sortedByHours = [...leaderboardData.value].sort(
+      (a, b) => a.hours - b.hours
+    );
+    const underdog = sortedByHours[Math.floor(Math.random() * 2)]; // Pick from bottom 2
+    underdog.momentum = 2.5;
   }
-}
+};
 
 const gameLoop = () => {
-  if (!isEnabled.value) return
-  
+  if (!isEnabled.value) return;
+
   // Update 1-3 random people based on their momentum
-  const numUpdates = Math.floor(Math.random() * 3) + 1
-  
+  const numUpdates = Math.floor(Math.random() * 3) + 1;
+
   for (let i = 0; i < numUpdates; i++) {
     // Weight selection by momentum
-    const totalMomentum = leaderboardData.value.reduce((sum, p) => sum + p.momentum, 0)
-    let pick = Math.random() * totalMomentum
-    let selected = null
-    
+    const totalMomentum = leaderboardData.value.reduce(
+      (sum, p) => sum + p.momentum,
+      0
+    );
+    let pick = Math.random() * totalMomentum;
+    let selected = null;
+
     for (const person of leaderboardData.value) {
-      pick -= person.momentum
+      pick -= person.momentum;
       if (pick <= 0) {
-        selected = person
-        break
+        selected = person;
+        break;
       }
     }
-    
+
     if (selected) {
       // Hours increase based on momentum
-      const hoursGain = Math.random() < selected.momentum / 3 ? 2 : 1
-      updatePerson(selected, 'hours', hoursGain)
-      
+      const hoursGain = Math.random() < selected.momentum / 3 ? 2 : 1;
+      updatePerson(selected, "hours", hoursGain);
+
       // Sometimes also add flows
       if (Math.random() > 0.7) {
-        setTimeout(() => updatePerson(selected, 'flows', 1), 200)
+        setTimeout(() => updatePerson(selected, "flows", 1), 200);
       }
     }
   }
-}
+};
 
 const finishWeek = () => {
-  stopLiveUpdates()
-  weekComplete.value = true
-  triggerCelebration('🏆')
-}
+  stopLiveUpdates();
+  weekComplete.value = true;
+  triggerCelebration("🏆");
+};
 
 const startLiveUpdates = () => {
-  if (mainLoop) clearInterval(mainLoop)
-  if (weekTimeout) clearTimeout(weekTimeout)
-  
-  weekComplete.value = false
-  
+  if (mainLoop) clearInterval(mainLoop);
+  if (weekTimeout) clearTimeout(weekTimeout);
+
+  weekComplete.value = false;
+
   // Main game loop - tick every 800ms for fast-paced action
   mainLoop = setInterval(() => {
-    gameLoop()
-    
+    gameLoop();
+
     // Shuffle momentum periodically
     if (Math.random() > 0.6) {
-      shuffleMomentum()
+      shuffleMomentum();
     }
-  }, 800)
-  
+  }, 800);
+
   // Finish the week after 17 seconds
   weekTimeout = setTimeout(() => {
-    finishWeek()
-  }, 17000)
-}
+    finishWeek();
+  }, 17000);
+};
 
 const stopLiveUpdates = () => {
   if (mainLoop) {
-    clearInterval(mainLoop)
-    mainLoop = null
+    clearInterval(mainLoop);
+    mainLoop = null;
   }
   if (weekTimeout) {
-    clearTimeout(weekTimeout)
-    weekTimeout = null
+    clearTimeout(weekTimeout);
+    weekTimeout = null;
   }
-}
+};
 
 onMounted(() => {
-  startLiveUpdates()
-})
+  startLiveUpdates();
+});
 
 onUnmounted(() => {
-  stopLiveUpdates()
-})
+  stopLiveUpdates();
+});
 
 watch(isEnabled, (val) => {
   if (val) {
-    resetLeaderboard()
-    startLiveUpdates()
-    setTimeout(() => triggerCelebration('🎉'), 300)
+    resetLeaderboard();
+    startLiveUpdates();
+    setTimeout(() => triggerCelebration("🎉"), 300);
   } else {
-    stopLiveUpdates()
-    resetLeaderboard()
+    stopLiveUpdates();
+    resetLeaderboard();
   }
-})
+});
 
 // Auto-focus input when modal opens
 watch(showNameInput, async (val) => {
   if (val) {
-    await nextTick()
-    nameInputRef.value?.focus()
+    await nextTick();
+    nameInputRef.value?.focus();
   }
-})
+});
 
-const formatHours = (h) => h + 'h'
+const formatHours = (h) => h + "h";
 
 // Helper functions for celebration icons
 const getCelebrationIcon = (emoji) => {
   const iconMap = {
-    '🎉': PhConfetti,
-    '👑': PhCrown,
-    '🏆': PhTrophy,
-  }
-  return iconMap[emoji] || PhConfetti
-}
+    "🎉": PhConfetti,
+    "👑": PhCrown,
+    "🏆": PhTrophy,
+  };
+  return iconMap[emoji] || PhConfetti;
+};
 
 const getCelebrationColor = (emoji) => {
   const colorMap = {
-    '🎉': 'text-pink-400',
-    '👑': 'text-amber-400',
-    '🏆': 'text-amber-400',
-  }
-  return colorMap[emoji] || 'text-violet-400'
-}
+    "🎉": "text-pink-400",
+    "👑": "text-amber-400",
+    "🏆": "text-amber-400",
+  };
+  return colorMap[emoji] || "text-violet-400";
+};
 </script>
 
 <style scoped>
@@ -674,7 +860,8 @@ const getCelebrationColor = (emoji) => {
 }
 
 @keyframes pulse-glow {
-  0%, 100% {
+  0%,
+  100% {
     transform: translate(-50%, -50%) scale(1);
     opacity: 0.6;
   }
@@ -691,7 +878,8 @@ const getCelebrationColor = (emoji) => {
 }
 
 @keyframes trophy-pulse {
-  0%, 100% {
+  0%,
+  100% {
     filter: drop-shadow(0 0 20px rgba(251, 191, 36, 0.4));
     transform: scale(1);
   }
@@ -707,7 +895,8 @@ const getCelebrationColor = (emoji) => {
 }
 
 @keyframes bounce-subtle {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -721,7 +910,8 @@ const getCelebrationColor = (emoji) => {
 }
 
 @keyframes toggle-pulse {
-  0%, 100% {
+  0%,
+  100% {
     box-shadow: 0 4px 15px rgba(139, 92, 246, 0.2);
   }
   50% {
@@ -735,7 +925,8 @@ const getCelebrationColor = (emoji) => {
 }
 
 @keyframes knob-nudge {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateX(0);
   }
   40% {
@@ -982,9 +1173,15 @@ const getCelebrationColor = (emoji) => {
   animation: podium-rise 0.5s ease-out both;
 }
 
-.podium-1 { animation-delay: 0.2s; }
-.podium-2 { animation-delay: 0.1s; }
-.podium-3 { animation-delay: 0.3s; }
+.podium-1 {
+  animation-delay: 0.2s;
+}
+.podium-2 {
+  animation-delay: 0.1s;
+}
+.podium-3 {
+  animation-delay: 0.3s;
+}
 
 @keyframes podium-rise {
   0% {
@@ -1088,4 +1285,3 @@ const getCelebrationColor = (emoji) => {
   }
 }
 </style>
-

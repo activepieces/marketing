@@ -130,24 +130,24 @@
 
           <!-- Main badge circle -->
           <div
-            class="relative w-24 h-24 rounded-full bg-gradient-to-br from-violet-500/20 to-amber-500/20 border border-white/20 shadow-2xl flex items-center justify-center"
+            class="relative w-24 h-24 rounded-full bg-white/5 flex items-center justify-center"
           >
             <PhTrophy class="w-12 h-12 text-amber-400" weight="fill" />
           </div>
 
           <!-- Orbiting mini badges -->
           <div
-            class="absolute -top-2 -right-2 w-9 h-9 rounded-full bg-white/10 border border-white/20 shadow-lg flex items-center justify-center intro-orbit-1"
+            class="absolute -top-6 -right-2 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center intro-orbit-1"
           >
-            <PhStar class="w-5 h-5 text-yellow-400" weight="fill" />
+            <PhStar class="w-4 h-4 text-yellow-400" weight="fill" />
           </div>
           <div
-            class="absolute -bottom-1 -left-3 w-8 h-8 rounded-full bg-white/10 border border-white/20 shadow-lg flex items-center justify-center intro-orbit-2"
+            class="absolute -bottom-1 -left-8 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center intro-orbit-2"
           >
             <PhBrain class="w-4 h-4 text-pink-400" weight="fill" />
           </div>
           <div
-            class="absolute top-1/2 -right-5 w-8 h-8 rounded-full bg-white/10 border border-white/20 shadow-lg flex items-center justify-center intro-orbit-3"
+            class="absolute top-1/2 -right-10 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center intro-orbit-3"
           >
             <PhBarbell class="w-4 h-4 text-blue-400" weight="fill" />
           </div>

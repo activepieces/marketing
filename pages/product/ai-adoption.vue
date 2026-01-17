@@ -303,7 +303,7 @@ onUnmounted(() => {
         <!-- Feature 1: Templates -->
         <div class="rounded-3xl overflow-hidden border-4 border-white/10">
           <div class="grid grid-cols-[1fr_2fr] items-center">
-            <div class="p-12 flex flex-col gap-12 border-r-4 border-white/10">
+            <div class="p-12 flex flex-col gap-12">
               <div class="flex flex-col gap-4">
                 <h3
                   class="text-white text-4xl font-sentient font-medium text-balance"
@@ -411,7 +411,7 @@ onUnmounted(() => {
         <!-- Feature 3: Expert Support -->
         <div class="rounded-3xl overflow-hidden border-4 border-white/10">
           <div class="grid grid-cols-[1fr_2fr] items-center">
-            <div class="p-12 flex flex-col gap-12 border-r-4 border-white/10">
+            <div class="p-12 flex flex-col gap-12">
               <div class="flex flex-col gap-4">
                 <h3
                   class="text-white text-4xl font-sentient font-medium text-balance"
@@ -487,7 +487,7 @@ onUnmounted(() => {
         <!-- Feature 1: Leaderboard -->
         <div class="rounded-3xl overflow-hidden border-4 border-white/10">
           <div class="grid grid-cols-[1fr_2fr] items-center">
-            <div class="p-12 flex flex-col gap-12 border-r-4 border-white/10">
+            <div class="p-12 flex flex-col gap-12">
               <div class="flex flex-col gap-4">
                 <h3
                   class="text-white text-4xl font-sentient font-medium text-balance"
@@ -541,7 +541,7 @@ onUnmounted(() => {
         <!-- Feature 2: Badges -->
         <div class="rounded-3xl overflow-hidden border-4 border-white/10">
           <div class="grid grid-cols-[2fr_1fr] items-center">
-            <div class="h-full flex flex-col border-r-4 border-white/10 p-8">
+            <div class="h-full flex flex-col p-8">
               <PagesProductAdoptionBadgeChallenge />
             </div>
             <div class="p-12 flex flex-col gap-12">
