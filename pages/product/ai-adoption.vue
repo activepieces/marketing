@@ -532,7 +532,7 @@ onUnmounted(() => {
                 </li>
               </ol>
             </div>
-            <div class="h-full flex flex-col">
+            <div class="h-full flex flex-col p-8">
               <PagesProductAdoptionLeaderboard />
             </div>
           </div>

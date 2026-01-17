@@ -20,7 +20,10 @@
       "mcp__chrome-devtools__close_page",
       "Bash(npm install:*)",
       "Bash(npx update-browserslist-db@latest:*)",
-      "Bash(npm audit:*)"
+      "Bash(npm audit:*)",
+      "WebFetch(domain:phosphoricons.com)",
+      "Bash(lsof:*)",
+      "mcp__chrome-devtools__click"
     ]
   }
 }
