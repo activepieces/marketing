@@ -57,13 +57,16 @@
             </div>
 
             <!-- Floating AI support button - centered at bottom -->
-            <button
-              @click="currentScreen = 'calendar'"
-              class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white/10 border border-white/20 text-white/80 px-5 py-3 rounded-full flex items-center gap-1 group ring-0 ring-white/5 hover:ring-8 hover:border-white/40 hover:gap-2 hover:text-white transition-all duration-200 font-semibold text-sm"
-            >
-              <PhRobot class="text-white" weight="fill" size="20" />
-              Talk to AI Expert
-            </button>
+            <span class="absolute bottom-4 left-1/2 -translate-x-1/2">
+              <span class="pulse-ring"></span>
+              <button
+                @click="currentScreen = 'calendar'"
+                class="relative bg-white/10 border border-white/20 text-white/80 px-5 py-3 rounded-full flex items-center gap-1 group ring-0 ring-white/5 hover:ring-8 hover:border-white/40 hover:gap-2 hover:text-white transition-all duration-200 font-semibold text-sm"
+              >
+                <PhRobot class="text-white" weight="fill" size="20" />
+                Talk to AI Expert
+              </button>
+            </span>
           </div>
         </div>
 
@@ -822,5 +825,29 @@ const endCall = () => {
 .custom-scrollbar::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.2);
   border-radius: 2px;
+}
+
+/* Pulsing ring animation for AI button */
+.pulse-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 9999px;
+  pointer-events: none;
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.35);
+    opacity: 0;
+  }
 }
 </style>
