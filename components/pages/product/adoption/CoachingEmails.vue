@@ -38,9 +38,9 @@
               Day {{ card.day }}
             </div>
             <p
-              class="font-semibold text-white/80 text-sm leading-tight flex-shrink-0"
+              class="font-semibold text-white/80 text-sm leading-tight flex-shrink-0 flex items-center gap-1"
             >
-              {{ card.title }}
+              {{ card.title }}<component v-if="card.icon" :is="card.icon" class="w-3 h-3" weight="fill" />
             </p>
             <div class="space-y-1 flex-shrink-0">
               <div class="h-1 rounded-full bg-white/20 w-full"></div>
@@ -92,7 +92,7 @@
             class="flex items-center justify-between px-4 py-4 flex-shrink-0"
           >
             <div class="flex items-center gap-2">
-              <span class="text-2xl">✨</span>
+              <PhSparkle class="w-6 h-6 text-white/80" weight="fill" />
               <span class="text-lg font-medium text-white/80"
                 >Your AI Coach</span
               >
@@ -120,9 +120,9 @@
           <!-- Progress hint -->
           <div class="px-4 pb-3">
             <div class="flex items-center gap-2 text-xs text-white/80">
-              <span>🚀 30-day journey</span>
+              <span class="flex items-center gap-1"><PhRocket class="w-3 h-3" weight="fill" /> 30-day journey</span>
               <span class="text-gray-200">•</span>
-              <span>🏆 Become an AI Hero</span>
+              <span class="flex items-center gap-1"><PhTrophy class="w-3 h-3" weight="fill" /> Become an AI Hero</span>
             </div>
           </div>
 
@@ -156,9 +156,9 @@
                   @click.stop="selectedEmail = email"
                 >
                   <p
-                    class="font-medium text-white/80 text-sm truncate group-hover:text-white transition-colors"
+                    class="font-medium text-white/80 text-sm truncate group-hover:text-white transition-colors flex items-center gap-1"
                   >
-                    {{ email.subject }}
+                    <component v-if="email.icon" :is="email.icon" class="w-3 h-3 flex-shrink-0" weight="fill" />{{ email.subject }}
                   </p>
                   <p class="text-xs text-gray-400 line-clamp-1 mt-0.5">
                     {{ email.preview }}
@@ -200,8 +200,8 @@
               </svg>
             </button>
             <div class="flex-1 min-w-0">
-              <p class="text-sm font-semibold text-white/80 truncate">
-                {{ selectedEmail.subject }}
+              <p class="text-sm font-semibold text-white/80 truncate flex items-center gap-1">
+                <component v-if="selectedEmail.icon" :is="selectedEmail.icon" class="w-4 h-4 flex-shrink-0" weight="fill" />{{ selectedEmail.subject }}
               </p>
               <p class="text-[10px] text-white/60">
                 Day {{ selectedEmail.day }} · from AI Coach
@@ -219,7 +219,7 @@
           <div class="flex-1 overflow-y-auto px-4 py-4 pb-20">
             <div class="space-y-4">
               <!-- Greeting -->
-              <p class="text-sm text-white/80">Hi there! 👋</p>
+              <p class="text-sm text-white/80 flex items-center gap-1">Hi there! <PhHandWaving class="w-4 h-4" weight="fill" /></p>
 
               <!-- Main content -->
               <p class="text-sm text-white/80 leading-relaxed">
@@ -235,10 +235,10 @@
 
               <!-- CTA button placeholder -->
               <div
-                class="inline-block px-4 py-2 rounded-lg text-white text-xs font-semibold border"
+                class="inline-flex items-center gap-1 px-4 py-2 rounded-lg text-white text-xs font-semibold border"
                 :style="{ borderColor: selectedEmail.color }"
               >
-                {{ selectedEmail.cta }}
+                {{ selectedEmail.cta }}<component v-if="selectedEmail.ctaIcon" :is="selectedEmail.ctaIcon" class="w-3 h-3" weight="fill" />
               </div>
 
               <!-- More placeholder -->
@@ -261,17 +261,17 @@
               class="flex items-center justify-center gap-3 bg-white/90 backdrop-blur-sm rounded-2xl px-4 py-2 shadow-lg border border-gray-100 mx-auto w-fit"
             >
               <button
-                v-for="reaction in reactions"
-                :key="reaction.emoji"
-                class="relative w-11 h-11 rounded-xl flex items-center justify-center text-xl transition-all duration-200 hover:scale-125 hover:bg-gray-100 active:scale-90"
-                @click.stop="triggerCelebration(reaction.emoji, $event)"
+                v-for="(reaction, index) in reactions"
+                :key="index"
+                class="relative w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-200 hover:scale-125 hover:bg-gray-100 active:scale-90"
+                @click.stop="triggerCelebration(reaction, $event)"
               >
-                {{ reaction.emoji }}
+                <component :is="reaction.icon" class="w-6 h-6" weight="fill" :style="{ color: reaction.color }" />
               </button>
             </div>
           </div>
 
-          <!-- Celebration emojis container -->
+          <!-- Celebration icons container -->
           <div class="absolute inset-0 pointer-events-none overflow-hidden">
             <span
               v-for="particle in celebrationParticles"
@@ -285,9 +285,10 @@
                 '--height': particle.height + 'px',
                 '--duration': particle.duration + 's',
                 animationDelay: particle.delay + 's',
+                color: particle.color,
               }"
             >
-              {{ particle.emoji }}
+              <component :is="particle.icon" weight="fill" class="w-full h-full" />
             </span>
           </div>
         </template>
@@ -297,8 +298,19 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
-import { PhStarFour } from "@phosphor-icons/vue";
+import { ref, onMounted, onUnmounted, markRaw } from "vue";
+import {
+  PhStarFour,
+  PhSparkle,
+  PhRocket,
+  PhTrophy,
+  PhConfetti,
+  PhHeart,
+  PhFire,
+  PhMedal,
+  PhHandshake,
+  PhHandWaving,
+} from "@phosphor-icons/vue";
 
 const isExpanded = ref(false);
 const isHovering = ref(false);
@@ -308,7 +320,11 @@ const celebrationParticles = ref([]);
 let particleId = 0;
 let leaveTimeout = null;
 
-const reactions = [{ emoji: "🎉" }, { emoji: "❤️" }, { emoji: "🔥" }];
+const reactions = [
+  { icon: markRaw(PhConfetti), color: "#fbbf24" },
+  { icon: markRaw(PhHeart), color: "#ef4444" },
+  { icon: markRaw(PhFire), color: "#f97316" },
+];
 
 const names = [
   "Emma",
@@ -399,7 +415,7 @@ const closeInbox = () => {
 
 const sizes = ["text-2xl", "text-3xl", "text-4xl", "text-5xl"];
 
-const triggerCelebration = (emoji, event) => {
+const triggerCelebration = (reaction, event) => {
   // Get button position relative to the drawer container
   const container = event.target.closest(".drawer-base");
   if (!container) return;
@@ -422,7 +438,8 @@ const triggerCelebration = (emoji, event) => {
 
     newParticles.push({
       id: particleId++,
-      emoji,
+      icon: reaction.icon,
+      color: reaction.color,
       x: baseX,
       drift: driftAmount,
       delay: i * 0.02,
@@ -451,7 +468,7 @@ const gridCards = [
   { day: 19, title: "Share", color: "#0ea5e9", rotation: 3 },
   { day: 22, title: "AI agents", color: "#10b981", rotation: -1 },
   { day: 24, title: "Impact", color: "#059669", rotation: 2 },
-  { day: 30, title: "AI Hero! 🏆", color: "#34d399", rotation: -2 },
+  { day: 30, title: "AI Hero!", color: "#34d399", rotation: -2, icon: markRaw(PhTrophy) },
 ];
 
 const emailList = [
@@ -479,7 +496,8 @@ const emailList = [
   { day: 5, placeholder: true, color: "#c026d3" },
   {
     day: 6,
-    subject: "🎖️ You earned a badge!",
+    subject: "You earned a badge!",
+    icon: markRaw(PhMedal),
     preview:
       "First Automation complete! Check out your new badge on your profile...",
     body: "Congratulations! You just earned your 'First Automation' badge. This is just the beginning — there are more achievements waiting for you.",
@@ -535,7 +553,8 @@ const emailList = [
   },
   {
     day: 20,
-    subject: "🤝 Team Player badge!",
+    subject: "Team Player badge!",
+    icon: markRaw(PhHandshake),
     preview:
       "You shared your first automation — welcome to the champions club...",
     body: "You just earned the 'Team Player' badge for sharing your work! Champions don't just build for themselves — they lift up the whole team.",
@@ -569,11 +588,13 @@ const emailList = [
   { day: 29, placeholder: true, color: "#a3e635" },
   {
     day: 30,
-    subject: "🏆 You're an AI Hero!",
+    subject: "You're an AI Hero!",
+    icon: markRaw(PhTrophy),
     preview:
       "30 days ago you started. Today you're transforming how your org works.",
     body: "You did it! In 30 days you went from zero to AI hero. You've built flows, helped teammates, and made a real impact. But this isn't the end — it's just the beginning. Keep building, keep inspiring, keep leading the AI revolution.",
-    cta: "Celebrate! 🎉",
+    cta: "Celebrate!",
+    ctaIcon: markRaw(PhConfetti),
     color: "#34d399",
   },
 ];
