@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative w-full h-full flex items-center justify-center overflow-hidden rounded-lg bg-white/0 border-2 border-white/10"
+    class="relative w-full h-full flex items-center justify-center overflow-hidden rounded-lg"
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
   >
@@ -40,7 +40,13 @@
             <p
               class="font-semibold text-white/80 text-sm leading-tight flex-shrink-0 flex items-center gap-1"
             >
-              {{ card.title }}<component v-if="card.icon" :is="card.icon" class="w-3 h-3" weight="fill" />
+              {{ card.title
+              }}<component
+                v-if="card.icon"
+                :is="card.icon"
+                class="w-3 h-3"
+                weight="fill"
+              />
             </p>
             <div class="space-y-1 flex-shrink-0">
               <div class="h-1 rounded-full bg-white/20 w-full"></div>
@@ -120,9 +126,14 @@
           <!-- Progress hint -->
           <div class="px-4 pb-3">
             <div class="flex items-center gap-2 text-xs text-white/80">
-              <span class="flex items-center gap-1"><PhRocket class="w-3 h-3" weight="fill" /> 30-day journey</span>
+              <span class="flex items-center gap-1"
+                ><PhRocket class="w-3 h-3" weight="fill" /> 30-day journey</span
+              >
               <span class="text-gray-200">•</span>
-              <span class="flex items-center gap-1"><PhTrophy class="w-3 h-3" weight="fill" /> Become an AI Hero</span>
+              <span class="flex items-center gap-1"
+                ><PhTrophy class="w-3 h-3" weight="fill" /> Become an AI
+                Hero</span
+              >
             </div>
           </div>
 
@@ -158,7 +169,12 @@
                   <p
                     class="font-medium text-white/80 text-sm truncate group-hover:text-white transition-colors flex items-center gap-1"
                   >
-                    <component v-if="email.icon" :is="email.icon" class="w-3 h-3 flex-shrink-0" weight="fill" />{{ email.subject }}
+                    <component
+                      v-if="email.icon"
+                      :is="email.icon"
+                      class="w-3 h-3 flex-shrink-0"
+                      weight="fill"
+                    />{{ email.subject }}
                   </p>
                   <p class="text-xs text-gray-400 line-clamp-1 mt-0.5">
                     {{ email.preview }}
@@ -200,8 +216,15 @@
               </svg>
             </button>
             <div class="flex-1 min-w-0">
-              <p class="text-sm font-semibold text-white/80 truncate flex items-center gap-1">
-                <component v-if="selectedEmail.icon" :is="selectedEmail.icon" class="w-4 h-4 flex-shrink-0" weight="fill" />{{ selectedEmail.subject }}
+              <p
+                class="text-sm font-semibold text-white/80 truncate flex items-center gap-1"
+              >
+                <component
+                  v-if="selectedEmail.icon"
+                  :is="selectedEmail.icon"
+                  class="w-4 h-4 flex-shrink-0"
+                  weight="fill"
+                />{{ selectedEmail.subject }}
               </p>
               <p class="text-[10px] text-white/60">
                 Day {{ selectedEmail.day }} · from AI Coach
@@ -219,7 +242,9 @@
           <div class="flex-1 overflow-y-auto px-4 py-4 pb-20">
             <div class="space-y-4">
               <!-- Greeting -->
-              <p class="text-sm text-white/80 flex items-center gap-1">Hi there! <PhHandWaving class="w-4 h-4" weight="fill" /></p>
+              <p class="text-sm text-white/80 flex items-center gap-1">
+                Hi there! <PhHandWaving class="w-4 h-4" weight="fill" />
+              </p>
 
               <!-- Main content -->
               <p class="text-sm text-white/80 leading-relaxed">
@@ -238,7 +263,13 @@
                 class="inline-flex items-center gap-1 px-4 py-2 rounded-lg text-white text-xs font-semibold border"
                 :style="{ borderColor: selectedEmail.color }"
               >
-                {{ selectedEmail.cta }}<component v-if="selectedEmail.ctaIcon" :is="selectedEmail.ctaIcon" class="w-3 h-3" weight="fill" />
+                {{ selectedEmail.cta
+                }}<component
+                  v-if="selectedEmail.ctaIcon"
+                  :is="selectedEmail.ctaIcon"
+                  class="w-3 h-3"
+                  weight="fill"
+                />
               </div>
 
               <!-- More placeholder -->
@@ -258,15 +289,20 @@
           <!-- Sticky reaction bar -->
           <div class="absolute bottom-0 left-0 right-0 p-3">
             <div
-              class="flex items-center justify-center gap-3 bg-white/90 backdrop-blur-sm rounded-2xl px-4 py-2 shadow-lg border border-gray-100 mx-auto w-fit"
+              class="flex items-center justify-center gap-3 bg-white/5 rounded-xl p-2 mx-auto w-fit border border-white/10"
             >
               <button
                 v-for="(reaction, index) in reactions"
                 :key="index"
-                class="relative w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-200 hover:scale-125 hover:bg-gray-100 active:scale-90"
+                class="relative w-11 h-11 rounded-md flex items-center justify-center transition-all duration-200 hover:scale-125 hover:bg-white/5 active:scale-90"
                 @click.stop="triggerCelebration(reaction, $event)"
               >
-                <component :is="reaction.icon" class="w-6 h-6" weight="fill" :style="{ color: reaction.color }" />
+                <component
+                  :is="reaction.icon"
+                  class="w-6 h-6"
+                  weight="fill"
+                  :style="{ color: reaction.color }"
+                />
               </button>
             </div>
           </div>
@@ -288,7 +324,11 @@
                 color: particle.color,
               }"
             >
-              <component :is="particle.icon" weight="fill" class="w-full h-full" />
+              <component
+                :is="particle.icon"
+                weight="fill"
+                class="w-full h-full"
+              />
             </span>
           </div>
         </template>
@@ -468,7 +508,13 @@ const gridCards = [
   { day: 19, title: "Share", color: "#0ea5e9", rotation: 3 },
   { day: 22, title: "AI agents", color: "#10b981", rotation: -1 },
   { day: 24, title: "Impact", color: "#059669", rotation: 2 },
-  { day: 30, title: "AI Hero!", color: "#34d399", rotation: -2, icon: markRaw(PhTrophy) },
+  {
+    day: 30,
+    title: "AI Hero!",
+    color: "#34d399",
+    rotation: -2,
+    icon: markRaw(PhTrophy),
+  },
 ];
 
 const emailList = [
