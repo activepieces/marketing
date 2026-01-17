@@ -412,15 +412,9 @@ const handleMouseEnter = () => {
 };
 
 const handleMouseLeave = () => {
-  // If expanded, wait 2 seconds before collapsing
-  if (isExpanded.value) {
-    leaveTimeout = setTimeout(() => {
-      isExpanded.value = false;
-      isHovering.value = false;
-      selectedEmail.value = null;
-      celebrationParticles.value = [];
-    }, 2000);
-  } else {
+  // Only update hover state if not expanded
+  // Drawer stays open until user clicks X button
+  if (!isExpanded.value) {
     isHovering.value = false;
   }
 };
