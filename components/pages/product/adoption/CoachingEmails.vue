@@ -138,7 +138,7 @@
           </div>
 
           <!-- Scrollable email list -->
-          <div class="flex-1 overflow-y-auto px-3">
+          <div class="flex-1 overflow-y-auto px-3 minimal-scrollbar">
             <div
               v-for="(email, index) in emailList"
               :key="index"
@@ -239,7 +239,7 @@
           </div>
 
           <!-- Email content -->
-          <div class="flex-1 overflow-y-auto px-4 py-4 pb-20">
+          <div class="flex-1 overflow-y-auto px-4 py-4 pb-20 minimal-scrollbar">
             <div class="space-y-4">
               <!-- Greeting -->
               <p class="text-sm text-white/80 flex items-center gap-1">
@@ -830,5 +830,29 @@ const emailList = [
   50% {
     height: 120px;
   }
+}
+
+/* Minimal scrollbar styling */
+.minimal-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.minimal-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.minimal-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+.minimal-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Firefox */
+.minimal-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
 }
 </style>
