@@ -846,7 +846,7 @@ const endCall = () => {
     opacity: 0.6;
   }
   100% {
-    transform: translate(-50%, -50%) scale(1.35);
+    transform: translate(-50%, -50%) scale(1.3, 1.75);
     opacity: 0;
   }
 }
