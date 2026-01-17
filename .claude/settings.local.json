@@ -23,7 +23,8 @@
       "Bash(npm audit:*)",
       "WebFetch(domain:phosphoricons.com)",
       "Bash(lsof:*)",
-      "mcp__chrome-devtools__click"
+      "mcp__chrome-devtools__click",
+      "Bash(pkill:*)"
     ]
   }
 }
