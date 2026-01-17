@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative w-full h-full flex items-center justify-center overflow-hidden rounded-3xl bg-gradient-to-br from-gray-50 via-white to-gray-50 border border-gray-200/60 shadow-sm"
+    class="relative w-full h-full flex items-center justify-center overflow-hidden rounded-lg bg-white/0 border-2 border-white/10"
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
   >
@@ -11,7 +11,7 @@
     >
       <!-- Greeting text -->
       <div class="text-center pt-8 pb-4 pointer-events-none">
-        <h2 class="text-3xl font-semibold text-gray-700/80">
+        <h2 class="text-3xl font-semibold text-white/80">
           Hey
           <span
             class="inline-block name-rotate"
@@ -24,32 +24,27 @@
 
       <!-- 3x3 Card Grid -->
       <div class="flex-1 flex items-center justify-center p-4 w-full">
-        <div class="grid grid-cols-3 gap-8 w-full h-full">
+        <div class="grid grid-cols-3 gap-4 w-full h-full">
           <div
             v-for="(card, index) in gridCards"
             :key="index"
-            class="email-card overflow-hidden rounded-xl w-full h-full"
+            class="email-card overflow-hidden w-full h-full p-4 border border-white/10 bg-white/5 flex flex-col rounded-md gap-2"
             :style="{ transform: `rotate(${card.rotation}deg)` }"
           >
             <div
-              class="w-full h-full p-2.5 border bg-white flex flex-col rounded-xl"
-              :style="{ borderColor: card.color + '60' }"
+              class="inline-block px-2 py-0.5 rounded-sm text-white text-xs font-bold self-start flex-shrink-0 border"
+              :style="{ borderColor: card.color }"
             >
-              <div
-                class="inline-block px-2 py-0.5 rounded-md text-white text-[9px] font-bold mb-1.5 self-start flex-shrink-0"
-                :style="{ backgroundColor: card.color }"
-              >
-                Day {{ card.day }}
-              </div>
-              <p
-                class="font-semibold text-gray-700 text-[11px] leading-tight mb-1.5 flex-shrink-0"
-              >
-                {{ card.title }}
-              </p>
-              <div class="space-y-1 flex-shrink-0">
-                <div class="h-1 rounded-full bg-gray-100 w-full"></div>
-                <div class="h-1 rounded-full bg-gray-100 w-3/4"></div>
-              </div>
+              Day {{ card.day }}
+            </div>
+            <p
+              class="font-semibold text-white/80 text-sm leading-tight flex-shrink-0"
+            >
+              {{ card.title }}
+            </p>
+            <div class="space-y-1 flex-shrink-0">
+              <div class="h-1 rounded-full bg-white/20 w-full"></div>
+              <div class="h-1 rounded-full bg-white/20 w-3/4"></div>
             </div>
           </div>
         </div>
@@ -58,7 +53,7 @@
 
     <!-- Coach drawer - peeks from bottom on hover, expands on click -->
     <div
-      class="absolute left-0 right-0 bg-white rounded-t-2xl shadow-[0_-8px_30px_rgba(0,0,0,0.12)] cursor-pointer z-50 overflow-hidden drawer-base"
+      class="absolute left-0 right-0 bg-white/20 backdrop-blur-lg rounded-t-2xl shadow-[0_-8px_30px_rgba(0,0,0,0.12)] cursor-pointer z-50 overflow-hidden drawer-base"
       :class="[
         !isTransitioning && isExpanded ? 'drawer-expanded' : '',
         !isTransitioning && !isExpanded ? 'bar-breathe' : '',
@@ -79,24 +74,10 @@
         <div
           class="absolute bottom-4 left-0 right-0 flex flex-col items-center"
         >
-          <div class="flex items-center gap-2">
-            <span class="text-xl">✨</span>
-            <span class="font-semibold text-gray-800">Your AI Coach</span>
-            <svg
-              class="w-4 h-4 text-violet-500"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2.5"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M5 15l7-7 7 7"
-              />
-            </svg>
+          <div class="flex items-center gap-1">
+            <span class="font-semibold text-white/80">Your AI Coach</span>
           </div>
-          <span class="text-[11px] text-gray-400 mt-1">Click to expand</span>
+          <span class="text-xs text-gray-400 mt-1">Click to expand</span>
         </div>
       </div>
 
@@ -110,13 +91,13 @@
           >
             <div class="flex items-center gap-2">
               <span class="text-2xl">✨</span>
-              <span class="text-lg font-medium text-gray-800"
+              <span class="text-lg font-medium text-white/80"
                 >Your AI Coach</span
               >
             </div>
             <button
               @click.stop="closeInbox"
-              class="w-7 h-7 rounded-full hover:bg-gray-100 flex items-center justify-center transition-colors text-gray-300 hover:text-gray-500"
+              class="w-7 h-7 rounded-full hover:bg-white/10 flex items-center justify-center transition-colors text-white/80 hover:text-white"
             >
               <svg
                 class="w-4 h-4"
@@ -136,7 +117,7 @@
 
           <!-- Progress hint -->
           <div class="px-4 pb-3">
-            <div class="flex items-center gap-2 text-xs text-gray-400">
+            <div class="flex items-center gap-2 text-xs text-white/80">
               <span>🚀 30-day journey</span>
               <span class="text-gray-200">•</span>
               <span>🏆 Become an AI Hero</span>
@@ -152,12 +133,14 @@
             >
               <!-- Day badge -->
               <div
-                class="w-9 h-9 rounded-xl flex items-center justify-center text-xs font-bold text-white flex-shrink-0 mt-1"
+                class="w-9 h-9 rounded-xl flex items-center justify-center text-xs font-bold text-white flex-shrink-0 mt-1 border"
                 :style="{
-                  backgroundColor: email.placeholder ? '#e5e7eb' : email.color,
+                  borderColor: email.placeholder
+                    ? 'rgba(255,255,255,0.1)'
+                    : email.color,
                 }"
               >
-                <span :class="email.placeholder ? 'text-gray-400' : ''">{{
+                <span :class="email.placeholder ? 'text-white/80' : ''">{{
                   email.day
                 }}</span>
               </div>
@@ -167,11 +150,11 @@
                 <!-- Clickable email -->
                 <div
                   v-if="!email.placeholder"
-                  class="py-2 px-3 -mx-1 rounded-xl hover:bg-gray-50 transition-colors cursor-pointer group"
+                  class="py-2 px-3 -mx-1 rounded-xl hover:bg-white/10 transition-colors cursor-pointer group"
                   @click.stop="selectedEmail = email"
                 >
                   <p
-                    class="font-medium text-gray-800 text-sm truncate group-hover:text-purple-600 transition-colors"
+                    class="font-medium text-white/80 text-sm truncate group-hover:text-white transition-colors"
                   >
                     {{ email.subject }}
                   </p>
@@ -182,8 +165,8 @@
 
                 <!-- Placeholder email (non-interactive) -->
                 <div v-else class="py-2 px-1">
-                  <div class="h-2.5 bg-gray-100 rounded w-3/4 mb-1.5"></div>
-                  <div class="h-2 bg-gray-50 rounded w-1/2"></div>
+                  <div class="h-2.5 bg-white/10 rounded w-3/4 mb-1.5"></div>
+                  <div class="h-2 bg-white/10 rounded w-1/2"></div>
                 </div>
               </div>
             </div>
@@ -198,10 +181,10 @@
           >
             <button
               @click.stop="selectedEmail = null"
-              class="w-8 h-8 rounded-full hover:bg-gray-100 flex items-center justify-center transition-colors"
+              class="w-8 h-8 rounded-full hover:bg-white/10 flex items-center justify-center transition-colors"
             >
               <svg
-                class="w-4 h-4 text-gray-600"
+                class="w-4 h-4 text-white/60"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -215,16 +198,16 @@
               </svg>
             </button>
             <div class="flex-1 min-w-0">
-              <p class="text-sm font-semibold text-gray-800 truncate">
+              <p class="text-sm font-semibold text-white/80 truncate">
                 {{ selectedEmail.subject }}
               </p>
-              <p class="text-[10px] text-gray-400">
+              <p class="text-[10px] text-white/60">
                 Day {{ selectedEmail.day }} · from AI Coach
               </p>
             </div>
             <div
-              class="w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-bold text-white flex-shrink-0"
-              :style="{ backgroundColor: selectedEmail.color }"
+              class="w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-bold text-white flex-shrink-0 border"
+              :style="{ borderColor: selectedEmail.color }"
             >
               {{ selectedEmail.day }}
             </div>
@@ -234,46 +217,44 @@
           <div class="flex-1 overflow-y-auto px-4 py-4 pb-20">
             <div class="space-y-4">
               <!-- Greeting -->
-              <p class="text-sm text-gray-700">Hi there! 👋</p>
+              <p class="text-sm text-white/80">Hi there! 👋</p>
 
               <!-- Main content -->
-              <p class="text-sm text-gray-600 leading-relaxed">
+              <p class="text-sm text-white/80 leading-relaxed">
                 {{ selectedEmail.body }}
               </p>
 
               <!-- Placeholder content -->
               <div class="space-y-2 py-2">
-                <div class="h-2 rounded-full bg-gray-100 w-full"></div>
-                <div class="h-2 rounded-full bg-gray-100 w-11/12"></div>
-                <div class="h-2 rounded-full bg-gray-100 w-4/5"></div>
+                <div class="h-2 rounded-full bg-white/10 w-full"></div>
+                <div class="h-2 rounded-full bg-white/10 w-11/12"></div>
+                <div class="h-2 rounded-full bg-white/10 w-4/5"></div>
               </div>
 
               <!-- CTA button placeholder -->
               <div
-                class="inline-block px-4 py-2 rounded-lg text-white text-xs font-semibold"
-                :style="{ backgroundColor: selectedEmail.color }"
+                class="inline-block px-4 py-2 rounded-lg text-white text-xs font-semibold border"
+                :style="{ borderColor: selectedEmail.color }"
               >
                 {{ selectedEmail.cta }}
               </div>
 
               <!-- More placeholder -->
               <div class="space-y-2 pt-2">
-                <div class="h-2 rounded-full bg-gray-100 w-3/4"></div>
-                <div class="h-2 rounded-full bg-gray-100 w-1/2"></div>
+                <div class="h-2 rounded-full bg-white/10 w-3/4"></div>
+                <div class="h-2 rounded-full bg-white/10 w-1/2"></div>
               </div>
 
               <!-- Sign off -->
               <div class="pt-2">
-                <p class="text-sm text-gray-600">Cheers,</p>
-                <p class="text-sm font-medium text-gray-700">Your AI Coach</p>
+                <p class="text-sm text-white/80">Cheers,</p>
+                <p class="text-sm font-medium text-white/80">Your AI Coach</p>
               </div>
             </div>
           </div>
 
           <!-- Sticky reaction bar -->
-          <div
-            class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-white via-white to-transparent"
-          >
+          <div class="absolute bottom-0 left-0 right-0 p-3">
             <div
               class="flex items-center justify-center gap-3 bg-white/90 backdrop-blur-sm rounded-2xl px-4 py-2 shadow-lg border border-gray-100 mx-auto w-fit"
             >
@@ -598,7 +579,6 @@ const emailList = [
 <style scoped>
 .email-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 /* Waving hand animation */

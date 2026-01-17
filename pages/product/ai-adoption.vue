@@ -357,7 +357,7 @@ onUnmounted(() => {
         <!-- Feature 2: Personalized Guidance -->
         <div class="rounded-3xl overflow-hidden border-4 border-white/10">
           <div class="grid grid-cols-[2fr_1fr] items-center">
-            <div class="h-full flex flex-col border-r-4 border-white/10">
+            <div class="h-full flex flex-col border-r-4 border-white/10 p-8">
               <PagesProductAdoptionCoachingEmails />
             </div>
             <div class="p-12 flex flex-col gap-12">
