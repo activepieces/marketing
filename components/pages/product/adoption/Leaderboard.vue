@@ -1,6 +1,6 @@
 <template>
-  <div 
-    class="relative w-full max-w-lg mx-auto h-[420px] rounded-3xl overflow-hidden transition-all duration-500"
+  <div
+    class="relative w-full h-full rounded-3xl overflow-hidden transition-all duration-500"
     :class="isEnabled ? 'bg-gradient-to-br from-slate-50 via-white to-violet-50/50' : 'bg-gray-50'"
   >
     <!-- Disabled state: Big toggle + placeholder -->

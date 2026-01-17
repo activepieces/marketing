@@ -1,17 +1,34 @@
 <template>
-  <div class="relative w-full max-w-md mx-auto">
+  <div class="relative w-full h-full">
     <!-- Main container -->
-    <div 
-      class="relative rounded-3xl overflow-hidden shadow-2xl h-[400px]"
-      style="transform: rotate(-1deg);"
+    <div
+      class="relative rounded-3xl overflow-hidden shadow-2xl h-full flex flex-col"
       :class="screenBg"
     >
-      <!-- Initial Widget State -->
+      <!-- Safari Browser Top Bar -->
+      <div class="bg-white/10 px-3 py-2 flex-shrink-0">
+        <!-- Traffic lights -->
+        <div class="flex items-center gap-1.5 mb-2">
+          <div class="w-2.5 h-2.5 rounded-full bg-red-400"></div>
+          <div class="w-2.5 h-2.5 rounded-full bg-yellow-400"></div>
+          <div class="w-2.5 h-2.5 rounded-full bg-green-400"></div>
+        </div>
+
+        <!-- Address bar -->
+        <div class="bg-black/40 rounded-md py-1.5 px-2 flex items-center gap-2">
+          <div class="w-4 h-4 rounded bg-gradient-to-br from-violet-500 to-purple-600 flex-shrink-0"></div>
+          <div class="h-2.5 flex-1 bg-white/20 rounded"></div>
+        </div>
+      </div>
+
+      <!-- Content Area -->
+      <div class="flex-1 overflow-hidden relative">
+        <!-- Initial Widget State -->
       <div v-if="currentScreen === 'widget'" class="p-6 h-full flex flex-col">
         <!-- Mock app header -->
         <div class="flex items-center gap-3 mb-4 pb-4 border-b border-white/10">
           <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center shadow-lg shadow-violet-500/25">
-            <span class="text-white text-sm">✨</span>
+            <PhSparkle class="w-5 h-5 text-white" weight="fill" />
           </div>
           <div class="flex-1">
             <div class="h-2.5 w-28 bg-white/20 rounded-full"></div>
@@ -36,10 +53,10 @@
           <!-- Floating AI support button - centered at bottom -->
           <button
             @click="currentScreen = 'calendar'"
-            class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white text-gray-900 px-5 py-3 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center gap-2.5 group"
+            class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white/10 backdrop-blur-lg border border-white/20 text-white/80 px-5 py-3 rounded-2xl shadow-xl hover:shadow-2xl hover:bg-white/20 hover:scale-105 transition-all duration-300 flex items-center gap-2.5 group"
           >
             <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center">
-              <span class="text-white text-sm">🤖</span>
+              <PhRobot class="w-4 h-4 text-white" weight="fill" />
             </div>
             <span class="font-semibold text-sm">Talk to AI Expert</span>
           </button>
@@ -47,54 +64,55 @@
       </div>
 
       <!-- Calendar State - 3 Day View -->
-      <div v-else-if="currentScreen === 'calendar'" class="p-5 h-full bg-white flex flex-col">
+      <div v-else-if="currentScreen === 'calendar'" class="p-5 h-full flex flex-col">
         <!-- Header -->
         <div class="flex items-center justify-between mb-3">
-          <button @click="currentScreen = 'widget'" class="w-8 h-8 rounded-lg hover:bg-gray-100 flex items-center justify-center transition-colors">
-            <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <button @click="currentScreen = 'widget'" class="w-8 h-8 rounded-lg hover:bg-white/10 flex items-center justify-center transition-colors">
+            <svg class="w-4 h-4 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
             </svg>
           </button>
           <div class="text-center">
-            <h3 class="font-semibold text-gray-800 text-sm">January 2025</h3>
-            <p class="text-[10px] text-gray-400">Pick a slot</p>
+            <h3 class="font-semibold text-white/80 text-sm">January 2025</h3>
+            <p class="text-[10px] text-white/60">Pick a slot</p>
           </div>
-          <div class="w-8 h-8 rounded-lg bg-violet-100 flex items-center justify-center">
-            <span class="text-sm">📅</span>
+          <div class="w-8 h-8 rounded-lg bg-violet-500/20 flex items-center justify-center">
+            <PhCalendar class="w-4 h-4 text-violet-400" weight="fill" />
           </div>
         </div>
 
         <!-- 3-Day Grid Calendar -->
         <div class="grid grid-cols-3 gap-2 flex-1">
           <!-- Day Headers -->
-          <div v-for="day in calendarDays" :key="day.name" class="text-center pb-2 border-b border-gray-100">
-            <p class="text-[10px] font-medium text-gray-400 uppercase">{{ day.name }}</p>
-            <p class="text-base font-bold" :class="day.isToday ? 'text-violet-600' : 'text-gray-800'">{{ day.date }}</p>
+          <div v-for="day in calendarDays" :key="day.name" class="text-center pb-2 border-b border-white/10">
+            <p class="text-[10px] font-medium text-white/60 uppercase">{{ day.name }}</p>
+            <p class="text-base font-bold" :class="day.isToday ? 'text-violet-400' : 'text-white/80'">{{ day.date }}</p>
           </div>
 
           <!-- Time Slots Grid -->
           <template v-for="day in calendarDays" :key="'slots-' + day.name">
             <div class="space-y-1.5 pt-2">
-              <div 
-                v-for="slot in day.slots" 
+              <div
+                v-for="slot in day.slots"
                 :key="slot.id"
                 @click="!slot.booked && bookSlot(slot)"
                 class="rounded-lg p-2 text-center transition-all duration-150"
-                :class="slot.booked 
-                  ? 'bg-gray-50 cursor-not-allowed' 
-                  : 'bg-violet-50 hover:bg-violet-100 hover:scale-[1.02] cursor-pointer'"
+                :class="slot.booked
+                  ? 'bg-white/5 cursor-not-allowed'
+                  : 'bg-white/10 hover:bg-white/20 border border-white/10 hover:scale-[1.02] cursor-pointer'"
               >
-                <p 
-                  class="font-medium text-xs text-gray-700"
-                  :class="slot.booked ? 'line-through opacity-50' : ''"
+                <p
+                  class="font-medium text-xs"
+                  :class="slot.booked ? 'text-white/40 line-through opacity-50' : 'text-white/80'"
                 >
                   {{ slot.time }}
                 </p>
-                <div v-if="slot.booked" class="mt-0.5 text-xs text-gray-700 font-medium">
+                <div v-if="slot.booked" class="mt-0.5 text-[9px] text-white/40 font-medium flex items-center justify-center gap-0.5">
+                  <component :is="slot.bookedIcon" class="w-2.5 h-2.5" weight="fill" />
                   {{ slot.bookedLabel }}
                 </div>
-                <div v-else class="mt-0.5 text-[10px] text-violet-600 font-medium">
-                  ✓ Free
+                <div v-else class="mt-0.5 text-[10px] text-violet-400 font-medium flex items-center justify-center gap-0.5">
+                  <PhCheck class="w-3 h-3" weight="bold" /> Free
                 </div>
               </div>
             </div>
@@ -105,13 +123,13 @@
       <!-- Confirmation Badge - Quick pass-through -->
       <Transition name="pass-through">
         <div v-if="currentScreen === 'confirmation'" class="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
-          <div class="bg-white rounded-2xl px-6 py-4 shadow-2xl flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center text-xl text-white shadow-lg">
-              ✓
+          <div class="bg-white/10 backdrop-blur-lg border border-white/10 rounded-2xl px-6 py-4 shadow-2xl flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center text-white shadow-lg">
+              <PhCheck class="w-5 h-5" weight="bold" />
             </div>
             <div>
-              <p class="font-semibold text-gray-900">Confirmed!</p>
-              <p class="text-gray-500 text-sm">{{ bookedSlot?.dayName }} {{ bookedSlot?.dayDate }} · {{ bookedSlot?.time }}</p>
+              <p class="font-semibold text-white/80">Confirmed!</p>
+              <p class="text-white/60 text-sm">{{ bookedSlot?.dayName }} {{ bookedSlot?.dayDate }} · {{ bookedSlot?.time }}</p>
             </div>
           </div>
         </div>
@@ -120,7 +138,7 @@
 
       <!-- Modern Video Call State -->
       <Transition name="cinematic-bg">
-        <div v-if="currentScreen === 'connected'" class="absolute inset-0 bg-gray-900 flex flex-col z-20 rounded-3xl overflow-hidden">
+        <div v-if="currentScreen === 'connected'" class="absolute inset-0 bg-gray-900 flex flex-col z-20 overflow-hidden">
         <!-- Call header -->
         <div class="flex items-center justify-between px-5 py-4">
           <div class="flex items-center gap-3">
@@ -148,8 +166,8 @@
               />
               <!-- Expert name tag -->
               <div class="absolute bottom-2 left-2 flex items-center gap-1.5 bg-black/50 backdrop-blur-sm px-2 py-1 rounded-lg">
-                <div class="w-5 h-5 rounded-md bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center text-[8px]">
-                  🤖
+                <div class="w-5 h-5 rounded-md bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center">
+                  <PhRobot class="w-3 h-3 text-white" weight="fill" />
                 </div>
                 <span class="text-white text-[10px] font-medium">AI Expert</span>
                 <div class="w-1.5 h-1.5 rounded-full bg-green-400"></div>
@@ -180,27 +198,27 @@
         <!-- Controls -->
         <div class="px-4 py-3 flex items-center justify-center">
           <div class="flex items-center gap-1.5">
-            <button 
+            <button
               @click="toggleCamera"
-              class="w-11 h-11 rounded-xl flex items-center justify-center text-xl transition-all duration-200 hover:scale-105 hover:-translate-y-0.5"
-              :class="isCameraOn 
-                ? 'bg-emerald-400 shadow-md' 
-                : 'bg-white shadow-md hover:shadow-lg'"
+              class="w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-200 hover:scale-105 hover:-translate-y-0.5"
+              :class="isCameraOn
+                ? 'bg-emerald-400 shadow-md'
+                : 'bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20'"
             >
-              📹
+              <PhVideoCamera class="w-5 h-5" :class="isCameraOn ? 'text-white' : 'text-white/80'" weight="fill" />
             </button>
-            <button 
+            <button
               @click="sprayHearts"
-              class="w-11 h-11 rounded-xl bg-white shadow-md hover:shadow-lg flex items-center justify-center text-xl transition-all duration-200 hover:scale-105 hover:-translate-y-0.5"
+              class="w-11 h-11 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 flex items-center justify-center transition-all duration-200 hover:scale-105 hover:-translate-y-0.5"
             >
-              💕
+              <PhHeart class="w-5 h-5 text-pink-400" weight="fill" />
             </button>
-            <button 
+            <button
               @click="startFight"
-              class="w-11 h-11 rounded-xl bg-white shadow-md hover:shadow-lg flex items-center justify-center text-xl transition-all duration-200 hover:scale-105 hover:-translate-y-0.5"
-              :class="isFighting ? 'bg-orange-100' : ''"
+              class="w-11 h-11 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 flex items-center justify-center transition-all duration-200 hover:scale-105 hover:-translate-y-0.5"
+              :class="isFighting ? 'bg-orange-500/30' : ''"
             >
-              🤬
+              <PhSmileyAngry class="w-5 h-5 text-orange-400" weight="fill" />
             </button>
             <button 
               @click="endCall"
@@ -216,37 +234,41 @@
 
         <!-- Hearts overlay -->
         <div class="absolute inset-0 pointer-events-none overflow-hidden z-30">
-          <div 
-            v-for="heart in hearts" 
+          <component
+            v-for="heart in hearts"
             :key="heart.id"
+            :is="PhHeart"
+            weight="fill"
             class="absolute heart-float"
             :style="{
               left: heart.x + '%',
               top: heart.y + '%',
-              fontSize: heart.size + 'px',
+              width: heart.size + 'px',
+              height: heart.size + 'px',
+              color: heart.color,
               animationDelay: heart.delay + 'ms',
               animationDuration: heart.duration + 's'
             }"
-          >
-            {{ heart.emoji }}
-          </div>
+          />
         </div>
 
         <!-- Call ending overlay -->
         <Transition name="fade">
-          <div 
-            v-if="isEndingCall" 
+          <div
+            v-if="isEndingCall"
             class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/40 flex items-center justify-center z-10"
           >
-            <div class="text-center call-ending-content bg-black/50 backdrop-blur-sm px-8 py-6 rounded-2xl">
-              <div class="text-5xl mb-4 animate-wave">👋</div>
-              <p class="text-white font-medium text-lg">Call Ending...</p>
-              <p class="text-white/70 text-sm mt-1">Thanks for chatting!</p>
+            <div class="text-center call-ending-content bg-white/10 backdrop-blur-lg border border-white/10 px-8 py-6 rounded-2xl">
+              <PhHandWaving class="w-12 h-12 text-yellow-400 mx-auto mb-4 animate-wave" weight="fill" />
+              <p class="text-white/80 font-medium text-lg">Call Ending...</p>
+              <p class="text-white/60 text-sm mt-1">Thanks for chatting!</p>
             </div>
           </div>
         </Transition>
         </div>
       </Transition>
+
+      </div> <!-- End Content Area -->
 
     </div>
 
@@ -257,6 +279,21 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import {
+  PhSparkle,
+  PhRobot,
+  PhCalendar,
+  PhCheck,
+  PhVideoCamera,
+  PhHeart,
+  PhSmileyAngry,
+  PhHandWaving,
+  PhEye,
+  PhDrop,
+  PhMagnifyingGlass,
+  PhChat,
+  PhDeviceMobile,
+} from "@phosphor-icons/vue"
 
 const currentScreen = ref('widget')
 const bookedSlot = ref(null)
@@ -272,9 +309,8 @@ const screenBg = computed(() => {
   switch (currentScreen.value) {
     case 'widget':
     case 'confirmation':
-      return 'bg-gradient-to-br from-gray-900 via-gray-900 to-violet-950'
     case 'calendar':
-      return 'bg-white'
+      return 'bg-gradient-to-br from-gray-900 via-gray-900 to-violet-950'
     case 'connected':
       return 'bg-gray-900'
     default:
@@ -289,9 +325,9 @@ const calendarDays = ref([
     isToday: true,
     slots: [
       { id: 'm1', time: '9:00', booked: false },
-      { id: 'm2', time: '11:00', booked: true, bookedLabel: '👀 Stalking ex' },
+      { id: 'm2', time: '11:00', booked: true, bookedLabel: 'Stalking ex', bookedIcon: PhEye },
       { id: 'm3', time: '2:00', booked: false },
-      { id: 'm4', time: '4:00', booked: true, bookedLabel: '🚿 Shower crying' },
+      { id: 'm4', time: '4:00', booked: true, bookedLabel: 'Shower crying', bookedIcon: PhDrop },
     ]
   },
   {
@@ -299,10 +335,10 @@ const calendarDays = ref([
     date: '14',
     isToday: false,
     slots: [
-      { id: 't1', time: '9:00', booked: true, bookedLabel: '🔍 WebMD spiral' },
+      { id: 't1', time: '9:00', booked: true, bookedLabel: 'WebMD spiral', bookedIcon: PhMagnifyingGlass },
       { id: 't2', time: '11:00', booked: false },
       { id: 't3', time: '2:00', booked: false },
-      { id: 't4', time: '4:00', booked: true, bookedLabel: '🗣️ Mirror pep talk' },
+      { id: 't4', time: '4:00', booked: true, bookedLabel: 'Mirror pep talk', bookedIcon: PhChat },
     ]
   },
   {
@@ -312,7 +348,7 @@ const calendarDays = ref([
     slots: [
       { id: 'w1', time: '9:00', booked: false },
       { id: 'w2', time: '11:00', booked: false },
-      { id: 'w3', time: '2:00', booked: true, bookedLabel: '📱 Ignoring mom' },
+      { id: 'w3', time: '2:00', booked: true, bookedLabel: 'Ignoring mom', bookedIcon: PhDeviceMobile },
       { id: 'w4', time: '4:00', booked: false },
     ]
   },
@@ -330,23 +366,23 @@ const bookSlot = (slot) => {
 }
 
 const sprayHearts = () => {
-  const heartEmojis = ['❤️', '💕', '💖', '💗', '💓', '💝', '🩷', '💜']
+  const heartColors = ['#f472b6', '#ec4899', '#db2777', '#f43f5e', '#ef4444', '#a855f7', '#8b5cf6']
   const newHearts = []
-  
+
   for (let i = 0; i < 20; i++) {
     newHearts.push({
       id: Date.now() + i,
-      emoji: heartEmojis[Math.floor(Math.random() * heartEmojis.length)],
+      color: heartColors[Math.floor(Math.random() * heartColors.length)],
       x: Math.random() * 100,
       y: 50 + Math.random() * 50,
-      size: Math.random() * 30 + 28,
+      size: Math.random() * 20 + 20,
       delay: i * 40,
       duration: Math.random() * 1 + 2
     })
   }
-  
+
   hearts.value = [...hearts.value, ...newHearts]
-  
+
   // Clean up after animation
   setTimeout(() => {
     hearts.value = hearts.value.filter(h => !newHearts.find(nh => nh.id === h.id))
@@ -473,10 +509,6 @@ const endCall = () => {
   }, 4000)
 }
 
-const resetWidget = () => {
-  currentScreen.value = 'widget'
-  bookedSlot.value = null
-}
 </script>
 
 <style scoped>

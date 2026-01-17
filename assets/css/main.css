@@ -2,6 +2,131 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================
+   SENTIENT FONT FAMILY
+   ============================================ */
+
+/* Sentient Variable Font - supports weights 200-700 */
+@font-face {
+  font-family: 'Sentient';
+  src: url('~/assets/fonts/sentient/Sentient-Variable.woff2') format('woff2-variations'),
+       url('~/assets/fonts/sentient/Sentient-Variable.woff') format('woff-variations');
+  font-weight: 200 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+/* Sentient Medium (500) - fallback for browsers with limited variable font support */
+@font-face {
+  font-family: 'Sentient';
+  src: url('~/assets/fonts/sentient/Sentient-Medium.woff2') format('woff2'),
+       url('~/assets/fonts/sentient/Sentient-Medium.woff') format('woff');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+
+/* ============================================
+   AI ADOPTION PAGE - MODERN DESIGN SYSTEM
+   ============================================ */
+
+@layer components {
+  /* Typography Components */
+  .headline-hero {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .headline-section {
+    font-family: 'Sentient', serif;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  .headline-feature {
+    font-family: 'Sentient', serif;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+
+  .body-large {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.7;
+  }
+
+  .label-caps {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* Numbered List Styles */
+  .numbered-list {
+    @apply space-y-4;
+  }
+
+  .numbered-list-item {
+    @apply flex items-start gap-4;
+  }
+
+  .numbered-list-number {
+    @apply flex-shrink-0 w-7 h-7 rounded-full font-space font-semibold text-xs
+           flex items-center justify-center;
+  }
+
+  /* Section Backgrounds */
+  .section-hero-dark {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+  }
+
+  .section-warm {
+    background: linear-gradient(180deg, #fffbf5 0%, #ffffff 50%, #fafafa 100%);
+  }
+
+  .section-cool {
+    background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 50%, #ffffff 100%);
+  }
+
+  .section-clean {
+    background: linear-gradient(180deg, #ffffff 0%, #fafafa 100%);
+  }
+
+  /* Gradient Mesh Overlay */
+  .gradient-mesh {
+    background-image:
+      radial-gradient(at 40% 20%, rgba(139, 92, 246, 0.06) 0px, transparent 50%),
+      radial-gradient(at 80% 0%, rgba(236, 72, 153, 0.04) 0px, transparent 50%),
+      radial-gradient(at 0% 50%, rgba(59, 130, 246, 0.04) 0px, transparent 50%);
+  }
+
+  /* Accent Color Variants for Numbered Lists */
+  .accent-sky .numbered-list-number {
+    @apply bg-sky-100 text-sky-600;
+  }
+
+  .accent-amber .numbered-list-number {
+    @apply bg-amber-100 text-amber-700;
+  }
+
+  .accent-pink .numbered-list-number {
+    @apply bg-pink-100 text-pink-600;
+  }
+
+  .accent-emerald .numbered-list-number {
+    @apply bg-emerald-100 text-emerald-600;
+  }
+}
+
 @layer utilities {
     .pause {
         animation-play-state: paused;

@@ -696,4 +696,3 @@ html {
   scroll-behavior: smooth;
 }
 </style>
-

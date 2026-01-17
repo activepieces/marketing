@@ -1,5 +1,8 @@
 <script setup>
-import { h } from 'vue';
+import { h, onMounted, onUnmounted } from 'vue';
+import { useProductSubmenu } from '~/composables/useProductSubmenu';
+
+const { setSections, clearSections } = useProductSubmenu();
 
 const sections = [
   { id: 'cloud', name: 'Cloud Hosting', icon: 'cloud' },
@@ -58,12 +61,19 @@ useHead({
     { name: 'description', content: 'Deploy Activepieces your way—cloud hosting with GDPR & SOC 2 compliance, or self-host for full control. No execution charges, ever.' }
   ]
 });
+
+// Set sections for the header submenu
+onMounted(() => {
+  setSections(sections);
+});
+
+onUnmounted(() => {
+  clearSections();
+});
 </script>
 
 <template>
   <div>
-    <ProductSubmenuContainer :sections="sections" />
-    
     <!-- Hero Section -->
     <section class="w-full relative bg-black pt-4 pb-16 lg:pb-20">
       <div

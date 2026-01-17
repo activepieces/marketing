@@ -1,5 +1,5 @@
 <template>
-  <div class="relative" style="height: 620px;">
+  <div class="relative w-full h-full">
     <!-- Hidden windows (were already open behind) -->
     <div 
       v-if="browserClosed" 

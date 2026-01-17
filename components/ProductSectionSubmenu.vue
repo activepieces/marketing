@@ -7,7 +7,8 @@ import { useProductSubmenu } from '~/composables/useProductSubmenu';
 const props = defineProps({
   sections: {
     type: Array,
-    required: true,
+    required: false,
+    default: () => [],
     validator: (sections) => {
       return sections.every(section => section.id && section.name);
     }
@@ -16,7 +17,12 @@ const props = defineProps({
 
 const route = useRoute();
 const router = useRouter();
-const { sectionSubmenuVisible, chipExpanding } = useProductSubmenu();
+const { sections: globalSections, sectionSubmenuVisible, chipExpanding } = useProductSubmenu();
+
+// Use props.sections if provided, otherwise use global sections from composable
+const effectiveSections = computed(() => {
+  return props.sections.length > 0 ? props.sections : globalSections.value;
+});
 const activeSection = ref('');
 const showSubmenu = ref(false);
 const firstSectionTop = ref(0);
@@ -43,16 +49,16 @@ let updateFirstSectionTopFn = null;
 // Calculate which section is currently active based on scroll position
 // This is passive - only reads scroll position, doesn't modify anything
 const calculateActiveSection = () => {
-  if (props.sections.length === 0) return null;
+  if (effectiveSections.value.length === 0) return null;
 
   const headerOffset = 62 + 57 + 10; // Header (62px) + submenu (57px) + small padding (10px)
   const viewportTop = window.scrollY + headerOffset;
-  
+
   // Find the section that's currently at or just past the viewport top
-  let currentSection = props.sections[0].id;
+  let currentSection = effectiveSections.value[0].id;
   
-  for (let i = props.sections.length - 1; i >= 0; i--) {
-    const section = props.sections[i];
+  for (let i = effectiveSections.value.length - 1; i >= 0; i--) {
+    const section = effectiveSections.value[i];
     const element = document.getElementById(section.id);
     
     if (element) {
@@ -87,8 +93,8 @@ onMounted(() => {
   nextTick(() => {
     // Get first section's top position
     updateFirstSectionTopFn = () => {
-      if (props.sections.length > 0) {
-        const firstSectionId = props.sections[0].id;
+      if (effectiveSections.value.length > 0) {
+        const firstSectionId = effectiveSections.value[0].id;
         const firstSectionEl = document.getElementById(firstSectionId);
         if (firstSectionEl) {
           const rect = firstSectionEl.getBoundingClientRect();
@@ -104,7 +110,7 @@ onMounted(() => {
     // Check initial hash on page load
     if (route.hash) {
       const hash = route.hash.substring(1);
-      if (props.sections.some(s => s.id === hash)) {
+      if (effectiveSections.value.some(s => s.id === hash)) {
         activeSection.value = hash;
         // Scroll to section only on initial page load with hash
         setTimeout(() => {
@@ -118,8 +124,8 @@ onMounted(() => {
           }
         }, 100);
       }
-    } else if (props.sections.length > 0) {
-      activeSection.value = props.sections[0].id;
+    } else if (effectiveSections.value.length > 0) {
+      activeSection.value = effectiveSections.value[0].id;
     }
 
     // Watch scroll position to show/hide submenu and update active section
@@ -352,7 +358,7 @@ const getIcon = (iconName) => {
 </script>
 
 <template>
-  <div v-if="showSubmenu" class="w-full sticky top-[62px] z-30 relative" style="height: 57px;">
+  <div v-if="showSubmenu && effectiveSections.length > 0" class="w-full z-30 relative mt-2" style="height: 46px;">
     <Transition
       enter-active-class="transition-opacity duration-300 ease-out"
       enter-from-class="opacity-0"
@@ -361,11 +367,10 @@ const getIcon = (iconName) => {
       leave-from-class="opacity-100"
       leave-to-class="opacity-0"
     >
-      <div
-        class="absolute inset-0 w-full bg-gray-100 border-b border-gray-200/60 shadow-[0_1px_3px_0_rgba(0,0,0,0.03)]"
-      >
-      <div class="max-w-[1230px] mx-auto px-4 h-full flex items-center">
-        <nav class="flex items-center justify-center gap-4 overflow-x-auto scrollbar-hide w-full relative">
+      <div class="absolute inset-0 w-full">
+        <div class="max-w-7xl mx-auto h-full max-[1280px]:mx-2">
+          <div class="h-full bg-gray-100 rounded-full px-5 shadow-sm flex items-center">
+            <nav class="flex items-center justify-center gap-4 overflow-x-auto scrollbar-hide w-full relative">
           <div class="flex items-center gap-8">
             <!-- Current Product Page as Title (expanded from chip) -->
             <Transition
@@ -393,11 +398,11 @@ const getIcon = (iconName) => {
             >
               <div v-if="chipExpanded" class="flex items-center gap-8">
                 <a
-                  v-for="section in sections"
+                  v-for="section in effectiveSections"
                   :key="section.id"
                   :href="`#${section.id}`"
                   @click.prevent="scrollToSection(section.id)"
-                  class="relative py-4 flex items-center gap-1.5 text-sm font-medium whitespace-nowrap transition-colors duration-200"
+                  class="relative py-2 flex items-center gap-1.5 text-sm font-medium whitespace-nowrap transition-colors duration-200"
                   :class="[
                     activeSection === section.id
                       ? 'text-gray-900'
@@ -435,9 +440,10 @@ const getIcon = (iconName) => {
               Scroll to top
             </a>
           </Transition>
-        </nav>
+            </nav>
+          </div>
+        </div>
       </div>
-    </div>
     </Transition>
   </div>
 </template>
