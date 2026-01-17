@@ -620,7 +620,7 @@ onUnmounted(() => {
         </div>
 
         <!-- Full-width Interactive Dashboard -->
-        <div class="rounded-3xl overflow-hidden border-4 border-white/10">
+        <div class="">
           <PagesProductAdoptionAnalyticsDashboard />
         </div>
       </div>
