@@ -1,8 +1,8 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 
-const pageTitle = 'Creator Program';
-const metaDesc = 'Join the Activepieces Creator Program. Get paid per 1,000 impressions for creating authentic content about AI automation.';
+const pageTitle = 'Creator Program — Early Access';
+const metaDesc = 'Join the Activepieces Creator Program beta. Get paid per 1,000 impressions for creating authentic content about AI automation. Limited to 10 creators.';
 
 useHead({
   title: pageTitle,
@@ -17,9 +17,13 @@ definePageMeta({
   layout: 'default'
 });
 
+// Beta program config
+const BETA_SPOTS = 15
+const LAUNCH_DATE = 'February 20, 2026'
+
 // Budget
-const MONTHLY_BUDGET = 8000
-const submittedValue = ref(5400)
+const MONTHLY_BUDGET = 10000
+const submittedValue = ref(0)
 const budgetPercentage = computed(() => (submittedValue.value / MONTHLY_BUDGET) * 100)
 const remainingBudget = computed(() => Math.max(MONTHLY_BUDGET - submittedValue.value, 0))
 
@@ -83,6 +87,77 @@ const scrollToBudget = () => {
 // Show more reasons
 const showMoreReasons = ref(false)
 
+// Modal state
+const showModal = ref(false)
+const isSubmitting = ref(false)
+const isSubmitted = ref(false)
+
+// Form data
+const form = ref({
+  name: '',
+  email: '',
+  primaryChannel: '',
+  channelUrl: '',
+  followers: '',
+  why: ''
+})
+
+// Channel options for dropdown
+const channelOptions = [
+  { value: 'x', label: 'X (Twitter)' },
+  { value: 'linkedin', label: 'LinkedIn' },
+  { value: 'tiktok', label: 'TikTok' },
+  { value: 'instagram', label: 'Instagram' },
+  { value: 'youtube', label: 'YouTube' },
+  { value: 'newsletter', label: 'Newsletter' },
+  { value: 'blog', label: 'Blog' },
+]
+
+// Open modal
+const openModal = () => {
+  showModal.value = true
+  document.body.style.overflow = 'hidden'
+}
+
+// Close modal
+const closeModal = () => {
+  showModal.value = false
+  document.body.style.overflow = ''
+  // Reset form after closing if submitted
+  if (isSubmitted.value) {
+    setTimeout(() => {
+      isSubmitted.value = false
+      form.value = {
+        name: '',
+        email: '',
+        primaryChannel: '',
+        channelUrl: '',
+        followers: '',
+        why: ''
+      }
+    }, 300)
+  }
+}
+
+// Submit form (simulated for now)
+const submitForm = async () => {
+  isSubmitting.value = true
+  
+  // Simulate API call
+  await new Promise(resolve => setTimeout(resolve, 1500))
+  
+  // TODO: Replace with actual API call when endpoint is ready
+  // await $fetch('/api/creator-signup', {
+  //   method: 'POST',
+  //   body: form.value
+  // })
+  
+  console.log('Form submitted:', form.value)
+  
+  isSubmitting.value = false
+  isSubmitted.value = true
+}
+
 // Top 4 highlight reasons (most impactful)
 const topReasons = [
   {
@@ -140,28 +215,42 @@ const moreReasons = [
     <section class="relative pt-36 pb-32 overflow-hidden">
       <!-- Background elements -->
       <div class="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950"></div>
-      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-violet-500/[0.08] rounded-full blur-[150px]"></div>
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-amber-500/[0.08] rounded-full blur-[150px]"></div>
       
       <div class="relative z-10 max-w-6xl mx-auto px-6">
         <div class="flex flex-col lg:flex-row lg:items-center lg:gap-16">
           <!-- Left side - Content -->
           <div class="flex-1 lg:max-w-lg">
-            <!-- Status badge -->
-            <div class="flex mb-8">
-              <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.08] border border-white/[0.08]">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span class="text-xs text-white/70 font-medium">Accepting applications</span>
+            <!-- Early Access badge -->
+            <div class="flex flex-wrap items-center gap-3 mb-8">
+              <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-500/20 border border-amber-500/30">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+                <span class="text-xs text-amber-300 font-semibold uppercase tracking-wide">Early Access</span>
+              </div>
+              <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.05] border border-white/[0.08]">
+                <span class="text-xs text-white/60 font-medium">{{ BETA_SPOTS }} spots open</span>
               </div>
           </div>
           
             <h1 class="text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.05] mb-6" style="font-family: 'Sentient', serif; font-weight: 500;">
               Get paid for<br/>
-              <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-cyan-400">your content</span>
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-400">your content</span>
           </h1>
           
-            <p class="text-lg text-white/50 mb-10 max-w-md">
+            <p class="text-lg text-white/50 mb-6 max-w-md">
               Earn money for every 1,000 impressions. No affiliate links, no tracking codes — just authentic content about automation.
             </p>
+
+            <!-- Launch date notice -->
+            <div class="flex items-start gap-3 p-4 rounded-xl bg-white/[0.03] border border-white/[0.06] mb-10 max-w-md">
+              <svg class="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+              </svg>
+              <div>
+                <p class="text-sm text-white/80 font-medium">Sign up now, we start {{ LAUNCH_DATE }}</p>
+                <p class="text-xs text-white/40 mt-0.5">We'll review applications and accept our first 10 creators for the beta.</p>
+              </div>
+            </div>
 
                 <!-- Supported channels - 2 rows -->
             <div class="space-y-3 mb-10">
@@ -184,22 +273,21 @@ const moreReasons = [
       </div>
       
             <div class="flex items-center gap-5">
-              <a 
-                href="https://forms.gle/your-form-link" 
-                target="_blank"
-                class="inline-flex items-center gap-2 px-6 py-3.5 bg-white text-slate-900 text-sm font-semibold rounded-xl hover:bg-white/90 transition-all hover:scale-[1.02] active:scale-[0.98]"
+              <button 
+                @click="openModal"
+                class="group inline-flex items-center gap-2 px-6 py-3.5 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-semibold rounded-xl hover:from-amber-400 hover:to-orange-400 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-amber-500/25"
               >
-                Apply to join
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                Join the waitlist
+                <svg class="w-4 h-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
                 </svg>
-              </a>
+              </button>
               <button 
                 @click="scrollToBudget"
                 class="text-white/60 hover:text-white/80 transition-colors text-sm"
                 style="font-family: 'Space Grotesk', sans-serif;"
               >
-                ${{ remainingBudget.toLocaleString() }} left this month
+                Up to ${{ MONTHLY_BUDGET.toLocaleString() }}/mo
               </button>
             </div>
           </div>
@@ -258,34 +346,39 @@ const moreReasons = [
       </div>
     </section>
 
-    <!-- Budget Section - Dark theme -->
+    <!-- Beta Program Details Section -->
     <section id="budget" class="relative z-20 px-6 py-16 scroll-mt-20">
       <div class="max-w-4xl mx-auto">
-        <div class="rounded-3xl bg-white/[0.03] border border-white/[0.08] p-8 md:p-10">
-          <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
-              <div>
-              <div class="text-sm font-semibold text-violet-400 uppercase tracking-wider mb-2" style="font-family: 'Space Grotesk', sans-serif;">Monthly Creator Pool</div>
-              <div class="flex items-baseline gap-3">
-                <span class="text-5xl md:text-6xl font-bold text-white" style="font-family: 'Space Grotesk', sans-serif;">${{ remainingBudget.toLocaleString() }}</span>
-                <span class="text-xl text-slate-400">remaining</span>
-              </div>
+        <div class="rounded-3xl bg-gradient-to-br from-amber-500/[0.08] to-orange-500/[0.05] border border-amber-500/20 p-8 md:p-10">
+          <!-- Beta launch header -->
+          <div class="flex items-center gap-2 mb-6">
+            <span class="px-2.5 py-1 rounded-md bg-amber-500/20 text-amber-400 text-xs font-bold uppercase tracking-wide">Beta Launch</span>
+            <span class="text-white/40 text-sm">·</span>
+            <span class="text-white/50 text-sm">Starting {{ LAUNCH_DATE }}</span>
+          </div>
+          
+          <div class="grid md:grid-cols-3 gap-8 mb-8">
+            <!-- Spots -->
+            <div class="text-center md:text-left">
+              <div class="text-5xl md:text-6xl font-bold text-white mb-2" style="font-family: 'Space Grotesk', sans-serif;">{{ BETA_SPOTS }}</div>
+              <div class="text-sm text-white/50">Creators for beta</div>
             </div>
-            <div class="text-left md:text-right">
-              <div class="text-4xl font-bold text-white" style="font-family: 'Space Grotesk', sans-serif;">{{ Math.round(budgetPercentage) }}%</div>
-              <div class="text-sm text-slate-400">claimed this month</div>
+            
+            <!-- Monthly budget -->
+            <div class="text-center md:text-left">
+              <div class="text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-400 mb-2" style="font-family: 'Space Grotesk', sans-serif;">${{ (MONTHLY_BUDGET / 1000).toFixed(0) }}k</div>
+              <div class="text-sm text-white/50">Monthly budget</div>
+            </div>
+            
+            <!-- Per creator -->
+            <div class="text-center md:text-left">
+              <div class="text-5xl md:text-6xl font-bold text-white mb-2" style="font-family: 'Space Grotesk', sans-serif;">$1k</div>
+              <div class="text-sm text-white/50">Avg. per creator</div>
             </div>
           </div>
           
-          <div class="relative h-4 bg-white/10 rounded-full overflow-hidden mb-4">
-            <div 
-              class="absolute inset-y-0 left-0 rounded-full transition-all duration-1000 ease-out"
-              :class="budgetPercentage > 80 ? 'bg-gradient-to-r from-amber-400 to-orange-500' : 'bg-gradient-to-r from-violet-500 to-purple-500'"
-              :style="{ width: Math.min(budgetPercentage, 100) + '%' }"
-            ></div>
-          </div>
-          
-          <p class="text-sm text-slate-500" style="font-family: 'Space Grotesk', sans-serif;">
-            First come, first served. Submit your content before the pool fills up.
+          <p class="text-sm text-white/40" style="font-family: 'Space Grotesk', sans-serif;">
+            Sign up now to secure your spot. We'll review all applications and select our first {{ BETA_SPOTS }} creators for the beta launch.
           </p>
         </div>
       </div>
@@ -294,11 +387,11 @@ const moreReasons = [
     <!-- Why Activepieces Section -->
     <section class="py-24 px-6 relative">
       <!-- Subtle glow -->
-      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] bg-violet-500/[0.06] rounded-full blur-[120px]"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] bg-amber-500/[0.06] rounded-full blur-[120px]"></div>
       
       <div class="relative z-10 max-w-5xl mx-auto">
         <div class="text-center mb-16">
-          <p class="text-violet-400 text-sm font-semibold uppercase tracking-wider mb-4" style="font-family: 'Space Grotesk', sans-serif;">Why creators love us</p>
+          <p class="text-amber-400 text-sm font-semibold uppercase tracking-wider mb-4" style="font-family: 'Space Grotesk', sans-serif;">Why creators love us</p>
           <h2 class="text-3xl md:text-5xl text-white mb-4" style="font-family: 'Sentient', serif; font-weight: 500; letter-spacing: 0.01em;">
             Not just another tool.<br class="hidden sm:block" /> The one people talk about.
           </h2>
@@ -516,19 +609,19 @@ const moreReasons = [
         
         <div class="grid sm:grid-cols-4 gap-8">
           <div class="text-center">
-            <div class="w-10 h-10 rounded-full bg-slate-900 text-white flex items-center justify-center mx-auto mb-4 text-sm font-semibold">1</div>
-            <div class="font-medium text-slate-900 mb-1">Apply</div>
-            <div class="text-sm text-slate-500">Submit your channel info</div>
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-amber-500 to-orange-500 text-white flex items-center justify-center mx-auto mb-4 text-sm font-semibold shadow-lg shadow-amber-500/20">1</div>
+            <div class="font-medium text-slate-900 mb-1">Join waitlist</div>
+            <div class="text-sm text-slate-500">Sign up before Feb 20</div>
         </div>
           <div class="text-center">
             <div class="w-10 h-10 rounded-full bg-slate-900 text-white flex items-center justify-center mx-auto mb-4 text-sm font-semibold">2</div>
-            <div class="font-medium text-slate-900 mb-1">Create</div>
-            <div class="text-sm text-slate-500">Make quality content</div>
+            <div class="font-medium text-slate-900 mb-1">Get selected</div>
+            <div class="text-sm text-slate-500">We pick 15 creators</div>
             </div>
           <div class="text-center">
             <div class="w-10 h-10 rounded-full bg-slate-900 text-white flex items-center justify-center mx-auto mb-4 text-sm font-semibold">3</div>
-            <div class="font-medium text-slate-900 mb-1">Submit</div>
-            <div class="text-sm text-slate-500">Share your analytics</div>
+            <div class="font-medium text-slate-900 mb-1">Create</div>
+            <div class="text-sm text-slate-500">Make quality content</div>
             </div>
           <div class="text-center">
             <div class="w-10 h-10 rounded-full bg-slate-900 text-white flex items-center justify-center mx-auto mb-4 text-sm font-semibold">4</div>
@@ -546,6 +639,14 @@ const moreReasons = [
         
         <div class="space-y-6">
           <div>
+            <h3 class="font-medium text-slate-900 mb-1">Why is this a beta?</h3>
+            <p class="text-slate-500 text-sm">We're starting small to learn and iterate. We'll expand the program after working closely with our first 15 creators.</p>
+          </div>
+          <div class="border-t border-slate-100 pt-6">
+            <h3 class="font-medium text-slate-900 mb-1">When will you review applications?</h3>
+            <p class="text-slate-500 text-sm">We start reviewing on February 20, 2026. Selected creators will be notified within a week.</p>
+          </div>
+          <div class="border-t border-slate-100 pt-6">
             <h3 class="font-medium text-slate-900 mb-1">Do I need a lot of followers?</h3>
             <p class="text-slate-500 text-sm">No. We care about engagement and content quality, not follower counts.</p>
           </div>
@@ -554,34 +655,198 @@ const moreReasons = [
             <p class="text-slate-500 text-sm">Screenshot from your platform's native analytics (Twitter Analytics, LinkedIn stats, YouTube Studio, etc.)</p>
           </div>
           <div class="border-t border-slate-100 pt-6">
-            <h3 class="font-medium text-slate-900 mb-1">When do views get counted?</h3>
-            <p class="text-slate-500 text-sm">We count impressions 14 days after posting (30 days for blogs and newsletters).</p>
-          </div>
-          <div class="border-t border-slate-100 pt-6">
-            <h3 class="font-medium text-slate-900 mb-1">What if the budget is full?</h3>
-            <p class="text-slate-500 text-sm">Submit anyway. If earlier submissions get rejected, your content could still be approved.</p>
+            <h3 class="font-medium text-slate-900 mb-1">What if I don't get selected for beta?</h3>
+            <p class="text-slate-500 text-sm">Stay on the waitlist. We'll expand the program as we learn from beta creators and will reach out to more people.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- CTA -->
-    <section class="py-20 px-6 bg-slate-900">
+    <section class="py-20 px-6 bg-gradient-to-b from-slate-900 to-slate-950">
       <div class="max-w-2xl mx-auto text-center">
-        <h2 class="text-3xl md:text-4xl text-white mb-4" style="font-family: 'Sentient', serif; font-weight: 500;">Ready to start?</h2>
-        <p class="text-slate-400 mb-8" style="font-family: 'Space Grotesk', sans-serif;">Join the program and start earning from your content.</p>
-        <a 
-          href="https://forms.gle/your-form-link" 
-          target="_blank"
-          class="inline-flex items-center gap-2 px-6 py-3 bg-white text-slate-900 text-sm font-semibold rounded-lg hover:bg-white/90 transition-colors"
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-500/20 border border-amber-500/30 mb-6">
+          <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+          <span class="text-xs text-amber-300 font-semibold uppercase tracking-wide">{{ BETA_SPOTS }} spots open</span>
+        </div>
+        <h2 class="text-3xl md:text-4xl text-white mb-4" style="font-family: 'Sentient', serif; font-weight: 500;">Join the beta</h2>
+        <p class="text-slate-400 mb-8" style="font-family: 'Space Grotesk', sans-serif;">Sign up now. We'll start accepting applications on {{ LAUNCH_DATE }}.</p>
+        <button 
+          @click="openModal"
+          class="group inline-flex items-center gap-2 px-6 py-3.5 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-semibold rounded-xl hover:from-amber-400 hover:to-orange-400 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-amber-500/25"
         >
-          Apply now
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          Join the waitlist
+          <svg class="w-4 h-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
           </svg>
-        </a>
+        </button>
       </div>
     </section>
+
+    <!-- Sign Up Modal -->
+    <Teleport to="body">
+      <Transition
+        enter-active-class="transition duration-200 ease-out"
+        enter-from-class="opacity-0"
+        enter-to-class="opacity-100"
+        leave-active-class="transition duration-150 ease-in"
+        leave-from-class="opacity-100"
+        leave-to-class="opacity-0"
+      >
+        <div 
+          v-if="showModal" 
+          class="fixed inset-0 z-[100] flex items-center justify-center p-4"
+          @click.self="closeModal"
+        >
+          <!-- Backdrop -->
+          <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm"></div>
+          
+          <!-- Modal -->
+          <Transition
+            enter-active-class="transition duration-200 ease-out"
+            enter-from-class="opacity-0 scale-95 translate-y-4"
+            enter-to-class="opacity-100 scale-100 translate-y-0"
+            leave-active-class="transition duration-150 ease-in"
+            leave-from-class="opacity-100 scale-100 translate-y-0"
+            leave-to-class="opacity-0 scale-95 translate-y-4"
+          >
+            <div 
+              v-if="showModal"
+              class="relative w-full max-w-lg bg-white rounded-2xl shadow-2xl overflow-hidden"
+            >
+              <!-- Close button -->
+              <button 
+                @click="closeModal"
+                class="absolute top-4 right-4 p-2 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors z-10"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+
+              <!-- Success State -->
+              <div v-if="isSubmitted" class="p-8 text-center">
+                <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-emerald-100 flex items-center justify-center">
+                  <svg class="w-8 h-8 text-emerald-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                  </svg>
+                </div>
+                <h3 class="text-2xl font-semibold text-slate-900 mb-2" style="font-family: 'Sentient', serif;">You're on the list!</h3>
+                <p class="text-slate-500 mb-6">We'll review your application starting {{ LAUNCH_DATE }} and get back to you within a week.</p>
+                <button 
+                  @click="closeModal"
+                  class="px-6 py-2.5 bg-slate-900 text-white text-sm font-semibold rounded-lg hover:bg-slate-800 transition-colors"
+                >
+                  Got it
+                </button>
+              </div>
+
+              <!-- Form State -->
+              <div v-else>
+                <!-- Header -->
+                <div class="px-8 pt-8 pb-6 border-b border-slate-100">
+                  <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-amber-100 text-amber-700 text-xs font-semibold mb-3">
+                    <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                    Early Access
+                  </div>
+                  <h3 class="text-2xl font-semibold text-slate-900" style="font-family: 'Sentient', serif;">Join the Creator Program</h3>
+                  <p class="text-slate-500 text-sm mt-1">We'll review applications starting {{ LAUNCH_DATE }}</p>
+                </div>
+
+                <!-- Form -->
+                <form @submit.prevent="submitForm" class="p-8 space-y-5">
+                  <!-- Name -->
+                  <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1.5">Full name</label>
+                    <input 
+                      v-model="form.name"
+                      type="text" 
+                      required
+                      placeholder="Your name"
+                      class="w-full px-4 py-2.5 rounded-lg border border-slate-200 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 outline-none transition-all text-slate-900 placeholder:text-slate-400"
+                    />
+                  </div>
+
+                  <!-- Email -->
+                  <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1.5">Email</label>
+                    <input 
+                      v-model="form.email"
+                      type="email" 
+                      required
+                      placeholder="you@example.com"
+                      class="w-full px-4 py-2.5 rounded-lg border border-slate-200 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 outline-none transition-all text-slate-900 placeholder:text-slate-400"
+                    />
+                  </div>
+
+                  <!-- Primary Channel -->
+                  <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1.5">Primary channel</label>
+                    <select 
+                      v-model="form.primaryChannel"
+                      required
+                      class="w-full px-4 py-2.5 rounded-lg border border-slate-200 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 outline-none transition-all text-slate-900 bg-white"
+                    >
+                      <option value="" disabled>Select your main platform</option>
+                      <option v-for="opt in channelOptions" :key="opt.value" :value="opt.value">{{ opt.label }}</option>
+                    </select>
+                  </div>
+
+                  <!-- Channel URL -->
+                  <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1.5">Channel URL</label>
+                    <input 
+                      v-model="form.channelUrl"
+                      type="url" 
+                      required
+                      placeholder="https://..."
+                      class="w-full px-4 py-2.5 rounded-lg border border-slate-200 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 outline-none transition-all text-slate-900 placeholder:text-slate-400"
+                    />
+                  </div>
+
+                  <!-- Follower count -->
+                  <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1.5">Approximate followers/subscribers</label>
+                    <input 
+                      v-model="form.followers"
+                      type="text" 
+                      required
+                      placeholder="e.g. 5,000"
+                      class="w-full px-4 py-2.5 rounded-lg border border-slate-200 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 outline-none transition-all text-slate-900 placeholder:text-slate-400"
+                    />
+                  </div>
+
+                  <!-- Why -->
+                  <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1.5">Why do you want to join? <span class="text-slate-400 font-normal">(optional)</span></label>
+                    <textarea 
+                      v-model="form.why"
+                      rows="3"
+                      placeholder="Tell us a bit about your content and why you're interested..."
+                      class="w-full px-4 py-2.5 rounded-lg border border-slate-200 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 outline-none transition-all text-slate-900 placeholder:text-slate-400 resize-none"
+                    ></textarea>
+                  </div>
+
+                  <!-- Submit -->
+                  <button 
+                    type="submit"
+                    :disabled="isSubmitting"
+                    class="w-full py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold rounded-xl hover:from-amber-400 hover:to-orange-400 transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  >
+                    <svg v-if="isSubmitting" class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <span v-if="isSubmitting">Submitting...</span>
+                    <span v-else>Join the waitlist</span>
+                  </button>
+                </form>
+              </div>
+            </div>
+          </Transition>
+        </div>
+      </Transition>
+    </Teleport>
   </div>
 </template>
 

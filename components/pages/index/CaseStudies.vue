@@ -47,7 +47,7 @@ onMounted(() => {
             <!-- Top: Company name + Industry -->
             <div class="flex items-center justify-between mb-6">
               <span class="text-white font-bold text-xl">Alan</span>
-              <span class="text-white/40 text-xs uppercase tracking-wider">Healthcare</span>
+              <span class="text-white/40 text-xs uppercase tracking-wider">Health Insurance</span>
             </div>
             
             <!-- Main content area -->
@@ -55,10 +55,10 @@ onMounted(() => {
               <!-- Left: Metric and description -->
               <div class="flex-1 pr-32 md:pr-44 lg:pr-52">
                 <div class="mb-3">
-                  <span class="text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-none tracking-tighter">90%</span>
+                  <span class="text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-none tracking-tighter">300+</span>
                 </div>
                 <p class="text-white/50 text-base leading-relaxed">
-                  time saved on interview scheduling
+                  AI-powered workflows deployed across the organization
                 </p>
               </div>
             </div>
@@ -67,7 +67,7 @@ onMounted(() => {
             <div class="flex items-end justify-between pt-6 border-t border-white/10">
               <div>
                 <p class="text-white font-medium">Jérémie Preault</p>
-                <p class="text-white/40 text-sm">Internal Tools & Automation</p>
+                <p class="text-white/40 text-sm">Internal Tools & Automation Lead</p>
               </div>
               <div class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white/10 group-hover:border-white/40 transition-all">
                 <svg class="w-4 h-4 text-white/50 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
