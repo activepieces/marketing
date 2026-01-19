@@ -11,7 +11,6 @@ useHead({
 
 const showStickyHeader = ref(false);
 const showAdPopup = ref(false);
-const adDismissed = ref(false);
 const activeSection = ref('company');
 
 const sections = [
@@ -30,10 +29,8 @@ onMounted(() => {
     // Show sticky header after scrolling past hero
     showStickyHeader.value = scrollY > 500;
     
-    // Show ad popup after scrolling a bit (stays visible until dismissed)
-    if (!adDismissed.value) {
-      showAdPopup.value = scrollY > 800;
-    }
+    // Show ad popup after scrolling a bit
+    showAdPopup.value = scrollY > 800;
     
     // Update active section based on scroll position
     for (const section of sections) {
@@ -59,9 +56,14 @@ const scrollToSection = (id) => {
   }
 };
 
+const adMinimized = ref(false);
+
 const dismissAd = () => {
-  adDismissed.value = true;
-  showAdPopup.value = false;
+  adMinimized.value = true;
+};
+
+const reopenAd = () => {
+  adMinimized.value = false;
 };
 
 // Carousel for Jérémie's advice
@@ -146,7 +148,7 @@ const onCarouselScroll = () => {
       leave-from-class="opacity-100"
       leave-to-class="opacity-0"
     >
-      <div v-if="showStickyHeader" class="fixed top-16 left-0 right-0 z-30 bg-white border-b border-gray-100">
+      <div v-if="showStickyHeader" class="fixed top-[64px] left-0 right-0 z-30 bg-white border-b border-gray-100">
         <div class="max-w-3xl mx-auto px-6 py-4">
           <!-- Small title line -->
           <div class="text-xs text-gray-400 mb-3">Alan + Activepieces · Health Insurance</div>
@@ -175,19 +177,11 @@ const onCarouselScroll = () => {
     </Transition>
 
     <!-- Hero -->
-    <section class="relative bg-[#0a0a0a] pt-32 pb-20 overflow-hidden">
+    <section class="relative bg-[#0a0a0a] pt-32 pb-28 overflow-hidden">
       <!-- Subtle gradient -->
       <div class="absolute inset-0 bg-gradient-to-br from-indigo-950/50 via-transparent to-purple-950/30"></div>
       
       <div class="relative max-w-3xl mx-auto px-6">
-        <!-- Breadcrumb -->
-        <NuxtLink to="/customers" class="inline-flex items-center gap-2 text-sm text-white/40 hover:text-white/60 transition-colors mb-14">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-          </svg>
-          All Customer Stories
-        </NuxtLink>
-
         <!-- Company -->
         <div class="flex items-center gap-4 mb-10">
           <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-white text-lg font-semibold">A</div>
@@ -196,78 +190,12 @@ const onCarouselScroll = () => {
 
         <!-- Headline -->
         <h1 class="text-4xl md:text-6xl font-bold text-white leading-[1.1] mb-8">
-          How Alan Empowered 700 Employees to Build AI Agents
+          Alan's AI Heroes Built 300+ Workflows in Production
           </h1>
 
         <p class="text-xl md:text-2xl text-white/50 leading-relaxed">
-          Alan transformed from early AI adopter to automation-first organization — empowering every team to build AI-powered workflows while maintaining enterprise-grade security and compliance.
+          A $4.5B healthcare company on a mission to help people live healthy to 100. To serve a million members, they turned their teams into AI builders who ship automation without waiting for engineering.
         </p>
-      </div>
-    </section>
-
-    <!-- Featured Testimonial -->
-    <section class="relative bg-gradient-to-b from-[#0a0a0a] to-indigo-950 py-20 overflow-hidden">
-      <!-- Decorative elements -->
-      <div class="absolute top-0 left-1/4 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl"></div>
-      <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"></div>
-      
-      <div class="relative max-w-4xl mx-auto px-6">
-        <div class="text-center mb-10">
-          <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full text-white/60 text-sm mb-6">
-            <svg class="w-4 h-4 text-indigo-400" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-            </svg>
-            Featured Story
-          </div>
-        </div>
-        
-        <blockquote class="text-center">
-          <p class="text-2xl md:text-4xl text-white font-medium leading-relaxed mb-10 italic">
-            "We needed a platform that matched our culture — fast-moving, transparent, and empowering. Activepieces gave us the flexibility to build custom integrations while keeping enterprise-grade control. The open-source model meant we'd never be locked in."
-          </p>
-          
-          <div class="flex flex-col items-center">
-            <img src="/case-studies/alan-jeremie.png" alt="Jérémie Preault" class="w-20 h-20 rounded-full object-cover border-4 border-indigo-500/30 mb-4" />
-            <div class="text-white font-semibold text-lg">Jérémie Preault</div>
-            <div class="text-indigo-300">Internal Tools & Automation Lead</div>
-            <div class="flex items-center gap-2 mt-3">
-              <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-white text-sm font-semibold">A</div>
-              <span class="text-white/60 text-sm">Alan · Europe's leading digital health insurer</span>
-            </div>
-          </div>
-        </blockquote>
-        
-        <!-- Partnership highlight -->
-        <div class="mt-16 pt-10 border-t border-white/10">
-          <div class="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">
-                A Partnership Built on Shared Values
-              </h2>
-              <p class="text-white/60 text-lg leading-relaxed">
-                When Alan — a company where <span class="text-white">100% of employees use AI weekly</span> — needed an automation platform, they didn't just pick a tool. They found a partner that shares their commitment to transparency, empowerment, and building the future of work.
-              </p>
-            </div>
-            <div class="grid grid-cols-2 gap-4">
-              <div class="bg-white/5 rounded-2xl p-5 border border-white/10">
-                <div class="text-3xl font-bold text-indigo-400 mb-1">700</div>
-                <div class="text-white/50 text-sm">Employees ("Alaners")</div>
-              </div>
-              <div class="bg-white/5 rounded-2xl p-5 border border-white/10">
-                <div class="text-3xl font-bold text-purple-400 mb-1">800K+</div>
-                <div class="text-white/50 text-sm">Members Served</div>
-              </div>
-              <div class="bg-white/5 rounded-2xl p-5 border border-white/10">
-                <div class="text-3xl font-bold text-emerald-400 mb-1">4</div>
-                <div class="text-white/50 text-sm">Countries</div>
-              </div>
-              <div class="bg-white/5 rounded-2xl p-5 border border-white/10">
-                <div class="text-3xl font-bold text-amber-400 mb-1">100%</div>
-                <div class="text-white/50 text-sm">AI Adoption</div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -321,15 +249,55 @@ const onCarouselScroll = () => {
       <!-- Main Content -->
       <article class="flex-1 max-w-3xl">
       
+      <!-- Hero Quote - The Hook -->
+      <section class="mb-20">
+        <div class="relative bg-gradient-to-br from-indigo-50 via-purple-50 to-white rounded-3xl p-10 md:p-12 border border-indigo-100/50">
+          <!-- Decorative elements -->
+          <div class="absolute top-0 right-0 w-40 h-40 bg-indigo-200/30 rounded-full blur-3xl"></div>
+          <div class="absolute bottom-0 left-0 w-32 h-32 bg-purple-200/30 rounded-full blur-3xl"></div>
+          
+          <div class="relative">
+            <!-- Big quote mark -->
+            <div class="text-8xl text-indigo-200 font-serif absolute -top-4 -left-2 leading-none">"</div>
+            
+            <blockquote class="pt-8">
+              <p class="text-2xl md:text-3xl text-gray-900 font-medium leading-relaxed mb-8">
+                We turned 100 employees into builders shipping AI workflows to production. I'm incredibly proud of what we've built with Activepieces.
+              </p>
+              <div class="flex items-center gap-4">
+                <img src="/case-studies/alan-jeremie.png" alt="Jérémie Preault" class="w-14 h-14 rounded-full object-cover ring-4 ring-white shadow-lg" />
+                <div>
+                  <cite class="text-lg font-semibold text-gray-900 not-italic block">Jérémie Preault</cite>
+                  <span class="text-base text-gray-500">Internal Tools & Automation Lead @ Alan</span>
+                </div>
+              </div>
+            </blockquote>
+          </div>
+        </div>
+        
+        <!-- Exciting intro text -->
+        <div class="mt-12 space-y-6">
+          <p class="text-xl text-gray-700 leading-relaxed">
+            <strong class="text-gray-900">This is the story of how Europe's leading digital health company built an automation culture from the ground up</strong> — and how one person's vision turned non-technical teams into AI heroes shipping real workflows to production.
+          </p>
+          <p class="text-lg text-gray-600 leading-relaxed">
+            When Jérémie Preault joined Alan, he saw an opportunity that most companies miss: the chance to democratize automation not just for engineers, but for <em>everyone</em>. Marketing. Sales. Customer Success. Operations. His mission? Give every single Alaner the power to build their own AI agents.
+          </p>
+          <p class="text-lg text-gray-600 leading-relaxed">
+            The result is nothing short of remarkable — a company where 14% of employees actively run production workflows they built themselves, where non-technical teams solve problems that used to require engineering, and where innovation happens at every level of the organization.
+          </p>
+        </div>
+      </section>
+      
       <!-- The Company -->
-      <section id="company" class="mb-24 scroll-mt-40">
+      <section id="company" class="mb-24 scroll-mt-56">
         <h2 class="text-3xl font-bold text-gray-900 mb-8">The Company</h2>
         <div class="space-y-6">
           <p class="text-lg text-gray-600 leading-relaxed">
-            Alan is revolutionizing healthcare in Europe. Founded in 2016 as the first new health insurer in France in three decades, Alan has grown to serve <strong class="text-gray-900">800,000+ members</strong> across <strong class="text-gray-900">35,000 companies</strong> in France, Belgium, Spain, and Canada.
+            Alan is building the first integrated healthcare system in Europe. Valued at <strong class="text-gray-900">$4.5 billion</strong>, they serve nearly <strong class="text-gray-900">1 million members</strong> across France, Belgium, Spain, and Canada — with a mission to help people live healthy to 100.
           </p>
           <p class="text-lg text-gray-600 leading-relaxed">
-            What sets Alan apart isn't just their technology — it's their philosophy. With a "written-first" culture where every decision is documented, radical transparency (yes, including salary grids), and a mandate that 100% of employees use AI weekly, Alan represents the future of how companies operate.
+            What sets Alan apart isn't just their scale — it's their philosophy. With a "written-first" culture where every decision is documented, radical transparency, and a mandate that 100% of employees use AI weekly, Alan represents the future of how companies operate.
           </p>
           <p class="text-lg text-gray-600 leading-relaxed">
             But having an AI-friendly culture is one thing. Turning that into operational excellence at scale? That required the right platform.
@@ -338,10 +306,10 @@ const onCarouselScroll = () => {
       </section>
 
       <!-- The Challenge -->
-      <section id="challenge" class="mb-24 scroll-mt-40">
-        <h2 class="text-3xl font-bold text-gray-900 mb-8">The Challenge: Scale Without Limits</h2>
+      <section id="challenge" class="mb-24 scroll-mt-56">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8">The Challenge</h2>
         <p class="text-lg text-gray-600 leading-relaxed mb-6">
-          Alan's north star is sustainable productivity — growth that outpaces costs. With 700 employees ("Alaners") and ambitious expansion across Europe, they needed to solve a fundamental problem:
+          Alan's north star is sustainable productivity — growth that outpaces costs. With €700M+ in annual revenue, 700 employees, and expansion across four countries, they needed to solve a fundamental problem:
         </p>
         <p class="text-xl text-gray-700 leading-relaxed mb-10 font-medium">
           How do you empower hundreds of non-technical employees to build AI-powered solutions — without compromising security, compliance, or control?
@@ -374,13 +342,13 @@ const onCarouselScroll = () => {
       </section>
 
       <!-- The Solution -->
-      <section id="solution" class="mb-24 scroll-mt-40">
-        <h2 class="text-3xl font-bold text-gray-900 mb-8">The Solution: Activepieces as the AI Agent Platform</h2>
+      <section id="solution" class="mb-24 scroll-mt-56">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8">The Solution</h2>
         <p class="text-lg text-gray-600 leading-relaxed mb-6">
           Alan chose Activepieces as their enterprise automation platform, self-hosting it to maintain complete control while leveraging its full capabilities.
         </p>
         <p class="text-lg text-gray-600 leading-relaxed mb-10">
-          Jérémie Preault, who leads Internal Tools & Automation at Alan, drove the initiative from pilot to organization-wide adoption. What started as a careful evaluation became a company-wide transformation.
+          Jérémie didn't just implement a tool — he built a movement. Starting with a small pilot, he methodically expanded adoption across teams, personally coaching colleagues, building custom integrations, and proving value at every step. His approach turned skeptics into believers and believers into builders.
         </p>
 
         <!-- Why Activepieces Won -->
@@ -431,7 +399,7 @@ const onCarouselScroll = () => {
       </div>
 
       <!-- Use Cases -->
-      <section id="use-cases" class="mb-28 scroll-mt-40">
+      <section id="use-cases" class="mb-28 scroll-mt-56">
         <h2 class="text-3xl font-bold text-gray-900 mb-12">What They Built</h2>
         
         <div class="space-y-16">
@@ -489,8 +457,8 @@ const onCarouselScroll = () => {
               </div>
 
       <!-- Results Grid -->
-      <section id="results" class="mb-28 scroll-mt-40">
-        <h2 class="text-3xl font-bold text-gray-900 mb-12">The Results: Measurable Impact</h2>
+      <section id="results" class="mb-28 scroll-mt-56">
+        <h2 class="text-3xl font-bold text-gray-900 mb-12">The Results</h2>
         
         <div class="grid grid-cols-2 gap-8">
           <div class="p-8 bg-gradient-to-br from-indigo-50 to-white rounded-2xl border border-indigo-100">
@@ -528,14 +496,18 @@ const onCarouselScroll = () => {
             </li>
             <li class="flex items-start gap-3">
               <svg class="w-5 h-5 text-indigo-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-              <span>The CTO personally champions AI-first development across the organization</span>
+              <span>Co-founder & CTO Charles Gorintin personally champions AI-first development</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-indigo-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <span>These workflows now help serve nearly 1 million members across Europe</span>
             </li>
           </ul>
         </div>
       </section>
 
       <!-- Advice Carousel -->
-      <section id="advice" class="mb-28 -mx-6 scroll-mt-40">
+      <section id="advice" class="mb-28 -mx-6 scroll-mt-56">
         <div class="px-6 mb-10">
           <h2 class="text-3xl font-bold text-gray-900 mb-8">Advice for Regulated Industries</h2>
           
@@ -642,7 +614,7 @@ const onCarouselScroll = () => {
       leave-from-class="translate-y-0 opacity-100 scale-100"
       leave-to-class="translate-y-8 opacity-0 scale-95"
     >
-      <div v-if="showAdPopup" class="hidden lg:block fixed bottom-6 right-6 z-50 w-80">
+      <div v-if="showAdPopup && !adMinimized" class="hidden lg:block fixed bottom-6 right-6 z-50 w-80">
         <div class="relative bg-gradient-to-br from-gray-900 via-gray-900 to-indigo-950 rounded-2xl shadow-2xl overflow-hidden">
           <!-- Close button -->
           <button 
@@ -666,28 +638,25 @@ const onCarouselScroll = () => {
             </div>
             
             <!-- Content -->
-            <h4 class="text-white text-lg font-bold mb-2 leading-snug">
-              Want results like Alan?
+            <h4 class="text-white text-lg font-bold mb-3 leading-snug">
+              Build AI workflows like Alan
             </h4>
-            <p class="text-white/60 text-sm mb-5 leading-relaxed">
-              Deploy AI workflows and empower your entire team — with enterprise-grade control.
-            </p>
             
-            <!-- Stats row -->
-            <div class="flex gap-4 mb-5 pb-5 border-b border-white/10">
-              <div class="text-center">
-                <div class="text-xl font-bold text-indigo-400">596+</div>
-                <div class="text-xs text-white/40">integrations</div>
-              </div>
-              <div class="text-center">
-                <div class="text-xl font-bold text-purple-400">SOC 2</div>
-                <div class="text-xs text-white/40">Type II</div>
-              </div>
-              <div class="text-center">
-                <div class="text-xl font-bold text-emerald-400">$0</div>
-                <div class="text-xs text-white/40">per execution</div>
-      </div>
-    </div>
+            <!-- Benefits list -->
+            <ul class="space-y-2.5 mb-5 text-sm">
+              <li class="flex items-center gap-2 text-white/80">
+                <svg class="w-4 h-4 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                Non-technical teams build & ship
+              </li>
+              <li class="flex items-center gap-2 text-white/80">
+                <svg class="w-4 h-4 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                Self-host for full data control
+              </li>
+              <li class="flex items-center gap-2 text-white/80">
+                <svg class="w-4 h-4 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                No per-execution fees, ever
+              </li>
+            </ul>
 
             <!-- CTA -->
           <NuxtLink 
@@ -699,6 +668,28 @@ const onCarouselScroll = () => {
           </div>
         </div>
       </div>
+    </Transition>
+
+    <!-- Minimized Ad Widget (shows when popup is dismissed) -->
+    <Transition
+      enter-active-class="transition-all duration-300 ease-out"
+      enter-from-class="translate-y-4 opacity-0 scale-90"
+      enter-to-class="translate-y-0 opacity-100 scale-100"
+      leave-active-class="transition-all duration-200 ease-in"
+      leave-from-class="translate-y-0 opacity-100 scale-100"
+      leave-to-class="translate-y-4 opacity-0 scale-90"
+    >
+      <button 
+        v-if="showAdPopup && adMinimized" 
+        @click="reopenAd"
+        class="hidden lg:flex fixed bottom-6 right-6 z-50 items-center gap-2 px-4 py-3 bg-gradient-to-r from-gray-900 to-indigo-950 text-white rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all"
+      >
+        <img src="/ap-logo-black-sq.svg" alt="Activepieces" class="h-5 w-5 brightness-0 invert" />
+        <span class="text-sm font-medium">Talk to us</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
+        </svg>
+      </button>
     </Transition>
 
   </div>
