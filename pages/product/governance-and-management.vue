@@ -1,16 +1,64 @@
 <script setup>
-import { onMounted, onUnmounted } from 'vue';
+import { h, onMounted, onUnmounted } from 'vue';
 import { useProductSubmenu } from '~/composables/useProductSubmenu';
 
 const { setSections, clearSections } = useProductSubmenu();
 
 const sections = [
-  { id: 'ai-provider-management', name: 'AI Provider Management' },
-  { id: 'global-connections', name: 'Global Connections' },
-  { id: 'sso-scim-rbac', name: 'SSO, SCIM & RBAC' },
-  { id: 'audit-logs', name: 'Audit Logs' },
-  { id: 'pieces-management', name: 'Pieces Management' }
+  { id: 'centralized-access', name: 'Centralized Access', icon: 'key' },
+  { id: 'identity-permissions', name: 'Identity & Permissions', icon: 'shield' },
+  { id: 'audit-visibility', name: 'Audit & Visibility', icon: 'eye' }
 ];
+
+const getIcon = (iconName) => {
+  const icons = {
+    key: () => h('svg', {
+      class: 'w-20 h-20',
+      fill: 'none',
+      stroke: 'currentColor',
+      viewBox: '0 0 24 24',
+      style: 'stroke-width: 1.5;'
+    }, [
+      h('path', {
+        'stroke-linecap': 'round',
+        'stroke-linejoin': 'round',
+        d: 'M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z'
+      })
+    ]),
+    shield: () => h('svg', {
+      class: 'w-20 h-20',
+      fill: 'none',
+      stroke: 'currentColor',
+      viewBox: '0 0 24 24',
+      style: 'stroke-width: 1.5;'
+    }, [
+      h('path', {
+        'stroke-linecap': 'round',
+        'stroke-linejoin': 'round',
+        d: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z'
+      })
+    ]),
+    eye: () => h('svg', {
+      class: 'w-20 h-20',
+      fill: 'none',
+      stroke: 'currentColor',
+      viewBox: '0 0 24 24',
+      style: 'stroke-width: 1.5;'
+    }, [
+      h('path', {
+        'stroke-linecap': 'round',
+        'stroke-linejoin': 'round',
+        d: 'M15 12a3 3 0 11-6 0 3 3 0 016 0z'
+      }),
+      h('path', {
+        'stroke-linecap': 'round',
+        'stroke-linejoin': 'round',
+        d: 'M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z'
+      })
+    ])
+  };
+  return icons[iconName] || null;
+};
 
 useHead({
   title: 'Control & Governance',
@@ -43,9 +91,11 @@ onUnmounted(() => {
           <h1 class="text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-[1.1] mb-6">
             Enterprise control without the complexity
           </h1>
-          <p class="text-xl text-gray-300 leading-relaxed mb-8">
-            Give IT and leadership the oversight they need while keeping builders productive. Centralize AI usage, manage access, audit activity, and control what your team can use—all from one platform.
-          </p>
+          <div class="flex justify-center my-12">
+            <div class="w-full max-w-[90%]">
+              <PagesIndexCompanyLogos class="relative z-10" />
+            </div>
+          </div>
           <div class="flex flex-wrap justify-center gap-4">
             <a href="https://cloud.activepieces.com/sign-up" class="inline-flex items-center px-6 py-3 text-base font-semibold text-black bg-white rounded-lg hover:bg-gray-100 transition-colors">
               Start free
@@ -58,107 +108,101 @@ onUnmounted(() => {
       </div>
     </section>
 
-    <!-- Section 1: Centralized AI Provider Management -->
-    <section id="ai-provider-management" class="py-20 bg-white border-t border-gray-100 relative overflow-hidden">
+    <!-- Section 1: Centralized Access -->
+    <section id="centralized-access" class="py-24 bg-white border-t border-gray-100 relative overflow-hidden">
       <!-- Green Glow Left Background -->
       <div
         class="absolute inset-0 z-0"
         style="background: #ffffff; background-image: radial-gradient(circle at top left, rgba(34, 197, 94, 0.15), transparent 70%); filter: blur(80px); background-repeat: no-repeat;"
       ></div>
       <div class="max-w-[1230px] mx-auto px-4 relative z-10">
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <span class="inline-block px-3 py-1 text-sm font-medium text-blue-700 bg-blue-100 rounded-full mb-4">
-              AI Provider Management
-            </span>
-            <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-              Use your AI provider, centralize billing, let your team build
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="flex flex-col items-center gap-4">
+            <component :is="getIcon('key')" class="text-gray-700" />
+            <h2 class="text-4xl lg:text-5xl font-bold text-gray-900">
+              One place for all access
             </h2>
+          </div>
+        </div>
+
+        <!-- Feature 1: AI Provider Management -->
+        <div class="grid lg:grid-cols-2 gap-12 items-center mb-24">
+          <div>
+            <span class="inline-block px-3 py-1 text-sm font-medium text-emerald-700 bg-emerald-100 rounded-full mb-4">
+              AI Providers
+            </span>
+            <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
+              Your AI providers, centralized billing
+            </h3>
             <p class="text-lg text-gray-600 mb-6">
-              Add your own API keys for Azure OpenAI, AWS Bedrock, and other AI providers. Centralize billing, manage usage, and let your entire team use AI seamlessly through the UI—no individual API keys needed.
+              Connect directly to Azure OpenAI, AWS Bedrock, and other providers—or route through gateways like LiteLLM and Cloudflare AI Gateway for extra control. Either way, your team uses AI without managing individual keys.
             </p>
-            <ul class="space-y-4">
+            <ul class="space-y-3">
               <li class="flex items-start gap-3">
-                <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-3 h-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                 </div>
-                <span class="text-gray-700"><strong>Bring your own keys</strong>—Azure OpenAI, AWS Bedrock, and more</span>
+                <span class="text-gray-700"><strong>Direct providers</strong>—Azure OpenAI, AWS Bedrock, OpenAI, and more</span>
               </li>
               <li class="flex items-start gap-3">
-                <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-3 h-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                 </div>
-                <span class="text-gray-700"><strong>Centralized billing</strong>—one invoice, full visibility</span>
+                <span class="text-gray-700"><strong>AI gateways</strong>—LiteLLM, Cloudflare AI Gateway for caching & routing</span>
               </li>
               <li class="flex items-start gap-3">
-                <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-3 h-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                 </div>
-                <span class="text-gray-700"><strong>Seamless team access</strong>—no individual API keys required</span>
+                <span class="text-gray-700"><strong>Centralized billing</strong>—one place, full visibility</span>
               </li>
             </ul>
           </div>
-          <div class="bg-gray-100 border-2 border-dashed border-gray-300 rounded-2xl p-8 min-h-[350px] flex items-center justify-center">
-            <div class="text-center text-gray-500">
-              <p class="font-semibold mb-2">📸 SCREENSHOT</p>
-              <p class="text-sm max-w-sm">AI provider settings page showing Azure OpenAI, AWS Bedrock configuration with API key fields, usage metrics, and billing information</p>
-            </div>
-          </div>
+          <PagesProductGovernanceAiProviders />
         </div>
-      </div>
-    </section>
 
-    <!-- Section 2: Global Connections -->
-    <section id="global-connections" class="py-20 bg-[#f8fafc] border-t border-gray-200 relative overflow-hidden">
-      <!-- Bottom Fade Grid Background -->
-      <div
-        class="absolute inset-0 z-0"
-        style="background-image: linear-gradient(to right, #e2e8f0 1px, transparent 1px), linear-gradient(to bottom, #e2e8f0 1px, transparent 1px); background-size: 20px 30px; -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 100%, #000 60%, transparent 100%); mask-image: radial-gradient(ellipse 70% 60% at 50% 100%, #000 60%, transparent 100%);"
-      ></div>
-      <div class="max-w-[1230px] mx-auto px-4 relative z-10">
+        <!-- Feature 2: Global Connections -->
         <div class="grid lg:grid-cols-2 gap-12 items-center">
-          <div class="order-2 lg:order-1 bg-gray-200 border-2 border-dashed border-gray-400 rounded-2xl p-8 min-h-[350px] flex items-center justify-center">
-            <div class="text-center text-gray-500">
-              <p class="font-semibold mb-2">📸 SCREENSHOT</p>
-              <p class="text-sm max-w-sm">Global connections interface showing service accounts (Google Workspace, Microsoft 365, etc.) that are available to all team members in their projects</p>
-            </div>
+          <div class="order-2 lg:order-1">
+            <PagesProductGovernanceGlobalConnections />
           </div>
           <div class="order-1 lg:order-2">
-            <span class="inline-block px-3 py-1 text-sm font-medium text-indigo-700 bg-indigo-100 rounded-full mb-4">
-              Centralized Connectivity
+            <span class="inline-block px-3 py-1 text-sm font-medium text-blue-700 bg-blue-100 rounded-full mb-4">
+              Global Connections
             </span>
-            <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-              Add service accounts once, use everywhere
-            </h2>
+            <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
+              Service accounts for the whole team
+            </h3>
             <p class="text-lg text-gray-600 mb-6">
               Stop managing hundreds of individual connections. Add your service accounts as global connections that your entire team can use in their projects. One connection, unlimited access.
             </p>
-            <ul class="space-y-4">
+            <ul class="space-y-3">
               <li class="flex items-start gap-3">
-                <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-3 h-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                 </div>
                 <span class="text-gray-700"><strong>Service account management</strong>—Google Workspace, Microsoft 365, and more</span>
               </li>
               <li class="flex items-start gap-3">
-                <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-3 h-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                 </div>
                 <span class="text-gray-700"><strong>Team-wide access</strong>—no per-user connection setup</span>
               </li>
               <li class="flex items-start gap-3">
-                <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-3 h-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                 </div>
@@ -170,111 +214,100 @@ onUnmounted(() => {
       </div>
     </section>
 
-    <!-- Section 3: SSO, SCIM & RBAC -->
-    <section id="sso-scim-rbac" class="py-20 bg-white border-t border-gray-100 relative overflow-hidden">
-      <!-- Blue Radial Background -->
-      <div
-        class="absolute inset-0 z-0"
-        style="background: #ffffff; background-image: radial-gradient(circle at top center, rgba(59, 130, 246, 0.15), transparent 70%);"
-      ></div>
+    <!-- Section 2: Identity & Permissions -->
+    <section id="identity-permissions" class="py-24 bg-[#f8fafc] border-t border-gray-200 relative overflow-hidden">
       <div class="max-w-[1230px] mx-auto px-4 relative z-10">
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="flex flex-col items-center gap-4">
+            <component :is="getIcon('shield')" class="text-gray-700" />
+            <h2 class="text-4xl lg:text-5xl font-bold text-gray-900">
+              Control who does what
+            </h2>
+          </div>
+        </div>
+
+        <!-- Feature 1: SSO & SCIM -->
+        <div class="grid lg:grid-cols-2 gap-12 items-center mb-24">
           <div>
             <span class="inline-block px-3 py-1 text-sm font-medium text-purple-700 bg-purple-100 rounded-full mb-4">
-              Enterprise Authentication
+              SSO & SCIM
             </span>
-            <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-              Onboard users seamlessly, control who sees what
-            </h2>
+            <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
+              Onboard users seamlessly
+            </h3>
             <p class="text-lg text-gray-600 mb-6">
-              SSO, SCIM, and role-based access control (RBAC) give you enterprise-grade user management. Onboard users automatically, sync groups, and control exactly who can see and do what in Activepieces.
+              SSO and SCIM give you enterprise-grade user management. Onboard users automatically, sync groups, and manage access through your existing identity provider.
             </p>
-            <ul class="space-y-4">
+            <ul class="space-y-3">
               <li class="flex items-start gap-3">
-                <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-3 h-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                 </div>
                 <span class="text-gray-700"><strong>SSO integration</strong>—SAML, OIDC, and more</span>
               </li>
               <li class="flex items-start gap-3">
-                <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-3 h-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                 </div>
                 <span class="text-gray-700"><strong>SCIM provisioning</strong>—automatic user sync from your IdP</span>
               </li>
               <li class="flex items-start gap-3">
-                <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-3 h-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                 </div>
-                <span class="text-gray-700"><strong>Granular permissions</strong>—control access at project and piece level</span>
+                <span class="text-gray-700"><strong>Group mapping</strong>—sync teams automatically</span>
               </li>
             </ul>
           </div>
-          <div class="bg-gray-100 border-2 border-dashed border-gray-300 rounded-2xl p-8 min-h-[350px] flex items-center justify-center">
-            <div class="text-center text-gray-500">
-              <p class="font-semibold mb-2">📸 SCREENSHOT</p>
-              <p class="text-sm max-w-sm">SSO/SCIM configuration page showing identity provider settings, user sync status, and role/permission matrix</p>
-            </div>
-          </div>
+          <PagesProductGovernanceSsoScim />
         </div>
-      </div>
-    </section>
 
-    <!-- Section 4: Audit Logs -->
-    <section id="audit-logs" class="py-20 bg-[#f9fafb] border-t border-gray-200 relative overflow-hidden">
-      <!-- Diagonal Fade Bottom Grid Left Background -->
-      <div
-        class="absolute inset-0 z-0"
-        style="background-image: linear-gradient(to right, #d1d5db 1px, transparent 1px), linear-gradient(to bottom, #d1d5db 1px, transparent 1px); background-size: 32px 32px; -webkit-mask-image: radial-gradient(ellipse 80% 80% at 0% 100%, #000 50%, transparent 90%); mask-image: radial-gradient(ellipse 80% 80% at 0% 100%, #000 50%, transparent 90%);"
-      ></div>
-      <div class="max-w-[1230px] mx-auto px-4 relative z-10">
+        <!-- Feature 2: RBAC & Pieces Management -->
         <div class="grid lg:grid-cols-2 gap-12 items-center">
-          <div class="order-2 lg:order-1 bg-gray-200 border-2 border-dashed border-gray-400 rounded-2xl p-8 min-h-[350px] flex items-center justify-center">
-            <div class="text-center text-gray-500">
-              <p class="font-semibold mb-2">📸 SCREENSHOT</p>
-              <p class="text-sm max-w-sm">Audit log interface showing a filtered list of actions (user, action type, timestamp) with search and filter options</p>
-            </div>
+          <div class="order-2 lg:order-1">
+            <PagesProductGovernanceRbacPieces />
           </div>
           <div class="order-1 lg:order-2">
-            <span class="inline-block px-3 py-1 text-sm font-medium text-orange-700 bg-orange-100 rounded-full mb-4">
-              Complete Visibility
+            <span class="inline-block px-3 py-1 text-sm font-medium text-cyan-700 bg-cyan-100 rounded-full mb-4">
+              RBAC & Pieces
             </span>
-            <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-              See who did what, when—with powerful filtering
-            </h2>
+            <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
+              Fine-grained access control
+            </h3>
             <p class="text-lg text-gray-600 mb-6">
-              Every action is logged. See who created flows, modified settings, accessed data, or made changes. Filter by user, action type, date range, or project to find exactly what you need for compliance and security audits.
+              Role-based access control combined with pieces management lets you decide exactly who can use what. Pin internal tools, hide external ones, and install private pieces for your organization only.
             </p>
-            <ul class="space-y-4">
+            <ul class="space-y-3">
               <li class="flex items-start gap-3">
-                <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-3 h-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                 </div>
-                <span class="text-gray-700"><strong>Comprehensive logging</strong>—every action tracked with timestamp</span>
+                <span class="text-gray-700"><strong>Granular permissions</strong>—control access at project level</span>
               </li>
               <li class="flex items-start gap-3">
-                <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-3 h-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                 </div>
-                <span class="text-gray-700"><strong>Advanced filtering</strong>—by user, action, date, project, and more</span>
+                <span class="text-gray-700"><strong>Pieces visibility</strong>—show/hide integrations per team</span>
               </li>
               <li class="flex items-start gap-3">
-                <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-3 h-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                 </div>
-                <span class="text-gray-700"><strong>Export & compliance</strong>—download logs for audits</span>
+                <span class="text-gray-700"><strong>Private pieces</strong>—organization-only integrations</span>
               </li>
             </ul>
           </div>
@@ -282,59 +315,29 @@ onUnmounted(() => {
       </div>
     </section>
 
-    <!-- Section 5: Pieces Management -->
-    <section id="pieces-management" class="py-20 bg-white border-t border-gray-100 relative overflow-hidden">
-      <!-- Cyan Glow Right Background -->
+    <!-- Section 3: Audit & Visibility -->
+    <section id="audit-visibility" class="py-24 bg-white border-t border-gray-100 relative overflow-hidden">
+      <!-- Soft Blue Radial Background -->
       <div
         class="absolute inset-0 z-0"
-        style="background: #ffffff; background-image: radial-gradient(circle at top right, rgba(6, 182, 212, 0.15), transparent 70%); filter: blur(80px); background-repeat: no-repeat;"
+        style="background: #ffffff; background-image: radial-gradient(circle at top center, rgba(59, 130, 246, 0.12), transparent 70%);"
       ></div>
-      <div class="max-w-[1230px] mx-auto px-4 relative z-10">
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <span class="inline-block px-3 py-1 text-sm font-medium text-cyan-700 bg-cyan-100 rounded-full mb-4">
-              Pieces Management
-            </span>
-            <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-              Control what your team can use
+      <div class="max-w-[1400px] mx-auto px-4 relative z-10">
+        <!-- Header -->
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <div class="flex flex-col items-center gap-4">
+            <component :is="getIcon('eye')" class="text-gray-700" />
+            <h2 class="text-4xl lg:text-5xl font-bold text-gray-900">
+              See everything that happens
             </h2>
-            <p class="text-lg text-gray-600 mb-6">
-              Manage which pieces are available, pin internal APIs to the top, and install private pieces that are only available in your organization. Give your team the tools they need while keeping sensitive integrations private.
-            </p>
-            <ul class="space-y-4">
-              <li class="flex items-start gap-3">
-                <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                  </svg>
-                </div>
-                <span class="text-gray-700"><strong>Show/hide pieces</strong>—control what integrations are visible</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                  </svg>
-                </div>
-                <span class="text-gray-700"><strong>Pin internal APIs</strong>—make your custom pieces easy to find</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                  </svg>
-                </div>
-                <span class="text-gray-700"><strong>Private pieces</strong>—install organization-only integrations</span>
-              </li>
-            </ul>
           </div>
-          <div class="bg-gray-100 border-2 border-dashed border-gray-300 rounded-2xl p-8 min-h-[350px] flex items-center justify-center">
-            <div class="text-center text-gray-500">
-              <p class="font-semibold mb-2">📸 SCREENSHOT</p>
-              <p class="text-sm max-w-sm">Pieces management interface showing available pieces with toggle switches, pinned pieces section, and private pieces installation area</p>
-            </div>
-          </div>
+          <p class="text-lg text-gray-600 mt-6 max-w-2xl mx-auto">
+            Every action is logged. See who created flows, modified settings, accessed data, or made changes. Filter by user, action type, date range, or project.
+          </p>
         </div>
+
+        <!-- Full-width Audit Log Demo -->
+        <PagesProductGovernanceAuditLog />
       </div>
     </section>
 

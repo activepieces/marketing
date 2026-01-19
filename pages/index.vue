@@ -21,7 +21,6 @@ useHead({
 
 import { onMounted } from "vue";
 import { initTabs } from "flowbite";
-import ProductsShowcase from '@/components/pages/index/ProductsShowcase.vue';
 
 onMounted(() => {
   initTabs();
@@ -30,11 +29,6 @@ onMounted(() => {
 
 <template>
   <PagesIndexHero class="-mt-[62px]" />
-  <ProductsShowcase />
-  <!--<PagesIndexStory />
-  <PagesIndexEnterpriseValues />
-  <PagesIndexDepartments />
-  <PagesIndexResources />-->
-  <PagesIndexFeatures />
-  <PagesIndexPieces />
+  <PagesIndexCaseStudies />
+  <PagesIndexProductStrengths />
 </template>
