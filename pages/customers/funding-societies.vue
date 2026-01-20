@@ -4,7 +4,7 @@ import { ref, onMounted, onUnmounted } from 'vue';
 useHead({
   title: "Funding Societies Case Study | Activepieces",
   meta: [
-    { name: "description", content: "How Funding Societies saved nearly a quarter of a year with 100+ AI-powered automation flows built by 60 team members." },
+    { name: "description", content: "How Southeast Asia's largest SME digital finance platform democratized AI automation with 100+ workflows across 8 departments." },
     { property: "og:title", content: "Funding Societies + Activepieces Case Study" },
   ],
 });
@@ -19,7 +19,7 @@ const sections = [
   { id: 'solution', label: 'The Solution' },
   { id: 'use-cases', label: 'Use Cases' },
   { id: 'results', label: 'Results' },
-  { id: 'advice', label: "Shawn's Advice" },
+  { id: 'takeaways', label: 'Key Takeaways' },
 ];
 
 onMounted(() => {
@@ -61,34 +61,34 @@ const reopenAd = () => {
   adMinimized.value = false;
 };
 
-// Carousel for Shawn's advice
+// Carousel for key takeaways
 const currentSlide = ref(0);
 const carouselRef = ref(null);
 const adviceSlides = [
   {
     number: '01',
-    title: "Start with high-impact wins",
-    description: "Identify workflows that consume significant time but have clear patterns. Document review and customer analysis were perfect first candidates — they had obvious ROI and built momentum."
+    title: "Internal champions beat external training",
+    description: "Department champions who understand internal context train their own teams far more effectively than external consultants. They speak the language, know the workflows, and can answer the real questions."
   },
   {
     number: '02',
-    title: "Empower non-technical teams",
-    description: "The biggest unlock was letting marketing, support, and ops build their own solutions. Don't bottleneck everything through engineering. Give people the tools and watch them surprise you."
+    title: "Self-hosted enables regulated industries",
+    description: "For fintech, healthcare, and other regulated sectors, self-hosted deployment isn't optional — it's the path to adoption. Regulatory requirements don't have to block automation progress."
   },
   {
     number: '03',
-    title: "Security is non-negotiable",
-    description: "In fintech, you can't compromise on compliance. Choose a platform with SOC 2 certification and proper enterprise controls. We evaluated several tools — security was the first filter."
+    title: "100+ automations is achievable",
+    description: "With the right approach and platform, scaling from pilot to 100+ production workflows is realistic. The key is democratization — letting every department build what they need."
   },
   {
     number: '04',
-    title: "Measure collective time saved",
-    description: "Individual workflow savings add up fast. Track time saved across all teams — the cumulative impact tells the real story. That's how we discovered we'd saved nearly a quarter of a year."
+    title: "AI document processing delivers massive ROI",
+    description: "OCR + LLM combinations for document review, validation, and processing deliver exponential efficiency gains in financial services where document volume is high."
   },
   {
     number: '05',
-    title: "Let AI handle the patterns",
-    description: "RAG-powered triage, LLM document analysis, automated insights — AI excels at repetitive cognitive work. Free your people for the work that actually requires human judgment."
+    title: "Platform investment compounds",
+    description: "Automation platforms create ongoing efficiency dividends. Every workflow built saves time forever. The ROI compounds as teams build more solutions on the foundation."
   }
 ];
 
@@ -145,18 +145,18 @@ const onCarouselScroll = () => {
     >
       <div v-if="showStickyHeader" class="fixed top-[64px] left-0 right-0 z-30 bg-white border-b border-gray-100">
         <div class="max-w-3xl mx-auto px-6 py-4">
-          <div class="text-xs text-gray-400 mb-3">Funding Societies + Activepieces · Fintech</div>
+          <div class="text-xs text-gray-400 mb-3">Funding Societies + Activepieces · SME Digital Finance</div>
           <div class="flex justify-between">
             <div class="text-center">
               <div class="text-2xl font-bold text-gray-900">100+</div>
-              <div class="text-xs text-gray-500">Flows</div>
+              <div class="text-xs text-gray-500">Workflows</div>
             </div>
             <div class="text-center">
-              <div class="text-2xl font-bold text-gray-900">~60</div>
-              <div class="text-xs text-gray-500">Builders</div>
+              <div class="text-2xl font-bold text-gray-900">8</div>
+              <div class="text-xs text-gray-500">Departments</div>
             </div>
             <div class="text-center">
-              <div class="text-2xl font-bold text-gray-900">~25%</div>
+              <div class="text-2xl font-bold text-gray-900">~¼</div>
               <div class="text-xs text-gray-500">Year Saved</div>
             </div>
             <div class="text-center">
@@ -170,20 +170,20 @@ const onCarouselScroll = () => {
 
     <!-- Hero -->
     <section class="relative bg-[#0a0a0a] pt-32 pb-28 overflow-hidden">
-      <div class="absolute inset-0 bg-gradient-to-br from-cyan-950/50 via-transparent to-teal-950/30"></div>
+      <div class="absolute inset-0 bg-gradient-to-br from-emerald-950/50 via-transparent to-teal-950/30"></div>
       
       <div class="relative max-w-3xl mx-auto px-6">
         <div class="flex items-center gap-4 mb-10">
-          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 to-teal-500 flex items-center justify-center text-white text-lg font-semibold">FS</div>
-          <div class="text-white/60">Funding Societies · Fintech</div>
+          <img src="/logos/fundingsocieties-sales.png" alt="Funding Societies" class="w-12 h-12 rounded-xl object-contain bg-white p-1.5" />
+          <div class="text-white/60">Funding Societies | Modalku · SME Digital Finance</div>
         </div>
 
         <h1 class="text-4xl md:text-6xl font-bold text-white leading-[1.1] mb-8">
-          An Entire Quarter of Time Saved Across the Organization
+          Democratizing AI Across 100+ Workflows in Financial Services
         </h1>
 
         <p class="text-xl md:text-2xl text-white/50 leading-relaxed">
-          Southeast Asia's largest SME digital financing platform transformed operations with 100+ AI-powered flows — built by 60 team members who'd never written a line of code.
+          How Southeast Asia's largest SME digital finance platform empowered every department to build AI automation — saving nearly a quarter of a year in manual task hours.
         </p>
       </div>
     </section>
@@ -194,14 +194,14 @@ const onCarouselScroll = () => {
         <div class="flex justify-between py-12">
           <div class="text-center">
             <div class="text-4xl md:text-5xl font-bold text-gray-900">100+</div>
-            <div class="text-sm text-gray-500 mt-2">Flows Deployed</div>
+            <div class="text-sm text-gray-500 mt-2">Workflows</div>
           </div>
           <div class="text-center">
-            <div class="text-4xl md:text-5xl font-bold text-gray-900">~60</div>
-            <div class="text-sm text-gray-500 mt-2">Team Members</div>
+            <div class="text-4xl md:text-5xl font-bold text-gray-900">8</div>
+            <div class="text-sm text-gray-500 mt-2">Departments</div>
           </div>
           <div class="text-center">
-            <div class="text-4xl md:text-5xl font-bold text-gray-900">~25%</div>
+            <div class="text-4xl md:text-5xl font-bold text-gray-900">~¼</div>
             <div class="text-sm text-gray-500 mt-2">Year Saved</div>
           </div>
           <div class="text-center">
@@ -240,22 +240,22 @@ const onCarouselScroll = () => {
       
       <!-- Hero Quote - The Hook -->
       <section class="mb-20">
-        <div class="relative bg-gradient-to-br from-cyan-50 via-teal-50 to-white rounded-3xl p-10 md:p-12 border border-cyan-100/50">
-          <div class="absolute top-0 right-0 w-40 h-40 bg-cyan-200/30 rounded-full blur-3xl"></div>
+        <div class="relative bg-gradient-to-br from-emerald-50 via-teal-50 to-white rounded-3xl p-10 md:p-12 border border-emerald-100/50">
+          <div class="absolute top-0 right-0 w-40 h-40 bg-emerald-200/30 rounded-full blur-3xl"></div>
           <div class="absolute bottom-0 left-0 w-32 h-32 bg-teal-200/30 rounded-full blur-3xl"></div>
           
           <div class="relative">
-            <div class="text-8xl text-cyan-200 font-serif absolute -top-4 -left-2 leading-none">"</div>
+            <div class="text-8xl text-emerald-200 font-serif absolute -top-4 -left-2 leading-none">"</div>
             
             <blockquote class="pt-8">
-              <p class="text-2xl md:text-3xl text-gray-900 font-medium leading-relaxed mb-8">
-                We're saving teams almost a quarter of a year in collective time — with fewer errors, improved communication, and reduced context switching. That's the real transformation.
+              <p class="text-xl md:text-2xl text-gray-900 font-medium leading-relaxed mb-8">
+                The democratization of AI through low-code automation platforms isn't just changing how work gets done — it's transforming who can participate in the AI revolution. By empowering teams to build their own intelligent workflows, we've unlocked efficiency at a scale that would have been impossible with a centralized AI development approach.
               </p>
               <div class="flex items-center gap-4">
                 <img src="/case-studies/funding-societies-shawn.png" alt="Shawn Lim" class="w-14 h-14 rounded-full object-cover object-top ring-4 ring-white shadow-lg" />
                 <div>
                   <cite class="text-lg font-semibold text-gray-900 not-italic block">Shawn Lim</cite>
-                  <span class="text-base text-gray-500">VP, Platform and AI @ Funding Societies</span>
+                  <span class="text-base text-gray-500">Staff Engineer @ Funding Societies</span>
                 </div>
               </div>
             </blockquote>
@@ -265,16 +265,13 @@ const onCarouselScroll = () => {
         <!-- Exciting intro text -->
         <div class="mt-12 space-y-6">
           <p class="text-xl text-gray-700 leading-relaxed">
-            <strong class="text-gray-900">This is the story of how Southeast Asia's largest SME digital financing platform democratized AI across their entire organization</strong> — turning marketers, support agents, and operations staff into automation builders who ship production workflows without writing code.
+            <strong class="text-gray-900">This is the story of how Southeast Asia's largest SME digital finance platform proved that AI isn't just for engineers — it's for everyone.</strong> What began as a search for efficiency evolved into a platform for innovation, democratizing AI across Product, Sales, Credit, Collection, Client Experience, Operations, Finance, and Marketing.
           </p>
           <p class="text-lg text-gray-600 leading-relaxed">
-            When Shawn Lim and his team launched an LLM-powered chatbot, they didn't expect what happened next. Every department saw the potential. Marketing wanted AI for content. Support wanted intelligent triage. Operations wanted document automation. The demand for AI solutions exploded overnight.
+            Funding Societies faced a common enterprise challenge: how to scale AI and automation adoption beyond the engineering team while maintaining the security and compliance standards required in financial services. Their traditional approach — building custom AI systems with dedicated engineers — created bottlenecks.
           </p>
           <p class="text-lg text-gray-600 leading-relaxed">
-            But engineering couldn't build custom AI tools for everyone. They needed a different approach — a platform that would let non-technical teams build their own solutions while maintaining the security standards a fintech company requires.
-          </p>
-          <p class="text-lg text-gray-600 leading-relaxed">
-            The result? <strong class="text-gray-900">100+ automation flows running in production</strong>, built by approximately 60 team members across marketing, support, operations, and more. Collectively, they've saved nearly a quarter of a year in team time — and they're just getting started.
+            The solution? An internal champion program, a self-hosted enterprise platform, and a commitment to putting automation tools in the hands of every team. The result is 100+ workflows running in production, saving nearly a quarter of a year in collective manual task hours.
           </p>
         </div>
       </section>
@@ -284,16 +281,16 @@ const onCarouselScroll = () => {
         <h2 class="text-3xl font-bold text-gray-900 mb-8">The Company</h2>
         <div class="space-y-6">
           <p class="text-lg text-gray-600 leading-relaxed">
-            Funding Societies | Modalku is <strong class="text-gray-900">Southeast Asia's largest SME digital financing platform</strong>. Founded in 2015 with a mission to bridge the funding gap for underserved businesses, they've grown into a critical infrastructure for regional commerce.
+            <strong class="text-gray-900">Funding Societies | Modalku</strong> is the largest SME digital finance platform in Southeast Asia, providing business financing and payment solutions across <strong class="text-gray-900">Singapore, Indonesia, Thailand, Malaysia, and Vietnam</strong>. They've built critical financial infrastructure for a region where small businesses often struggle to access traditional banking services.
           </p>
           <p class="text-lg text-gray-600 leading-relaxed">
-            The numbers tell the story: <strong class="text-gray-900">over $4 billion</strong> in business financing disbursed across Singapore, Indonesia, Malaysia, Thailand, and Vietnam. Hundreds of thousands of SMEs funded. A platform that's become essential for small businesses across the region.
+            The company's growth speaks to their impact: backed by <strong class="text-gray-900">Sequoia India (Peak XV), Softbank Vision Fund, Khazanah, and SMBC Bank</strong>, they serve thousands of small and medium enterprises with innovative financial products that traditional banks often won't offer.
           </p>
           <p class="text-lg text-gray-600 leading-relaxed">
-            But Funding Societies isn't just a fintech company — they're a technology company at heart. Their approach is to use innovation to solve problems that traditional banks can't or won't touch. Fast decisions. Flexible terms. Technology that works for businesses, not against them.
+            Operating across five countries in a heavily regulated industry means compliance isn't optional — it's foundational. Every technology decision must account for data sovereignty, regulatory requirements, and security standards that would make most automation platforms non-starters.
           </p>
           <p class="text-lg text-gray-600 leading-relaxed">
-            That technology-first mindset extends internally. When AI emerged as a transformative capability, Funding Societies didn't hesitate. They deployed an LLM-powered chatbot that proved AI's potential. Then came the question: how do you scale that success across an entire organization?
+            When Funding Societies proved AI's value with their first loan application chatbot, they saw the potential. But extending those benefits to streamline the hundreds of internal back-office workflows inherent to financial services required a fundamentally different approach.
           </p>
         </div>
       </section>
@@ -302,36 +299,36 @@ const onCarouselScroll = () => {
       <section id="challenge" class="mb-24 scroll-mt-56">
         <h2 class="text-3xl font-bold text-gray-900 mb-8">The Challenge</h2>
         <p class="text-lg text-gray-600 leading-relaxed mb-6">
-          Success created its own problem. After the chatbot launch demonstrated what AI could do, demand exploded across every department. Marketing saw opportunities in content automation. Support teams wanted intelligent ticket routing. Operations needed AI for document processing. Everyone had ideas.
+          As a regulated fintech company operating across five countries, Funding Societies faced a common enterprise challenge: how to scale AI and automation adoption beyond the engineering team while maintaining the security and compliance standards required in financial services.
         </p>
         <p class="text-lg text-gray-600 leading-relaxed mb-6">
-          But engineering capacity is finite. Building custom AI solutions for every team wasn't sustainable. The traditional approach — submit a request, wait for prioritization, wait for development — would create bottlenecks that slowed everyone down.
+          Their traditional approach — building custom AI systems with dedicated engineers — created bottlenecks. While they had proven AI's value with their first loan application chatbot, extending these benefits to streamline the hundreds of internal back-office workflows inherent to financial services required a different approach.
         </p>
         <p class="text-xl text-gray-700 leading-relaxed mb-10 font-medium">
-          How do you scale AI adoption across an entire organization — without overwhelming engineering or compromising the security standards a fintech company requires?
+          How do you democratize AI across an entire organization — without compromising the security, compliance, and governance that financial services demand?
         </p>
         <div class="bg-gray-50 rounded-2xl p-8">
-          <div class="text-base font-semibold text-gray-900 mb-5">The requirements were non-negotiable:</div>
+          <div class="text-base font-semibold text-gray-900 mb-5">The requirements were demanding:</div>
           <ul class="space-y-4 text-base text-gray-600">
             <li class="flex items-start gap-4">
               <span class="text-gray-400 font-medium">01</span>
-              <span><strong>SOC 2 compliance</strong> — Handling financial data means enterprise-grade security isn't optional. Any platform needed proper controls, audit trails, and compliance certifications.</span>
+              <span><strong>Regulatory compliance</strong> — Operating in financial services across five countries means stringent data handling requirements. Self-hosted deployment wasn't a preference — it was a requirement.</span>
             </li>
             <li class="flex items-start gap-4">
               <span class="text-gray-400 font-medium">02</span>
-              <span><strong>Non-technical builders</strong> — Marketing, support, and ops teams needed to build their own solutions. If it required coding, it wouldn't scale.</span>
+              <span><strong>Technical depth for developers</strong> — The platform needed to support complex integrations and custom pieces for proprietary systems, not just simple out-of-the-box connectors.</span>
             </li>
             <li class="flex items-start gap-4">
               <span class="text-gray-400 font-medium">03</span>
-              <span><strong>Built-in AI capabilities</strong> — LLM integration, RAG support, and document processing needed to work out of the box. Teams shouldn't have to build AI infrastructure from scratch.</span>
+              <span><strong>Accessibility for business users</strong> — If only engineers could build automations, they'd never scale. Marketing, Operations, Credit, Sales — every department needed to participate.</span>
             </li>
             <li class="flex items-start gap-4">
               <span class="text-gray-400 font-medium">04</span>
-              <span><strong>Scalability</strong> — The platform needed to grow from a pilot to 100+ flows without architectural changes or performance degradation.</span>
+              <span><strong>Strong AI integrations</strong> — Native integration with cutting-edge language models was essential for document processing, intelligent triage, and content generation at scale.</span>
             </li>
             <li class="flex items-start gap-4">
               <span class="text-gray-400 font-medium">05</span>
-              <span><strong>Centralized governance</strong> — IT needed visibility into all automations. No shadow IT, no ungoverned workflows processing sensitive data.</span>
+              <span><strong>Open source transparency</strong> — For security auditing and the ability to contribute back, they needed full visibility into the platform's codebase.</span>
             </li>
           </ul>
         </div>
@@ -341,14 +338,40 @@ const onCarouselScroll = () => {
       <section id="solution" class="mb-24 scroll-mt-56">
         <h2 class="text-3xl font-bold text-gray-900 mb-8">The Solution</h2>
         <p class="text-lg text-gray-600 leading-relaxed mb-6">
-          Funding Societies evaluated several automation platforms. The decision came down to a combination of factors: enterprise security, AI capabilities, and genuine accessibility for non-technical users. Activepieces checked every box.
+          Funding Societies selected Activepieces as their automation platform, deployed as a <strong class="text-gray-900">self-hosted enterprise instance</strong> to meet regulatory requirements. The platform's combination of technical depth for developers and accessibility for business users made it ideal for their democratization goals.
         </p>
-        <p class="text-lg text-gray-600 leading-relaxed mb-6">
-          The rollout was strategic. Rather than a big-bang deployment, they started with high-impact use cases that would demonstrate value quickly. Document review. Customer insights. Support triage. Each success built momentum for the next.
-        </p>
-        <p class="text-lg text-gray-600 leading-relaxed mb-10">
-          Within months, the transformation was visible. Teams that had never built automation were deploying production workflows. Engineering shifted from building one-off tools to enabling others. The platform became infrastructure that the entire organization could build on.
-        </p>
+        
+        <!-- Champion Model -->
+        <div class="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-8 mb-10 border border-emerald-100">
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">The Champion Model</h3>
+          <p class="text-base text-gray-600 mb-6">
+            Rather than relying solely on external training, Funding Societies developed an innovative internal champion program:
+          </p>
+          <ol class="space-y-3 text-base text-gray-600 mb-6">
+            <li class="flex items-start gap-3">
+              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 text-sm font-medium flex items-center justify-center">1</span>
+              <span>Each department identifies a technical champion</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 text-sm font-medium flex items-center justify-center">2</span>
+              <span>Champions complete Activepieces bootcamp training</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 text-sm font-medium flex items-center justify-center">3</span>
+              <span>Champions receive three dedicated sessions with the internal automation team</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 text-sm font-medium flex items-center justify-center">4</span>
+              <span>Champions then build automations and train their own teams</span>
+            </li>
+          </ol>
+          <div class="bg-white/60 rounded-xl p-5 border border-emerald-100">
+            <p class="text-base text-gray-700 italic">
+              "The previous approach had someone external teaching the basics. This time we wanted it driven internally, because we noticed one issue — it was really difficult during support sessions because someone from outside wouldn't have a lot of the internal context of the company."
+            </p>
+            <p class="text-sm text-gray-500 mt-3">— Shawn Lim, Staff Engineer</p>
+          </div>
+        </div>
 
         <!-- Why Activepieces Won -->
         <h3 class="text-xl font-semibold text-gray-900 mb-6">Why Activepieces Won</h3>
@@ -362,38 +385,75 @@ const onCarouselScroll = () => {
             </thead>
             <tbody class="divide-y divide-gray-100">
               <tr>
-                <td class="py-4 px-6 text-gray-600">Enterprise Security</td>
-                <td class="py-4 px-6 text-gray-600">SOC 2 Type II compliant with comprehensive audit trails and enterprise SSO</td>
+                <td class="py-4 px-6 text-gray-600">Technical flexibility</td>
+                <td class="py-4 px-6 text-gray-600">Developers can build complex integrations and custom pieces</td>
               </tr>
               <tr>
-                <td class="py-4 px-6 text-gray-600">Non-Technical Access</td>
-                <td class="py-4 px-6 text-gray-600">Visual builder that marketing, support, and ops teams adopted within days</td>
+                <td class="py-4 px-6 text-gray-600">Business user friendly</td>
+                <td class="py-4 px-6 text-gray-600">Low-code interface approachable for non-technical teams</td>
               </tr>
               <tr>
-                <td class="py-4 px-6 text-gray-600">AI-Native</td>
-                <td class="py-4 px-6 text-gray-600">Built-in LLM integration, RAG capabilities, OCR, and document processing</td>
+                <td class="py-4 px-6 text-gray-600">Compliance ready</td>
+                <td class="py-4 px-6 text-gray-600">Self-hosted deployment meets stringent financial services requirements</td>
               </tr>
               <tr>
-                <td class="py-4 px-6 text-gray-600">Scalability</td>
-                <td class="py-4 px-6 text-gray-600">Seamless growth from 10 flows to 100+ without infrastructure changes</td>
+                <td class="py-4 px-6 text-gray-600">Strong AI integrations</td>
+                <td class="py-4 px-6 text-gray-600">Native integration with cutting-edge language models</td>
               </tr>
               <tr>
-                <td class="py-4 px-6 text-gray-600">Governance</td>
-                <td class="py-4 px-6 text-gray-600">Centralized dashboard with granular permissions, approval workflows, and visibility</td>
+                <td class="py-4 px-6 text-gray-600">Open source</td>
+                <td class="py-4 px-6 text-gray-600">Transparency, security auditing, and contribution capability</td>
               </tr>
             </tbody>
           </table>
+        </div>
+
+        <!-- Technical Implementation -->
+        <div class="mt-10 p-8 bg-gray-50 rounded-2xl">
+          <h4 class="text-lg font-semibold text-gray-900 mb-4">Technical Implementation</h4>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <div class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Deployment</div>
+              <ul class="space-y-2 text-base text-gray-600">
+                <li class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  Self-hosted enterprise instance
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  Internal champions manage upgrades
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  Custom pieces for proprietary integrations
+                </li>
+              </ul>
+            </div>
+            <div>
+              <div class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Key Integrations</div>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-white rounded-full text-sm text-gray-600 border border-gray-200">Google Workspace</span>
+                <span class="px-3 py-1 bg-white rounded-full text-sm text-gray-600 border border-gray-200">NetSuite / SAP</span>
+                <span class="px-3 py-1 bg-white rounded-full text-sm text-gray-600 border border-gray-200">Pipedrive</span>
+                <span class="px-3 py-1 bg-white rounded-full text-sm text-gray-600 border border-gray-200">Jira</span>
+                <span class="px-3 py-1 bg-white rounded-full text-sm text-gray-600 border border-gray-200">HubSpot</span>
+                <span class="px-3 py-1 bg-white rounded-full text-sm text-gray-600 border border-gray-200">SendGrid</span>
+                <span class="px-3 py-1 bg-white rounded-full text-sm text-gray-600 border border-gray-200">Intercom</span>
+                <span class="px-3 py-1 bg-white rounded-full text-sm text-gray-600 border border-gray-200">AI/LLM Providers</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       <!-- Big Number Callout -->
       <div class="text-center py-24 mb-24 border-y border-gray-100">
         <div class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-6">The Transformation</div>
-        <div class="text-[10rem] md:text-[12rem] font-bold text-gray-900 tracking-tighter leading-none">~25%</div>
-        <div class="text-lg text-gray-500 mt-4">of a year saved in collective team time</div>
+        <div class="text-[10rem] md:text-[12rem] font-bold text-gray-900 tracking-tighter leading-none">100+</div>
+        <div class="text-lg text-gray-500 mt-4">automation flows deployed across the organization</div>
         <div class="flex justify-center gap-12 mt-10 text-base">
-          <div><span class="font-bold text-gray-900 text-lg">100+</span> <span class="text-gray-500">flows deployed</span></div>
-          <div><span class="font-bold text-gray-900 text-lg">~60</span> <span class="text-gray-500">team members building</span></div>
+          <div><span class="font-bold text-gray-900 text-lg">8</span> <span class="text-gray-500">departments using automation</span></div>
+          <div><span class="font-bold text-gray-900 text-lg">~¼ year</span> <span class="text-gray-500">in manual task hours saved</span></div>
         </div>
       </div>
 
@@ -402,53 +462,43 @@ const onCarouselScroll = () => {
         <h2 class="text-3xl font-bold text-gray-900 mb-12">What They Built</h2>
         
         <div class="space-y-16">
-          <!-- Use Case 1 -->
-          <div class="border-l-4 border-cyan-300 pl-8">
-            <h3 class="text-xl font-semibold text-gray-900 mb-4">AI-Powered Document Review</h3>
-            <div class="space-y-4 text-base text-gray-600">
-              <p><strong class="text-gray-900">The problem:</strong> Payment documents required manual validation — checking details against records, spotting discrepancies, ensuring compliance. With the volume Funding Societies processes, this consumed thousands of hours annually. Errors meant delays for SME customers who needed funds quickly.</p>
-              <p><strong class="text-gray-900">The solution:</strong> An automated workflow combining OCR to extract document data with LLM analysis to validate accuracy. The system checks documents against expected values, flags discrepancies, and routes exceptions to human reviewers. Standard documents process automatically; only edge cases need manual attention.</p>
-              <p><strong class="text-gray-900">The impact:</strong> Thousands of hours saved annually. Error rates dropped significantly. The team now focuses on complex cases that genuinely need human judgment. SME customers get faster decisions on their financing requests.</p>
-            </div>
-          </div>
-
-          <!-- Use Case 2 -->
-          <div class="border-l-4 border-teal-300 pl-8">
-            <h3 class="text-xl font-semibold text-gray-900 mb-4">Customer Insights at Scale</h3>
-            <div class="space-y-4 text-base text-gray-600">
-              <p><strong class="text-gray-900">The problem:</strong> Understanding customer sentiment and feedback meant analyzing Intercom conversations — thousands of them each month. Manual analysis took weeks. By the time insights were compiled into reports, the data was already stale. Product and support teams were making decisions based on outdated information.</p>
-              <p><strong class="text-gray-900">The solution:</strong> An AI-powered workflow that automatically pulls conversation data, analyzes sentiment and topics using LLM, identifies emerging trends, and generates actionable reports. The system runs continuously, so insights are always fresh.</p>
-              <p><strong class="text-gray-900">The impact:</strong> What took weeks now happens in minutes. Product teams act on current customer sentiment instead of month-old data. Support leadership spots issues before they become trends. The marketing team built this themselves — no engineering required.</p>
-            </div>
-          </div>
-          
-          <!-- Use Case 3 -->
+          <!-- Use Case 1: AI-Driven Document Review -->
           <div class="border-l-4 border-emerald-300 pl-8">
-            <h3 class="text-xl font-semibold text-gray-900 mb-4">RAG-Powered Support Triage</h3>
+            <h3 class="text-xl font-semibold text-gray-900 mb-4">AI-Driven Document Review for Payments</h3>
             <div class="space-y-4 text-base text-gray-600">
-              <p><strong class="text-gray-900">The problem:</strong> Support tickets needed intelligent routing. Manual triage created delays and inconsistent customer experiences. Agents spent time on tickets that could have been resolved automatically. Complex issues sometimes went to the wrong team, requiring re-routing.</p>
-              <p><strong class="text-gray-900">The solution:</strong> A RAG-powered workflow that understands ticket content in context, matches it against internal knowledge bases, and either routes to the appropriate team or resolves automatically when possible. The system learns from the knowledge base, so it gets better over time.</p>
-              <p><strong class="text-gray-900">The impact:</strong> 24/7 intelligent triage. Faster resolution times across the board. Support agents focus on complex issues that genuinely need human expertise. Customers get faster responses, and the support team handles higher volume without adding headcount.</p>
-            </div>
-          </div>
-          
-          <!-- Use Case 4 -->
-          <div class="border-l-4 border-amber-300 pl-8">
-            <h3 class="text-xl font-semibold text-gray-900 mb-4">End-to-End SEO Content Production</h3>
-            <div class="space-y-4 text-base text-gray-600">
-              <p><strong class="text-gray-900">The problem:</strong> Content production was slow and labor-intensive. Keyword research, content writing, SEO optimization, and publishing involved multiple tools, multiple handoffs, and multiple review cycles. The marketing team couldn't scale output without scaling headcount.</p>
-              <p><strong class="text-gray-900">The solution:</strong> A comprehensive workflow handling the entire content pipeline: keyword research to identify opportunities, AI-assisted content generation, SEO optimization, internal review workflows, and automated publishing. Human oversight at key decision points, automation everywhere else.</p>
-              <p><strong class="text-gray-900">The impact:</strong> 85% reduction in content production time. 30% increase in organic traffic. The marketing team scaled output dramatically without adding team members. Content that used to take days now takes hours.</p>
+              <p><strong class="text-gray-900">The problem:</strong> Payment-related documents required manual validation — checking invoice structures, verifying official logos, matching data against expected payment records. With the transaction volume Funding Societies processes, this consumed thousands of hours annually.</p>
+              <p><strong class="text-gray-900">The solution:</strong> An intelligent document review system combining OCR and LLM technologies. The workflow triggers when a new payment is created, extracts key data using OCR, validates authenticity (official logos, invoice structures), performs fuzzy matching against expected payment data, and provides real-time feedback with manual fallback for edge cases.</p>
+              <p><strong class="text-gray-900">The impact:</strong> Eliminated thousands of manual review hours yearly. The system scales naturally with transaction volume, enabling exponential growth without proportionally increasing headcount.</p>
             </div>
           </div>
 
-          <!-- Use Case 5 -->
-          <div class="border-l-4 border-violet-300 pl-8">
-            <h3 class="text-xl font-semibold text-gray-900 mb-4">Automated Reporting & Analytics</h3>
+          <!-- Use Case 2: Intelligent Support Triage -->
+          <div class="border-l-4 border-teal-300 pl-8">
+            <h3 class="text-xl font-semibold text-gray-900 mb-4">Intelligent Support Triage with RAG</h3>
             <div class="space-y-4 text-base text-gray-600">
-              <p><strong class="text-gray-900">The problem:</strong> Generating reports for stakeholders meant pulling data from multiple systems, formatting spreadsheets, creating visualizations, and distributing to the right people. Analysts spent hours on repetitive report generation instead of actual analysis.</p>
-              <p><strong class="text-gray-900">The solution:</strong> Automated workflows that pull data from connected systems, apply transformations and calculations, generate formatted reports, and distribute them on schedule. Different reports for different stakeholders, all running automatically.</p>
-              <p><strong class="text-gray-900">The impact:</strong> Analysts reclaimed hours every week for actual analysis work. Stakeholders get consistent, timely reports. Data quality improved because the process is standardized. The operations team built these workflows themselves.</p>
+              <p><strong class="text-gray-900">The problem:</strong> Production support requests needed intelligent routing. Manual triage created delays, inconsistent assignments, and required engineers to be available around the clock — including holidays.</p>
+              <p><strong class="text-gray-900">The solution:</strong> A Retrieval-Augmented Generation system that automatically routes support requests. All past production support requests are stored in a vector database. When new requests arrive, the system analyzes them, compares to historical patterns, and routes to the optimal squad based on expertise and resolution patterns. The system learns: accuracy improves through automated learning from resolved tickets.</p>
+              <p><strong class="text-gray-900">The impact:</strong> Instant 24/7 triage including after hours and holidays, freeing engineers from manual triaging while improving routing accuracy over time.</p>
+            </div>
+          </div>
+          
+          <!-- Use Case 3: Customer Insights -->
+          <div class="border-l-4 border-cyan-300 pl-8">
+            <h3 class="text-xl font-semibold text-gray-900 mb-4">Customer Insights from Conversation Data</h3>
+            <div class="space-y-4 text-base text-gray-600">
+              <p><strong class="text-gray-900">The problem:</strong> Understanding customer sentiment meant manually analyzing Intercom conversations. Traditional surveys captured only a small percentage of customer sentiment, and manual analysis took 1-3 weeks — by which point insights were already stale.</p>
+              <p><strong class="text-gray-900">The solution:</strong> Automated monthly customer insights by connecting to customer communication platforms, extracting and analyzing relevant conversations using NLP, identifying themes, pain points, and feature requests, and compiling insights into comprehensive product development reports.</p>
+              <p><strong class="text-gray-900">The impact:</strong> Transformed from a 1-3 week manual process to instantaneous generation. Product teams now have comprehensive monthly insights from all conversation data, not just survey responses.</p>
+            </div>
+          </div>
+          
+          <!-- Use Case 4: SEO Content Pipeline -->
+          <div class="border-l-4 border-amber-300 pl-8">
+            <h3 class="text-xl font-semibold text-gray-900 mb-4">SEO Content Production Pipeline</h3>
+            <div class="space-y-4 text-base text-gray-600">
+              <p><strong class="text-gray-900">The problem:</strong> Content production was slow and labor-intensive. Creating a single article took half a day, including research, writing, SEO optimization, and publishing. The marketing team couldn't scale output without scaling headcount.</p>
+              <p><strong class="text-gray-900">The solution:</strong> Integrated AI workflows that analyze search performance data, retrieve and analyze top-performing articles for target keywords, generate new content aligned with financial content guidelines, and implement strategic FAQ formatting for AI search optimization.</p>
+              <p><strong class="text-gray-900">The impact:</strong> Content production time dropped from half a day to under 30 minutes — an 85% reduction. Organic traffic increased 20-30% through AI-driven dual-optimization for both traditional SEO and AI search engines.</p>
             </div>
           </div>
         </div>
@@ -459,80 +509,149 @@ const onCarouselScroll = () => {
         <blockquote class="text-center px-8 md:px-20">
           <img src="/case-studies/funding-societies-shawn.png" alt="Shawn Lim" class="w-20 h-20 rounded-full object-cover object-top mx-auto mb-6" />
           <p class="text-2xl md:text-3xl text-gray-900 italic leading-relaxed mb-6">
-            "The biggest unlock was enabling non-technical teams to build their own solutions. Engineering can focus on core product while everyone else solves their own problems. That's how you scale AI across an organization."
+            "What began as a search for efficiency has evolved into a platform for innovation, proving that with the right tools, AI isn't just for engineers — it's for everyone."
           </p>
-          <cite class="text-base text-gray-500 not-italic">Shawn Lim, VP Platform and AI</cite>
+          <cite class="text-base text-gray-500 not-italic">Shawn Lim, "Democratization of AI", Medium (April 2025)</cite>
         </blockquote>
-              </div>
+      </div>
 
       <!-- Results Grid -->
       <section id="results" class="mb-28 scroll-mt-56">
         <h2 class="text-3xl font-bold text-gray-900 mb-12">The Results</h2>
         
-        <div class="grid grid-cols-2 gap-8">
-          <div class="p-8 bg-gradient-to-br from-cyan-50 to-white rounded-2xl border border-cyan-100">
-            <div class="text-5xl font-bold text-cyan-600 mb-2">100+</div>
-            <div class="text-gray-600">Flows in Production</div>
+        <!-- Scale & Adoption -->
+        <h3 class="text-lg font-semibold text-gray-900 mb-6">Scale & Adoption</h3>
+        <div class="grid grid-cols-2 gap-6 mb-10">
+          <div class="p-8 bg-gradient-to-br from-emerald-50 to-white rounded-2xl border border-emerald-100">
+            <div class="text-5xl font-bold text-emerald-600 mb-2">100+</div>
+            <div class="text-gray-600">Workflows Deployed</div>
           </div>
           <div class="p-8 bg-gradient-to-br from-teal-50 to-white rounded-2xl border border-teal-100">
-            <div class="text-5xl font-bold text-teal-600 mb-2">~60</div>
-            <div class="text-gray-600">Team Members Building</div>
-                    </div>
-          <div class="p-8 bg-gradient-to-br from-emerald-50 to-white rounded-2xl border border-emerald-100">
-            <div class="text-5xl font-bold text-emerald-600 mb-2">~25%</div>
-            <div class="text-gray-600">of a Year Saved</div>
-                  </div>
-          <div class="p-8 bg-gradient-to-br from-amber-50 to-white rounded-2xl border border-amber-100">
-            <div class="text-5xl font-bold text-amber-600 mb-2">+30%</div>
-            <div class="text-gray-600">Organic Traffic Lift</div>
-                </div>
-              </div>
+            <div class="text-5xl font-bold text-teal-600 mb-2">~¼ yr</div>
+            <div class="text-gray-600">Manual Hours Saved</div>
+          </div>
+        </div>
 
-        <div class="mt-12 p-8 bg-gray-50 rounded-2xl">
-          <div class="text-base font-semibold text-gray-900 mb-5">The transformation went beyond efficiency metrics:</div>
-          <ul class="space-y-4 text-base text-gray-600">
+        <!-- Departments -->
+        <div class="p-6 bg-gray-50 rounded-2xl mb-10">
+          <div class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-4">Departments Using Automation</div>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-4 py-2 bg-white rounded-lg text-sm font-medium text-gray-700 border border-gray-200">Product</span>
+            <span class="px-4 py-2 bg-white rounded-lg text-sm font-medium text-gray-700 border border-gray-200">Sales</span>
+            <span class="px-4 py-2 bg-white rounded-lg text-sm font-medium text-gray-700 border border-gray-200">Credit</span>
+            <span class="px-4 py-2 bg-white rounded-lg text-sm font-medium text-gray-700 border border-gray-200">Collection</span>
+            <span class="px-4 py-2 bg-white rounded-lg text-sm font-medium text-gray-700 border border-gray-200">Client Experience</span>
+            <span class="px-4 py-2 bg-white rounded-lg text-sm font-medium text-gray-700 border border-gray-200">Operations</span>
+            <span class="px-4 py-2 bg-white rounded-lg text-sm font-medium text-gray-700 border border-gray-200">Finance</span>
+            <span class="px-4 py-2 bg-white rounded-lg text-sm font-medium text-gray-700 border border-gray-200">Marketing</span>
+          </div>
+        </div>
+
+        <!-- Specific Metrics -->
+        <h3 class="text-lg font-semibold text-gray-900 mb-6">Specific Improvements</h3>
+        <div class="overflow-hidden rounded-2xl border border-gray-200 mb-10">
+          <table class="w-full text-base">
+            <thead class="bg-gray-50">
+              <tr>
+                <th class="text-left py-4 px-6 font-semibold text-gray-900">Area</th>
+                <th class="text-left py-4 px-6 font-semibold text-gray-900">Before</th>
+                <th class="text-left py-4 px-6 font-semibold text-gray-900">After</th>
+                <th class="text-left py-4 px-6 font-semibold text-gray-900">Impact</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+              <tr>
+                <td class="py-4 px-6 text-gray-900 font-medium">Content Production</td>
+                <td class="py-4 px-6 text-gray-600">Half-day per article</td>
+                <td class="py-4 px-6 text-gray-600">Under 30 minutes</td>
+                <td class="py-4 px-6 text-emerald-600 font-semibold">85% reduction</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-6 text-gray-900 font-medium">Organic Traffic</td>
+                <td class="py-4 px-6 text-gray-600">Manual SEO</td>
+                <td class="py-4 px-6 text-gray-600">AI-driven dual-optimization</td>
+                <td class="py-4 px-6 text-emerald-600 font-semibold">20-30% boost</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-6 text-gray-900 font-medium">Customer Insights</td>
+                <td class="py-4 px-6 text-gray-600">1-3 weeks manual</td>
+                <td class="py-4 px-6 text-gray-600">Instantaneous</td>
+                <td class="py-4 px-6 text-emerald-600 font-semibold">100% coverage</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-6 text-gray-900 font-medium">Document Review</td>
+                <td class="py-4 px-6 text-gray-600">Manual validation</td>
+                <td class="py-4 px-6 text-gray-600">AI-powered OCR + LLM</td>
+                <td class="py-4 px-6 text-emerald-600 font-semibold">Thousands of hours saved</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Contributing Back -->
+        <div class="p-8 bg-gradient-to-br from-violet-50 to-purple-50 rounded-2xl border border-violet-100 mb-10">
+          <h4 class="text-lg font-semibold text-gray-900 mb-4">Contributing Back to the Ecosystem</h4>
+          <p class="text-base text-gray-600 mb-4">
+            Funding Societies actively contributes to the Activepieces ecosystem, embodying the spirit of open source:
+          </p>
+          <ul class="space-y-3 text-base text-gray-600">
             <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-cyan-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-              <span>Non-technical teams now build AI solutions without waiting for engineering bandwidth</span>
+              <svg class="w-5 h-5 text-violet-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <span>Submits pull requests for piece enhancements</span>
             </li>
             <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-cyan-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-              <span>Error rates dropped significantly across document processing and data handling</span>
+              <svg class="w-5 h-5 text-violet-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <span>Develops custom pieces for unique requirements</span>
             </li>
             <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-cyan-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-              <span>Communication improved with automated workflows replacing manual handoffs between teams</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-cyan-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-              <span>Context switching reduced — teams stay in their tools while automation handles the connections</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-cyan-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-              <span>Enterprise security maintained with SOC 2 compliance and centralized governance throughout</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-cyan-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-              <span>Engineering resources redirected from internal tooling to core product development</span>
+              <svg class="w-5 h-5 text-violet-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <span>Provides detailed feedback for platform improvements</span>
             </li>
           </ul>
-                    </div>
+        </div>
+
+        <!-- Dedicated Role -->
+        <div class="p-8 bg-gray-50 rounded-2xl">
+          <h4 class="text-lg font-semibold text-gray-900 mb-4">A Dedicated Role Was Created</h4>
+          <p class="text-base text-gray-600 mb-4">
+            The success of automation at Funding Societies led to creating a dedicated position: <strong class="text-gray-900">Senior Executive, Digital Process</strong> — a role focused entirely on driving and sustaining digital automation initiatives across Singapore business functions.
+          </p>
+          <div class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-3">Key Responsibilities</div>
+          <ul class="space-y-2 text-base text-gray-600">
+            <li class="flex items-start gap-2">
+              <span class="text-gray-400">→</span>
+              <span>Design, build, and optimize workflow automations using Activepieces</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-gray-400">→</span>
+              <span>Lead automation projects for product workflows</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-gray-400">→</span>
+              <span>Collaborate with cross-functional teams on strategic automation initiatives</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-gray-400">→</span>
+              <span>Maintain and enhance existing automation flows</span>
+            </li>
+          </ul>
+        </div>
       </section>
 
-      <!-- Advice Carousel -->
-      <section id="advice" class="mb-28 -mx-6 scroll-mt-56">
+      <!-- Key Takeaways Carousel -->
+      <section id="takeaways" class="mb-28 -mx-6 scroll-mt-56">
         <div class="px-6 mb-10">
-          <h2 class="text-3xl font-bold text-gray-900 mb-8">Advice for Scaling AI Automation</h2>
+          <h2 class="text-3xl font-bold text-gray-900 mb-8">Key Takeaways</h2>
           
           <div class="flex items-center gap-5">
             <img src="/case-studies/funding-societies-shawn.png" alt="Shawn Lim" class="w-16 h-16 rounded-full object-cover object-top" />
-                    <div>
+            <div>
               <div class="text-lg font-semibold text-gray-900">Shawn Lim</div>
-              <div class="text-base text-gray-500">VP, Platform and AI @ Funding Societies</div>
-              <div class="text-base text-gray-400 mt-1">5 lessons from deploying 100+ AI-powered flows</div>
-                </div>
-              </div>
+              <div class="text-base text-gray-500">Staff Engineer @ Funding Societies</div>
+              <div class="text-base text-gray-400 mt-1">5 lessons from scaling AI automation in fintech</div>
             </div>
+          </div>
+        </div>
 
         <!-- Carousel Container -->
         <div class="relative group">
@@ -550,11 +669,11 @@ const onCarouselScroll = () => {
               <div 
                 class="rounded-2xl p-10 md:p-12 text-white overflow-hidden relative h-full min-h-[300px]"
                 :class="[
-                  index === 0 ? 'bg-gradient-to-br from-cyan-600 via-teal-600 to-emerald-600' :
+                  index === 0 ? 'bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-600' :
                   index === 1 ? 'bg-gradient-to-br from-blue-600 via-indigo-600 to-violet-600' :
                   index === 2 ? 'bg-gradient-to-br from-rose-600 via-pink-600 to-fuchsia-600' :
                   index === 3 ? 'bg-gradient-to-br from-amber-500 via-orange-500 to-red-500' :
-                  'bg-gradient-to-br from-emerald-600 via-green-600 to-teal-600'
+                  'bg-gradient-to-br from-violet-600 via-purple-600 to-indigo-600'
                 ]"
               >
                 <div class="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
@@ -565,7 +684,7 @@ const onCarouselScroll = () => {
                   <div class="relative pt-12">
                     <h3 class="text-2xl md:text-3xl font-bold mb-4">{{ slide.title }}</h3>
                     <p class="text-lg text-white/80 leading-relaxed">{{ slide.description }}</p>
-                      </div>
+                  </div>
                 </div>
 
                 <div class="absolute bottom-8 right-8 text-sm text-white/50">
@@ -606,6 +725,16 @@ const onCarouselScroll = () => {
           </div>
         </div>
       </section>
+
+      <!-- Partnership Note -->
+      <section class="mb-16">
+        <div class="p-8 bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl text-white">
+          <h3 class="text-xl font-semibold mb-4">About the Partnership</h3>
+          <p class="text-white/80 leading-relaxed">
+            Funding Societies has been an Activepieces enterprise customer since early 2024, working closely with the Activepieces team on platform improvements, piece enhancements, and stability improvements. Their feedback has directly influenced product roadmap decisions including enhanced testing frameworks and enterprise stability features.
+          </p>
+        </div>
+      </section>
       
     </article>
     </div>
@@ -620,7 +749,7 @@ const onCarouselScroll = () => {
       leave-to-class="translate-y-8 opacity-0 scale-95"
     >
       <div v-if="showAdPopup && !adMinimized" class="hidden lg:block fixed bottom-6 right-6 z-50 w-80">
-        <div class="relative bg-gradient-to-br from-gray-900 via-gray-900 to-cyan-950 rounded-2xl shadow-2xl overflow-hidden">
+        <div class="relative bg-gradient-to-br from-gray-900 via-gray-900 to-emerald-950 rounded-2xl shadow-2xl overflow-hidden">
           <button 
             @click="dismissAd" 
             class="absolute top-3 right-3 w-7 h-7 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white/60 hover:text-white z-10"
@@ -630,7 +759,7 @@ const onCarouselScroll = () => {
             </svg>
           </button>
           
-          <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/20 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
+          <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/20 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
           <div class="absolute bottom-0 left-0 w-24 h-24 bg-teal-500/20 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2"></div>
           
           <div class="relative p-6">
@@ -646,15 +775,15 @@ const onCarouselScroll = () => {
             <ul class="space-y-2.5 mb-5 text-sm">
               <li class="flex items-center gap-2 text-white/80">
                 <svg class="w-4 h-4 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                Self-hosted for compliance
+              </li>
+              <li class="flex items-center gap-2 text-white/80">
+                <svg class="w-4 h-4 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                 Non-technical teams build & ship
               </li>
               <li class="flex items-center gap-2 text-white/80">
                 <svg class="w-4 h-4 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                SOC 2 compliant enterprise security
-              </li>
-              <li class="flex items-center gap-2 text-white/80">
-                <svg class="w-4 h-4 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                Built-in AI & RAG capabilities
+                Open source & transparent
               </li>
             </ul>
 
@@ -681,7 +810,7 @@ const onCarouselScroll = () => {
       <button 
         v-if="showAdPopup && adMinimized" 
         @click="reopenAd"
-        class="hidden lg:flex fixed bottom-6 right-6 z-50 items-center gap-2 px-4 py-3 bg-gradient-to-r from-gray-900 to-cyan-950 text-white rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all"
+        class="hidden lg:flex fixed bottom-6 right-6 z-50 items-center gap-2 px-4 py-3 bg-gradient-to-r from-gray-900 to-emerald-950 text-white rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all"
       >
         <img src="/ap-logo-black-sq.svg" alt="Activepieces" class="h-5 w-5 brightness-0 invert" />
         <span class="text-sm font-medium">Talk to us</span>

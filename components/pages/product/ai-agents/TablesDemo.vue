@@ -101,41 +101,43 @@
                 :key="col.id"
                 class="border-b border-r border-gray-100 relative p-0 cursor-cell transition-colors duration-75"
                 :class="getCellClass(rowIdx, colIdx)"
-                @click.stop="selectCell(rowIdx, colIdx)"
+                @click.stop="handleCellClick(rowIdx, colIdx, col)"
                 @dblclick.stop="startEditing(rowIdx, colIdx)"
               >
                 <!-- Editing state -->
                 <template v-if="isEditing(rowIdx, colIdx)">
+                  <!-- Text/Email/URL/Number input -->
                   <input
                     v-if="col.type === 'text' || col.type === 'email' || col.type === 'url' || col.type === 'number'"
-                    ref="editInput"
+                    :ref="el => setEditRef(el, 'text')"
                     :type="col.type === 'number' ? 'number' : 'text'"
-                    v-model="rows[rowIdx][col.id]"
-                    @blur="stopEditing"
-                    @keydown.enter.prevent="confirmEdit"
-                    @keydown.tab.prevent="handleEditTab($event)"
-                    @keydown.escape.prevent="cancelEdit"
+                    :value="rows[rowIdx][col.id]"
+                    @input="updateCellValue(rowIdx, col.id, $event.target.value)"
+                    @blur="handleBlur"
+                    @keydown="handleInputKeydown"
                     class="w-full px-2 py-1.5 text-sm bg-white border-none outline-none min-h-[32px]"
                     :placeholder="getPlaceholder(col.type)"
                   />
+                  <!-- Date input -->
                   <input
                     v-else-if="col.type === 'date'"
-                    ref="editInput"
+                    :ref="el => setEditRef(el, 'date')"
                     type="date"
-                    v-model="rows[rowIdx][col.id]"
-                    @blur="stopEditing"
-                    @keydown.enter.prevent="confirmEdit"
-                    @keydown.tab.prevent="handleEditTab($event)"
-                    @keydown.escape.prevent="cancelEdit"
-                    class="w-full px-2 py-1.5 text-sm bg-white border-none outline-none min-h-[32px]"
+                    :value="rows[rowIdx][col.id]"
+                    @input="updateCellValue(rowIdx, col.id, $event.target.value)"
+                    @blur="handleDateBlur"
+                    @keydown="handleInputKeydown"
+                    @click="handleDateClick"
+                    class="w-full px-2 py-1.5 text-sm bg-white border-none outline-none min-h-[32px] cursor-pointer"
                   />
+                  <!-- Select dropdown -->
                   <select
                     v-else-if="col.type === 'select'"
-                    ref="editInput"
-                    v-model="rows[rowIdx][col.id]"
-                    @change="confirmEdit"
-                    @blur="stopEditing"
-                    @keydown.escape.prevent="cancelEdit"
+                    :ref="el => setEditRef(el, 'select')"
+                    :value="rows[rowIdx][col.id]"
+                    @change="handleSelectChange(rowIdx, col.id, $event.target.value)"
+                    @blur="handleBlur"
+                    @keydown="handleSelectKeydown"
                     class="w-full px-2 py-1.5 text-sm bg-white border-none outline-none cursor-pointer min-h-[32px]"
                   >
                     <option value="">Select...</option>
@@ -201,15 +203,6 @@
             </tr>
           </tbody>
         </table>
-      </div>
-
-      <!-- Keyboard hint -->
-      <div v-if="selectedCell && !editingCell" class="absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-2 px-2 py-1 bg-gray-800/80 text-white text-[10px] rounded-lg backdrop-blur-sm">
-        <span class="opacity-70">↑↓←→</span>
-        <span>navigate</span>
-        <span class="w-px h-3 bg-white/30"></span>
-        <span class="px-1 py-0.5 bg-white/20 rounded text-[9px]">Enter</span>
-        <span>edit</span>
       </div>
 
       <!-- Column menu dropdown -->
@@ -376,9 +369,19 @@ import { ref, nextTick, onMounted, onUnmounted } from 'vue'
 const containerRef = ref(null)
 const tableName = ref('Lead Tracker')
 const tableContainer = ref(null)
-const editInput = ref(null)
 const renameInput = ref(null)
 const promptInput = ref(null)
+
+// Store refs for different input types
+const editRefs = ref({
+  text: null,
+  date: null,
+  select: null
+})
+
+// Track if date picker is active to prevent premature blur
+let datePickerActive = false
+let blurTimeout = null
 
 // Column types
 const columnTypes = [
@@ -435,6 +438,11 @@ const showComplete = ref(false)
 let nextId = 5
 let nextColId = 1
 
+// Set ref for edit inputs
+const setEditRef = (el, type) => {
+  editRefs.value[type] = el
+}
+
 const getTypeIcon = (type) => {
   const found = columnTypes.find(t => t.id === type)
   return found ? found.icon : '📝'
@@ -487,11 +495,36 @@ const getCellClass = (rowIdx, colIdx) => {
   return 'hover:bg-gray-50/80'
 }
 
+// Update cell value directly (for controlled inputs)
+const updateCellValue = (rowIdx, colId, value) => {
+  rows.value[rowIdx][colId] = value
+}
+
+// Handle cell click - select or start editing
+const handleCellClick = (rowIdx, colIdx, col) => {
+  // If already editing this cell, do nothing
+  if (isEditing(rowIdx, colIdx)) {
+    return
+  }
+  
+  // If editing a different cell, stop editing first
+  if (editingCell.value) {
+    confirmEdit()
+  }
+  
+  selectedCell.value = { row: rowIdx, col: colIdx }
+  selectedRow.value = rowIdx
+  columnMenuOpen.value = null
+  
+  // Focus container for keyboard events
+  containerRef.value?.focus()
+}
+
 // Click on cell = select (not edit)
 const selectCell = (rowIdx, colIdx) => {
   // If clicking a different cell while editing, stop editing first
   if (editingCell.value) {
-    stopEditing()
+    confirmEdit()
   }
   
   selectedCell.value = { row: rowIdx, col: colIdx }
@@ -518,30 +551,112 @@ const startEditing = async (rowIdx, colIdx) => {
   editingOriginalValue.value = rows.value[rowIdx][col.id]
   
   await nextTick()
-  focusInput()
+  focusInput(col.type)
 }
 
-const focusInput = () => {
-  const input = editInput.value
-  if (Array.isArray(input) && input[0]) {
-    input[0].focus()
-    if (input[0].select) input[0].select()
-  } else if (input) {
+const focusInput = (type) => {
+  const inputType = type === 'email' || type === 'url' || type === 'number' ? 'text' : type
+  const input = editRefs.value[inputType]
+  if (input) {
     input.focus()
-    if (input.select) input.select()
+    if (input.select && inputType === 'text') {
+      input.select()
+    }
+    // For date inputs, open the picker
+    if (type === 'date') {
+      try {
+        input.showPicker?.()
+      } catch (e) {
+        // showPicker may not be supported in all browsers
+      }
+    }
   }
+}
+
+// Handle input keydown events
+const handleInputKeydown = (e) => {
+  if (e.key === 'Enter') {
+    e.preventDefault()
+    confirmEdit()
+  } else if (e.key === 'Tab') {
+    e.preventDefault()
+    handleEditTab(e.shiftKey)
+  } else if (e.key === 'Escape') {
+    e.preventDefault()
+    cancelEdit()
+  }
+}
+
+// Handle select keydown events
+const handleSelectKeydown = (e) => {
+  if (e.key === 'Escape') {
+    e.preventDefault()
+    cancelEdit()
+  } else if (e.key === 'Tab') {
+    e.preventDefault()
+    handleEditTab(e.shiftKey)
+  }
+  // Enter is handled by change event for select
+}
+
+// Handle select change
+const handleSelectChange = (rowIdx, colId, value) => {
+  rows.value[rowIdx][colId] = value
+  confirmEdit()
+}
+
+// Handle blur for standard inputs
+const handleBlur = () => {
+  // Small delay to allow click events to fire first
+  blurTimeout = setTimeout(() => {
+    if (editingCell.value) {
+      confirmEdit()
+    }
+  }, 100)
+}
+
+// Handle date input click - open picker
+const handleDateClick = (e) => {
+  datePickerActive = true
+  try {
+    e.target.showPicker?.()
+  } catch (err) {
+    // showPicker may not be supported
+  }
+}
+
+// Handle date blur - need special handling for date picker
+const handleDateBlur = () => {
+  // Longer delay for date picker to allow selection
+  blurTimeout = setTimeout(() => {
+    datePickerActive = false
+    if (editingCell.value) {
+      confirmEdit()
+    }
+  }, 200)
 }
 
 // Enter while editing = confirm and stop editing (stay on same cell)
 const confirmEdit = () => {
+  if (blurTimeout) {
+    clearTimeout(blurTimeout)
+    blurTimeout = null
+  }
   editingCell.value = null
   editingOriginalValue.value = null
+  datePickerActive = false
   // Keep selection on same cell
-  containerRef.value?.focus()
+  nextTick(() => {
+    containerRef.value?.focus()
+  })
 }
 
 // Escape = cancel edit and restore original value
 const cancelEdit = () => {
+  if (blurTimeout) {
+    clearTimeout(blurTimeout)
+    blurTimeout = null
+  }
   if (editingCell.value && editingOriginalValue.value !== null) {
     const { row, col } = editingCell.value
     const colId = columns.value[col].id
@@ -549,25 +664,28 @@ const cancelEdit = () => {
   }
   editingCell.value = null
   editingOriginalValue.value = null
-  containerRef.value?.focus()
-}
-
-// Blur = confirm edit
-const stopEditing = () => {
-  editingCell.value = null
-  editingOriginalValue.value = null
+  datePickerActive = false
+  nextTick(() => {
+    containerRef.value?.focus()
+  })
 }
 
 // Tab while editing = confirm and move to next cell (also start editing)
-const handleEditTab = (e) => {
+const handleEditTab = (shiftKey) => {
   if (!editingCell.value) return
   const { row, col } = editingCell.value
+  
+  // Clear any pending blur
+  if (blurTimeout) {
+    clearTimeout(blurTimeout)
+    blurTimeout = null
+  }
   
   // Confirm current edit
   editingCell.value = null
   editingOriginalValue.value = null
   
-  if (e.shiftKey) {
+  if (shiftKey) {
     // Move backwards
     if (col > 0) {
       startEditing(row, col - 1)
@@ -589,6 +707,10 @@ const toggleCheckbox = (rowIdx, colId) => {
 }
 
 const clearSelection = () => {
+  if (blurTimeout) {
+    clearTimeout(blurTimeout)
+    blurTimeout = null
+  }
   editingCell.value = null
   editingOriginalValue.value = null
   selectedCell.value = null
