@@ -1,6 +1,7 @@
 <script setup>
 import { h, onMounted, onUnmounted } from "vue";
 import { useProductSubmenu } from "~/composables/useProductSubmenu";
+import ProductHero from "~/components/pages/product/ProductHero.vue";
 
 const { setSections, clearSections } = useProductSubmenu();
 
@@ -113,45 +114,13 @@ onUnmounted(() => {
 <template>
   <div>
     <!-- Hero Section -->
-    <section class="w-full relative section-hero-dark pt-4 pb-16 lg:pb-24">
-      <img
-        src="/images/ai-adoption-stack/ai-adoption-stack-hero.png"
-        alt=""
-        class="absolute inset-0 w-full h-full object-cover z-0"
-      />
-      <div
-        class="max-w-7xl mx-auto pt-40 pb-10 px-4 relative z-10 flex flex-col gap-16"
-      >
-        <div class="flex flex-col gap-8">
-          <h1
-            class="text-white text-balance text-7xl font-sentient font-medium"
-          >
-            Turn your entire organization into AI builders
-          </h1>
-          <p class="text-white/80 text-2xl text-balance">
-            Templates, analytics, and support to drive adoption from day one
-          </p>
-        </div>
-
-        <div class="flex flex-wrap gap-2">
-          <a
-            href="https://cloud.activepieces.com/sign-up"
-            class="inline-flex items-center justify-center min-w-60 px-6 py-4 text-xl font-semibold text-gray-900 bg-white rounded-full hover:bg-gray-100 ring-0 ring-white transition-all duration-200 hover:ring-2 shadow-lg shadow-white/10"
-          >
-            Start free
-          </a>
-          <a
-            href="/sales"
-            class="inline-flex items-center px-8 py-4 text-xl font-semibold text-white border-2 border-white/20 rounded-full hover:bg-white/10 transition-all hover:border-white/40"
-          >
-            Talk to sales
-          </a>
-        </div>
-        <div class="w-full max-w-full shrink-0">
-          <PagesIndexCompanyLogos class="relative z-10" />
-        </div>
-      </div>
-    </section>
+    <ProductHero
+      title="Turn your entire organization into AI builders"
+      subtitle="Templates, analytics, and support to drive adoption from day one"
+      background-image="/images/ai-adoption-stack/ai-adoption-stack-hero.png"
+      :primary-button="{ text: 'Start free', href: 'https://cloud.activepieces.com/sign-up' }"
+      :secondary-button="{ text: 'Talk to sales', href: '/sales' }"
+    />
 
     <!-- Section 1: Roll Out -->
     <section

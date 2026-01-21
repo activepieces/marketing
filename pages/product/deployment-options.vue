@@ -1,6 +1,7 @@
 <script setup>
 import { h, onMounted, onUnmounted } from 'vue';
 import { useProductSubmenu } from '~/composables/useProductSubmenu';
+import ProductHero from '~/components/pages/product/ProductHero.vue';
 
 const { setSections, clearSections } = useProductSubmenu();
 
@@ -75,31 +76,13 @@ onUnmounted(() => {
 <template>
   <div>
     <!-- Hero Section -->
-    <section class="w-full relative bg-black pt-4 pb-16 lg:pb-20">
-      <div
-        class="absolute inset-0 z-0"
-        style="background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(6, 182, 212, 0.5), transparent 70%), #000000"
-      ></div>
-      <div class="max-w-[1230px] mx-auto px-4 relative z-10">
-        <ProductSubmenu />
-        <div class="max-w-3xl mx-auto text-center pt-16 lg:pt-24">
-          <h1 class="text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-[1.1] mb-6">
-            Deploy your way. Pay fairly.
-          </h1>
-          <p class="text-xl text-gray-300 leading-relaxed mb-8">
-            Choose our secure cloud with GDPR & SOC 2 Type II compliance, or self-host in your infrastructure. Either way, you never pay for executions.
-          </p>
-          <div class="flex flex-wrap justify-center gap-4">
-            <a href="https://cloud.activepieces.com/sign-up" class="inline-flex items-center px-6 py-3 text-base font-semibold text-black bg-white rounded-lg hover:bg-gray-100 transition-colors">
-              Start free on cloud
-            </a>
-            <a href="https://www.activepieces.com/docs/install/overview" target="_blank" class="inline-flex items-center px-6 py-3 text-base font-semibold text-white border-2 border-white/30 rounded-lg hover:bg-white/10 transition-colors">
-              Self-host docs
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
+    <ProductHero
+      title="Deploy your way. Pay fairly."
+      subtitle="Choose our secure cloud with GDPR & SOC 2 Type II compliance, or self-host in your infrastructure. Either way, you never pay for executions."
+      background-gradient="radial-gradient(ellipse 80% 60% at 50% 0%, rgba(6, 182, 212, 0.5), transparent 70%), #000000"
+      :primary-button="{ text: 'Start free on cloud', href: 'https://cloud.activepieces.com/sign-up' }"
+      :secondary-button="{ text: 'Self-host docs', href: 'https://www.activepieces.com/docs/install/overview', external: true }"
+    />
 
     <!-- Section 1: Cloud Hosting -->
     <section id="cloud" class="py-24 bg-white border-t border-gray-100 relative overflow-hidden">
