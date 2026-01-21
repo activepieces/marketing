@@ -1,4 +1,6 @@
 <script setup>
+import { ref, computed } from 'vue';
+
 defineProps({
   title: {
     type: String,
@@ -25,6 +27,32 @@ defineProps({
     required: true,
   },
 });
+
+const route = useRoute();
+const { productPages } = useProductPages();
+
+const hoveredIndex = ref(null);
+
+const currentPageIndex = computed(() => {
+  return productPages.findIndex(page => route.path === page.path);
+});
+
+const currentPageName = computed(() => {
+  const index = currentPageIndex.value;
+  return index >= 0 ? productPages[index].name : 'Platform';
+});
+
+const pagesBefore = computed(() => {
+  return productPages.slice(0, currentPageIndex.value);
+});
+
+const pagesAfter = computed(() => {
+  return productPages.slice(currentPageIndex.value + 1);
+});
+
+const currentPage = computed(() => {
+  return productPages[currentPageIndex.value];
+});
 </script>
 
 <template>
@@ -50,11 +78,57 @@ defineProps({
         <div
           class="text-white/60 text-sm uppercase font-semibold flex items-center gap-2"
         >
-          <div class="w-2 h-2 bg-white/60 rounded-sm"></div>
-          AI Adoption Stack
-          <div class="w-2 h-2 bg-white/20 rounded-sm"></div>
-          <div class="w-2 h-2 bg-white/20 rounded-sm"></div>
-          <div class="w-2 h-2 bg-white/20 rounded-sm"></div>
+          <!-- Pages before current -->
+          <NuxtLink
+            v-for="(page, index) in pagesBefore"
+            :key="page.path"
+            :to="page.path"
+            class="relative"
+            @mouseenter="hoveredIndex = index"
+            @mouseleave="hoveredIndex = null"
+          >
+            <div
+              class="w-2 h-2 bg-white/20 rounded-sm transition-all duration-200"
+              :class="{ 'rotate-45 scale-125 bg-white/40': hoveredIndex === index }"
+            />
+            <!-- Tooltip -->
+            <div
+              v-if="hoveredIndex === index"
+              class="absolute left-full ml-2 top-1/2 -translate-y-1/2 whitespace-nowrap text-white/80 text-xs normal-case"
+            >
+              {{ page.name }}
+            </div>
+          </NuxtLink>
+
+          <!-- Current page square (highlighted) -->
+          <NuxtLink v-if="currentPage" :to="currentPage.path" class="relative">
+            <div class="w-2 h-2 bg-white/60 rounded-sm" />
+          </NuxtLink>
+
+          <!-- Current page name -->
+          {{ currentPageName }}
+
+          <!-- Pages after current -->
+          <NuxtLink
+            v-for="(page, index) in pagesAfter"
+            :key="page.path"
+            :to="page.path"
+            class="relative"
+            @mouseenter="hoveredIndex = currentPageIndex + 1 + index"
+            @mouseleave="hoveredIndex = null"
+          >
+            <div
+              class="w-2 h-2 bg-white/20 rounded-sm transition-all duration-200"
+              :class="{ 'rotate-45 scale-125 bg-white/40': hoveredIndex === currentPageIndex + 1 + index }"
+            />
+            <!-- Tooltip -->
+            <div
+              v-if="hoveredIndex === currentPageIndex + 1 + index"
+              class="absolute left-full ml-2 top-1/2 -translate-y-1/2 whitespace-nowrap text-white/80 text-xs normal-case"
+            >
+              {{ page.name }}
+            </div>
+          </NuxtLink>
         </div>
         <h1 class="text-white text-balance text-7xl font-sentient font-medium">
           {{ title }}
