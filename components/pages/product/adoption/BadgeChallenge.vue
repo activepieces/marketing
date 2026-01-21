@@ -538,8 +538,8 @@
             class="absolute -inset-8 border-2 border-violet-500/30 rounded-full animate-ping-slow"
           ></div>
         </div>
+      </Transition>
       </div>
-    </Transition>
   </div>
 </template>
 
@@ -993,9 +993,9 @@ function resetGame() {
 </script>
 
 <style scoped>
-/* Shake animation for wrong answer */
-.shake {
-  animation: shake 0.4s ease-in-out;
+/* Actions panel */
+.actions-enter-active, .actions-leave-active {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes shake {
@@ -1019,6 +1019,7 @@ function resetGame() {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+  transform: translateY(-8px) scale(0.95);
 }
 
 /* Fade scale for all collected view */
@@ -1029,7 +1030,7 @@ function resetGame() {
 .fade-scale-enter-from,
 .fade-scale-leave-to {
   opacity: 0;
-  transform: scale(0.95);
+  transform: translate(-50%, 20px);
 }
 
 /* Tooltip transition */
@@ -1053,9 +1054,8 @@ function resetGame() {
   opacity: 0;
 }
 
-/* Pop in animation for celebration content */
 .celebration-pop {
-  animation: pop-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 @keyframes pop-in {
@@ -1106,12 +1106,14 @@ function resetGame() {
 .confetti-particle {
   animation: confetti-fall 2s ease-out forwards;
   position: absolute;
-  top: -20px;
+  top: 30%;
+  font-size: 20px;
+  animation: confetti-fall 1.5s ease-out forwards;
 }
 
 @keyframes confetti-fall {
   0% {
-    transform: translateY(0) rotate(0deg) scale(1);
+    transform: translateY(0) rotate(0deg);
     opacity: 1;
   }
   100% {
@@ -1121,9 +1123,9 @@ function resetGame() {
   }
 }
 
-/* Badge unlock ping */
-.animate-ping-once {
-  animation: ping-once 0.5s cubic-bezier(0, 0, 0.2, 1);
+/* Badge bounce */
+.animate-bounce-once {
+  animation: bounce-once 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 @keyframes ping-once {

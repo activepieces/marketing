@@ -31,4 +31,5 @@ onMounted(() => {
   <PagesIndexHero class="-mt-[62px]" />
   <PagesIndexCaseStudies />
   <PagesIndexProductStrengths />
+  <PagesIndexSocialLove />
 </template>

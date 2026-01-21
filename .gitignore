@@ -1,7 +1,16 @@
-yarn.lock
-node_modules
-.DS_Store
+# Nuxt
 .nuxt
-.history/
-.output/
-.env
+.output
+
+# Vite
+node_modules/.vite
+node_modules/.cache
+
+# Node
+node_modules
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+

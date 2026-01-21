@@ -51,11 +51,56 @@ const { piecesCount, pending: piecesCountPending } = usePiecesCount();
 // Get product submenu sections
 const { sections: productSubmenuSections } = useProductSubmenu();
 
+// Platform menu hover state and hero images
+const hoveredPlatformItem = ref(null);
+
+const defaultHeroImage = '/images/ai-adoption-stack/ai-adoption-stack-hero.png';
+
+const platformPages = [
+  { 
+    id: 'ai-adoption',
+    name: 'AI Adoption Stack', 
+    path: '/product/ai-adoption',
+    heroImage: '/images/ai-adoption-stack/ai-adoption-stack-hero.png',
+    filterStyle: null
+  },
+  { 
+    id: 'ai-agents',
+    name: 'AI Agents', 
+    path: '/product/ai-agent-builder',
+    heroImage: null,
+    filterStyle: 'hue-rotate(280deg) saturate(1.3)',
+    overlayGradient: 'linear-gradient(135deg, rgba(236,72,153,0.3) 0%, rgba(139,92,246,0.3) 100%)'
+  },
+  { 
+    id: 'governance',
+    name: 'Control & Governance', 
+    path: '/product/governance-and-management',
+    heroImage: null,
+    filterStyle: 'hue-rotate(100deg) saturate(1.2)',
+    overlayGradient: 'linear-gradient(135deg, rgba(34,197,94,0.3) 0%, rgba(20,184,166,0.3) 100%)'
+  },
+  { 
+    id: 'deployment',
+    name: 'Deployment & Cost', 
+    path: '/product/deployment-options',
+    heroImage: null,
+    filterStyle: 'hue-rotate(180deg) saturate(1.2)',
+    overlayGradient: 'linear-gradient(135deg, rgba(6,182,212,0.3) 0%, rgba(59,130,246,0.3) 100%)'
+  },
+];
+
+const currentPlatformPage = computed(() => {
+  if (!hoveredPlatformItem.value) return null;
+  return platformPages.find(p => p.id === hoveredPlatformItem.value);
+});
+
 // Mobile menu state
 let menuExpanded = ref(false);
 const openSections = ref({
   product: false,
   resources: false,
+  partners: false,
   learn: false,
   community: false,
   support: false,
@@ -277,228 +322,295 @@ watch(useRoute(), () => {
 
                 <!-- Mega Menu Content -->
                 <div
-                  class="absolute left-0 top-full z-[60] w-[500px] rounded-xl shadow-xl bg-white p-4 grid grid-cols-[3fr_2fr] gap-0 block transition-all duration-300 delay-200 transform translate-y-2 opacity-0 group-hover/menu:opacity-100 group-hover/menu:translate-y-0 group-hover/menu:delay-0 border border-gray-100 pointer-events-none group-hover/menu:pointer-events-auto overflow-hidden"
+                  class="absolute left-0 top-full z-[60] rounded-xl shadow-xl ring-1 ring-gray-100 bg-white flex transition-all duration-300 ease-out transform translate-y-2 opacity-0 group-hover/menu:opacity-100 group-hover/menu:translate-y-0 pointer-events-none group-hover/menu:pointer-events-auto overflow-hidden"
+                  @mouseleave="hoveredPlatformItem = null"
                 >
                   <!-- Left Column: Product Pages -->
-                  <div class="flex min-w-0 flex flex-col gap-0 pr-4 group/list">
-                    <!-- AI Adoption Stack -->
-                    <NuxtLink
-                      to="/product/ai-adoption"
-                      class="flex items-center gap-2.5 px-2 py-3 transition group/feature border-b border-gray-100"
+                  <div class="flex flex-col gap-0 p-4 group/list flex-shrink-0">
+                    <div 
+                      class="flex flex-col gap-0"
+                      @mouseleave="hoveredPlatformItem = null"
                     >
-                      <div
-                        class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
-                      ></div>
-                      <span
-                        class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
-                        >AI Adoption Stack</span
+                      <!-- AI Adoption Stack -->
+                      <NuxtLink
+                        to="/product/ai-adoption"
+                        class="flex items-center gap-2.5 px-2 py-3 transition group/feature border-b border-gray-100 whitespace-nowrap"
+                        @mouseenter="hoveredPlatformItem = 'ai-adoption'"
                       >
-                      <svg
-                        class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        stroke-width="2.5"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M13 7l5 5m0 0l-5 5m5-5H6"
-                        />
-                      </svg>
-                    </NuxtLink>
-                    <!-- AI Agents -->
-                    <NuxtLink
-                      to="/product/ai-agent-builder"
-                      class="flex items-center gap-2.5 px-2 py-3 transition group/feature border-b border-gray-100"
-                    >
-                      <div
-                        class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
-                      ></div>
-                      <span
-                        class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
-                        >AI Agents</span
-                      >
-                      <svg
-                        class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        stroke-width="2.5"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M13 7l5 5m0 0l-5 5m5-5H6"
-                        />
-                      </svg>
-                    </NuxtLink>
-                    <!-- Control & Governance -->
-                    <NuxtLink
-                      to="/product/governance-and-management"
-                      class="flex items-center gap-2.5 px-2 py-3 transition group/feature border-b border-gray-100"
-                    >
-                      <div
-                        class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
-                      ></div>
-                      <span
-                        class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
-                        >Control & Governance</span
-                      >
-                      <svg
-                        class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        stroke-width="2.5"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M13 7l5 5m0 0l-5 5m5-5H6"
-                        />
-                      </svg>
-                    </NuxtLink>
-                    <!-- Deployment & Cost -->
-                    <NuxtLink
-                      to="/product/deployment-options"
-                      class="flex items-center gap-2.5 px-2 py-3 transition group/feature"
-                    >
-                      <div
-                        class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
-                      ></div>
-                      <span
-                        class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
-                        >Deployment & Cost</span
-                      >
-                      <svg
-                        class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        stroke-width="2.5"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M13 7l5 5m0 0l-5 5m5-5H6"
-                        />
-                      </svg>
-                    </NuxtLink>
-                  </div>
-                  <!-- Right Column: Apps -->
-                  <div
-                    class="flex min-w-0 flex flex-col gap-0 bg-gray-50 -mr-4 -mt-4 -mb-4 p-3"
-                  >
-                    <div
-                      class="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 px-2"
-                    >
-                      <span v-if="!piecesCountPending">{{ piecesCount }}+</span>
-                      Integrations
-                    </div>
-                    <div class="flex flex-col gap-0">
-                      <a
-                        href="/pieces/gmail"
-                        class="group/app flex items-center gap-2.5 h-9 px-2"
-                      >
+                        <div
+                          class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
+                        ></div>
                         <span
-                          class="w-5 h-5 flex items-center justify-center flex-shrink-0"
-                          ><img
-                            src="https://cdn.activepieces.com/pieces/gmail.png"
-                            class="w-5 h-5 transition duration-200 group-hover/app:drop-shadow-md"
-                            alt="Gmail"
-                        /></span>
-                        <span
-                          class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-gray-900"
-                          >Gmail</span
-                        >
-                      </a>
-                      <a
-                        href="/pieces/openai"
-                        class="group/app flex items-center gap-2.5 h-9 px-2"
-                      >
-                        <span
-                          class="w-5 h-5 flex items-center justify-center flex-shrink-0"
-                          ><img
-                            src="https://cdn.activepieces.com/pieces/openai.png"
-                            class="w-5 h-5 transition duration-200 group-hover/app:drop-shadow-md"
-                            alt="OpenAI"
-                        /></span>
-                        <span
-                          class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-gray-900"
-                          >OpenAI</span
-                        >
-                      </a>
-                      <a
-                        href="/pieces/slack"
-                        class="group/app flex items-center gap-2.5 h-9 px-2"
-                      >
-                        <span
-                          class="w-5 h-5 flex items-center justify-center flex-shrink-0"
-                          ><img
-                            src="https://cdn.activepieces.com/pieces/slack.png"
-                            class="w-5 h-5 transition duration-200 group-hover/app:drop-shadow-md"
-                            alt="Slack"
-                        /></span>
-                        <span
-                          class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-gray-900"
-                          >Slack</span
-                        >
-                      </a>
-                      <a
-                        href="/pieces/notion"
-                        class="group/app flex items-center gap-2.5 h-9 px-2"
-                      >
-                        <span
-                          class="w-5 h-5 flex items-center justify-center flex-shrink-0"
-                          ><img
-                            src="https://cdn.activepieces.com/pieces/notion.png"
-                            class="w-5 h-5 transition duration-200 group-hover/app:drop-shadow-md"
-                            alt="Notion"
-                        /></span>
-                        <span
-                          class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-gray-900"
-                          >Notion</span
-                        >
-                      </a>
-                      <a
-                        href="/pieces/hubspot"
-                        class="group/app flex items-center gap-2.5 h-9 px-2"
-                      >
-                        <span
-                          class="w-5 h-5 flex items-center justify-center flex-shrink-0"
-                          ><img
-                            src="https://cdn.activepieces.com/pieces/hubspot.png"
-                            class="w-5 h-5 transition duration-200 group-hover/app:drop-shadow-md"
-                            alt="HubSpot"
-                        /></span>
-                        <span
-                          class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-gray-900"
-                          >HubSpot</span
-                        >
-                      </a>
-                      <a
-                        href="/pieces"
-                        class="group/app flex items-center gap-1 h-9 px-2 mt-1 pt-1 border-t border-gray-200"
-                      >
-                        <span
-                          class="text-sm text-gray-500 transition-colors duration-200 group-hover/app:text-gray-900"
-                          >View all</span
+                          class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
+                          >AI Adoption Stack</span
                         >
                         <svg
-                          class="w-3.5 h-3.5 text-gray-400 transition-all duration-200 group-hover/app:text-gray-900 group-hover/app:translate-x-0.5"
+                          class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
-                          stroke-width="2"
+                          stroke-width="2.5"
                         >
                           <path
                             stroke-linecap="round"
                             stroke-linejoin="round"
-                            d="M9 5l7 7-7 7"
+                            d="M13 7l5 5m0 0l-5 5m5-5H6"
                           />
                         </svg>
-                      </a>
+                      </NuxtLink>
+                      <!-- AI Agents -->
+                      <NuxtLink
+                        to="/product/ai-agent-builder"
+                        class="flex items-center gap-2.5 px-2 py-3 transition group/feature border-b border-gray-100 whitespace-nowrap"
+                        @mouseenter="hoveredPlatformItem = 'ai-agents'"
+                      >
+                        <div
+                          class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
+                        ></div>
+                        <span
+                          class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
+                          >AI Agents</span
+                        >
+                        <svg
+                          class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          stroke-width="2.5"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M13 7l5 5m0 0l-5 5m5-5H6"
+                          />
+                        </svg>
+                      </NuxtLink>
+                      <!-- Control & Governance -->
+                      <NuxtLink
+                        to="/product/governance-and-management"
+                        class="flex items-center gap-2.5 px-2 py-3 transition group/feature border-b border-gray-100 whitespace-nowrap"
+                        @mouseenter="hoveredPlatformItem = 'governance'"
+                      >
+                        <div
+                          class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
+                        ></div>
+                        <span
+                          class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
+                          >Control & Governance</span
+                        >
+                        <svg
+                          class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          stroke-width="2.5"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M13 7l5 5m0 0l-5 5m5-5H6"
+                          />
+                        </svg>
+                      </NuxtLink>
+                      <!-- Deployment & Cost -->
+                      <NuxtLink
+                        to="/product/deployment-options"
+                        class="flex items-center gap-2.5 px-2 py-3 transition group/feature whitespace-nowrap"
+                        @mouseenter="hoveredPlatformItem = 'deployment'"
+                      >
+                        <div
+                          class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
+                        ></div>
+                        <span
+                          class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
+                          >Deployment & Cost</span
+                        >
+                        <svg
+                          class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          stroke-width="2.5"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M13 7l5 5m0 0l-5 5m5-5H6"
+                          />
+                        </svg>
+                      </NuxtLink>
+                    </div>
+                  </div>
+                  <!-- Right Column: Hero Image/Placeholder or Apps -->
+                  <div
+                    class="flex flex-col overflow-hidden relative transition-all duration-300 ease-out"
+                    :class="[
+                      currentPlatformPage ? 'w-[400px] bg-gray-900' : 'w-[200px]'
+                    ]"
+                  >
+                    <!-- Hero Image/Placeholder Preview Container -->
+                    <div 
+                      class="absolute inset-0 overflow-hidden transition-opacity duration-300"
+                      :class="currentPlatformPage ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'"
+                    >
+                      <!-- Vertical sliding container for all pages -->
+                      <div 
+                        class="absolute inset-0 flex flex-col transition-transform duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)]"
+                        :style="{ transform: `translateY(${hoveredPlatformItem ? -platformPages.findIndex(p => p.id === hoveredPlatformItem) * 265 : -30}px)` }"
+                      >
+                        <!-- Each page preview -->
+                        <div 
+                          v-for="(page, index) in platformPages" 
+                          :key="page.id"
+                          class="w-full flex-shrink-0 relative h-[265px] overflow-hidden"
+                        >
+                          <!-- Hero Image (original or with filter) -->
+                          <img 
+                            :src="page.heroImage || defaultHeroImage" 
+                            :alt="page.name"
+                            class="absolute inset-0 w-[120%] h-[120%] -left-[10%] -top-[10%] object-cover scale-150"
+                            :style="page.filterStyle ? { filter: page.filterStyle } : {}"
+                          />
+                          <!-- Color overlay for filtered images -->
+                          <div 
+                            v-if="page.overlayGradient"
+                            class="absolute inset-0 pointer-events-none"
+                            :style="{ background: page.overlayGradient }"
+                          ></div>
+                        </div>
+                        <!-- First item repeated at end for circular peek effect -->
+                        <div class="w-full flex-shrink-0 relative h-[265px] overflow-hidden">
+                          <img 
+                            :src="platformPages[0].heroImage || defaultHeroImage" 
+                            :alt="platformPages[0].name"
+                            class="absolute inset-0 w-[120%] h-[120%] -left-[10%] -top-[10%] object-cover scale-150"
+                            :style="platformPages[0].filterStyle ? { filter: platformPages[0].filterStyle } : {}"
+                          />
+                          <div 
+                            v-if="platformPages[0].overlayGradient"
+                            class="absolute inset-0 pointer-events-none"
+                            :style="{ background: platformPages[0].overlayGradient }"
+                          ></div>
+                        </div>
+                      </div>
+                      <!-- Subtle gradient overlay at bottom to hint at next item -->
+                      <div class="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-black/30 to-transparent pointer-events-none"></div>
+                    </div>
+                    <!-- Default: Integrations List -->
+                    <div 
+                      class="flex flex-col gap-0 p-4 pr-6 bg-gray-50 h-full transition-opacity duration-300 rounded-r-xl"
+                      :class="currentPlatformPage ? 'opacity-0 pointer-events-none' : 'opacity-100'"
+                    >
+                      <div
+                        class="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 px-2 whitespace-nowrap"
+                      >
+                        <span v-if="!piecesCountPending">{{ piecesCount }}+</span>
+                        Integrations
+                      </div>
+                      <div class="flex flex-col gap-0">
+                        <a
+                          href="/pieces/gmail"
+                          class="group/app flex items-center gap-2.5 h-9 px-2"
+                        >
+                          <span
+                            class="w-5 h-5 flex items-center justify-center flex-shrink-0"
+                            ><img
+                              src="https://cdn.activepieces.com/pieces/gmail.png"
+                              class="w-5 h-5 transition duration-200 group-hover/app:drop-shadow-md"
+                              alt="Gmail"
+                          /></span>
+                          <span
+                            class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-gray-900"
+                            >Gmail</span
+                          >
+                        </a>
+                        <a
+                          href="/pieces/openai"
+                          class="group/app flex items-center gap-2.5 h-9 px-2"
+                        >
+                          <span
+                            class="w-5 h-5 flex items-center justify-center flex-shrink-0"
+                            ><img
+                              src="https://cdn.activepieces.com/pieces/openai.png"
+                              class="w-5 h-5 transition duration-200 group-hover/app:drop-shadow-md"
+                              alt="OpenAI"
+                          /></span>
+                          <span
+                            class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-gray-900"
+                            >OpenAI</span
+                          >
+                        </a>
+                        <a
+                          href="/pieces/slack"
+                          class="group/app flex items-center gap-2.5 h-9 px-2"
+                        >
+                          <span
+                            class="w-5 h-5 flex items-center justify-center flex-shrink-0"
+                            ><img
+                              src="https://cdn.activepieces.com/pieces/slack.png"
+                              class="w-5 h-5 transition duration-200 group-hover/app:drop-shadow-md"
+                              alt="Slack"
+                          /></span>
+                          <span
+                            class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-gray-900"
+                            >Slack</span
+                          >
+                        </a>
+                        <a
+                          href="/pieces/notion"
+                          class="group/app flex items-center gap-2.5 h-9 px-2"
+                        >
+                          <span
+                            class="w-5 h-5 flex items-center justify-center flex-shrink-0"
+                            ><img
+                              src="https://cdn.activepieces.com/pieces/notion.png"
+                              class="w-5 h-5 transition duration-200 group-hover/app:drop-shadow-md"
+                              alt="Notion"
+                          /></span>
+                          <span
+                            class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-gray-900"
+                            >Notion</span
+                          >
+                        </a>
+                        <a
+                          href="/pieces/hubspot"
+                          class="group/app flex items-center gap-2.5 h-9 px-2"
+                        >
+                          <span
+                            class="w-5 h-5 flex items-center justify-center flex-shrink-0"
+                            ><img
+                              src="https://cdn.activepieces.com/pieces/hubspot.png"
+                              class="w-5 h-5 transition duration-200 group-hover/app:drop-shadow-md"
+                              alt="HubSpot"
+                          /></span>
+                          <span
+                            class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-gray-900"
+                            >HubSpot</span
+                          >
+                        </a>
+                        <a
+                          href="/pieces"
+                          class="group/app flex items-center gap-1 h-9 px-2 mt-1 pt-1 border-t border-gray-200"
+                        >
+                          <span
+                            class="text-sm text-gray-500 transition-colors duration-200 group-hover/app:text-gray-900"
+                            >View all</span
+                          >
+                          <svg
+                            class="w-3.5 h-3.5 text-gray-400 transition-all duration-200 group-hover/app:text-gray-900 group-hover/app:translate-x-0.5"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            stroke-width="2"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M9 5l7 7-7 7"
+                            />
+                          </svg>
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -546,138 +658,207 @@ watch(useRoute(), () => {
 
                 <!-- Mega Menu Content -->
                 <div
-                  class="absolute left-0 top-full z-[60] w-[260px] rounded-xl shadow-xl bg-white p-3 flex flex-col gap-0 block transition-all duration-300 delay-200 transform translate-y-2 opacity-0 group-hover/menu:opacity-100 group-hover/menu:translate-y-0 group-hover/menu:delay-0 border border-gray-100 pointer-events-none group-hover/menu:pointer-events-auto group/list"
+                  class="absolute left-0 top-full z-[60] w-[520px] rounded-xl shadow-xl bg-white p-4 grid grid-cols-[1fr_1fr] gap-4 block transition-all duration-75 transform translate-y-2 opacity-0 group-hover/menu:opacity-100 group-hover/menu:translate-y-0 group-hover/menu:duration-200 border border-gray-100 pointer-events-none group-hover/menu:pointer-events-auto"
+                >
+                  <!-- Left Column: Links -->
+                  <div class="flex flex-col gap-0 group/list">
+                    <a
+                      href="https://www.activepieces.com/docs"
+                      class="flex items-center gap-2.5 px-2 py-3 transition group/feature border-b border-gray-100"
+                    >
+                      <div
+                        class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
+                      ></div>
+                      <span
+                        class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
+                        >Docs</span
+                      >
+                      <svg
+                        class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        stroke-width="2.5"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M13 7l5 5m0 0l-5 5m5-5H6"
+                        />
+                      </svg>
+                    </a>
+                    <a
+                      href="https://community.activepieces.com"
+                      class="flex items-center gap-2.5 px-2 py-3 transition group/feature border-b border-gray-100"
+                    >
+                      <div
+                        class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
+                      ></div>
+                      <span
+                        class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
+                        >Support Forum</span
+                      >
+                      <svg
+                        class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        stroke-width="2.5"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M13 7l5 5m0 0l-5 5m5-5H6"
+                        />
+                      </svg>
+                    </a>
+                    <a
+                      href="https://www.youtube.com/@activepiecesco"
+                      target="_blank"
+                      class="flex items-center gap-2.5 px-2 py-3 transition group/feature border-b border-gray-100"
+                    >
+                      <div
+                        class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
+                      ></div>
+                      <span
+                        class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
+                        >YouTube</span
+                      >
+                      <svg
+                        class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        stroke-width="2.5"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M13 7l5 5m0 0l-5 5m5-5H6"
+                        />
+                      </svg>
+                    </a>
+                    <a
+                      href="https://discord.com/invite/2jUXBKDdP8"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="flex items-center gap-2.5 px-2 py-3 transition group/feature"
+                    >
+                      <div
+                        class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
+                      ></div>
+                      <span
+                        class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
+                        >Discord</span
+                      >
+                      <svg
+                        class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        stroke-width="2.5"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M13 7l5 5m0 0l-5 5m5-5H6"
+                        />
+                      </svg>
+                    </a>
+                  </div>
+                  
+                  <!-- Right Column: Case Studies -->
+                  <div class="flex flex-col gap-1.5 bg-gray-50 -m-4 ml-0 p-3 rounded-r-xl min-w-[220px]">
+                    <div class="text-xs font-medium text-gray-500 uppercase tracking-wider mb-1 px-2">Customer Stories</div>
+                    
+                    <!-- Alan Case Study -->
+                    <NuxtLink
+                      to="/customers/alan"
+                      class="group/card flex items-center gap-3 p-2 rounded-lg hover:bg-white transition-colors"
+                    >
+                      <div class="min-w-0 flex-1">
+                        <div class="text-[10px] text-gray-400 uppercase tracking-wide">Health Insurance</div>
+                        <div class="text-sm font-semibold text-gray-900">Alan</div>
+                        <div class="text-xs text-gray-500">300+ AI workflows</div>
+                      </div>
+                      <div class="relative w-16 h-16 flex-shrink-0 overflow-hidden rounded-lg">
+                        <img 
+                          src="/case-studies/alan-jeremie.png" 
+                          alt="Jérémie Preault" 
+                          class="absolute top-0 -right-2 w-32 h-auto object-contain -scale-x-100"
+                        />
+                      </div>
+                    </NuxtLink>
+                    
+                    <!-- Funding Societies Case Study -->
+                    <NuxtLink
+                      to="/customers/funding-societies"
+                      class="group/card flex items-center gap-3 p-2 rounded-lg hover:bg-white transition-colors"
+                    >
+                      <div class="min-w-0 flex-1">
+                        <div class="text-[10px] text-gray-400 uppercase tracking-wide">Fintech</div>
+                        <div class="text-sm font-semibold text-gray-900">Funding Societies</div>
+                        <div class="text-xs text-gray-500">90% time saved</div>
+                      </div>
+                      <div class="relative w-14 h-16 flex-shrink-0 overflow-visible">
+                        <img 
+                          src="/case-studies/funding-societies-shawn.png" 
+                          alt="Shawn Lim" 
+                          class="absolute bottom-0 right-0 w-[70px] h-auto object-contain"
+                        />
+                      </div>
+                    </NuxtLink>
+                  </div>
+                </div>
+              </li>
+
+              <!-- Partners Mega Menu -->
+              <li class="relative group/menu">
+                <!-- Hover Bridge -->
+                <div
+                  class="absolute left-0 top-0 w-full h-[calc(100%+10px)] opacity-0 pointer-events-auto z-10"
+                ></div>
+
+                <!-- Menu Button -->
+                <button
+                  class="flex items-center gap-1 rounded-full px-4 py-1.5 transition-colors duration-200"
+                  :class="{
+                    'text-white group-hover/header:text-gray-900':
+                      showTransparent,
+                    'text-gray-900': !showTransparent,
+                  }"
+                >
+                  <span
+                    class="font-normal button-text"
+                    :class="{
+                      'text-white group-hover/header:text-gray-900':
+                        showTransparent,
+                      'text-gray-900': !showTransparent,
+                    }"
+                    >Partners & Creators</span
+                  >
+                  <svg
+                    class="w-4 h-4 transition-transform duration-200 ease-in-out transform origin-center group-hover/menu:rotate-180"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+
+                <!-- Mega Menu Content -->
+                <div
+                  class="absolute left-0 top-full z-[60] w-[260px] rounded-xl shadow-xl bg-white p-3 flex flex-col gap-0 block transition-all duration-75 transform translate-y-2 opacity-0 group-hover/menu:opacity-100 group-hover/menu:translate-y-0 group-hover/menu:duration-200 border border-gray-100 pointer-events-none group-hover/menu:pointer-events-auto group/list"
                 >
                   <NuxtLink
-                    to="/story"
-                    class="flex items-center gap-2.5 px-2 py-3 transition group/feature border-b border-gray-100"
-                  >
-                    <div
-                      class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
-                    ></div>
-                    <span
-                      class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
-                      >Mission</span
-                    >
-                    <svg
-                      class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      stroke-width="2.5"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M13 7l5 5m0 0l-5 5m5-5H6"
-                      />
-                    </svg>
-                  </NuxtLink>
-                  <a
-                    href="https://www.activepieces.com/docs"
-                    class="flex items-center gap-2.5 px-2 py-3 transition group/feature border-b border-gray-100"
-                  >
-                    <div
-                      class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
-                    ></div>
-                    <span
-                      class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
-                      >Docs</span
-                    >
-                    <svg
-                      class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      stroke-width="2.5"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M13 7l5 5m0 0l-5 5m5-5H6"
-                      />
-                    </svg>
-                  </a>
-                  <a
-                    href="https://community.activepieces.com"
-                    class="flex items-center gap-2.5 px-2 py-3 transition group/feature border-b border-gray-100"
-                  >
-                    <div
-                      class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
-                    ></div>
-                    <span
-                      class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
-                      >Support Forum</span
-                    >
-                    <svg
-                      class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      stroke-width="2.5"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M13 7l5 5m0 0l-5 5m5-5H6"
-                      />
-                    </svg>
-                  </a>
-                  <a
-                    href="https://discord.com/invite/2jUXBKDdP8"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="flex items-center gap-2.5 px-2 py-3 transition group/feature border-b border-gray-100"
-                  >
-                    <div
-                      class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
-                    ></div>
-                    <span
-                      class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
-                      >Discord</span
-                    >
-                    <svg
-                      class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      stroke-width="2.5"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M13 7l5 5m0 0l-5 5m5-5H6"
-                      />
-                    </svg>
-                  </a>
-                  <NuxtLink
-                    to="/reseller"
-                    class="flex items-center gap-2.5 px-2 py-3 transition group/feature border-b border-gray-100"
-                  >
-                    <div
-                      class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
-                    ></div>
-                    <span
-                      class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
-                      >Become a Reseller</span
-                    >
-                    <svg
-                      class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      stroke-width="2.5"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M13 7l5 5m0 0l-5 5m5-5H6"
-                      />
-                    </svg>
-                  </NuxtLink>
-                  <NuxtLink
                     to="/content-creators"
-                    class="flex items-center gap-2.5 px-2 py-3 transition group/feature"
+                    class="flex items-center gap-2.5 px-2 py-3 transition group/feature border-b border-gray-100"
                   >
                     <div
                       class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
@@ -685,6 +866,31 @@ watch(useRoute(), () => {
                     <span
                       class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
                       >Content Creators</span
+                    >
+                    <svg
+                      class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      stroke-width="2.5"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M13 7l5 5m0 0l-5 5m5-5H6"
+                      />
+                    </svg>
+                  </NuxtLink>
+                  <NuxtLink
+                    to="/reseller"
+                    class="flex items-center gap-2.5 px-2 py-3 transition group/feature"
+                  >
+                    <div
+                      class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
+                    ></div>
+                    <span
+                      class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
+                      >Become a Reseller</span
                     >
                     <svg
                       class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
@@ -1037,31 +1243,6 @@ watch(useRoute(), () => {
               }"
             >
               <div class="py-3 space-y-0 group/list">
-                <NuxtLink
-                  to="/story"
-                  class="flex items-center gap-2.5 px-2.5 py-3 transition group/feature border-b border-gray-100"
-                >
-                  <div
-                    class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
-                  ></div>
-                  <span
-                    class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
-                    >Mission</span
-                  >
-                  <svg
-                    class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    stroke-width="2.5"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M13 7l5 5m0 0l-5 5m5-5H6"
-                    />
-                  </svg>
-                </NuxtLink>
                 <a
                   href="https://www.activepieces.com/docs"
                   class="flex items-center gap-2.5 px-2.5 py-3 transition group/feature border-b border-gray-100"
@@ -1113,10 +1294,36 @@ watch(useRoute(), () => {
                   </svg>
                 </a>
                 <a
+                  href="https://www.youtube.com/@activepiecesco"
+                  target="_blank"
+                  class="flex items-center gap-2.5 px-2.5 py-3 transition group/feature border-b border-gray-100"
+                >
+                  <div
+                    class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
+                  ></div>
+                  <span
+                    class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
+                    >YouTube</span
+                  >
+                  <svg
+                    class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    stroke-width="2.5"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M13 7l5 5m0 0l-5 5m5-5H6"
+                    />
+                  </svg>
+                </a>
+                <a
                   href="https://discord.com/invite/2jUXBKDdP8"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="flex items-center gap-2.5 px-2.5 py-3 transition group/feature border-b border-gray-100"
+                  class="flex items-center gap-2.5 px-2.5 py-3 transition group/feature"
                 >
                   <div
                     class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
@@ -1139,8 +1346,42 @@ watch(useRoute(), () => {
                     />
                   </svg>
                 </a>
+              </div>
+            </div>
+          </li>
+
+          <!-- Partners Menu -->
+          <li>
+            <button
+              class="flex items-center justify-between w-full py-3 text-lg font-medium"
+              @click="toggleSection('partners')"
+            >
+              Partners & Creators
+              <svg
+                class="w-5 h-5 transform transition-transform duration-200"
+                :class="{ 'rotate-180': openSections.partners }"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            <div
+              class="overflow-hidden transition-all duration-200"
+              :class="{
+                'max-h-0': !openSections.partners,
+                'max-h-[1000px]': openSections.partners,
+              }"
+            >
+              <div class="py-3 space-y-0 group/list">
                 <NuxtLink
-                  to="/reseller"
+                  to="/content-creators"
                   class="flex items-center gap-2.5 px-2.5 py-3 transition group/feature border-b border-gray-100"
                 >
                   <div
@@ -1148,7 +1389,7 @@ watch(useRoute(), () => {
                   ></div>
                   <span
                     class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
-                    >Become a Reseller</span
+                    >Content Creators</span
                   >
                   <svg
                     class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
@@ -1165,7 +1406,7 @@ watch(useRoute(), () => {
                   </svg>
                 </NuxtLink>
                 <NuxtLink
-                  to="/content-creators"
+                  to="/reseller"
                   class="flex items-center gap-2.5 px-2.5 py-3 transition group/feature"
                 >
                   <div
@@ -1173,7 +1414,7 @@ watch(useRoute(), () => {
                   ></div>
                   <span
                     class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
-                    >Content Creators</span
+                    >Become a Reseller</span
                   >
                   <svg
                     class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
