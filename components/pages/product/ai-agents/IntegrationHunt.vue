@@ -1,8 +1,8 @@
 <template>
-  <div class="h-full border border-red-500">
+  <div class="h-full p-8">
     <div
       ref="gameContainer"
-      class="relative w-full max-w-xl mx-auto h-[480px] rounded-2xl overflow-hidden select-none outline-none focus:outline-none"
+      class="relative w-full mx-auto h-full overflow-hidden select-none outline-none focus:outline-none rounded-lg"
       :style="{
         background:
           'linear-gradient(180deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%)',
@@ -596,7 +596,6 @@
         </div>
       </div>
     </div>
-
   </div>
 </template>
 

@@ -1,23 +1,27 @@
 <script setup>
-import { onMounted, onUnmounted } from 'vue';
-import { useProductSubmenu } from '~/composables/useProductSubmenu';
-import ProductHero from '~/components/pages/product/ProductHero.vue';
+import { onMounted, onUnmounted } from "vue";
+import { useProductSubmenu } from "~/composables/useProductSubmenu";
+import ProductHero from "~/components/pages/product/ProductHero.vue";
 
 const { piecesCount, pending: piecesCountPending } = usePiecesCount();
 const { setSections, clearSections } = useProductSubmenu();
 
 const sections = [
-  { id: 'integrations', name: 'Integrations', icon: 'plug' },
-  { id: 'agent-builder', name: 'Agent Builder', icon: 'cube' },
-  { id: 'activepieces-tables', name: 'Tables', icon: 'table' },
-  { id: 'human-in-the-loop', name: 'Human in the Loop', icon: 'hand' }
+  { id: "integrations", name: "Integrations", icon: "plug" },
+  { id: "agent-builder", name: "Agent Builder", icon: "cube" },
+  { id: "activepieces-tables", name: "Tables", icon: "table" },
+  { id: "human-in-the-loop", name: "Human in the Loop", icon: "hand" },
 ];
 
 useHead({
-  title: 'AI Agents',
+  title: "AI Agents",
   meta: [
-    { name: 'description', content: 'Build AI agents that work where you work. Connect to 500+ tools and create automations in minutes—no code required.' }
-  ]
+    {
+      name: "description",
+      content:
+        "Build AI agents that work where you work. Connect to 500+ tools and create automations in minutes—no code required.",
+    },
+  ],
 });
 
 // Set sections for the header submenu
@@ -30,7 +34,7 @@ onUnmounted(() => {
 });
 
 definePageMeta({
-  layout: 'home',
+  layout: "home",
 });
 </script>
 
@@ -40,7 +44,10 @@ definePageMeta({
     <ProductHero
       title="Build AI agents that work where you work"
       background-gradient="radial-gradient(ellipse 80% 60% at 50% 0%, rgba(236, 72, 153, 0.5), transparent 70%), #000000"
-      :primary-button="{ text: 'Start free', href: 'https://cloud.activepieces.com/sign-up' }"
+      :primary-button="{
+        text: 'Start free',
+        href: 'https://cloud.activepieces.com/sign-up',
+      }"
       :secondary-button="{ text: 'Talk to sales', href: '/sales' }"
     />
 
@@ -50,18 +57,22 @@ definePageMeta({
       class="py-24 bg-[#1a0a1f] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
     >
       <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col gap-20">
-        <PagesProductSectionHeader title="Your agents work across every tool you use" />
+        <PagesProductSectionHeader
+          title="Your agents work across every tool you use"
+        />
 
         <PagesProductAdoptionFeatureCard
           content-position="right"
           :content-ratio="2"
           variant="bordered"
           title="Connect to the tools you already use"
-          :description="`We're a connectivity platform first. Your AI agents can read, write, and act across ${piecesCountPending ? '...' : piecesCount + '+'} apps—from CRMs and project management to email, chat, databases, and more.`"
+          :description="`We're a connectivity platform first. Your AI agents can read, write, and act across ${
+            piecesCountPending ? '...' : piecesCount + '+'
+          } apps—from CRMs and project management to email, chat, databases, and more.`"
           :items="[
             'Pre-built connectors for Slack, Gmail, Notion, HubSpot, Salesforce, and hundreds more',
             'We handle auth—no API keys or OAuth headaches',
-            'New pieces weekly—request any integration you need'
+            'New pieces weekly—request any integration you need',
           ]"
         >
           <PagesProductAiAgentsIntegrationHunt />
@@ -88,7 +99,7 @@ definePageMeta({
             :items="[
               'Describe your task in plain English',
               'Train the AI on your specific workflow',
-              'Grant tool access and let it run'
+              'Grant tool access and let it run',
             ]"
           >
             <PagesProductAiAgentsAgentBuilder />
@@ -104,7 +115,7 @@ definePageMeta({
             :items="[
               'AI pieces—ChatGPT, Claude, and more baked in',
               'Branching & loops—handle complex scenarios',
-              'Code & HTTP—unlimited flexibility when you need it'
+              'Code & HTTP—unlimited flexibility when you need it',
             ]"
           >
             <PagesProductAiAgentsFlowBuilder />
@@ -120,7 +131,7 @@ definePageMeta({
             :items="[
               'Step-by-step logs—input and output for every action',
               'Error highlighting—pinpoint exactly where things broke',
-              'Bulk retry—fix and re-run failed executions instantly'
+              'Bulk retry—fix and re-run failed executions instantly',
             ]"
           >
             <PagesProductAiAgentsExecutionInspector />
@@ -146,7 +157,7 @@ definePageMeta({
           :items="[
             'Native data storage—no external spreadsheet needed',
             'AI agents + data—build smart workflows around your tables',
-            'One platform—data and automation together'
+            'One platform—data and automation together',
           ]"
         >
           <PagesProductAiAgentsTablesDemo />
@@ -160,7 +171,9 @@ definePageMeta({
       class="py-24 bg-[#4a1a3b] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
     >
       <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col gap-20">
-        <PagesProductSectionHeader title="Stay in control—agents ask when they need you" />
+        <PagesProductSectionHeader
+          title="Stay in control—agents ask when they need you"
+        />
 
         <PagesProductAdoptionFeatureCard
           content-position="right"
@@ -171,7 +184,7 @@ definePageMeta({
           :items="[
             'Approval gates—agents pause and wait for your decision',
             'Context-aware requests—agents explain why they need approval',
-            'Resume or reject—approve to continue, reject to stop'
+            'Resume or reject—approve to continue, reject to stop',
           ]"
         >
           <PagesProductAiAgentsHumanInTheLoop />

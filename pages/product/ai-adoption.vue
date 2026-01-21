@@ -111,7 +111,7 @@ onUnmounted(() => {
 });
 
 definePageMeta({
-  layout: 'home',
+  layout: "home",
 });
 </script>
 
