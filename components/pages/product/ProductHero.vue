@@ -91,7 +91,7 @@ const displayedName = computed(() => {
           </NuxtLink>
 
           <!-- Label after all squares -->
-          <span :class="hoveredIndex !== null ? 'text-white' : ''">
+          <span class="ml-1" :class="hoveredIndex !== null ? 'text-white' : ''">
             {{ displayedName }}
           </span>
         </div>
