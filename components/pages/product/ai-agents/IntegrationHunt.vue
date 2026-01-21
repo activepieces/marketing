@@ -5,7 +5,7 @@
       class="relative w-full mx-auto h-full overflow-hidden select-none outline-none focus:outline-none rounded-lg"
       :style="{
         background:
-          'linear-gradient(180deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%)',
+          'linear-gradient(180deg, rgba(88, 28, 135, 0.95) 0%, rgba(59, 7, 100, 0.98) 50%, rgba(30, 10, 60, 1) 100%)',
       }"
       tabindex="0"
       @mousemove="handleMouseMove"
@@ -18,7 +18,7 @@
         <div
           v-for="star in stars"
           :key="star.id"
-          class="absolute rounded-full bg-purple-300"
+          class="absolute rounded-full bg-white/30"
           :style="{
             left: star.x + '%',
             top: star.y + '%',
@@ -106,7 +106,7 @@
           <!-- Photo + angry emoji -->
           <div class="relative">
             <div
-              class="w-12 h-12 rounded-full overflow-hidden shadow-lg bg-gray-100"
+              class="w-12 h-12 rounded-full overflow-hidden shadow-lg bg-white/10 border border-white/20"
             >
               <img
                 :src="founder.avatar"
@@ -121,7 +121,7 @@
 
           <!-- Name below -->
           <span
-            class="mt-1 text-xs font-bold text-gray-800 bg-white/90 px-2 py-0.5 rounded-full shadow"
+            class="mt-1 text-xs font-bold text-white bg-white/10 backdrop-blur-sm border border-white/20 px-2 py-0.5 rounded-full shadow"
             >{{ founder.name?.split(" ")[0] }}</span
           >
         </div>
@@ -180,7 +180,7 @@
         }"
       >
         <div class="relative">
-          <div class="w-12 h-8 relative">
+          <div class="w-12 h-8 relative drop-shadow-[0_0_12px_rgba(167,139,250,0.5)]">
             <div
               class="absolute inset-0 clip-ship"
               :style="{
@@ -202,11 +202,11 @@
 
       <!-- Score -->
       <div class="absolute top-4 right-4 text-right">
-        <div class="text-3xl font-bold text-purple-600 tabular-nums">
+        <div class="text-3xl font-bold text-white tabular-nums">
           {{ score }}
         </div>
         <div
-          class="text-[10px] text-purple-400 font-medium uppercase tracking-wider"
+          class="text-[10px] text-white/60 font-medium uppercase tracking-wider"
         >
           caught
         </div>
@@ -228,7 +228,7 @@
             <svg
               viewBox="0 0 24 24"
               fill="currentColor"
-              class="text-red-500 drop-shadow-sm"
+              class="text-red-400 drop-shadow-[0_0_8px_rgba(239,68,68,0.5)]"
             >
               <path
                 d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
@@ -254,7 +254,7 @@
 
       <!-- Remaining pieces -->
       <div class="absolute top-14 left-4 group cursor-help">
-        <div class="flex items-center gap-1.5 text-purple-400">
+        <div class="flex items-center gap-1.5 text-white/60">
           <span class="text-lg font-bold tabular-nums">{{
             remainingPieces
           }}</span>
@@ -264,7 +264,7 @@
           class="absolute left-0 top-full mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-30"
         >
           <div
-            class="bg-gray-900 text-white text-xs px-3 py-2 rounded-lg whitespace-nowrap shadow-lg"
+            class="bg-white/10 backdrop-blur-sm text-white text-xs px-3 py-2 rounded-lg whitespace-nowrap shadow-lg border border-white/10"
           >
             Sorry, we have too many pieces 😫
           </div>
@@ -275,19 +275,19 @@
       <div class="absolute top-24 right-4 flex gap-2">
         <div
           v-if="armoredActive"
-          class="w-6 h-6 rounded bg-blue-100 flex items-center justify-center text-xs"
+          class="w-6 h-6 rounded bg-blue-500/20 border border-blue-400/30 flex items-center justify-center text-xs"
         >
           🛡️
         </div>
         <div
           v-if="speedActive"
-          class="w-6 h-6 rounded bg-amber-100 flex items-center justify-center text-xs"
+          class="w-6 h-6 rounded bg-amber-500/20 border border-amber-400/30 flex items-center justify-center text-xs"
         >
           ⚡
         </div>
         <div
           v-if="bugsActive"
-          class="w-6 h-6 rounded bg-red-100 flex items-center justify-center text-xs"
+          class="w-6 h-6 rounded bg-red-500/20 border border-red-400/30 flex items-center justify-center text-xs"
         >
           🐛
         </div>
@@ -299,14 +299,14 @@
           v-for="i in maxAmmo"
           :key="i"
           class="w-1.5 h-4 rounded-full transition-all duration-150"
-          :class="i <= ammo ? 'bg-amber-400' : 'bg-gray-300'"
+          :class="i <= ammo ? 'bg-amber-400' : 'bg-white/20'"
         ></div>
       </div>
 
       <!-- Start prompt with subtle overlay -->
       <div
         v-if="!gameStarted"
-        class="absolute inset-0 flex items-center justify-center z-10 bg-white/70"
+        class="absolute inset-0 flex items-center justify-center z-10 bg-black/60 backdrop-blur-sm"
       >
         <!-- Floating mini apps in background -->
         <div class="absolute inset-0 pointer-events-none overflow-hidden">
@@ -349,16 +349,16 @@
 
         <div class="text-center relative z-10">
           <div class="text-5xl mb-3 animate-bounce-slow">👾</div>
-          <h2 class="text-slate-800 font-black text-2xl mb-5">
+          <h2 class="text-white font-black text-2xl mb-5">
             Integration Invasion
           </h2>
           <button
             @click.stop="startGame"
-            class="px-8 py-3 bg-slate-900 hover:bg-slate-800 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95 transition-all"
+            class="px-8 py-3 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95 transition-all ring-0 ring-white/5 hover:ring-8"
           >
             Defend
           </button>
-          <p class="text-slate-400 text-xs mt-4">🖱️ move · space shoot</p>
+          <p class="text-white/40 text-xs mt-4">🖱️ move · space shoot</p>
         </div>
       </div>
 
@@ -373,16 +373,16 @@
             <!-- Preview chip with placeholder + animated badge -->
             <div class="mb-8 flex justify-center">
               <div
-                class="inline-flex items-center gap-3 px-5 py-4 rounded-2xl shadow-2xl bg-white/95"
+                class="inline-flex items-center gap-3 px-5 py-4 rounded-2xl shadow-2xl bg-white/10 backdrop-blur-sm border border-white/20"
               >
                 <!-- Placeholder icon -->
                 <div
-                  class="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0"
+                  class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0"
                 >
                   <span v-if="challengeType === 'bugs'" class="text-2xl"
                     >🐛</span
                   >
-                  <div v-else class="w-6 h-6 rounded bg-gray-300"></div>
+                  <div v-else class="w-6 h-6 rounded bg-white/20"></div>
                 </div>
 
                 <!-- Placeholder text lines -->
@@ -390,10 +390,10 @@
                   v-if="challengeType !== 'bugs'"
                   class="flex flex-col gap-1.5"
                 >
-                  <div class="w-14 h-2.5 bg-gray-300 rounded"></div>
-                  <div class="w-8 h-2 bg-gray-200 rounded"></div>
+                  <div class="w-14 h-2.5 bg-white/20 rounded"></div>
+                  <div class="w-8 h-2 bg-white/10 rounded"></div>
                 </div>
-                <span v-else class="text-base font-bold text-red-500"
+                <span v-else class="text-base font-bold text-red-300"
                   >AVOID!</span
                 >
 
@@ -590,7 +590,7 @@
         class="absolute bottom-20 left-1/2 -translate-x-1/2 text-center pointer-events-none"
       >
         <div
-          class="text-[70px] font-bold text-purple-200/30 leading-none tabular-nums"
+          class="text-[70px] font-bold text-white/10 leading-none tabular-nums"
         >
           {{ totalCount }}+
         </div>
@@ -1356,42 +1356,42 @@ const update = (currentTime) => {
 const getTargetClasses = (target) => {
   if (target.caught) {
     return target.isMalware
-      ? "bg-red-200 border-2 border-red-300 opacity-40 scale-75"
-      : "bg-green-100 border border-green-200 opacity-40 scale-75";
+      ? "bg-red-500/10 border-2 border-red-400/30 opacity-40 scale-75"
+      : "bg-white/5 border border-white/10 opacity-40 scale-75";
   }
   if (target.isMalware) {
-    return "bg-red-100 border-2 border-red-400 shadow-lg shadow-red-200/50";
+    return "bg-red-500/20 border-2 border-red-400/50 shadow-lg shadow-red-500/20";
   }
   if (target.isGiant) {
-    return "bg-gradient-to-br from-orange-100 to-amber-50 border-2 border-orange-400 shadow-xl shadow-orange-300/50 scale-110";
+    return "bg-orange-500/20 border-2 border-orange-400/50 shadow-xl shadow-orange-500/30 scale-110";
   }
   if (target.isGhost) {
-    return "bg-gray-50/60 border border-gray-300/50 shadow-sm backdrop-blur-sm";
+    return "bg-white/5 border border-white/10 shadow-sm backdrop-blur-sm";
   }
   if (target.isTiny) {
-    return "bg-purple-50 border border-purple-300 shadow-sm scale-90";
+    return "bg-purple-500/20 border border-purple-400/50 shadow-sm scale-90";
   }
   if (target.isZigzag) {
-    return "bg-cyan-50 border border-cyan-300 shadow-md";
+    return "bg-cyan-500/20 border border-cyan-400/50 shadow-md";
   }
   if (target.isFast) {
-    return "bg-amber-50 border border-amber-300 shadow-md";
+    return "bg-amber-500/20 border border-amber-400/50 shadow-md";
   }
   if (target.maxHealth === 2) {
-    return "bg-blue-50 border-2 border-blue-300 shadow-md";
+    return "bg-blue-500/20 border-2 border-blue-400/50 shadow-md";
   }
-  return "bg-white border border-purple-200 shadow-md";
+  return "bg-white/10 border border-white/20 shadow-md";
 };
 
 const getTargetTextClass = (target) => {
   if (target.caught) {
     return target.isMalware
-      ? "text-red-400 line-through"
-      : "text-green-600 line-through";
+      ? "text-red-300/60 line-through"
+      : "text-white/40 line-through";
   }
-  if (target.isMalware) return "text-red-600 font-bold";
-  if (target.isFast) return "text-amber-700";
-  return "text-gray-700";
+  if (target.isMalware) return "text-red-300 font-bold";
+  if (target.isFast) return "text-amber-300";
+  return "text-white/80";
 };
 
 const getTargetStyle = (target) => {
