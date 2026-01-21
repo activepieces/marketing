@@ -597,29 +597,13 @@
       </div>
     </div>
 
-    <!-- Review button (dev only) -->
-    <button
-      @click="openReview"
-      class="mt-4 mx-auto block text-xs text-gray-400 hover:text-gray-600 underline"
-    >
-      Review founder photos
-    </button>
-
-    <!-- Review Modal -->
-    <FounderPhotoReview ref="reviewModal" />
   </div>
 </template>
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted, watch } from "vue";
-import FounderPhotoReview from "./FounderPhotoReview.vue";
 
 const gameContainer = ref(null);
-const reviewModal = ref(null);
-
-const openReview = () => {
-  reviewModal.value?.open();
-};
 const pieces = ref([]);
 const piecesWithFounders = ref([]);
 const piecesWithoutFounders = ref([]);
