@@ -2,28 +2,28 @@
 defineProps({
   title: {
     type: String,
-    required: true
+    required: true,
   },
   subtitle: {
     type: String,
-    default: ''
+    default: "",
   },
   backgroundImage: {
     type: String,
-    default: ''
+    default: "",
   },
   backgroundGradient: {
     type: String,
-    default: ''
+    default: "",
   },
   primaryButton: {
     type: Object,
-    required: true
+    required: true,
   },
   secondaryButton: {
     type: Object,
-    required: true
-  }
+    required: true,
+  },
 });
 </script>
 
@@ -43,8 +43,19 @@ defineProps({
       :style="{ background: backgroundGradient }"
     ></div>
 
-    <div class="max-w-7xl mx-auto pt-40 pb-10 px-4 relative z-10 flex flex-col gap-16">
+    <div
+      class="max-w-7xl mx-auto pt-40 pb-10 px-4 relative z-10 flex flex-col gap-16"
+    >
       <div class="flex flex-col gap-8">
+        <div
+          class="text-white/60 text-sm uppercase font-semibold flex items-center gap-2"
+        >
+          <div class="w-2 h-2 bg-white/60 rounded-sm"></div>
+          AI Adoption Stack
+          <div class="w-2 h-2 bg-white/20 rounded-sm"></div>
+          <div class="w-2 h-2 bg-white/20 rounded-sm"></div>
+          <div class="w-2 h-2 bg-white/20 rounded-sm"></div>
+        </div>
         <h1 class="text-white text-balance text-7xl font-sentient font-medium">
           {{ title }}
         </h1>
