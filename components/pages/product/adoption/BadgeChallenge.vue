@@ -538,8 +538,8 @@
             class="absolute -inset-8 border-2 border-violet-500/30 rounded-full animate-ping-slow"
           ></div>
         </div>
+        </div>
       </Transition>
-      </div>
   </div>
 </template>
 

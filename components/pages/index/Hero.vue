@@ -788,7 +788,7 @@ onBeforeUnmount(() => {
                 v-if="!customOrg"
                 class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover/dashboard:opacity-100 pointer-events-none group-hover/dashboard:pointer-events-auto hover:opacity-100 transition-all duration-200"
                 style="filter: drop-shadow(0 0 40px rgba(0, 0, 0, 0.3)) drop-shadow(0 0 80px rgba(0, 0, 0, 0.2)); z-index: 99999; isolation: isolate;"
-                @transitionend="() => { if (process.client && emailInputRef) { setTimeout(() => emailInputRef.focus(), 50); } }"
+                @transitionend="() => { if (emailInputRef) { setTimeout(() => emailInputRef.focus(), 50); } }"
               >
                 <div class="bg-white/95 backdrop-blur-sm rounded-xl shadow-lg border border-gray-200 p-4 min-w-[320px] relative" style="pointer-events: auto !important;">
                   <p class="text-sm text-gray-700 mb-3 text-center">Use your theme, enter your email</p>

@@ -30,7 +30,7 @@ const testimonials = [
 ];
 
 // Product showcase data with richer content
-const showcases = [
+const showcases = computed(() => [
   {
     id: 'integrations',
     category: 'BUILD',
@@ -126,7 +126,7 @@ const showcases = [
       { value: '4', label: 'Components' },
     ],
   },
-];
+]);
 
 // Intersection Observer for scroll animations
 let observer = null;
@@ -150,7 +150,7 @@ onMounted(() => {
         if (entry.isIntersecting) {
           visibleSections.value.add(id);
           if (entry.intersectionRatio > 0.3) {
-            activeSection.value = showcases.findIndex(s => s.id === id);
+            activeSection.value = showcases.value.findIndex(s => s.id === id);
           }
         }
       });
