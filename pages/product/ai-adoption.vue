@@ -128,17 +128,7 @@ onUnmounted(() => {
       class="py-24 bg-[#081635] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
     >
       <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col gap-20">
-        <div
-          class="text-center w-full mx-auto rounded-2xl flex gap-8 items-center"
-        >
-          <div class="w-full h-1 bg-white/10 rounded-full"></div>
-          <h2
-            class="text-6xl font-sentient font-medium text-white text-balance shrink-0"
-          >
-            Your AI home. Zero friction.
-          </h2>
-          <div class="w-full h-1 bg-white/10 rounded-full"></div>
-        </div>
+        <PagesProductSectionHeader title="Your AI home. Zero friction." />
 
         <div class="flex flex-col gap-8">
           <!-- Feature 1: Branding -->
@@ -182,17 +172,7 @@ onUnmounted(() => {
       class="py-24 bg-[#082c41] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
     >
       <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col gap-20">
-        <div
-          class="text-center w-full mx-auto rounded-2xl flex gap-8 items-center"
-        >
-          <div class="w-full h-1 bg-white/10 rounded-full"></div>
-          <h2
-            class="text-6xl font-sentient font-medium text-white text-balance shrink-0"
-          >
-            Clear path forward. Built-in guidance.
-          </h2>
-          <div class="w-full h-1 bg-white/10 rounded-full"></div>
-        </div>
+        <PagesProductSectionHeader title="Clear path forward. Built-in guidance." />
 
         <!-- Feature 1: Templates -->
         <PagesProductAdoptionFeatureCard
@@ -252,17 +232,7 @@ onUnmounted(() => {
       class="py-24 bg-[#064448] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
     >
       <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col gap-20">
-        <div
-          class="text-center w-full mx-auto rounded-2xl flex gap-8 items-center"
-        >
-          <div class="w-full h-1 bg-white/10 rounded-full"></div>
-          <h2
-            class="text-6xl font-sentient font-medium text-white text-balance shrink-0"
-          >
-            Visible progress. Real motivation.
-          </h2>
-          <div class="w-full h-1 bg-white/10 rounded-full"></div>
-        </div>
+        <PagesProductSectionHeader title="Visible progress. Real motivation." />
 
         <!-- Feature 1: Leaderboard -->
         <PagesProductAdoptionFeatureCard
@@ -306,24 +276,10 @@ onUnmounted(() => {
       class="py-24 bg-[#275d43] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
     >
       <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col gap-20">
-        <!-- Header -->
-        <div class="flex flex-col gap-8">
-          <div
-            class="text-center w-full mx-auto rounded-2xl flex gap-8 items-center"
-          >
-            <div class="w-full h-1 bg-white/10 rounded-full"></div>
-            <h2
-              class="text-6xl font-sentient font-medium text-white text-balance shrink-0"
-            >
-              Full visibility. Expert backup.
-            </h2>
-            <div class="w-full h-1 bg-white/10 rounded-full"></div>
-          </div>
-          <p class="text-xl text-white/80 text-center max-w-2xl mx-auto">
-            Finally, leadership can see AI adoption happening in real-time. No
-            more guessing if your investment is paying off.
-          </p>
-        </div>
+        <PagesProductSectionHeader
+          title="Full visibility. Expert backup."
+          subtitle="Finally, leadership can see AI adoption happening in real-time. No more guessing if your investment is paying off."
+        />
 
         <!-- Full-width Interactive Dashboard -->
         <div class="">
