@@ -11,22 +11,24 @@ onMounted(() => {
 </script>
 
 <template>
-  <section class="relative py-12 md:py-16 overflow-hidden bg-[#050505]">
+  <section class="relative pt-16 md:pt-24 pb-36 md:pb-44 bg-[#050505]">
     <!-- Decorative AI Background -->
-    <div class="absolute inset-0 overflow-hidden pointer-events-none">
-      <!-- Grid pattern -->
-      <div class="absolute inset-0 opacity-[0.04]" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 50px 50px;"></div>
+    <div class="absolute inset-0 pointer-events-none">
+      <!-- Subtle grid pattern -->
+      <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 50px 50px;"></div>
       
-      <!-- Gradient orbs -->
-      <div class="absolute top-0 left-1/4 w-[600px] h-[600px] bg-indigo-600/15 rounded-full blur-[150px] -translate-y-1/2"></div>
-      <div class="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-cyan-600/15 rounded-full blur-[120px] translate-y-1/2"></div>
-      
-      <!-- Fine grain texture - radial at top center only -->
-      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1400px] h-[600px] opacity-[0.25]" style="background: radial-gradient(ellipse at center top, rgba(255,255,255,0.08) 0%, transparent 70%);"></div>
-      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[500px] opacity-[0.3]" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 400 400%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%222.5%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E'); mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, black 0%, transparent 100%); -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, black 0%, transparent 100%);"></div>
+      <!-- Soft top glow - full width, feathered edges -->
+      <div class="absolute inset-x-0 top-0 h-[400px] opacity-[0.15]" style="background: radial-gradient(ellipse 80% 100% at 50% 0%, rgba(99, 102, 241, 0.4) 0%, transparent 70%);"></div>
     </div>
 
     <div class="relative max-w-[1230px] mx-auto px-4">
+      <!-- Section Header -->
+      <div class="text-center mb-10 md:mb-14">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight">
+          Join teams shipping faster with AI
+        </h2>
+      </div>
+
       <!-- Cards Grid -->
       <div class="grid md:grid-cols-2 gap-6">
         
@@ -179,6 +181,56 @@ onMounted(() => {
         </div>
       </div>
     </div>
+
+    <!-- Curved bottom edge with AI-style layers -->
+    <div class="absolute bottom-0 left-0 right-0 overflow-hidden leading-[0]">
+      <svg 
+        class="relative block w-full h-[90px] md:h-[120px]" 
+        viewBox="0 0 1200 140" 
+        preserveAspectRatio="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <linearGradient id="lineGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#818cf8"/>
+            <stop offset="35%" stop-color="#c084fc"/>
+            <stop offset="65%" stop-color="#c084fc"/>
+            <stop offset="100%" stop-color="#22d3ee"/>
+          </linearGradient>
+        </defs>
+        
+        <!-- Luminous scan lines -->
+        <path class="scan-line-1" d="M0,5 Q600,55 1200,5" fill="none" stroke="url(#lineGlow)" stroke-width="1"/>
+        <path class="scan-line-2" d="M0,15 Q600,70 1200,15" fill="none" stroke="url(#lineGlow)" stroke-width="1.5"/>
+        <path class="scan-line-3" d="M0,25 Q600,85 1200,25" fill="none" stroke="url(#lineGlow)" stroke-width="2"/>
+        
+        <!-- Dark base that fades up -->
+        <path 
+          d="M0,35 Q600,100 1200,35 L1200,140 L0,140 Z" 
+          fill="#09090b"
+        />
+        
+        <!-- Main bright line - the edge -->
+        <path class="main-glow-line" d="M0,35 Q600,100 1200,35" fill="none" stroke="url(#lineGlow)" stroke-width="2.5"/>
+        
+        <!-- Soft glow under the line -->
+        <path 
+          class="glow-fill"
+          d="M0,38 Q600,103 1200,38 L1200,55 Q600,120 0,55 Z" 
+          fill="url(#lineGlow)"
+        />
+        
+        <!-- Transition to white -->
+        <path 
+          d="M0,58 Q600,115 1200,58 L1200,140 L0,140 Z" 
+          fill="#fafafa"
+        />
+        <path 
+          d="M0,85 Q600,125 1200,85 L1200,140 L0,140 Z" 
+          fill="white"
+        />
+      </svg>
+    </div>
   </section>
 </template>
 
@@ -190,5 +242,46 @@ onMounted(() => {
 .case-study-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.6);
+}
+
+/* Subtle separator animations */
+.scan-line-1 {
+  opacity: 0.3;
+  animation: pulse-soft 4s ease-in-out infinite;
+}
+
+.scan-line-2 {
+  opacity: 0.5;
+  animation: pulse-soft 4s ease-in-out infinite 0.5s;
+}
+
+.scan-line-3 {
+  opacity: 0.7;
+  animation: pulse-soft 4s ease-in-out infinite 1s;
+}
+
+.main-glow-line {
+  opacity: 0.9;
+  animation: pulse-bright 3s ease-in-out infinite;
+}
+
+.glow-fill {
+  opacity: 0.15;
+  animation: pulse-glow 5s ease-in-out infinite;
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes pulse-bright {
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 1; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.12; }
+  50% { opacity: 0.2; }
 }
 </style>
