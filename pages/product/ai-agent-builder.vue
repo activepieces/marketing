@@ -28,6 +28,10 @@ onMounted(() => {
 onUnmounted(() => {
   clearSections();
 });
+
+definePageMeta({
+  layout: 'home',
+});
 </script>
 
 <template>

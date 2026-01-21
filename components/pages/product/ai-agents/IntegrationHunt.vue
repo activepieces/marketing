@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="h-full border border-red-500">
     <div
       ref="gameContainer"
       class="relative w-full max-w-xl mx-auto h-[480px] rounded-2xl overflow-hidden select-none outline-none focus:outline-none"
@@ -1008,59 +1008,59 @@ const startGame = () => {
 // Helper to create and add a single target to the game
 const spawnSingleTarget = (piece) => {
   // Build weighted pool of possible types
-  const typePool = []
-  
+  const typePool = [];
+
   // Normal pieces always available (weight decreases as game progresses)
-  const normalWeight = Math.max(30, 70 - score.value)
-  for (let i = 0; i < normalWeight; i++) typePool.push('normal')
-  
+  const normalWeight = Math.max(30, 70 - score.value);
+  for (let i = 0; i < normalWeight; i++) typePool.push("normal");
+
   // Add special types based on what's unlocked
   if (armoredActive.value) {
-    for (let i = 0; i < 15; i++) typePool.push('armored')
+    for (let i = 0; i < 15; i++) typePool.push("armored");
   }
   if (speedActive.value) {
-    for (let i = 0; i < 18; i++) typePool.push('fast')
+    for (let i = 0; i < 18; i++) typePool.push("fast");
   }
   if (bugsActive.value) {
-    for (let i = 0; i < 12; i++) typePool.push('bug')
+    for (let i = 0; i < 12; i++) typePool.push("bug");
   }
   if (ghostActive.value) {
-    for (let i = 0; i < 16; i++) typePool.push('ghost')
+    for (let i = 0; i < 16; i++) typePool.push("ghost");
   }
   if (tinyActive.value) {
-    for (let i = 0; i < 18; i++) typePool.push('tiny')
+    for (let i = 0; i < 18; i++) typePool.push("tiny");
   }
   if (zigzagActive.value) {
-    for (let i = 0; i < 20; i++) typePool.push('zigzag')
+    for (let i = 0; i < 20; i++) typePool.push("zigzag");
   }
   if (giantActive.value) {
-    for (let i = 0; i < 5; i++) typePool.push('giant')
+    for (let i = 0; i < 5; i++) typePool.push("giant");
   }
-  
+
   // Pick random type from pool
-  const selectedType = typePool[Math.floor(Math.random() * typePool.length)]
-  
-  const isMalware = selectedType === 'bug'
-  const isFast = selectedType === 'fast'
-  const isArmored = selectedType === 'armored'
-  const isGhost = selectedType === 'ghost'
-  const isTiny = selectedType === 'tiny'
-  const isZigzag = selectedType === 'zigzag'
-  const isGiant = selectedType === 'giant'
-  
+  const selectedType = typePool[Math.floor(Math.random() * typePool.length)];
+
+  const isMalware = selectedType === "bug";
+  const isFast = selectedType === "fast";
+  const isArmored = selectedType === "armored";
+  const isGhost = selectedType === "ghost";
+  const isTiny = selectedType === "tiny";
+  const isZigzag = selectedType === "zigzag";
+  const isGiant = selectedType === "giant";
+
   // Base speed increases with difficulty
-  let baseSpeed = 1
-  if (isFast) baseSpeed = 3.5
-  else if (isZigzag) baseSpeed = 1.8
-  else if (score.value > 80) baseSpeed = 2
-  else if (score.value > 50) baseSpeed = 1.6
-  else if (score.value > 30) baseSpeed = 1.3
-  
+  let baseSpeed = 1;
+  if (isFast) baseSpeed = 3.5;
+  else if (isZigzag) baseSpeed = 1.8;
+  else if (score.value > 80) baseSpeed = 2;
+  else if (score.value > 50) baseSpeed = 1.6;
+  else if (score.value > 30) baseSpeed = 1.3;
+
   // Health - giants take 5 hits, armored take 2
-  let health = 1
-  if (isGiant) health = 5
-  else if (isArmored) health = 2
-  
+  let health = 1;
+  if (isGiant) health = 5;
+  else if (isArmored) health = 2;
+
   activeTargets.value.push({
     id: targetIdCounter++,
     displayName: piece.displayName,
@@ -1081,9 +1081,9 @@ const spawnSingleTarget = (piece) => {
     vy: Math.random() * baseSpeed + baseSpeed * 0.6,
     zigzagPhase: Math.random() * Math.PI * 2,
     caught: false,
-    fadeOut: false
-  })
-}
+    fadeOut: false,
+  });
+};
 
 const spawnTarget = () => {
   if (pieces.value.length === 0) return;
@@ -1093,38 +1093,56 @@ const spawnTarget = () => {
 
   for (let s = 0; s < spawnCount; s++) {
     // Filter out already-used pieces to prevent duplicates
-    const availableWithFounders = piecesWithFounders.value.filter(p => !usedPieceNames.value.has(p.displayName))
-    const availableWithoutFounders = piecesWithoutFounders.value.filter(p => !usedPieceNames.value.has(p.displayName))
-    const availableAll = pieces.value.filter(p => !usedPieceNames.value.has(p.displayName))
-    
+    const availableWithFounders = piecesWithFounders.value.filter(
+      (p) => !usedPieceNames.value.has(p.displayName)
+    );
+    const availableWithoutFounders = piecesWithoutFounders.value.filter(
+      (p) => !usedPieceNames.value.has(p.displayName)
+    );
+    const availableAll = pieces.value.filter(
+      (p) => !usedPieceNames.value.has(p.displayName)
+    );
+
     // If all pieces have been used, reset and start over
     if (availableAll.length === 0) {
-      usedPieceNames.value = new Set()
+      usedPieceNames.value = new Set();
       // Re-filter after reset
-      const freshWithFounders = piecesWithFounders.value
-      const freshWithoutFounders = piecesWithoutFounders.value
-      const freshAll = pieces.value
-      
+      const freshWithFounders = piecesWithFounders.value;
+      const freshWithoutFounders = piecesWithoutFounders.value;
+      const freshAll = pieces.value;
+
       // Prioritize pieces with founder photos (80% chance)
-      let piece
+      let piece;
       if (freshWithFounders.length > 0 && Math.random() < 0.8) {
-        piece = freshWithFounders[Math.floor(Math.random() * freshWithFounders.length)]
+        piece =
+          freshWithFounders[
+            Math.floor(Math.random() * freshWithFounders.length)
+          ];
       } else if (freshWithoutFounders.length > 0) {
-        piece = freshWithoutFounders[Math.floor(Math.random() * freshWithoutFounders.length)]
+        piece =
+          freshWithoutFounders[
+            Math.floor(Math.random() * freshWithoutFounders.length)
+          ];
       } else {
-        piece = freshAll[Math.floor(Math.random() * freshAll.length)]
+        piece = freshAll[Math.floor(Math.random() * freshAll.length)];
       }
-      usedPieceNames.value.add(piece.displayName)
-      spawnSingleTarget(piece)
-      continue
+      usedPieceNames.value.add(piece.displayName);
+      spawnSingleTarget(piece);
+      continue;
     }
-    
+
     // Prioritize pieces with founder photos (80% chance)
     let piece;
     if (availableWithFounders.length > 0 && Math.random() < 0.8) {
-      piece = availableWithFounders[Math.floor(Math.random() * availableWithFounders.length)];
+      piece =
+        availableWithFounders[
+          Math.floor(Math.random() * availableWithFounders.length)
+        ];
     } else if (availableWithoutFounders.length > 0) {
-      piece = availableWithoutFounders[Math.floor(Math.random() * availableWithoutFounders.length)];
+      piece =
+        availableWithoutFounders[
+          Math.floor(Math.random() * availableWithoutFounders.length)
+        ];
     } else {
       piece = availableAll[Math.floor(Math.random() * availableAll.length)];
     }

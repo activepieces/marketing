@@ -54,45 +54,48 @@ const { sections: productSubmenuSections } = useProductSubmenu();
 // Platform menu hover state and hero images
 const hoveredPlatformItem = ref(null);
 
-const defaultHeroImage = '/images/ai-adoption-stack/ai-adoption-stack-hero.png';
+const defaultHeroImage = "/images/ai-adoption-stack/ai-adoption-stack-hero.png";
 
 const platformPages = [
-  { 
-    id: 'ai-adoption',
-    name: 'AI Adoption Stack', 
-    path: '/product/ai-adoption',
-    heroImage: '/images/ai-adoption-stack/ai-adoption-stack-hero.png',
-    filterStyle: null
+  {
+    id: "ai-adoption",
+    name: "AI Adoption Stack",
+    path: "/product/ai-adoption",
+    heroImage: "/images/ai-adoption-stack/ai-adoption-stack-hero.png",
+    filterStyle: null,
   },
-  { 
-    id: 'ai-agents',
-    name: 'AI Agents', 
-    path: '/product/ai-agent-builder',
+  {
+    id: "ai-agents",
+    name: "AI Agents",
+    path: "/product/ai-agent-builder",
     heroImage: null,
-    filterStyle: 'hue-rotate(280deg) saturate(1.3)',
-    overlayGradient: 'linear-gradient(135deg, rgba(236,72,153,0.3) 0%, rgba(139,92,246,0.3) 100%)'
+    filterStyle: "hue-rotate(280deg) saturate(1.3)",
+    overlayGradient:
+      "linear-gradient(135deg, rgba(236,72,153,0.3) 0%, rgba(139,92,246,0.3) 100%)",
   },
-  { 
-    id: 'governance',
-    name: 'Control & Governance', 
-    path: '/product/governance-and-management',
+  {
+    id: "governance",
+    name: "Control & Governance",
+    path: "/product/governance-and-management",
     heroImage: null,
-    filterStyle: 'hue-rotate(100deg) saturate(1.2)',
-    overlayGradient: 'linear-gradient(135deg, rgba(34,197,94,0.3) 0%, rgba(20,184,166,0.3) 100%)'
+    filterStyle: "hue-rotate(100deg) saturate(1.2)",
+    overlayGradient:
+      "linear-gradient(135deg, rgba(34,197,94,0.3) 0%, rgba(20,184,166,0.3) 100%)",
   },
-  { 
-    id: 'deployment',
-    name: 'Deployment & Cost', 
-    path: '/product/deployment-options',
+  {
+    id: "deployment",
+    name: "Deployment & Cost",
+    path: "/product/deployment-options",
     heroImage: null,
-    filterStyle: 'hue-rotate(180deg) saturate(1.2)',
-    overlayGradient: 'linear-gradient(135deg, rgba(6,182,212,0.3) 0%, rgba(59,130,246,0.3) 100%)'
+    filterStyle: "hue-rotate(180deg) saturate(1.2)",
+    overlayGradient:
+      "linear-gradient(135deg, rgba(6,182,212,0.3) 0%, rgba(59,130,246,0.3) 100%)",
   },
 ];
 
 const currentPlatformPage = computed(() => {
   if (!hoveredPlatformItem.value) return null;
-  return platformPages.find(p => p.id === hoveredPlatformItem.value);
+  return platformPages.find((p) => p.id === hoveredPlatformItem.value);
 });
 
 // Mobile menu state
@@ -191,14 +194,10 @@ watch(useRoute(), () => {
 <template>
   <div class="m-0 p-0">
     <header
-      class="z-50 w-full transition-all duration-300 m-0 group/header overflow-visible"
-      :class="{
-        'sticky top-0': !isPricingPage,
-        'fixed top-0': isPricingPage,
-      }"
+      class="z-50 w-full transition-all duration-300 m-0 group/header overflow-visible fixed top-1"
     >
       <nav
-        class="max-w-7xl mx-auto rounded-full pl-6 pr-2 py-2 dark:bg-gray-800 transition-all duration-300 overflow-visible max-[1280px]:mx-2 max-[1280px]:mt-2 shadow-sm"
+        class="max-w-7xl mx-auto rounded-full pl-6 pr-2 py-2 dark:bg-gray-800 transition-all duration-300 overflow-visible"
         :class="{
           'group-hover/header:bg-white': showTransparent,
           'bg-white max-[905px]:bg-white': !showTransparent || isScrolled,
@@ -240,6 +239,10 @@ watch(useRoute(), () => {
               <router-link
                 to="/sales"
                 class="px-4 py-1.5 rounded-full border border-slate-300"
+                :class="{
+                  'text-white': showTransparent,
+                  'text-gray-900': !showTransparent,
+                }"
                 >Talk to sales</router-link
               >
               <a
@@ -327,7 +330,7 @@ watch(useRoute(), () => {
                 >
                   <!-- Left Column: Product Pages -->
                   <div class="flex flex-col gap-0 p-4 group/list flex-shrink-0">
-                    <div 
+                    <div
                       class="flex flex-col gap-0"
                       @mouseleave="hoveredPlatformItem = null"
                     >
@@ -445,66 +448,102 @@ watch(useRoute(), () => {
                   <div
                     class="flex flex-col overflow-hidden relative transition-all duration-300 ease-out"
                     :class="[
-                      currentPlatformPage ? 'w-[400px] bg-gray-900' : 'w-[200px]'
+                      currentPlatformPage
+                        ? 'w-[400px] bg-gray-900'
+                        : 'w-[200px]',
                     ]"
                   >
                     <!-- Hero Image/Placeholder Preview Container -->
-                    <div 
+                    <div
                       class="absolute inset-0 overflow-hidden transition-opacity duration-300"
-                      :class="currentPlatformPage ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'"
+                      :class="
+                        currentPlatformPage
+                          ? 'opacity-100 z-10'
+                          : 'opacity-0 z-0 pointer-events-none'
+                      "
                     >
                       <!-- Vertical sliding container for all pages -->
-                      <div 
+                      <div
                         class="absolute inset-0 flex flex-col transition-transform duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)]"
-                        :style="{ transform: `translateY(${hoveredPlatformItem ? -platformPages.findIndex(p => p.id === hoveredPlatformItem) * 265 : -30}px)` }"
+                        :style="{
+                          transform: `translateY(${
+                            hoveredPlatformItem
+                              ? -platformPages.findIndex(
+                                  (p) => p.id === hoveredPlatformItem
+                                ) * 265
+                              : -30
+                          }px)`,
+                        }"
                       >
                         <!-- Each page preview -->
-                        <div 
-                          v-for="(page, index) in platformPages" 
+                        <div
+                          v-for="(page, index) in platformPages"
                           :key="page.id"
                           class="w-full flex-shrink-0 relative h-[265px] overflow-hidden"
                         >
                           <!-- Hero Image (original or with filter) -->
-                          <img 
-                            :src="page.heroImage || defaultHeroImage" 
+                          <img
+                            :src="page.heroImage || defaultHeroImage"
                             :alt="page.name"
                             class="absolute inset-0 w-[120%] h-[120%] -left-[10%] -top-[10%] object-cover scale-150"
-                            :style="page.filterStyle ? { filter: page.filterStyle } : {}"
+                            :style="
+                              page.filterStyle
+                                ? { filter: page.filterStyle }
+                                : {}
+                            "
                           />
                           <!-- Color overlay for filtered images -->
-                          <div 
+                          <div
                             v-if="page.overlayGradient"
                             class="absolute inset-0 pointer-events-none"
                             :style="{ background: page.overlayGradient }"
                           ></div>
                         </div>
                         <!-- First item repeated at end for circular peek effect -->
-                        <div class="w-full flex-shrink-0 relative h-[265px] overflow-hidden">
-                          <img 
-                            :src="platformPages[0].heroImage || defaultHeroImage" 
+                        <div
+                          class="w-full flex-shrink-0 relative h-[265px] overflow-hidden"
+                        >
+                          <img
+                            :src="
+                              platformPages[0].heroImage || defaultHeroImage
+                            "
                             :alt="platformPages[0].name"
                             class="absolute inset-0 w-[120%] h-[120%] -left-[10%] -top-[10%] object-cover scale-150"
-                            :style="platformPages[0].filterStyle ? { filter: platformPages[0].filterStyle } : {}"
+                            :style="
+                              platformPages[0].filterStyle
+                                ? { filter: platformPages[0].filterStyle }
+                                : {}
+                            "
                           />
-                          <div 
+                          <div
                             v-if="platformPages[0].overlayGradient"
                             class="absolute inset-0 pointer-events-none"
-                            :style="{ background: platformPages[0].overlayGradient }"
+                            :style="{
+                              background: platformPages[0].overlayGradient,
+                            }"
                           ></div>
                         </div>
                       </div>
                       <!-- Subtle gradient overlay at bottom to hint at next item -->
-                      <div class="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-black/30 to-transparent pointer-events-none"></div>
+                      <div
+                        class="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-black/30 to-transparent pointer-events-none"
+                      ></div>
                     </div>
                     <!-- Default: Integrations List -->
-                    <div 
+                    <div
                       class="flex flex-col gap-0 p-4 pr-6 bg-gray-50 h-full transition-opacity duration-300 rounded-r-xl"
-                      :class="currentPlatformPage ? 'opacity-0 pointer-events-none' : 'opacity-100'"
+                      :class="
+                        currentPlatformPage
+                          ? 'opacity-0 pointer-events-none'
+                          : 'opacity-100'
+                      "
                     >
                       <div
                         class="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 px-2 whitespace-nowrap"
                       >
-                        <span v-if="!piecesCountPending">{{ piecesCount }}+</span>
+                        <span v-if="!piecesCountPending"
+                          >{{ piecesCount }}+</span
+                        >
                         Integrations
                       </div>
                       <div class="flex flex-col gap-0">
@@ -766,44 +805,68 @@ watch(useRoute(), () => {
                       </svg>
                     </a>
                   </div>
-                  
+
                   <!-- Right Column: Case Studies -->
-                  <div class="flex flex-col gap-1.5 bg-gray-50 -m-4 ml-0 p-3 rounded-r-xl min-w-[220px]">
-                    <div class="text-xs font-medium text-gray-500 uppercase tracking-wider mb-1 px-2">Customer Stories</div>
-                    
+                  <div
+                    class="flex flex-col gap-1.5 bg-gray-50 -m-4 ml-0 p-3 rounded-r-xl min-w-[220px]"
+                  >
+                    <div
+                      class="text-xs font-medium text-gray-500 uppercase tracking-wider mb-1 px-2"
+                    >
+                      Customer Stories
+                    </div>
+
                     <!-- Alan Case Study -->
                     <NuxtLink
                       to="/customers/alan"
                       class="group/card flex items-center gap-3 p-2 rounded-lg hover:bg-white transition-colors"
                     >
                       <div class="min-w-0 flex-1">
-                        <div class="text-[10px] text-gray-400 uppercase tracking-wide">Health Insurance</div>
-                        <div class="text-sm font-semibold text-gray-900">Alan</div>
-                        <div class="text-xs text-gray-500">300+ AI workflows</div>
+                        <div
+                          class="text-[10px] text-gray-400 uppercase tracking-wide"
+                        >
+                          Health Insurance
+                        </div>
+                        <div class="text-sm font-semibold text-gray-900">
+                          Alan
+                        </div>
+                        <div class="text-xs text-gray-500">
+                          300+ AI workflows
+                        </div>
                       </div>
-                      <div class="relative w-16 h-16 flex-shrink-0 overflow-hidden rounded-lg">
-                        <img 
-                          src="/case-studies/alan-jeremie.png" 
-                          alt="Jérémie Preault" 
+                      <div
+                        class="relative w-16 h-16 flex-shrink-0 overflow-hidden rounded-lg"
+                      >
+                        <img
+                          src="/case-studies/alan-jeremie.png"
+                          alt="Jérémie Preault"
                           class="absolute top-0 -right-2 w-32 h-auto object-contain -scale-x-100"
                         />
                       </div>
                     </NuxtLink>
-                    
+
                     <!-- Funding Societies Case Study -->
                     <NuxtLink
                       to="/customers/funding-societies"
                       class="group/card flex items-center gap-3 p-2 rounded-lg hover:bg-white transition-colors"
                     >
                       <div class="min-w-0 flex-1">
-                        <div class="text-[10px] text-gray-400 uppercase tracking-wide">Fintech</div>
-                        <div class="text-sm font-semibold text-gray-900">Funding Societies</div>
+                        <div
+                          class="text-[10px] text-gray-400 uppercase tracking-wide"
+                        >
+                          Fintech
+                        </div>
+                        <div class="text-sm font-semibold text-gray-900">
+                          Funding Societies
+                        </div>
                         <div class="text-xs text-gray-500">90% time saved</div>
                       </div>
-                      <div class="relative w-14 h-16 flex-shrink-0 overflow-visible">
-                        <img 
-                          src="/case-studies/funding-societies-shawn.png" 
-                          alt="Shawn Lim" 
+                      <div
+                        class="relative w-14 h-16 flex-shrink-0 overflow-visible"
+                      >
+                        <img
+                          src="/case-studies/funding-societies-shawn.png"
+                          alt="Shawn Lim"
                           class="absolute bottom-0 right-0 w-[70px] h-auto object-contain"
                         />
                       </div>
