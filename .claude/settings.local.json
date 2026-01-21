@@ -29,7 +29,14 @@
       "Bash(git stash:*)",
       "Bash(git fetch:*)",
       "Bash(git merge:*)",
-      "mcp__chrome-devtools__list_console_messages"
+      "mcp__chrome-devtools__list_console_messages",
+      "Bash(for page in ai-adoption ai-agent-builder governance-and-management deployment-options)",
+      "Bash(do echo \"Testing /product/$page:\")",
+      "Bash(done)",
+      "Bash(do)",
+      "Bash(echo:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ]
   }
 }

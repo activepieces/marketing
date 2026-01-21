@@ -142,111 +142,36 @@ onUnmounted(() => {
 
         <div class="flex flex-col gap-8">
           <!-- Feature 1: Branding -->
-          <div class="rounded-3xl overflow-hidden">
-            <div class="grid grid-cols-[2fr_1fr] items-center">
-              <div class="h-full flex flex-col">
-                <PagesProductAdoptionBrandingComparison />
-              </div>
-              <div class="p-12 flex flex-col gap-12 bg-white/5">
-                <div class="flex flex-col gap-4">
-                  <h3
-                    class="text-white text-4xl font-sentient font-medium text-balance"
-                  >
-                    Your brand, your platform
-                  </h3>
-                  <p class="text-sm text-white/80">
-                    When employees see your logo and colors, they trust it.
-                    White-label Activepieces with your branding so AI adoption
-                    feels like an internal initiative—not another external tool
-                    to learn.
-                  </p>
-                </div>
-                <div class="h-1 w-full bg-white/5"></div>
-                <ol class="flex flex-col gap-4 rounded-lg">
-                  <li class="flex gap-2 items-center text-sm">
-                    <span
-                      class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
-                      >1</span
-                    >
-                    <span class="text-white/80 font-dm"
-                      >Your logo in the header builds immediate trust</span
-                    >
-                  </li>
-                  <li class="flex gap-2 items-center text-sm">
-                    <span
-                      class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
-                      >2</span
-                    >
-                    <span class="text-white/80 font-dm"
-                      >Your colors make it feel like home</span
-                    >
-                  </li>
-                  <li class="flex gap-2 items-center text-sm">
-                    <span
-                      class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
-                      >3</span
-                    >
-                    <span class="text-white/80 font-dm"
-                      >Custom domain keeps everything under your roof</span
-                    >
-                  </li>
-                </ol>
-              </div>
-            </div>
-          </div>
+          <PagesProductAdoptionFeatureCard
+            content-position="left"
+            :content-ratio="2"
+            variant="subtle"
+            title="Your brand, your platform"
+            description="When employees see your logo and colors, they trust it. White-label Activepieces with your branding so AI adoption feels like an internal initiative—not another external tool to learn."
+            :items="[
+              'Your logo in the header builds immediate trust',
+              'Your colors make it feel like home',
+              'Custom domain keeps everything under your roof'
+            ]"
+          >
+            <PagesProductAdoptionBrandingComparison />
+          </PagesProductAdoptionFeatureCard>
 
           <!-- Feature 2: Easy Onboarding -->
-          <div class="rounded-3xl overflow-hidden">
-            <div class="grid grid-cols-[1fr_2fr] items-center">
-              <div class="p-12 flex flex-col gap-12 bg-white/5">
-                <div class="flex flex-col gap-4">
-                  <h3
-                    class="text-white text-4xl font-sentient font-medium text-balance"
-                  >
-                    Get everyone in with one click
-                  </h3>
-                  <p class="text-sm text-white/80">
-                    No IT tickets. No complex provisioning. Invite your whole
-                    team instantly—each person gets their own workspace to
-                    experiment, plus shared spaces for team collaboration.
-                  </p>
-                </div>
-                <div class="h-1 w-full bg-white/5"></div>
-                <ol class="flex flex-col gap-4 rounded-lg">
-                  <li class="flex gap-2 items-center text-sm">
-                    <span
-                      class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
-                      >1</span
-                    >
-                    <span class="text-white/80 font-dm"
-                      >Bulk invites via CSV or SSO integration</span
-                    >
-                  </li>
-                  <li class="flex gap-2 items-center text-sm">
-                    <span
-                      class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
-                      >2</span
-                    >
-                    <span class="text-white/80 font-dm"
-                      >Personal sandboxes so everyone can learn safely</span
-                    >
-                  </li>
-                  <li class="flex gap-2 items-center text-sm">
-                    <span
-                      class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
-                      >3</span
-                    >
-                    <span class="text-white/80 font-dm"
-                      >Team projects for cross-functional collaboration</span
-                    >
-                  </li>
-                </ol>
-              </div>
-              <div class="h-full flex flex-col">
-                <PagesProductAdoptionOnboardingFlow />
-              </div>
-            </div>
-          </div>
+          <PagesProductAdoptionFeatureCard
+            content-position="right"
+            :content-ratio="2"
+            variant="subtle"
+            title="Get everyone in with one click"
+            description="No IT tickets. No complex provisioning. Invite your whole team instantly—each person gets their own workspace to experiment, plus shared spaces for team collaboration."
+            :items="[
+              'Bulk invites via CSV or SSO integration',
+              'Personal sandboxes so everyone can learn safely',
+              'Team projects for cross-functional collaboration'
+            ]"
+          >
+            <PagesProductAdoptionOnboardingFlow />
+          </PagesProductAdoptionFeatureCard>
         </div>
       </div>
     </section>
@@ -270,168 +195,54 @@ onUnmounted(() => {
         </div>
 
         <!-- Feature 1: Templates -->
-        <div class="rounded-3xl overflow-hidden border-4 border-white/10">
-          <div class="grid grid-cols-[1fr_2fr] items-center">
-            <div class="p-12 flex flex-col gap-12">
-              <div class="flex flex-col gap-4">
-                <h3
-                  class="text-white text-4xl font-sentient font-medium text-balance"
-                >
-                  Every team knows exactly what to build
-                </h3>
-                <p class="text-sm text-white/80">
-                  Stop waiting for teams to "figure out" AI. Our curated
-                  template library gives HR, Finance, Marketing, Sales, and
-                  Operations concrete automations to build—from simple everyday
-                  tasks to advanced multi-step workflows.
-                </p>
-              </div>
-              <div class="h-1 w-full bg-white/5"></div>
-              <ol class="flex flex-col gap-4 rounded-lg">
-                <li class="flex gap-2 items-center text-sm">
-                  <span
-                    class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
-                    >1</span
-                  >
-                  <span class="text-white/80 font-dm"
-                    >Everyday automations anyone can build in minutes</span
-                  >
-                </li>
-                <li class="flex gap-2 items-center text-sm">
-                  <span
-                    class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
-                    >2</span
-                  >
-                  <span class="text-white/80 font-dm"
-                    >Advanced workflows for power users ready to level up</span
-                  >
-                </li>
-                <li class="flex gap-2 items-center text-sm">
-                  <span
-                    class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
-                    >3</span
-                  >
-                  <span class="text-white/80 font-dm"
-                    >Department-specific ideas that actually make sense</span
-                  >
-                </li>
-              </ol>
-            </div>
-            <div class="h-full flex flex-col">
-              <PagesProductAdoptionTemplateCards />
-            </div>
-          </div>
-        </div>
+        <PagesProductAdoptionFeatureCard
+          content-position="right"
+          :content-ratio="2"
+          variant="bordered"
+          title="Every team knows exactly what to build"
+          description="Stop waiting for teams to &quot;figure out&quot; AI. Our curated template library gives HR, Finance, Marketing, Sales, and Operations concrete automations to build—from simple everyday tasks to advanced multi-step workflows."
+          :items="[
+            'Everyday automations anyone can build in minutes',
+            'Advanced workflows for power users ready to level up',
+            'Department-specific ideas that actually make sense'
+          ]"
+        >
+          <PagesProductAdoptionTemplateCards />
+        </PagesProductAdoptionFeatureCard>
 
         <!-- Feature 2: Personalized Guidance -->
-        <div class="rounded-3xl overflow-hidden border-4 border-white/10">
-          <div class="grid grid-cols-[2fr_1fr] items-center">
-            <div class="h-full flex flex-col border-r-4 border-white/10 p-8">
-              <PagesProductAdoptionCoachingEmails />
-            </div>
-            <div class="p-12 flex flex-col gap-12">
-              <div class="flex flex-col gap-4">
-                <h3
-                  class="text-white text-4xl font-sentient font-medium text-balance"
-                >
-                  Every team member gets their own AI coach
-                </h3>
-                <p class="text-sm text-white/80">
-                  Generic training doesn't work. Our platform learns each user's
-                  role, skill level, and past activity to deliver personalized
-                  automation ideas, targeted resources, and timely nudges that
-                  keep momentum going.
-                </p>
-              </div>
-              <div class="h-1 w-full bg-white/5"></div>
-              <ol class="flex flex-col gap-4 rounded-lg">
-                <li class="flex gap-2 items-center text-sm">
-                  <span
-                    class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
-                    >1</span
-                  >
-                  <span class="text-white/80 font-dm"
-                    >Smart suggestions based on role and department</span
-                  >
-                </li>
-                <li class="flex gap-2 items-center text-sm">
-                  <span
-                    class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
-                    >2</span
-                  >
-                  <span class="text-white/80 font-dm"
-                    >Learning paths that adapt to current skill level</span
-                  >
-                </li>
-                <li class="flex gap-2 items-center text-sm">
-                  <span
-                    class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
-                    >3</span
-                  >
-                  <span class="text-white/80 font-dm"
-                    >Gentle nudges to re-engage inactive users</span
-                  >
-                </li>
-              </ol>
-            </div>
-          </div>
-        </div>
+        <PagesProductAdoptionFeatureCard
+          content-position="left"
+          :content-ratio="2"
+          variant="bordered"
+          :content-border="true"
+          title="Every team member gets their own AI coach"
+          description="Generic training doesn't work. Our platform learns each user's role, skill level, and past activity to deliver personalized automation ideas, targeted resources, and timely nudges that keep momentum going."
+          :items="[
+            'Smart suggestions based on role and department',
+            'Learning paths that adapt to current skill level',
+            'Gentle nudges to re-engage inactive users'
+          ]"
+        >
+          <PagesProductAdoptionCoachingEmails />
+        </PagesProductAdoptionFeatureCard>
 
         <!-- Feature 3: Expert Support -->
-        <div class="rounded-3xl overflow-hidden border-4 border-white/10">
-          <div class="grid grid-cols-[1fr_2fr] items-center">
-            <div class="p-12 flex flex-col gap-12">
-              <div class="flex flex-col gap-4">
-                <h3
-                  class="text-white text-4xl font-sentient font-medium text-balance"
-                >
-                  Your teams get instant support—you don't have to provide it
-                </h3>
-                <p class="text-sm text-white/80">
-                  When your users get stuck, they don't need to come to you. Our
-                  AI Automation Specialists are available directly inside the
-                  platform—your teams can book calls, get help, and keep
-                  building without burdening your IT or support teams.
-                </p>
-              </div>
-              <div class="h-1 w-full bg-white/5"></div>
-              <ol class="flex flex-col gap-4 rounded-lg">
-                <li class="flex gap-2 items-center text-sm">
-                  <span
-                    class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
-                    >1</span
-                  >
-                  <span class="text-white/80 font-dm"
-                    >In-app support—no tickets, no escalations to your
-                    team</span
-                  >
-                </li>
-                <li class="flex gap-2 items-center text-sm">
-                  <span
-                    class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
-                    >2</span
-                  >
-                  <span class="text-white/80 font-dm"
-                    >Instant access—book calls directly from the platform</span
-                  >
-                </li>
-                <li class="flex gap-2 items-center text-sm">
-                  <span
-                    class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
-                    >3</span
-                  >
-                  <span class="text-white/80 font-dm"
-                    >Zero overhead—we handle all user support, you focus on
-                    adoption</span
-                  >
-                </li>
-              </ol>
-            </div>
-            <div class="h-full flex flex-col p-8">
-              <PagesProductAdoptionSupportBooking />
-            </div>
-          </div>
-        </div>
+        <PagesProductAdoptionFeatureCard
+          content-position="right"
+          :content-ratio="2"
+          variant="bordered"
+          :content-padding="true"
+          title="Your teams get instant support—you don't have to provide it"
+          description="When your users get stuck, they don't need to come to you. Our AI Automation Specialists are available directly inside the platform—your teams can book calls, get help, and keep building without burdening your IT or support teams."
+          :items="[
+            'In-app support—no tickets, no escalations to your team',
+            'Instant access—book calls directly from the platform',
+            'Zero overhead—we handle all user support, you focus on adoption'
+          ]"
+        >
+          <PagesProductAdoptionSupportBooking />
+        </PagesProductAdoptionFeatureCard>
       </div>
     </section>
 
@@ -454,112 +265,38 @@ onUnmounted(() => {
         </div>
 
         <!-- Feature 1: Leaderboard -->
-        <div class="rounded-3xl overflow-hidden border-4 border-white/10">
-          <div class="grid grid-cols-[1fr_2fr] items-center">
-            <div class="p-12 flex flex-col gap-12">
-              <div class="flex flex-col gap-4">
-                <h3
-                  class="text-white text-4xl font-sentient font-medium text-balance"
-                >
-                  Discover the AI heroes hiding in your organization
-                </h3>
-                <p class="text-sm text-white/80">
-                  Every organization has hidden champions—people who naturally
-                  embrace new technology and inspire others. Our leaderboard
-                  surfaces these heroes so you can celebrate them, learn from
-                  them, and amplify their impact.
-                </p>
-              </div>
-              <div class="h-1 w-full bg-white/5"></div>
-              <ol class="flex flex-col gap-4 rounded-lg">
-                <li class="flex gap-2 items-center text-sm">
-                  <span
-                    class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
-                    >1</span
-                  >
-                  <span class="text-white/80 font-dm"
-                    >Top builders ranked by automations created and impact</span
-                  >
-                </li>
-                <li class="flex gap-2 items-center text-sm">
-                  <span
-                    class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
-                    >2</span
-                  >
-                  <span class="text-white/80 font-dm"
-                    >Department rankings to spark healthy competition</span
-                  >
-                </li>
-                <li class="flex gap-2 items-center text-sm">
-                  <span
-                    class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
-                    >3</span
-                  >
-                  <span class="text-white/80 font-dm"
-                    >Rising stars—spot newcomers making rapid progress</span
-                  >
-                </li>
-              </ol>
-            </div>
-            <div class="h-full flex flex-col p-8">
-              <PagesProductAdoptionLeaderboard />
-            </div>
-          </div>
-        </div>
+        <PagesProductAdoptionFeatureCard
+          content-position="right"
+          :content-ratio="2"
+          variant="bordered"
+          :content-padding="true"
+          title="Discover the AI heroes hiding in your organization"
+          description="Every organization has hidden champions—people who naturally embrace new technology and inspire others. Our leaderboard surfaces these heroes so you can celebrate them, learn from them, and amplify their impact."
+          :items="[
+            'Top builders ranked by automations created and impact',
+            'Department rankings to spark healthy competition',
+            'Rising stars—spot newcomers making rapid progress'
+          ]"
+        >
+          <PagesProductAdoptionLeaderboard />
+        </PagesProductAdoptionFeatureCard>
 
         <!-- Feature 2: Badges -->
-        <div class="rounded-3xl overflow-hidden border-4 border-white/10">
-          <div class="grid grid-cols-[2fr_1fr] items-center">
-            <div class="h-full flex flex-col p-8">
-              <PagesProductAdoptionBadgeChallenge />
-            </div>
-            <div class="p-12 flex flex-col gap-12">
-              <div class="flex flex-col gap-4">
-                <h3
-                  class="text-white text-4xl font-sentient font-medium text-balance"
-                >
-                  Make progress feel rewarding
-                </h3>
-                <p class="text-sm text-white/80">
-                  Our badge system turns the journey into an achievement,
-                  celebrating milestones and motivating continued growth.
-                </p>
-              </div>
-              <div class="h-1 w-full bg-white/5"></div>
-              <ol class="flex flex-col gap-4 rounded-lg">
-                <li class="flex gap-2 items-center text-sm">
-                  <span
-                    class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
-                    >1</span
-                  >
-                  <span class="text-white/80 font-dm"
-                    >Personal milestones—first automation, 10 workflows, 100
-                    hours saved</span
-                  >
-                </li>
-                <li class="flex gap-2 items-center text-sm">
-                  <span
-                    class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
-                    >2</span
-                  >
-                  <span class="text-white/80 font-dm"
-                    >Team achievements—helping teammates, sharing
-                    automations</span
-                  >
-                </li>
-                <li class="flex gap-2 items-center text-sm">
-                  <span
-                    class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono"
-                    >3</span
-                  >
-                  <span class="text-white/80 font-dm"
-                    >Skill progression—level up from Beginner to Expert</span
-                  >
-                </li>
-              </ol>
-            </div>
-          </div>
-        </div>
+        <PagesProductAdoptionFeatureCard
+          content-position="left"
+          :content-ratio="2"
+          variant="bordered"
+          :content-padding="true"
+          title="Make progress feel rewarding"
+          description="Our badge system turns the journey into an achievement, celebrating milestones and motivating continued growth."
+          :items="[
+            'Personal milestones—first automation, 10 workflows, 100 hours saved',
+            'Team achievements—helping teammates, sharing automations',
+            'Skill progression—level up from Beginner to Expert'
+          ]"
+        >
+          <PagesProductAdoptionBadgeChallenge />
+        </PagesProductAdoptionFeatureCard>
       </div>
     </section>
 
