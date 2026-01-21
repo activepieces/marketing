@@ -1,12 +1,12 @@
 <template>
   <div class="h-full p-8">
-    <div
-      ref="gameContainer"
-      class="relative w-full mx-auto h-full overflow-hidden select-none outline-none focus:outline-none rounded-lg"
-      :style="{
+    <!-- :style="{
         background:
           'linear-gradient(180deg, rgba(88, 28, 135, 0.95) 0%, rgba(59, 7, 100, 0.98) 50%, rgba(30, 10, 60, 1) 100%)',
-      }"
+      }" -->
+    <div
+      ref="gameContainer"
+      class="relative w-full mx-auto h-full overflow-hidden select-none outline-none focus:outline-none rounded-lg bg-white/5"
       tabindex="0"
       @mousemove="handleMouseMove"
       @keydown="handleKeydown"
@@ -180,7 +180,9 @@
         }"
       >
         <div class="relative">
-          <div class="w-12 h-8 relative drop-shadow-[0_0_12px_rgba(167,139,250,0.5)]">
+          <div
+            class="w-12 h-8 relative drop-shadow-[0_0_12px_rgba(167,139,250,0.5)]"
+          >
             <div
               class="absolute inset-0 clip-ship"
               :style="{
