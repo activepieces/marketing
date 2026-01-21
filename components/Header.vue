@@ -194,15 +194,14 @@ watch(useRoute(), () => {
 <template>
   <div class="m-0 p-0">
     <header
-      class="z-50 w-full transition-all duration-300 m-0 group/header overflow-visible fixed top-1"
+      class="z-50 w-full transition-all duration-300 m-0 group/header overflow-visible fixed top-0"
     >
       <nav
-        class="max-w-7xl mx-auto rounded-full pl-6 pr-2 py-2 dark:bg-gray-800 transition-all duration-300 overflow-visible"
+        class="mx-auto pl-6 pr-2 py-2 dark:bg-gray-800 transition-all duration-200 overflow-visible rounded-b-2xl"
         :class="{
-          'group-hover/header:bg-white': showTransparent,
-          'bg-white max-[905px]:bg-white': !showTransparent || isScrolled,
-          'bg-transparent max-[905px]:bg-transparent':
-            showTransparent && !isScrolled,
+          'group-hover/header:bg-white max-w-7xl': showTransparent,
+          'bg-white': !showTransparent || isScrolled,
+          'bg-transparent': showTransparent && !isScrolled,
         }"
       >
         <div
@@ -230,8 +229,9 @@ watch(useRoute(), () => {
               href="https://cloud.activepieces.com"
               class="flex items-center px-4 py-1.5 rounded-full max-[555px]:hidden transition-colors duration-200 font-normal hover:!text-[#8142e3]"
               :class="{
-                'text-white group-hover/header:text-gray-900': showTransparent,
-                'text-gray-900': !showTransparent,
+                'text-white group-hover/header:text-primary-dark':
+                  showTransparent,
+                'text-primary-dark': !showTransparent,
               }"
               >Login</a
             >
@@ -240,14 +240,19 @@ watch(useRoute(), () => {
                 to="/sales"
                 class="px-4 py-1.5 rounded-full border border-slate-300"
                 :class="{
-                  'text-white': showTransparent,
-                  'text-gray-900': !showTransparent,
+                  'text-white group-hover/header:text-primary-dark':
+                    showTransparent,
+                  'text-primary-dark': !showTransparent,
                 }"
                 >Talk to sales</router-link
               >
               <a
                 href="https://cloud.activepieces.com/sign-up"
-                class="group relative inline-flex items-center justify-center rounded-full px-4 py-1.5 text-base font-medium text-white transition-all duration-200 ring-0 ring-primary-dark hover:ring-2 bg-primary-dark"
+                class="group relative inline-flex items-center justify-center rounded-full px-4 py-1.5 text-base font-medium transition-all duration-200 ring-0 ring-primary-dark hover:ring-2"
+                :class="{
+                  'bg-white text-primary-dark': showTransparent,
+                  'bg-primary-dark text-white': !showTransparent,
+                }"
               >
                 Start free
               </a>
@@ -294,17 +299,17 @@ watch(useRoute(), () => {
                 <button
                   class="flex items-center gap-1 px-4 py-1.5 rounded-full transition-colors duration-200"
                   :class="{
-                    'text-white group-hover/header:text-gray-900':
+                    'text-white group-hover/header:text-primary-dark':
                       showTransparent,
-                    'text-gray-900': !showTransparent,
+                    'text-primary-dark': !showTransparent,
                   }"
                 >
                   <span
                     class="button-text"
                     :class="{
-                      'text-white group-hover/header:text-gray-900':
+                      'text-white group-hover/header:text-primary-dark':
                         showTransparent,
-                      'text-gray-900': !showTransparent,
+                      'text-primary-dark': !showTransparent,
                     }"
                     >Platform</span
                   >
@@ -341,14 +346,14 @@ watch(useRoute(), () => {
                         @mouseenter="hoveredPlatformItem = 'ai-adoption'"
                       >
                         <div
-                          class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
+                          class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-primary-dark group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
                         ></div>
                         <span
-                          class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
+                          class="text-base font-semibold text-primary-dark transition-colors duration-300 leading-tight"
                           >AI Adoption Stack</span
                         >
                         <svg
-                          class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
+                          class="w-4 h-4 text-primary-dark opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -368,14 +373,14 @@ watch(useRoute(), () => {
                         @mouseenter="hoveredPlatformItem = 'ai-agents'"
                       >
                         <div
-                          class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
+                          class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-primary-dark group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
                         ></div>
                         <span
-                          class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
+                          class="text-base font-semibold text-primary-dark transition-colors duration-300 leading-tight"
                           >AI Agents</span
                         >
                         <svg
-                          class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
+                          class="w-4 h-4 text-primary-dark opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -395,14 +400,14 @@ watch(useRoute(), () => {
                         @mouseenter="hoveredPlatformItem = 'governance'"
                       >
                         <div
-                          class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
+                          class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-primary-dark group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
                         ></div>
                         <span
-                          class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
+                          class="text-base font-semibold text-primary-dark transition-colors duration-300 leading-tight"
                           >Control & Governance</span
                         >
                         <svg
-                          class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
+                          class="w-4 h-4 text-primary-dark opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -422,14 +427,14 @@ watch(useRoute(), () => {
                         @mouseenter="hoveredPlatformItem = 'deployment'"
                       >
                         <div
-                          class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
+                          class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-primary-dark group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
                         ></div>
                         <span
-                          class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
+                          class="text-base font-semibold text-primary-dark transition-colors duration-300 leading-tight"
                           >Deployment & Cost</span
                         >
                         <svg
-                          class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
+                          class="w-4 h-4 text-primary-dark opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -449,7 +454,7 @@ watch(useRoute(), () => {
                     class="flex flex-col overflow-hidden relative transition-all duration-300 ease-out"
                     :class="[
                       currentPlatformPage
-                        ? 'w-[400px] bg-gray-900'
+                        ? 'w-[400px] bg-primary-dark'
                         : 'w-[200px]',
                     ]"
                   >
@@ -559,7 +564,7 @@ watch(useRoute(), () => {
                               alt="Gmail"
                           /></span>
                           <span
-                            class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-gray-900"
+                            class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-primary-dark"
                             >Gmail</span
                           >
                         </a>
@@ -575,7 +580,7 @@ watch(useRoute(), () => {
                               alt="OpenAI"
                           /></span>
                           <span
-                            class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-gray-900"
+                            class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-primary-dark"
                             >OpenAI</span
                           >
                         </a>
@@ -591,7 +596,7 @@ watch(useRoute(), () => {
                               alt="Slack"
                           /></span>
                           <span
-                            class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-gray-900"
+                            class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-primary-dark"
                             >Slack</span
                           >
                         </a>
@@ -607,7 +612,7 @@ watch(useRoute(), () => {
                               alt="Notion"
                           /></span>
                           <span
-                            class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-gray-900"
+                            class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-primary-dark"
                             >Notion</span
                           >
                         </a>
@@ -623,7 +628,7 @@ watch(useRoute(), () => {
                               alt="HubSpot"
                           /></span>
                           <span
-                            class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-gray-900"
+                            class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-primary-dark"
                             >HubSpot</span
                           >
                         </a>
@@ -632,11 +637,11 @@ watch(useRoute(), () => {
                           class="group/app flex items-center gap-1 h-9 px-2 mt-1 pt-1 border-t border-gray-200"
                         >
                           <span
-                            class="text-sm text-gray-500 transition-colors duration-200 group-hover/app:text-gray-900"
+                            class="text-sm text-gray-500 transition-colors duration-200 group-hover/app:text-primary-dark"
                             >View all</span
                           >
                           <svg
-                            class="w-3.5 h-3.5 text-gray-400 transition-all duration-200 group-hover/app:text-gray-900 group-hover/app:translate-x-0.5"
+                            class="w-3.5 h-3.5 text-gray-400 transition-all duration-200 group-hover/app:text-primary-dark group-hover/app:translate-x-0.5"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -666,17 +671,17 @@ watch(useRoute(), () => {
                 <button
                   class="flex items-center gap-1 rounded-full px-4 py-1.5 transition-colors duration-200"
                   :class="{
-                    'text-white group-hover/header:text-gray-900':
+                    'text-white group-hover/header:text-primary-dark':
                       showTransparent,
-                    'text-gray-900': !showTransparent,
+                    'text-primary-dark': !showTransparent,
                   }"
                 >
                   <span
                     class="font-normal button-text"
                     :class="{
-                      'text-white group-hover/header:text-gray-900':
+                      'text-white group-hover/header:text-primary-dark':
                         showTransparent,
-                      'text-gray-900': !showTransparent,
+                      'text-primary-dark': !showTransparent,
                     }"
                     >Resources</span
                   >
@@ -706,14 +711,14 @@ watch(useRoute(), () => {
                       class="flex items-center gap-2.5 px-2 py-3 transition group/feature border-b border-gray-100"
                     >
                       <div
-                        class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
+                        class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-primary-dark group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
                       ></div>
                       <span
-                        class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
+                        class="text-base font-semibold text-primary-dark transition-colors duration-300 leading-tight"
                         >Docs</span
                       >
                       <svg
-                        class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
+                        class="w-4 h-4 text-primary-dark opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -731,14 +736,14 @@ watch(useRoute(), () => {
                       class="flex items-center gap-2.5 px-2 py-3 transition group/feature border-b border-gray-100"
                     >
                       <div
-                        class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
+                        class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-primary-dark group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
                       ></div>
                       <span
-                        class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
+                        class="text-base font-semibold text-primary-dark transition-colors duration-300 leading-tight"
                         >Support Forum</span
                       >
                       <svg
-                        class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
+                        class="w-4 h-4 text-primary-dark opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -757,14 +762,14 @@ watch(useRoute(), () => {
                       class="flex items-center gap-2.5 px-2 py-3 transition group/feature border-b border-gray-100"
                     >
                       <div
-                        class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
+                        class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-primary-dark group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
                       ></div>
                       <span
-                        class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
+                        class="text-base font-semibold text-primary-dark transition-colors duration-300 leading-tight"
                         >YouTube</span
                       >
                       <svg
-                        class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
+                        class="w-4 h-4 text-primary-dark opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -784,14 +789,14 @@ watch(useRoute(), () => {
                       class="flex items-center gap-2.5 px-2 py-3 transition group/feature"
                     >
                       <div
-                        class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
+                        class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-primary-dark group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
                       ></div>
                       <span
-                        class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
+                        class="text-base font-semibold text-primary-dark transition-colors duration-300 leading-tight"
                         >Discord</span
                       >
                       <svg
-                        class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
+                        class="w-4 h-4 text-primary-dark opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -827,7 +832,7 @@ watch(useRoute(), () => {
                         >
                           Health Insurance
                         </div>
-                        <div class="text-sm font-semibold text-gray-900">
+                        <div class="text-sm font-semibold text-primary-dark">
                           Alan
                         </div>
                         <div class="text-xs text-gray-500">
@@ -856,7 +861,7 @@ watch(useRoute(), () => {
                         >
                           Fintech
                         </div>
-                        <div class="text-sm font-semibold text-gray-900">
+                        <div class="text-sm font-semibold text-primary-dark">
                           Funding Societies
                         </div>
                         <div class="text-xs text-gray-500">90% time saved</div>
@@ -886,17 +891,17 @@ watch(useRoute(), () => {
                 <button
                   class="flex items-center gap-1 rounded-full px-4 py-1.5 transition-colors duration-200"
                   :class="{
-                    'text-white group-hover/header:text-gray-900':
+                    'text-white group-hover/header:text-primary-dark':
                       showTransparent,
-                    'text-gray-900': !showTransparent,
+                    'text-primary-dark': !showTransparent,
                   }"
                 >
                   <span
                     class="font-normal button-text"
                     :class="{
-                      'text-white group-hover/header:text-gray-900':
+                      'text-white group-hover/header:text-primary-dark':
                         showTransparent,
-                      'text-gray-900': !showTransparent,
+                      'text-primary-dark': !showTransparent,
                     }"
                     >Partners & Creators</span
                   >
@@ -924,14 +929,14 @@ watch(useRoute(), () => {
                     class="flex items-center gap-2.5 px-2 py-3 transition group/feature border-b border-gray-100"
                   >
                     <div
-                      class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
+                      class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-primary-dark group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
                     ></div>
                     <span
-                      class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
+                      class="text-base font-semibold text-primary-dark transition-colors duration-300 leading-tight"
                       >Content Creators</span
                     >
                     <svg
-                      class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
+                      class="w-4 h-4 text-primary-dark opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -949,14 +954,14 @@ watch(useRoute(), () => {
                     class="flex items-center gap-2.5 px-2 py-3 transition group/feature"
                   >
                     <div
-                      class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
+                      class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-primary-dark group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
                     ></div>
                     <span
-                      class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
+                      class="text-base font-semibold text-primary-dark transition-colors duration-300 leading-tight"
                       >Become a Reseller</span
                     >
                     <svg
-                      class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
+                      class="w-4 h-4 text-primary-dark opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -978,9 +983,9 @@ watch(useRoute(), () => {
                   href="/pricing"
                   class="flex items-center px-4 py-1.5 rounded-full transition-colors duration-200 hover:!text-[#8142e3]"
                   :class="{
-                    'text-white group-hover/header:text-gray-900':
+                    'text-white group-hover/header:text-primary-dark':
                       showTransparent,
-                    'text-gray-900': !showTransparent,
+                    'text-primary-dark': !showTransparent,
                   }"
                   >Pricing</a
                 >
@@ -991,7 +996,7 @@ watch(useRoute(), () => {
       </nav>
 
       <!-- Product Section Submenu - rendered as part of header -->
-      <ProductSectionSubmenu v-if="productSubmenuSections.length > 0" />
+      <!-- <ProductSectionSubmenu v-if="productSubmenuSections.length > 0" /> -->
     </header>
 
     <!-- Mobile Menu Overlay -->
@@ -1062,14 +1067,14 @@ watch(useRoute(), () => {
                   class="flex items-center gap-2.5 px-2.5 py-3 transition group/feature border-b border-gray-100"
                 >
                   <div
-                    class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
+                    class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-primary-dark group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
                   ></div>
                   <span
-                    class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
+                    class="text-base font-semibold text-primary-dark transition-colors duration-300 leading-tight"
                     >AI Adoption Stack</span
                   >
                   <svg
-                    class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
+                    class="w-4 h-4 text-primary-dark opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -1088,14 +1093,14 @@ watch(useRoute(), () => {
                   class="flex items-center gap-2.5 px-2.5 py-3 transition group/feature border-b border-gray-100"
                 >
                   <div
-                    class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
+                    class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-primary-dark group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
                   ></div>
                   <span
-                    class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
+                    class="text-base font-semibold text-primary-dark transition-colors duration-300 leading-tight"
                     >AI Agents</span
                   >
                   <svg
-                    class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
+                    class="w-4 h-4 text-primary-dark opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -1114,14 +1119,14 @@ watch(useRoute(), () => {
                   class="flex items-center gap-2.5 px-2.5 py-3 transition group/feature border-b border-gray-100"
                 >
                   <div
-                    class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
+                    class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-primary-dark group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
                   ></div>
                   <span
-                    class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
+                    class="text-base font-semibold text-primary-dark transition-colors duration-300 leading-tight"
                     >Control & Governance</span
                   >
                   <svg
-                    class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
+                    class="w-4 h-4 text-primary-dark opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -1140,14 +1145,14 @@ watch(useRoute(), () => {
                   class="flex items-center gap-2.5 px-2.5 py-3 transition group/feature"
                 >
                   <div
-                    class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
+                    class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-primary-dark group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
                   ></div>
                   <span
-                    class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
+                    class="text-base font-semibold text-primary-dark transition-colors duration-300 leading-tight"
                     >Deployment & Cost</span
                   >
                   <svg
-                    class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
+                    class="w-4 h-4 text-primary-dark opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -1181,7 +1186,7 @@ watch(useRoute(), () => {
                         alt="Gmail"
                     /></span>
                     <span
-                      class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-gray-900"
+                      class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-primary-dark"
                       >Gmail</span
                     >
                   </a>
@@ -1197,7 +1202,7 @@ watch(useRoute(), () => {
                         alt="OpenAI"
                     /></span>
                     <span
-                      class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-gray-900"
+                      class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-primary-dark"
                       >OpenAI</span
                     >
                   </a>
@@ -1213,7 +1218,7 @@ watch(useRoute(), () => {
                         alt="Slack"
                     /></span>
                     <span
-                      class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-gray-900"
+                      class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-primary-dark"
                       >Slack</span
                     >
                   </a>
@@ -1229,7 +1234,7 @@ watch(useRoute(), () => {
                         alt="Notion"
                     /></span>
                     <span
-                      class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-gray-900"
+                      class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-primary-dark"
                       >Notion</span
                     >
                   </a>
@@ -1245,7 +1250,7 @@ watch(useRoute(), () => {
                         alt="HubSpot"
                     /></span>
                     <span
-                      class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-gray-900"
+                      class="text-sm text-gray-600 transition-colors duration-200 group-hover/app:text-primary-dark"
                       >HubSpot</span
                     >
                   </a>
@@ -1254,11 +1259,11 @@ watch(useRoute(), () => {
                     class="group/app flex items-center gap-1 h-10 px-2.5 mt-1 pt-1 border-t border-gray-200"
                   >
                     <span
-                      class="text-sm text-gray-500 transition-colors duration-200 group-hover/app:text-gray-900"
+                      class="text-sm text-gray-500 transition-colors duration-200 group-hover/app:text-primary-dark"
                       >View all</span
                     >
                     <svg
-                      class="w-3.5 h-3.5 text-gray-400 transition-all duration-200 group-hover/app:text-gray-900 group-hover/app:translate-x-0.5"
+                      class="w-3.5 h-3.5 text-gray-400 transition-all duration-200 group-hover/app:text-primary-dark group-hover/app:translate-x-0.5"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -1311,14 +1316,14 @@ watch(useRoute(), () => {
                   class="flex items-center gap-2.5 px-2.5 py-3 transition group/feature border-b border-gray-100"
                 >
                   <div
-                    class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
+                    class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-primary-dark group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
                   ></div>
                   <span
-                    class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
+                    class="text-base font-semibold text-primary-dark transition-colors duration-300 leading-tight"
                     >Docs</span
                   >
                   <svg
-                    class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
+                    class="w-4 h-4 text-primary-dark opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -1336,14 +1341,14 @@ watch(useRoute(), () => {
                   class="flex items-center gap-2.5 px-2.5 py-3 transition group/feature border-b border-gray-100"
                 >
                   <div
-                    class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
+                    class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-primary-dark group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
                   ></div>
                   <span
-                    class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
+                    class="text-base font-semibold text-primary-dark transition-colors duration-300 leading-tight"
                     >Support Forum</span
                   >
                   <svg
-                    class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
+                    class="w-4 h-4 text-primary-dark opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -1362,14 +1367,14 @@ watch(useRoute(), () => {
                   class="flex items-center gap-2.5 px-2.5 py-3 transition group/feature border-b border-gray-100"
                 >
                   <div
-                    class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
+                    class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-primary-dark group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
                   ></div>
                   <span
-                    class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
+                    class="text-base font-semibold text-primary-dark transition-colors duration-300 leading-tight"
                     >YouTube</span
                   >
                   <svg
-                    class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
+                    class="w-4 h-4 text-primary-dark opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -1389,14 +1394,14 @@ watch(useRoute(), () => {
                   class="flex items-center gap-2.5 px-2.5 py-3 transition group/feature"
                 >
                   <div
-                    class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
+                    class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-primary-dark group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
                   ></div>
                   <span
-                    class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
+                    class="text-base font-semibold text-primary-dark transition-colors duration-300 leading-tight"
                     >Discord</span
                   >
                   <svg
-                    class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
+                    class="w-4 h-4 text-primary-dark opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -1448,14 +1453,14 @@ watch(useRoute(), () => {
                   class="flex items-center gap-2.5 px-2.5 py-3 transition group/feature border-b border-gray-100"
                 >
                   <div
-                    class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
+                    class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-primary-dark group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
                   ></div>
                   <span
-                    class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
+                    class="text-base font-semibold text-primary-dark transition-colors duration-300 leading-tight"
                     >Content Creators</span
                   >
                   <svg
-                    class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
+                    class="w-4 h-4 text-primary-dark opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -1473,14 +1478,14 @@ watch(useRoute(), () => {
                   class="flex items-center gap-2.5 px-2.5 py-3 transition group/feature"
                 >
                   <div
-                    class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-gray-900 group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
+                    class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-primary-dark group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
                   ></div>
                   <span
-                    class="text-base font-semibold text-gray-900 transition-colors duration-300 leading-tight"
+                    class="text-base font-semibold text-primary-dark transition-colors duration-300 leading-tight"
                     >Become a Reseller</span
                   >
                   <svg
-                    class="w-4 h-4 text-gray-900 opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
+                    class="w-4 h-4 text-primary-dark opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -1721,11 +1726,13 @@ li[class*="group/menu"] {
 
 /* Ensure hovered item's arrow animation works properly */
 .group\/list .group\/feature:hover svg {
-  color: rgb(17 24 39) !important; /* text-gray-900 - keep it black */
+  color: rgb(17 24 39) !important; /* text-primary-dark - keep it black */
 }
 
 /* Ensure hovered item's shape stays black */
 .group\/list .group\/feature:hover div[class*="rounded-sm"] {
-  background-color: rgb(17 24 39) !important; /* bg-gray-900 - keep it black */
+  background-color: rgb(
+    17 24 39
+  ) !important; /* bg-primary-dark - keep it black */
 }
 </style>
