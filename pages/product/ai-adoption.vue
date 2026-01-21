@@ -118,7 +118,10 @@ onUnmounted(() => {
       title="Turn your entire organization into AI builders"
       subtitle="Templates, analytics, and support to drive adoption from day one"
       background-image="/images/ai-adoption-stack/ai-adoption-stack-hero.png"
-      :primary-button="{ text: 'Start free', href: 'https://cloud.activepieces.com/sign-up' }"
+      :primary-button="{
+        text: 'Start free',
+        href: 'https://cloud.activepieces.com/sign-up',
+      }"
       :secondary-button="{ text: 'Talk to sales', href: '/sales' }"
     />
 
@@ -141,7 +144,7 @@ onUnmounted(() => {
             :items="[
               'Your logo in the header builds immediate trust',
               'Your colors make it feel like home',
-              'Custom domain keeps everything under your roof'
+              'Custom domain keeps everything under your roof',
             ]"
           >
             <PagesProductAdoptionBrandingComparison />
@@ -157,7 +160,7 @@ onUnmounted(() => {
             :items="[
               'Bulk invites via CSV or SSO integration',
               'Personal sandboxes so everyone can learn safely',
-              'Team projects for cross-functional collaboration'
+              'Team projects for cross-functional collaboration',
             ]"
           >
             <PagesProductAdoptionOnboardingFlow />
@@ -172,7 +175,9 @@ onUnmounted(() => {
       class="py-24 bg-[#082c41] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
     >
       <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col gap-20">
-        <PagesProductSectionHeader title="Clear path forward. Built-in guidance." />
+        <PagesProductSectionHeader
+          title="Clear path forward. Built-in guidance."
+        />
 
         <!-- Feature 1: Templates -->
         <PagesProductAdoptionFeatureCard
@@ -180,11 +185,11 @@ onUnmounted(() => {
           :content-ratio="2"
           variant="bordered"
           title="Every team knows exactly what to build"
-          description="Stop waiting for teams to &quot;figure out&quot; AI. Our curated template library gives HR, Finance, Marketing, Sales, and Operations concrete automations to build—from simple everyday tasks to advanced multi-step workflows."
+          description='Stop waiting for teams to "figure out" AI. Our curated template library gives HR, Finance, Marketing, Sales, and Operations concrete automations to build—from simple everyday tasks to advanced multi-step workflows.'
           :items="[
             'Everyday automations anyone can build in minutes',
             'Advanced workflows for power users ready to level up',
-            'Department-specific ideas that actually make sense'
+            'Department-specific ideas that actually make sense',
           ]"
         >
           <PagesProductAdoptionTemplateCards />
@@ -201,7 +206,7 @@ onUnmounted(() => {
           :items="[
             'Smart suggestions based on role and department',
             'Learning paths that adapt to current skill level',
-            'Gentle nudges to re-engage inactive users'
+            'Gentle nudges to re-engage inactive users',
           ]"
         >
           <PagesProductAdoptionCoachingEmails />
@@ -218,7 +223,7 @@ onUnmounted(() => {
           :items="[
             'In-app support—no tickets, no escalations to your team',
             'Instant access—book calls directly from the platform',
-            'Zero overhead—we handle all user support, you focus on adoption'
+            'Zero overhead—we handle all user support, you focus on adoption',
           ]"
         >
           <PagesProductAdoptionSupportBooking />
@@ -245,7 +250,7 @@ onUnmounted(() => {
           :items="[
             'Top builders ranked by automations created and impact',
             'Department rankings to spark healthy competition',
-            'Rising stars—spot newcomers making rapid progress'
+            'Rising stars—spot newcomers making rapid progress',
           ]"
         >
           <PagesProductAdoptionLeaderboard />
@@ -262,7 +267,7 @@ onUnmounted(() => {
           :items="[
             'Personal milestones—first automation, 10 workflows, 100 hours saved',
             'Team achievements—helping teammates, sharing automations',
-            'Skill progression—level up from Beginner to Expert'
+            'Skill progression—level up from Beginner to Expert',
           ]"
         >
           <PagesProductAdoptionBadgeChallenge />
