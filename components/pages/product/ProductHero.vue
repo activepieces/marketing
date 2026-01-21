@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed } from "vue";
 
 defineProps({
   title: {
@@ -34,7 +34,16 @@ const { productPages } = useProductPages();
 const hoveredIndex = ref(null);
 
 const currentPageIndex = computed(() => {
-  return productPages.findIndex(page => route.path === page.path);
+  return productPages.findIndex((page) => route.path === page.path);
+});
+
+const displayedName = computed(() => {
+  if (hoveredIndex.value !== null) {
+    return productPages[hoveredIndex.value].name;
+  }
+  return currentPageIndex.value >= 0
+    ? productPages[currentPageIndex.value].name
+    : "Platform";
 });
 </script>
 
@@ -58,26 +67,33 @@ const currentPageIndex = computed(() => {
       class="max-w-7xl mx-auto pt-40 pb-10 px-4 relative z-10 flex flex-col gap-16"
     >
       <div class="flex flex-col gap-8">
-        <div class="text-white/60 text-sm uppercase font-semibold flex items-center gap-2">
-          <template v-for="(page, index) in productPages" :key="page.path">
-            <NuxtLink
-              :to="page.path"
-              class="flex items-center gap-2"
-              @mouseenter="hoveredIndex = index"
-              @mouseleave="hoveredIndex = null"
-            >
-              <!-- Square (show when not hovered and not current page) -->
-              <div
-                v-if="hoveredIndex !== index && currentPageIndex !== index"
-                class="w-2 h-2 bg-white/20 rounded-sm"
-              />
-              <!-- Square + Name (show when hovered or current page) -->
-              <template v-else>
-                <div class="w-2 h-2 bg-white/60 rounded-sm" />
-                <span>{{ page.name }}</span>
-              </template>
-            </NuxtLink>
-          </template>
+        <div
+          class="text-white/60 text-sm uppercase font-semibold flex items-center gap-2"
+        >
+          <!-- All squares grouped together -->
+          <NuxtLink
+            v-for="(page, index) in productPages"
+            :key="page.path"
+            :to="page.path"
+            @mouseenter="hoveredIndex = index"
+            @mouseleave="hoveredIndex = null"
+          >
+            <div
+              class="w-2 h-2 rounded-sm transition-all duration-200"
+              :class="[
+                hoveredIndex === index
+                  ? 'bg-white rotate-45'
+                  : currentPageIndex === index
+                  ? 'bg-white/60'
+                  : 'bg-white/20',
+              ]"
+            />
+          </NuxtLink>
+
+          <!-- Label after all squares -->
+          <span :class="hoveredIndex !== null ? 'text-white' : ''">
+            {{ displayedName }}
+          </span>
         </div>
         <h1 class="text-white text-balance text-7xl font-sentient font-medium">
           {{ title }}
