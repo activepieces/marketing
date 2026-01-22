@@ -35,7 +35,7 @@
                   index === 2 ? 'bg-emerald-500/20 group-hover:bg-emerald-500/30' : ''
                 ]"
               >
-                <span class="text-2xl">{{ agent.icon }}</span>
+                <component :is="agent.iconComponent" class="w-6 h-6" :class="agent.iconClass" weight="fill" />
               </div>
 
               <div class="flex-1 min-w-0">
@@ -85,16 +85,16 @@
             
             <!-- Avatar lottery -->
             <button
-              @click.stop="shuffleEmoji"
+              @click.stop="shuffleIcon"
               class="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-500/30 to-purple-500/30 flex items-center justify-center transition-all relative overflow-hidden flex-shrink-0"
               :class="isShuffling ? 'scale-110 shadow-lg shadow-violet-500/30' : 'hover:scale-105'"
               title="Click to shuffle!"
             >
-              <span class="text-2xl" :class="isShuffling ? 'animate-lottery-spin' : ''">{{ agentEmoji }}</span>
+              <component :is="agentIcon" class="w-6 h-6 text-white/80" :class="isShuffling ? 'animate-lottery-spin' : ''" weight="fill" />
               <div v-if="isShuffling" class="absolute inset-0 pointer-events-none">
-                <span class="absolute top-0 left-0 text-xs animate-sparkle-1">✨</span>
-                <span class="absolute top-0 right-0 text-xs animate-sparkle-2">✨</span>
-                <span class="absolute bottom-0 right-0 text-xs animate-sparkle-3">✨</span>
+                <PhSparkle class="absolute top-0 left-0 w-3 h-3 text-amber-300 animate-sparkle-1" weight="fill" />
+                <PhSparkle class="absolute top-0 right-0 w-3 h-3 text-amber-300 animate-sparkle-2" weight="fill" />
+                <PhSparkle class="absolute bottom-0 right-0 w-3 h-3 text-amber-300 animate-sparkle-3" weight="fill" />
               </div>
             </button>
             
@@ -196,9 +196,9 @@
                   
                   <!-- Floating hearts -->
                   <div class="absolute inset-0 overflow-visible">
-                    <span class="heart-bubble heart-1">♥</span>
-                    <span class="heart-bubble heart-2">♥</span>
-                    <span class="heart-bubble heart-3">♥</span>
+                    <PhHeart class="heart-bubble heart-1" weight="fill" />
+                    <PhHeart class="heart-bubble heart-2" weight="fill" />
+                    <PhHeart class="heart-bubble heart-3" weight="fill" />
                   </div>
                 </div>
               </div>
@@ -252,7 +252,7 @@
                   >
                     <div class="w-6 h-6 rounded-lg flex items-center justify-center" :class="cap.logo ? 'bg-white/10' : cap.bg">
                       <img v-if="cap.logo" :src="cap.logo" class="w-4 h-4" :alt="cap.name" />
-                      <span v-else class="text-sm">{{ cap.icon }}</span>
+                      <component v-else :is="cap.iconComponent" class="w-4 h-4" :class="cap.iconClass" weight="fill" />
                     </div>
                     <span class="text-sm text-white/80 font-medium">{{ cap.name }}</span>
                     <!-- Remove button on hover -->
@@ -289,12 +289,12 @@
 
               <!-- Content -->
               <div class="flex-1 flex flex-col items-center justify-center p-6 text-center">
-                <div class="text-5xl mb-4 animate-bounce-gentle">🧠</div>
+                <PhBrain class="w-12 h-12 text-violet-400 mb-4 animate-bounce-gentle" weight="fill" />
                 <h3 class="text-xl font-bold text-white/90 mb-3">How Agents Work</h3>
 
                 <div class="space-y-4 max-w-xs">
                   <div class="flex items-start gap-3 text-left">
-                    <span class="text-2xl">💭</span>
+                    <PhChatCircle class="w-6 h-6 text-violet-400 flex-shrink-0" weight="fill" />
                     <div>
                       <p class="font-semibold text-white/80 text-sm">It thinks</p>
                       <p class="text-xs text-white/50">Analyzes your request and plans the best approach</p>
@@ -302,7 +302,7 @@
                   </div>
 
                   <div class="flex items-start gap-3 text-left">
-                    <span class="text-2xl">⚡</span>
+                    <PhLightning class="w-6 h-6 text-amber-400 flex-shrink-0" weight="fill" />
                     <div>
                       <p class="font-semibold text-white/80 text-sm">It acts</p>
                       <p class="text-xs text-white/50">Uses your skills at exactly the right moment</p>
@@ -310,7 +310,7 @@
                   </div>
 
                   <div class="flex items-start gap-3 text-left">
-                    <span class="text-2xl">🔄</span>
+                    <PhArrowsClockwise class="w-6 h-6 text-emerald-400 flex-shrink-0" weight="fill" />
                     <div>
                       <p class="font-semibold text-white/80 text-sm">It iterates</p>
                       <p class="text-xs text-white/50">Reviews results and adjusts until it's right</p>
@@ -320,9 +320,9 @@
 
                 <button
                   @click.stop="showWtfExplainer = false"
-                  class="mt-6 px-6 py-2 bg-violet-600 hover:bg-violet-700 text-white text-sm font-semibold rounded-lg transition-colors"
+                  class="mt-6 px-6 py-2 bg-violet-600 hover:bg-violet-700 text-white text-sm font-semibold rounded-lg transition-colors flex items-center gap-1"
                 >
-                  Got it! 👍
+                  Got it! <PhThumbsUp class="w-4 h-4" weight="fill" />
                 </button>
               </div>
             </div>
@@ -363,7 +363,7 @@
                   >
                     <div class="w-9 h-9 rounded-lg flex items-center justify-center" :class="cap.logo ? 'bg-white/10' : cap.bg">
                       <img v-if="cap.logo" :src="cap.logo" class="w-5 h-5" :alt="cap.name" />
-                      <span v-else class="text-lg">{{ cap.icon }}</span>
+                      <component v-else :is="cap.iconComponent" class="w-5 h-5" :class="cap.iconClass" weight="fill" />
                     </div>
                     <span class="text-sm text-white/80 font-medium flex-1">{{ cap.name }}</span>
                     <svg v-if="activeCapabilitiesKeys.includes(cap.key)" class="w-4 h-4 text-violet-400" fill="currentColor" viewBox="0 0 20 20">
@@ -416,26 +416,30 @@
           <span
             v-for="i in 15"
             :key="'c-'+i"
-            class="absolute confetti-particle text-2xl"
+            class="absolute confetti-particle"
             :style="{
               left: (Math.random() * 100) + '%',
               animationDelay: Math.random() * 0.5 + 's',
               '--drift': (Math.random() - 0.5) * 100 + 'px',
             }"
           >
-            {{ ['✨', '🎉', '💜', '⭐', '🚀'][Math.floor(Math.random() * 5)] }}
+            <component :is="confettiIcons[i % confettiIcons.length]" class="w-5 h-5" :class="confettiColors[i % confettiColors.length]" weight="fill" />
           </span>
         </div>
 
         <div class="relative h-full flex flex-col items-center justify-center text-center p-6">
           <div class="celebration-pop">
             <div class="relative mb-4">
-              <div class="text-7xl blur-lg opacity-30 absolute inset-0 flex items-center justify-center">{{ agentEmoji }}</div>
-              <div class="text-7xl animate-bounce-gentle relative">{{ agentEmoji }}</div>
+              <div class="blur-lg opacity-30 absolute inset-0 flex items-center justify-center">
+                <component :is="agentIcon" class="w-16 h-16 text-white" weight="fill" />
+              </div>
+              <div class="animate-bounce-gentle relative">
+                <component :is="agentIcon" class="w-16 h-16 text-white" weight="fill" />
+              </div>
             </div>
           </div>
 
-          <h2 class="font-bold text-white/90 text-2xl mb-2">Agent Launched! 🎉</h2>
+          <h2 class="font-bold text-white/90 text-2xl mb-2 flex items-center gap-2">Agent Launched! <PhConfetti class="w-6 h-6 text-pink-400" weight="fill" /></h2>
           <p class="text-violet-400 font-medium mb-5">{{ agentName }} is now live</p>
 
           <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-emerald-500/30 rotate-[-2deg] group relative cursor-default">
@@ -463,7 +467,39 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted, markRaw } from 'vue'
+import {
+  PhEnvelope,
+  PhCalendar,
+  PhMagnifyingGlass,
+  PhPaintBrush,
+  PhUser,
+  PhMusicNote,
+  PhRobot,
+  PhBrain,
+  PhLightning,
+  PhRocket,
+  PhTarget,
+  PhFire,
+  PhLightbulb,
+  PhDiamond,
+  PhStar,
+  PhSparkle,
+  PhHeart,
+  PhConfetti,
+  PhThumbsUp,
+  PhChatCircle,
+  PhArrowsClockwise,
+  PhPuzzlePiece,
+  PhCpu,
+  PhCode,
+  PhGlobe,
+  PhGhost,
+  PhAlien,
+  PhMagicWand,
+  PhCrown,
+  PhFlower,
+} from "@phosphor-icons/vue"
 
 const textareaRef = ref(null)
 const containerRef = ref(null)
@@ -512,22 +548,52 @@ const onTextareaBlur = () => {
   }, 500)
 }
 
-// Avatar - fun emoji lottery
-const agentEmoji = ref('🤖')
+// Avatar - fun icon lottery
+const agentIcon = ref(markRaw(PhRobot))
 const isShuffling = ref(false)
-const allEmojis = ['🤖', '😀', '😎', '🤓', '🧠', '⚡', '🚀', '💫', '🎯', '🔥', '💡', '🎨', '🦊', '🦁', '🐱', '🐶', '🦄', '👻', '🤠', '🥷', '🧙', '🦸', '🧑‍💻', '👽', '🤩', '😈', '🌟', '💎', '🎪', '🎭']
+const allIcons = [
+  markRaw(PhRobot),
+  markRaw(PhBrain),
+  markRaw(PhLightning),
+  markRaw(PhRocket),
+  markRaw(PhTarget),
+  markRaw(PhFire),
+  markRaw(PhLightbulb),
+  markRaw(PhPaintBrush),
+  markRaw(PhDiamond),
+  markRaw(PhStar),
+  markRaw(PhPuzzlePiece),
+  markRaw(PhCpu),
+  markRaw(PhCode),
+  markRaw(PhGlobe),
+  markRaw(PhGhost),
+  markRaw(PhAlien),
+  markRaw(PhMagicWand),
+  markRaw(PhCrown),
+  markRaw(PhFlower),
+]
+
+// Confetti configuration
+const confettiIcons = [
+  markRaw(PhSparkle),
+  markRaw(PhConfetti),
+  markRaw(PhHeart),
+  markRaw(PhStar),
+  markRaw(PhRocket),
+]
+const confettiColors = ['text-amber-300', 'text-pink-400', 'text-violet-400', 'text-yellow-300', 'text-blue-400']
 
 let shuffleInterval = null
 
-const shuffleEmoji = () => {
+const shuffleIcon = () => {
   if (isShuffling.value) return
   isShuffling.value = true
   let count = 0
   const totalSpins = 12 + Math.floor(Math.random() * 8)
   let speed = 50
-  
+
   const spin = () => {
-    agentEmoji.value = allEmojis[Math.floor(Math.random() * allEmojis.length)]
+    agentIcon.value = allIcons[Math.floor(Math.random() * allIcons.length)]
     count++
     if (count > totalSpins - 4) speed += 50
     if (count < totalSpins) {
@@ -543,7 +609,8 @@ const agents = [
   {
     id: 'deal',
     name: 'Inbox Deal Qualifier',
-    icon: '📧',
+    iconComponent: markRaw(PhEnvelope),
+    iconClass: 'text-amber-400',
     brief: 'Auto-qualify leads from emails',
     prompt: 'Figure out if this email is a potential sales opportunity. Extract company name, intent, and recommend next action.',
     tools: ['gmail', 'hubspot', 'web-search'],
@@ -552,7 +619,8 @@ const agents = [
   {
     id: 'meeting',
     name: 'Meeting Follow-Up',
-    icon: '📅',
+    iconComponent: markRaw(PhCalendar),
+    iconClass: 'text-blue-400',
     brief: 'Auto-summarize & create tasks',
     prompt: 'Summarize key decisions and action items from this meeting. Create tasks and send follow-ups automatically.',
     tools: ['google-calendar', 'slack', 'notion'],
@@ -561,7 +629,8 @@ const agents = [
   {
     id: 'research',
     name: 'Smart Lead Researcher',
-    icon: '🔍',
+    iconComponent: markRaw(PhMagnifyingGlass),
+    iconClass: 'text-emerald-400',
     brief: 'Instant research & outreach',
     prompt: 'Research this company thoroughly. Find recent news, funding info, and draft a personalized outreach message.',
     tools: ['hubspot', 'web-search', 'contact-enrich'],
@@ -609,10 +678,10 @@ const allTriggers = [
 
 // AI Capabilities (not just apps)
 const aiCapabilities = [
-  { key: 'web-search', name: 'Web Search', icon: '🔍', bg: 'bg-blue-500/20' },
-  { key: 'image-gen', name: 'Image Generation', icon: '🎨', bg: 'bg-pink-500/20' },
-  { key: 'contact-enrich', name: 'Contact Enrichment', icon: '👤', bg: 'bg-green-500/20' },
-  { key: 'audio-gen', name: 'Generate Audio', icon: '🎵', bg: 'bg-purple-500/20' },
+  { key: 'web-search', name: 'Web Search', iconComponent: markRaw(PhMagnifyingGlass), iconClass: 'text-blue-400', bg: 'bg-blue-500/20' },
+  { key: 'image-gen', name: 'Image Generation', iconComponent: markRaw(PhPaintBrush), iconClass: 'text-pink-400', bg: 'bg-pink-500/20' },
+  { key: 'contact-enrich', name: 'Contact Enrichment', iconComponent: markRaw(PhUser), iconClass: 'text-green-400', bg: 'bg-green-500/20' },
+  { key: 'audio-gen', name: 'Generate Audio', iconComponent: markRaw(PhMusicNote), iconClass: 'text-purple-400', bg: 'bg-purple-500/20' },
 ]
 
 // All app capabilities
@@ -632,12 +701,12 @@ const activeCapabilitiesKeys = ref([])
 let typingInterval = null
 
 // Convert capability keys to objects with name and logo
-const activeCapabilities = computed(() => 
+const activeCapabilities = computed(() =>
   activeCapabilitiesKeys.value.map(key => {
     // Check if it's an AI capability
     const aiCap = aiCapabilities.find(c => c.key === key)
     if (aiCap) {
-      return { name: aiCap.name, logo: null, icon: aiCap.icon, bg: aiCap.bg, key }
+      return { name: aiCap.name, logo: null, iconComponent: aiCap.iconComponent, iconClass: aiCap.iconClass, bg: aiCap.bg, key }
     }
     // Otherwise it's an app
     return { name: apps[key]?.name || key, logo: apps[key]?.logo, key }
@@ -696,7 +765,7 @@ const toggleCapabilityPicker = () => {
 const selectAgent = (agent) => {
   selectedAgent.value = agent
   agentName.value = agent.name
-  agentEmoji.value = allEmojis[Math.floor(Math.random() * allEmojis.length)]
+  agentIcon.value = allIcons[Math.floor(Math.random() * allIcons.length)]
   activeCapabilitiesKeys.value = [...agent.tools]
   currentTrigger.value = allTriggers[agent.triggerIdx || 0]
   editablePrompt.value = ''
@@ -784,7 +853,7 @@ const reset = () => {
   editablePrompt.value = ''
   isTyping.value = false
   isShuffling.value = false
-  agentEmoji.value = '🤖'
+  agentIcon.value = markRaw(PhRobot)
   agentName.value = ''
   activeCapabilitiesKeys.value = []
   showTriggerPicker.value = false
@@ -977,7 +1046,8 @@ const reset = () => {
 /* Floating hearts */
 .heart-bubble {
   position: absolute;
-  font-size: 12px;
+  width: 12px;
+  height: 12px;
   color: #f472b6;
   opacity: 0;
   animation: heart-float 2s ease-out infinite;
