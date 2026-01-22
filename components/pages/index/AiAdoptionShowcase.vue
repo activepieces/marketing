@@ -88,197 +88,163 @@
                   :class="card.id === 'branding' ? 'p-0' : 'p-4 bg-gray-50'"
                 >
                   <!-- Templates Card Content - Agent Library browser -->
-                  <div v-if="card.id === 'templates'" class="h-full flex flex-col gap-3">
-                    <!-- Search bar - placeholder style -->
-                    <div class="flex items-center gap-2">
-                      <div class="flex-1 flex items-center gap-2 bg-white rounded-lg px-3 py-2.5 border border-gray-200">
-                        <div class="w-4 h-4 rounded bg-gray-200"></div>
-                        <div class="h-3.5 bg-gray-200 rounded w-28"></div>
+                  <div v-if="card.id === 'templates'" class="h-full flex flex-col">
+                    <!-- Header row -->
+                    <div class="flex items-center justify-between mb-4">
+                      <!-- Category toggle -->
+                      <div class="flex items-center gap-1.5">
+                        <span class="px-3 py-1.5 rounded-full text-[11px] font-semibold bg-gray-900 text-white">All</span>
+                        <span class="px-3 py-1.5 rounded-full text-[11px] font-medium text-gray-400">Everyday</span>
+                        <span class="px-3 py-1.5 rounded-full text-[11px] font-medium text-gray-400">Sales</span>
+                        <span class="px-3 py-1.5 rounded-full text-[11px] font-medium text-gray-400">Marketing</span>
+                        <span class="px-3 py-1.5 rounded-full text-[11px] font-medium text-gray-400">Support</span>
                       </div>
-                      <div class="bg-gray-200 rounded-lg px-6 py-2.5">
-                        <div class="h-3.5 bg-gray-300 rounded w-12"></div>
+                      <!-- Search placeholder -->
+                      <div class="flex items-center gap-2 bg-white rounded-lg px-3 py-1.5 border border-gray-200">
+                        <div class="w-3.5 h-3.5 rounded bg-gray-200"></div>
+                        <div class="h-3 bg-gray-100 rounded w-16"></div>
                       </div>
                     </div>
                     
-                    <!-- Category pills -->
-                    <div class="flex items-center gap-1.5 overflow-hidden">
-                      <span class="px-3 py-1.5 rounded-full text-xs font-semibold bg-gray-900 text-white">All</span>
-                      <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-white text-gray-600 border border-gray-200">Everyday</span>
-                      <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-white text-gray-600 border border-gray-200">Sales</span>
-                      <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-white text-gray-600 border border-gray-200">Marketing</span>
-                      <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-white text-gray-600 border border-gray-200">HR</span>
-                      <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-white text-gray-600 border border-gray-200">Finance</span>
-                      <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-white text-gray-600 border border-gray-200">Support</span>
-                    </div>
-                    
-                    <!-- Scrollable content area -->
-                    <div class="flex-1 overflow-hidden space-y-3">
-                      <!-- Everyday Agents - unique style -->
+                    <!-- Content area -->
+                    <div class="flex-1 space-y-4">
+                      <!-- Everyday -->
                       <div>
-                        <div class="flex items-center gap-2 mb-2">
-                          <span class="text-sm font-semibold text-violet-600">Everyday</span>
-                          <div class="flex-1 h-px bg-violet-200"></div>
-                        </div>
-                        <div class="grid grid-cols-4 gap-2">
-                          <div 
-                            v-for="(template, tIdx) in everydayTemplates" 
-                            :key="'everyday-' + tIdx"
-                            class="bg-gradient-to-br from-violet-50 to-purple-50 rounded-lg px-3 py-2 border border-violet-200 hover:border-violet-300 transition-all cursor-pointer"
-                          >
-                            <div class="flex items-center justify-between mb-1">
-                              <h4 class="font-semibold text-gray-900 text-sm truncate">{{ template.name }}</h4>
-                              <div class="flex items-center gap-1">
-                                <img v-for="(icon, i) in template.icons" :key="i" :src="icon" class="w-4 h-4 rounded" />
+                        <span class="text-xs font-semibold text-violet-600 mb-2.5 block">Everyday</span>
+                        <div class="grid grid-cols-3 gap-3">
+                          <!-- Real agents -->
+                          <div class="bg-white rounded-xl p-3.5 border border-gray-200">
+                            <h4 class="font-semibold text-gray-900 text-[13px] mb-2.5">Meeting Summarizer</h4>
+                            <div class="flex items-center justify-between">
+                              <div class="flex items-center gap-1.5">
+                                <img src="https://cdn.activepieces.com/pieces/google-calendar.png" class="w-5 h-5 rounded-md" />
+                                <img src="https://cdn.activepieces.com/pieces/notion.png" class="w-5 h-5 rounded-md" />
+                                <img src="https://cdn.activepieces.com/pieces/openai.png" class="w-5 h-5 rounded-md" />
                               </div>
+                              <span class="text-[11px] font-medium text-emerald-600">Save $2.1k/yr</span>
                             </div>
-                            <div class="text-xs font-semibold text-emerald-600">Save {{ template.savings }}</div>
+                          </div>
+                          <div class="bg-white rounded-xl p-3.5 border border-gray-200">
+                            <h4 class="font-semibold text-gray-900 text-[13px] mb-2.5">Inbox Zero Bot</h4>
+                            <div class="flex items-center justify-between">
+                              <div class="flex items-center gap-1.5">
+                                <img src="https://cdn.activepieces.com/pieces/gmail.png" class="w-5 h-5 rounded-md" />
+                                <img src="https://cdn.activepieces.com/pieces/openai.png" class="w-5 h-5 rounded-md" />
+                              </div>
+                              <span class="text-[11px] font-medium text-emerald-600">Save $1.8k/yr</span>
+                            </div>
+                          </div>
+                          <div class="bg-white rounded-xl p-3.5 border border-gray-200">
+                            <h4 class="font-semibold text-gray-900 text-[13px] mb-2.5">Deadline Tracker</h4>
+                            <div class="flex items-center justify-between">
+                              <div class="flex items-center gap-1.5">
+                                <img src="https://cdn.activepieces.com/pieces/notion.png" class="w-5 h-5 rounded-md" />
+                                <img src="https://cdn.activepieces.com/pieces/slack.png" class="w-5 h-5 rounded-md" />
+                                <img src="https://cdn.activepieces.com/pieces/google-calendar.png" class="w-5 h-5 rounded-md" />
+                              </div>
+                              <span class="text-[11px] font-medium text-emerald-600">Save $1.5k/yr</span>
+                            </div>
                           </div>
                         </div>
                       </div>
                       
                       <!-- Sales -->
                       <div>
-                        <div class="flex items-center gap-2 mb-2">
-                          <span class="text-sm font-semibold text-gray-500">Sales</span>
-                          <div class="flex-1 h-px bg-gray-200"></div>
-                        </div>
-                        <div class="grid grid-cols-4 gap-2">
-                          <div 
-                            v-for="(template, tIdx) in salesTemplates" 
-                            :key="'sales-' + tIdx"
-                            class="bg-white rounded-lg px-3 py-2 border border-gray-200 hover:border-gray-300 transition-all cursor-pointer"
-                          >
-                            <div class="flex items-center justify-between mb-1">
-                              <h4 class="font-semibold text-gray-900 text-sm truncate">{{ template.name }}</h4>
-                              <div class="flex items-center gap-1">
-                                <img v-for="(icon, i) in template.icons" :key="i" :src="icon" class="w-4 h-4 rounded" />
+                        <span class="text-xs font-semibold text-gray-500 mb-2.5 block">Sales</span>
+                        <div class="grid grid-cols-3 gap-3">
+                          <!-- Real agents -->
+                          <div class="bg-white rounded-xl p-3.5 border border-gray-200">
+                            <h4 class="font-semibold text-gray-900 text-[13px] mb-2.5">Lead Scorer</h4>
+                            <div class="flex items-center justify-between">
+                              <div class="flex items-center gap-1.5">
+                                <img src="https://cdn.activepieces.com/pieces/hubspot.png" class="w-5 h-5 rounded-md" />
+                                <img src="https://cdn.activepieces.com/pieces/openai.png" class="w-5 h-5 rounded-md" />
                               </div>
+                              <span class="text-[11px] font-medium text-emerald-600">Save $19.9k/yr</span>
                             </div>
-                            <div class="text-xs font-semibold text-emerald-600">Save {{ template.savings }}</div>
                           </div>
-                          <!-- Placeholders -->
-                          <div v-for="n in 2" :key="'sales-ph-' + n" class="bg-white rounded-lg px-3 py-2 border border-gray-200">
-                            <div class="flex items-center justify-between mb-1">
-                              <div class="h-3.5 bg-gray-200 rounded w-20"></div>
-                              <div class="flex items-center gap-1">
-                                <div class="w-4 h-4 rounded bg-gray-200"></div>
-                                <div class="w-4 h-4 rounded bg-gray-200"></div>
+                          <div class="bg-white rounded-xl p-3.5 border border-gray-200">
+                            <h4 class="font-semibold text-gray-900 text-[13px] mb-2.5">Deal Closer</h4>
+                            <div class="flex items-center justify-between">
+                              <div class="flex items-center gap-1.5">
+                                <img src="https://cdn.activepieces.com/pieces/salesforce.png" class="w-5 h-5 rounded-md" />
+                                <img src="https://cdn.activepieces.com/pieces/slack.png" class="w-5 h-5 rounded-md" />
+                                <img src="https://cdn.activepieces.com/pieces/gmail.png" class="w-5 h-5 rounded-md" />
                               </div>
+                              <span class="text-[11px] font-medium text-emerald-600">Save $8.4k/yr</span>
                             </div>
-                            <div class="h-3 bg-gray-100 rounded w-14"></div>
+                          </div>
+                          <!-- Placeholder -->
+                          <div class="bg-white rounded-xl p-3.5 border border-gray-100">
+                            <div class="h-3.5 bg-gray-100 rounded w-20 mb-2.5"></div>
+                            <div class="flex items-center justify-between">
+                              <div class="flex items-center gap-1.5">
+                                <div class="w-5 h-5 rounded-md bg-gray-100"></div>
+                                <div class="w-5 h-5 rounded-md bg-gray-50"></div>
+                              </div>
+                              <div class="h-3 bg-gray-50 rounded w-16"></div>
+                            </div>
                           </div>
                         </div>
                       </div>
                       
                       <!-- Marketing -->
                       <div>
-                        <div class="flex items-center gap-2 mb-2">
-                          <span class="text-sm font-semibold text-gray-500">Marketing</span>
-                          <div class="flex-1 h-px bg-gray-200"></div>
-                        </div>
-                        <div class="grid grid-cols-4 gap-2">
-                          <div 
-                            v-for="(template, tIdx) in marketingTemplates" 
-                            :key="'mkt-' + tIdx"
-                            class="bg-white rounded-lg px-3 py-2 border border-gray-200 hover:border-gray-300 transition-all cursor-pointer"
-                          >
-                            <div class="flex items-center justify-between mb-1">
-                              <h4 class="font-semibold text-gray-900 text-sm truncate">{{ template.name }}</h4>
-                              <div class="flex items-center gap-1">
-                                <img v-for="(icon, i) in template.icons" :key="i" :src="icon" class="w-4 h-4 rounded" />
+                        <span class="text-xs font-semibold text-gray-500 mb-2.5 block">Marketing</span>
+                        <div class="grid grid-cols-3 gap-3">
+                          <!-- All placeholders -->
+                          <div v-for="n in 3" :key="'mkt-ph-' + n" class="bg-white rounded-xl p-3.5 border border-gray-100">
+                            <div class="h-3.5 bg-gray-100 rounded w-24 mb-2.5"></div>
+                            <div class="flex items-center justify-between">
+                              <div class="flex items-center gap-1.5">
+                                <div class="w-5 h-5 rounded-md bg-gray-100"></div>
+                                <div class="w-5 h-5 rounded-md bg-gray-50"></div>
                               </div>
+                              <div class="h-3 bg-gray-50 rounded w-14"></div>
                             </div>
-                            <div class="text-xs font-semibold text-emerald-600">Save {{ template.savings }}</div>
-                          </div>
-                          <!-- Placeholders -->
-                          <div v-for="n in 2" :key="'mkt-ph-' + n" class="bg-white rounded-lg px-3 py-2 border border-gray-200">
-                            <div class="flex items-center justify-between mb-1">
-                              <div class="h-3.5 bg-gray-200 rounded w-20"></div>
-                              <div class="flex items-center gap-1">
-                                <div class="w-4 h-4 rounded bg-gray-200"></div>
-                                <div class="w-4 h-4 rounded bg-gray-200"></div>
-                              </div>
-                            </div>
-                            <div class="h-3 bg-gray-100 rounded w-14"></div>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <!-- HR - all placeholders -->
-                      <div>
-                        <div class="flex items-center gap-2 mb-2">
-                          <span class="text-sm font-semibold text-gray-500">HR</span>
-                          <div class="flex-1 h-px bg-gray-200"></div>
-                        </div>
-                        <div class="grid grid-cols-4 gap-2">
-                          <div v-for="n in 4" :key="'hr-ph-' + n" class="bg-white rounded-lg px-3 py-2 border border-gray-200">
-                            <div class="flex items-center justify-between mb-1">
-                              <div class="h-3.5 bg-gray-200 rounded w-20"></div>
-                              <div class="flex items-center gap-1">
-                                <div class="w-4 h-4 rounded bg-gray-200"></div>
-                                <div class="w-4 h-4 rounded bg-gray-200"></div>
-                              </div>
-                            </div>
-                            <div class="h-3 bg-gray-100 rounded w-14"></div>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <!-- Finance - all placeholders -->
-                      <div>
-                        <div class="flex items-center gap-2 mb-2">
-                          <span class="text-sm font-semibold text-gray-500">Finance</span>
-                          <div class="flex-1 h-px bg-gray-200"></div>
-                        </div>
-                        <div class="grid grid-cols-4 gap-2">
-                          <div v-for="n in 4" :key="'fin-ph-' + n" class="bg-white rounded-lg px-3 py-2 border border-gray-200">
-                            <div class="flex items-center justify-between mb-1">
-                              <div class="h-3.5 bg-gray-200 rounded w-20"></div>
-                              <div class="flex items-center gap-1">
-                                <div class="w-4 h-4 rounded bg-gray-200"></div>
-                                <div class="w-4 h-4 rounded bg-gray-200"></div>
-                              </div>
-                            </div>
-                            <div class="h-3 bg-gray-100 rounded w-14"></div>
                           </div>
                         </div>
                       </div>
                       
                       <!-- Support -->
                       <div>
-                        <div class="flex items-center gap-2 mb-2">
-                          <span class="text-sm font-semibold text-gray-500">Support</span>
-                          <div class="flex-1 h-px bg-gray-200"></div>
-                        </div>
-                        <div class="grid grid-cols-4 gap-2">
-                          <div 
-                            v-for="(template, tIdx) in supportTemplates" 
-                            :key="'sup-' + tIdx"
-                            class="bg-white rounded-lg px-3 py-2 border border-gray-200 hover:border-gray-300 transition-all cursor-pointer"
-                          >
-                            <div class="flex items-center justify-between mb-1">
-                              <h4 class="font-semibold text-gray-900 text-sm truncate">{{ template.name }}</h4>
-                              <div class="flex items-center gap-1">
-                                <img v-for="(icon, i) in template.icons" :key="i" :src="icon" class="w-4 h-4 rounded" />
+                        <span class="text-xs font-semibold text-gray-500 mb-2.5 block">Support</span>
+                        <div class="grid grid-cols-3 gap-3">
+                          <!-- All placeholders -->
+                          <div class="bg-white rounded-xl p-3.5 border border-gray-100">
+                            <div class="h-3.5 bg-gray-100 rounded w-20 mb-2.5"></div>
+                            <div class="flex items-center justify-between">
+                              <div class="flex items-center gap-1.5">
+                                <div class="w-5 h-5 rounded-md bg-gray-100"></div>
+                                <div class="w-5 h-5 rounded-md bg-gray-50"></div>
+                                <div class="w-5 h-5 rounded-md bg-gray-50"></div>
                               </div>
+                              <div class="h-3 bg-gray-50 rounded w-16"></div>
                             </div>
-                            <div class="text-xs font-semibold text-emerald-600">Save {{ template.savings }}</div>
                           </div>
-                          <!-- Placeholders -->
-                          <div v-for="n in 2" :key="'sup-ph-' + n" class="bg-white rounded-lg px-3 py-2 border border-gray-200">
-                            <div class="flex items-center justify-between mb-1">
-                              <div class="h-3.5 bg-gray-200 rounded w-20"></div>
-                          <div class="flex items-center gap-1">
-                                <div class="w-4 h-4 rounded bg-gray-200"></div>
-                                <div class="w-4 h-4 rounded bg-gray-200"></div>
+                          <div class="bg-white rounded-xl p-3.5 border border-gray-100">
+                            <div class="h-3.5 bg-gray-100 rounded w-24 mb-2.5"></div>
+                            <div class="flex items-center justify-between">
+                              <div class="flex items-center gap-1.5">
+                                <div class="w-5 h-5 rounded-md bg-gray-100"></div>
+                                <div class="w-5 h-5 rounded-md bg-gray-50"></div>
                               </div>
+                              <div class="h-3 bg-gray-50 rounded w-14"></div>
                             </div>
-                            <div class="h-3 bg-gray-100 rounded w-14"></div>
+                          </div>
+                          <div class="bg-white rounded-xl p-3.5 border border-gray-100">
+                            <div class="h-3.5 bg-gray-100 rounded w-16 mb-2.5"></div>
+                            <div class="flex items-center justify-between">
+                              <div class="flex items-center gap-1.5">
+                                <div class="w-5 h-5 rounded-md bg-gray-100"></div>
+                              </div>
+                              <div class="h-3 bg-gray-50 rounded w-14"></div>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+                          </div>
 
                   <!-- Analytics Card Content -->
                   <div v-if="card.id === 'analytics'" class="h-full flex flex-col">
@@ -295,17 +261,16 @@
                         <span class="px-2.5 py-1 text-[10px] font-semibold rounded-md text-gray-400">
                           All Time
                         </span>
-                      </div>
-                    </div>
-                    
+                              </div>
+                            </div>
+                      
                     <div class="flex-1 flex gap-4">
                       <!-- Left column - Adoption rates & Team breakdown -->
                       <div class="w-[260px] flex flex-col gap-4">
                         <!-- AI Adoption Rate Card -->
                         <div class="bg-white rounded-xl p-4 border border-gray-200/80">
-                          <div class="flex items-center justify-between mb-4">
+                          <div class="mb-4">
                             <span class="text-gray-700 font-medium text-xs">AI Adoption Rate</span>
-                            <span class="px-2 py-0.5 text-[10px] font-bold rounded-full bg-emerald-100 text-emerald-700">↑ 12%</span>
                           </div>
                           <!-- Circular progress rings -->
                           <div class="flex items-center justify-center gap-8">
@@ -331,10 +296,10 @@
                                 </svg>
                                 <div class="absolute inset-0 flex items-center justify-center">
                                   <span class="text-base font-bold text-gray-900">91%</span>
-                                </div>
-                              </div>
+                        </div>
+                      </div>
                               <span class="text-[11px] text-gray-500 font-medium mt-2">Individuals</span>
-                            </div>
+                        </div>
                             <!-- Teams ring -->
                             <div class="flex flex-col items-center">
                               <div class="relative w-[72px] h-[72px]">
@@ -357,18 +322,18 @@
                                 </svg>
                                 <div class="absolute inset-0 flex items-center justify-center">
                                   <span class="text-base font-bold text-gray-900">80%</span>
-                                </div>
                               </div>
-                              <span class="text-[11px] text-gray-500 font-medium mt-2">Teams</span>
                             </div>
+                              <span class="text-[11px] text-gray-500 font-medium mt-2">Teams</span>
                           </div>
                         </div>
-                        
+                      </div>
+                      
                         <!-- Adoption by Team -->
                         <div class="flex-1 bg-white rounded-xl p-4 border border-gray-200/80">
                           <div class="flex items-center justify-between mb-3">
                             <span class="text-gray-700 font-medium text-xs">Adoption by Team</span>
-                          </div>
+                        </div>
                           <div class="space-y-3">
                             <div v-for="(team, tIdx) in adoptionByTeam" :key="team.name">
                               <div class="flex items-center justify-between mb-1.5">
@@ -380,19 +345,19 @@
                                   class="h-full rounded-full transition-all duration-700"
                                   :style="{ width: team.percent + '%', backgroundColor: team.color }"
                                 ></div>
-                              </div>
                             </div>
+                          </div>
                             <!-- Placeholder teams -->
                             <div v-for="n in 2" :key="'team-ph-' + n">
                               <div class="flex items-center justify-between mb-1.5">
                                 <div class="h-3 bg-gray-100 rounded w-16"></div>
                                 <div class="h-3 bg-gray-50 rounded w-6"></div>
-                              </div>
-                              <div class="h-1.5 bg-gray-50 rounded-full"></div>
-                            </div>
-                          </div>
                         </div>
+                              <div class="h-1.5 bg-gray-50 rounded-full"></div>
                       </div>
+                        </div>
+                              </div>
+                            </div>
                       
                       <!-- Right column - Stats & Chart -->
                       <div class="flex-1 flex flex-col gap-4">
@@ -403,8 +368,8 @@
                             <div class="flex items-center justify-between mb-3">
                               <div class="w-8 h-8 rounded-lg bg-violet-50 flex items-center justify-center">
                                 <PhTimer class="w-4 h-4 text-violet-500" weight="duotone" />
+                          </div>
                               </div>
-                            </div>
                             <p class="text-2xl font-bold text-gray-900 tabular-nums">12.4k</p>
                             <p class="text-gray-500 text-xs mt-0.5">Hours Saved</p>
                             <div class="flex items-center gap-1 mt-2">
@@ -412,47 +377,44 @@
                               <span class="text-gray-400 text-[10px]">this month</span>
                             </div>
                           </div>
-                          
+                      
                           <!-- Active Flows -->
                           <div class="bg-white rounded-xl p-4 border border-gray-200/80">
                             <div class="flex items-center justify-between mb-3">
                               <div class="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center">
                                 <PhFlowArrow class="w-4 h-4 text-emerald-500" weight="duotone" />
-                              </div>
-                            </div>
+                        </div>
+                      </div>
                             <p class="text-2xl font-bold text-gray-900 tabular-nums">847</p>
                             <p class="text-gray-500 text-xs mt-0.5">Active Flows</p>
                             <div class="flex items-center gap-1.5 mt-2">
                               <div class="h-2.5 bg-gray-100 rounded w-8"></div>
                               <div class="h-2.5 bg-gray-50 rounded w-14"></div>
-                            </div>
-                          </div>
-                          
+                    </div>
+                  </div>
+
                           <!-- AI Tasks -->
                           <div class="bg-white rounded-xl p-4 border border-gray-200/80">
                             <div class="flex items-center justify-between mb-3">
                               <div class="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center">
                                 <PhCpu class="w-4 h-4 text-amber-500" weight="duotone" />
-                              </div>
-                            </div>
+                          </div>
+                        </div>
                             <p class="text-2xl font-bold text-gray-900 tabular-nums">94.2k</p>
                             <p class="text-gray-500 text-xs mt-0.5">AI Agent Tasks</p>
                             <div class="flex items-center gap-1.5 mt-2">
                               <div class="h-2.5 bg-gray-100 rounded w-8"></div>
                               <div class="h-2.5 bg-gray-50 rounded w-14"></div>
-                            </div>
-                          </div>
                         </div>
+                      </div>
+                    </div>
                         
                         <!-- Cost Savings Chart -->
                         <div class="bg-white rounded-xl p-4 border border-gray-200/80">
-                          <div class="flex items-center justify-between mb-3">
-                            <div>
-                              <span class="text-gray-900 font-semibold text-sm">Cost Savings</span>
-                              <p class="text-gray-400 text-[10px] mt-0.5">Monthly savings from automation</p>
-                            </div>
-                            <span class="px-2.5 py-1 text-[10px] font-bold rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-100">+$127k YTD</span>
-                          </div>
+                          <div class="mb-3">
+                            <span class="text-gray-900 font-semibold text-sm">Cost Savings</span>
+                            <p class="text-gray-400 text-[10px] mt-0.5">Monthly savings from automation</p>
+                        </div>
                           
                           <!-- Chart area - fixed height, horizontal layout -->
                           <div class="flex gap-2 h-24">
@@ -461,16 +423,16 @@
                               <span>$30k</span>
                               <span>$15k</span>
                               <span>$0</span>
-                            </div>
-                            
+                      </div>
+
                             <!-- Bars container -->
                             <div class="flex-1 flex items-end gap-1.5 border-l border-b border-gray-100 pl-2 pb-1 relative">
-                              <!-- Grid lines -->
+                        <!-- Grid lines -->
                               <div class="absolute inset-0 flex flex-col justify-between pointer-events-none">
                                 <div class="border-t border-gray-100/50"></div>
                                 <div class="border-t border-gray-100/50"></div>
                                 <div></div>
-                              </div>
+                      </div>
                               
                               <!-- Data bars -->
                               <div 
@@ -484,8 +446,8 @@
                                   class="w-full max-w-[32px] rounded-t transition-all duration-500"
                                   :class="bar.current ? 'bg-emerald-500' : 'bg-emerald-300'"
                                   :style="{ height: bar.percent + '%' }"
-                                ></div>
-                              </div>
+                          ></div>
+                          </div>
                               
                               <!-- Placeholder bars -->
                               <div 
@@ -495,19 +457,19 @@
                               >
                                 <div class="w-4 h-2 bg-gray-100 rounded mb-0.5"></div>
                                 <div class="w-full max-w-[32px] h-[12%] bg-gray-100 rounded-t"></div>
-                              </div>
-                            </div>
-                          </div>
+                        </div>
+                        </div>
+                      </div>
                           
                           <!-- X-axis labels -->
                           <div class="flex gap-1.5 pl-8 pt-1.5">
                             <div v-for="(bar, i) in savingsBarData" :key="'label-' + i" class="flex-1 text-center">
                               <span class="text-[9px] text-gray-400 font-medium">{{ bar.label }}</span>
-                            </div>
+                    </div>
                             <div v-for="n in 2" :key="'ph-label-' + n" class="flex-1 flex justify-center">
                               <div class="w-5 h-2.5 bg-gray-100 rounded"></div>
-                            </div>
-                          </div>
+                        </div>
+                      </div>
                         </div>
                       </div>
                     </div>
@@ -516,7 +478,7 @@
                   <!-- Leaderboard & Badges Card Content -->
                   <div v-if="card.id === 'leaderboard'" class="h-full flex flex-col">
                     <!-- Header with switcher and badge -->
-                    <div class="flex items-center justify-between mb-4">
+                      <div class="flex items-center justify-between mb-4">
                       <!-- People / Teams switcher -->
                       <div class="flex items-center bg-gray-100 rounded-lg p-0.5">
                         <span class="px-3 py-1.5 text-xs font-semibold rounded-md bg-white text-gray-900 shadow-sm">
@@ -531,7 +493,7 @@
                             Teams
                           </span>
                         </span>
-                      </div>
+                        </div>
                       <!-- Time period toggle -->
                       <div class="flex items-center bg-gray-100 rounded-lg p-0.5">
                         <span class="px-2.5 py-1 text-[10px] font-semibold rounded-md bg-white text-gray-900 shadow-sm">
@@ -543,9 +505,9 @@
                         <span class="px-2.5 py-1 text-[10px] font-semibold rounded-md text-gray-400">
                           All Time
                         </span>
-                      </div>
-                    </div>
-                    
+                          </div>
+                        </div>
+
                     <!-- Table container -->
                     <div class="flex-1 bg-white rounded-xl border border-gray-200 overflow-hidden">
                       <!-- Table header -->
@@ -572,7 +534,7 @@
                                 :style="{ backgroundColor: person.color }"
                               >
                                 {{ person.initials }}
-                              </div>
+                          </div>
                               <!-- Rank badge for top 3 -->
                               <div 
                                 v-if="pIdx < 3" 
@@ -580,33 +542,33 @@
                                 :class="pIdx === 0 ? 'bg-amber-400 text-amber-900' : pIdx === 1 ? 'bg-gray-300 text-gray-700' : 'bg-amber-600 text-amber-100'"
                               >
                                 {{ pIdx + 1 }}
-                              </div>
-                            </div>
+                          </div>
+                          </div>
                             <div class="min-w-0">
                               <p class="text-sm font-medium text-gray-900 truncate">{{ person.name }}</p>
                               <p class="text-xs text-gray-400">{{ person.role }}</p>
-                            </div>
                           </div>
+                        </div>
                           
                           <!-- Badges -->
                           <div class="flex items-center gap-1">
                             <div 
                               v-for="(badge, bIdx) in person.badges.slice(0, 3)" 
-                              :key="bIdx"
+                          :key="bIdx" 
                               class="w-6 h-6 rounded-md flex items-center justify-center transition-transform hover:scale-110"
                               :style="{ backgroundColor: badge.bg }"
                               :title="badge.name"
-                            >
+                        >
                               <component :is="badge.icon" class="w-3.5 h-3.5" :style="{ color: badge.color }" weight="fill" />
-                            </div>
+                      </div>
                             <!-- +N more badges -->
                             <div 
                               v-if="person.badges.length > 3"
                               class="w-6 h-6 rounded-md bg-gray-100 flex items-center justify-center text-[10px] font-bold text-gray-500"
                             >
                               +{{ person.badges.length - 3 }}
-                            </div>
-                          </div>
+                    </div>
+                      </div>
                           
                           <!-- Time Saved -->
                           <div class="text-right">
@@ -616,8 +578,8 @@
                           <!-- Active Flows -->
                           <div class="text-right">
                             <span class="text-sm font-semibold text-gray-900 tabular-nums">{{ person.activeFlows }}</span>
-                          </div>
                         </div>
+                      </div>
                         
                         <!-- Placeholder rows -->
                         <div 
@@ -631,15 +593,15 @@
                             <div class="space-y-1.5">
                               <div class="h-3.5 bg-gray-100 rounded w-24"></div>
                               <div class="h-2.5 bg-gray-50 rounded w-16"></div>
-                            </div>
-                          </div>
+                        </div>
+                      </div>
                           
                           <!-- Badges placeholder -->
                           <div class="flex items-center gap-1">
                             <div class="w-6 h-6 rounded-md bg-gray-100"></div>
                             <div class="w-6 h-6 rounded-md bg-gray-50"></div>
                             <div class="w-6 h-6 rounded-md bg-gray-50 opacity-50"></div>
-                          </div>
+                        </div>
                           
                           <!-- Time Saved placeholder -->
                           <div class="flex justify-end">
@@ -974,31 +936,6 @@ const cards = [
   }
 ]
 
-// Everyday templates - with multiple tool icons
-const everydayTemplates = [
-  { name: 'Meeting Summarizer', savings: '$2.1k/yr', icons: ['https://cdn.activepieces.com/pieces/google-calendar.png', 'https://cdn.activepieces.com/pieces/notion.png', 'https://cdn.activepieces.com/pieces/openai.png'] },
-  { name: 'Inbox Zero Bot', savings: '$1.8k/yr', icons: ['https://cdn.activepieces.com/pieces/gmail.png', 'https://cdn.activepieces.com/pieces/slack.png', 'https://cdn.activepieces.com/pieces/openai.png'] },
-  { name: 'Deadline Tracker', savings: '$1.5k/yr', icons: ['https://cdn.activepieces.com/pieces/notion.png', 'https://cdn.activepieces.com/pieces/slack.png', 'https://cdn.activepieces.com/pieces/google-calendar.png'] },
-  { name: 'News Curator', savings: '$960/yr', icons: ['https://cdn.activepieces.com/pieces/openai.png', 'https://cdn.activepieces.com/pieces/slack.png'] },
-]
-
-// Sales templates - with multiple tool icons
-const salesTemplates = [
-  { name: 'Lead Scorer', savings: '$19.9k/yr', icons: ['https://cdn.activepieces.com/pieces/hubspot.png', 'https://cdn.activepieces.com/pieces/salesforce.png', 'https://cdn.activepieces.com/pieces/openai.png'] },
-  { name: 'Deal Closer', savings: '$8.4k/yr', icons: ['https://cdn.activepieces.com/pieces/salesforce.png', 'https://cdn.activepieces.com/pieces/slack.png', 'https://cdn.activepieces.com/pieces/gmail.png'] },
-]
-
-// Marketing templates
-const marketingTemplates = [
-  { name: 'Content Repurposer', savings: '$5.4k/yr', icons: ['https://cdn.activepieces.com/pieces/notion.png', 'https://cdn.activepieces.com/pieces/openai.png', 'https://cdn.activepieces.com/pieces/slack.png'] },
-  { name: 'Social Scheduler', savings: '$3.2k/yr', icons: ['https://cdn.activepieces.com/pieces/slack.png', 'https://cdn.activepieces.com/pieces/google-sheets.png', 'https://cdn.activepieces.com/pieces/openai.png'] },
-]
-
-// Support templates
-const supportTemplates = [
-  { name: 'Ticket Triage', savings: '$22.1k/yr', icons: ['https://cdn.activepieces.com/pieces/intercom.png', 'https://cdn.activepieces.com/pieces/openai.png', 'https://cdn.activepieces.com/pieces/slack.png'] },
-  { name: 'FAQ Responder', savings: '$9.6k/yr', icons: ['https://cdn.activepieces.com/pieces/openai.png', 'https://cdn.activepieces.com/pieces/notion.png', 'https://cdn.activepieces.com/pieces/intercom.png'] },
-]
 
 // Adoption by team data
 const adoptionByTeam = [
