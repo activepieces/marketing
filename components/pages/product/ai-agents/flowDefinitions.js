@@ -450,6 +450,94 @@ export const flows = {
         icon: 'slack'
       }
     ]
+  },
+
+  // Placeholder flow for branding preview - shows flow structure without real app icons
+  'branding-placeholder': {
+    id: 'branding-placeholder',
+    name: 'Branding Preview',
+    nodes: [
+      // 1. Trigger
+      {
+        id: 'trigger',
+        step: 1,
+        type: 'trigger',
+        label: 'New Event',
+        app: 'Trigger',
+        icon: 'placeholder'
+      },
+      // 2. Action
+      {
+        id: 'action-1',
+        step: 2,
+        type: 'action',
+        label: 'Process Data',
+        app: 'Action',
+        icon: 'placeholder'
+      },
+      // 3. Condition/Branch
+      {
+        id: 'check-condition',
+        step: 3,
+        type: 'condition',
+        label: 'Check',
+        app: 'Condition',
+        icon: 'condition',
+        leftBranch: ['left-action'],
+        rightBranch: ['right-loop']
+      },
+      // Left branch: Simple action
+      {
+        id: 'left-action',
+        step: 4,
+        type: 'action',
+        label: 'Path A',
+        app: 'Action',
+        icon: 'placeholder',
+        branch: 'check-condition',
+        branchSide: 'left'
+      },
+      // Right branch: Loop
+      {
+        id: 'right-loop',
+        step: 4,
+        type: 'loop',
+        label: 'Repeat',
+        app: 'Loop',
+        icon: 'loop',
+        branch: 'check-condition',
+        branchSide: 'right',
+        children: ['loop-child-1', 'loop-child-2']
+      },
+      // Loop children
+      {
+        id: 'loop-child-1',
+        step: 5,
+        type: 'action',
+        label: 'Step A',
+        app: 'Action',
+        icon: 'placeholder',
+        parent: 'right-loop'
+      },
+      {
+        id: 'loop-child-2',
+        step: 6,
+        type: 'action',
+        label: 'Step B',
+        app: 'Action',
+        icon: 'placeholder',
+        parent: 'right-loop'
+      },
+      // After merge
+      {
+        id: 'final-action',
+        step: 7,
+        type: 'action',
+        label: 'Complete',
+        app: 'Action',
+        icon: 'placeholder'
+      }
+    ]
   }
 }
 
@@ -478,7 +566,10 @@ export const iconMap = {
   'data-mapper': 'builtin:data-mapper',
   'condition': 'builtin:condition',
   'date-helper': 'builtin:date-helper',
-  'agent': 'builtin:agent'
+  'agent': 'builtin:agent',
+  
+  // Placeholder icon (renders as gray box)
+  'placeholder': 'builtin:placeholder'
 }
 
 // Color schemes for different node types

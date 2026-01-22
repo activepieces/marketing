@@ -8,24 +8,35 @@
   >
     <!-- Regular Node (always rendered, fades out when expanded) -->
     <div 
-      class="node-content rounded-xl border shadow-sm px-3 py-2.5 transition-all duration-150"
+      class="node-content rounded-xl shadow-sm px-3 py-2.5 transition-all duration-150"
       :class="[
-        nodeColorClasses,
+        placeholderMode ? 'bg-white border' : nodeColorClasses,
+        placeholderMode && isSpecialNode ? 'border-2' : '',
         isExpanded ? 'opacity-0 pointer-events-none' : 'opacity-100',
-        isSpecialNode && !isExpanded ? 'special-card cursor-pointer' : ''
+        isSpecialNode && !isExpanded && !placeholderMode ? 'special-card cursor-pointer' : ''
       ]"
+      :style="placeholderMode && brandColor ? { 
+        borderColor: isSpecialNode ? brandColor + '50' : brandColor + '25',
+        transition: 'border-color 400ms ease'
+      } : {}"
     >
       <!-- Trigger badge -->
       <div 
         v-if="node.type === 'trigger'" 
-        class="absolute -top-5 left-0 text-[10px] font-medium text-green-600 bg-green-50 px-2 py-0.5 rounded border border-green-200 z-10"
+        class="absolute -top-5 left-0 text-[10px] font-medium px-2 py-0.5 rounded border z-10"
+        :class="placeholderMode ? '' : 'text-green-600 bg-green-50 border-green-200'"
+        :style="placeholderMode && brandColor ? { 
+          color: brandColor, 
+          backgroundColor: brandColor + '15', 
+          borderColor: brandColor + '40' 
+        } : {}"
       >
         ⚡ Trigger
       </div>
       
-      <!-- Sparkle indicator for special nodes -->
+      <!-- Sparkle indicator for special nodes (hide in placeholder mode) -->
       <div 
-        v-if="isSpecialNode"
+        v-if="isSpecialNode && !placeholderMode"
         class="absolute -top-1.5 -right-1.5 text-[10px] animate-sparkle z-20"
       >
         ✦
@@ -35,19 +46,36 @@
         <!-- Icon -->
         <div 
           class="flex-shrink-0 rounded-lg flex items-center justify-center w-8 h-8"
-          :class="iconContainerClasses"
+          :class="placeholderMode ? '' : iconContainerClasses"
+          :style="placeholderMode && brandColor ? { 
+            backgroundColor: isSpecialNode ? brandColor + '20' : brandColor + '10',
+            transition: 'background-color 400ms ease'
+          } : {}"
         >
-          <NodeIcon :icon="node.icon" :size="19" />
+          <NodeIcon :icon="node.icon" :size="19" :brand-color="placeholderMode ? brandColor : null" />
         </div>
         
         <!-- Label and subtitle -->
         <div class="flex-1 min-w-0">
-          <div class="font-medium text-gray-900 truncate leading-tight text-sm">
-            {{ node.step }}. {{ displayLabel }}
-          </div>
-          <div class="text-gray-500 truncate leading-tight text-xs">
-            {{ node.app }}
-          </div>
+          <!-- In placeholder mode, show brand-colored rectangles instead of text -->
+          <template v-if="placeholderMode">
+            <div 
+              class="h-2.5 rounded w-16 mb-1"
+              :style="{ backgroundColor: brandColor ? brandColor + '30' : '#d1d5db', transition: 'background-color 400ms ease' }"
+            ></div>
+            <div 
+              class="h-2 rounded w-12"
+              :style="{ backgroundColor: brandColor ? brandColor + '20' : '#e5e7eb', transition: 'background-color 400ms ease' }"
+            ></div>
+          </template>
+          <template v-else>
+            <div class="font-medium text-gray-900 truncate leading-tight text-sm">
+              {{ node.step }}. {{ displayLabel }}
+            </div>
+            <div class="text-gray-500 truncate leading-tight text-xs">
+              {{ node.app }}
+            </div>
+          </template>
         </div>
       </div>
     </div>
@@ -112,7 +140,21 @@ import { iconMap } from '../flowDefinitions'
 const NodeIcon = (props) => {
   const icon = props.icon
   const size = props.size || 19
+  const brandColor = props.brandColor
   const iconUrl = iconMap[icon]
+  
+  // Placeholder icon - brand-colored box
+  if (icon === 'placeholder' || iconUrl === 'builtin:placeholder') {
+    return h('div', {
+      class: 'rounded',
+      style: { 
+        width: `${size * 0.8}px`, 
+        height: `${size * 0.8}px`,
+        backgroundColor: brandColor ? brandColor + '50' : '#d1d5db',
+        transition: 'background-color 400ms ease'
+      }
+    })
+  }
   
   // CDN image
   if (iconUrl && !iconUrl.startsWith('builtin:')) {
@@ -140,7 +182,9 @@ const NodeIcon = (props) => {
   }
   
   if (icon === 'loop' || iconUrl === 'builtin:loop') {
-    return h('svg', { ...svgProps, class: `${svgProps.class} text-pink-500` }, [
+    // Use brand color if provided, otherwise pink
+    const colorStyle = brandColor ? { color: brandColor } : {}
+    return h('svg', { ...svgProps, class: brandColor ? svgProps.class : `${svgProps.class} text-pink-500`, style: { ...svgProps.style, ...colorStyle } }, [
       h('path', { 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': '2', d: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15' })
     ])
   }
@@ -152,7 +196,9 @@ const NodeIcon = (props) => {
   }
   
   if (icon === 'condition' || iconUrl === 'builtin:condition') {
-    return h('svg', { ...svgProps, class: `${svgProps.class} text-amber-500` }, [
+    // Use brand color if provided, otherwise amber
+    const colorStyle = brandColor ? { color: brandColor } : {}
+    return h('svg', { ...svgProps, class: brandColor ? svgProps.class : `${svgProps.class} text-amber-500`, style: { ...svgProps.style, ...colorStyle } }, [
       h('path', { 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': '2', d: 'M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z' })
     ])
   }
@@ -184,7 +230,7 @@ const NodeIcon = (props) => {
     h('path', { 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': '2', d: 'M13 10V3L4 14h7v7l9-11h-7z' })
   ])
 }
-NodeIcon.props = ['icon', 'size']
+NodeIcon.props = ['icon', 'size', 'brandColor']
 
 const props = defineProps({
   node: {
@@ -210,6 +256,14 @@ const props = defineProps({
   expandDirection: {
     type: Object,
     default: () => ({ horizontal: 'right', vertical: 'down' })
+  },
+  placeholderMode: {
+    type: Boolean,
+    default: false
+  },
+  brandColor: {
+    type: String,
+    default: null
   }
 })
 
@@ -311,6 +365,7 @@ const iconContainerClasses = computed(() => {
   if (props.node.icon?.includes('google')) return 'bg-green-50'
   if (props.node.icon === 'mailchimp') return 'bg-yellow-50'
   if (props.node.icon === 'http') return 'bg-cyan-50'
+  return 'bg-gray-100'
   return 'bg-gray-50'
 })
 

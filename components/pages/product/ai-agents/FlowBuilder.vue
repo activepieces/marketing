@@ -1,10 +1,13 @@
 <template>
-  <div class="w-full">
+  <div class="w-full h-full">
     <!-- Flow container -->
     <div 
-      class="relative w-full overflow-hidden rounded-2xl border border-gray-200/80 select-none"
-      :style="{ height: '480px' }"
-      :class="cursorClass"
+      class="relative w-full overflow-hidden select-none"
+      :class="[
+        cursorClass,
+        embedded ? '' : 'rounded-2xl border border-gray-200/80'
+      ]"
+      :style="{ height: height || (embedded ? '100%' : '480px') }"
       ref="containerRef"
       @mousedown="handleMouseDown"
       @mousemove="handleMouseMove"
@@ -12,8 +15,29 @@
       @mouseleave="handleMouseLeave"
       @wheel="handleWheel"
     >
-      <!-- Artistic background - layered abstract composition -->
-      <div class="absolute inset-0 pointer-events-none overflow-hidden">
+      <!-- Embedded mode: simple brand-tinted background -->
+      <div v-if="embedded && brandColor" class="absolute inset-0 pointer-events-none overflow-hidden">
+        <!-- Subtle brand gradient -->
+        <div 
+          class="absolute inset-0"
+          :style="{
+            background: `linear-gradient(135deg, ${brandColor}08 0%, ${brandColor}04 50%, ${brandColor}06 100%)`,
+            transition: 'background 400ms ease'
+          }"
+        ></div>
+        <!-- Brand-tinted dot grid -->
+        <div 
+          class="absolute inset-0 opacity-30"
+          :style="{
+            backgroundImage: `radial-gradient(${brandColor}25 1px, transparent 1px)`,
+            backgroundSize: '16px 16px',
+            transition: 'background-image 400ms ease'
+          }"
+        ></div>
+      </div>
+      
+      <!-- Standard mode: Artistic background - layered abstract composition -->
+      <div v-else class="absolute inset-0 pointer-events-none overflow-hidden">
         <!-- Base with subtle warmth -->
         <div 
           class="absolute inset-0"
@@ -102,6 +126,8 @@
           :hovered-node-id="hoveredNodeId"
           :card-data-map="CARD_DATA_MAP"
           :viewport="viewport"
+          :placeholder-mode="placeholderMode"
+          :brand-color="brandColor"
           @canvas-size="handleCanvasSize"
           @node-hover="handleNodeHover"
           @node-leave="handleNodeLeave"
@@ -129,6 +155,24 @@ const props = defineProps({
   flowId: {
     type: String,
     default: 'ai-lead-pipeline'
+  },
+  placeholderMode: {
+    type: Boolean,
+    default: false
+  },
+  brandColor: {
+    type: String,
+    default: null
+  },
+  // Embedded mode: no border, transparent bg, fills container
+  embedded: {
+    type: Boolean,
+    default: false
+  },
+  // Custom height (default 480px, or 100% in embedded mode)
+  height: {
+    type: String,
+    default: null
   }
 })
 
@@ -261,12 +305,17 @@ const isOverCanvas = ref(false)
 
 // Cursor changes: grab when hovering, grabbing when dragging
 const cursorClass = computed(() => {
+  // No special cursor in embedded mode
+  if (props.embedded) return 'cursor-default'
   if (isDragging.value) return 'cursor-grabbing'
   if (isOverCanvas.value) return 'cursor-grab'
   return 'cursor-default'
 })
 
 const handleMouseDown = (e) => {
+  // Disable dragging in embedded mode
+  if (props.embedded) return
+  
   // Block drag on special nodes and expanded ID cards - allow drag on regular nodes
   if (e.target.closest('.special-card') || e.target.closest('.expanded-card')) return
   
@@ -316,6 +365,9 @@ let wasAtEdge = false
 const GESTURE_GAP = 150 // ms gap to consider a new gesture (user lifted finger)
 
 const handleWheel = (e) => {
+  // Disable wheel scrolling in embedded mode
+  if (props.embedded) return
+  
   const now = Date.now()
   const timeSinceLastScroll = now - lastScrollTime
   lastScrollTime = now
@@ -464,7 +516,9 @@ const centerOnFirstNode = () => {
   // Therefore: offsetX = containerCenter - firstNodeCenterX
   const containerCenterX = containerW.value / 2
   let idealX = containerCenterX - firstNodeCenterX.value
-  let idealY = PADDING
+  
+  // In embedded mode, use minimal padding to fill the space
+  let idealY = props.embedded ? 10 : PADDING
   
   // Clamp to bounds so first interaction doesn't cause a snap/flicker
   idealX = Math.max(minOffsetX.value, Math.min(maxOffsetX.value, idealX))

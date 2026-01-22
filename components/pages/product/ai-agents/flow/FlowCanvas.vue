@@ -44,10 +44,11 @@
         :key="conn.id"
         :d="conn.d"
         fill="none"
-        stroke="#d1d5db"
+        :stroke="brandColor ? brandColor + '40' : '#d1d5db'"
         stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"
+        :style="{ transition: 'stroke 400ms ease' }"
       />
       
       <!-- Loop paths (entry, loop-back, exit) -->
@@ -56,11 +57,12 @@
         :key="path.id"
         :d="path.d"
         fill="none"
-        stroke="#d1d5db"
+        :stroke="brandColor ? brandColor + '40' : '#d1d5db'"
         stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"
         :marker-end="path.hasArrow ? (path.arrowReversed ? 'url(#arrowhead-left)' : 'url(#arrowhead)') : ''"
+        :style="{ transition: 'stroke 400ms ease' }"
       />
       
       <!-- Branch paths (entry, exit, merge) -->
@@ -69,10 +71,11 @@
         :key="path.id"
         :d="path.d"
         fill="none"
-        stroke="#d1d5db"
+        :stroke="brandColor ? brandColor + '40' : '#d1d5db'"
         stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"
+        :style="{ transition: 'stroke 400ms ease' }"
       />
     </svg>
     
@@ -84,8 +87,10 @@
       :position="nodePositions[node.id]"
       :is-child="!!node.parent || !!node.branch"
       :is-expanded="hoveredNodeId === node.id"
-      :card-data="getCardDataForNode(node)"
+      :card-data="placeholderMode ? null : getCardDataForNode(node)"
       :expand-direction="getExpandDirection(node)"
+      :placeholder-mode="placeholderMode"
+      :brand-color="brandColor"
       @node-hover="handleNodeHover"
       @node-leave="handleNodeLeave"
     />
@@ -114,6 +119,14 @@ const props = defineProps({
   viewport: {
     type: Object,
     default: () => ({ offsetX: 0, offsetY: 0, width: 600, height: 480 })
+  },
+  placeholderMode: {
+    type: Boolean,
+    default: false
+  },
+  brandColor: {
+    type: String,
+    default: null
   }
 })
 
