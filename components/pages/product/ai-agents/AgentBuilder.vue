@@ -2,12 +2,12 @@
   <div 
     ref="containerRef"
     class="relative w-full max-w-lg mx-auto h-[420px] rounded-2xl overflow-hidden transition-all duration-500"
-    :class="agentLaunched ? 'bg-gradient-to-br from-violet-50 via-purple-50 to-pink-50' : 'bg-gradient-to-br from-slate-50 via-white to-violet-50/30'"
+    :class="agentLaunched ? 'bg-gradient-to-br from-gray-900 via-purple-900/50 to-gray-900' : 'bg-gray-900'"
   >
     <!-- Soft background blobs -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
-      <div class="absolute top-0 right-0 w-72 h-72 bg-gradient-to-br from-violet-200/40 to-purple-200/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-      <div class="absolute bottom-0 left-0 w-60 h-60 bg-gradient-to-tr from-pink-200/30 to-rose-100/20 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3"></div>
+      <div class="absolute top-0 right-0 w-72 h-72 bg-gradient-to-br from-violet-500/20 to-purple-500/15 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+      <div class="absolute bottom-0 left-0 w-60 h-60 bg-gradient-to-tr from-pink-500/15 to-rose-500/10 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3"></div>
     </div>
 
     <!-- PICK YOUR AGENT SCREEN -->
@@ -16,8 +16,8 @@
         <div class="h-full flex flex-col p-5">
           <!-- Header -->
           <div class="mb-5">
-            <h2 class="font-bold text-gray-900 text-lg">Build an Agent</h2>
-            <p class="text-gray-400 text-sm">Pick a template to start</p>
+            <h2 class="font-bold text-white/90 text-lg">Build an Agent</h2>
+            <p class="text-white/50 text-sm">Pick a template to start</p>
           </div>
 
           <!-- Agent cards -->
@@ -26,24 +26,24 @@
               v-for="(agent, index) in agents"
               :key="agent.id"
               @click="selectAgent(agent)"
-              class="group relative flex items-center gap-4 p-4 rounded-xl bg-white border border-gray-100 hover:border-violet-200 hover:shadow-lg hover:shadow-violet-100/50 transition-all duration-300 text-left"
+              class="group relative flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 hover:bg-white/10 transition-all duration-300 text-left"
             >
               <div class="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110"
                 :class="[
-                  index === 0 ? 'bg-amber-50 group-hover:bg-amber-100' : '',
-                  index === 1 ? 'bg-blue-50 group-hover:bg-blue-100' : '',
-                  index === 2 ? 'bg-emerald-50 group-hover:bg-emerald-100' : ''
+                  index === 0 ? 'bg-amber-500/20 group-hover:bg-amber-500/30' : '',
+                  index === 1 ? 'bg-blue-500/20 group-hover:bg-blue-500/30' : '',
+                  index === 2 ? 'bg-emerald-500/20 group-hover:bg-emerald-500/30' : ''
                 ]"
               >
                 <span class="text-2xl">{{ agent.icon }}</span>
               </div>
-              
+
               <div class="flex-1 min-w-0">
-                <p class="font-semibold text-gray-900 group-hover:text-violet-700 transition-colors">{{ agent.name }}</p>
-                <p class="text-sm text-gray-400 truncate">{{ agent.brief }}</p>
+                <p class="font-semibold text-white/90 group-hover:text-white transition-colors">{{ agent.name }}</p>
+                <p class="text-sm text-white/50 truncate">{{ agent.brief }}</p>
               </div>
-              
-              <div class="w-8 h-8 rounded-full bg-gray-50 group-hover:bg-violet-100 flex items-center justify-center text-gray-400 group-hover:text-violet-600 group-hover:translate-x-0.5 transition-all">
+
+              <div class="w-8 h-8 rounded-full bg-white/5 group-hover:bg-white/10 flex items-center justify-center text-white/40 group-hover:text-white/80 group-hover:translate-x-0.5 transition-all">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                 </svg>
@@ -74,9 +74,9 @@
         <div class="h-full flex flex-col p-5">
           <!-- Header: back + avatar + editable name -->
           <div class="flex items-center gap-3 mb-4">
-            <button 
-              @click="goBack" 
-              class="w-8 h-8 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-400 hover:text-gray-600 hover:border-gray-300 transition-all flex-shrink-0"
+            <button
+              @click="goBack"
+              class="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white/60 hover:text-white hover:border-white/30 transition-all flex-shrink-0"
             >
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
@@ -84,10 +84,10 @@
             </button>
             
             <!-- Avatar lottery -->
-            <button 
+            <button
               @click.stop="shuffleEmoji"
-              class="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-100 to-purple-100 flex items-center justify-center transition-all relative overflow-hidden flex-shrink-0"
-              :class="isShuffling ? 'scale-110 shadow-lg shadow-violet-200' : 'hover:scale-105'"
+              class="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-500/30 to-purple-500/30 flex items-center justify-center transition-all relative overflow-hidden flex-shrink-0"
+              :class="isShuffling ? 'scale-110 shadow-lg shadow-violet-500/30' : 'hover:scale-105'"
               title="Click to shuffle!"
             >
               <span class="text-2xl" :class="isShuffling ? 'animate-lottery-spin' : ''">{{ agentEmoji }}</span>
@@ -100,50 +100,50 @@
             
             <!-- Editable name -->
             <div class="flex-1 min-w-0" @click.stop>
-              <input 
+              <input
                 v-model="agentName"
-                class="font-bold text-gray-900 text-lg bg-transparent border-none outline-none w-full hover:text-violet-700 focus:text-violet-700 transition-colors"
+                class="font-bold text-white/90 text-lg bg-transparent border-none outline-none w-full hover:text-white focus:text-white transition-colors"
                 @focus="$event.target.select()"
               />
-              <p class="text-xs text-gray-400 -mt-0.5">tap to rename</p>
+              <p class="text-xs text-white/40 -mt-0.5">tap to rename</p>
             </div>
           </div>
 
           <!-- Starts when (trigger) - compact -->
           <div class="mb-3 relative">
-            <div 
-              class="flex items-center gap-2 px-3 py-2 rounded-lg bg-white border border-gray-200 cursor-pointer hover:border-violet-300 transition-all"
+            <div
+              class="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/5 border border-white/10 cursor-pointer hover:border-white/20 transition-all"
               @click.stop="toggleTriggerPicker"
             >
-              <span class="text-xs text-gray-400">When</span>
+              <span class="text-xs text-white/40">When</span>
               <div class="w-6 h-6 rounded flex items-center justify-center flex-shrink-0" :style="{ backgroundColor: currentTrigger.color + '15' }">
                 <img :src="currentTrigger.logo" class="w-4 h-4" :alt="currentTrigger.app" />
               </div>
-              <span class="text-sm text-gray-800 font-medium flex-1 truncate">{{ currentTrigger.label }}</span>
-              <svg class="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <span class="text-sm text-white/80 font-medium flex-1 truncate">{{ currentTrigger.label }}</span>
+              <svg class="w-4 h-4 text-white/40 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
               </svg>
             </div>
-            
+
             <!-- Trigger dropdown -->
-            <div v-if="showTriggerPicker" class="absolute top-full left-0 right-0 mt-1 bg-white rounded-lg border border-gray-200 shadow-xl z-40 overflow-hidden">
+            <div v-if="showTriggerPicker" class="absolute top-full left-0 right-0 mt-1 bg-white/10 backdrop-blur-lg rounded-lg border border-white/20 shadow-xl z-40 overflow-hidden">
               <div class="max-h-[160px] overflow-y-auto p-1.5">
                 <button
                   v-for="trigger in allTriggers"
                   :key="trigger.label"
                   @click.stop="selectTrigger(trigger)"
-                  class="w-full flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-violet-50 transition-colors text-left"
-                  :class="currentTrigger.label === trigger.label ? 'bg-violet-50' : ''"
+                  class="w-full flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-white/10 transition-colors text-left"
+                  :class="currentTrigger.label === trigger.label ? 'bg-white/10' : ''"
                 >
                   <div class="w-5 h-5 rounded flex items-center justify-center flex-shrink-0" :style="{ backgroundColor: trigger.color + '15' }">
                     <img :src="trigger.logo" class="w-3 h-3" :alt="trigger.app" />
                   </div>
-                  <span class="text-xs text-gray-700 flex-1 truncate">{{ trigger.label }}</span>
-                  <span class="text-[10px] text-gray-400">{{ trigger.app }}</span>
+                  <span class="text-xs text-white/80 flex-1 truncate">{{ trigger.label }}</span>
+                  <span class="text-[10px] text-white/50">{{ trigger.app }}</span>
                 </button>
               </div>
-              <div class="px-2 py-1.5 border-t border-gray-100 bg-gray-50 text-center">
-                <span class="text-[10px] text-gray-400">+ 500 more from 280+ apps</span>
+              <div class="px-2 py-1.5 border-t border-white/10 bg-white/5 text-center">
+                <span class="text-[10px] text-white/40">+ 500 more from 280+ apps</span>
               </div>
             </div>
           </div>
@@ -151,8 +151,8 @@
           <!-- Instructions -->
           <div class="mb-3 relative">
             <div class="flex items-center gap-2 mb-1.5">
-              <label class="text-xs font-medium text-gray-500">Instructions</label>
-              <span v-if="isTyping" class="text-xs text-violet-500 flex items-center gap-1">
+              <label class="text-xs font-medium text-white/50">Instructions</label>
+              <span v-if="isTyping" class="text-xs text-violet-400 flex items-center gap-1">
                 <span class="w-1.5 h-1.5 bg-violet-400 rounded-full animate-pulse"></span>
                 writing...
               </span>
@@ -160,11 +160,11 @@
             
             <!-- Watching face -->
             <Transition name="face-pop">
-              <div 
-                v-if="showWatchingFace" 
+              <div
+                v-if="showWatchingFace"
                 class="absolute -top-8 left-1/2 -translate-x-1/2 z-10 pointer-events-none"
               >
-                <div class="relative w-12 h-12 bg-gradient-to-br from-amber-100 to-yellow-200 rounded-full shadow-lg border-2 border-amber-200 flex items-center justify-center">
+                <div class="relative w-12 h-12 bg-gradient-to-br from-amber-500/30 to-yellow-500/30 rounded-full shadow-lg border-2 border-amber-500/30 flex items-center justify-center">
                   <!-- Eyes container -->
                   <div class="flex gap-2">
                     <!-- Left eye -->
@@ -204,12 +204,12 @@
               </div>
             </Transition>
             
-            <div class="rounded-xl bg-white border border-gray-200 h-[80px] shadow-sm">
+            <div class="rounded-xl bg-white/5 border border-white/10 h-[80px]">
               <textarea
                 ref="textareaRef"
                 v-model="editablePrompt"
                 :readonly="isTyping"
-                class="w-full h-full p-3 bg-transparent text-gray-700 text-sm leading-relaxed resize-none border-none outline-none"
+                class="w-full h-full p-3 bg-transparent text-white/80 text-sm leading-relaxed resize-none border-none outline-none"
                 :class="isTyping ? 'cursor-default' : 'cursor-text'"
                 @mousedown.stop
                 @input="onUserType"
@@ -222,103 +222,103 @@
           <!-- Capabilities -->
           <div class="mb-4 overflow-visible">
             <div class="flex items-center gap-2 mb-2">
-              <label class="text-xs font-medium text-gray-500">Skills</label>
-              <span v-if="activeCapabilities.length > 0" class="text-xs text-gray-300">•</span>
-              <span v-if="activeCapabilities.length > 0" class="text-xs text-gray-400">{{ activeCapabilities.length }}</span>
+              <label class="text-xs font-medium text-white/50">Skills</label>
+              <span v-if="activeCapabilities.length > 0" class="text-xs text-white/20">•</span>
+              <span v-if="activeCapabilities.length > 0" class="text-xs text-white/40">{{ activeCapabilities.length }}</span>
             </div>
             <div class="flex items-center gap-2 h-12">
               <!-- Add button (always visible) -->
-              <button 
+              <button
                 @click.stop="toggleCapabilityPicker"
-                class="flex items-center justify-center w-10 h-10 rounded-xl border-2 border-dashed border-gray-300 hover:border-violet-400 hover:bg-violet-50 text-gray-400 hover:text-violet-600 transition-all flex-shrink-0"
+                class="flex items-center justify-center w-10 h-10 rounded-xl border-2 border-dashed border-white/20 hover:border-white/40 hover:bg-white/10 text-white/40 hover:text-white/80 transition-all flex-shrink-0"
               >
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
                 </svg>
               </button>
-              
+
               <!-- Empty state -->
               <div v-if="activeCapabilities.length === 0" class="flex-1 flex items-center">
-                <span class="text-sm text-gray-400 italic">No skills yet — add some!</span>
+                <span class="text-sm text-white/40 italic">No skills yet — add some!</span>
               </div>
-              
+
               <!-- Scrollable capabilities -->
               <div v-else class="flex-1 relative min-w-0">
                 <div class="flex items-center gap-3 overflow-x-auto py-1 scrollbar-hide pr-6">
                   <div
                     v-for="cap in activeCapabilities"
                     :key="cap.key"
-                    class="flex items-center gap-2 px-3 py-2 rounded-xl bg-white border border-gray-200 flex-shrink-0 shadow-sm group relative"
+                    class="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/10 border border-white/10 flex-shrink-0 group relative"
                   >
-                    <div class="w-6 h-6 rounded-lg flex items-center justify-center" :class="cap.logo ? 'bg-gray-50' : cap.bg">
+                    <div class="w-6 h-6 rounded-lg flex items-center justify-center" :class="cap.logo ? 'bg-white/10' : cap.bg">
                       <img v-if="cap.logo" :src="cap.logo" class="w-4 h-4" :alt="cap.name" />
                       <span v-else class="text-sm">{{ cap.icon }}</span>
                     </div>
-                    <span class="text-sm text-gray-700 font-medium">{{ cap.name }}</span>
+                    <span class="text-sm text-white/80 font-medium">{{ cap.name }}</span>
                     <!-- Remove button on hover -->
-                    <button 
+                    <button
                       @click.stop="removeCapabilityByKey(cap.key)"
-                      class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-gray-300 hover:bg-red-500 text-gray-600 hover:text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all text-[10px] font-bold leading-none"
+                      class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-white/30 hover:bg-red-500 text-white/60 hover:text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all text-[10px] font-bold leading-none"
                     >
                       ×
                     </button>
                   </div>
                 </div>
                 <!-- Gradient fade -->
-                <div class="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-slate-50 to-transparent pointer-events-none"></div>
+                <div class="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-gray-900 to-transparent pointer-events-none"></div>
               </div>
             </div>
           </div>
           
           <!-- WTF Explainer overlay -->
           <Transition name="overlay">
-            <div 
-              v-if="showWtfExplainer" 
-              class="absolute inset-0 bg-gradient-to-br from-violet-50 via-white to-purple-50 z-50 flex flex-col rounded-2xl overflow-hidden"
+            <div
+              v-if="showWtfExplainer"
+              class="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-900 to-purple-900/30 z-50 flex flex-col rounded-2xl overflow-hidden"
               @click.stop
             >
               <!-- Close button -->
-              <button 
+              <button
                 @click.stop="showWtfExplainer = false"
-                class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/80 hover:bg-white flex items-center justify-center text-gray-500 hover:text-gray-700 transition-colors shadow-sm z-10"
+                class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/60 hover:text-white transition-colors z-10"
               >
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                 </svg>
               </button>
-              
+
               <!-- Content -->
               <div class="flex-1 flex flex-col items-center justify-center p-6 text-center">
                 <div class="text-5xl mb-4 animate-bounce-gentle">🧠</div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3">How Agents Work</h3>
-                
+                <h3 class="text-xl font-bold text-white/90 mb-3">How Agents Work</h3>
+
                 <div class="space-y-4 max-w-xs">
                   <div class="flex items-start gap-3 text-left">
                     <span class="text-2xl">💭</span>
                     <div>
-                      <p class="font-semibold text-gray-800 text-sm">It thinks</p>
-                      <p class="text-xs text-gray-500">Analyzes your request and plans the best approach</p>
+                      <p class="font-semibold text-white/80 text-sm">It thinks</p>
+                      <p class="text-xs text-white/50">Analyzes your request and plans the best approach</p>
                     </div>
                   </div>
-                  
+
                   <div class="flex items-start gap-3 text-left">
                     <span class="text-2xl">⚡</span>
                     <div>
-                      <p class="font-semibold text-gray-800 text-sm">It acts</p>
-                      <p class="text-xs text-gray-500">Uses your skills at exactly the right moment</p>
+                      <p class="font-semibold text-white/80 text-sm">It acts</p>
+                      <p class="text-xs text-white/50">Uses your skills at exactly the right moment</p>
                     </div>
                   </div>
-                  
+
                   <div class="flex items-start gap-3 text-left">
                     <span class="text-2xl">🔄</span>
                     <div>
-                      <p class="font-semibold text-gray-800 text-sm">It iterates</p>
-                      <p class="text-xs text-gray-500">Reviews results and adjusts until it's right</p>
+                      <p class="font-semibold text-white/80 text-sm">It iterates</p>
+                      <p class="text-xs text-white/50">Reviews results and adjusts until it's right</p>
                     </div>
                   </div>
                 </div>
-                
-                <button 
+
+                <button
                   @click.stop="showWtfExplainer = false"
                   class="mt-6 px-6 py-2 bg-violet-600 hover:bg-violet-700 text-white text-sm font-semibold rounded-lg transition-colors"
                 >
@@ -330,24 +330,24 @@
           
           <!-- Capability picker overlay -->
           <Transition name="overlay">
-            <div 
-              v-if="showCapabilityPicker" 
-              class="absolute inset-0 bg-white z-50 flex flex-col rounded-2xl"
+            <div
+              v-if="showCapabilityPicker"
+              class="absolute inset-0 bg-gray-900/95 backdrop-blur-lg z-50 flex flex-col rounded-2xl"
               @click.stop
             >
               <!-- Header -->
-              <div class="flex items-center justify-between px-4 py-3 border-b border-gray-100">
-                <p class="font-bold text-gray-900">Add Skills</p>
-                <button 
+              <div class="flex items-center justify-between px-4 py-3 border-b border-white/10">
+                <p class="font-bold text-white/90">Add Skills</p>
+                <button
                   @click.stop="showCapabilityPicker = false"
-                  class="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-500 transition-colors"
+                  class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/60 transition-colors"
                 >
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                   </svg>
                 </button>
               </div>
-              
+
               <!-- Content -->
               <div class="flex-1 overflow-y-auto p-4">
                 <div class="grid grid-cols-2 gap-2 pb-8">
@@ -357,28 +357,28 @@
                     :key="cap.key"
                     @click.stop="toggleCapability(cap)"
                     class="flex items-center gap-3 p-3 rounded-xl border-2 transition-all text-left"
-                    :class="activeCapabilitiesKeys.includes(cap.key) 
-                      ? 'border-violet-400 bg-violet-50' 
-                      : 'border-gray-100 hover:border-violet-200 hover:bg-violet-50/30'"
+                    :class="activeCapabilitiesKeys.includes(cap.key)
+                      ? 'border-violet-400 bg-violet-500/20'
+                      : 'border-white/10 hover:border-white/20 hover:bg-white/10'"
                   >
-                    <div class="w-9 h-9 rounded-lg flex items-center justify-center" :class="cap.logo ? 'bg-gray-50' : cap.bg">
+                    <div class="w-9 h-9 rounded-lg flex items-center justify-center" :class="cap.logo ? 'bg-white/10' : cap.bg">
                       <img v-if="cap.logo" :src="cap.logo" class="w-5 h-5" :alt="cap.name" />
                       <span v-else class="text-lg">{{ cap.icon }}</span>
                     </div>
-                    <span class="text-sm text-gray-800 font-medium flex-1">{{ cap.name }}</span>
-                    <svg v-if="activeCapabilitiesKeys.includes(cap.key)" class="w-4 h-4 text-violet-500" fill="currentColor" viewBox="0 0 20 20">
+                    <span class="text-sm text-white/80 font-medium flex-1">{{ cap.name }}</span>
+                    <svg v-if="activeCapabilitiesKeys.includes(cap.key)" class="w-4 h-4 text-violet-400" fill="currentColor" viewBox="0 0 20 20">
                       <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                     </svg>
                   </button>
                 </div>
               </div>
-              
+
               <!-- Bottom gradient fade (outside scrollable area) -->
-              <div class="absolute bottom-14 left-0 right-0 h-8 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
-              
+              <div class="absolute bottom-14 left-0 right-0 h-8 bg-gradient-to-t from-gray-900 to-transparent pointer-events-none"></div>
+
               <!-- Footer -->
-              <div class="px-4 py-3 border-t border-gray-100 flex justify-end">
-                <button 
+              <div class="px-4 py-3 border-t border-white/10 flex justify-end">
+                <button
                   @click.stop="showCapabilityPicker = false"
                   class="px-5 py-2 bg-violet-600 hover:bg-violet-700 text-white text-sm font-semibold rounded-lg transition-colors"
                 >
@@ -393,9 +393,9 @@
             @click="launchAgent"
             :disabled="isTyping"
             class="relative w-full py-3 rounded-xl font-semibold text-sm transition-all overflow-hidden"
-            :class="isTyping 
-              ? 'bg-gray-100 text-gray-400' 
-              : 'bg-gradient-to-r from-violet-500 to-purple-500 text-white hover:from-violet-600 hover:to-purple-600 active:scale-[0.98]'"
+            :class="isTyping
+              ? 'bg-white/5 text-white/30'
+              : 'bg-gradient-to-r from-violet-500 to-purple-600 text-white hover:from-violet-600 hover:to-purple-700 shadow-lg shadow-violet-500/25 active:scale-[0.98]'"
           >
             <span class="relative z-10 flex items-center justify-center gap-2">
               Preview Launch →
@@ -409,12 +409,12 @@
     <Transition name="celebration">
       <div v-if="agentLaunched" class="absolute inset-0 z-30">
         <div class="absolute inset-0 flex items-center justify-center">
-          <div class="w-72 h-72 bg-gradient-to-r from-violet-300/40 via-purple-300/40 to-pink-300/40 rounded-full blur-3xl animate-pulse-gentle"></div>
+          <div class="w-72 h-72 bg-gradient-to-r from-violet-500/30 via-purple-500/30 to-pink-500/30 rounded-full blur-3xl animate-pulse-gentle"></div>
         </div>
 
         <div class="absolute inset-0 pointer-events-none overflow-hidden">
-          <span 
-            v-for="i in 15" 
+          <span
+            v-for="i in 15"
             :key="'c-'+i"
             class="absolute confetti-particle text-2xl"
             :style="{
@@ -435,21 +435,21 @@
             </div>
           </div>
 
-          <h2 class="font-bold text-gray-900 text-2xl mb-2">Agent Launched! 🎉</h2>
-          <p class="text-violet-600 font-medium mb-5">{{ agentName }} is now live</p>
+          <h2 class="font-bold text-white/90 text-2xl mb-2">Agent Launched! 🎉</h2>
+          <p class="text-violet-400 font-medium mb-5">{{ agentName }} is now live</p>
 
-          <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-emerald-200 shadow-sm rotate-[-2deg] group relative cursor-default">
-            <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse group-hover:bg-gray-300"></span>
-            <span class="text-gray-700 font-medium text-sm group-hover:line-through group-hover:text-gray-400 transition-all">Running in background</span>
+          <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-emerald-500/30 rotate-[-2deg] group relative cursor-default">
+            <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse group-hover:bg-gray-400"></span>
+            <span class="text-white/80 font-medium text-sm group-hover:line-through group-hover:text-white/40 transition-all">Running in background</span>
             <!-- Tooltip -->
             <span class="absolute left-1/2 -translate-x-1/2 top-full mt-2 px-2 py-1 bg-gray-900 text-white text-[10px] rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
               not really, just showing off 😉
             </span>
           </div>
 
-          <button 
+          <button
             @click="reset"
-            class="mt-8 px-5 py-2 text-gray-500 hover:text-violet-600 font-medium transition-colors flex items-center gap-2"
+            class="mt-8 px-5 py-2 text-white/50 hover:text-white font-medium transition-colors flex items-center gap-2"
           >
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
@@ -609,10 +609,10 @@ const allTriggers = [
 
 // AI Capabilities (not just apps)
 const aiCapabilities = [
-  { key: 'web-search', name: 'Web Search', icon: '🔍', bg: 'bg-blue-100' },
-  { key: 'image-gen', name: 'Image Generation', icon: '🎨', bg: 'bg-pink-100' },
-  { key: 'contact-enrich', name: 'Contact Enrichment', icon: '👤', bg: 'bg-green-100' },
-  { key: 'audio-gen', name: 'Generate Audio', icon: '🎵', bg: 'bg-purple-100' },
+  { key: 'web-search', name: 'Web Search', icon: '🔍', bg: 'bg-blue-500/20' },
+  { key: 'image-gen', name: 'Image Generation', icon: '🎨', bg: 'bg-pink-500/20' },
+  { key: 'contact-enrich', name: 'Contact Enrichment', icon: '👤', bg: 'bg-green-500/20' },
+  { key: 'audio-gen', name: 'Generate Audio', icon: '🎵', bg: 'bg-purple-500/20' },
 ]
 
 // All app capabilities
