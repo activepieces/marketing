@@ -21,25 +21,6 @@ const expandedCard = ref(null);
 // Product showcase data with richer content
 const showcases = computed(() => [
   {
-    id: 'adoption',
-    category: 'ADOPT',
-    title: 'Drive org-wide adoption',
-    headline: 'Turn everyone into AI builders',
-    description: 'White-label the platform with your brand. Curated templates for every department. Personalized AI coaching that nudges users to build.',
-    color: 'cyan',
-    gradient: 'from-cyan-500 to-blue-500',
-    features: [
-      { text: 'Your logo, your colors, your domain', highlight: 'White-label' },
-      { text: 'Templates for HR, Finance, Marketing, Sales', highlight: 'Ready-made' },
-      { text: 'In-app expert support—not your team', highlight: 'Zero overhead' },
-    ],
-    stats: [
-      { value: '847', label: 'Avg. active users' },
-      { value: '12x', label: 'Adoption rate' },
-      { value: '89%', label: 'Engagement' },
-    ],
-  },
-  {
     id: 'governance',
     category: 'CONTROL',
     title: 'Enterprise governance',
@@ -119,6 +100,9 @@ onBeforeUnmount(() => {
     
     <!-- AI Agents Showcase (Full Width) -->
     <PagesIndexAiAgentsShowcase />
+    
+    <!-- AI Adoption Showcase (Full Width Playing Cards) -->
+    <PagesIndexAiAdoptionShowcase />
     
     <!-- Other Showcase Sections -->
     <div class="space-y-0">
