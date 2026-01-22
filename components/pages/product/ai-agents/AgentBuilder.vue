@@ -1,18 +1,29 @@
 <template>
-  <div 
+  <div
     ref="containerRef"
     class="relative w-full max-w-lg mx-auto h-[420px] rounded-2xl overflow-hidden transition-all duration-500"
-    :class="agentLaunched ? 'bg-gradient-to-br from-gray-900 via-purple-900/50 to-gray-900' : 'bg-gray-900'"
+    :class="
+      agentLaunched
+        ? 'bg-gradient-to-br from-gray-900 via-purple-900/50 to-gray-900'
+        : 'bg-gray-900'
+    "
   >
     <!-- Soft background blobs -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
-      <div class="absolute top-0 right-0 w-72 h-72 bg-gradient-to-br from-violet-500/20 to-purple-500/15 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-      <div class="absolute bottom-0 left-0 w-60 h-60 bg-gradient-to-tr from-pink-500/15 to-rose-500/10 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3"></div>
+      <div
+        class="absolute top-0 right-0 w-72 h-72 bg-gradient-to-br from-violet-500/20 to-purple-500/15 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"
+      ></div>
+      <div
+        class="absolute bottom-0 left-0 w-60 h-60 bg-gradient-to-tr from-pink-500/15 to-rose-500/10 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3"
+      ></div>
     </div>
 
     <!-- PICK YOUR AGENT SCREEN -->
     <Transition name="fade-scale">
-      <div v-if="!selectedAgent && !agentLaunched" class="absolute inset-0 z-10">
+      <div
+        v-if="!selectedAgent && !agentLaunched"
+        class="absolute inset-0 z-10"
+      >
         <div class="h-full flex flex-col p-5">
           <!-- Header -->
           <div class="mb-5">
@@ -28,24 +39,52 @@
               @click="selectAgent(agent)"
               class="group relative flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 hover:bg-white/10 transition-all duration-300 text-left"
             >
-              <div class="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110"
+              <div
+                class="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110"
                 :class="[
-                  index === 0 ? 'bg-amber-500/20 group-hover:bg-amber-500/30' : '',
-                  index === 1 ? 'bg-blue-500/20 group-hover:bg-blue-500/30' : '',
-                  index === 2 ? 'bg-emerald-500/20 group-hover:bg-emerald-500/30' : ''
+                  index === 0
+                    ? 'bg-amber-500/20 group-hover:bg-amber-500/30'
+                    : '',
+                  index === 1
+                    ? 'bg-blue-500/20 group-hover:bg-blue-500/30'
+                    : '',
+                  index === 2
+                    ? 'bg-emerald-500/20 group-hover:bg-emerald-500/30'
+                    : '',
                 ]"
               >
-                <component :is="agent.iconComponent" class="w-6 h-6" :class="agent.iconClass" weight="fill" />
+                <component
+                  :is="agent.iconComponent"
+                  class="w-6 h-6"
+                  :class="agent.iconClass"
+                  weight="fill"
+                />
               </div>
 
               <div class="flex-1 min-w-0">
-                <p class="font-semibold text-white/90 group-hover:text-white transition-colors">{{ agent.name }}</p>
+                <p
+                  class="font-semibold text-white/90 group-hover:text-white transition-colors"
+                >
+                  {{ agent.name }}
+                </p>
                 <p class="text-sm text-white/50 truncate">{{ agent.brief }}</p>
               </div>
 
-              <div class="w-8 h-8 rounded-full bg-white/5 group-hover:bg-white/10 flex items-center justify-center text-white/40 group-hover:text-white/80 group-hover:translate-x-0.5 transition-all">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              <div
+                class="w-8 h-8 rounded-full bg-white/5 group-hover:bg-white/10 flex items-center justify-center text-white/40 group-hover:text-white/80 group-hover:translate-x-0.5 transition-all"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  />
                 </svg>
               </div>
             </button>
@@ -58,19 +97,23 @@
     <Transition name="slide-up">
       <div v-if="selectedAgent && !agentLaunched" class="absolute inset-0 z-20">
         <!-- WTF Help button -->
-        <button 
+        <button
           @click.stop="showWtfExplainer = true"
           class="absolute top-6 right-6 z-30 group leading-none"
         >
-          <span class="inline-block text-sm font-black bg-gradient-to-r from-amber-400 via-orange-400 to-pink-400 bg-clip-text text-transparent rotate-[-8deg] transform group-hover:rotate-[-12deg] group-hover:scale-125 transition-all">
+          <span
+            class="inline-block text-sm font-black bg-gradient-to-r from-amber-400 via-orange-400 to-pink-400 bg-clip-text text-transparent rotate-[-8deg] transform group-hover:rotate-[-12deg] group-hover:scale-125 transition-all"
+          >
             WTF?
           </span>
           <!-- Tooltip -->
-          <span class="absolute right-0 top-full px-2 py-1 bg-gray-900 text-white text-[10px] rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+          <span
+            class="absolute right-0 top-full px-2 py-1 bg-gray-900 text-white text-[10px] rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
+          >
             What's This For?
           </span>
         </button>
-        
+
         <div class="h-full flex flex-col p-5">
           <!-- Header: back + avatar + editable name -->
           <div class="flex items-center gap-3 mb-4">
@@ -78,26 +121,57 @@
               @click="goBack"
               class="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white/60 hover:text-white hover:border-white/30 transition-all flex-shrink-0"
             >
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 19l-7-7 7-7"
+                />
               </svg>
             </button>
-            
+
             <!-- Avatar lottery -->
             <button
               @click.stop="shuffleIcon"
               class="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-500/30 to-purple-500/30 flex items-center justify-center transition-all relative overflow-hidden flex-shrink-0"
-              :class="isShuffling ? 'scale-110 shadow-lg shadow-violet-500/30' : 'hover:scale-105'"
+              :class="
+                isShuffling
+                  ? 'scale-110 shadow-lg shadow-violet-500/30'
+                  : 'hover:scale-105'
+              "
               title="Click to shuffle!"
             >
-              <component :is="agentIcon" class="w-6 h-6 text-white/80" :class="isShuffling ? 'animate-lottery-spin' : ''" weight="fill" />
-              <div v-if="isShuffling" class="absolute inset-0 pointer-events-none">
-                <PhSparkle class="absolute top-0 left-0 w-3 h-3 text-amber-300 animate-sparkle-1" weight="fill" />
-                <PhSparkle class="absolute top-0 right-0 w-3 h-3 text-amber-300 animate-sparkle-2" weight="fill" />
-                <PhSparkle class="absolute bottom-0 right-0 w-3 h-3 text-amber-300 animate-sparkle-3" weight="fill" />
+              <component
+                :is="agentIcon"
+                class="w-6 h-6 text-white/80"
+                :class="isShuffling ? 'animate-lottery-spin' : ''"
+                weight="fill"
+              />
+              <div
+                v-if="isShuffling"
+                class="absolute inset-0 pointer-events-none"
+              >
+                <PhSparkle
+                  class="absolute top-0 left-0 w-3 h-3 text-amber-300 animate-sparkle-1"
+                  weight="fill"
+                />
+                <PhSparkle
+                  class="absolute top-0 right-0 w-3 h-3 text-amber-300 animate-sparkle-2"
+                  weight="fill"
+                />
+                <PhSparkle
+                  class="absolute bottom-0 right-0 w-3 h-3 text-amber-300 animate-sparkle-3"
+                  weight="fill"
+                />
               </div>
             </button>
-            
+
             <!-- Editable name -->
             <div class="flex-1 min-w-0" @click.stop>
               <input
@@ -116,34 +190,75 @@
               @click.stop="toggleTriggerPicker"
             >
               <span class="text-xs text-white/40">When</span>
-              <div class="w-6 h-6 rounded flex items-center justify-center flex-shrink-0" :style="{ backgroundColor: currentTrigger.color + '15' }">
-                <img :src="currentTrigger.logo" class="w-4 h-4" :alt="currentTrigger.app" />
+              <div
+                class="w-6 h-6 rounded flex items-center justify-center flex-shrink-0"
+                :style="{ backgroundColor: currentTrigger.color + '15' }"
+              >
+                <img
+                  :src="currentTrigger.logo"
+                  class="w-4 h-4"
+                  :alt="currentTrigger.app"
+                />
               </div>
-              <span class="text-sm text-white/80 font-medium flex-1 truncate">{{ currentTrigger.label }}</span>
-              <svg class="w-4 h-4 text-white/40 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              <span class="text-sm text-white/80 font-medium flex-1 truncate">{{
+                currentTrigger.label
+              }}</span>
+              <svg
+                class="w-4 h-4 text-white/40 flex-shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
               </svg>
             </div>
 
             <!-- Trigger dropdown -->
-            <div v-if="showTriggerPicker" class="absolute top-full left-0 right-0 mt-1 bg-white/10 backdrop-blur-lg rounded-lg border border-white/20 shadow-xl z-40 overflow-hidden">
-              <div class="max-h-[160px] overflow-y-auto p-1.5">
+            <div
+              v-if="showTriggerPicker"
+              class="absolute top-full left-0 right-0 mt-1 bg-white/10 backdrop-blur-lg rounded-lg border border-white/20 shadow-xl z-40 overflow-hidden minimal-scrollbar"
+            >
+              <div
+                class="max-h-[160px] overflow-y-auto minimal-scrollbar p-1.5"
+              >
                 <button
                   v-for="trigger in allTriggers"
                   :key="trigger.label"
                   @click.stop="selectTrigger(trigger)"
                   class="w-full flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-white/10 transition-colors text-left"
-                  :class="currentTrigger.label === trigger.label ? 'bg-white/10' : ''"
+                  :class="
+                    currentTrigger.label === trigger.label ? 'bg-white/10' : ''
+                  "
                 >
-                  <div class="w-5 h-5 rounded flex items-center justify-center flex-shrink-0" :style="{ backgroundColor: trigger.color + '15' }">
-                    <img :src="trigger.logo" class="w-3 h-3" :alt="trigger.app" />
+                  <div
+                    class="w-5 h-5 rounded flex items-center justify-center flex-shrink-0"
+                    :style="{ backgroundColor: trigger.color + '15' }"
+                  >
+                    <img
+                      :src="trigger.logo"
+                      class="w-3 h-3"
+                      :alt="trigger.app"
+                    />
                   </div>
-                  <span class="text-xs text-white/80 flex-1 truncate">{{ trigger.label }}</span>
-                  <span class="text-[10px] text-white/50">{{ trigger.app }}</span>
+                  <span class="text-xs text-white/80 flex-1 truncate">{{
+                    trigger.label
+                  }}</span>
+                  <span class="text-[10px] text-white/50">{{
+                    trigger.app
+                  }}</span>
                 </button>
               </div>
-              <div class="px-2 py-1.5 border-t border-white/10 bg-white/5 text-center">
-                <span class="text-[10px] text-white/40">+ 500 more from 280+ apps</span>
+              <div
+                class="px-2 py-1.5 border-t border-white/10 bg-white/5 text-center"
+              >
+                <span class="text-[10px] text-white/40"
+                  >+ 500 more from 280+ apps</span
+                >
               </div>
             </div>
           </div>
@@ -151,49 +266,66 @@
           <!-- Instructions -->
           <div class="mb-3 relative">
             <div class="flex items-center gap-2 mb-1.5">
-              <label class="text-xs font-medium text-white/50">Instructions</label>
-              <span v-if="isTyping" class="text-xs text-violet-400 flex items-center gap-1">
-                <span class="w-1.5 h-1.5 bg-violet-400 rounded-full animate-pulse"></span>
+              <label class="text-xs font-medium text-white/50"
+                >Instructions</label
+              >
+              <span
+                v-if="isTyping"
+                class="text-xs text-violet-400 flex items-center gap-1"
+              >
+                <span
+                  class="w-1.5 h-1.5 bg-violet-400 rounded-full animate-pulse"
+                ></span>
                 writing...
               </span>
             </div>
-            
+
             <!-- Watching face -->
             <Transition name="face-pop">
               <div
                 v-if="showWatchingFace"
                 class="absolute -top-8 left-1/2 -translate-x-1/2 z-10 pointer-events-none"
               >
-                <div class="relative w-12 h-12 bg-gradient-to-br from-amber-500/30 to-yellow-500/30 rounded-full shadow-lg border-2 border-amber-500/30 flex items-center justify-center">
+                <div
+                  class="relative w-12 h-12 bg-gradient-to-br from-amber-500/30 to-yellow-500/30 rounded-full shadow-lg border-2 border-amber-500/30 flex items-center justify-center"
+                >
                   <!-- Eyes container -->
                   <div class="flex gap-2">
                     <!-- Left eye -->
-                    <div class="w-3 h-3 bg-white rounded-full relative overflow-hidden">
-                      <div 
+                    <div
+                      class="w-3 h-3 bg-white rounded-full relative overflow-hidden"
+                    >
+                      <div
                         class="w-1.5 h-1.5 bg-gray-800 rounded-full absolute transition-all duration-150"
-                        :style="{ 
-                          left: `${50 + eyePosition.x * 25}%`, 
+                        :style="{
+                          left: `${50 + eyePosition.x * 25}%`,
                           top: `${50 + eyePosition.y * 25}%`,
-                          transform: 'translate(-50%, -50%)'
+                          transform: 'translate(-50%, -50%)',
                         }"
                       ></div>
                     </div>
                     <!-- Right eye -->
-                    <div class="w-3 h-3 bg-white rounded-full relative overflow-hidden">
-                      <div 
+                    <div
+                      class="w-3 h-3 bg-white rounded-full relative overflow-hidden"
+                    >
+                      <div
                         class="w-1.5 h-1.5 bg-gray-800 rounded-full absolute transition-all duration-150"
-                        :style="{ 
-                          left: `${50 + eyePosition.x * 25}%`, 
+                        :style="{
+                          left: `${50 + eyePosition.x * 25}%`,
                           top: `${50 + eyePosition.y * 25}%`,
-                          transform: 'translate(-50%, -50%)'
+                          transform: 'translate(-50%, -50%)',
                         }"
                       ></div>
                     </div>
                   </div>
                   <!-- Cute blush -->
-                  <div class="absolute bottom-2 left-1 w-2 h-1 bg-pink-300/60 rounded-full"></div>
-                  <div class="absolute bottom-2 right-1 w-2 h-1 bg-pink-300/60 rounded-full"></div>
-                  
+                  <div
+                    class="absolute bottom-2 left-1 w-2 h-1 bg-pink-300/60 rounded-full"
+                  ></div>
+                  <div
+                    class="absolute bottom-2 right-1 w-2 h-1 bg-pink-300/60 rounded-full"
+                  ></div>
+
                   <!-- Floating hearts -->
                   <div class="absolute inset-0 overflow-visible">
                     <PhHeart class="heart-bubble heart-1" weight="fill" />
@@ -203,7 +335,7 @@
                 </div>
               </div>
             </Transition>
-            
+
             <div class="rounded-xl bg-white/5 border border-white/10 h-[80px]">
               <textarea
                 ref="textareaRef"
@@ -223,8 +355,16 @@
           <div class="mb-4 overflow-visible">
             <div class="flex items-center gap-2 mb-2">
               <label class="text-xs font-medium text-white/50">Skills</label>
-              <span v-if="activeCapabilities.length > 0" class="text-xs text-white/20">•</span>
-              <span v-if="activeCapabilities.length > 0" class="text-xs text-white/40">{{ activeCapabilities.length }}</span>
+              <span
+                v-if="activeCapabilities.length > 0"
+                class="text-xs text-white/20"
+                >•</span
+              >
+              <span
+                v-if="activeCapabilities.length > 0"
+                class="text-xs text-white/40"
+                >{{ activeCapabilities.length }}</span
+              >
             </div>
             <div class="flex items-center gap-2 h-12">
               <!-- Add button (always visible) -->
@@ -232,29 +372,62 @@
                 @click.stop="toggleCapabilityPicker"
                 class="flex items-center justify-center w-10 h-10 rounded-xl border-2 border-dashed border-white/20 hover:border-white/40 hover:bg-white/10 text-white/40 hover:text-white/80 transition-all flex-shrink-0"
               >
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 4v16m8-8H4"
+                  />
                 </svg>
               </button>
 
               <!-- Empty state -->
-              <div v-if="activeCapabilities.length === 0" class="flex-1 flex items-center">
-                <span class="text-sm text-white/40 italic">No skills yet — add some!</span>
+              <div
+                v-if="activeCapabilities.length === 0"
+                class="flex-1 flex items-center"
+              >
+                <span class="text-sm text-white/40 italic"
+                  >No skills yet — add some!</span
+                >
               </div>
 
               <!-- Scrollable capabilities -->
               <div v-else class="flex-1 relative min-w-0">
-                <div class="flex items-center gap-3 overflow-x-auto py-1 scrollbar-hide pr-6">
+                <div
+                  class="flex items-center gap-3 overflow-x-auto py-1 minimal-scrollbar pr-6"
+                >
                   <div
                     v-for="cap in activeCapabilities"
                     :key="cap.key"
                     class="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/10 border border-white/10 flex-shrink-0 group relative"
                   >
-                    <div class="w-6 h-6 rounded-lg flex items-center justify-center" :class="cap.logo ? 'bg-white/10' : cap.bg">
-                      <img v-if="cap.logo" :src="cap.logo" class="w-4 h-4" :alt="cap.name" />
-                      <component v-else :is="cap.iconComponent" class="w-4 h-4" :class="cap.iconClass" weight="fill" />
+                    <div
+                      class="w-6 h-6 rounded-lg flex items-center justify-center"
+                      :class="cap.logo ? 'bg-white/10' : cap.bg"
+                    >
+                      <img
+                        v-if="cap.logo"
+                        :src="cap.logo"
+                        class="w-4 h-4"
+                        :alt="cap.name"
+                      />
+                      <component
+                        v-else
+                        :is="cap.iconComponent"
+                        class="w-4 h-4"
+                        :class="cap.iconClass"
+                        weight="fill"
+                      />
                     </div>
-                    <span class="text-sm text-white/80 font-medium">{{ cap.name }}</span>
+                    <span class="text-sm text-white/80 font-medium">{{
+                      cap.name
+                    }}</span>
                     <!-- Remove button on hover -->
                     <button
                       @click.stop="removeCapabilityByKey(cap.key)"
@@ -265,11 +438,13 @@
                   </div>
                 </div>
                 <!-- Gradient fade -->
-                <div class="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-gray-900 to-transparent pointer-events-none"></div>
+                <div
+                  class="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-gray-900 to-transparent pointer-events-none"
+                ></div>
               </div>
             </div>
           </div>
-          
+
           <!-- WTF Explainer overlay -->
           <Transition name="overlay">
             <div
@@ -282,38 +457,74 @@
                 @click.stop="showWtfExplainer = false"
                 class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/60 hover:text-white transition-colors z-10"
               >
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
                 </svg>
               </button>
 
               <!-- Content -->
-              <div class="flex-1 flex flex-col items-center justify-center p-6 text-center">
-                <PhBrain class="w-12 h-12 text-violet-400 mb-4 animate-bounce-gentle" weight="fill" />
-                <h3 class="text-xl font-bold text-white/90 mb-3">How Agents Work</h3>
+              <div
+                class="flex-1 flex flex-col items-center justify-center p-6 text-center"
+              >
+                <PhBrain
+                  class="w-12 h-12 text-violet-400 mb-4 animate-bounce-gentle"
+                  weight="fill"
+                />
+                <h3 class="text-xl font-bold text-white/90 mb-3">
+                  How Agents Work
+                </h3>
 
                 <div class="space-y-4 max-w-xs">
                   <div class="flex items-start gap-3 text-left">
-                    <PhChatCircle class="w-6 h-6 text-violet-400 flex-shrink-0" weight="fill" />
+                    <PhChatCircle
+                      class="w-6 h-6 text-violet-400 flex-shrink-0"
+                      weight="fill"
+                    />
                     <div>
-                      <p class="font-semibold text-white/80 text-sm">It thinks</p>
-                      <p class="text-xs text-white/50">Analyzes your request and plans the best approach</p>
+                      <p class="font-semibold text-white/80 text-sm">
+                        It thinks
+                      </p>
+                      <p class="text-xs text-white/50">
+                        Analyzes your request and plans the best approach
+                      </p>
                     </div>
                   </div>
 
                   <div class="flex items-start gap-3 text-left">
-                    <PhLightning class="w-6 h-6 text-amber-400 flex-shrink-0" weight="fill" />
+                    <PhLightning
+                      class="w-6 h-6 text-amber-400 flex-shrink-0"
+                      weight="fill"
+                    />
                     <div>
                       <p class="font-semibold text-white/80 text-sm">It acts</p>
-                      <p class="text-xs text-white/50">Uses your skills at exactly the right moment</p>
+                      <p class="text-xs text-white/50">
+                        Uses your skills at exactly the right moment
+                      </p>
                     </div>
                   </div>
 
                   <div class="flex items-start gap-3 text-left">
-                    <PhArrowsClockwise class="w-6 h-6 text-emerald-400 flex-shrink-0" weight="fill" />
+                    <PhArrowsClockwise
+                      class="w-6 h-6 text-emerald-400 flex-shrink-0"
+                      weight="fill"
+                    />
                     <div>
-                      <p class="font-semibold text-white/80 text-sm">It iterates</p>
-                      <p class="text-xs text-white/50">Reviews results and adjusts until it's right</p>
+                      <p class="font-semibold text-white/80 text-sm">
+                        It iterates
+                      </p>
+                      <p class="text-xs text-white/50">
+                        Reviews results and adjusts until it's right
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -327,7 +538,7 @@
               </div>
             </div>
           </Transition>
-          
+
           <!-- Capability picker overlay -->
           <Transition name="overlay">
             <div
@@ -336,20 +547,32 @@
               @click.stop
             >
               <!-- Header -->
-              <div class="flex items-center justify-between px-4 py-3 border-b border-white/10">
+              <div
+                class="flex items-center justify-between px-4 py-3 border-b border-white/10"
+              >
                 <p class="font-bold text-white/90">Add Skills</p>
                 <button
                   @click.stop="showCapabilityPicker = false"
                   class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/60 transition-colors"
                 >
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
                   </svg>
                 </button>
               </div>
 
               <!-- Content -->
-              <div class="flex-1 overflow-y-auto p-4">
+              <div class="flex-1 overflow-y-auto minimal-scrollbar p-4">
                 <div class="grid grid-cols-2 gap-2 pb-8">
                   <!-- All capabilities (AI + Apps unified) -->
                   <button
@@ -357,24 +580,53 @@
                     :key="cap.key"
                     @click.stop="toggleCapability(cap)"
                     class="flex items-center gap-3 p-3 rounded-xl border-2 transition-all text-left"
-                    :class="activeCapabilitiesKeys.includes(cap.key)
-                      ? 'border-violet-400 bg-violet-500/20'
-                      : 'border-white/10 hover:border-white/20 hover:bg-white/10'"
+                    :class="
+                      activeCapabilitiesKeys.includes(cap.key)
+                        ? 'border-violet-400 bg-violet-500/20'
+                        : 'border-white/10 hover:border-white/20 hover:bg-white/10'
+                    "
                   >
-                    <div class="w-9 h-9 rounded-lg flex items-center justify-center" :class="cap.logo ? 'bg-white/10' : cap.bg">
-                      <img v-if="cap.logo" :src="cap.logo" class="w-5 h-5" :alt="cap.name" />
-                      <component v-else :is="cap.iconComponent" class="w-5 h-5" :class="cap.iconClass" weight="fill" />
+                    <div
+                      class="w-9 h-9 rounded-lg flex items-center justify-center"
+                      :class="cap.logo ? 'bg-white/10' : cap.bg"
+                    >
+                      <img
+                        v-if="cap.logo"
+                        :src="cap.logo"
+                        class="w-5 h-5"
+                        :alt="cap.name"
+                      />
+                      <component
+                        v-else
+                        :is="cap.iconComponent"
+                        class="w-5 h-5"
+                        :class="cap.iconClass"
+                        weight="fill"
+                      />
                     </div>
-                    <span class="text-sm text-white/80 font-medium flex-1">{{ cap.name }}</span>
-                    <svg v-if="activeCapabilitiesKeys.includes(cap.key)" class="w-4 h-4 text-violet-400" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                    <span class="text-sm text-white/80 font-medium flex-1">{{
+                      cap.name
+                    }}</span>
+                    <svg
+                      v-if="activeCapabilitiesKeys.includes(cap.key)"
+                      class="w-4 h-4 text-violet-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clip-rule="evenodd"
+                      />
                     </svg>
                   </button>
                 </div>
               </div>
 
               <!-- Bottom gradient fade (outside scrollable area) -->
-              <div class="absolute bottom-14 left-0 right-0 h-8 bg-gradient-to-t from-gray-900 to-transparent pointer-events-none"></div>
+              <div
+                class="absolute bottom-14 left-0 right-0 h-8 bg-gradient-to-t from-gray-900 to-transparent pointer-events-none"
+              ></div>
 
               <!-- Footer -->
               <div class="px-4 py-3 border-t border-white/10 flex justify-end">
@@ -393,9 +645,11 @@
             @click="launchAgent"
             :disabled="isTyping"
             class="relative w-full py-3 rounded-xl font-semibold text-sm transition-all overflow-hidden"
-            :class="isTyping
-              ? 'bg-white/5 text-white/30'
-              : 'bg-gradient-to-r from-violet-500 to-purple-600 text-white hover:from-violet-600 hover:to-purple-700 shadow-lg shadow-violet-500/25 active:scale-[0.98]'"
+            :class="
+              isTyping
+                ? 'bg-white/5 text-white/30'
+                : 'bg-gradient-to-r from-violet-500 to-purple-600 text-white hover:from-violet-600 hover:to-purple-700 shadow-lg shadow-violet-500/25 active:scale-[0.98]'
+            "
           >
             <span class="relative z-10 flex items-center justify-center gap-2">
               Preview Launch →
@@ -409,44 +663,79 @@
     <Transition name="celebration">
       <div v-if="agentLaunched" class="absolute inset-0 z-30">
         <div class="absolute inset-0 flex items-center justify-center">
-          <div class="w-72 h-72 bg-gradient-to-r from-violet-500/30 via-purple-500/30 to-pink-500/30 rounded-full blur-3xl animate-pulse-gentle"></div>
+          <div
+            class="w-72 h-72 bg-gradient-to-r from-violet-500/30 via-purple-500/30 to-pink-500/30 rounded-full blur-3xl animate-pulse-gentle"
+          ></div>
         </div>
 
         <div class="absolute inset-0 pointer-events-none overflow-hidden">
           <span
             v-for="i in 15"
-            :key="'c-'+i"
+            :key="'c-' + i"
             class="absolute confetti-particle"
             :style="{
-              left: (Math.random() * 100) + '%',
+              left: Math.random() * 100 + '%',
               animationDelay: Math.random() * 0.5 + 's',
               '--drift': (Math.random() - 0.5) * 100 + 'px',
             }"
           >
-            <component :is="confettiIcons[i % confettiIcons.length]" class="w-5 h-5" :class="confettiColors[i % confettiColors.length]" weight="fill" />
+            <component
+              :is="confettiIcons[i % confettiIcons.length]"
+              class="w-5 h-5"
+              :class="confettiColors[i % confettiColors.length]"
+              weight="fill"
+            />
           </span>
         </div>
 
-        <div class="relative h-full flex flex-col items-center justify-center text-center p-6">
+        <div
+          class="relative h-full flex flex-col items-center justify-center text-center p-6"
+        >
           <div class="celebration-pop">
             <div class="relative mb-4">
-              <div class="blur-lg opacity-30 absolute inset-0 flex items-center justify-center">
-                <component :is="agentIcon" class="w-16 h-16 text-white" weight="fill" />
+              <div
+                class="blur-lg opacity-30 absolute inset-0 flex items-center justify-center"
+              >
+                <component
+                  :is="agentIcon"
+                  class="w-16 h-16 text-white"
+                  weight="fill"
+                />
               </div>
               <div class="animate-bounce-gentle relative">
-                <component :is="agentIcon" class="w-16 h-16 text-white" weight="fill" />
+                <component
+                  :is="agentIcon"
+                  class="w-16 h-16 text-white"
+                  weight="fill"
+                />
               </div>
             </div>
           </div>
 
-          <h2 class="font-bold text-white/90 text-2xl mb-2 flex items-center gap-2">Agent Launched! <PhConfetti class="w-6 h-6 text-pink-400" weight="fill" /></h2>
-          <p class="text-violet-400 font-medium mb-5">{{ agentName }} is now live</p>
+          <h2
+            class="font-bold text-white/90 text-2xl mb-2 flex items-center gap-2"
+          >
+            Agent Launched!
+            <PhConfetti class="w-6 h-6 text-pink-400" weight="fill" />
+          </h2>
+          <p class="text-violet-400 font-medium mb-5">
+            {{ agentName }} is now live
+          </p>
 
-          <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-emerald-500/30 rotate-[-2deg] group relative cursor-default">
-            <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse group-hover:bg-gray-400"></span>
-            <span class="text-white/80 font-medium text-sm group-hover:line-through group-hover:text-white/40 transition-all">Running in background</span>
+          <div
+            class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-emerald-500/30 rotate-[-2deg] group relative cursor-default"
+          >
+            <span
+              class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse group-hover:bg-gray-400"
+            ></span>
+            <span
+              class="text-white/80 font-medium text-sm group-hover:line-through group-hover:text-white/40 transition-all"
+              >Running in background</span
+            >
             <!-- Tooltip -->
-            <span class="absolute left-1/2 -translate-x-1/2 top-full mt-2 px-2 py-1 bg-gray-900 text-white text-[10px] rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+            <span
+              class="absolute left-1/2 -translate-x-1/2 top-full mt-2 px-2 py-1 bg-gray-900 text-white text-[10px] rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
+            >
               not really, just showing off 😉
             </span>
           </div>
@@ -455,8 +744,18 @@
             @click="reset"
             class="mt-8 px-5 py-2 text-white/50 hover:text-white font-medium transition-colors flex items-center gap-2"
           >
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 4v16m8-8H4"
+              />
             </svg>
             Build another agent
           </button>
@@ -467,7 +766,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted, markRaw } from 'vue'
+import { ref, computed, onMounted, onUnmounted, markRaw } from "vue";
 import {
   PhEnvelope,
   PhCalendar,
@@ -499,58 +798,58 @@ import {
   PhMagicWand,
   PhCrown,
   PhFlower,
-} from "@phosphor-icons/vue"
+} from "@phosphor-icons/vue";
 
-const textareaRef = ref(null)
-const containerRef = ref(null)
+const textareaRef = ref(null);
+const containerRef = ref(null);
 
 // Watching face state
-const showWatchingFace = ref(false)
-const eyePosition = ref({ x: 0, y: 0.5 }) // Looking down at text
-let watchingFaceTimeout = null
-let eyeAnimationInterval = null
+const showWatchingFace = ref(false);
+const eyePosition = ref({ x: 0, y: 0.5 }); // Looking down at text
+let watchingFaceTimeout = null;
+let eyeAnimationInterval = null;
 
 const onUserType = () => {
-  if (isTyping.value) return // Don't show during auto-typing
-  
-  showWatchingFace.value = true
-  
+  if (isTyping.value) return; // Don't show during auto-typing
+
+  showWatchingFace.value = true;
+
   // Animate eyes looking at different positions (simulating reading)
-  eyePosition.value = { 
-    x: (Math.random() - 0.5) * 1.5, 
-    y: 0.5 + Math.random() * 0.3 
-  }
-  
+  eyePosition.value = {
+    x: (Math.random() - 0.5) * 1.5,
+    y: 0.5 + Math.random() * 0.3,
+  };
+
   // Reset hide timer
-  if (watchingFaceTimeout) clearTimeout(watchingFaceTimeout)
+  if (watchingFaceTimeout) clearTimeout(watchingFaceTimeout);
   watchingFaceTimeout = setTimeout(() => {
-    showWatchingFace.value = false
-  }, 1500)
-}
+    showWatchingFace.value = false;
+  }, 1500);
+};
 
 const onTextareaFocus = () => {
-  if (isTyping.value) return
+  if (isTyping.value) return;
   // Show face briefly on focus
-  showWatchingFace.value = true
-  eyePosition.value = { x: 0, y: 0.5 }
-  
-  if (watchingFaceTimeout) clearTimeout(watchingFaceTimeout)
+  showWatchingFace.value = true;
+  eyePosition.value = { x: 0, y: 0.5 };
+
+  if (watchingFaceTimeout) clearTimeout(watchingFaceTimeout);
   watchingFaceTimeout = setTimeout(() => {
-    if (!editablePrompt.value) return // Keep showing if empty
-    showWatchingFace.value = false
-  }, 2000)
-}
+    if (!editablePrompt.value) return; // Keep showing if empty
+    showWatchingFace.value = false;
+  }, 2000);
+};
 
 const onTextareaBlur = () => {
-  if (watchingFaceTimeout) clearTimeout(watchingFaceTimeout)
+  if (watchingFaceTimeout) clearTimeout(watchingFaceTimeout);
   watchingFaceTimeout = setTimeout(() => {
-    showWatchingFace.value = false
-  }, 500)
-}
+    showWatchingFace.value = false;
+  }, 500);
+};
 
 // Avatar - fun icon lottery
-const agentIcon = ref(markRaw(PhRobot))
-const isShuffling = ref(false)
+const agentIcon = ref(markRaw(PhRobot));
+const isShuffling = ref(false);
 const allIcons = [
   markRaw(PhRobot),
   markRaw(PhBrain),
@@ -571,7 +870,7 @@ const allIcons = [
   markRaw(PhMagicWand),
   markRaw(PhCrown),
   markRaw(PhFlower),
-]
+];
 
 // Confetti configuration
 const confettiIcons = [
@@ -580,285 +879,486 @@ const confettiIcons = [
   markRaw(PhHeart),
   markRaw(PhStar),
   markRaw(PhRocket),
-]
-const confettiColors = ['text-amber-300', 'text-pink-400', 'text-violet-400', 'text-yellow-300', 'text-blue-400']
+];
+const confettiColors = [
+  "text-amber-300",
+  "text-pink-400",
+  "text-violet-400",
+  "text-yellow-300",
+  "text-blue-400",
+];
 
-let shuffleInterval = null
+let shuffleInterval = null;
 
 const shuffleIcon = () => {
-  if (isShuffling.value) return
-  isShuffling.value = true
-  let count = 0
-  const totalSpins = 12 + Math.floor(Math.random() * 8)
-  let speed = 50
+  if (isShuffling.value) return;
+  isShuffling.value = true;
+  let count = 0;
+  const totalSpins = 12 + Math.floor(Math.random() * 8);
+  let speed = 50;
 
   const spin = () => {
-    agentIcon.value = allIcons[Math.floor(Math.random() * allIcons.length)]
-    count++
-    if (count > totalSpins - 4) speed += 50
+    agentIcon.value = allIcons[Math.floor(Math.random() * allIcons.length)];
+    count++;
+    if (count > totalSpins - 4) speed += 50;
     if (count < totalSpins) {
-      shuffleInterval = setTimeout(spin, speed)
+      shuffleInterval = setTimeout(spin, speed);
     } else {
-      isShuffling.value = false
+      isShuffling.value = false;
     }
-  }
-  spin()
-}
+  };
+  spin();
+};
 
 const agents = [
   {
-    id: 'deal',
-    name: 'Inbox Deal Qualifier',
+    id: "deal",
+    name: "Inbox Deal Qualifier",
     iconComponent: markRaw(PhEnvelope),
-    iconClass: 'text-amber-400',
-    brief: 'Auto-qualify leads from emails',
-    prompt: 'Figure out if this email is a potential sales opportunity. Extract company name, intent, and recommend next action.',
-    tools: ['gmail', 'hubspot', 'web-search'],
-    triggerIdx: 0 // New email arrives (Gmail)
+    iconClass: "text-amber-400",
+    brief: "Auto-qualify leads from emails",
+    prompt:
+      "Figure out if this email is a potential sales opportunity. Extract company name, intent, and recommend next action.",
+    tools: ["gmail", "hubspot", "web-search"],
+    triggerIdx: 0, // New email arrives (Gmail)
   },
   {
-    id: 'meeting',
-    name: 'Meeting Follow-Up',
+    id: "meeting",
+    name: "Meeting Follow-Up",
     iconComponent: markRaw(PhCalendar),
-    iconClass: 'text-blue-400',
-    brief: 'Auto-summarize & create tasks',
-    prompt: 'Summarize key decisions and action items from this meeting. Create tasks and send follow-ups automatically.',
-    tools: ['google-calendar', 'slack', 'notion'],
-    triggerIdx: 2 // Meeting ends (Calendar)
+    iconClass: "text-blue-400",
+    brief: "Auto-summarize & create tasks",
+    prompt:
+      "Summarize key decisions and action items from this meeting. Create tasks and send follow-ups automatically.",
+    tools: ["google-calendar", "slack", "notion"],
+    triggerIdx: 2, // Meeting ends (Calendar)
   },
   {
-    id: 'research',
-    name: 'Smart Lead Researcher',
+    id: "research",
+    name: "Smart Lead Researcher",
     iconComponent: markRaw(PhMagnifyingGlass),
-    iconClass: 'text-emerald-400',
-    brief: 'Instant research & outreach',
-    prompt: 'Research this company thoroughly. Find recent news, funding info, and draft a personalized outreach message.',
-    tools: ['hubspot', 'web-search', 'contact-enrich'],
-    triggerIdx: 4 // New contact added (HubSpot)
-  }
-]
+    iconClass: "text-emerald-400",
+    brief: "Instant research & outreach",
+    prompt:
+      "Research this company thoroughly. Find recent news, funding info, and draft a personalized outreach message.",
+    tools: ["hubspot", "web-search", "contact-enrich"],
+    triggerIdx: 4, // New contact added (HubSpot)
+  },
+];
 
 // App definitions with real logos from CDN
 const apps = {
-  'gmail': { name: 'Gmail', logo: 'https://cdn.activepieces.com/pieces/gmail.png', color: '#EA4335' },
-  'slack': { name: 'Slack', logo: 'https://cdn.activepieces.com/pieces/slack.png', color: '#4A154B' },
-  'notion': { name: 'Notion', logo: 'https://cdn.activepieces.com/pieces/notion.png', color: '#000000' },
-  'hubspot': { name: 'HubSpot', logo: 'https://cdn.activepieces.com/pieces/hubspot.png', color: '#FF7A59' },
-  'google-calendar': { name: 'Calendar', logo: 'https://cdn.activepieces.com/pieces/google-calendar.png', color: '#4285F4' },
-  'google-sheets': { name: 'Sheets', logo: 'https://cdn.activepieces.com/pieces/google-sheets.png', color: '#0F9D58' },
-  'google': { name: 'Google', logo: 'https://cdn.activepieces.com/pieces/google.png', color: '#4285F4' },
-  'openai': { name: 'OpenAI', logo: 'https://cdn.activepieces.com/pieces/openai.png', color: '#10A37F' },
-  'airtable': { name: 'Airtable', logo: 'https://cdn.activepieces.com/pieces/airtable.png', color: '#18BFFF' },
-  'discord': { name: 'Discord', logo: 'https://cdn.activepieces.com/pieces/discord.png', color: '#5865F2' },
-  'trello': { name: 'Trello', logo: 'https://cdn.activepieces.com/pieces/trello.png', color: '#0079BF' },
-  'asana': { name: 'Asana', logo: 'https://cdn.activepieces.com/pieces/asana.png', color: '#F06A6A' },
-  'github': { name: 'GitHub', logo: 'https://cdn.activepieces.com/pieces/github.png', color: '#181717' },
-  'stripe': { name: 'Stripe', logo: 'https://cdn.activepieces.com/pieces/stripe.png', color: '#635BFF' },
-  'shopify': { name: 'Shopify', logo: 'https://cdn.activepieces.com/pieces/shopify.png', color: '#96BF48' },
-  'typeform': { name: 'Typeform', logo: 'https://cdn.activepieces.com/pieces/typeform.png', color: '#262627' },
-  'zendesk': { name: 'Zendesk', logo: 'https://cdn.activepieces.com/pieces/zendesk.png', color: '#03363D' },
-  'schedule': { name: 'Schedule', logo: 'https://cdn.activepieces.com/pieces/schedule.png', color: '#6366F1' },
-  'linear': { name: 'Linear', logo: 'https://cdn.activepieces.com/pieces/linear.png', color: '#5E6AD2' },
-  'intercom': { name: 'Intercom', logo: 'https://cdn.activepieces.com/pieces/intercom.png', color: '#1F8DED' },
-}
+  gmail: {
+    name: "Gmail",
+    logo: "https://cdn.activepieces.com/pieces/gmail.png",
+    color: "#EA4335",
+  },
+  slack: {
+    name: "Slack",
+    logo: "https://cdn.activepieces.com/pieces/slack.png",
+    color: "#4A154B",
+  },
+  notion: {
+    name: "Notion",
+    logo: "https://cdn.activepieces.com/pieces/notion.png",
+    color: "#000000",
+  },
+  hubspot: {
+    name: "HubSpot",
+    logo: "https://cdn.activepieces.com/pieces/hubspot.png",
+    color: "#FF7A59",
+  },
+  "google-calendar": {
+    name: "Calendar",
+    logo: "https://cdn.activepieces.com/pieces/google-calendar.png",
+    color: "#4285F4",
+  },
+  "google-sheets": {
+    name: "Sheets",
+    logo: "https://cdn.activepieces.com/pieces/google-sheets.png",
+    color: "#0F9D58",
+  },
+  google: {
+    name: "Google",
+    logo: "https://cdn.activepieces.com/pieces/google.png",
+    color: "#4285F4",
+  },
+  openai: {
+    name: "OpenAI",
+    logo: "https://cdn.activepieces.com/pieces/openai.png",
+    color: "#10A37F",
+  },
+  airtable: {
+    name: "Airtable",
+    logo: "https://cdn.activepieces.com/pieces/airtable.png",
+    color: "#18BFFF",
+  },
+  discord: {
+    name: "Discord",
+    logo: "https://cdn.activepieces.com/pieces/discord.png",
+    color: "#5865F2",
+  },
+  trello: {
+    name: "Trello",
+    logo: "https://cdn.activepieces.com/pieces/trello.png",
+    color: "#0079BF",
+  },
+  asana: {
+    name: "Asana",
+    logo: "https://cdn.activepieces.com/pieces/asana.png",
+    color: "#F06A6A",
+  },
+  github: {
+    name: "GitHub",
+    logo: "https://cdn.activepieces.com/pieces/github.png",
+    color: "#181717",
+  },
+  stripe: {
+    name: "Stripe",
+    logo: "https://cdn.activepieces.com/pieces/stripe.png",
+    color: "#635BFF",
+  },
+  shopify: {
+    name: "Shopify",
+    logo: "https://cdn.activepieces.com/pieces/shopify.png",
+    color: "#96BF48",
+  },
+  typeform: {
+    name: "Typeform",
+    logo: "https://cdn.activepieces.com/pieces/typeform.png",
+    color: "#262627",
+  },
+  zendesk: {
+    name: "Zendesk",
+    logo: "https://cdn.activepieces.com/pieces/zendesk.png",
+    color: "#03363D",
+  },
+  schedule: {
+    name: "Schedule",
+    logo: "https://cdn.activepieces.com/pieces/schedule.png",
+    color: "#6366F1",
+  },
+  linear: {
+    name: "Linear",
+    logo: "https://cdn.activepieces.com/pieces/linear.png",
+    color: "#5E6AD2",
+  },
+  intercom: {
+    name: "Intercom",
+    logo: "https://cdn.activepieces.com/pieces/intercom.png",
+    color: "#1F8DED",
+  },
+};
 
 // All available triggers from different apps
 const allTriggers = [
-  { label: 'New email arrives', app: 'Gmail', logo: apps.gmail.logo, color: apps.gmail.color },
-  { label: 'Message received', app: 'Slack', logo: apps.slack.logo, color: apps.slack.color },
-  { label: 'Meeting ends', app: 'Calendar', logo: apps['google-calendar'].logo, color: apps['google-calendar'].color },
-  { label: 'Form submitted', app: 'Typeform', logo: apps.typeform.logo, color: apps.typeform.color },
-  { label: 'New contact added', app: 'HubSpot', logo: apps.hubspot.logo, color: apps.hubspot.color },
-  { label: 'Ticket created', app: 'Zendesk', logo: apps.zendesk.logo, color: apps.zendesk.color },
-  { label: 'Row added', app: 'Sheets', logo: apps['google-sheets'].logo, color: apps['google-sheets'].color },
-  { label: 'New order', app: 'Shopify', logo: apps.shopify.logo, color: apps.shopify.color },
-  { label: 'Payment received', app: 'Stripe', logo: apps.stripe.logo, color: apps.stripe.color },
-  { label: 'Every day at 9am', app: 'Schedule', logo: apps.schedule.logo, color: apps.schedule.color },
-]
+  {
+    label: "New email arrives",
+    app: "Gmail",
+    logo: apps.gmail.logo,
+    color: apps.gmail.color,
+  },
+  {
+    label: "Message received",
+    app: "Slack",
+    logo: apps.slack.logo,
+    color: apps.slack.color,
+  },
+  {
+    label: "Meeting ends",
+    app: "Calendar",
+    logo: apps["google-calendar"].logo,
+    color: apps["google-calendar"].color,
+  },
+  {
+    label: "Form submitted",
+    app: "Typeform",
+    logo: apps.typeform.logo,
+    color: apps.typeform.color,
+  },
+  {
+    label: "New contact added",
+    app: "HubSpot",
+    logo: apps.hubspot.logo,
+    color: apps.hubspot.color,
+  },
+  {
+    label: "Ticket created",
+    app: "Zendesk",
+    logo: apps.zendesk.logo,
+    color: apps.zendesk.color,
+  },
+  {
+    label: "Row added",
+    app: "Sheets",
+    logo: apps["google-sheets"].logo,
+    color: apps["google-sheets"].color,
+  },
+  {
+    label: "New order",
+    app: "Shopify",
+    logo: apps.shopify.logo,
+    color: apps.shopify.color,
+  },
+  {
+    label: "Payment received",
+    app: "Stripe",
+    logo: apps.stripe.logo,
+    color: apps.stripe.color,
+  },
+  {
+    label: "Every day at 9am",
+    app: "Schedule",
+    logo: apps.schedule.logo,
+    color: apps.schedule.color,
+  },
+];
 
 // AI Capabilities (not just apps)
 const aiCapabilities = [
-  { key: 'web-search', name: 'Web Search', iconComponent: markRaw(PhMagnifyingGlass), iconClass: 'text-blue-400', bg: 'bg-blue-500/20' },
-  { key: 'image-gen', name: 'Image Generation', iconComponent: markRaw(PhPaintBrush), iconClass: 'text-pink-400', bg: 'bg-pink-500/20' },
-  { key: 'contact-enrich', name: 'Contact Enrichment', iconComponent: markRaw(PhUser), iconClass: 'text-green-400', bg: 'bg-green-500/20' },
-  { key: 'audio-gen', name: 'Generate Audio', iconComponent: markRaw(PhMusicNote), iconClass: 'text-purple-400', bg: 'bg-purple-500/20' },
-]
+  {
+    key: "web-search",
+    name: "Web Search",
+    iconComponent: markRaw(PhMagnifyingGlass),
+    iconClass: "text-blue-400",
+    bg: "bg-blue-500/20",
+  },
+  {
+    key: "image-gen",
+    name: "Image Generation",
+    iconComponent: markRaw(PhPaintBrush),
+    iconClass: "text-pink-400",
+    bg: "bg-pink-500/20",
+  },
+  {
+    key: "contact-enrich",
+    name: "Contact Enrichment",
+    iconComponent: markRaw(PhUser),
+    iconClass: "text-green-400",
+    bg: "bg-green-500/20",
+  },
+  {
+    key: "audio-gen",
+    name: "Generate Audio",
+    iconComponent: markRaw(PhMusicNote),
+    iconClass: "text-purple-400",
+    bg: "bg-purple-500/20",
+  },
+];
 
 // All app capabilities
-const allCapabilitiesList = ['gmail', 'slack', 'notion', 'hubspot', 'google-calendar', 'google-sheets', 'airtable', 'discord', 'trello', 'asana', 'github', 'stripe', 'linear', 'intercom']
+const allCapabilitiesList = [
+  "gmail",
+  "slack",
+  "notion",
+  "hubspot",
+  "google-calendar",
+  "google-sheets",
+  "airtable",
+  "discord",
+  "trello",
+  "asana",
+  "github",
+  "stripe",
+  "linear",
+  "intercom",
+];
 
-const selectedAgent = ref(null)
-const agentName = ref('')
-const editablePrompt = ref('')
-const isTyping = ref(false)
-const agentLaunched = ref(false)
-const showTriggerPicker = ref(false)
-const showCapabilityPicker = ref(false)
-const showWtfExplainer = ref(false)
-const currentTrigger = ref(allTriggers[0])
-const activeCapabilitiesKeys = ref([])
+const selectedAgent = ref(null);
+const agentName = ref("");
+const editablePrompt = ref("");
+const isTyping = ref(false);
+const agentLaunched = ref(false);
+const showTriggerPicker = ref(false);
+const showCapabilityPicker = ref(false);
+const showWtfExplainer = ref(false);
+const currentTrigger = ref(allTriggers[0]);
+const activeCapabilitiesKeys = ref([]);
 
-let typingInterval = null
+let typingInterval = null;
 
 // Convert capability keys to objects with name and logo
 const activeCapabilities = computed(() =>
-  activeCapabilitiesKeys.value.map(key => {
+  activeCapabilitiesKeys.value.map((key) => {
     // Check if it's an AI capability
-    const aiCap = aiCapabilities.find(c => c.key === key)
+    const aiCap = aiCapabilities.find((c) => c.key === key);
     if (aiCap) {
-      return { name: aiCap.name, logo: null, iconComponent: aiCap.iconComponent, iconClass: aiCap.iconClass, bg: aiCap.bg, key }
+      return {
+        name: aiCap.name,
+        logo: null,
+        iconComponent: aiCap.iconComponent,
+        iconClass: aiCap.iconClass,
+        bg: aiCap.bg,
+        key,
+      };
     }
     // Otherwise it's an app
-    return { name: apps[key]?.name || key, logo: apps[key]?.logo, key }
+    return { name: apps[key]?.name || key, logo: apps[key]?.logo, key };
   })
-)
+);
 
 // All app capabilities (for the full overlay)
-const allAppCapabilities = computed(() => 
-  allCapabilitiesList.map(key => ({ name: apps[key]?.name || key, logo: apps[key]?.logo, key }))
-)
+const allAppCapabilities = computed(() =>
+  allCapabilitiesList.map((key) => ({
+    name: apps[key]?.name || key,
+    logo: apps[key]?.logo,
+    key,
+  }))
+);
 
 // Unified list (AI + Apps together)
 const allCapabilitiesUnified = computed(() => [
   ...aiCapabilities,
-  ...allAppCapabilities.value
-])
+  ...allAppCapabilities.value,
+]);
 
 // Available app capabilities (not already selected)
-const availableAppCapabilities = computed(() => 
+const availableAppCapabilities = computed(() =>
   allCapabilitiesList
-    .filter(key => !activeCapabilitiesKeys.value.includes(key))
-    .map(key => ({ name: apps[key]?.name || key, logo: apps[key]?.logo, key }))
-)
+    .filter((key) => !activeCapabilitiesKeys.value.includes(key))
+    .map((key) => ({
+      name: apps[key]?.name || key,
+      logo: apps[key]?.logo,
+      key,
+    }))
+);
 
 // Close dropdowns on any click, then let specific handlers re-open
 const handleGlobalClick = () => {
-  showTriggerPicker.value = false
-  showCapabilityPicker.value = false
-}
+  showTriggerPicker.value = false;
+  showCapabilityPicker.value = false;
+};
 
 onMounted(() => {
-  document.addEventListener('click', handleGlobalClick)
-})
+  document.addEventListener("click", handleGlobalClick);
+});
 
 onUnmounted(() => {
-  document.removeEventListener('click', handleGlobalClick)
-})
+  document.removeEventListener("click", handleGlobalClick);
+});
 
 const toggleTriggerPicker = () => {
-  const wasOpen = showTriggerPicker.value
+  const wasOpen = showTriggerPicker.value;
   // Close will happen from global click, then we re-open
   setTimeout(() => {
-    showTriggerPicker.value = !wasOpen
-    showCapabilityPicker.value = false
-  }, 0)
-}
+    showTriggerPicker.value = !wasOpen;
+    showCapabilityPicker.value = false;
+  }, 0);
+};
 
 const toggleCapabilityPicker = () => {
-  const wasOpen = showCapabilityPicker.value
+  const wasOpen = showCapabilityPicker.value;
   setTimeout(() => {
-    showCapabilityPicker.value = !wasOpen
-    showTriggerPicker.value = false
-  }, 0)
-}
+    showCapabilityPicker.value = !wasOpen;
+    showTriggerPicker.value = false;
+  }, 0);
+};
 
 const selectAgent = (agent) => {
-  selectedAgent.value = agent
-  agentName.value = agent.name
-  agentIcon.value = allIcons[Math.floor(Math.random() * allIcons.length)]
-  activeCapabilitiesKeys.value = [...agent.tools]
-  currentTrigger.value = allTriggers[agent.triggerIdx || 0]
-  editablePrompt.value = ''
-  showTriggerPicker.value = false
-  showCapabilityPicker.value = false
-  typeText(agent.prompt)
-}
+  selectedAgent.value = agent;
+  agentName.value = agent.name;
+  agentIcon.value = allIcons[Math.floor(Math.random() * allIcons.length)];
+  activeCapabilitiesKeys.value = [...agent.tools];
+  currentTrigger.value = allTriggers[agent.triggerIdx || 0];
+  editablePrompt.value = "";
+  showTriggerPicker.value = false;
+  showCapabilityPicker.value = false;
+  typeText(agent.prompt);
+};
 
 const typeText = (text) => {
-  if (typingInterval) clearInterval(typingInterval)
-  isTyping.value = true
-  editablePrompt.value = ''
-  let i = 0
-  
+  if (typingInterval) clearInterval(typingInterval);
+  isTyping.value = true;
+  editablePrompt.value = "";
+  let i = 0;
+
   typingInterval = setInterval(() => {
     if (i < text.length) {
-      editablePrompt.value += text[i]
-      i++
+      editablePrompt.value += text[i];
+      i++;
     } else {
-      clearInterval(typingInterval)
-      typingInterval = null
-      isTyping.value = false
+      clearInterval(typingInterval);
+      typingInterval = null;
+      isTyping.value = false;
     }
-  }, 20)
-}
+  }, 20);
+};
 
 const selectTrigger = (trigger) => {
-  currentTrigger.value = trigger
-  showTriggerPicker.value = false
-}
+  currentTrigger.value = trigger;
+  showTriggerPicker.value = false;
+};
 
 const addCapability = (cap) => {
   if (!activeCapabilitiesKeys.value.includes(cap.key)) {
-    activeCapabilitiesKeys.value.push(cap.key)
+    activeCapabilitiesKeys.value.push(cap.key);
   }
-}
+};
 
 const toggleCapability = (cap) => {
   if (activeCapabilitiesKeys.value.includes(cap.key)) {
-    activeCapabilitiesKeys.value = activeCapabilitiesKeys.value.filter(k => k !== cap.key)
+    activeCapabilitiesKeys.value = activeCapabilitiesKeys.value.filter(
+      (k) => k !== cap.key
+    );
   } else {
-    activeCapabilitiesKeys.value.push(cap.key)
+    activeCapabilitiesKeys.value.push(cap.key);
   }
-}
+};
 
 const removeCapability = (capName) => {
   // Find by name in apps
-  const appKey = Object.keys(apps).find(k => apps[k].name === capName)
+  const appKey = Object.keys(apps).find((k) => apps[k].name === capName);
   if (appKey) {
-    activeCapabilitiesKeys.value = activeCapabilitiesKeys.value.filter(k => k !== appKey)
-    return
+    activeCapabilitiesKeys.value = activeCapabilitiesKeys.value.filter(
+      (k) => k !== appKey
+    );
+    return;
   }
   // Find by name in AI capabilities
-  const aiCap = aiCapabilities.find(c => c.name === capName)
+  const aiCap = aiCapabilities.find((c) => c.name === capName);
   if (aiCap) {
-    activeCapabilitiesKeys.value = activeCapabilitiesKeys.value.filter(k => k !== aiCap.key)
+    activeCapabilitiesKeys.value = activeCapabilitiesKeys.value.filter(
+      (k) => k !== aiCap.key
+    );
   }
-}
+};
 
 const removeCapabilityByKey = (key) => {
-  activeCapabilitiesKeys.value = activeCapabilitiesKeys.value.filter(k => k !== key)
-}
+  activeCapabilitiesKeys.value = activeCapabilitiesKeys.value.filter(
+    (k) => k !== key
+  );
+};
 
 const launchAgent = () => {
-  agentLaunched.value = true
-}
+  agentLaunched.value = true;
+};
 
 const goBack = () => {
-  if (typingInterval) clearInterval(typingInterval)
-  if (shuffleInterval) clearTimeout(shuffleInterval)
-  selectedAgent.value = null
-  editablePrompt.value = ''
-  isTyping.value = false
-  isShuffling.value = false
-  showTriggerPicker.value = false
-  showCapabilityPicker.value = false
-  showWtfExplainer.value = false
-}
+  if (typingInterval) clearInterval(typingInterval);
+  if (shuffleInterval) clearTimeout(shuffleInterval);
+  selectedAgent.value = null;
+  editablePrompt.value = "";
+  isTyping.value = false;
+  isShuffling.value = false;
+  showTriggerPicker.value = false;
+  showCapabilityPicker.value = false;
+  showWtfExplainer.value = false;
+};
 
 const reset = () => {
-  if (typingInterval) clearInterval(typingInterval)
-  if (shuffleInterval) clearTimeout(shuffleInterval)
-  agentLaunched.value = false
-  selectedAgent.value = null
-  editablePrompt.value = ''
-  isTyping.value = false
-  isShuffling.value = false
-  agentIcon.value = markRaw(PhRobot)
-  agentName.value = ''
-  activeCapabilitiesKeys.value = []
-  showTriggerPicker.value = false
-  showCapabilityPicker.value = false
-}
+  if (typingInterval) clearInterval(typingInterval);
+  if (shuffleInterval) clearTimeout(shuffleInterval);
+  agentLaunched.value = false;
+  selectedAgent.value = null;
+  editablePrompt.value = "";
+  isTyping.value = false;
+  isShuffling.value = false;
+  agentIcon.value = markRaw(PhRobot);
+  agentName.value = "";
+  activeCapabilitiesKeys.value = [];
+  showTriggerPicker.value = false;
+  showCapabilityPicker.value = false;
+};
 </script>
 
 <style scoped>
@@ -868,8 +1368,15 @@ const reset = () => {
 }
 
 @keyframes pulse-gentle {
-  0%, 100% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(1.05); }
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.05);
+  }
 }
 
 .animate-bounce-gentle {
@@ -877,8 +1384,13 @@ const reset = () => {
 }
 
 @keyframes bounce-gentle {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
 /* Transitions */
@@ -934,8 +1446,13 @@ const reset = () => {
 }
 
 @keyframes lottery-spin {
-  0%, 100% { transform: scale(1) rotate(-3deg); }
-  50% { transform: scale(1.1) rotate(3deg); }
+  0%,
+  100% {
+    transform: scale(1) rotate(-3deg);
+  }
+  50% {
+    transform: scale(1.1) rotate(3deg);
+  }
 }
 
 /* Sparkle animations */
@@ -953,14 +1470,29 @@ const reset = () => {
 }
 
 @keyframes sparkle-float {
-  0%, 100% { opacity: 0; transform: scale(0.5); }
-  50% { opacity: 1; transform: scale(1.2); }
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
 }
 
 @keyframes pop-in {
-  0% { transform: scale(0.5); opacity: 0; }
-  70% { transform: scale(1.05); }
-  100% { transform: scale(1); opacity: 1; }
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 /* Confetti */
@@ -976,7 +1508,8 @@ const reset = () => {
     opacity: 1;
   }
   100% {
-    transform: translateY(380px) rotate(360deg) translateX(var(--drift)) scale(0.6);
+    transform: translateY(380px) rotate(360deg) translateX(var(--drift))
+      scale(0.6);
     opacity: 0;
   }
 }
@@ -1019,26 +1552,26 @@ const reset = () => {
 }
 
 @keyframes face-bounce-in {
-  0% { 
-    opacity: 0; 
+  0% {
+    opacity: 0;
     transform: translateX(-50%) translateY(10px) scale(0.5);
   }
-  70% { 
+  70% {
     transform: translateX(-50%) translateY(-5px) scale(1.1);
   }
-  100% { 
-    opacity: 1; 
+  100% {
+    opacity: 1;
     transform: translateX(-50%) translateY(0) scale(1);
   }
 }
 
 @keyframes face-fade-out {
-  0% { 
-    opacity: 1; 
+  0% {
+    opacity: 1;
     transform: translateX(-50%) translateY(0) scale(1);
   }
-  100% { 
-    opacity: 0; 
+  100% {
+    opacity: 0;
     transform: translateX(-50%) translateY(-10px) scale(0.8);
   }
 }
@@ -1083,11 +1616,32 @@ const reset = () => {
 
 /* Comic text effect */
 .comic-text {
-  text-shadow: 
-    1px 1px 0 #c4b5fd,
-    2px 2px 0 #a78bfa,
-    -1px -1px 0 #ede9fe;
+  text-shadow: 1px 1px 0 #c4b5fd, 2px 2px 0 #a78bfa, -1px -1px 0 #ede9fe;
   letter-spacing: 0.5px;
 }
 
+/* Minimal scrollbar styling */
+.minimal-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.minimal-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.minimal-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+.minimal-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Firefox */
+.minimal-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
 </style>
