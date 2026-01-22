@@ -195,7 +195,7 @@
         <template v-else>
           <!-- Detail header -->
           <div
-            class="flex items-center gap-3 px-4 py-3 border-b border-gray-100 flex-shrink-0"
+            class="flex items-center gap-3 px-4 py-3 flex-shrink-0 bg-white/5"
           >
             <button
               @click.stop="selectedEmail = null"

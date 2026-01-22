@@ -20,7 +20,23 @@
       "mcp__chrome-devtools__close_page",
       "Bash(npm install:*)",
       "Bash(npx update-browserslist-db@latest:*)",
-      "Bash(npm audit:*)"
+      "Bash(npm audit:*)",
+      "WebFetch(domain:phosphoricons.com)",
+      "Bash(lsof:*)",
+      "mcp__chrome-devtools__click",
+      "Bash(pkill:*)",
+      "Bash(git stash pop:*)",
+      "Bash(git stash:*)",
+      "Bash(git fetch:*)",
+      "Bash(git merge:*)",
+      "mcp__chrome-devtools__list_console_messages",
+      "Bash(for page in ai-adoption ai-agent-builder governance-and-management deployment-options)",
+      "Bash(do echo \"Testing /product/$page:\")",
+      "Bash(done)",
+      "Bash(do)",
+      "Bash(echo:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ]
   }
 }

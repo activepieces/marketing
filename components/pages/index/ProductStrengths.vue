@@ -19,22 +19,7 @@ const visibleSections = ref(new Set());
 const expandedCard = ref(null);
 
 // Product showcase data with richer content
-const showcases = [
-  {
-    id: 'agents',
-    category: 'BUILD',
-    title: 'Build AI agents',
-    headline: 'From idea to AI agent in minutes',
-    description: 'Give your agent instructions in plain English, connect it to your tools, and add logic when you need it. No code required—but unlimited power when you want it.',
-    color: 'violet',
-    gradient: 'from-violet-500 to-fuchsia-500',
-    features: [
-      { text: `Connect to ${displayPiecesCount.value}+ apps—we handle all the auth`, highlight: 'Integrations' },
-      { text: 'Add branches, loops, and conditions visually', highlight: 'Flow builder' },
-      { text: 'See exactly what your agent did at every step', highlight: 'Transparent' },
-    ],
-    hasCustomVisual: true,
-  },
+const showcases = computed(() => [
   {
     id: 'adoption',
     category: 'ADOPT',
@@ -92,7 +77,7 @@ const showcases = [
       { value: '4', label: 'Components' },
     ],
   },
-];
+]);
 
 // Intersection Observer for scroll animations
 let observer = null;
@@ -132,7 +117,10 @@ onBeforeUnmount(() => {
     <!-- Top gradient fade -->
     <div class="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-white to-transparent z-10 pointer-events-none"></div>
     
-    <!-- Main Showcase Sections -->
+    <!-- AI Agents Showcase (Full Width) -->
+    <PagesIndexAiAgentsShowcase />
+    
+    <!-- Other Showcase Sections -->
     <div class="space-y-0">
       <section
         v-for="(showcase, index) in showcases"
@@ -229,7 +217,7 @@ onBeforeUnmount(() => {
               <!-- CTA -->
               <div class="pt-4">
                 <NuxtLink 
-                  :to="showcase.id === 'agents' ? '/product/ai-agent-builder' : showcase.id === 'adoption' ? '/product/ai-adoption' : showcase.id === 'governance' ? '/product/governance-and-management' : '/product/deployment-options'"
+                  :to="showcase.id === 'adoption' ? '/product/ai-adoption' : showcase.id === 'governance' ? '/product/governance-and-management' : '/product/deployment-options'"
                   class="inline-flex items-center gap-2 font-semibold text-lg group"
                   :class="{
                     'text-violet-600 hover:text-violet-700': showcase.color === 'violet',
@@ -253,48 +241,41 @@ onBeforeUnmount(() => {
               :class="visibleSections.has(showcase.id) ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'"
               :style="{ transitionDelay: '0.4s' }"
             >
-              <!-- Custom Visual for Agents Section -->
-              <template v-if="showcase.hasCustomVisual">
-                <PagesIndexAgentBuilderMock />
-              </template>
-              
-              <!-- Stats Grid for other sections -->
-              <template v-else>
-                <div class="grid grid-cols-3 gap-4">
-                  <div
-                    v-for="(stat, sIndex) in showcase.stats"
-                    :key="sIndex"
-                    class="relative group"
+              <!-- Stats Grid -->
+              <div class="grid grid-cols-3 gap-4">
+                <div
+                  v-for="(stat, sIndex) in showcase.stats"
+                  :key="sIndex"
+                  class="relative group"
+                >
+                  <div 
+                    class="p-6 rounded-2xl border transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl cursor-default"
+                    :class="[
+                      index % 2 === 0 ? 'bg-gray-50 border-gray-100 group-hover:bg-white' : 'bg-white border-gray-200',
+                    ]"
                   >
-                    <div 
-                      class="p-6 rounded-2xl border transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl cursor-default"
-                      :class="[
-                        index % 2 === 0 ? 'bg-gray-50 border-gray-100 group-hover:bg-white' : 'bg-white border-gray-200',
-                      ]"
+                    <p 
+                      class="text-3xl lg:text-4xl font-bold mb-1"
+                      :class="{
+                        'text-violet-600': showcase.color === 'violet',
+                        'text-fuchsia-600': showcase.color === 'fuchsia',
+                        'text-cyan-600': showcase.color === 'cyan',
+                        'text-emerald-600': showcase.color === 'emerald',
+                        'text-amber-600': showcase.color === 'amber',
+                      }"
                     >
-                      <p 
-                        class="text-3xl lg:text-4xl font-bold mb-1"
-                        :class="{
-                          'text-violet-600': showcase.color === 'violet',
-                          'text-fuchsia-600': showcase.color === 'fuchsia',
-                          'text-cyan-600': showcase.color === 'cyan',
-                          'text-emerald-600': showcase.color === 'emerald',
-                          'text-amber-600': showcase.color === 'amber',
-                        }"
-                      >
-                        {{ stat.value }}
-                      </p>
-                      <p class="text-sm text-gray-500 font-medium">{{ stat.label }}</p>
-                    </div>
+                      {{ stat.value }}
+                    </p>
+                    <p class="text-sm text-gray-500 font-medium">{{ stat.label }}</p>
                   </div>
                 </div>
+              </div>
 
-                <!-- Decorative Element -->
-                <div 
-                  class="absolute -z-10 inset-0 blur-3xl opacity-20 rounded-3xl"
-                  :class="`bg-gradient-to-br ${showcase.gradient}`"
-                />
-              </template>
+              <!-- Decorative Element -->
+              <div 
+                class="absolute -z-10 inset-0 blur-3xl opacity-20 rounded-3xl"
+                :class="`bg-gradient-to-br ${showcase.gradient}`"
+              />
             </div>
           </div>
         </div>
