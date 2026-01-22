@@ -1,379 +1,119 @@
 <template>
-  <div
-    ref="containerRef"
-    class="relative w-full max-w-lg mx-auto h-[420px] rounded-2xl overflow-hidden transition-all duration-500"
-    :class="
-      agentLaunched
-        ? 'bg-gradient-to-br from-gray-900 via-purple-900/50 to-gray-900'
-        : 'bg-gray-900'
-    "
-  >
-    <!-- Soft background blobs -->
-    <div class="absolute inset-0 overflow-hidden pointer-events-none">
-      <div
-        class="absolute top-0 right-0 w-72 h-72 bg-gradient-to-br from-violet-500/20 to-purple-500/15 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"
-      ></div>
-      <div
-        class="absolute bottom-0 left-0 w-60 h-60 bg-gradient-to-tr from-pink-500/15 to-rose-500/10 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3"
-      ></div>
-    </div>
+  <div class="h-full w-full p-8 bg-white/5">
+    <div
+      ref="containerRef"
+      class="relative w-full mx-auto h-full rounded-lg overflow-hidden transition-all duration-200 bg-black/10"
+    >
+      <!-- PICK YOUR AGENT SCREEN -->
+      <Transition name="fade-scale">
+        <div
+          v-if="!selectedAgent && !agentLaunched"
+          class="absolute inset-0 z-10"
+        >
+          <div class="h-full flex flex-col p-5 gap-5 justify-between">
+            <!-- Header -->
+            <div class="">
+              <h2 class="font-bold text-white/90 text-lg">Build an Agent</h2>
+              <p class="text-white/50 text-sm">Pick a template to start</p>
+            </div>
 
-    <!-- PICK YOUR AGENT SCREEN -->
-    <Transition name="fade-scale">
-      <div
-        v-if="!selectedAgent && !agentLaunched"
-        class="absolute inset-0 z-10"
-      >
-        <div class="h-full flex flex-col p-5">
-          <!-- Header -->
-          <div class="mb-5">
-            <h2 class="font-bold text-white/90 text-lg">Build an Agent</h2>
-            <p class="text-white/50 text-sm">Pick a template to start</p>
-          </div>
-
-          <!-- Agent cards -->
-          <div class="flex-1 flex flex-col gap-3">
-            <button
-              v-for="(agent, index) in agents"
-              :key="agent.id"
-              @click="selectAgent(agent)"
-              class="group relative flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 hover:bg-white/10 transition-all duration-300 text-left"
-            >
-              <div
-                class="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110"
-                :class="[
-                  index === 0
-                    ? 'bg-amber-500/20 group-hover:bg-amber-500/30'
-                    : '',
-                  index === 1
-                    ? 'bg-blue-500/20 group-hover:bg-blue-500/30'
-                    : '',
-                  index === 2
-                    ? 'bg-emerald-500/20 group-hover:bg-emerald-500/30'
-                    : '',
-                ]"
+            <!-- Agent cards -->
+            <div class="flex-1 flex flex-col gap-3 justify-end">
+              <button
+                v-for="(agent, index) in agents"
+                :key="agent.id"
+                @click="selectAgent(agent)"
+                class="group relative flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 hover:bg-white/10 transition-all duration-300 text-left"
               >
-                <component
-                  :is="agent.iconComponent"
-                  class="w-6 h-6"
-                  :class="agent.iconClass"
-                  weight="fill"
-                />
-              </div>
-
-              <div class="flex-1 min-w-0">
-                <p
-                  class="font-semibold text-white/90 group-hover:text-white transition-colors"
+                <div
+                  class="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110"
+                  :class="[
+                    index === 0
+                      ? 'bg-amber-500/20 group-hover:bg-amber-500/30'
+                      : '',
+                    index === 1
+                      ? 'bg-blue-500/20 group-hover:bg-blue-500/30'
+                      : '',
+                    index === 2
+                      ? 'bg-emerald-500/20 group-hover:bg-emerald-500/30'
+                      : '',
+                  ]"
                 >
-                  {{ agent.name }}
-                </p>
-                <p class="text-sm text-white/50 truncate">{{ agent.brief }}</p>
-              </div>
-
-              <div
-                class="w-8 h-8 rounded-full bg-white/5 group-hover:bg-white/10 flex items-center justify-center text-white/40 group-hover:text-white/80 group-hover:translate-x-0.5 transition-all"
-              >
-                <svg
-                  class="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 5l7 7-7 7"
+                  <component
+                    :is="agent.iconComponent"
+                    class="w-6 h-6"
+                    :class="agent.iconClass"
+                    weight="fill"
                   />
-                </svg>
-              </div>
-            </button>
+                </div>
+
+                <div class="flex-1 min-w-0">
+                  <p
+                    class="font-semibold text-white/90 group-hover:text-white transition-colors"
+                  >
+                    {{ agent.name }}
+                  </p>
+                  <p class="text-sm text-white/50 truncate">
+                    {{ agent.brief }}
+                  </p>
+                </div>
+
+                <div
+                  class="w-8 h-8 rounded-full bg-white/5 group-hover:bg-white/10 flex items-center justify-center text-white/40 group-hover:text-white/80 group-hover:translate-x-0.5 transition-all"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </div>
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </Transition>
+      </Transition>
 
-    <!-- BUILDING AGENT SCREEN -->
-    <Transition name="slide-up">
-      <div v-if="selectedAgent && !agentLaunched" class="absolute inset-0 z-20">
-        <!-- WTF Help button -->
-        <button
-          @click.stop="showWtfExplainer = true"
-          class="absolute top-6 right-6 z-30 group leading-none"
+      <!-- BUILDING AGENT SCREEN -->
+      <Transition name="slide-up">
+        <div
+          v-if="selectedAgent && !agentLaunched"
+          class="absolute inset-0 z-20"
         >
-          <span
-            class="inline-block text-sm font-black bg-gradient-to-r from-amber-400 via-orange-400 to-pink-400 bg-clip-text text-transparent rotate-[-8deg] transform group-hover:rotate-[-12deg] group-hover:scale-125 transition-all"
+          <!-- WTF Help button -->
+          <button
+            @click.stop="showWtfExplainer = true"
+            class="absolute top-6 right-6 z-30 group leading-none"
           >
-            WTF?
-          </span>
-          <!-- Tooltip -->
-          <span
-            class="absolute right-0 top-full px-2 py-1 bg-gray-900 text-white text-[10px] rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
-          >
-            What's This For?
-          </span>
-        </button>
-
-        <div class="h-full flex flex-col p-5">
-          <!-- Header: back + avatar + editable name -->
-          <div class="flex items-center gap-3 mb-4">
-            <button
-              @click="goBack"
-              class="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white/60 hover:text-white hover:border-white/30 transition-all flex-shrink-0"
+            <span
+              class="inline-block text-sm font-black bg-gradient-to-r from-amber-400 via-orange-400 to-pink-400 bg-clip-text text-transparent rotate-[-8deg] transform group-hover:rotate-[-12deg] group-hover:scale-125 transition-all"
             >
-              <svg
-                class="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-            </button>
-
-            <!-- Avatar lottery -->
-            <button
-              @click.stop="shuffleIcon"
-              class="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-500/30 to-purple-500/30 flex items-center justify-center transition-all relative overflow-hidden flex-shrink-0"
-              :class="
-                isShuffling
-                  ? 'scale-110 shadow-lg shadow-violet-500/30'
-                  : 'hover:scale-105'
-              "
-              title="Click to shuffle!"
+              WTF?
+            </span>
+            <!-- Tooltip -->
+            <span
+              class="absolute right-0 top-full px-2 py-1 bg-gray-900 text-white text-[10px] rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
             >
-              <component
-                :is="agentIcon"
-                class="w-6 h-6 text-white/80"
-                :class="isShuffling ? 'animate-lottery-spin' : ''"
-                weight="fill"
-              />
-              <div
-                v-if="isShuffling"
-                class="absolute inset-0 pointer-events-none"
-              >
-                <PhSparkle
-                  class="absolute top-0 left-0 w-3 h-3 text-amber-300 animate-sparkle-1"
-                  weight="fill"
-                />
-                <PhSparkle
-                  class="absolute top-0 right-0 w-3 h-3 text-amber-300 animate-sparkle-2"
-                  weight="fill"
-                />
-                <PhSparkle
-                  class="absolute bottom-0 right-0 w-3 h-3 text-amber-300 animate-sparkle-3"
-                  weight="fill"
-                />
-              </div>
-            </button>
+              What's This For?
+            </span>
+          </button>
 
-            <!-- Editable name -->
-            <div class="flex-1 min-w-0" @click.stop>
-              <input
-                v-model="agentName"
-                class="font-bold text-white/90 text-lg bg-transparent border-none outline-none w-full hover:text-white focus:text-white transition-colors"
-                @focus="$event.target.select()"
-              />
-              <p class="text-xs text-white/40 -mt-0.5">tap to rename</p>
-            </div>
-          </div>
-
-          <!-- Starts when (trigger) - compact -->
-          <div class="mb-3 relative">
-            <div
-              class="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/5 border border-white/10 cursor-pointer hover:border-white/20 transition-all"
-              @click.stop="toggleTriggerPicker"
-            >
-              <span class="text-xs text-white/40">When</span>
-              <div
-                class="w-6 h-6 rounded flex items-center justify-center flex-shrink-0"
-                :style="{ backgroundColor: currentTrigger.color + '15' }"
-              >
-                <img
-                  :src="currentTrigger.logo"
-                  class="w-4 h-4"
-                  :alt="currentTrigger.app"
-                />
-              </div>
-              <span class="text-sm text-white/80 font-medium flex-1 truncate">{{
-                currentTrigger.label
-              }}</span>
-              <svg
-                class="w-4 h-4 text-white/40 flex-shrink-0"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </div>
-
-            <!-- Trigger dropdown -->
-            <div
-              v-if="showTriggerPicker"
-              class="absolute top-full left-0 right-0 mt-1 bg-white/10 backdrop-blur-lg rounded-lg border border-white/20 shadow-xl z-40 overflow-hidden minimal-scrollbar"
-            >
-              <div
-                class="max-h-[160px] overflow-y-auto minimal-scrollbar p-1.5"
-              >
-                <button
-                  v-for="trigger in allTriggers"
-                  :key="trigger.label"
-                  @click.stop="selectTrigger(trigger)"
-                  class="w-full flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-white/10 transition-colors text-left"
-                  :class="
-                    currentTrigger.label === trigger.label ? 'bg-white/10' : ''
-                  "
-                >
-                  <div
-                    class="w-5 h-5 rounded flex items-center justify-center flex-shrink-0"
-                    :style="{ backgroundColor: trigger.color + '15' }"
-                  >
-                    <img
-                      :src="trigger.logo"
-                      class="w-3 h-3"
-                      :alt="trigger.app"
-                    />
-                  </div>
-                  <span class="text-xs text-white/80 flex-1 truncate">{{
-                    trigger.label
-                  }}</span>
-                  <span class="text-[10px] text-white/50">{{
-                    trigger.app
-                  }}</span>
-                </button>
-              </div>
-              <div
-                class="px-2 py-1.5 border-t border-white/10 bg-white/5 text-center"
-              >
-                <span class="text-[10px] text-white/40"
-                  >+ 500 more from 280+ apps</span
-                >
-              </div>
-            </div>
-          </div>
-
-          <!-- Instructions -->
-          <div class="mb-3 relative">
-            <div class="flex items-center gap-2 mb-1.5">
-              <label class="text-xs font-medium text-white/50"
-                >Instructions</label
-              >
-              <span
-                v-if="isTyping"
-                class="text-xs text-violet-400 flex items-center gap-1"
-              >
-                <span
-                  class="w-1.5 h-1.5 bg-violet-400 rounded-full animate-pulse"
-                ></span>
-                writing...
-              </span>
-            </div>
-
-            <!-- Watching face -->
-            <Transition name="face-pop">
-              <div
-                v-if="showWatchingFace"
-                class="absolute -top-8 left-1/2 -translate-x-1/2 z-10 pointer-events-none"
-              >
-                <div
-                  class="relative w-12 h-12 bg-gradient-to-br from-amber-500/30 to-yellow-500/30 rounded-full shadow-lg border-2 border-amber-500/30 flex items-center justify-center"
-                >
-                  <!-- Eyes container -->
-                  <div class="flex gap-2">
-                    <!-- Left eye -->
-                    <div
-                      class="w-3 h-3 bg-white rounded-full relative overflow-hidden"
-                    >
-                      <div
-                        class="w-1.5 h-1.5 bg-gray-800 rounded-full absolute transition-all duration-150"
-                        :style="{
-                          left: `${50 + eyePosition.x * 25}%`,
-                          top: `${50 + eyePosition.y * 25}%`,
-                          transform: 'translate(-50%, -50%)',
-                        }"
-                      ></div>
-                    </div>
-                    <!-- Right eye -->
-                    <div
-                      class="w-3 h-3 bg-white rounded-full relative overflow-hidden"
-                    >
-                      <div
-                        class="w-1.5 h-1.5 bg-gray-800 rounded-full absolute transition-all duration-150"
-                        :style="{
-                          left: `${50 + eyePosition.x * 25}%`,
-                          top: `${50 + eyePosition.y * 25}%`,
-                          transform: 'translate(-50%, -50%)',
-                        }"
-                      ></div>
-                    </div>
-                  </div>
-                  <!-- Cute blush -->
-                  <div
-                    class="absolute bottom-2 left-1 w-2 h-1 bg-pink-300/60 rounded-full"
-                  ></div>
-                  <div
-                    class="absolute bottom-2 right-1 w-2 h-1 bg-pink-300/60 rounded-full"
-                  ></div>
-
-                  <!-- Floating hearts -->
-                  <div class="absolute inset-0 overflow-visible">
-                    <PhHeart class="heart-bubble heart-1" weight="fill" />
-                    <PhHeart class="heart-bubble heart-2" weight="fill" />
-                    <PhHeart class="heart-bubble heart-3" weight="fill" />
-                  </div>
-                </div>
-              </div>
-            </Transition>
-
-            <div class="rounded-xl bg-white/5 border border-white/10 h-[80px]">
-              <textarea
-                ref="textareaRef"
-                v-model="editablePrompt"
-                :readonly="isTyping"
-                class="w-full h-full p-3 bg-transparent text-white/80 text-sm leading-relaxed resize-none border-none outline-none"
-                :class="isTyping ? 'cursor-default' : 'cursor-text'"
-                @mousedown.stop
-                @input="onUserType"
-                @focus="onTextareaFocus"
-                @blur="onTextareaBlur"
-              ></textarea>
-            </div>
-          </div>
-
-          <!-- Capabilities -->
-          <div class="mb-4 overflow-visible">
-            <div class="flex items-center gap-2 mb-2">
-              <label class="text-xs font-medium text-white/50">Skills</label>
-              <span
-                v-if="activeCapabilities.length > 0"
-                class="text-xs text-white/20"
-                >•</span
-              >
-              <span
-                v-if="activeCapabilities.length > 0"
-                class="text-xs text-white/40"
-                >{{ activeCapabilities.length }}</span
-              >
-            </div>
-            <div class="flex items-center gap-2 h-12">
-              <!-- Add button (always visible) -->
+          <div class="h-full flex flex-col gap-1 p-4">
+            <!-- Header: back + avatar + editable name -->
+            <div class="flex items-center gap-3">
               <button
-                @click.stop="toggleCapabilityPicker"
-                class="flex items-center justify-center w-10 h-10 rounded-xl border-2 border-dashed border-white/20 hover:border-white/40 hover:bg-white/10 text-white/40 hover:text-white/80 transition-all flex-shrink-0"
+                @click="goBack"
+                class="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white/60 hover:text-white hover:border-white/30 transition-all flex-shrink-0"
               >
                 <svg
-                  class="w-5 h-5"
+                  class="w-4 h-4"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -382,178 +122,332 @@
                     stroke-linecap="round"
                     stroke-linejoin="round"
                     stroke-width="2"
-                    d="M12 4v16m8-8H4"
+                    d="M15 19l-7-7 7-7"
                   />
                 </svg>
               </button>
 
-              <!-- Empty state -->
-              <div
-                v-if="activeCapabilities.length === 0"
-                class="flex-1 flex items-center"
+              <!-- Avatar lottery -->
+              <button
+                @click.stop="shuffleIcon"
+                class="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-500/30 to-purple-500/30 flex items-center justify-center transition-all relative overflow-hidden flex-shrink-0"
+                :class="
+                  isShuffling
+                    ? 'scale-110 shadow-lg shadow-violet-500/30'
+                    : 'hover:scale-105'
+                "
+                title="Click to shuffle!"
               >
-                <span class="text-sm text-white/40 italic"
-                  >No skills yet — add some!</span
+                <component
+                  :is="agentIcon"
+                  class="w-6 h-6 text-white/80"
+                  :class="isShuffling ? 'animate-lottery-spin' : ''"
+                  weight="fill"
+                />
+                <div
+                  v-if="isShuffling"
+                  class="absolute inset-0 pointer-events-none"
                 >
+                  <PhSparkle
+                    class="absolute top-0 left-0 w-3 h-3 text-amber-300 animate-sparkle-1"
+                    weight="fill"
+                  />
+                  <PhSparkle
+                    class="absolute top-0 right-0 w-3 h-3 text-amber-300 animate-sparkle-2"
+                    weight="fill"
+                  />
+                  <PhSparkle
+                    class="absolute bottom-0 right-0 w-3 h-3 text-amber-300 animate-sparkle-3"
+                    weight="fill"
+                  />
+                </div>
+              </button>
+
+              <!-- Editable name -->
+              <div class="flex-1 min-w-0" @click.stop>
+                <input
+                  v-model="agentName"
+                  class="font-bold text-white/90 text-lg bg-transparent border-none outline-none w-full hover:text-white focus:text-white transition-colors"
+                  @focus="$event.target.select()"
+                />
+                <p class="text-xs text-white/40 -mt-0.5">tap to rename</p>
+              </div>
+            </div>
+
+            <!-- Starts when (trigger) - compact -->
+            <div class="mb-3 relative">
+              <div
+                class="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/5 border border-white/10 cursor-pointer hover:border-white/20 transition-all"
+                @click.stop="toggleTriggerPicker"
+              >
+                <span class="text-xs text-white/40">When</span>
+                <div
+                  class="w-6 h-6 rounded flex items-center justify-center flex-shrink-0"
+                  :style="{ backgroundColor: currentTrigger.color + '15' }"
+                >
+                  <img
+                    :src="currentTrigger.logo"
+                    class="w-4 h-4"
+                    :alt="currentTrigger.app"
+                  />
+                </div>
+                <span
+                  class="text-sm text-white/80 font-medium flex-1 truncate"
+                  >{{ currentTrigger.label }}</span
+                >
+                <svg
+                  class="w-4 h-4 text-white/40 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
               </div>
 
-              <!-- Scrollable capabilities -->
-              <div v-else class="flex-1 relative min-w-0">
+              <!-- Trigger dropdown -->
+              <div
+                v-if="showTriggerPicker"
+                class="absolute top-full left-0 right-0 mt-1 bg-white/10 backdrop-blur-lg rounded-lg border border-white/20 shadow-xl z-40 overflow-hidden minimal-scrollbar"
+              >
                 <div
-                  class="flex items-center gap-3 overflow-x-auto py-1 minimal-scrollbar pr-6"
+                  class="max-h-[160px] overflow-y-auto minimal-scrollbar p-1.5"
                 >
-                  <div
-                    v-for="cap in activeCapabilities"
-                    :key="cap.key"
-                    class="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/10 border border-white/10 flex-shrink-0 group relative"
+                  <button
+                    v-for="trigger in allTriggers"
+                    :key="trigger.label"
+                    @click.stop="selectTrigger(trigger)"
+                    class="w-full flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-white/10 transition-colors text-left"
+                    :class="
+                      currentTrigger.label === trigger.label
+                        ? 'bg-white/10'
+                        : ''
+                    "
                   >
                     <div
-                      class="w-6 h-6 rounded-lg flex items-center justify-center"
-                      :class="cap.logo ? 'bg-white/10' : cap.bg"
+                      class="w-5 h-5 rounded flex items-center justify-center flex-shrink-0"
+                      :style="{ backgroundColor: trigger.color + '15' }"
                     >
                       <img
-                        v-if="cap.logo"
-                        :src="cap.logo"
-                        class="w-4 h-4"
-                        :alt="cap.name"
-                      />
-                      <component
-                        v-else
-                        :is="cap.iconComponent"
-                        class="w-4 h-4"
-                        :class="cap.iconClass"
-                        weight="fill"
+                        :src="trigger.logo"
+                        class="w-3 h-3"
+                        :alt="trigger.app"
                       />
                     </div>
-                    <span class="text-sm text-white/80 font-medium">{{
-                      cap.name
+                    <span class="text-xs text-white/80 flex-1 truncate">{{
+                      trigger.label
                     }}</span>
-                    <!-- Remove button on hover -->
-                    <button
-                      @click.stop="removeCapabilityByKey(cap.key)"
-                      class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-white/30 hover:bg-red-500 text-white/60 hover:text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all text-[10px] font-bold leading-none"
-                    >
-                      ×
-                    </button>
-                  </div>
+                    <span class="text-[10px] text-white/50">{{
+                      trigger.app
+                    }}</span>
+                  </button>
                 </div>
-                <!-- Gradient fade -->
                 <div
-                  class="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-gray-900 to-transparent pointer-events-none"
-                ></div>
+                  class="px-2 py-1.5 border-t border-white/10 bg-white/5 text-center"
+                >
+                  <span class="text-[10px] text-white/40"
+                    >+ 500 more from 280+ apps</span
+                  >
+                </div>
               </div>
             </div>
-          </div>
 
-          <!-- WTF Explainer overlay -->
-          <Transition name="overlay">
-            <div
-              v-if="showWtfExplainer"
-              class="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-900 to-purple-900/30 z-50 flex flex-col rounded-2xl overflow-hidden"
-              @click.stop
-            >
-              <!-- Close button -->
-              <button
-                @click.stop="showWtfExplainer = false"
-                class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/60 hover:text-white transition-colors z-10"
-              >
-                <svg
-                  class="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+            <!-- Instructions -->
+            <div class="mb-3 relative">
+              <div class="flex items-center gap-2 mb-1.5">
+                <label class="text-xs font-medium text-white/50"
+                  >Instructions</label
                 >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
+                <span
+                  v-if="isTyping"
+                  class="text-xs text-violet-400 flex items-center gap-1"
+                >
+                  <span
+                    class="w-1.5 h-1.5 bg-violet-400 rounded-full animate-pulse"
+                  ></span>
+                  writing...
+                </span>
+              </div>
 
-              <!-- Content -->
-              <div
-                class="flex-1 flex flex-col items-center justify-center p-6 text-center"
-              >
-                <PhBrain
-                  class="w-12 h-12 text-violet-400 mb-4 animate-bounce-gentle"
-                  weight="fill"
-                />
-                <h3 class="text-xl font-bold text-white/90 mb-3">
-                  How Agents Work
-                </h3>
-
-                <div class="space-y-4 max-w-xs">
-                  <div class="flex items-start gap-3 text-left">
-                    <PhChatCircle
-                      class="w-6 h-6 text-violet-400 flex-shrink-0"
-                      weight="fill"
-                    />
-                    <div>
-                      <p class="font-semibold text-white/80 text-sm">
-                        It thinks
-                      </p>
-                      <p class="text-xs text-white/50">
-                        Analyzes your request and plans the best approach
-                      </p>
+              <!-- Watching face -->
+              <Transition name="face-pop">
+                <div
+                  v-if="showWatchingFace"
+                  class="absolute -top-8 left-1/2 -translate-x-1/2 z-10 pointer-events-none"
+                >
+                  <div
+                    class="relative w-12 h-12 bg-gradient-to-br from-amber-500/30 to-yellow-500/30 rounded-full shadow-lg border-2 border-amber-500/30 flex items-center justify-center"
+                  >
+                    <!-- Eyes container -->
+                    <div class="flex gap-2">
+                      <!-- Left eye -->
+                      <div
+                        class="w-3 h-3 bg-white rounded-full relative overflow-hidden"
+                      >
+                        <div
+                          class="w-1.5 h-1.5 bg-gray-800 rounded-full absolute transition-all duration-150"
+                          :style="{
+                            left: `${50 + eyePosition.x * 25}%`,
+                            top: `${50 + eyePosition.y * 25}%`,
+                            transform: 'translate(-50%, -50%)',
+                          }"
+                        ></div>
+                      </div>
+                      <!-- Right eye -->
+                      <div
+                        class="w-3 h-3 bg-white rounded-full relative overflow-hidden"
+                      >
+                        <div
+                          class="w-1.5 h-1.5 bg-gray-800 rounded-full absolute transition-all duration-150"
+                          :style="{
+                            left: `${50 + eyePosition.x * 25}%`,
+                            top: `${50 + eyePosition.y * 25}%`,
+                            transform: 'translate(-50%, -50%)',
+                          }"
+                        ></div>
+                      </div>
                     </div>
-                  </div>
+                    <!-- Cute blush -->
+                    <div
+                      class="absolute bottom-2 left-1 w-2 h-1 bg-pink-300/60 rounded-full"
+                    ></div>
+                    <div
+                      class="absolute bottom-2 right-1 w-2 h-1 bg-pink-300/60 rounded-full"
+                    ></div>
 
-                  <div class="flex items-start gap-3 text-left">
-                    <PhLightning
-                      class="w-6 h-6 text-amber-400 flex-shrink-0"
-                      weight="fill"
-                    />
-                    <div>
-                      <p class="font-semibold text-white/80 text-sm">It acts</p>
-                      <p class="text-xs text-white/50">
-                        Uses your skills at exactly the right moment
-                      </p>
-                    </div>
-                  </div>
-
-                  <div class="flex items-start gap-3 text-left">
-                    <PhArrowsClockwise
-                      class="w-6 h-6 text-emerald-400 flex-shrink-0"
-                      weight="fill"
-                    />
-                    <div>
-                      <p class="font-semibold text-white/80 text-sm">
-                        It iterates
-                      </p>
-                      <p class="text-xs text-white/50">
-                        Reviews results and adjusts until it's right
-                      </p>
+                    <!-- Floating hearts -->
+                    <div class="absolute inset-0 overflow-visible">
+                      <PhHeart class="heart-bubble heart-1" weight="fill" />
+                      <PhHeart class="heart-bubble heart-2" weight="fill" />
+                      <PhHeart class="heart-bubble heart-3" weight="fill" />
                     </div>
                   </div>
                 </div>
+              </Transition>
 
+              <div
+                class="rounded-xl bg-white/5 border border-white/10 h-[80px]"
+              >
+                <textarea
+                  ref="textareaRef"
+                  v-model="editablePrompt"
+                  :readonly="isTyping"
+                  class="w-full h-full p-3 bg-transparent text-white/80 text-sm leading-relaxed resize-none border-none outline-none"
+                  :class="isTyping ? 'cursor-default' : 'cursor-text'"
+                  @mousedown.stop
+                  @input="onUserType"
+                  @focus="onTextareaFocus"
+                  @blur="onTextareaBlur"
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- Capabilities -->
+            <div class="mb-4 overflow-visible">
+              <div class="flex items-center gap-2 mb-2">
+                <label class="text-xs font-medium text-white/50">Skills</label>
+                <span
+                  v-if="activeCapabilities.length > 0"
+                  class="text-xs text-white/20"
+                  >•</span
+                >
+                <span
+                  v-if="activeCapabilities.length > 0"
+                  class="text-xs text-white/40"
+                  >{{ activeCapabilities.length }}</span
+                >
+              </div>
+              <div class="flex items-center gap-2 h-12">
+                <!-- Add button (always visible) -->
+                <button
+                  @click.stop="toggleCapabilityPicker"
+                  class="flex items-center justify-center w-10 h-10 rounded-xl border-2 border-dashed border-white/20 hover:border-white/40 hover:bg-white/10 text-white/40 hover:text-white/80 transition-all flex-shrink-0"
+                >
+                  <svg
+                    class="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 4v16m8-8H4"
+                    />
+                  </svg>
+                </button>
+
+                <!-- Empty state -->
+                <div
+                  v-if="activeCapabilities.length === 0"
+                  class="flex-1 flex items-center"
+                >
+                  <span class="text-sm text-white/40 italic"
+                    >No skills yet — add some!</span
+                  >
+                </div>
+
+                <!-- Scrollable capabilities -->
+                <div v-else class="flex-1 relative min-w-0">
+                  <div
+                    class="flex items-center gap-3 overflow-x-auto py-1 minimal-scrollbar pr-6"
+                  >
+                    <div
+                      v-for="cap in activeCapabilities"
+                      :key="cap.key"
+                      class="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/10 border border-white/10 flex-shrink-0 group relative"
+                    >
+                      <div
+                        class="w-6 h-6 rounded-lg flex items-center justify-center"
+                        :class="cap.logo ? 'bg-white/10' : cap.bg"
+                      >
+                        <img
+                          v-if="cap.logo"
+                          :src="cap.logo"
+                          class="w-4 h-4"
+                          :alt="cap.name"
+                        />
+                        <component
+                          v-else
+                          :is="cap.iconComponent"
+                          class="w-4 h-4"
+                          :class="cap.iconClass"
+                          weight="fill"
+                        />
+                      </div>
+                      <span class="text-sm text-white/80 font-medium">{{
+                        cap.name
+                      }}</span>
+                      <!-- Remove button on hover -->
+                      <button
+                        @click.stop="removeCapabilityByKey(cap.key)"
+                        class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-white/30 hover:bg-red-500 text-white/60 hover:text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all text-[10px] font-bold leading-none"
+                      >
+                        ×
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- WTF Explainer overlay -->
+            <Transition name="overlay">
+              <div
+                v-if="showWtfExplainer"
+                class="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-900 to-purple-900/30 z-50 flex flex-col rounded-2xl overflow-hidden"
+                @click.stop
+              >
+                <!-- Close button -->
                 <button
                   @click.stop="showWtfExplainer = false"
-                  class="mt-6 px-6 py-2 bg-violet-600 hover:bg-violet-700 text-white text-sm font-semibold rounded-lg transition-colors flex items-center gap-1"
-                >
-                  Got it! <PhThumbsUp class="w-4 h-4" weight="fill" />
-                </button>
-              </div>
-            </div>
-          </Transition>
-
-          <!-- Capability picker overlay -->
-          <Transition name="overlay">
-            <div
-              v-if="showCapabilityPicker"
-              class="absolute inset-0 bg-gray-900/95 backdrop-blur-lg z-50 flex flex-col rounded-2xl"
-              @click.stop
-            >
-              <!-- Header -->
-              <div
-                class="flex items-center justify-between px-4 py-3 border-b border-white/10"
-              >
-                <p class="font-bold text-white/90">Add Skills</p>
-                <button
-                  @click.stop="showCapabilityPicker = false"
-                  class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/60 transition-colors"
+                  class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/60 hover:text-white transition-colors z-10"
                 >
                   <svg
                     class="w-4 h-4"
@@ -569,199 +463,304 @@
                     />
                   </svg>
                 </button>
-              </div>
 
-              <!-- Content -->
-              <div class="flex-1 overflow-y-auto minimal-scrollbar p-4">
-                <div class="grid grid-cols-2 gap-2 pb-8">
-                  <!-- All capabilities (AI + Apps unified) -->
-                  <button
-                    v-for="cap in allCapabilitiesUnified"
-                    :key="cap.key"
-                    @click.stop="toggleCapability(cap)"
-                    class="flex items-center gap-3 p-3 rounded-xl border-2 transition-all text-left"
-                    :class="
-                      activeCapabilitiesKeys.includes(cap.key)
-                        ? 'border-violet-400 bg-violet-500/20'
-                        : 'border-white/10 hover:border-white/20 hover:bg-white/10'
-                    "
-                  >
-                    <div
-                      class="w-9 h-9 rounded-lg flex items-center justify-center"
-                      :class="cap.logo ? 'bg-white/10' : cap.bg"
-                    >
-                      <img
-                        v-if="cap.logo"
-                        :src="cap.logo"
-                        class="w-5 h-5"
-                        :alt="cap.name"
-                      />
-                      <component
-                        v-else
-                        :is="cap.iconComponent"
-                        class="w-5 h-5"
-                        :class="cap.iconClass"
+                <!-- Content -->
+                <div
+                  class="flex-1 flex flex-col items-center justify-center p-6 text-center"
+                >
+                  <PhBrain
+                    class="w-12 h-12 text-violet-400 mb-4 animate-bounce-gentle"
+                    weight="fill"
+                  />
+                  <h3 class="text-xl font-bold text-white/90 mb-3">
+                    How Agents Work
+                  </h3>
+
+                  <div class="space-y-4 max-w-xs">
+                    <div class="flex items-start gap-3 text-left">
+                      <PhChatCircle
+                        class="w-6 h-6 text-violet-400 flex-shrink-0"
                         weight="fill"
                       />
+                      <div>
+                        <p class="font-semibold text-white/80 text-sm">
+                          It thinks
+                        </p>
+                        <p class="text-xs text-white/50">
+                          Analyzes your request and plans the best approach
+                        </p>
+                      </div>
                     </div>
-                    <span class="text-sm text-white/80 font-medium flex-1">{{
-                      cap.name
-                    }}</span>
+
+                    <div class="flex items-start gap-3 text-left">
+                      <PhLightning
+                        class="w-6 h-6 text-amber-400 flex-shrink-0"
+                        weight="fill"
+                      />
+                      <div>
+                        <p class="font-semibold text-white/80 text-sm">
+                          It acts
+                        </p>
+                        <p class="text-xs text-white/50">
+                          Uses your skills at exactly the right moment
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="flex items-start gap-3 text-left">
+                      <PhArrowsClockwise
+                        class="w-6 h-6 text-emerald-400 flex-shrink-0"
+                        weight="fill"
+                      />
+                      <div>
+                        <p class="font-semibold text-white/80 text-sm">
+                          It iterates
+                        </p>
+                        <p class="text-xs text-white/50">
+                          Reviews results and adjusts until it's right
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button
+                    @click.stop="showWtfExplainer = false"
+                    class="mt-6 px-6 py-2 bg-violet-600 hover:bg-violet-700 text-white text-sm font-semibold rounded-lg transition-colors flex items-center gap-1"
+                  >
+                    Got it! <PhThumbsUp class="w-4 h-4" weight="fill" />
+                  </button>
+                </div>
+              </div>
+            </Transition>
+
+            <!-- Capability picker overlay -->
+            <Transition name="overlay">
+              <div
+                v-if="showCapabilityPicker"
+                class="absolute inset-0 bg-gray-900/95 backdrop-blur-lg z-50 flex flex-col rounded-2xl"
+                @click.stop
+              >
+                <!-- Header -->
+                <div
+                  class="flex items-center justify-between px-4 py-3 border-b border-white/10"
+                >
+                  <p class="font-bold text-white/90">Add Skills</p>
+                  <button
+                    @click.stop="showCapabilityPicker = false"
+                    class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/60 transition-colors"
+                  >
                     <svg
-                      v-if="activeCapabilitiesKeys.includes(cap.key)"
-                      class="w-4 h-4 text-violet-400"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
                     >
                       <path
-                        fill-rule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clip-rule="evenodd"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M6 18L18 6M6 6l12 12"
                       />
                     </svg>
                   </button>
                 </div>
-              </div>
 
-              <!-- Bottom gradient fade (outside scrollable area) -->
-              <div
-                class="absolute bottom-14 left-0 right-0 h-8 bg-gradient-to-t from-gray-900 to-transparent pointer-events-none"
-              ></div>
+                <!-- Content -->
+                <div class="flex-1 overflow-y-auto minimal-scrollbar p-4">
+                  <div class="grid grid-cols-2 gap-2 pb-8">
+                    <!-- All capabilities (AI + Apps unified) -->
+                    <button
+                      v-for="cap in allCapabilitiesUnified"
+                      :key="cap.key"
+                      @click.stop="toggleCapability(cap)"
+                      class="flex items-center gap-3 p-3 rounded-xl border-2 transition-all text-left"
+                      :class="
+                        activeCapabilitiesKeys.includes(cap.key)
+                          ? 'border-violet-400 bg-violet-500/20'
+                          : 'border-white/10 hover:border-white/20 hover:bg-white/10'
+                      "
+                    >
+                      <div
+                        class="w-9 h-9 rounded-lg flex items-center justify-center"
+                        :class="cap.logo ? 'bg-white/10' : cap.bg"
+                      >
+                        <img
+                          v-if="cap.logo"
+                          :src="cap.logo"
+                          class="w-5 h-5"
+                          :alt="cap.name"
+                        />
+                        <component
+                          v-else
+                          :is="cap.iconComponent"
+                          class="w-5 h-5"
+                          :class="cap.iconClass"
+                          weight="fill"
+                        />
+                      </div>
+                      <span class="text-sm text-white/80 font-medium flex-1">{{
+                        cap.name
+                      }}</span>
+                      <svg
+                        v-if="activeCapabilitiesKeys.includes(cap.key)"
+                        class="w-4 h-4 text-violet-400"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
 
-              <!-- Footer -->
-              <div class="px-4 py-3 border-t border-white/10 flex justify-end">
-                <button
-                  @click.stop="showCapabilityPicker = false"
-                  class="px-5 py-2 bg-violet-600 hover:bg-violet-700 text-white text-sm font-semibold rounded-lg transition-colors"
+                <!-- Bottom gradient fade (outside scrollable area) -->
+                <div
+                  class="absolute bottom-14 left-0 right-0 h-8 bg-gradient-to-t from-gray-900 to-transparent pointer-events-none"
+                ></div>
+
+                <!-- Footer -->
+                <div
+                  class="px-4 py-3 border-t border-white/10 flex justify-end"
                 >
-                  Done
-                </button>
+                  <button
+                    @click.stop="showCapabilityPicker = false"
+                    class="px-5 py-2 bg-violet-600 hover:bg-violet-700 text-white text-sm font-semibold rounded-lg transition-colors"
+                  >
+                    Done
+                  </button>
+                </div>
               </div>
-            </div>
-          </Transition>
+            </Transition>
 
-          <!-- Launch button -->
-          <button
-            @click="launchAgent"
-            :disabled="isTyping"
-            class="relative w-full py-3 rounded-xl font-semibold text-sm transition-all overflow-hidden"
-            :class="
-              isTyping
-                ? 'bg-white/5 text-white/30'
-                : 'bg-gradient-to-r from-violet-500 to-purple-600 text-white hover:from-violet-600 hover:to-purple-700 shadow-lg shadow-violet-500/25 active:scale-[0.98]'
-            "
-          >
-            <span class="relative z-10 flex items-center justify-center gap-2">
-              Preview Launch →
-            </span>
-          </button>
-        </div>
-      </div>
-    </Transition>
-
-    <!-- LAUNCHED SUCCESS SCREEN -->
-    <Transition name="celebration">
-      <div v-if="agentLaunched" class="absolute inset-0 z-30">
-        <div class="absolute inset-0 flex items-center justify-center">
-          <div
-            class="w-72 h-72 bg-gradient-to-r from-violet-500/30 via-purple-500/30 to-pink-500/30 rounded-full blur-3xl animate-pulse-gentle"
-          ></div>
-        </div>
-
-        <div class="absolute inset-0 pointer-events-none overflow-hidden">
-          <span
-            v-for="i in 15"
-            :key="'c-' + i"
-            class="absolute confetti-particle"
-            :style="{
-              left: Math.random() * 100 + '%',
-              animationDelay: Math.random() * 0.5 + 's',
-              '--drift': (Math.random() - 0.5) * 100 + 'px',
-            }"
-          >
-            <component
-              :is="confettiIcons[i % confettiIcons.length]"
-              class="w-5 h-5"
-              :class="confettiColors[i % confettiColors.length]"
-              weight="fill"
-            />
-          </span>
-        </div>
-
-        <div
-          class="relative h-full flex flex-col items-center justify-center text-center p-6"
-        >
-          <div class="celebration-pop">
-            <div class="relative mb-4">
-              <div
-                class="blur-lg opacity-30 absolute inset-0 flex items-center justify-center"
+            <!-- Launch button -->
+            <button
+              @click="launchAgent"
+              :disabled="isTyping"
+              class="relative w-full py-3 rounded-xl font-semibold text-sm transition-all overflow-hidden"
+              :class="
+                isTyping
+                  ? 'bg-white/5 text-white/30'
+                  : 'bg-gradient-to-r from-violet-500 to-purple-600 text-white hover:from-violet-600 hover:to-purple-700 shadow-lg shadow-violet-500/25 active:scale-[0.98]'
+              "
+            >
+              <span
+                class="relative z-10 flex items-center justify-center gap-2"
               >
-                <component
-                  :is="agentIcon"
-                  class="w-16 h-16 text-white"
-                  weight="fill"
-                />
-              </div>
-              <div class="animate-bounce-gentle relative">
-                <component
-                  :is="agentIcon"
-                  class="w-16 h-16 text-white"
-                  weight="fill"
-                />
-              </div>
-            </div>
+                Preview Launch →
+              </span>
+            </button>
+          </div>
+        </div>
+      </Transition>
+
+      <!-- LAUNCHED SUCCESS SCREEN -->
+      <Transition name="celebration">
+        <div v-if="agentLaunched" class="absolute inset-0 z-30">
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div
+              class="w-72 h-72 bg-gradient-to-r from-violet-500/30 via-purple-500/30 to-pink-500/30 rounded-full blur-3xl animate-pulse-gentle"
+            ></div>
           </div>
 
-          <h2
-            class="font-bold text-white/90 text-2xl mb-2 flex items-center gap-2"
-          >
-            Agent Launched!
-            <PhConfetti class="w-6 h-6 text-pink-400" weight="fill" />
-          </h2>
-          <p class="text-violet-400 font-medium mb-5">
-            {{ agentName }} is now live
-          </p>
-
-          <div
-            class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-emerald-500/30 rotate-[-2deg] group relative cursor-default"
-          >
+          <div class="absolute inset-0 pointer-events-none overflow-hidden">
             <span
-              class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse group-hover:bg-gray-400"
-            ></span>
-            <span
-              class="text-white/80 font-medium text-sm group-hover:line-through group-hover:text-white/40 transition-all"
-              >Running in background</span
+              v-for="i in 15"
+              :key="'c-' + i"
+              class="absolute confetti-particle"
+              :style="{
+                left: Math.random() * 100 + '%',
+                animationDelay: Math.random() * 0.5 + 's',
+                '--drift': (Math.random() - 0.5) * 100 + 'px',
+              }"
             >
-            <!-- Tooltip -->
-            <span
-              class="absolute left-1/2 -translate-x-1/2 top-full mt-2 px-2 py-1 bg-gray-900 text-white text-[10px] rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
-            >
-              not really, just showing off 😉
+              <component
+                :is="confettiIcons[i % confettiIcons.length]"
+                class="w-5 h-5"
+                :class="confettiColors[i % confettiColors.length]"
+                weight="fill"
+              />
             </span>
           </div>
 
-          <button
-            @click="reset"
-            class="mt-8 px-5 py-2 text-white/50 hover:text-white font-medium transition-colors flex items-center gap-2"
+          <div
+            class="relative h-full flex flex-col items-center justify-center text-center p-6"
           >
-            <svg
-              class="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+            <div class="celebration-pop">
+              <div class="relative mb-4">
+                <div
+                  class="blur-lg opacity-30 absolute inset-0 flex items-center justify-center"
+                >
+                  <component
+                    :is="agentIcon"
+                    class="w-16 h-16 text-white"
+                    weight="fill"
+                  />
+                </div>
+                <div class="animate-bounce-gentle relative">
+                  <component
+                    :is="agentIcon"
+                    class="w-16 h-16 text-white"
+                    weight="fill"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <h2
+              class="font-bold text-white/90 text-2xl mb-2 flex items-center gap-2"
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M12 4v16m8-8H4"
-              />
-            </svg>
-            Build another agent
-          </button>
+              Agent Launched!
+              <PhConfetti class="w-6 h-6 text-pink-400" weight="fill" />
+            </h2>
+            <p class="text-violet-400 font-medium mb-5">
+              {{ agentName }} is now live
+            </p>
+
+            <div
+              class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-emerald-500/30 rotate-[-2deg] group relative cursor-default"
+            >
+              <span
+                class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse group-hover:bg-gray-400"
+              ></span>
+              <span
+                class="text-white/80 font-medium text-sm group-hover:line-through group-hover:text-white/40 transition-all"
+                >Running in background</span
+              >
+              <!-- Tooltip -->
+              <span
+                class="absolute left-1/2 -translate-x-1/2 top-full mt-2 px-2 py-1 bg-gray-900 text-white text-[10px] rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
+              >
+                not really, just showing off 😉
+              </span>
+            </div>
+
+            <button
+              @click="reset"
+              class="mt-8 px-5 py-2 text-white/50 hover:text-white font-medium transition-colors flex items-center gap-2"
+            >
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 4v16m8-8H4"
+                />
+              </svg>
+              Build another agent
+            </button>
+          </div>
         </div>
-      </div>
-    </Transition>
+      </Transition>
+    </div>
   </div>
 </template>
 

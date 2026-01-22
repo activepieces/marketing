@@ -93,7 +93,7 @@ definePageMeta({
           <PagesProductAdoptionFeatureCard
             content-position="left"
             :content-ratio="2"
-            variant="bordered"
+            variant="subtle"
             title="Build use cases in minutes, not days"
             description="Just describe what you want to automate. Train the AI on your specific task, give it access to your tools, and watch it work."
             :items="[
