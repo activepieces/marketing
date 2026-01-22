@@ -812,14 +812,11 @@ watch(useRoute(), () => {
                 </div>
               </li>
 
-              <!-- Partners Mega Menu -->
-              <li class="relative group/menu">
-                <!-- Hover Bridge -->
+              <!-- Partners Mega Menu - HIDDEN FOR FIRST LAUNCH, re-enable after launch -->
+              <!-- <li class="relative group/menu">
                 <div
                   class="absolute left-0 top-0 w-full h-[calc(100%+10px)] opacity-0 pointer-events-auto z-10"
                 ></div>
-
-                <!-- Menu Button -->
                 <button
                   class="flex items-center gap-1 rounded-full px-4 py-1.5 transition-colors duration-200"
                   :class="{
@@ -851,8 +848,6 @@ watch(useRoute(), () => {
                     />
                   </svg>
                 </button>
-
-                <!-- Mega Menu Content -->
                 <div
                   class="absolute left-0 top-full z-[60] w-[260px] rounded-xl shadow-xl bg-white p-3 flex flex-col gap-0 block transition-all duration-75 transform translate-y-2 opacity-0 group-hover/menu:opacity-100 group-hover/menu:translate-y-0 group-hover/menu:duration-200 border border-gray-100 pointer-events-none group-hover/menu:pointer-events-auto group/list"
                 >
@@ -907,7 +902,7 @@ watch(useRoute(), () => {
                     </svg>
                   </NuxtLink>
                 </div>
-              </li>
+              </li> -->
 
               <!-- Simple Menu Items -->
               <li>
@@ -1350,8 +1345,8 @@ watch(useRoute(), () => {
             </div>
           </li>
 
-          <!-- Partners Menu -->
-          <li>
+          <!-- Partners Menu - HIDDEN FOR FIRST LAUNCH, re-enable after launch -->
+          <!-- <li>
             <button
               class="flex items-center justify-between w-full py-3 text-lg font-medium"
               @click="toggleSection('partners')"
@@ -1432,7 +1427,7 @@ watch(useRoute(), () => {
                 </NuxtLink>
               </div>
             </div>
-          </li>
+          </li> -->
 
           <!-- Simple Menu Items -->
           <li>

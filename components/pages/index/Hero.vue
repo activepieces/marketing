@@ -32,6 +32,13 @@ const dashboardOpacity = ref(0.4);
 const dashboardTranslateY = ref(60);
 const popupScale = ref(0.7);
 
+// Parallax effect for hero background - moves slower than scroll for depth effect
+const parallaxOffset = computed(() => {
+  // Parallax factor: 0.3 means the background moves at 30% of scroll speed
+  // This creates a subtle but noticeable depth effect
+  return scrollY.value * 0.3;
+});
+
 // Organization rotation and branding
 const orgDomains = ['moneygram.com', 'alan.com', 'fundingsocieties.com'];
 const orgs = ref([]);
@@ -621,11 +628,20 @@ onBeforeUnmount(() => {
     <div class="relative z-20 mx-auto w-full max-w-[1920px] 3xl:overflow-clip">
       <div class="main-bg-section relative w-full max-w-full overflow-hidden">
         <div class="absolute inset-0 overflow-hidden">
-          <img 
-            :src="`/${currentBackground}`" 
-            alt="Hero background" 
-            class="absolute inset-0 w-full h-full transition-opacity duration-300"
-            style="position: absolute; height: 100%; width: 100%; left: 0; top: 0; right: 0; bottom: 0; object-fit: cover; object-position: center center;"
+          <div 
+            class="hero-parallax-bg absolute w-full transition-opacity duration-300"
+            :style="{
+              backgroundImage: `url(/${currentBackground})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center center',
+              backgroundRepeat: 'no-repeat',
+              height: '120%',
+              top: '-10%',
+              left: 0,
+              right: 0,
+              transform: `translateY(${parallaxOffset}px)`,
+              willChange: 'transform'
+            }"
           />
         </div>
         
