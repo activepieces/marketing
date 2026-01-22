@@ -172,34 +172,25 @@
 
       <!-- Player ship -->
       <div
-        class="absolute bottom-6"
+        class="absolute bottom-6 text-primary"
         :style="{
           left: playerX + 'px',
           transform: 'translateX(-50%)',
           transition: 'left 0.05s linear',
         }"
       >
-        <div class="relative">
-          <div
-            class="w-12 h-8 relative drop-shadow-[0_0_12px_rgba(167,139,250,0.5)]"
-          >
-            <div
-              class="absolute inset-0 clip-ship"
-              :style="{
-                background: 'linear-gradient(180deg, #a78bfa, #7c3aed)',
-              }"
-            ></div>
-            <div
-              class="absolute top-1 left-1/2 -translate-x-1/2 w-4 h-3 rounded-t-full bg-purple-300/80"
-            ></div>
-          </div>
-          <div
-            class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-6 h-2 rounded-b-full opacity-80"
-            :style="{
-              background: 'radial-gradient(ellipse, #fbbf24, transparent)',
-            }"
-          ></div>
-        </div>
+        <svg
+          width="40"
+          height="36"
+          viewBox="0 0 40 36"
+          fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12.0442 11.0227C9.839 7.78605 10.7017 3.39239 13.9711 1.20925C17.2406 -0.973901 21.6787 -0.119865 23.8839 3.11681L38.7786 24.9772C40.9836 28.2137 40.1212 32.6074 36.8517 34.7904C33.5821 36.9739 29.1439 36.1196 26.9387 32.8828L20.4812 23.4055C19.651 22.3699 17.9612 22.5311 16.9466 23.5355C16.1051 24.3685 15.8297 26.4993 15.5912 28.3445C15.5562 28.6151 15.522 28.8792 15.4869 29.1326C15.3575 30.3404 14.9363 31.5348 14.2026 32.6119C11.8049 36.1308 6.97847 37.0586 3.42383 34.6851C-0.13078 32.3114 -1.06997 27.5337 1.32765 24.0147C2.57111 22.1898 4.46791 21.0618 6.50173 20.7296L6.49887 20.7268C12.3753 19.8831 13.4648 13.3177 12.3894 11.5292L12.0442 11.0227Z"
+            fill="currentColor"
+          />
+        </svg>
       </div>
 
       <!-- Score -->
@@ -308,7 +299,7 @@
       <!-- Start prompt with subtle overlay -->
       <div
         v-if="!gameStarted"
-        class="absolute inset-0 flex items-center justify-center z-10 bg-black/60 backdrop-blur-sm"
+        class="absolute inset-0 flex items-center justify-center z-10 bg-black/20 backdrop-blur-md"
       >
         <!-- Floating mini apps in background -->
         <div class="absolute inset-0 pointer-events-none overflow-hidden">
@@ -350,7 +341,22 @@
         </div>
 
         <div class="text-center relative z-10">
-          <div class="text-5xl mb-3 animate-bounce-slow">👾</div>
+          <div
+            class="text-5xl mb-3 animate-bounce-slow flex justify-center text-primary"
+          >
+            <svg
+              width="40"
+              height="36"
+              viewBox="0 0 40 36"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12.0442 11.0227C9.839 7.78605 10.7017 3.39239 13.9711 1.20925C17.2406 -0.973901 21.6787 -0.119865 23.8839 3.11681L38.7786 24.9772C40.9836 28.2137 40.1212 32.6074 36.8517 34.7904C33.5821 36.9739 29.1439 36.1196 26.9387 32.8828L20.4812 23.4055C19.651 22.3699 17.9612 22.5311 16.9466 23.5355C16.1051 24.3685 15.8297 26.4993 15.5912 28.3445C15.5562 28.6151 15.522 28.8792 15.4869 29.1326C15.3575 30.3404 14.9363 31.5348 14.2026 32.6119C11.8049 36.1308 6.97847 37.0586 3.42383 34.6851C-0.13078 32.3114 -1.06997 27.5337 1.32765 24.0147C2.57111 22.1898 4.46791 21.0618 6.50173 20.7296L6.49887 20.7268C12.3753 19.8831 13.4648 13.3177 12.3894 11.5292L12.0442 11.0227Z"
+                fill="currentColor"
+              />
+            </svg>
+          </div>
           <h2 class="text-white font-black text-2xl mb-5">
             Integration Invasion
           </h2>
@@ -360,7 +366,9 @@
           >
             Defend
           </button>
-          <p class="text-white/40 text-xs mt-4">🖱️ move · space shoot</p>
+          <p class="text-white/40 text-xs font-medium mt-4">
+            🖱️ move · space shoot
+          </p>
         </div>
       </div>
 
@@ -1466,10 +1474,6 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-.clip-ship {
-  clip-path: polygon(50% 0%, 100% 100%, 75% 100%, 50% 70%, 25% 100%, 0% 100%);
-}
-
 .challenge-enter-active {
   animation: challengeIn 0.5s ease-out;
 }
