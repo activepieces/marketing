@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div class="h-full p-8">
+    <!-- :style="{
+        background:
+          'linear-gradient(180deg, rgba(88, 28, 135, 0.95) 0%, rgba(59, 7, 100, 0.98) 50%, rgba(30, 10, 60, 1) 100%)',
+      }" -->
     <div
       ref="gameContainer"
-      class="relative w-full max-w-xl mx-auto h-[480px] rounded-2xl overflow-hidden select-none outline-none focus:outline-none"
-      :style="{
-        background:
-          'linear-gradient(180deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%)',
-      }"
+      class="relative w-full mx-auto h-full overflow-hidden select-none outline-none focus:outline-none rounded-lg bg-white/5"
       tabindex="0"
       @mousemove="handleMouseMove"
       @keydown="handleKeydown"
@@ -18,7 +18,7 @@
         <div
           v-for="star in stars"
           :key="star.id"
-          class="absolute rounded-full bg-purple-300"
+          class="absolute rounded-full bg-white/30"
           :style="{
             left: star.x + '%',
             top: star.y + '%',
@@ -106,7 +106,7 @@
           <!-- Photo + angry emoji -->
           <div class="relative">
             <div
-              class="w-12 h-12 rounded-full overflow-hidden shadow-lg bg-gray-100"
+              class="w-12 h-12 rounded-full overflow-hidden shadow-lg bg-white/10 border border-white/20"
             >
               <img
                 :src="founder.avatar"
@@ -121,7 +121,7 @@
 
           <!-- Name below -->
           <span
-            class="mt-1 text-xs font-bold text-gray-800 bg-white/90 px-2 py-0.5 rounded-full shadow"
+            class="mt-1 text-xs font-bold text-white bg-white/10 backdrop-blur-sm border border-white/20 px-2 py-0.5 rounded-full shadow"
             >{{ founder.name?.split(" ")[0] }}</span
           >
         </div>
@@ -172,41 +172,34 @@
 
       <!-- Player ship -->
       <div
-        class="absolute bottom-6"
+        class="absolute bottom-6 text-primary"
         :style="{
           left: playerX + 'px',
           transform: 'translateX(-50%)',
           transition: 'left 0.05s linear',
         }"
       >
-        <div class="relative">
-          <div class="w-12 h-8 relative">
-            <div
-              class="absolute inset-0 clip-ship"
-              :style="{
-                background: 'linear-gradient(180deg, #a78bfa, #7c3aed)',
-              }"
-            ></div>
-            <div
-              class="absolute top-1 left-1/2 -translate-x-1/2 w-4 h-3 rounded-t-full bg-purple-300/80"
-            ></div>
-          </div>
-          <div
-            class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-6 h-2 rounded-b-full opacity-80"
-            :style="{
-              background: 'radial-gradient(ellipse, #fbbf24, transparent)',
-            }"
-          ></div>
-        </div>
+        <svg
+          width="40"
+          height="36"
+          viewBox="0 0 40 36"
+          fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12.0442 11.0227C9.839 7.78605 10.7017 3.39239 13.9711 1.20925C17.2406 -0.973901 21.6787 -0.119865 23.8839 3.11681L38.7786 24.9772C40.9836 28.2137 40.1212 32.6074 36.8517 34.7904C33.5821 36.9739 29.1439 36.1196 26.9387 32.8828L20.4812 23.4055C19.651 22.3699 17.9612 22.5311 16.9466 23.5355C16.1051 24.3685 15.8297 26.4993 15.5912 28.3445C15.5562 28.6151 15.522 28.8792 15.4869 29.1326C15.3575 30.3404 14.9363 31.5348 14.2026 32.6119C11.8049 36.1308 6.97847 37.0586 3.42383 34.6851C-0.13078 32.3114 -1.06997 27.5337 1.32765 24.0147C2.57111 22.1898 4.46791 21.0618 6.50173 20.7296L6.49887 20.7268C12.3753 19.8831 13.4648 13.3177 12.3894 11.5292L12.0442 11.0227Z"
+            fill="currentColor"
+          />
+        </svg>
       </div>
 
       <!-- Score -->
       <div class="absolute top-4 right-4 text-right">
-        <div class="text-3xl font-bold text-purple-600 tabular-nums">
+        <div class="text-3xl font-bold text-white tabular-nums">
           {{ score }}
         </div>
         <div
-          class="text-[10px] text-purple-400 font-medium uppercase tracking-wider"
+          class="text-[10px] text-white/60 font-medium uppercase tracking-wider"
         >
           caught
         </div>
@@ -228,7 +221,7 @@
             <svg
               viewBox="0 0 24 24"
               fill="currentColor"
-              class="text-red-500 drop-shadow-sm"
+              class="text-red-400 drop-shadow-[0_0_8px_rgba(239,68,68,0.5)]"
             >
               <path
                 d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
@@ -254,7 +247,7 @@
 
       <!-- Remaining pieces -->
       <div class="absolute top-14 left-4 group cursor-help">
-        <div class="flex items-center gap-1.5 text-purple-400">
+        <div class="flex items-center gap-1.5 text-white/60">
           <span class="text-lg font-bold tabular-nums">{{
             remainingPieces
           }}</span>
@@ -264,7 +257,7 @@
           class="absolute left-0 top-full mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-30"
         >
           <div
-            class="bg-gray-900 text-white text-xs px-3 py-2 rounded-lg whitespace-nowrap shadow-lg"
+            class="bg-white/10 backdrop-blur-sm text-white text-xs px-3 py-2 rounded-lg whitespace-nowrap shadow-lg border border-white/10"
           >
             Sorry, we have too many pieces 😫
           </div>
@@ -275,19 +268,19 @@
       <div class="absolute top-24 right-4 flex gap-2">
         <div
           v-if="armoredActive"
-          class="w-6 h-6 rounded bg-blue-100 flex items-center justify-center text-xs"
+          class="w-6 h-6 rounded bg-blue-500/20 border border-blue-400/30 flex items-center justify-center text-xs"
         >
           🛡️
         </div>
         <div
           v-if="speedActive"
-          class="w-6 h-6 rounded bg-amber-100 flex items-center justify-center text-xs"
+          class="w-6 h-6 rounded bg-amber-500/20 border border-amber-400/30 flex items-center justify-center text-xs"
         >
           ⚡
         </div>
         <div
           v-if="bugsActive"
-          class="w-6 h-6 rounded bg-red-100 flex items-center justify-center text-xs"
+          class="w-6 h-6 rounded bg-red-500/20 border border-red-400/30 flex items-center justify-center text-xs"
         >
           🐛
         </div>
@@ -299,14 +292,14 @@
           v-for="i in maxAmmo"
           :key="i"
           class="w-1.5 h-4 rounded-full transition-all duration-150"
-          :class="i <= ammo ? 'bg-amber-400' : 'bg-gray-300'"
+          :class="i <= ammo ? 'bg-amber-400' : 'bg-white/20'"
         ></div>
       </div>
 
       <!-- Start prompt with subtle overlay -->
       <div
         v-if="!gameStarted"
-        class="absolute inset-0 flex items-center justify-center z-10 bg-white/70"
+        class="absolute inset-0 flex items-center justify-center z-10 bg-black/20 backdrop-blur-md"
       >
         <!-- Floating mini apps in background -->
         <div class="absolute inset-0 pointer-events-none overflow-hidden">
@@ -348,17 +341,34 @@
         </div>
 
         <div class="text-center relative z-10">
-          <div class="text-5xl mb-3 animate-bounce-slow">👾</div>
-          <h2 class="text-slate-800 font-black text-2xl mb-5">
+          <div
+            class="text-5xl mb-3 animate-bounce-slow flex justify-center text-primary"
+          >
+            <svg
+              width="40"
+              height="36"
+              viewBox="0 0 40 36"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12.0442 11.0227C9.839 7.78605 10.7017 3.39239 13.9711 1.20925C17.2406 -0.973901 21.6787 -0.119865 23.8839 3.11681L38.7786 24.9772C40.9836 28.2137 40.1212 32.6074 36.8517 34.7904C33.5821 36.9739 29.1439 36.1196 26.9387 32.8828L20.4812 23.4055C19.651 22.3699 17.9612 22.5311 16.9466 23.5355C16.1051 24.3685 15.8297 26.4993 15.5912 28.3445C15.5562 28.6151 15.522 28.8792 15.4869 29.1326C15.3575 30.3404 14.9363 31.5348 14.2026 32.6119C11.8049 36.1308 6.97847 37.0586 3.42383 34.6851C-0.13078 32.3114 -1.06997 27.5337 1.32765 24.0147C2.57111 22.1898 4.46791 21.0618 6.50173 20.7296L6.49887 20.7268C12.3753 19.8831 13.4648 13.3177 12.3894 11.5292L12.0442 11.0227Z"
+                fill="currentColor"
+              />
+            </svg>
+          </div>
+          <h2 class="text-white font-black text-2xl mb-5">
             Integration Invasion
           </h2>
           <button
             @click.stop="startGame"
-            class="px-8 py-3 bg-slate-900 hover:bg-slate-800 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95 transition-all"
+            class="px-8 py-3 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95 transition-all ring-0 ring-white/5 hover:ring-8"
           >
             Defend
           </button>
-          <p class="text-slate-400 text-xs mt-4">🖱️ move · space shoot</p>
+          <p class="text-white/40 text-xs font-medium mt-4">
+            🖱️ move · space shoot
+          </p>
         </div>
       </div>
 
@@ -373,16 +383,16 @@
             <!-- Preview chip with placeholder + animated badge -->
             <div class="mb-8 flex justify-center">
               <div
-                class="inline-flex items-center gap-3 px-5 py-4 rounded-2xl shadow-2xl bg-white/95"
+                class="inline-flex items-center gap-3 px-5 py-4 rounded-2xl shadow-2xl bg-white/10 backdrop-blur-sm border border-white/20"
               >
                 <!-- Placeholder icon -->
                 <div
-                  class="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0"
+                  class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0"
                 >
                   <span v-if="challengeType === 'bugs'" class="text-2xl"
                     >🐛</span
                   >
-                  <div v-else class="w-6 h-6 rounded bg-gray-300"></div>
+                  <div v-else class="w-6 h-6 rounded bg-white/20"></div>
                 </div>
 
                 <!-- Placeholder text lines -->
@@ -390,10 +400,10 @@
                   v-if="challengeType !== 'bugs'"
                   class="flex flex-col gap-1.5"
                 >
-                  <div class="w-14 h-2.5 bg-gray-300 rounded"></div>
-                  <div class="w-8 h-2 bg-gray-200 rounded"></div>
+                  <div class="w-14 h-2.5 bg-white/20 rounded"></div>
+                  <div class="w-8 h-2 bg-white/10 rounded"></div>
                 </div>
-                <span v-else class="text-base font-bold text-red-500"
+                <span v-else class="text-base font-bold text-red-300"
                   >AVOID!</span
                 >
 
@@ -590,36 +600,19 @@
         class="absolute bottom-20 left-1/2 -translate-x-1/2 text-center pointer-events-none"
       >
         <div
-          class="text-[70px] font-bold text-purple-200/30 leading-none tabular-nums"
+          class="text-[70px] font-bold text-white/10 leading-none tabular-nums"
         >
           {{ totalCount }}+
         </div>
       </div>
     </div>
-
-    <!-- Review button (dev only) -->
-    <button
-      @click="openReview"
-      class="mt-4 mx-auto block text-xs text-gray-400 hover:text-gray-600 underline"
-    >
-      Review founder photos
-    </button>
-
-    <!-- Review Modal -->
-    <FounderPhotoReview ref="reviewModal" />
   </div>
 </template>
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted, watch } from "vue";
-import FounderPhotoReview from "./FounderPhotoReview.vue";
 
 const gameContainer = ref(null);
-const reviewModal = ref(null);
-
-const openReview = () => {
-  reviewModal.value?.open();
-};
 const pieces = ref([]);
 const piecesWithFounders = ref([]);
 const piecesWithoutFounders = ref([]);
@@ -1008,59 +1001,59 @@ const startGame = () => {
 // Helper to create and add a single target to the game
 const spawnSingleTarget = (piece) => {
   // Build weighted pool of possible types
-  const typePool = []
-  
+  const typePool = [];
+
   // Normal pieces always available (weight decreases as game progresses)
-  const normalWeight = Math.max(30, 70 - score.value)
-  for (let i = 0; i < normalWeight; i++) typePool.push('normal')
-  
+  const normalWeight = Math.max(30, 70 - score.value);
+  for (let i = 0; i < normalWeight; i++) typePool.push("normal");
+
   // Add special types based on what's unlocked
   if (armoredActive.value) {
-    for (let i = 0; i < 15; i++) typePool.push('armored')
+    for (let i = 0; i < 15; i++) typePool.push("armored");
   }
   if (speedActive.value) {
-    for (let i = 0; i < 18; i++) typePool.push('fast')
+    for (let i = 0; i < 18; i++) typePool.push("fast");
   }
   if (bugsActive.value) {
-    for (let i = 0; i < 12; i++) typePool.push('bug')
+    for (let i = 0; i < 12; i++) typePool.push("bug");
   }
   if (ghostActive.value) {
-    for (let i = 0; i < 16; i++) typePool.push('ghost')
+    for (let i = 0; i < 16; i++) typePool.push("ghost");
   }
   if (tinyActive.value) {
-    for (let i = 0; i < 18; i++) typePool.push('tiny')
+    for (let i = 0; i < 18; i++) typePool.push("tiny");
   }
   if (zigzagActive.value) {
-    for (let i = 0; i < 20; i++) typePool.push('zigzag')
+    for (let i = 0; i < 20; i++) typePool.push("zigzag");
   }
   if (giantActive.value) {
-    for (let i = 0; i < 5; i++) typePool.push('giant')
+    for (let i = 0; i < 5; i++) typePool.push("giant");
   }
-  
+
   // Pick random type from pool
-  const selectedType = typePool[Math.floor(Math.random() * typePool.length)]
-  
-  const isMalware = selectedType === 'bug'
-  const isFast = selectedType === 'fast'
-  const isArmored = selectedType === 'armored'
-  const isGhost = selectedType === 'ghost'
-  const isTiny = selectedType === 'tiny'
-  const isZigzag = selectedType === 'zigzag'
-  const isGiant = selectedType === 'giant'
-  
+  const selectedType = typePool[Math.floor(Math.random() * typePool.length)];
+
+  const isMalware = selectedType === "bug";
+  const isFast = selectedType === "fast";
+  const isArmored = selectedType === "armored";
+  const isGhost = selectedType === "ghost";
+  const isTiny = selectedType === "tiny";
+  const isZigzag = selectedType === "zigzag";
+  const isGiant = selectedType === "giant";
+
   // Base speed increases with difficulty
-  let baseSpeed = 1
-  if (isFast) baseSpeed = 3.5
-  else if (isZigzag) baseSpeed = 1.8
-  else if (score.value > 80) baseSpeed = 2
-  else if (score.value > 50) baseSpeed = 1.6
-  else if (score.value > 30) baseSpeed = 1.3
-  
+  let baseSpeed = 1;
+  if (isFast) baseSpeed = 3.5;
+  else if (isZigzag) baseSpeed = 1.8;
+  else if (score.value > 80) baseSpeed = 2;
+  else if (score.value > 50) baseSpeed = 1.6;
+  else if (score.value > 30) baseSpeed = 1.3;
+
   // Health - giants take 5 hits, armored take 2
-  let health = 1
-  if (isGiant) health = 5
-  else if (isArmored) health = 2
-  
+  let health = 1;
+  if (isGiant) health = 5;
+  else if (isArmored) health = 2;
+
   activeTargets.value.push({
     id: targetIdCounter++,
     displayName: piece.displayName,
@@ -1081,9 +1074,9 @@ const spawnSingleTarget = (piece) => {
     vy: Math.random() * baseSpeed + baseSpeed * 0.6,
     zigzagPhase: Math.random() * Math.PI * 2,
     caught: false,
-    fadeOut: false
-  })
-}
+    fadeOut: false,
+  });
+};
 
 const spawnTarget = () => {
   if (pieces.value.length === 0) return;
@@ -1093,38 +1086,56 @@ const spawnTarget = () => {
 
   for (let s = 0; s < spawnCount; s++) {
     // Filter out already-used pieces to prevent duplicates
-    const availableWithFounders = piecesWithFounders.value.filter(p => !usedPieceNames.value.has(p.displayName))
-    const availableWithoutFounders = piecesWithoutFounders.value.filter(p => !usedPieceNames.value.has(p.displayName))
-    const availableAll = pieces.value.filter(p => !usedPieceNames.value.has(p.displayName))
-    
+    const availableWithFounders = piecesWithFounders.value.filter(
+      (p) => !usedPieceNames.value.has(p.displayName)
+    );
+    const availableWithoutFounders = piecesWithoutFounders.value.filter(
+      (p) => !usedPieceNames.value.has(p.displayName)
+    );
+    const availableAll = pieces.value.filter(
+      (p) => !usedPieceNames.value.has(p.displayName)
+    );
+
     // If all pieces have been used, reset and start over
     if (availableAll.length === 0) {
-      usedPieceNames.value = new Set()
+      usedPieceNames.value = new Set();
       // Re-filter after reset
-      const freshWithFounders = piecesWithFounders.value
-      const freshWithoutFounders = piecesWithoutFounders.value
-      const freshAll = pieces.value
-      
+      const freshWithFounders = piecesWithFounders.value;
+      const freshWithoutFounders = piecesWithoutFounders.value;
+      const freshAll = pieces.value;
+
       // Prioritize pieces with founder photos (80% chance)
-      let piece
+      let piece;
       if (freshWithFounders.length > 0 && Math.random() < 0.8) {
-        piece = freshWithFounders[Math.floor(Math.random() * freshWithFounders.length)]
+        piece =
+          freshWithFounders[
+            Math.floor(Math.random() * freshWithFounders.length)
+          ];
       } else if (freshWithoutFounders.length > 0) {
-        piece = freshWithoutFounders[Math.floor(Math.random() * freshWithoutFounders.length)]
+        piece =
+          freshWithoutFounders[
+            Math.floor(Math.random() * freshWithoutFounders.length)
+          ];
       } else {
-        piece = freshAll[Math.floor(Math.random() * freshAll.length)]
+        piece = freshAll[Math.floor(Math.random() * freshAll.length)];
       }
-      usedPieceNames.value.add(piece.displayName)
-      spawnSingleTarget(piece)
-      continue
+      usedPieceNames.value.add(piece.displayName);
+      spawnSingleTarget(piece);
+      continue;
     }
-    
+
     // Prioritize pieces with founder photos (80% chance)
     let piece;
     if (availableWithFounders.length > 0 && Math.random() < 0.8) {
-      piece = availableWithFounders[Math.floor(Math.random() * availableWithFounders.length)];
+      piece =
+        availableWithFounders[
+          Math.floor(Math.random() * availableWithFounders.length)
+        ];
     } else if (availableWithoutFounders.length > 0) {
-      piece = availableWithoutFounders[Math.floor(Math.random() * availableWithoutFounders.length)];
+      piece =
+        availableWithoutFounders[
+          Math.floor(Math.random() * availableWithoutFounders.length)
+        ];
     } else {
       piece = availableAll[Math.floor(Math.random() * availableAll.length)];
     }
@@ -1355,42 +1366,42 @@ const update = (currentTime) => {
 const getTargetClasses = (target) => {
   if (target.caught) {
     return target.isMalware
-      ? "bg-red-200 border-2 border-red-300 opacity-40 scale-75"
-      : "bg-green-100 border border-green-200 opacity-40 scale-75";
+      ? "bg-red-500/10 border-2 border-red-400/30 opacity-40 scale-75"
+      : "bg-white/5 border border-white/10 opacity-40 scale-75";
   }
   if (target.isMalware) {
-    return "bg-red-100 border-2 border-red-400 shadow-lg shadow-red-200/50";
+    return "bg-red-500/20 border-2 border-red-400/50 shadow-lg shadow-red-500/20";
   }
   if (target.isGiant) {
-    return "bg-gradient-to-br from-orange-100 to-amber-50 border-2 border-orange-400 shadow-xl shadow-orange-300/50 scale-110";
+    return "bg-orange-500/20 border-2 border-orange-400/50 shadow-xl shadow-orange-500/30 scale-110";
   }
   if (target.isGhost) {
-    return "bg-gray-50/60 border border-gray-300/50 shadow-sm backdrop-blur-sm";
+    return "bg-white/5 border border-white/10 shadow-sm backdrop-blur-sm";
   }
   if (target.isTiny) {
-    return "bg-purple-50 border border-purple-300 shadow-sm scale-90";
+    return "bg-purple-500/20 border border-purple-400/50 shadow-sm scale-90";
   }
   if (target.isZigzag) {
-    return "bg-cyan-50 border border-cyan-300 shadow-md";
+    return "bg-cyan-500/20 border border-cyan-400/50 shadow-md";
   }
   if (target.isFast) {
-    return "bg-amber-50 border border-amber-300 shadow-md";
+    return "bg-amber-500/20 border border-amber-400/50 shadow-md";
   }
   if (target.maxHealth === 2) {
-    return "bg-blue-50 border-2 border-blue-300 shadow-md";
+    return "bg-blue-500/20 border-2 border-blue-400/50 shadow-md";
   }
-  return "bg-white border border-purple-200 shadow-md";
+  return "bg-white/10 border border-white/20 shadow-md";
 };
 
 const getTargetTextClass = (target) => {
   if (target.caught) {
     return target.isMalware
-      ? "text-red-400 line-through"
-      : "text-green-600 line-through";
+      ? "text-red-300/60 line-through"
+      : "text-white/40 line-through";
   }
-  if (target.isMalware) return "text-red-600 font-bold";
-  if (target.isFast) return "text-amber-700";
-  return "text-gray-700";
+  if (target.isMalware) return "text-red-300 font-bold";
+  if (target.isFast) return "text-amber-300";
+  return "text-white/80";
 };
 
 const getTargetStyle = (target) => {
@@ -1463,10 +1474,6 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-.clip-ship {
-  clip-path: polygon(50% 0%, 100% 100%, 75% 100%, 50% 70%, 25% 100%, 0% 100%);
-}
-
 .challenge-enter-active {
   animation: challengeIn 0.5s ease-out;
 }
