@@ -188,6 +188,11 @@ definePageMeta({
           <PagesProductAdoptionPickFromTemplates />
         </div>
 
+        <!-- New card: Step-by-step guidance -->
+        <div class="w-full max-w-4xl">
+          <PagesProductAdoptionStepByStepGuidance />
+        </div>
+
         <!-- Feature 1: Templates -->
         <PagesProductAdoptionFeatureCard
           content-position="right"
