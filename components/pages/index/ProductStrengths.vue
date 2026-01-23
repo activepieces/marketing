@@ -18,27 +18,8 @@ const visibleSections = ref(new Set());
 // Expanded card states
 const expandedCard = ref(null);
 
-// Product showcase data with richer content
+// Product showcase data with richer content (governance is now a separate component)
 const showcases = computed(() => [
-  {
-    id: 'governance',
-    category: 'CONTROL',
-    title: 'Enterprise governance',
-    headline: 'IT controls without complexity',
-    description: 'Centralized AI providers, global connections, SSO/SCIM, granular permissions, and complete audit trails. Enterprise-ready from day one.',
-    color: 'emerald',
-    gradient: 'from-emerald-500 to-teal-500',
-    features: [
-      { text: 'Azure OpenAI, AWS Bedrock, gateways', highlight: 'Your AI stack' },
-      { text: 'SAML, OIDC, SCIM provisioning', highlight: 'SSO' },
-      { text: 'Every action logged and auditable', highlight: 'Compliance' },
-    ],
-    stats: [
-      { value: 'SOC 2', label: 'Type II' },
-      { value: 'GDPR', label: 'Compliant' },
-      { value: '100%', label: 'Audit coverage' },
-    ],
-  },
   {
     id: 'deployment',
     category: 'DEPLOY',
@@ -103,6 +84,9 @@ onBeforeUnmount(() => {
     
     <!-- AI Adoption Showcase (Full Width Playing Cards) -->
     <PagesIndexAiAdoptionShowcase />
+    
+    <!-- Governance & Control Showcase -->
+    <PagesIndexGovernanceShowcase />
     
     <!-- Other Showcase Sections -->
     <div class="space-y-0">
@@ -201,7 +185,7 @@ onBeforeUnmount(() => {
               <!-- CTA -->
               <div class="pt-4">
                 <NuxtLink 
-                  :to="showcase.id === 'adoption' ? '/product/ai-adoption' : showcase.id === 'governance' ? '/product/governance-and-management' : '/product/deployment-options'"
+                  :to="showcase.id === 'adoption' ? '/product/ai-adoption' : '/product/deployment-options'"
                   class="inline-flex items-center gap-2 font-semibold text-lg group"
                   :class="{
                     'text-violet-600 hover:text-violet-700': showcase.color === 'violet',
