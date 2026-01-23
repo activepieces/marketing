@@ -183,15 +183,8 @@ definePageMeta({
           title="Clear path forward. Built-in guidance."
         />
 
-        <!-- New card: Pick from templates -->
-        <div class="w-full max-w-4xl">
-          <PagesProductAdoptionPickFromTemplates />
-        </div>
-
-        <!-- New card: Step-by-step guidance -->
-        <div class="w-full max-w-4xl">
-          <PagesProductAdoptionStepByStepGuidance />
-        </div>
+        <!-- Horizontal scroll carousel for cards -->
+        <PagesProductAdoptionCardCarousel />
 
         <!-- Feature 1: Templates -->
         <PagesProductAdoptionFeatureCard
