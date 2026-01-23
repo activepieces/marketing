@@ -11,6 +11,8 @@ const route = useRoute();
 const isLoaded = ref(false);
 // Announcement bar slides up on scroll down, reappears on scroll up
 const showAnnouncementBar = ref(true);
+// Header visibility based on scroll direction
+const isHeaderVisible = ref(true);
 let lastScrollY = 0;
 let ticking = false;
 
@@ -156,19 +158,23 @@ onMounted(() => {
   initCollapses();
   menuExpanded.value = false;
 
-  // Minimal scroll handler for announcement bar
+  // Scroll handler for header visibility and announcement bar
   let lastScrollY = 0;
   let ticking = false;
   const bar = document.getElementById("announcement-bar");
   function onScroll() {
     if (!ticking) {
       window.requestAnimationFrame(() => {
-        if (window.scrollY > lastScrollY && window.scrollY > 20) {
+        const currentScrollY = window.scrollY;
+        // Hide header when scrolling down, show when scrolling up
+        if (currentScrollY > lastScrollY && currentScrollY > 80) {
+          isHeaderVisible.value = false;
           bar && bar.classList.add("hide");
         } else {
+          isHeaderVisible.value = true;
           bar && bar.classList.remove("hide");
         }
-        lastScrollY = window.scrollY;
+        lastScrollY = currentScrollY;
         ticking = false;
       });
       ticking = true;
@@ -195,13 +201,17 @@ watch(useRoute(), () => {
   <div class="m-0 p-0">
     <header
       class="z-50 w-full transition-all duration-300 m-0 group/header overflow-visible fixed top-0"
+      :class="{
+        '-translate-y-full': !isHeaderVisible,
+        'translate-y-0': isHeaderVisible,
+      }"
     >
       <nav
         class="mx-auto pl-6 pr-2 py-2 dark:bg-gray-800 transition-all duration-200 overflow-visible rounded-b-2xl"
         :class="{
-          'group-hover/header:bg-white max-w-7xl': showTransparent,
-          'bg-white': !showTransparent || isScrolled,
-          'bg-transparent': showTransparent && !isScrolled,
+          'group-hover/header:bg-white': showTransparent,
+          'bg-white': (!showTransparent || isScrolled) && isHeaderVisible,
+          'bg-transparent': showTransparent && (!isScrolled || !isHeaderVisible),
         }"
       >
         <div
