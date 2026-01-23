@@ -623,74 +623,55 @@
                     <FlowBuilder 
                       flow-id="branding-placeholder"
                       :placeholder-mode="true"
-                      :brand-color="brandColors[activeBrandColor].primary"
+                      :brand-color="brandColors[activeBrandColor % brandColors.length].primary"
                       :embedded="true"
                     />
                     
-                    <!-- Brand logo and name overlay (on top of canvas) -->
-                    <div class="absolute top-8 left-8 flex items-center gap-3 z-20">
-                      <div 
-                        class="w-9 h-9 rounded-xl flex items-center justify-center shadow-md"
-                        :style="{ 
-                          background: `linear-gradient(135deg, ${brandColors[activeBrandColor].primary}, ${brandColors[activeBrandColor].secondary})`,
-                          transition: 'background 400ms ease'
-                        }"
-                      >
-                        <!-- Dynamic icon based on brand -->
-                        <!-- Grid (4 squares) -->
-                        <svg v-if="brandColors[activeBrandColor].icon === 'grid'" class="w-4 h-4" viewBox="0 0 16 16" fill="white" fill-opacity="0.9">
-                          <rect x="1" y="1" width="6" height="6" rx="1"/>
-                          <rect x="9" y="1" width="6" height="6" rx="1"/>
-                          <rect x="1" y="9" width="6" height="6" rx="1"/>
-                          <rect x="9" y="9" width="6" height="6" rx="1"/>
-                        </svg>
-                        <!-- Play button -->
-                        <svg v-else-if="brandColors[activeBrandColor].icon === 'play'" class="w-4 h-4" viewBox="0 0 16 16" fill="white" fill-opacity="0.9">
-                          <path d="M4 2.5v11l9-5.5-9-5.5z"/>
-                        </svg>
-                        <!-- Chat bubble -->
-                        <svg v-else-if="brandColors[activeBrandColor].icon === 'chat'" class="w-4 h-4" viewBox="0 0 16 16" fill="white" fill-opacity="0.9">
-                          <path d="M2 2h12a1 1 0 011 1v8a1 1 0 01-1 1H5l-3 3V3a1 1 0 011-1z"/>
-                        </svg>
-                        <!-- Lightning bolt -->
-                        <svg v-else-if="brandColors[activeBrandColor].icon === 'bolt'" class="w-4 h-4" viewBox="0 0 16 16" fill="white" fill-opacity="0.9">
-                          <path d="M9 1L3 9h4v6l6-8H9V1z"/>
-                        </svg>
-                        <!-- Star -->
-                        <svg v-else-if="brandColors[activeBrandColor].icon === 'star'" class="w-4 h-4" viewBox="0 0 16 16" fill="white" fill-opacity="0.9">
-                          <path d="M8 1l2.2 4.5 5 .7-3.6 3.5.9 5L8 12.5 3.5 14.7l.9-5L.8 6.2l5-.7L8 1z"/>
-                        </svg>
-                        <!-- Heart -->
-                        <svg v-else-if="brandColors[activeBrandColor].icon === 'heart'" class="w-4 h-4" viewBox="0 0 16 16" fill="white" fill-opacity="0.9">
-                          <path d="M8 14s-6-4.35-6-8.5C2 3 4 1.5 5.5 1.5c1.54 0 2.5 1 2.5 1s.96-1 2.5-1C12 1.5 14 3 14 5.5 14 9.65 8 14 8 14z"/>
-                        </svg>
-                        <!-- Cloud -->
-                        <svg v-else-if="brandColors[activeBrandColor].icon === 'cloud'" class="w-4 h-4" viewBox="0 0 16 16" fill="white" fill-opacity="0.9">
-                          <path d="M12.5 6A4.5 4.5 0 004 7.5 3 3 0 003 13h10a3 3 0 00.5-5.95A4.5 4.5 0 0012.5 6z"/>
-                        </svg>
-                        <!-- Shopping bag -->
-                        <svg v-else-if="brandColors[activeBrandColor].icon === 'bag'" class="w-4 h-4" viewBox="0 0 16 16" fill="white" fill-opacity="0.9">
-                          <path d="M4 4V3a4 4 0 118 0v1h2l1 11H1L2 4h2zm2 0h4V3a2 2 0 10-4 0v1z"/>
-                        </svg>
-                        <!-- Music note -->
-                        <svg v-else-if="brandColors[activeBrandColor].icon === 'music'" class="w-4 h-4" viewBox="0 0 16 16" fill="white" fill-opacity="0.9">
-                          <path d="M14 1v10a3 3 0 11-2-2.83V3L6 4.5v8A3 3 0 114 10V2l10-1z"/>
-                        </svg>
-                        <!-- Send/Arrow -->
-                        <svg v-else-if="brandColors[activeBrandColor].icon === 'send'" class="w-4 h-4" viewBox="0 0 16 16" fill="white" fill-opacity="0.9">
-                          <path d="M1 1l14 7-14 7V9l8-1-8-1V1z"/>
-                        </svg>
-                        <!-- Layers/Stack -->
-                        <svg v-else-if="brandColors[activeBrandColor].icon === 'layers'" class="w-4 h-4" viewBox="0 0 16 16" fill="white" fill-opacity="0.9">
-                          <path d="M8 1L1 5l7 4 7-4-7-4zM1 8l7 4 7-4M1 11l7 4 7-4"/>
-                        </svg>
-                        <!-- Default circle -->
-                        <div v-else class="w-4 h-4 rounded-full bg-white/90"></div>
+                    <!-- Brand logo and name overlay - scrolling list with gradient fade -->
+                    <div class="absolute top-6 left-6 z-20">
+                      <!-- Container with overflow hidden -->
+                      <div class="relative h-[90px] overflow-hidden">
+                        <!-- Scrolling brand list -->
+                        <div 
+                          class="brand-scroll-list"
+                          :class="{ 'no-transition': isResetting }"
+                          :style="{ transform: `translateY(-${activeBrandColor * 32}px)` }"
+                        >
+                          <!-- All brands in a scrolling list -->
+                          <div 
+                            v-for="(brand, idx) in scrollBrands" 
+                            :key="idx"
+                            class="brand-row flex items-start h-8 transition-all duration-500"
+                            :style="getBrandStyles(idx)"
+                          >
+                            <div 
+                              class="rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-500"
+                              :class="idx === activeBrandColor ? 'w-8 h-8 shadow-md' : 'w-5 h-5 shadow-sm'"
+                              :style="{ background: `linear-gradient(135deg, ${brand.primary}, ${brand.secondary})` }"
+                            >
+                              <svg :class="idx === activeBrandColor ? 'w-4 h-4' : 'w-2.5 h-2.5'" class="transition-all duration-500" viewBox="0 0 16 16" fill="white" fill-opacity="0.9">
+                                <g v-if="brand.icon === 'grid'"><rect x="1" y="1" width="6" height="6" rx="1"/><rect x="9" y="1" width="6" height="6" rx="1"/><rect x="1" y="9" width="6" height="6" rx="1"/><rect x="9" y="9" width="6" height="6" rx="1"/></g>
+                                <path v-else-if="brand.icon === 'play'" d="M4 2.5v11l9-5.5-9-5.5z"/>
+                                <path v-else-if="brand.icon === 'chat'" d="M2 2h12a1 1 0 011 1v8a1 1 0 01-1 1H5l-3 3V3a1 1 0 011-1z"/>
+                                <path v-else-if="brand.icon === 'bolt'" d="M9 1L3 9h4v6l6-8H9V1z"/>
+                                <path v-else-if="brand.icon === 'star'" d="M8 1l2.2 4.5 5 .7-3.6 3.5.9 5L8 12.5 3.5 14.7l.9-5L.8 6.2l5-.7L8 1z"/>
+                                <path v-else-if="brand.icon === 'heart'" d="M8 14s-6-4.35-6-8.5C2 3 4 1.5 5.5 1.5c1.54 0 2.5 1 2.5 1s.96-1 2.5-1C12 1.5 14 3 14 5.5 14 9.65 8 14 8 14z"/>
+                                <path v-else-if="brand.icon === 'cloud'" d="M12.5 6A4.5 4.5 0 004 7.5 3 3 0 003 13h10a3 3 0 00.5-5.95A4.5 4.5 0 0012.5 6z"/>
+                                <path v-else-if="brand.icon === 'bag'" d="M4 4V3a4 4 0 118 0v1h2l1 11H1L2 4h2zm2 0h4V3a2 2 0 10-4 0v1z"/>
+                                <path v-else-if="brand.icon === 'music'" d="M14 1v10a3 3 0 11-2-2.83V3L6 4.5v8A3 3 0 114 10V2l10-1z"/>
+                                <path v-else-if="brand.icon === 'send'" d="M1 1l14 7-14 7V9l8-1-8-1V1z"/>
+                                <path v-else-if="brand.icon === 'layers'" d="M8 1L1 5l7 4 7-4-7-4zM1 8l7 4 7-4M1 11l7 4 7-4"/>
+                                <circle v-else cx="8" cy="8" r="6"/>
+                              </svg>
+                            </div>
+                            <span 
+                              class="font-bold whitespace-nowrap transition-all duration-500"
+                              :class="idx === activeBrandColor ? 'text-lg ml-2.5' : 'text-xs ml-2'"
+                              :style="{ color: brand.primary }"
+                            >{{ brand.name }}</span>
+                          </div>
+                        </div>
                       </div>
-                      <span 
-                        class="text-xl font-bold"
-                        :style="{ color: brandColors[activeBrandColor].primary, transition: 'color 400ms ease' }"
-                      >{{ brandColors[activeBrandColor].name }}</span>
                     </div>
                     
                     <!-- Progress bar -->
@@ -698,9 +679,9 @@
                       <div 
                         class="h-full brand-progress-bar"
                         :style="{ 
-                          background: `linear-gradient(90deg, ${brandColors[activeBrandColor].primary}, ${brandColors[activeBrandColor].secondary})`,
+                          background: `linear-gradient(90deg, ${brandColors[activeBrandColor % brandColors.length].primary}, ${brandColors[activeBrandColor % brandColors.length].secondary})`,
                           width: beatProgress + '%',
-                          transitionDuration: beatProgress === 0 ? '0ms' : (isSpinning ? '70ms' : '2900ms')
+                          transitionDuration: beatProgress === 0 ? '0ms' : '2400ms'
                         }"
                       ></div>
                     </div>
@@ -750,12 +731,9 @@ const activeBrandColor = ref(0)
 const hoveredTemplate = ref(null)
 const beatProgress = ref(0)
 
-// Timing for stop-spin-stop pattern
-const STOP_DURATION = 3000 // 3 seconds pause on a brand
-const SPIN_INTERVAL = 80 // 80ms between brand changes during spin
-let brandCycleTimeout = null
-let spinTimeout = null
-let isSpinning = ref(false) // tracks if we're in spinning phase
+// Timing for smooth brand scrolling
+const BRAND_DISPLAY_DURATION = 2500 // 2.5 seconds showing each brand
+let brandCycleInterval = null
 
 // Animated stats
 const animatedStats = ref(['0', '0', '0'])
@@ -768,17 +746,34 @@ const selectCard = (index) => {
 // Branding card is index 3
 const BRANDING_CARD_INDEX = 3
 
+// Computed property for scrolling brands list (with extras for infinite scroll)
+const scrollBrands = computed(() => {
+  // Add extra brands at the end to show during scroll before reset
+  return [...brandColors, ...brandColors.slice(0, 4)]
+})
+
+// Current brand for FlowBuilder
+const currentBrand = computed(() => {
+  return brandColors[activeBrandColor.value % brandColors.length]
+})
+
+// Get styles for brand row (opacity, offset, and grayscale for inactive)
+const getBrandStyles = (idx) => {
+  const diff = idx - activeBrandColor.value
+  if (diff === 0) return { opacity: 1, filter: 'grayscale(0)' }
+  // Push first inactive down for gap from active, then cluster the rest - all grayscale
+  if (diff === 1) return { opacity: 0.5, transform: 'translateY(10px)', filter: 'grayscale(1)' }
+  if (diff === 2) return { opacity: 0.25, transform: 'translateY(6px)', filter: 'grayscale(1)' }
+  if (diff >= 3) return { opacity: 0, transform: 'translateY(2px)', filter: 'grayscale(1)' }
+  return { opacity: 0, filter: 'grayscale(1)' } // Items above active (scrolled past)
+}
+
 // Stop the brand cycling
 const stopBrandCycle = () => {
-  if (brandCycleTimeout) {
-    clearTimeout(brandCycleTimeout)
-    brandCycleTimeout = null
+  if (brandCycleInterval) {
+    clearInterval(brandCycleInterval)
+    brandCycleInterval = null
   }
-  if (spinTimeout) {
-    clearTimeout(spinTimeout)
-    spinTimeout = null
-  }
-  isSpinning.value = false
   beatProgress.value = 0
 }
 
@@ -793,63 +788,44 @@ watch(activeCard, (newVal) => {
   }
 })
 
-// Get random brand index different from current
-const getRandomBrandIndex = (excludeIndex) => {
-  let newIndex
-  do {
-    newIndex = Math.floor(Math.random() * brandColors.length)
-  } while (newIndex === excludeIndex)
-  return newIndex
-}
+// Track if we need to do an instant reset
+const isResetting = ref(false)
 
-// Spin through brands randomly for 2-3 seconds
-const startSpin = () => {
-  isSpinning.value = true
-  const spinDuration = 2000 + Math.random() * 1000 // 2-3 seconds
-  const spinEndTime = Date.now() + spinDuration
-  
-  const spin = () => {
-    if (Date.now() >= spinEndTime) {
-      // Done spinning - stop on a random brand
-      isSpinning.value = false
-      activeBrandColor.value = getRandomBrandIndex(activeBrandColor.value)
-      beatProgress.value = 0
-      
-      requestAnimationFrame(() => {
-        beatProgress.value = 100
-      })
-      
-      // Wait for stop duration then spin again
-      brandCycleTimeout = setTimeout(startSpin, STOP_DURATION)
-    } else {
-      // Keep spinning - show next random brand
-      activeBrandColor.value = (activeBrandColor.value + 1) % brandColors.length
-      beatProgress.value = 0
-      
-      requestAnimationFrame(() => {
-        beatProgress.value = 100
-      })
-      
-      spinTimeout = setTimeout(spin, SPIN_INTERVAL)
-    }
-  }
-  
-  spin()
-}
-
-// Start the brand cycling
+// Start the brand cycling - smooth infinite scroll
 const startBrandCycle = () => {
-  // Start with a random brand, paused
-  isSpinning.value = false
-  activeBrandColor.value = Math.floor(Math.random() * brandColors.length)
+  // Start with first brand
+  activeBrandColor.value = 0
+  isResetting.value = false
   beatProgress.value = 0
   
   requestAnimationFrame(() => {
     beatProgress.value = 100
   })
   
-  // After initial stop, start spinning
-  brandCycleTimeout = setTimeout(startSpin, STOP_DURATION)
+  // Cycle through brands at consistent intervals
+  brandCycleInterval = setInterval(() => {
+    // Move to next brand with smooth animation
+    activeBrandColor.value = activeBrandColor.value + 1
+    
+    // When we've gone past the original list, reset instantly
+    if (activeBrandColor.value >= brandColors.length) {
+      // Allow one more frame at the extra position, then instant reset
+      setTimeout(() => {
+        isResetting.value = true
+        activeBrandColor.value = 0
+        // Re-enable transitions after reset
+        requestAnimationFrame(() => {
+          isResetting.value = false
+        })
+      }, 500) // After transition completes
+    }
+    
+    // Reset and animate progress bar
+    beatProgress.value = 0
+    requestAnimationFrame(() => {
+      beatProgress.value = 100
+    })
+  }, BRAND_DISPLAY_DURATION)
 }
 
 onMounted(() => {
@@ -884,8 +860,7 @@ onMounted(() => {
 
 onUnmounted(() => {
   if (animationFrame) cancelAnimationFrame(animationFrame)
-  if (brandCycleTimeout) clearTimeout(brandCycleTimeout)
-  if (spinTimeout) clearTimeout(spinTimeout)
+  if (brandCycleInterval) clearInterval(brandCycleInterval)
 })
 
 // Card definitions
@@ -1188,5 +1163,19 @@ const getCardStyle = (index) => {
 .brand-progress-bar {
   transition-property: width;
   transition-timing-function: linear;
+}
+
+/* Smooth scrolling for brand list */
+.brand-scroll-list {
+  transition: transform 600ms cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.brand-scroll-list.no-transition {
+  transition: none !important;
+}
+
+/* Brand row transitions */
+.brand-row {
+  transition: opacity 500ms ease-out, transform 500ms ease-out, filter 500ms ease-out;
 }
 </style>
