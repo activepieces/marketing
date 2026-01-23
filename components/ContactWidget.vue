@@ -1,11 +1,12 @@
 <script setup>
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
 const isHovered = ref(false);
 const isDismissed = ref(false);
 const isMounted = ref(false);
+const hasScrolledDown = ref(false);
 
 // Pages where widget should NOT show
 const excludedPaths = ['/pricing', '/sales', '/customers/alan', '/customers/funding-societies', '/customers'];
@@ -13,6 +14,7 @@ const excludedPaths = ['/pricing', '/sales', '/customers/alan', '/customers/fund
 const shouldShow = computed(() => {
   if (!isMounted.value) return false;
   if (isDismissed.value) return false;
+  if (!hasScrolledDown.value) return false;
   const currentPath = route.path;
   return !excludedPaths.some(path => currentPath === path || currentPath.startsWith(path + '/'));
 });
@@ -21,11 +23,29 @@ const dismiss = () => {
   isDismissed.value = true;
 };
 
+// Scroll handler
+let scrollHandler = null;
+
 onMounted(() => {
-  // Small delay to ensure page is fully rendered before showing widget
+  // Small delay to ensure page is fully rendered
   setTimeout(() => {
     isMounted.value = true;
   }, 500);
+
+  // Show widget when user scrolls past 100px (when header hides)
+  scrollHandler = () => {
+    hasScrolledDown.value = window.scrollY > 100;
+  };
+  
+  window.addEventListener('scroll', scrollHandler, { passive: true });
+  // Check initial scroll position
+  scrollHandler();
+});
+
+onBeforeUnmount(() => {
+  if (scrollHandler) {
+    window.removeEventListener('scroll', scrollHandler);
+  }
 });
 </script>
 
