@@ -72,7 +72,7 @@
 
           <!-- Content area -->
           <div
-            class="p-4 relative h-full flex items-center justify-center border-l-2 border-white/10"
+            class="p-4 relative h-full flex items-center justify-center border-l-2 border-gray-200"
           >
             <!-- Normal content -->
             <div
@@ -159,7 +159,7 @@
             >
               <!-- Text label (below canvas, can be covered) -->
               <div
-                class="absolute bottom-2 left-2 text-xs text-white/40 font-medium pointer-events-none z-0"
+                class="absolute bottom-2 left-2 text-xs text-gray-500 font-medium pointer-events-none z-0"
               >
                 <span
                   class="text-base origin-center inline-block emoji-scale text-primary-dark"
@@ -183,11 +183,11 @@
               <!-- Clear button (above canvas) -->
               <button
                 @click="clearCanvas"
-                class="absolute top-2 right-2 p-2 rounded-full bg-white/10 hover:bg-white/20 shadow-sm flex items-center justify-center transition-all ring-0 ring-white/20 hover:ring-2 z-20 group"
+                class="absolute top-2 right-2 p-2 rounded-full bg-gray-100 hover:bg-gray-200 shadow-sm flex items-center justify-center transition-all ring-0 ring-gray-300 hover:ring-2 z-20 group"
                 title="Clear"
               >
                 <svg
-                  class="w-4 h-4 text-white/80 group-hover:text-white"
+                  class="w-4 h-4 text-gray-700 group-hover:text-gray-900"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -499,7 +499,7 @@ const checkLabelZone = (pos) => {
 
 <style scoped>
 .pencil-cursor {
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z'%3E%3C/path%3E%3C/svg%3E")
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23374151' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z'%3E%3C/path%3E%3C/svg%3E")
       0 24,
     crosshair;
 }

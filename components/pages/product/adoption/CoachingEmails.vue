@@ -11,7 +11,7 @@
     >
       <!-- Greeting text -->
       <div class="text-center pt-8 pb-4 pointer-events-none">
-        <h2 class="text-3xl font-semibold text-white/80">
+        <h2 class="text-3xl font-semibold text-gray-700">
           Hey
           <span
             class="inline-block name-rotate"
@@ -28,17 +28,17 @@
           <div
             v-for="(card, index) in gridCards"
             :key="index"
-            class="email-card overflow-hidden w-full h-full p-4 border border-white/10 bg-white/5 flex flex-col rounded-md gap-2"
+            class="email-card overflow-hidden w-full h-full p-4 border border-gray-200 bg-gray-50 flex flex-col rounded-md gap-2"
             :style="{ transform: `rotate(${card.rotation}deg)` }"
           >
             <div
-              class="inline-block px-2 py-0.5 rounded-sm text-white text-xs font-bold self-start flex-shrink-0 border"
+              class="inline-block px-2 py-0.5 rounded-sm text-gray-900 text-xs font-bold self-start flex-shrink-0 border"
               :style="{ borderColor: card.color }"
             >
               Day {{ card.day }}
             </div>
             <p
-              class="font-semibold text-white/80 text-sm leading-tight flex-shrink-0 flex items-center gap-1"
+              class="font-semibold text-gray-700 text-sm leading-tight flex-shrink-0 flex items-center gap-1"
             >
               {{ card.title
               }}<component
@@ -49,8 +49,8 @@
               />
             </p>
             <div class="space-y-1 flex-shrink-0">
-              <div class="h-1 rounded-full bg-white/20 w-full"></div>
-              <div class="h-1 rounded-full bg-white/20 w-3/4"></div>
+              <div class="h-1 rounded-full bg-gray-200 w-full"></div>
+              <div class="h-1 rounded-full bg-gray-200 w-3/4"></div>
             </div>
           </div>
         </div>
@@ -59,7 +59,7 @@
 
     <!-- Coach drawer - peeks from bottom on hover, expands on click -->
     <div
-      class="absolute left-0 right-0 bg-white/10 backdrop-blur-lg cursor-pointer z-50 overflow-hidden drawer-base rounded-md"
+      class="absolute left-0 right-0 bg-gray-100 backdrop-blur-lg cursor-pointer z-50 overflow-hidden drawer-base rounded-md"
       :class="[
         !isTransitioning && isExpanded ? 'drawer-expanded' : '',
         !isTransitioning && !isExpanded ? 'bar-breathe' : '',
@@ -74,18 +74,18 @@
         class="absolute inset-x-0 bottom-0 top-0 flex flex-col items-center peek-bar-content"
       >
         <!-- Grey handle - at very top, bobs with height -->
-        <div class="w-10 h-1 bg-white/40 rounded-full mt-2 flex-shrink-0"></div>
+        <div class="w-10 h-1 bg-gray-400 rounded-full mt-2 flex-shrink-0"></div>
 
         <!-- Content - fixed position from bottom -->
         <div
           class="absolute bottom-4 left-0 right-0 flex flex-col items-center"
         >
           <!-- Icon goes here -->
-          <PhStarFour class="text-white/80 mt-1" weight="fill" size="16" />
+          <PhStarFour class="text-gray-700 mt-1" weight="fill" size="16" />
           <div class="flex items-center gap-1">
-            <span class="font-semibold text-white/80">Your AI Coach</span>
+            <span class="font-semibold text-gray-700">Your AI Coach</span>
           </div>
-          <span class="text-xs text-gray-400 mt-1">Click to expand</span>
+          <span class="text-xs text-gray-500 mt-1">Click to expand</span>
         </div>
       </div>
 
@@ -98,14 +98,14 @@
             class="flex items-center justify-between px-4 py-4 flex-shrink-0"
           >
             <div class="flex items-center gap-2">
-              <PhSparkle class="w-6 h-6 text-white/80" weight="fill" />
-              <span class="text-lg font-medium text-white/80"
+              <PhSparkle class="w-6 h-6 text-gray-700" weight="fill" />
+              <span class="text-lg font-medium text-gray-700"
                 >Your AI Coach</span
               >
             </div>
             <button
               @click.stop="closeInbox"
-              class="w-7 h-7 rounded-full hover:bg-white/10 flex items-center justify-center transition-colors text-white/80 hover:text-white"
+              class="w-7 h-7 rounded-full hover:bg-gray-100 flex items-center justify-center transition-colors text-gray-700 hover:text-gray-900"
             >
               <svg
                 class="w-4 h-4"
@@ -125,11 +125,11 @@
 
           <!-- Progress hint -->
           <div class="px-4 pb-3">
-            <div class="flex items-center gap-2 text-xs text-white/80">
+            <div class="flex items-center gap-2 text-xs text-gray-700">
               <span class="flex items-center gap-1"
                 ><PhRocket class="w-3 h-3" weight="fill" /> 30-day journey</span
               >
-              <span class="text-gray-200">•</span>
+              <span class="text-gray-400">•</span>
               <span class="flex items-center gap-1"
                 ><PhTrophy class="w-3 h-3" weight="fill" /> Become an AI
                 Hero</span
@@ -146,14 +146,14 @@
             >
               <!-- Day badge -->
               <div
-                class="w-9 h-9 rounded-xl flex items-center justify-center text-xs font-bold text-white flex-shrink-0 mt-1 border"
+                class="w-9 h-9 rounded-xl flex items-center justify-center text-xs font-bold text-gray-900 flex-shrink-0 mt-1 border"
                 :style="{
                   borderColor: email.placeholder
-                    ? 'rgba(255,255,255,0.1)'
+                    ? 'rgba(0,0,0,0.1)'
                     : email.color,
                 }"
               >
-                <span :class="email.placeholder ? 'text-white/80' : ''">{{
+                <span :class="email.placeholder ? 'text-gray-700' : ''">{{
                   email.day
                 }}</span>
               </div>
@@ -163,11 +163,11 @@
                 <!-- Clickable email -->
                 <div
                   v-if="!email.placeholder"
-                  class="py-2 px-3 -mx-1 rounded-xl hover:bg-white/10 transition-colors cursor-pointer group"
+                  class="py-2 px-3 -mx-1 rounded-xl hover:bg-gray-100 transition-colors cursor-pointer group"
                   @click.stop="selectedEmail = email"
                 >
                   <p
-                    class="font-medium text-white/80 text-sm truncate group-hover:text-white transition-colors flex items-center gap-1"
+                    class="font-medium text-gray-700 text-sm truncate group-hover:text-gray-900 transition-colors flex items-center gap-1"
                   >
                     <component
                       v-if="email.icon"
@@ -176,15 +176,15 @@
                       weight="fill"
                     />{{ email.subject }}
                   </p>
-                  <p class="text-xs text-gray-400 line-clamp-1 mt-0.5">
+                  <p class="text-xs text-gray-500 line-clamp-1 mt-0.5">
                     {{ email.preview }}
                   </p>
                 </div>
 
                 <!-- Placeholder email (non-interactive) -->
                 <div v-else class="py-2 px-1">
-                  <div class="h-2.5 bg-white/10 rounded w-3/4 mb-1.5"></div>
-                  <div class="h-2 bg-white/10 rounded w-1/2"></div>
+                  <div class="h-2.5 bg-gray-100 rounded w-3/4 mb-1.5"></div>
+                  <div class="h-2 bg-gray-100 rounded w-1/2"></div>
                 </div>
               </div>
             </div>
@@ -195,14 +195,14 @@
         <template v-else>
           <!-- Detail header -->
           <div
-            class="flex items-center gap-3 px-4 py-3 flex-shrink-0 bg-white/5"
+            class="flex items-center gap-3 px-4 py-3 flex-shrink-0 bg-gray-50"
           >
             <button
               @click.stop="selectedEmail = null"
-              class="w-8 h-8 rounded-full hover:bg-white/10 flex items-center justify-center transition-colors"
+              class="w-8 h-8 rounded-full hover:bg-gray-100 flex items-center justify-center transition-colors"
             >
               <svg
-                class="w-4 h-4 text-white/60"
+                class="w-4 h-4 text-gray-500"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -217,7 +217,7 @@
             </button>
             <div class="flex-1 min-w-0">
               <p
-                class="text-sm font-semibold text-white/80 truncate flex items-center gap-1"
+                class="text-sm font-semibold text-gray-700 truncate flex items-center gap-1"
               >
                 <component
                   v-if="selectedEmail.icon"
@@ -226,12 +226,12 @@
                   weight="fill"
                 />{{ selectedEmail.subject }}
               </p>
-              <p class="text-[10px] text-white/60">
+              <p class="text-[10px] text-gray-500">
                 Day {{ selectedEmail.day }} · from AI Coach
               </p>
             </div>
             <div
-              class="w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-bold text-white flex-shrink-0 border"
+              class="w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-bold text-gray-900 flex-shrink-0 border"
               :style="{ borderColor: selectedEmail.color }"
             >
               {{ selectedEmail.day }}
@@ -242,25 +242,25 @@
           <div class="flex-1 overflow-y-auto px-4 py-4 pb-20 minimal-scrollbar">
             <div class="space-y-4">
               <!-- Greeting -->
-              <p class="text-sm text-white/80 flex items-center gap-1">
+              <p class="text-sm text-gray-700 flex items-center gap-1">
                 Hi there! <PhHandWaving class="w-4 h-4" weight="fill" />
               </p>
 
               <!-- Main content -->
-              <p class="text-sm text-white/80 leading-relaxed">
+              <p class="text-sm text-gray-700 leading-relaxed">
                 {{ selectedEmail.body }}
               </p>
 
               <!-- Placeholder content -->
               <div class="space-y-2 py-2">
-                <div class="h-2 rounded-full bg-white/10 w-full"></div>
-                <div class="h-2 rounded-full bg-white/10 w-11/12"></div>
-                <div class="h-2 rounded-full bg-white/10 w-4/5"></div>
+                <div class="h-2 rounded-full bg-gray-100 w-full"></div>
+                <div class="h-2 rounded-full bg-gray-100 w-11/12"></div>
+                <div class="h-2 rounded-full bg-gray-100 w-4/5"></div>
               </div>
 
               <!-- CTA button placeholder -->
               <div
-                class="inline-flex items-center gap-1 px-4 py-2 rounded-lg text-white text-xs font-semibold border"
+                class="inline-flex items-center gap-1 px-4 py-2 rounded-lg text-gray-900 text-xs font-semibold border"
                 :style="{ borderColor: selectedEmail.color }"
               >
                 {{ selectedEmail.cta
@@ -274,14 +274,14 @@
 
               <!-- More placeholder -->
               <div class="space-y-2 pt-2">
-                <div class="h-2 rounded-full bg-white/10 w-3/4"></div>
-                <div class="h-2 rounded-full bg-white/10 w-1/2"></div>
+                <div class="h-2 rounded-full bg-gray-100 w-3/4"></div>
+                <div class="h-2 rounded-full bg-gray-100 w-1/2"></div>
               </div>
 
               <!-- Sign off -->
               <div class="pt-2">
-                <p class="text-sm text-white/80">Cheers,</p>
-                <p class="text-sm font-medium text-white/80">Your AI Coach</p>
+                <p class="text-sm text-gray-700">Cheers,</p>
+                <p class="text-sm font-medium text-gray-700">Your AI Coach</p>
               </div>
             </div>
           </div>
@@ -289,12 +289,12 @@
           <!-- Sticky reaction bar -->
           <div class="absolute bottom-0 left-0 right-0 p-3">
             <div
-              class="flex items-center justify-center gap-3 bg-white/5 rounded-xl p-2 mx-auto w-fit border border-white/10"
+              class="flex items-center justify-center gap-3 bg-gray-50 rounded-xl p-2 mx-auto w-fit border border-gray-200"
             >
               <button
                 v-for="(reaction, index) in reactions"
                 :key="index"
-                class="relative w-11 h-11 rounded-md flex items-center justify-center transition-all duration-200 hover:scale-125 hover:bg-white/5 active:scale-90"
+                class="relative w-11 h-11 rounded-md flex items-center justify-center transition-all duration-200 hover:scale-125 hover:bg-gray-100 active:scale-90"
                 @click.stop="triggerCelebration(reaction, $event)"
               >
                 <component
@@ -842,17 +842,17 @@ const emailList = [
 }
 
 .minimal-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.15);
   border-radius: 3px;
 }
 
 .minimal-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.25);
 }
 
 /* Firefox */
 .minimal-scrollbar {
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+  scrollbar-color: rgba(0, 0, 0, 0.15) transparent;
 }
 </style>

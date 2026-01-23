@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative w-full h-full flex items-center justify-center overflow-hidden bg-white/5"
+    class="relative w-full h-full flex items-center justify-center overflow-hidden bg-gray-50"
   >
     <!-- Canvas animation for floating buttons (full background) -->
     <canvas
@@ -200,18 +200,18 @@ class ButtonParticle {
     ctx.roundRect(-width / 2, -height / 2, width, height, radius);
 
     // Fill with hover brightness
-    const fillAlpha = 0.05 + this.hoverBrightness * 0.08;
-    ctx.fillStyle = `rgba(255, 255, 255, ${fillAlpha})`;
+    const fillAlpha = 0.03 + this.hoverBrightness * 0.05;
+    ctx.fillStyle = `rgba(0, 0, 0, ${fillAlpha})`;
     ctx.fill();
 
     // Stroke with hover brightness
-    const strokeAlpha = 0.1 + this.hoverBrightness * 0.2;
-    ctx.strokeStyle = `rgba(255, 255, 255, ${strokeAlpha})`;
+    const strokeAlpha = 0.08 + this.hoverBrightness * 0.15;
+    ctx.strokeStyle = `rgba(0, 0, 0, ${strokeAlpha})`;
     ctx.lineWidth = 2;
     ctx.stroke();
 
     // Text
-    ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
+    ctx.fillStyle = "rgba(0, 0, 0, 0.8)";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillText(this.text, 0, 1);
@@ -382,7 +382,7 @@ onBeforeUnmount(() => {
 <style scoped>
 .avatar-bubble {
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.05);
   overflow: hidden;
   transform: scale(1);
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),

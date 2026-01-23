@@ -6,7 +6,7 @@
       :class="screenBg"
     >
       <!-- Safari Browser Top Bar -->
-      <div class="bg-white/10 px-3 py-2 flex-shrink-0">
+      <div class="bg-gray-100 px-3 py-2 flex-shrink-0">
         <!-- Traffic lights -->
         <div class="flex items-center gap-1.5 mb-2">
           <div class="w-2.5 h-2.5 rounded-full bg-red-400"></div>
@@ -15,9 +15,9 @@
         </div>
 
         <!-- Address bar -->
-        <div class="bg-black/10 rounded-md py-1.5 px-2 flex items-center gap-2">
-          <div class="w-4 h-4 rounded bg-white/10 flex-shrink-0"></div>
-          <div class="h-2.5 flex-1 bg-white/10 rounded"></div>
+        <div class="bg-gray-200 rounded-md py-1.5 px-2 flex items-center gap-2">
+          <div class="w-4 h-4 rounded bg-gray-300 flex-shrink-0"></div>
+          <div class="h-2.5 flex-1 bg-gray-300 rounded"></div>
         </div>
       </div>
 
@@ -27,7 +27,7 @@
         <div v-if="currentScreen === 'widget'" class="p-6 h-full flex flex-col">
           <!-- Mock app header -->
           <div
-            class="flex items-center gap-3 mb-4 pb-4 border-b border-white/10"
+            class="flex items-center gap-3 mb-4 pb-4 border-b border-gray-200"
           >
             <div
               class="w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center"
@@ -35,25 +35,25 @@
               <PhSparkle class="w-5 h-5 text-white" weight="fill" />
             </div>
             <div class="flex-1">
-              <div class="h-2.5 w-28 bg-white/20 rounded-full"></div>
-              <div class="h-2 w-20 bg-white/10 rounded-full mt-1.5"></div>
+              <div class="h-2.5 w-28 bg-gray-200 rounded-full"></div>
+              <div class="h-2 w-20 bg-gray-100 rounded-full mt-1.5"></div>
             </div>
             <div class="flex gap-1.5">
-              <div class="w-2 h-2 rounded-full bg-white/20"></div>
-              <div class="w-2 h-2 rounded-full bg-white/20"></div>
-              <div class="w-2 h-2 rounded-full bg-white/20"></div>
+              <div class="w-2 h-2 rounded-full bg-gray-200"></div>
+              <div class="w-2 h-2 rounded-full bg-gray-200"></div>
+              <div class="w-2 h-2 rounded-full bg-gray-200"></div>
             </div>
           </div>
 
           <!-- Content area -->
           <div
-            class="relative flex-1 bg-white/5 rounded-md border border-white/10 overflow-hidden"
+            class="relative flex-1 bg-gray-50 rounded-md border border-gray-200 overflow-hidden"
           >
             <div class="p-5 space-y-3">
-              <div class="h-2.5 w-3/4 bg-white/15 rounded-full"></div>
-              <div class="h-2.5 w-1/2 bg-white/10 rounded-full"></div>
-              <div class="h-2.5 w-2/3 bg-white/15 rounded-full"></div>
-              <div class="h-10 w-full bg-white/5 rounded-xl mt-4"></div>
+              <div class="h-2.5 w-3/4 bg-gray-200 rounded-full"></div>
+              <div class="h-2.5 w-1/2 bg-gray-100 rounded-full"></div>
+              <div class="h-2.5 w-2/3 bg-gray-200 rounded-full"></div>
+              <div class="h-10 w-full bg-gray-100 rounded-xl mt-4"></div>
             </div>
 
             <!-- Floating AI support button - centered at bottom -->
@@ -61,9 +61,9 @@
               <span class="pulse-ring"></span>
               <button
                 @click="currentScreen = 'calendar'"
-                class="relative bg-white/10 border border-white/20 text-white/80 px-5 py-3 rounded-full flex items-center gap-1 group ring-0 ring-white/5 hover:ring-8 hover:border-white/40 hover:gap-2 hover:text-white transition-all duration-200 font-semibold text-sm"
+                class="relative bg-gray-100 border border-gray-300 text-gray-700 px-5 py-3 rounded-full flex items-center gap-1 group ring-0 ring-gray-100 hover:ring-8 hover:border-gray-400 hover:gap-2 hover:text-gray-900 transition-all duration-200 font-semibold text-sm"
               >
-                <PhRobot class="text-white" weight="fill" size="20" />
+                <PhRobot class="text-gray-700" weight="fill" size="20" />
                 Talk to AI Expert
               </button>
             </span>
@@ -79,10 +79,10 @@
           <div class="flex items-center justify-between mb-3">
             <button
               @click="currentScreen = 'widget'"
-              class="w-8 h-8 rounded-lg hover:bg-white/10 flex items-center justify-center transition-colors"
+              class="w-8 h-8 rounded-lg hover:bg-gray-100 flex items-center justify-center transition-colors"
             >
               <svg
-                class="w-4 h-4 text-white/60"
+                class="w-4 h-4 text-gray-500"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -96,8 +96,8 @@
               </svg>
             </button>
             <div class="text-center">
-              <h3 class="font-semibold text-white/80 text-sm">January 2025</h3>
-              <p class="text-[10px] text-white/60">Pick a slot</p>
+              <h3 class="font-semibold text-gray-700 text-sm">January 2025</h3>
+              <p class="text-[10px] text-gray-500">Pick a slot</p>
             </div>
             <div
               class="w-8 h-8 rounded-lg bg-violet-500/20 flex items-center justify-center"
@@ -112,14 +112,14 @@
             <div
               v-for="day in calendarDays"
               :key="day.name"
-              class="text-center pb-2 border-b border-white/10"
+              class="text-center pb-2 border-b border-gray-200"
             >
-              <p class="text-[10px] font-medium text-white/60 uppercase">
+              <p class="text-[10px] font-medium text-gray-500 uppercase">
                 {{ day.name }}
               </p>
               <p
                 class="text-base font-bold"
-                :class="day.isToday ? 'text-violet-400' : 'text-white/80'"
+                :class="day.isToday ? 'text-violet-500' : 'text-gray-700'"
               >
                 {{ day.date }}
               </p>
@@ -135,23 +135,23 @@
                   class="rounded-lg p-2 text-center transition-all duration-150"
                   :class="
                     slot.booked
-                      ? 'bg-white/5 cursor-not-allowed'
-                      : 'bg-white/10 hover:bg-white/20 border border-white/10 hover:scale-[1.02] cursor-pointer'
+                      ? 'bg-gray-100 cursor-not-allowed'
+                      : 'bg-gray-50 hover:bg-gray-100 border border-gray-200 hover:scale-[1.02] cursor-pointer'
                   "
                 >
                   <p
                     class="font-medium text-xs"
                     :class="
                       slot.booked
-                        ? 'text-white/40 line-through opacity-50'
-                        : 'text-white/80'
+                        ? 'text-gray-400 line-through opacity-50'
+                        : 'text-gray-700'
                     "
                   >
                     {{ slot.time }}
                   </p>
                   <div
                     v-if="slot.booked"
-                    class="mt-0.5 text-[9px] text-white/40 font-medium flex items-center justify-center gap-0.5"
+                    class="mt-0.5 text-[9px] text-gray-400 font-medium flex items-center justify-center gap-0.5"
                   >
                     <component
                       :is="slot.bookedIcon"
@@ -179,7 +179,7 @@
             class="absolute inset-0 z-10 flex items-center justify-center pointer-events-none"
           >
             <div
-              class="bg-white/10 backdrop-blur-lg border border-white/10 rounded-2xl px-6 py-4 shadow-2xl flex items-center gap-3"
+              class="bg-gray-100 backdrop-blur-lg border border-gray-200 rounded-2xl px-6 py-4 shadow-2xl flex items-center gap-3"
             >
               <div
                 class="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center text-white shadow-lg"
@@ -187,8 +187,8 @@
                 <PhCheck class="w-5 h-5" weight="bold" />
               </div>
               <div>
-                <p class="font-semibold text-white/80">Confirmed!</p>
-                <p class="text-white/60 text-sm">
+                <p class="font-semibold text-gray-700">Confirmed!</p>
+                <p class="text-gray-500 text-sm">
                   {{ bookedSlot?.dayName }} {{ bookedSlot?.dayDate }} ·
                   {{ bookedSlot?.time }}
                 </p>
@@ -412,7 +412,7 @@ const screenBg = computed(() => {
     case "widget":
     case "confirmation":
     case "calendar":
-      return "bg-black/20";
+      return "bg-gray-50";
     case "connected":
       return "bg-gray-900";
     default:
@@ -823,7 +823,7 @@ const endCall = () => {
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.15);
   border-radius: 2px;
 }
 
@@ -834,7 +834,7 @@ const endCall = () => {
   left: 50%;
   width: 100%;
   height: 100%;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(0, 0, 0, 0.15);
   border-radius: 9999px;
   pointer-events: none;
   animation: pulse-ring 2s ease-out infinite;

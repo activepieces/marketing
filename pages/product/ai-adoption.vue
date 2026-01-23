@@ -132,7 +132,7 @@ definePageMeta({
     <!-- Section 1: Roll Out -->
     <section
       id="setup"
-      class="py-24 bg-[#081635] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
+      class="py-24 bg-gradient-to-br from-[#ebe9e4] to-[#dedad3] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
     >
       <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col gap-20">
         <PagesProductSectionHeader title="Your AI home. Zero friction." />
@@ -176,7 +176,7 @@ definePageMeta({
     <!-- Section 2: Onboard & Coach -->
     <section
       id="enable-building"
-      class="py-24 bg-[#082c41] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
+      class="py-24 bg-gradient-to-br from-[#e8e6e1] to-[#dcd8d1] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
     >
       <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col gap-20">
         <PagesProductSectionHeader
@@ -238,7 +238,7 @@ definePageMeta({
     <!-- Section 3: Grow Champions -->
     <section
       id="drive-engagement"
-      class="py-24 bg-[#064448] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
+      class="py-24 bg-gradient-to-br from-[#e5e3de] to-[#d9d5ce] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
     >
       <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col gap-20">
         <PagesProductSectionHeader title="Visible progress. Real motivation." />
@@ -282,7 +282,7 @@ definePageMeta({
     <!-- Section 4: Measure Impact -->
     <section
       id="track-support"
-      class="py-24 bg-[#275d43] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
+      class="py-24 bg-gradient-to-br from-[#e2e0db] to-[#d6d2cb] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
     >
       <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col gap-20">
         <PagesProductSectionHeader

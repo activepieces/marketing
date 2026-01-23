@@ -57,7 +57,7 @@ const gridClasses = computed(() => {
 const cardClasses = computed(() => {
   const classes = ['rounded-3xl', 'overflow-hidden']
   if (props.variant === 'bordered') {
-    classes.push('border-4', 'border-white/10')
+    classes.push('border-4', 'border-gray-200')
   }
   return classes
 })
@@ -66,7 +66,7 @@ const cardClasses = computed(() => {
 const textClasses = computed(() => {
   const classes = ['p-12', 'flex', 'flex-col', 'gap-12']
   if (props.variant === 'subtle') {
-    classes.push('bg-white/5')
+    classes.push('bg-gray-50')
   }
   return classes
 })
@@ -75,7 +75,7 @@ const textClasses = computed(() => {
 const contentClasses = computed(() => {
   const classes = ['h-full', 'flex', 'flex-col']
   if (props.contentBorder) {
-    classes.push('border-r-4', 'border-white/10', 'p-8')
+    classes.push('border-r-4', 'border-gray-200', 'p-8')
   } else if (props.contentPadding) {
     classes.push('p-8')
   }
@@ -93,24 +93,24 @@ const contentClasses = computed(() => {
         </div>
         <div :class="textClasses">
           <div class="flex flex-col gap-4">
-            <h3 class="text-white text-4xl font-sentient font-medium text-balance">
+            <h3 class="text-gray-900 text-4xl font-sentient font-medium text-balance">
               {{ title }}
             </h3>
-            <p class="text-sm text-white/80">
+            <p class="text-sm text-gray-700">
               {{ description }}
             </p>
           </div>
-          <div class="h-1 w-full bg-white/5"></div>
+          <div class="h-1 w-full bg-gray-100"></div>
           <ol class="flex flex-col gap-4 rounded-lg">
             <li
               v-for="(item, index) in items"
               :key="index"
               class="flex gap-2 items-center text-sm"
             >
-              <span class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono">
+              <span class="border border-gray-200 rounded-full px-2 py-0.5 text-gray-700 flex items-center font-mono">
                 {{ index + 1 }}
               </span>
-              <span class="text-white/80 font-dm">{{ item }}</span>
+              <span class="text-gray-700 font-dm">{{ item }}</span>
             </li>
           </ol>
         </div>
@@ -120,24 +120,24 @@ const contentClasses = computed(() => {
       <template v-else>
         <div :class="textClasses">
           <div class="flex flex-col gap-4">
-            <h3 class="text-white text-4xl font-sentient font-medium text-balance">
+            <h3 class="text-gray-900 text-4xl font-sentient font-medium text-balance">
               {{ title }}
             </h3>
-            <p class="text-sm text-white/80">
+            <p class="text-sm text-gray-700">
               {{ description }}
             </p>
           </div>
-          <div class="h-1 w-full bg-white/5"></div>
+          <div class="h-1 w-full bg-gray-100"></div>
           <ol class="flex flex-col gap-4 rounded-lg">
             <li
               v-for="(item, index) in items"
               :key="index"
               class="flex gap-2 items-center text-sm"
             >
-              <span class="border border-white/10 rounded-full px-2 py-0.5 text-white/80 flex items-center font-mono">
+              <span class="border border-gray-200 rounded-full px-2 py-0.5 text-gray-700 flex items-center font-mono">
                 {{ index + 1 }}
               </span>
-              <span class="text-white/80 font-dm">{{ item }}</span>
+              <span class="text-gray-700 font-dm">{{ item }}</span>
             </li>
           </ol>
         </div>

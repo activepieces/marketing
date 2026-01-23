@@ -15,7 +15,7 @@
           width: PILL_WIDTH + 'px',
           height: PILL_HEIGHT + 'px',
           backgroundColor: 'transparent',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
+          border: '1px solid rgba(0, 0, 0, 0.1)',
         }"
       />
 

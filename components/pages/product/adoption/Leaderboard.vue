@@ -2,10 +2,10 @@
   <div class="relative w-full h-full">
     <!-- Main container with Safari browser chrome -->
     <div
-      class="relative rounded-lg overflow-hidden h-full flex flex-col bg-black/20"
+      class="relative rounded-lg overflow-hidden h-full flex flex-col bg-gray-50"
     >
       <!-- Safari Browser Top Bar -->
-      <div class="bg-white/10 px-3 py-2 flex-shrink-0">
+      <div class="bg-gray-100 px-3 py-2 flex-shrink-0">
         <!-- Traffic lights -->
         <div class="flex items-center gap-1.5 mb-2">
           <div class="w-2.5 h-2.5 rounded-full bg-red-400"></div>
@@ -13,9 +13,9 @@
           <div class="w-2.5 h-2.5 rounded-full bg-green-400"></div>
         </div>
         <!-- Address bar -->
-        <div class="bg-black/10 rounded-md py-1.5 px-2 flex items-center gap-2">
-          <div class="w-4 h-4 rounded bg-white/10 flex-shrink-0"></div>
-          <div class="h-2.5 flex-1 bg-white/10 rounded"></div>
+        <div class="bg-gray-200 rounded-md py-1.5 px-2 flex items-center gap-2">
+          <div class="w-4 h-4 rounded bg-gray-300 flex-shrink-0"></div>
+          <div class="h-2.5 flex-1 bg-gray-300 rounded"></div>
         </div>
       </div>
 
@@ -58,28 +58,28 @@
 
           <!-- Placeholder leaderboard (blurred/faded) -->
           <div
-            class="absolute inset-4 rounded-md bg-white/5 backdrop-blur-sm border border-white/10 overflow-hidden"
+            class="absolute inset-4 rounded-md bg-gray-100 backdrop-blur-sm border border-gray-200 overflow-hidden"
           >
             <div class="p-4 space-y-3 opacity-40">
               <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-full bg-white/10"></div>
-                <div class="h-3 bg-white/10 rounded w-24"></div>
-                <div class="ml-auto h-3 bg-white/10 rounded w-12"></div>
+                <div class="w-8 h-8 rounded-full bg-gray-200"></div>
+                <div class="h-3 bg-gray-200 rounded w-24"></div>
+                <div class="ml-auto h-3 bg-gray-200 rounded w-12"></div>
               </div>
               <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-full bg-white/10"></div>
-                <div class="h-3 bg-white/10 rounded w-20"></div>
-                <div class="ml-auto h-3 bg-white/10 rounded w-10"></div>
+                <div class="w-8 h-8 rounded-full bg-gray-200"></div>
+                <div class="h-3 bg-gray-200 rounded w-20"></div>
+                <div class="ml-auto h-3 bg-gray-200 rounded w-10"></div>
               </div>
               <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-full bg-white/10"></div>
-                <div class="h-3 bg-white/10 rounded w-28"></div>
-                <div class="ml-auto h-3 bg-white/10 rounded w-14"></div>
+                <div class="w-8 h-8 rounded-full bg-gray-200"></div>
+                <div class="h-3 bg-gray-200 rounded w-28"></div>
+                <div class="ml-auto h-3 bg-gray-200 rounded w-14"></div>
               </div>
               <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-full bg-white/10"></div>
-                <div class="h-3 bg-white/10 rounded w-16"></div>
-                <div class="ml-auto h-3 bg-white/10 rounded w-10"></div>
+                <div class="w-8 h-8 rounded-full bg-gray-200"></div>
+                <div class="h-3 bg-gray-200 rounded w-16"></div>
+                <div class="ml-auto h-3 bg-gray-200 rounded w-10"></div>
               </div>
             </div>
           </div>
@@ -92,12 +92,12 @@
                 weight="fill"
               />
             </div>
-            <p class="text-white/80 font-semibold text-lg mb-6">
+            <p class="text-gray-700 font-semibold text-lg mb-6">
               Enable Leaderboard
             </p>
             <button
               @click="isEnabled = true"
-              class="group relative w-24 h-12 rounded-full bg-gradient-to-r from-violet-500/30 to-purple-500/30 border border-white/20 transition-all duration-300 hover:from-violet-500/50 hover:to-purple-500/50 shadow-lg hover:shadow-xl hover:scale-105 toggle-pulse"
+              class="group relative w-24 h-12 rounded-full bg-gradient-to-r from-violet-500/30 to-purple-500/30 border border-gray-300 transition-all duration-300 hover:from-violet-500/50 hover:to-purple-500/50 shadow-lg hover:shadow-xl hover:scale-105 toggle-pulse"
             >
               <div
                 class="absolute top-1.5 left-1.5 w-9 h-9 rounded-full bg-white/90 shadow-md transition-all duration-300 group-hover:shadow-lg group-hover:shadow-violet-500/50 flex items-center justify-center knob-eager"
@@ -124,32 +124,32 @@
           <div class="flex items-center justify-between px-5 py-4">
             <div class="flex items-center gap-2">
               <PhTrophy class="w-5 h-5 text-amber-400" weight="fill" />
-              <span class="font-semibold text-white/80">Leaderboard</span>
+              <span class="font-semibold text-gray-700">Leaderboard</span>
               <span
-                class="relative px-2 py-0.5 text-[10px] font-semibold rounded-full overflow-hidden bg-white/10"
+                class="relative px-2 py-0.5 text-[10px] font-semibold rounded-full overflow-hidden bg-gray-100"
               >
                 <span
                   :key="progressKey"
                   class="absolute top-0 left-0 bottom-0 rounded-l-full bg-violet-500/50 week-progress"
                   :class="weekComplete ? 'w-full rounded-r-full' : ''"
                 ></span>
-                <span class="relative z-10 text-white/60">This Week</span>
+                <span class="relative z-10 text-gray-500">This Week</span>
               </span>
             </div>
             <div class="flex items-center gap-2">
               <button
                 @click="restartLeaderboard"
-                class="w-6 h-6 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-200 hover:rotate-180"
+                class="w-6 h-6 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-all duration-200 hover:rotate-180"
                 title="Restart"
               >
                 <PhArrowCounterClockwise
-                  class="w-3.5 h-3.5 text-white/60"
+                  class="w-3.5 h-3.5 text-gray-500"
                   weight="bold"
                 />
               </button>
               <button
                 @click="isEnabled = false"
-                class="relative w-11 h-6 rounded-full bg-violet-500/50 border border-white/20 transition-all duration-300 hover:bg-violet-500/70"
+                class="relative w-11 h-6 rounded-full bg-violet-500/50 border border-gray-300 transition-all duration-300 hover:bg-violet-500/70"
               >
                 <div
                   class="absolute top-0.5 right-0.5 w-5 h-5 rounded-full bg-white/90 shadow-sm transition-all duration-300"
@@ -163,7 +163,7 @@
             <!-- Bottom fade gradient -->
             <div
               v-if="!weekComplete"
-              class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/40 via-black/20 to-transparent pointer-events-none z-30"
+              class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-gray-100 via-gray-50/50 to-transparent pointer-events-none z-30"
             ></div>
             <!-- Celebration overlay (during race) -->
             <Transition name="celebration">
@@ -207,7 +207,7 @@
                 <div
                   v-for="(person, index) in leaderboardData"
                   :key="person.name"
-                  class="flex items-center gap-3 p-2.5 rounded-xl transition-all duration-500 hover:bg-white/10"
+                  class="flex items-center gap-3 p-2.5 rounded-xl transition-all duration-500 hover:bg-gray-100"
                 >
                   <!-- Rank -->
                   <div class="w-7 h-7 flex items-center justify-center">
@@ -218,7 +218,7 @@
                     />
                     <PhMedal
                       v-else-if="index === 1"
-                      class="w-6 h-6 text-gray-300"
+                      class="w-6 h-6 text-gray-400"
                       weight="fill"
                     />
                     <PhMedal
@@ -226,7 +226,7 @@
                       class="w-6 h-6 text-amber-600"
                       weight="fill"
                     />
-                    <span v-else class="text-xs font-medium text-white/40">{{
+                    <span v-else class="text-xs font-medium text-gray-400">{{
                       index + 1
                     }}</span>
                   </div>
@@ -241,16 +241,16 @@
 
                   <!-- Name & Department -->
                   <div class="flex-1 min-w-0">
-                    <p class="font-medium text-white/80 text-sm truncate">
+                    <p class="font-medium text-gray-700 text-sm truncate">
                       {{ person.name }}
                     </p>
-                    <p class="text-xs text-white/40">{{ person.dept }}</p>
+                    <p class="text-xs text-gray-400">{{ person.dept }}</p>
                   </div>
 
                   <!-- Stats -->
                   <div class="text-right">
                     <p
-                      class="font-bold text-white/80 text-sm tabular-nums"
+                      class="font-bold text-gray-700 text-sm tabular-nums"
                       :class="
                         updatedNumbers[person.name + '-hours']
                           ? 'number-flip'
@@ -259,13 +259,13 @@
                     >
                       {{ formatHours(person.hours) }}
                     </p>
-                    <p class="text-[10px] text-white/40">saved</p>
+                    <p class="text-[10px] text-gray-400">saved</p>
                   </div>
 
                   <!-- Flows -->
                   <div class="text-right min-w-[40px]">
                     <p
-                      class="font-bold text-white/80 text-sm tabular-nums"
+                      class="font-bold text-gray-700 text-sm tabular-nums"
                       :class="
                         updatedNumbers[person.name + '-flows']
                           ? 'number-flip'
@@ -274,7 +274,7 @@
                     >
                       {{ person.flows }}
                     </p>
-                    <p class="text-[10px] text-white/40">flows</p>
+                    <p class="text-[10px] text-gray-400">flows</p>
                   </div>
                 </div>
               </TransitionGroup>
@@ -321,20 +321,20 @@
                       {{ customWinnerInitials || leaderboardData[1]?.initials }}
                     </div>
                     <p
-                      class="font-medium text-white/80 text-sm max-w-[70px] truncate"
+                      class="font-medium text-gray-700 text-sm max-w-[70px] truncate"
                     >
                       {{
                         customWinnerName ||
                         leaderboardData[1]?.name?.split(" ")[0]
                       }}
                     </p>
-                    <p class="text-xs text-white/40 mb-2">
+                    <p class="text-xs text-gray-400 mb-2">
                       {{ formatHours(leaderboardData[1]?.hours) }}
                     </p>
                     <div
-                      class="w-16 h-16 bg-white/10 border border-white/20 rounded-t-lg flex items-center justify-center"
+                      class="w-16 h-16 bg-gray-100 border border-gray-200 rounded-t-lg flex items-center justify-center"
                     >
-                      <PhMedal class="w-8 h-8 text-gray-300" weight="fill" />
+                      <PhMedal class="w-8 h-8 text-gray-400" weight="fill" />
                     </div>
                   </div>
 
@@ -371,13 +371,13 @@
                         >
                       </div>
                     </div>
-                    <p class="font-bold text-white max-w-[80px] truncate">
+                    <p class="font-bold text-gray-900 max-w-[80px] truncate">
                       {{
                         customWinnerName ||
                         leaderboardData[0]?.name?.split(" ")[0]
                       }}
                     </p>
-                    <p class="text-xs text-white/40 mb-2">
+                    <p class="text-xs text-gray-400 mb-2">
                       {{ formatHours(leaderboardData[0]?.hours) }}
                     </p>
                     <div
@@ -399,18 +399,18 @@
                       {{ customWinnerInitials || leaderboardData[2]?.initials }}
                     </div>
                     <p
-                      class="font-medium text-white/80 text-sm max-w-[70px] truncate"
+                      class="font-medium text-gray-700 text-sm max-w-[70px] truncate"
                     >
                       {{
                         customWinnerName ||
                         leaderboardData[2]?.name?.split(" ")[0]
                       }}
                     </p>
-                    <p class="text-xs text-white/40 mb-2">
+                    <p class="text-xs text-gray-400 mb-2">
                       {{ formatHours(leaderboardData[2]?.hours) }}
                     </p>
                     <div
-                      class="w-16 h-12 bg-white/10 border border-white/20 rounded-t-lg flex items-center justify-center"
+                      class="w-16 h-12 bg-gray-100 border border-gray-200 rounded-t-lg flex items-center justify-center"
                     >
                       <PhMedal class="w-7 h-7 text-amber-600" weight="fill" />
                     </div>
@@ -432,7 +432,7 @@
             "
           >
             <div
-              class="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl shadow-2xl p-5 w-[220px]"
+              class="bg-gray-100 backdrop-blur-lg border border-gray-200 rounded-2xl shadow-2xl p-5 w-[220px]"
             >
               <input
                 ref="nameInputRef"
@@ -440,7 +440,7 @@
                 @keyup.enter="setCustomName"
                 type="text"
                 placeholder="Enter your name..."
-                class="w-full px-4 py-3 text-sm bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-violet-400 mb-3 text-center text-white placeholder-white/40"
+                class="w-full px-4 py-3 text-sm bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-violet-400 mb-3 text-center text-gray-900 placeholder-gray-400"
               />
               <button
                 @click="setCustomName"

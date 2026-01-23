@@ -8,19 +8,19 @@
         style="width: 160px"
       >
         <div class="text-center">
-          <div class="text-xs text-white/40 mb-3">
+          <div class="text-xs text-gray-500 mb-3">
             Taking you back to<br />Impact Analytics
           </div>
           <div
             class="text-[110px] font-light tabular-nums leading-none transition-colors duration-300"
-            :class="countdownPaused ? 'text-violet-400' : 'text-white/30'"
+            :class="countdownPaused ? 'text-violet-500' : 'text-gray-400'"
           >
             {{ sneakyCountdown }}
           </div>
           <button
             @click="toggleCountdownPause"
-            class="mt-4 flex items-center justify-center gap-2 mx-auto px-4 py-2 rounded-lg transition-all duration-200 hover:bg-white/10"
-            :class="countdownPaused ? 'text-violet-400' : 'text-white/50'"
+            class="mt-4 flex items-center justify-center gap-2 mx-auto px-4 py-2 rounded-lg transition-all duration-200 hover:bg-gray-100"
+            :class="countdownPaused ? 'text-violet-500' : 'text-gray-500'"
           >
             <PhPlay v-if="countdownPaused" class="w-4 h-4" weight="fill" />
             <PhPause v-else class="w-4 h-4" weight="fill" />
@@ -33,17 +33,17 @@
 
       <!-- Modern Notes window - center-left -->
       <div
-        class="absolute bg-black/40 backdrop-blur-lg border border-white/10 rounded-xl overflow-hidden sneaky-window-1"
+        class="absolute bg-white/80 backdrop-blur-lg border border-gray-200 rounded-xl overflow-hidden sneaky-window-1"
         style="
           width: 260px;
           top: 8%;
           left: 280px;
-          box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
         "
       >
         <!-- Clean titlebar -->
         <div
-          class="bg-white/10 px-3 py-2 flex items-center border-b border-white/10"
+          class="bg-gray-100 px-3 py-2 flex items-center border-b border-gray-200"
         >
           <div class="flex gap-1.5">
             <div class="w-2.5 h-2.5 rounded-full bg-red-400"></div>
@@ -51,55 +51,55 @@
             <div class="w-2.5 h-2.5 rounded-full bg-green-400"></div>
           </div>
           <div class="flex-1 text-center">
-            <span class="text-[11px] font-medium text-white/40">Notes</span>
+            <span class="text-[11px] font-medium text-gray-500">Notes</span>
           </div>
           <div class="w-12"></div>
         </div>
         <!-- Notes content - larger text -->
         <div class="p-5" style="min-height: 380px">
-          <h3 class="text-base font-semibold text-white/90 mb-5">
+          <h3 class="text-base font-semibold text-gray-900 mb-5">
             Why Activepieces wins
           </h3>
           <div class="space-y-5">
             <div class="flex items-start gap-3">
               <PhX
-                class="w-4 h-4 text-red-400 mt-1 flex-shrink-0"
+                class="w-4 h-4 text-red-500 mt-1 flex-shrink-0"
                 weight="bold"
               />
               <div>
-                <p class="font-medium text-white/80 text-[15px]">n8n</p>
-                <p class="text-white/50 text-sm">Engineers only.</p>
+                <p class="font-medium text-gray-800 text-[15px]">n8n</p>
+                <p class="text-gray-500 text-sm">Engineers only.</p>
               </div>
             </div>
             <div class="flex items-start gap-3">
               <PhX
-                class="w-4 h-4 text-red-400 mt-1 flex-shrink-0"
+                class="w-4 h-4 text-red-500 mt-1 flex-shrink-0"
                 weight="bold"
               />
               <div>
-                <p class="font-medium text-white/80 text-[15px]">Zapier</p>
-                <p class="text-white/50 text-sm">Cloud-only. No onboarding.</p>
+                <p class="font-medium text-gray-800 text-[15px]">Zapier</p>
+                <p class="text-gray-500 text-sm">Cloud-only. No onboarding.</p>
               </div>
             </div>
             <div
-              class="flex items-start gap-3 mt-6 pt-5 border-t border-white/10"
+              class="flex items-start gap-3 mt-6 pt-5 border-t border-gray-200"
             >
               <PhCheck
-                class="w-4 h-4 text-emerald-400 mt-1 flex-shrink-0"
+                class="w-4 h-4 text-emerald-500 mt-1 flex-shrink-0"
                 weight="bold"
               />
               <div>
-                <p class="font-medium text-violet-400 text-[15px]">
+                <p class="font-medium text-violet-600 text-[15px]">
                   Activepieces
                 </p>
-                <p class="text-white/50 text-sm">
+                <p class="text-gray-500 text-sm">
                   Self-host or cloud. Built for orgs. We train your teams.
                 </p>
               </div>
             </div>
           </div>
-          <div class="mt-6 pt-5 border-t border-white/10">
-            <p class="text-base font-medium text-violet-400">
+          <div class="mt-6 pt-5 border-t border-gray-200">
+            <p class="text-base font-medium text-violet-600">
               The complete package.
             </p>
           </div>
@@ -108,16 +108,16 @@
 
       <!-- n8n.com window - next to notes, top -->
       <div
-        class="absolute bg-black/40 backdrop-blur-lg border border-white/10 rounded-xl overflow-hidden sneaky-window-2"
+        class="absolute bg-white/80 backdrop-blur-lg border border-gray-200 rounded-xl overflow-hidden sneaky-window-2"
         style="
           width: 280px;
           top: 3%;
           left: 570px;
-          box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.15);
         "
       >
         <div
-          class="bg-white/10 px-3 py-2 flex items-center gap-1.5 border-b border-white/10"
+          class="bg-gray-100 px-3 py-2 flex items-center gap-1.5 border-b border-gray-200"
         >
           <div class="flex gap-1.5">
             <div class="w-2.5 h-2.5 rounded-full bg-red-400"></div>
@@ -126,7 +126,7 @@
           </div>
           <div class="flex-1 flex justify-center">
             <div
-              class="bg-black/20 rounded px-3 py-0.5 text-[10px] text-white/50 border border-white/10"
+              class="bg-gray-200 rounded px-3 py-0.5 text-[10px] text-gray-500 border border-gray-300"
             >
               n8n.io
             </div>
@@ -155,16 +155,16 @@
 
       <!-- zapier.com window - next to notes, bottom, slightly offset right -->
       <div
-        class="absolute bg-black/40 backdrop-blur-lg border border-white/10 rounded-xl overflow-hidden sneaky-window-3"
+        class="absolute bg-white/80 backdrop-blur-lg border border-gray-200 rounded-xl overflow-hidden sneaky-window-3"
         style="
           width: 280px;
           bottom: 10%;
           left: 600px;
-          box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.15);
         "
       >
         <div
-          class="bg-white/10 px-3 py-2 flex items-center gap-1.5 border-b border-white/10"
+          class="bg-gray-100 px-3 py-2 flex items-center gap-1.5 border-b border-gray-200"
         >
           <div class="flex gap-1.5">
             <div class="w-2.5 h-2.5 rounded-full bg-red-400"></div>
@@ -173,7 +173,7 @@
           </div>
           <div class="flex-1 flex justify-center">
             <div
-              class="bg-black/20 rounded px-3 py-0.5 text-[10px] text-white/50 border border-white/10"
+              class="bg-gray-200 rounded px-3 py-0.5 text-[10px] text-gray-500 border border-gray-300"
             >
               zapier.com
             </div>
@@ -205,10 +205,10 @@
     <Transition name="browser-close">
       <div
         v-if="!browserClosed"
-        class="w-full bg-black/10 rounded-xl relative overflow-hidden"
+        class="w-full bg-gray-100 rounded-xl relative overflow-hidden"
       >
         <!-- macOS-style window bar -->
-        <div class="bg-white/10 px-4 py-3 flex items-center gap-2">
+        <div class="bg-gray-200/80 px-4 py-3 flex items-center gap-2">
           <div class="flex gap-2 group/traffic">
             <div
               class="w-3 h-3 rounded-full bg-red-400 flex items-center justify-center cursor-pointer hover:bg-red-500 transition-colors relative"
@@ -251,7 +251,7 @@
           </div>
           <div class="flex-1 flex justify-center">
             <div
-              class="relative bg-black/20 rounded-md text-xs border border-white/10 cursor-text"
+              class="relative bg-gray-100 rounded-md text-xs border border-gray-300 cursor-text"
               style="min-width: 220px; height: 24px"
               @click="startEditingUrl"
             >
@@ -260,7 +260,7 @@
                 v-model="urlValue"
                 type="text"
                 spellcheck="false"
-                class="absolute inset-0 px-3 bg-transparent text-xs text-center text-white/60 rounded-md selection:bg-violet-500 selection:text-white"
+                class="absolute inset-0 px-3 bg-transparent text-xs text-center text-gray-600 rounded-md selection:bg-violet-500 selection:text-white"
                 style="outline: none; border: none"
                 @blur="cancelEditingUrl"
                 @keyup.enter="navigateUrl"
@@ -280,20 +280,20 @@
               class="absolute inset-0 bg-black/90 backdrop-blur-lg z-[100] flex flex-col items-center justify-center rounded-b-2xl overflow-hidden"
             >
               <div class="text-center">
-                <p class="text-white/40 text-lg font-medium tracking-wide mb-4">
+                <p class="text-gray-400 text-lg font-medium tracking-wide mb-4">
                   Wait wait wait
                 </p>
                 <h2
-                  class="text-4xl font-semibold text-white/90 tracking-tight mb-3"
+                  class="text-4xl font-semibold text-white tracking-tight mb-3"
                 >
                   This isn't Safari.
                 </h2>
-                <p class="text-xl text-white/40 font-light">
+                <p class="text-xl text-gray-400 font-light">
                   But we can automate your actual browser. Just saying.
                 </p>
 
                 <div class="mt-12">
-                  <p class="text-white/30 text-base tabular-nums">
+                  <p class="text-gray-500 text-base tabular-nums">
                     {{ countdown }}
                   </p>
                 </div>
@@ -356,13 +356,13 @@
               <div class="absolute inset-0 flex items-center justify-center">
                 <div class="text-center thief-center-pop">
                   <PhMaskHappy
-                    class="w-20 h-20 text-white mx-auto mb-4"
+                    class="w-20 h-20 text-gray-900 mx-auto mb-4"
                     weight="fill"
                   />
-                  <p class="text-white/90 text-3xl font-bold drop-shadow-lg">
+                  <p class="text-gray-900 text-3xl font-bold drop-shadow-lg">
                     Nobody saw anything...
                   </p>
-                  <p class="text-white/60 text-lg mt-2">
+                  <p class="text-gray-600 text-lg mt-2">
                     Your secret is safe with us
                   </p>
                 </div>
@@ -379,7 +379,7 @@
             >
               <!-- Hint to close -->
               <div
-                class="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/30 text-xs z-20"
+                class="absolute bottom-4 left-1/2 -translate-x-1/2 text-gray-500 text-xs z-20"
               >
                 click anywhere to close
               </div>
@@ -392,7 +392,7 @@
                   class="w-12 h-12 text-emerald-400 mx-auto mb-2"
                   weight="fill"
                 />
-                <h3 class="text-2xl font-bold text-white/90 mb-1">
+                <h3 class="text-2xl font-bold text-white mb-1">
                   12,400 Hours Saved
                 </h3>
                 <p class="text-emerald-400 text-xs">
@@ -426,7 +426,7 @@
                       <p
                         v-for="(item, iIdx) in section.items"
                         :key="iIdx"
-                        class="text-white/90 text-base"
+                        class="text-white text-base"
                       >
                         {{ item }}
                       </p>
@@ -435,7 +435,7 @@
 
                   <!-- Final message -->
                   <div class="py-20">
-                    <p class="text-2xl text-white/90 font-light mb-4">
+                    <p class="text-2xl text-white font-light mb-4">
                       The End
                     </p>
                     <p class="text-emerald-400 text-sm">
@@ -458,7 +458,7 @@
 
           <!-- Dashboard Header -->
           <div
-            class="px-6 py-4 border-b border-white/10 flex items-center justify-between"
+            class="px-6 py-4 border-b border-gray-200 flex items-center justify-between"
           >
             <div class="flex items-center gap-3">
               <div
@@ -467,10 +467,10 @@
                 <PhChartLineUp class="w-4 h-4 text-white" weight="fill" />
               </div>
               <div>
-                <h3 class="font-semibold text-white/90">
+                <h3 class="font-semibold text-gray-900">
                   AI Adoption Analytics
                 </h3>
-                <p class="text-xs text-white/40">
+                <p class="text-xs text-gray-500">
                   Real-time organization insights
                 </p>
               </div>
@@ -486,15 +486,15 @@
               </button>
               <button
                 @click="celebrateWins"
-                class="px-3 py-1.5 bg-white/10 border border-white/20 text-white/80 text-xs font-medium rounded-lg hover:bg-white/20 hover:border-white/30 transition-all flex items-center gap-1.5"
+                class="px-3 py-1.5 bg-gray-50 border border-gray-200 text-gray-700 text-xs font-medium rounded-lg hover:bg-gray-100 hover:border-gray-300 transition-all flex items-center gap-1.5"
               >
                 <PhConfetti class="w-4 h-4" weight="fill" />
                 <span>Celebrate</span>
               </button>
               <div
-                class="flex items-center gap-2 pl-3 border-l border-white/20"
+                class="flex items-center gap-2 pl-3 border-l border-gray-200"
               >
-                <span class="text-xs text-white/40">Live</span>
+                <span class="text-xs text-gray-500">Live</span>
                 <div
                   class="w-2 h-2 rounded-full bg-green-500 animate-pulse"
                 ></div>
@@ -508,7 +508,7 @@
             <Transition name="toast">
               <div
                 v-if="statMessage"
-                class="absolute top-24 left-1/2 -translate-x-1/2 bg-white/10 backdrop-blur-lg border border-white/20 text-white/90 px-4 py-2 rounded-full shadow-xl text-sm font-medium z-40"
+                class="absolute top-24 left-1/2 -translate-x-1/2 bg-gray-100 backdrop-blur-lg border border-gray-200 text-gray-900 px-4 py-2 rounded-full shadow-xl text-sm font-medium z-40"
               >
                 {{ statMessage }}
               </div>
@@ -519,7 +519,7 @@
               <div
                 v-for="(stat, index) in stats"
                 :key="stat.label"
-                class="relative group bg-white/5 rounded-2xl p-4 border border-white/10 hover:border-white/20 hover:bg-white/10 transition-all duration-300 cursor-pointer overflow-hidden"
+                class="relative group bg-gray-50 rounded-2xl p-4 border border-gray-200 hover:border-gray-300 hover:bg-gray-100 transition-all duration-300 cursor-pointer overflow-hidden"
                 :class="{
                   'ring-2 ring-offset-2 ring-offset-transparent':
                     clickedStat === index,
@@ -539,7 +539,7 @@
 
                 <div class="relative">
                   <div class="flex items-center justify-between mb-2">
-                    <span class="text-xs font-medium text-white/60">{{
+                    <span class="text-xs font-medium text-gray-500">{{
                       stat.label
                     }}</span>
                     <component
@@ -549,7 +549,7 @@
                       weight="fill"
                     />
                   </div>
-                  <div class="text-2xl font-bold text-white/90 tabular-nums">
+                  <div class="text-2xl font-bold text-gray-900 tabular-nums">
                     <span
                       class="stat-number"
                       :style="{ color: activeStat === index ? stat.color : '' }"
@@ -562,13 +562,13 @@
                     <span
                       class="text-xs font-medium"
                       :class="
-                        stat.trend > 0 ? 'text-emerald-400' : 'text-red-400'
+                        stat.trend > 0 ? 'text-emerald-500' : 'text-red-500'
                       "
                     >
                       {{ stat.trend > 0 ? "↑" : "↓" }}
                       {{ Math.abs(stat.trend) }}%
                     </span>
-                    <span class="text-xs text-white/40">vs last month</span>
+                    <span class="text-xs text-gray-500">vs last month</span>
                   </div>
                 </div>
               </div>
@@ -578,10 +578,10 @@
             <div class="grid grid-cols-3 gap-4 mb-6">
               <!-- Main Chart -->
               <div
-                class="col-span-2 bg-white/5 rounded-2xl p-5 border border-white/10"
+                class="col-span-2 bg-gray-50 rounded-2xl p-5 border border-gray-200"
               >
                 <div class="flex items-center justify-between mb-4">
-                  <h4 class="font-semibold text-white/90">Adoption Growth</h4>
+                  <h4 class="font-semibold text-gray-900">Adoption Growth</h4>
                   <div class="flex gap-1">
                     <button
                       v-for="period in ['W', 'M', 'Q', 'Y']"
@@ -589,8 +589,8 @@
                       class="px-2 py-1 text-xs rounded-md transition-colors"
                       :class="
                         selectedPeriod === period
-                          ? 'bg-violet-500/30 text-violet-300'
-                          : 'text-white/40 hover:text-white/60'
+                          ? 'bg-violet-500/30 text-violet-600'
+                          : 'text-gray-500 hover:text-gray-700'
                       "
                       @click="selectedPeriod = period"
                     >
@@ -625,7 +625,7 @@
                     </linearGradient>
                   </defs>
                   <!-- Grid lines -->
-                  <g class="text-white/10">
+                  <g class="text-gray-300">
                     <line
                       x1="0"
                       y1="37.5"
@@ -685,7 +685,7 @@
                   />
                 </svg>
                 <!-- X-axis labels -->
-                <div class="flex justify-between mt-2 text-xs text-white/40">
+                <div class="flex justify-between mt-2 text-xs text-gray-500">
                   <span>Jan</span>
                   <span>Feb</span>
                   <span>Mar</span>
@@ -698,10 +698,10 @@
               <!-- Department Breakdown -->
               <div
                 ref="deptContainer"
-                class="bg-white/5 rounded-2xl p-5 border border-white/10 relative overflow-hidden"
+                class="bg-gray-50 rounded-2xl p-5 border border-gray-200 relative overflow-hidden"
               >
                 <div class="flex items-center justify-between mb-4">
-                  <h4 class="font-semibold text-white/90">By Department</h4>
+                  <h4 class="font-semibold text-gray-900">By Department</h4>
                 </div>
 
                 <div class="space-y-3">
@@ -723,16 +723,16 @@
                       class="absolute inset-0 border-2 border-dashed rounded-lg transition-all duration-150 flex items-center justify-center z-10"
                       :class="
                         isOverDropZone
-                          ? 'border-violet-400 bg-violet-500/30'
-                          : 'border-violet-500/50 bg-violet-500/10'
+                          ? 'border-violet-500 bg-violet-500/20'
+                          : 'border-violet-400 bg-violet-500/10'
                       "
                     >
                       <span
                         class="text-xs font-medium transition-all"
                         :class="
                           isOverDropZone
-                            ? 'text-violet-300 scale-110'
-                            : 'text-violet-400'
+                            ? 'text-violet-600 scale-110'
+                            : 'text-violet-500'
                         "
                       >
                         {{
@@ -747,12 +747,12 @@
                       <!-- Drag indicator outside to the left -->
                       <span
                         v-if="index !== 0"
-                        class="absolute -left-4 top-1/2 -translate-y-1/2 text-white/30 opacity-0 group-hover:opacity-100 transition-opacity"
+                        class="absolute -left-4 top-1/2 -translate-y-1/2 text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity"
                         >⠿</span
                       >
                       <div class="flex items-center gap-1.5">
                         <span
-                          class="text-sm text-white/60 group-hover:text-white/90 transition-colors"
+                          class="text-sm text-gray-600 group-hover:text-gray-900 transition-colors"
                           >{{ dept.name }}</span
                         >
                         <PhTrophy
@@ -764,7 +764,7 @@
                       <span
                         class="text-sm font-semibold transition-all duration-500"
                         :class="
-                          dept.promoted ? 'text-violet-400' : 'text-white/90'
+                          dept.promoted ? 'text-violet-600' : 'text-gray-900'
                         "
                       >
                         {{
@@ -774,7 +774,7 @@
                         }}
                       </span>
                     </div>
-                    <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                    <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
                       <div
                         class="h-full rounded-full transition-all duration-500"
                         :class="hoveredDept === dept.name ? 'scale-y-150' : ''"
@@ -817,32 +817,32 @@
             <div class="grid grid-cols-3 gap-4">
               <!-- Activity Feed -->
               <div
-                class="col-span-2 bg-white/5 rounded-2xl p-5 border border-white/10"
+                class="col-span-2 bg-gray-50 rounded-2xl p-5 border border-gray-200"
               >
-                <h4 class="font-semibold text-white/90 mb-4">
+                <h4 class="font-semibold text-gray-900 mb-4">
                   Recent Activity
                 </h4>
                 <div class="space-y-3">
                   <div
                     v-for="(activity, index) in activities"
                     :key="index"
-                    class="flex items-center gap-3 p-2 rounded-xl hover:bg-white/10 transition-colors group"
+                    class="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-100 transition-colors group"
                     :class="{ 'activity-enter': activityAnimating === index }"
                   >
                     <div
-                      class="w-8 h-8 rounded-full flex items-center justify-center text-sm flex-shrink-0 text-white/80 font-medium"
+                      class="w-8 h-8 rounded-full flex items-center justify-center text-sm flex-shrink-0 text-gray-700 font-medium"
                       :style="{ background: activity.bgColor }"
                     >
                       {{ activity.avatar }}
                     </div>
                     <div class="flex-1 min-w-0">
-                      <p class="text-sm text-white/80 truncate">
+                      <p class="text-sm text-gray-700 truncate">
                         <span class="font-medium">{{ activity.user }}</span>
-                        <span class="text-white/50">
+                        <span class="text-gray-500">
                           {{ activity.action }}</span
                         >
                       </p>
-                      <p class="text-xs text-white/40">{{ activity.time }}</p>
+                      <p class="text-xs text-gray-500">{{ activity.time }}</p>
                     </div>
                     <component
                       :is="activity.iconComponent"
@@ -859,8 +859,8 @@
                 class="bg-gradient-to-br from-amber-500/10 to-orange-500/10 rounded-2xl p-5 border border-amber-500/20"
               >
                 <div class="flex items-center gap-2 mb-4">
-                  <PhTrophy class="w-5 h-5 text-amber-400" weight="fill" />
-                  <h4 class="font-semibold text-white/90">Top Builders</h4>
+                  <PhTrophy class="w-5 h-5 text-amber-500" weight="fill" />
+                  <h4 class="font-semibold text-gray-900">Top Builders</h4>
                 </div>
                 <div class="space-y-3">
                   <div
@@ -873,9 +873,9 @@
                         class="w-5 h-5"
                         :class="
                           index === 0
-                            ? 'text-amber-400'
+                            ? 'text-amber-500'
                             : index === 1
-                              ? 'text-gray-300'
+                              ? 'text-gray-400'
                               : 'text-amber-600'
                         "
                         weight="fill"
@@ -888,10 +888,10 @@
                       {{ builder.initials }}
                     </div>
                     <div class="flex-1">
-                      <p class="text-sm font-medium text-white/90">
+                      <p class="text-sm font-medium text-gray-900">
                         {{ builder.name }}
                       </p>
-                      <p class="text-xs text-white/50">
+                      <p class="text-xs text-gray-500">
                         {{ builder.flows }} flows
                       </p>
                     </div>
@@ -925,7 +925,7 @@
                 class="absolute inset-0 bg-black/70 backdrop-blur-lg flex items-center justify-center z-50 p-4"
               >
                 <div
-                  class="bg-black/40 backdrop-blur-lg border border-white/10 rounded-3xl shadow-2xl max-w-xl w-full boss-report-enter overflow-hidden"
+                  class="bg-white/90 backdrop-blur-lg border border-gray-200 rounded-3xl shadow-2xl max-w-xl w-full boss-report-enter overflow-hidden"
                 >
                   <!-- Header -->
                   <div
@@ -953,32 +953,32 @@
                   <!-- Email Preview -->
                   <div class="p-6">
                     <div
-                      class="bg-white/5 rounded-2xl p-5 mb-5 border border-white/10"
+                      class="bg-gray-50 rounded-2xl p-5 mb-5 border border-gray-200"
                     >
                       <div
-                        class="flex items-center gap-2 text-xs text-white/40 mb-1"
+                        class="flex items-center gap-2 text-xs text-gray-500 mb-1"
                       >
                         <span>To:</span>
                         <span
-                          class="bg-white/10 px-2 py-0.5 rounded text-white/60"
+                          class="bg-gray-100 px-2 py-0.5 rounded text-gray-600"
                           >best-boss-ever@company.com</span
                         >
                       </div>
                       <div
-                        class="flex items-center gap-2 text-xs text-white/40 mb-4"
+                        class="flex items-center gap-2 text-xs text-gray-500 mb-4"
                       >
                         <span>Subject:</span>
-                        <span class="text-white/80 font-medium"
+                        <span class="text-gray-800 font-medium"
                           >Re: About that raise we discussed...</span
                         >
                       </div>
 
                       <div
-                        class="text-sm text-white/80 space-y-3 leading-relaxed"
+                        class="text-sm text-gray-700 space-y-3 leading-relaxed"
                       >
                         <p>
                           Dear
-                          <span class="text-pink-400 font-medium"
+                          <span class="text-pink-500 font-medium"
                             >World's Greatest Boss</span
                           >,
                         </p>
@@ -996,23 +996,23 @@
                         </p>
 
                         <div
-                          class="bg-white/5 rounded-xl p-4 border border-white/10 space-y-2"
+                          class="bg-gray-100 rounded-xl p-4 border border-gray-200 space-y-2"
                         >
                           <div class="flex justify-between items-center">
-                            <span class="text-white/50">People using AI</span>
-                            <span class="font-bold text-violet-400"
+                            <span class="text-gray-500">People using AI</span>
+                            <span class="font-bold text-violet-600"
                               >847 humans</span
                             >
                           </div>
                           <div class="flex justify-between items-center">
-                            <span class="text-white/50">Hours saved</span>
-                            <span class="font-bold text-emerald-400"
+                            <span class="text-gray-500">Hours saved</span>
+                            <span class="font-bold text-emerald-500"
                               >12,400h (that's like 516 days btw)</span
                             >
                           </div>
                           <div class="flex justify-between items-center">
-                            <span class="text-white/50">Adoption rate</span>
-                            <span class="font-bold text-amber-400"
+                            <span class="text-gray-500">Adoption rate</span>
+                            <span class="font-bold text-amber-500"
                               >94% (basically everyone)</span
                             >
                           </div>
@@ -1023,7 +1023,7 @@
                           really does.
                         </p>
 
-                        <p class="text-white/50 italic">
+                        <p class="text-gray-500 italic">
                           Anyway, no pressure on the raise thing. Just thought
                           you should know we're absolutely crushing it over
                           here. No big deal.
@@ -1048,7 +1048,7 @@
                       </button>
                       <button
                         @click="showBossReport = false"
-                        class="px-5 py-3 bg-white/10 border border-white/20 text-white/70 font-medium rounded-xl hover:bg-white/20 transition-all text-sm"
+                        class="px-5 py-3 bg-gray-100 border border-gray-200 text-gray-600 font-medium rounded-xl hover:bg-gray-200 transition-all text-sm"
                       >
                         I'm Scared
                       </button>
@@ -1062,10 +1062,10 @@
             <Transition name="toast">
               <div
                 v-if="showSentToast"
-                class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white/10 backdrop-blur-lg border border-white/20 text-white px-6 py-3 rounded-full shadow-xl flex items-center gap-3 z-50"
+                class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-gray-100 backdrop-blur-lg border border-gray-200 text-gray-900 px-6 py-3 rounded-full shadow-xl flex items-center gap-3 z-50"
               >
-                <PhCheck class="w-5 h-5 text-emerald-400" weight="bold" />
-                <span class="font-medium text-white/90"
+                <PhCheck class="w-5 h-5 text-emerald-500" weight="bold" />
+                <span class="font-medium text-gray-900"
                   >Sent! Now we wait... and maybe update LinkedIn just in
                   case</span
                 >

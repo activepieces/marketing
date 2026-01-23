@@ -1,10 +1,10 @@
 <template>
-  <div class="relative w-full h-full rounded-lg overflow-hidden bg-black/10">
+  <div class="relative w-full h-full rounded-lg overflow-hidden bg-gray-100">
     <!-- Subtle grid pattern -->
     <div
       class="absolute inset-0 opacity-[0.03]"
       style="
-        background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2220%22 height=%2220%22><rect fill=%22white%22 width=%221%22 height=%221%22/></svg>');
+        background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2220%22 height=%2220%22><rect fill=%22%23374151%22 width=%221%22 height=%221%22/></svg>');
         background-size: 20px 20px;
       "
     ></div>
@@ -42,7 +42,7 @@
           </div>
 
           <!-- Fun message -->
-          <p class="text-white/60 text-lg mb-6 italic flex items-center gap-2">
+          <p class="text-gray-600 text-lg mb-6 italic flex items-center gap-2">
             That satisfying feeling? Your team wants it too
             <PhHeart class="w-5 h-5 text-violet-400" weight="fill" />
           </p>
@@ -95,10 +95,10 @@
     <!-- START SCREEN -->
     <div
       v-if="!gameStarted"
-      class="absolute inset-0 z-40 overflow-hidden bg-black/20 flex flex-col"
+      class="absolute inset-0 z-40 overflow-hidden bg-gray-200 flex flex-col"
     >
       <!-- Safari Browser Top Bar -->
-      <div class="bg-white/10 px-3 py-2 flex-shrink-0">
+      <div class="bg-gray-100 px-3 py-2 flex-shrink-0">
         <!-- Traffic lights -->
         <div class="flex items-center gap-1.5 mb-2">
           <div class="w-2.5 h-2.5 rounded-full bg-red-400"></div>
@@ -106,9 +106,9 @@
           <div class="w-2.5 h-2.5 rounded-full bg-green-400"></div>
         </div>
         <!-- Address bar -->
-        <div class="bg-black/10 rounded-md py-1.5 px-2 flex items-center gap-2">
-          <div class="w-4 h-4 rounded bg-white/10 flex-shrink-0"></div>
-          <div class="h-2.5 flex-1 bg-white/10 rounded"></div>
+        <div class="bg-gray-200 rounded-md py-1.5 px-2 flex items-center gap-2">
+          <div class="w-4 h-4 rounded bg-gray-300 flex-shrink-0"></div>
+          <div class="h-2.5 flex-1 bg-gray-300 rounded"></div>
         </div>
       </div>
 
@@ -130,24 +130,24 @@
 
           <!-- Main badge circle -->
           <div
-            class="relative w-24 h-24 rounded-full bg-white/5 flex items-center justify-center"
+            class="relative w-24 h-24 rounded-full bg-gray-50 flex items-center justify-center"
           >
             <PhTrophy class="w-12 h-12 text-amber-400" weight="fill" />
           </div>
 
           <!-- Orbiting mini badges -->
           <div
-            class="absolute -top-6 -right-2 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center intro-orbit-1"
+            class="absolute -top-6 -right-2 w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center intro-orbit-1"
           >
             <PhStar class="w-4 h-4 text-yellow-400" weight="fill" />
           </div>
           <div
-            class="absolute -bottom-1 -left-8 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center intro-orbit-2"
+            class="absolute -bottom-1 -left-8 w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center intro-orbit-2"
           >
             <PhBrain class="w-4 h-4 text-pink-400" weight="fill" />
           </div>
           <div
-            class="absolute top-1/2 -right-10 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center intro-orbit-3"
+            class="absolute top-1/2 -right-10 w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center intro-orbit-3"
           >
             <PhBarbell class="w-4 h-4 text-blue-400" weight="fill" />
           </div>
@@ -155,21 +155,21 @@
 
         <!-- Text -->
         <div class="text-center mb-8">
-          <h1 class="text-2xl font-bold text-white/90 mb-2">
+          <h1 class="text-2xl font-bold text-gray-900 mb-2">
             Badge Collection
           </h1>
-          <p class="text-white/50 text-sm">Unlock all 10 achievements</p>
+          <p class="text-gray-500 text-sm">Unlock all 10 achievements</p>
         </div>
 
         <!-- Start button -->
         <button
           @click="gameStarted = true"
-          class="group relative px-10 py-4 bg-white/10 text-white font-semibold rounded-full border border-white/10 transition-all shadow-2xl shadow-violet-500/30 hover:shadow-violet-500/50 hover:scale-105 overflow-hidden intro-btn-float"
+          class="group relative px-10 py-4 bg-gray-100 text-gray-900 font-semibold rounded-full border border-gray-200 transition-all shadow-2xl shadow-violet-500/30 hover:shadow-violet-500/50 hover:scale-105 overflow-hidden intro-btn-float"
         >
           <span class="relative z-10">Start Collecting</span>
           <!-- Shine effect -->
           <div
-            class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent intro-btn-shine"
+            class="absolute inset-0 bg-gradient-to-r from-transparent via-gray-300/30 to-transparent intro-btn-shine"
           ></div>
         </button>
       </div>
@@ -181,9 +181,9 @@
       class="relative h-full flex flex-col p-5"
     >
       <!-- Compact Question Area - Lighter background -->
-      <div class="bg-white/5 border border-white/10 rounded-xl p-4 mb-4">
+      <div class="bg-gray-50 border border-gray-200 rounded-xl p-4 mb-4">
         <!-- Difficulty Tabs -->
-        <div class="flex items-center gap-1 mb-3 pb-3 border-b border-white/5">
+        <div class="flex items-center gap-1 mb-3 pb-3 border-b border-gray-100">
           <button
             v-for="(mode, index) in difficultyModes"
             :key="mode.label"
@@ -192,7 +192,7 @@
             :class="
               difficulty === index
                 ? mode.activeClass
-                : 'text-white/60 hover:text-white/80 hover:bg-white/5'
+                : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
             "
           >
             {{ mode.label }}
@@ -231,17 +231,17 @@
               >
                 <PhWarning class="w-8 h-8 text-amber-400" weight="fill" />
               </div>
-              <h3 class="text-white font-black text-2xl mb-2">
+              <h3 class="text-gray-900 font-black text-2xl mb-2">
                 Reset progress?
               </h3>
-              <p class="text-red-200 text-sm mb-6">
+              <p class="text-red-700 text-sm mb-6">
                 All badges will be lost forever
               </p>
 
               <div class="flex gap-3 justify-center">
                 <button
                   @click="cancelDifficultyChange"
-                  class="px-5 py-2.5 bg-white/10 text-white text-sm font-semibold rounded-lg hover:bg-white/20 transition-all"
+                  class="px-5 py-2.5 bg-gray-100 text-gray-900 text-sm font-semibold rounded-lg hover:bg-gray-200 transition-all"
                 >
                   Cancel
                 </button>
@@ -288,13 +288,13 @@
               >
                 <PhDoor class="w-8 h-8 text-violet-400" weight="fill" />
               </div>
-              <h3 class="text-white font-black text-2xl mb-2">Leave game?</h3>
-              <p class="text-red-200 text-sm mb-6">Your badges will be gone!</p>
+              <h3 class="text-gray-900 font-black text-2xl mb-2">Leave game?</h3>
+              <p class="text-red-700 text-sm mb-6">Your badges will be gone!</p>
 
               <div class="flex gap-3 justify-center">
                 <button
                   @click="cancelReset"
-                  class="px-5 py-2.5 bg-white/10 text-white text-sm font-semibold rounded-lg hover:bg-white/20 transition-all"
+                  class="px-5 py-2.5 bg-gray-100 text-gray-900 text-sm font-semibold rounded-lg hover:bg-gray-200 transition-all"
                 >
                   Stay
                 </button>
@@ -312,7 +312,7 @@
         <div class="flex items-center justify-between gap-4">
           <!-- Question -->
           <div
-            class="font-bold text-white tracking-tight font-mono"
+            class="font-bold text-gray-900 tracking-tight font-mono"
             :class="questionSize"
           >
             <span v-html="currentQuestion"></span> =
@@ -330,9 +330,9 @@
               :class="[
                 selectedAnswer === option
                   ? option === correctAnswer
-                    ? 'bg-emerald-500/20 border-emerald-500 text-emerald-400'
-                    : 'bg-red-500/20 border-red-500 text-red-400 shake'
-                  : 'bg-white/5 border-white/10 text-white hover:border-violet-500/50 hover:bg-violet-500/10',
+                    ? 'bg-emerald-500/20 border-emerald-500 text-emerald-600'
+                    : 'bg-red-500/20 border-red-500 text-red-600 shake'
+                  : 'bg-gray-50 border-gray-200 text-gray-900 hover:border-violet-500/50 hover:bg-violet-500/10',
               ]"
             >
               {{ option }}
@@ -358,23 +358,23 @@
 
       <!-- Badges Section - Now the main focus -->
       <div
-        class="flex-1 flex flex-col bg-black/20 -mx-5 -mb-5 px-5 pb-5 pt-4 rounded-t-3xl"
+        class="flex-1 flex flex-col bg-gray-200 -mx-5 -mb-5 px-5 pb-5 pt-4 rounded-t-3xl"
       >
         <div class="flex items-center justify-between mb-3">
           <div class="flex items-center gap-2">
             <span
-              class="text-xs text-violet-300/70 uppercase tracking-wider font-medium flex items-center gap-1.5"
+              class="text-xs text-violet-600 uppercase tracking-wider font-medium flex items-center gap-1.5"
             >
               <PhTrophy class="w-3.5 h-3.5 text-amber-400" weight="fill" />
               Your Badges
             </span>
             <button
               @click="tryReset"
-              class="w-5 h-5 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-all hover:rotate-180 duration-300"
+              class="w-5 h-5 rounded-full bg-gray-50 hover:bg-gray-100 flex items-center justify-center transition-all hover:rotate-180 duration-300"
               title="Reset"
             >
               <svg
-                class="w-3 h-3 text-violet-300/50"
+                class="w-3 h-3 text-violet-500"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -390,13 +390,13 @@
           </div>
           <div class="relative group cursor-pointer" @click="cheatUnlockAll">
             <div
-              class="text-xs text-violet-300/70 font-mono group-hover:text-violet-300 transition-colors"
+              class="text-xs text-violet-600 font-mono group-hover:text-violet-700 transition-colors"
             >
               {{ unlockedCount }}/{{ badges.length }}
             </div>
             <!-- Secret cheat tooltip -->
             <div
-              class="absolute -top-7 left-1/2 -translate-x-1/2 px-2 py-1 bg-white/10 backdrop-blur-sm border border-white/20 text-white/80 text-[10px] font-bold rounded-full opacity-0 group-hover:opacity-100 transition-all scale-90 group-hover:scale-100 whitespace-nowrap pointer-events-none flex items-center gap-1"
+              class="absolute -top-7 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-100 backdrop-blur-sm border border-gray-200 text-gray-700 text-[10px] font-bold rounded-full opacity-0 group-hover:opacity-100 transition-all scale-90 group-hover:scale-100 whitespace-nowrap pointer-events-none flex items-center gap-1"
             >
               <PhMagicWand class="w-3 h-3" weight="fill" /> Cheat?
             </div>
@@ -415,8 +415,8 @@
               class="w-full h-full rounded-2xl flex flex-col items-center justify-center transition-all duration-300 cursor-pointer border gap-1"
               :class="[
                 badge.unlocked
-                  ? 'bg-white/10 border-white/20 hover:scale-105 hover:bg-white/15'
-                  : 'bg-white/[0.02] border-white/5 opacity-40',
+                  ? 'bg-gray-100 border-gray-200 hover:scale-105 hover:bg-gray-50'
+                  : 'bg-gray-50/50 border-gray-100 opacity-40',
               ]"
             >
               <component
@@ -426,7 +426,7 @@
                 :class="badge.color"
                 weight="fill"
               />
-              <PhQuestion v-else class="w-7 h-7 text-white/30" weight="fill" />
+              <PhQuestion v-else class="w-7 h-7 text-gray-400" weight="fill" />
               <span
                 class="text-[9px] text-gray-400 font-medium truncate max-w-full px-1"
               >
@@ -438,16 +438,16 @@
             <Transition name="tooltip">
               <div
                 v-if="hoveredBadge === badge.id"
-                class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-white/10 backdrop-blur-lg border border-white/20 text-white text-xs rounded-lg whitespace-nowrap z-50 shadow-xl"
+                class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-gray-100 backdrop-blur-lg border border-gray-200 text-gray-900 text-xs rounded-lg whitespace-nowrap z-50 shadow-xl"
               >
-                <div class="font-semibold text-white/90">
+                <div class="font-semibold text-gray-900">
                   {{ badge.unlocked ? badge.name : "???" }}
                 </div>
-                <div class="text-white/50 text-[10px]">
+                <div class="text-gray-500 text-[10px]">
                   {{ badge.unlocked ? badge.description : badge.hint }}
                 </div>
                 <div
-                  class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-white/10"
+                  class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-200"
                 ></div>
               </div>
             </Transition>
@@ -520,7 +520,7 @@
           <!-- Text -->
           <div class="space-y-1">
             <div
-              class="text-violet-300 text-xs font-medium uppercase tracking-widest flex items-center justify-center gap-1.5"
+              class="text-violet-400 text-xs font-medium uppercase tracking-widest flex items-center justify-center gap-1.5"
             >
               <PhTrophy class="w-4 h-4 text-amber-400" weight="fill" />
               Badge Unlocked!
@@ -528,7 +528,7 @@
             <div class="text-white font-bold text-2xl">
               {{ celebrationBadge?.name }}
             </div>
-            <div class="text-gray-400 text-sm">
+            <div class="text-gray-300 text-sm">
               {{ celebrationBadge?.description }}
             </div>
           </div>
