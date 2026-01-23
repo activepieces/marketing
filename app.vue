@@ -1,5 +1,6 @@
 <script setup>
 import "flowbite";
+import ContactWidget from "~/components/ContactWidget.vue";
 
 useHead({
   link: [
@@ -47,4 +48,5 @@ useHead({
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>
+  <ContactWidget />
 </template>

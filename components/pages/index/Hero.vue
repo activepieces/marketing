@@ -568,6 +568,7 @@ const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 const animate = (star) => {
   star.style.setProperty("--star-left", `${rand(-10, 100)}%`);
   star.style.setProperty("--star-top", `${rand(-20, 100)}%`);
+  star.style.opacity = "0.7";
   star.style.animation = "none";
   star.offsetHeight; // trigger reflow
   star.style.animation = "";
@@ -1373,10 +1374,11 @@ onBeforeUnmount(() => {
   animation: scale 700ms ease forwards;
   display: block;
   height: var(--size);
-  left: var(--star-left);
+  left: var(--star-left, -9999px);
   position: absolute;
-  top: var(--star-top);
+  top: var(--star-top, -9999px);
   width: var(--size);
+  opacity: 0;
 }
 
 .magical-text > .magic > .magic-star > svg {
@@ -1768,10 +1770,11 @@ onBeforeUnmount(() => {
   animation: scale 700ms ease forwards;
   display: block;
   height: var(--size);
-  left: var(--star-left);
+  left: var(--star-left, -9999px);
   position: absolute;
-  top: var(--star-top);
+  top: var(--star-top, -9999px);
   width: var(--size);
+  opacity: 0;
 }
 
 .magical-text > .magic > .magic-star > svg {
