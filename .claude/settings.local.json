@@ -38,7 +38,8 @@
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "mcp__chrome-devtools__list_network_requests",
-      "mcp__chrome-devtools__get_network_request"
+      "mcp__chrome-devtools__get_network_request",
+      "Bash(git reset:*)"
     ]
   }
 }
