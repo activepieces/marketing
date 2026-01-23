@@ -8,10 +8,10 @@
     </h3>
 
     <!-- Grid container -->
-    <div class="relative w-full flex items-center justify-center">
+    <div ref="gridContainer" class="relative w-full overflow-hidden">
       <div
         class="relative"
-        :style="{ width: shapeWidth + 'px', height: shapeHeight + 'px' }"
+        :style="{ width: '100%', height: gridHeight + 'px' }"
       >
         <!-- Background shapes (non-interactive) -->
         <div
@@ -86,14 +86,20 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, computed, onMounted, onUnmounted } from "vue";
 
 const hoveredSquare = ref(null);
+const gridContainer = ref(null);
+const containerWidth = ref(800); // Default width
 
 // Square cells for the grid
 const CELL_SIZE = 12;
 const CELL_GAP = 1;
 const CELL_STEP = CELL_SIZE + CELL_GAP; // 13px
+
+// Extra rows above and below the AI letters
+const EXTRA_ROWS_ABOVE = 2;
+const EXTRA_ROWS_BELOW = 2;
 
 const departments = [
   {
@@ -186,20 +192,16 @@ const ASCII_ART = [
   "@@@           @@@  @@@",
 ];
 
-const parseAsciiArt = () => {
-  const aiList = [];
-  const bgList = [];
-  const ASCII_WIDTH = Math.max(...ASCII_ART.map((row) => row.length));
-  const ASCII_HEIGHT = ASCII_ART.length;
+const ASCII_HEIGHT = ASCII_ART.length;
 
-  // Seeded random for consistent results
-  const seed = (s) => () => {
-    s = Math.sin(s) * 10000;
-    return s - Math.floor(s);
-  };
-  const rng = seed(123);
+// Seeded random for consistent results
+const createRng = (s) => () => {
+  s = Math.sin(s) * 10000;
+  return s - Math.floor(s);
+};
 
-  // Find global bounds of the @ characters
+// Find global bounds of the @ characters in ASCII art
+const getAsciiArtBounds = () => {
   let globalMinCol = Infinity;
   let globalMaxCol = -Infinity;
   for (let row = 0; row < ASCII_HEIGHT; row++) {
@@ -211,16 +213,47 @@ const parseAsciiArt = () => {
       }
     }
   }
+  return { globalMinCol, globalMaxCol };
+};
 
-  // Parse the ASCII art
+const { globalMinCol, globalMaxCol } = getAsciiArtBounds();
+const aiWidthInCols = globalMaxCol - globalMinCol + 1;
+
+// Parse ASCII art and generate full-width grid
+const parseFullWidthGrid = (totalCols) => {
+  const aiList = [];
+  const bgList = [];
+  const rng = createRng(123);
+
+  const totalRows = ASCII_HEIGHT + EXTRA_ROWS_ABOVE + EXTRA_ROWS_BELOW;
+
+  // Center the AI letters horizontally
+  const leftOffset = Math.floor((totalCols - aiWidthInCols) / 2);
+
+  // Build a set of AI positions for quick lookup
+  const aiPositions = new Set();
   for (let row = 0; row < ASCII_HEIGHT; row++) {
     const line = ASCII_ART[row];
     for (let col = globalMinCol; col <= globalMaxCol; col++) {
-      const x = (col - globalMinCol) * CELL_STEP;
-      const y = row * CELL_STEP;
       const char = col < line.length ? line[col] : " ";
-
       if (char === "@") {
+        // Grid row = ASCII row + extra rows above
+        const gridRow = row + EXTRA_ROWS_ABOVE;
+        // Grid col = ASCII col offset + left offset for centering
+        const gridCol = (col - globalMinCol) + leftOffset;
+        aiPositions.add(`${gridRow},${gridCol}`);
+      }
+    }
+  }
+
+  // Generate all grid cells
+  for (let row = 0; row < totalRows; row++) {
+    for (let col = 0; col < totalCols; col++) {
+      const x = col * CELL_STEP;
+      const y = row * CELL_STEP;
+      const key = `${row},${col}`;
+
+      if (aiPositions.has(key)) {
         // AI letter square (interactive)
         aiList.push({
           x,
@@ -235,18 +268,45 @@ const parseAsciiArt = () => {
     }
   }
 
-  const totalWidth = (globalMaxCol - globalMinCol + 1) * CELL_STEP;
-  const totalHeight = ASCII_HEIGHT * CELL_STEP;
+  const totalHeight = totalRows * CELL_STEP;
 
-  return { aiSquares: aiList, background: bgList, totalWidth, totalHeight };
+  return { aiSquares: aiList, background: bgList, totalHeight };
 };
 
-const {
-  aiSquares,
-  background: backgroundShapes,
-  totalWidth: shapeWidth,
-  totalHeight: shapeHeight,
-} = parseAsciiArt();
+// Computed values based on container width
+const totalCols = computed(() => {
+  return Math.floor(containerWidth.value / CELL_STEP);
+});
+
+const gridData = computed(() => {
+  return parseFullWidthGrid(totalCols.value);
+});
+
+const aiSquares = computed(() => gridData.value.aiSquares);
+const backgroundShapes = computed(() => gridData.value.background);
+const gridHeight = computed(() => gridData.value.totalHeight);
+
+// ResizeObserver to track container width
+let resizeObserver = null;
+
+onMounted(() => {
+  if (gridContainer.value) {
+    containerWidth.value = gridContainer.value.offsetWidth;
+
+    resizeObserver = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        containerWidth.value = entry.contentRect.width;
+      }
+    });
+    resizeObserver.observe(gridContainer.value);
+  }
+});
+
+onUnmounted(() => {
+  if (resizeObserver) {
+    resizeObserver.disconnect();
+  }
+});
 </script>
 
 <style scoped>
