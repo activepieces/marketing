@@ -11,20 +11,12 @@ onMounted(() => {
 </script>
 
 <template>
-  <section class="relative pt-16 md:pt-24 pb-36 md:pb-44 bg-[#050505]">
-    <!-- Decorative AI Background -->
-    <div class="absolute inset-0 pointer-events-none">
-      <!-- Subtle grid pattern -->
-      <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 50px 50px;"></div>
-      
-      <!-- Soft top glow - full width, feathered edges -->
-      <div class="absolute inset-x-0 top-0 h-[400px] opacity-[0.15]" style="background: radial-gradient(ellipse 80% 100% at 50% 0%, rgba(99, 102, 241, 0.4) 0%, transparent 70%);"></div>
-    </div>
+  <section class="relative pt-16 md:pt-24 pb-36 md:pb-44 bg-[#1d4348]">
 
     <div class="relative max-w-[1230px] mx-auto px-4">
       <!-- Section Header -->
       <div class="text-center mb-10 md:mb-14">
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight font-serif">
           Join teams shipping faster with AI
         </h2>
       </div>
@@ -204,10 +196,10 @@ onMounted(() => {
         <path class="scan-line-2" d="M0,15 Q600,70 1200,15" fill="none" stroke="url(#lineGlow)" stroke-width="1.5"/>
         <path class="scan-line-3" d="M0,25 Q600,85 1200,25" fill="none" stroke="url(#lineGlow)" stroke-width="2"/>
         
-        <!-- Dark base that fades up -->
-        <path 
-          d="M0,35 Q600,100 1200,35 L1200,140 L0,140 Z" 
-          fill="#09090b"
+        <!-- Teal base that fades up -->
+        <path
+          d="M0,35 Q600,100 1200,35 L1200,140 L0,140 Z"
+          fill="#1d4348"
         />
         
         <!-- Main bright line - the edge -->

@@ -3,12 +3,12 @@
 
 <template>
   <section class="pt-2 pb-4 bg-transparent mx-auto rounded-t-[20px]">
-    <div class="relative flex items-center gap-8">
-      <!-- Trusted by text -->
-      <span class="text-sm font-semibold text-white whitespace-nowrap">Trusted by AI leaders</span>
-      
+    <div class="relative flex flex-col items-center gap-4">
+      <!-- Trusted by text - centered above logos -->
+      <span class="text-xs font-semibold text-white/70 uppercase tracking-[0.2em] whitespace-nowrap">Trusted by AI leaders</span>
+
       <!-- Scrolling Logo Row with mask for fade edges -->
-      <div class="flex-1 relative overflow-hidden logo-scroll-container">
+      <div class="w-full relative overflow-hidden logo-scroll-container">
         <div class="flex animate-scroll items-center space-x-6 w-max brightness-0 invert">
         <div class="relative h-4">
           <img src="/logos/posthog.svg" alt="Posthog" class="m-auto h-4" />

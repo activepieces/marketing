@@ -39,7 +39,9 @@
       "Bash(git commit:*)",
       "mcp__chrome-devtools__list_network_requests",
       "mcp__chrome-devtools__get_network_request",
-      "Bash(git reset:*)"
+      "Bash(git reset:*)",
+      "mcp__figma-desktop__get_design_context",
+      "mcp__figma-desktop__get_screenshot"
     ]
   }
 }

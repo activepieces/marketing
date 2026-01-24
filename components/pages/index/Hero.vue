@@ -629,7 +629,7 @@ onBeforeUnmount(() => {
     <div class="relative z-20 mx-auto w-full max-w-[1920px] 3xl:overflow-clip">
       <div class="main-bg-section relative w-full max-w-full overflow-hidden">
         <div class="absolute inset-0 overflow-hidden">
-          <div 
+          <div
             class="hero-parallax-bg absolute w-full transition-opacity duration-300"
             :style="{
               backgroundImage: `url(/${currentBackground})`,
@@ -644,6 +644,9 @@ onBeforeUnmount(() => {
               willChange: 'transform'
             }"
           />
+          <!-- Gradient overlays to fade into teal -->
+          <div class="absolute inset-0" style="background: linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 22%);"></div>
+          <div class="absolute inset-0" style="background: linear-gradient(rgba(29, 67, 72, 0) 43%, rgb(29, 67, 72) 88%);"></div>
         </div>
         
         <!-- Background Image Switcher Controls (hidden) -->
@@ -686,7 +689,7 @@ onBeforeUnmount(() => {
         <div class="blur-background hidden lg:block"></div>
         <div class="relative z-20 mx-auto w-full max-w-[1230px] px-4 pt-[90px] xl:pt-[110px] pb-[50px] max-[500px]:pt-[100px]">
           <div class="pb-12 flex justify-center">
-            <div class="text-left w-full max-w-[90%]">
+            <div class="text-center w-full max-w-[90%]">
               <div>
                 <a
                   :href="homepageAnnouncement.data.url"
@@ -722,7 +725,7 @@ onBeforeUnmount(() => {
                 </a>
 
                 <h1
-                  :class="['relative z-20 magical-text mb-6 md:mb-8 lg:mb-10 xl:mb-11 font-sans font-semibold leading-[95%] tracking-[-0.1rem] text-white text-[2.5rem] lg:text-6xl xl:text-[5rem] xl:tracking-[-0.25rem] transition-opacity duration-500 ease-out-quart', !homepageAnnouncement.data.content || homepageAnnouncement.data.content === 'NONE' ? 'mt-10' : '', 'hero-fade-in', isVisible ? 'hero-visible' : '']"
+                  :class="['relative z-20 magical-text mb-6 md:mb-8 lg:mb-10 xl:mb-11 font-serif font-bold leading-[95%] tracking-[-0.1rem] text-white text-[2.5rem] lg:text-6xl xl:text-[5rem] xl:tracking-[-0.25rem] transition-opacity duration-500 ease-out-quart', !homepageAnnouncement.data.content || homepageAnnouncement.data.content === 'NONE' ? 'mt-10' : '', 'hero-fade-in', isVisible ? 'hero-visible' : '']"
                   style="animation-delay: 0.2s;"
                 >
                   <span class="magic">
@@ -740,27 +743,26 @@ onBeforeUnmount(() => {
                 </span>
                 </h1>
 
-                <div :class="['mt-6 flex flex-col gap-4 border-t border-white/60 pt-4 md:mt-8 md:flex-row lg:mt-10 xl:mt-11', 'hero-fade-in', isVisible ? 'hero-visible' : '']" style="animation-delay: 0.3s; position: relative; z-index: 100;">
-                  <div class="w-full lg:w-7/12" style="position: relative; z-index: 100; padding-right: 2rem;">
+                <div :class="['mt-6 flex flex-col gap-6 border-t border-white/60 pt-4 md:mt-8 lg:mt-10 xl:mt-11', 'hero-fade-in', isVisible ? 'hero-visible' : '']" style="animation-delay: 0.3s; position: relative; z-index: 100;">
+                  <div class="w-full" style="position: relative; z-index: 100;">
                       <p class="paragraph-with-links text-lg leading-[130%] text-white font-normal transition-all duration-300 ease-out-quart lg:text-xl 2xl:text-2xl" style="position: relative; z-index: 100;">
-                      The platform that <a href="/product/ai-adoption" class="paragraph-link text-white underline transition-all duration-300 ease-out-quart tooltip-trigger" data-tooltip="Leaderboards and badges that gamify AI adoption across your teams — learn more 👉" @mousemove="handleTooltipMouseMove" @mouseleave="handleTooltipMouseLeave">unlocks teams</a> at your company to build <a href="/product/ai-agent-builder" class="paragraph-link text-white underline transition-all duration-300 ease-out-quart tooltip-trigger" data-tooltip="No-code builder to create AI agents that automate workflows across your apps — learn more 👉" @mousemove="handleTooltipMouseMove" @mouseleave="handleTooltipMouseLeave">AI agents</a> with <a href="/product/governance-and-management" class="paragraph-link text-white underline transition-all duration-300 ease-out-quart tooltip-trigger" data-tooltip="Control who can access which apps, set environment permissions, and monitor all activity — learn more 👉" @mousemove="handleTooltipMouseMove" @mouseleave="handleTooltipMouseLeave">IT control</a> built in, deployed with <a href="/product/deployment-options" class="paragraph-link text-white underline transition-all duration-300 ease-out-quart tooltip-trigger" data-tooltip="Self-host on your infrastructure or use our secure cloud with SOC 2 compliance — learn more 👉" @mousemove="handleTooltipMouseMove" @mouseleave="handleTooltipMouseLeave">enterprise security</a>, on <a href="/pricing" class="paragraph-link text-white underline transition-all duration-300 ease-out-quart tooltip-trigger" data-tooltip="Pricing based on active flows that deliver value, not users or execution counts — learn more 👉" @mousemove="handleTooltipMouseMove" @mouseleave="handleTooltipMouseLeave">predictable pricing</a>.
+                      <a href="/product/ai-adoption" class="paragraph-link text-white underline transition-all duration-300 ease-out-quart tooltip-trigger" data-tooltip="Leaderboards and badges that gamify AI adoption across your teams — learn more 👉" @mousemove="handleTooltipMouseMove" @mouseleave="handleTooltipMouseLeave">Build</a> <a href="/product/ai-agent-builder" class="paragraph-link text-white underline transition-all duration-300 ease-out-quart tooltip-trigger" data-tooltip="No-code builder to create AI agents that automate workflows across your apps — learn more 👉" @mousemove="handleTooltipMouseMove" @mouseleave="handleTooltipMouseLeave">AI agents</a> with <a href="/product/governance-and-management" class="paragraph-link text-white underline transition-all duration-300 ease-out-quart tooltip-trigger" data-tooltip="Control who can access which apps, set environment permissions, and monitor all activity — learn more 👉" @mousemove="handleTooltipMouseMove" @mouseleave="handleTooltipMouseLeave">IT control</a> built in, deployed with <a href="/product/deployment-options" class="paragraph-link text-white underline transition-all duration-300 ease-out-quart tooltip-trigger" data-tooltip="Self-host on your infrastructure or use our secure cloud with SOC 2 compliance — learn more 👉" @mousemove="handleTooltipMouseMove" @mouseleave="handleTooltipMouseLeave">enterprise security</a>, on <a href="/pricing" class="paragraph-link text-white underline transition-all duration-300 ease-out-quart tooltip-trigger" data-tooltip="Pricing based on active flows that deliver value, not users or execution counts — learn more 👉" @mousemove="handleTooltipMouseMove" @mouseleave="handleTooltipMouseLeave">predictable pricing</a>.
                     </p>
                   </div>
-                  <div class="w-full lg:w-5/12 flex flex-col gap-4 sm:flex-row sm:justify-start lg:flex-col lg:justify-start">
+                  <div class="w-full flex flex-col gap-4 sm:flex-row sm:justify-center">
+                    <router-link
+                      to="/sales"
+                      class="btn group relative isolate inline-block cursor-pointer rounded-full transition-[background,color] duration-400 ease-out-quart text-center font-semibold tracking-tight whitespace-nowrap h-14 items-center justify-center px-8 py-3.5 text-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-outline disabled:pointer-events-none disabled:opacity-50 bg-transparent text-white border border-white hover:bg-white hover:text-black"
+                    >
+                      <span class="relative">Talk to sales</span>
+                    </router-link>
+
                     <a
                       href="https://cloud.activepieces.com/sign-up"
-                      class="btn group relative isolate inline-block cursor-pointer rounded-md transition-[background,color] duration-400 ease-out-quart text-center font-semibold tracking-tight whitespace-nowrap h-12 items-center justify-center px-5 py-3 text-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-outline disabled:pointer-events-none disabled:opacity-50 bg-transparent text-white border border-white hover:bg-white hover:text-black"
+                      class="btn group relative isolate inline-block cursor-pointer rounded-full transition-[background,color] duration-400 ease-out-quart text-center font-semibold tracking-tight whitespace-nowrap h-14 items-center justify-center px-8 py-3.5 text-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-outline disabled:pointer-events-none disabled:opacity-50 text-black bg-white hover:bg-white/80"
                     >
                       <span class="relative">Start free</span>
                     </a>
-
-                    <router-link
-                      to="/sales"
-                      class="btn group relative isolate inline-block cursor-pointer rounded-md transition-[background,color] duration-400 ease-out-quart text-center font-semibold tracking-tight whitespace-nowrap h-12 items-center justify-center px-5 py-3 text-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-outline disabled:pointer-events-none disabled:opacity-50 text-black bg-white hover:bg-white/80"
-                    >
-                      <span class="group-focus absolute inset-0 -z-1 block w-full rounded-md transition-[background,color] duration-400 ease-out-quart bg-white group-hover:bg-white/80"></span>
-                      <span class="relative">Talk to sales</span>
-                    </router-link>
                   </div>
                 </div>
                 <!--<div
@@ -783,22 +785,15 @@ onBeforeUnmount(() => {
         
         <!-- Dashboard Mockup Section -->
         <div :class="['relative z-20 mx-auto w-full max-w-[1230px] px-4 mb-32 will-change-auto flex justify-center overflow-visible', 'hero-fade-in', isVisible ? 'hero-visible' : '']" style="animation-delay: 0.6s;">
-          <div 
-            ref="dashboardRef"
-            class="w-full max-w-[70%] bg-white rounded-lg shadow-2xl overflow-visible dashboard-3d relative select-none group/dashboard"
-            :style="{
-              transform: `perspective(1000px) rotateX(${tiltAngle}deg) translateY(${dashboardTranslateY}px)`,
-              transformStyle: 'preserve-3d',
-              transformOrigin: 'top center',
-              opacity: dashboardOpacity,
-              willChange: 'transform, opacity',
-              userSelect: 'none',
-              WebkitUserSelect: 'none',
-              MozUserSelect: 'none',
-              msUserSelect: 'none'
-            }"
-            @mouseenter="handleDashboardHover"
-          >
+          <!-- Double border container -->
+          <div class="w-full max-w-[70%] p-[1px] rounded-xl" style="background: rgba(255, 255, 255, 0.1);">
+            <div class="p-[1px] rounded-xl" style="background: rgba(255, 255, 255, 0.2);">
+              <div
+                ref="dashboardRef"
+                class="w-full bg-white rounded-lg shadow-2xl overflow-visible dashboard-3d relative select-none group/dashboard"
+                style="user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none;"
+                @mouseenter="handleDashboardHover"
+              >
             <div class="flex h-[500px] select-none relative">
               <!-- Inline Theme Form (only show when no custom branding) - Centered on screen -->
               <div
@@ -1076,11 +1071,7 @@ onBeforeUnmount(() => {
             <!-- Floating Popup Cards - Popping out of the dashboard -->
             <div class="absolute pointer-events-none" style="z-index: 20; top: -40px; right: -200px; bottom: -40px; left: -120px;">
               <!-- Chart Popup Card -->
-              <div class="absolute top-20 right-0 w-96 bg-white rounded-xl shadow-2xl pointer-events-none select-none popup-card" :style="{ 
-                boxShadow: '0 25px 80px -12px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 0, 0, 0.05)',
-                transform: `scale(${popupScale})`,
-                transformOrigin: 'top right'
-              }">
+              <div class="absolute top-20 right-0 w-96 bg-white rounded-xl shadow-2xl pointer-events-none select-none popup-card" style="box-shadow: 0 25px 80px -12px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 0, 0, 0.05);">
                 <div class="p-5">
                   <!-- AI Adoption Section -->
                   <div class="mb-5">
@@ -1154,11 +1145,7 @@ onBeforeUnmount(() => {
               </div>
               
               <!-- Champions Leaderboard Popup Card -->
-              <div class="absolute top-64 left-0 w-[300px] bg-white rounded-xl shadow-2xl pointer-events-none select-none popup-card" :style="{ 
-                boxShadow: '0 25px 80px -12px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 0, 0, 0.05)',
-                transform: `scale(${popupScale})`,
-                transformOrigin: 'top left'
-              }">
+              <div class="absolute top-64 left-0 w-[300px] bg-white rounded-xl shadow-2xl pointer-events-none select-none popup-card" style="box-shadow: 0 25px 80px -12px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 0, 0, 0.05);">
                 <div class="p-5">
                   <!-- Leaderboard List -->
                   <div class="space-y-4">
@@ -1209,6 +1196,8 @@ onBeforeUnmount(() => {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
             </div>
           </div>
         </div>
