@@ -1,76 +1,95 @@
-<script setup>
-</script>
+<script setup></script>
 
 <template>
   <section class="pt-2 pb-4 bg-transparent mx-auto rounded-t-[20px]">
     <div class="relative flex flex-col items-center gap-4">
       <!-- Trusted by text - centered above logos -->
-      <span class="text-xs font-semibold text-white/70 uppercase tracking-[0.2em] whitespace-nowrap">Trusted by AI leaders</span>
+      <span class="text-xs font-bold text-white/80 uppercase whitespace-nowrap"
+        >Trusted by AI leaders</span
+      >
 
       <!-- Scrolling Logo Row with mask for fade edges -->
       <div class="w-full relative overflow-hidden logo-scroll-container">
-        <div class="flex animate-scroll items-center space-x-6 w-max brightness-0 invert">
-        <div class="relative h-4">
-          <img src="/logos/posthog.svg" alt="Posthog" class="m-auto h-4" />
-        </div>
-        <div class="relative h-4">
-          <img src="/logos/sequoia.svg" alt="Sequoia" class="m-auto h-4" />
-        </div>
-        <div class="relative h-4">
-          <img src="/logos/redbull.svg" alt="Redbull" class="m-auto h-4" />
-        </div>
-        <div class="relative h-4">
-          <img src="/logos/rakuten.svg" alt="Rakuten" class="m-auto h-4" />
-        </div>
-        <div class="relative h-4">
-          <img src="/logos/contentful.svg" alt="Contentful" class="m-auto h-4" />
-        </div>
-        <div class="relative h-4">
-          <img src="/logos/roblox.svg" alt="Roblox" class="m-auto h-4" />
-        </div>
-        <div class="relative h-4">
-          <img src="/logos/clickup.svg" alt="ClickUp" class="m-auto h-4" />
-        </div>
-        <div class="relative h-4">
-          <img src="/logos/alan.svg" alt="Alan" class="m-auto h-4" />
-        </div>
-        <div class="relative h-4">
-          <img src="/logos/docusign.svg" alt="DocuSign" class="m-auto h-4" />
-        </div>
-        <div class="relative h-4">
-          <img src="/logos/pipedrive.svg" alt="Pipedrive" class="m-auto h-4" />
-        </div>
-        <!-- Duplicate Logos for Infinite Scroll Effect -->
-        <div class="relative h-4">
-          <img src="/logos/posthog.svg" alt="Posthog" class="m-auto h-4" />
-        </div>
-        <div class="relative h-4">
-          <img src="/logos/sequoia.svg" alt="Sequoia" class="m-auto h-4" />
-        </div>
-        <div class="relative h-4">
-          <img src="/logos/redbull.svg" alt="Redbull" class="m-auto h-4" />
-        </div>
-        <div class="relative h-4">
-          <img src="/logos/rakuten.svg" alt="Rakuten" class="m-auto h-4" />
-        </div>
-        <div class="relative h-4">
-          <img src="/logos/contentful.svg" alt="Contentful" class="m-auto h-4" />
-        </div>
-        <div class="relative h-4">
-          <img src="/logos/roblox.svg" alt="Roblox" class="m-auto h-4" />
-        </div>
-        <div class="relative h-4">
-          <img src="/logos/clickup.svg" alt="ClickUp" class="m-auto h-4" />
-        </div>
-        <div class="relative h-4">
-          <img src="/logos/alan.svg" alt="Alan" class="m-auto h-4" />
-        </div>
-        <div class="relative h-4">
-          <img src="/logos/docusign.svg" alt="DocuSign" class="m-auto h-4" />
-        </div>
-        <div class="relative h-4">
-          <img src="/logos/pipedrive.svg" alt="Pipedrive" class="m-auto h-4" />
-        </div>
+        <div
+          class="flex animate-scroll items-center space-x-6 w-max brightness-0 invert"
+        >
+          <div class="relative h-4">
+            <img src="/logos/posthog.svg" alt="Posthog" class="m-auto h-4" />
+          </div>
+          <div class="relative h-4">
+            <img src="/logos/sequoia.svg" alt="Sequoia" class="m-auto h-4" />
+          </div>
+          <div class="relative h-4">
+            <img src="/logos/redbull.svg" alt="Redbull" class="m-auto h-4" />
+          </div>
+          <div class="relative h-4">
+            <img src="/logos/rakuten.svg" alt="Rakuten" class="m-auto h-4" />
+          </div>
+          <div class="relative h-4">
+            <img
+              src="/logos/contentful.svg"
+              alt="Contentful"
+              class="m-auto h-4"
+            />
+          </div>
+          <div class="relative h-4">
+            <img src="/logos/roblox.svg" alt="Roblox" class="m-auto h-4" />
+          </div>
+          <div class="relative h-4">
+            <img src="/logos/clickup.svg" alt="ClickUp" class="m-auto h-4" />
+          </div>
+          <div class="relative h-4">
+            <img src="/logos/alan.svg" alt="Alan" class="m-auto h-4" />
+          </div>
+          <div class="relative h-4">
+            <img src="/logos/docusign.svg" alt="DocuSign" class="m-auto h-4" />
+          </div>
+          <div class="relative h-4">
+            <img
+              src="/logos/pipedrive.svg"
+              alt="Pipedrive"
+              class="m-auto h-4"
+            />
+          </div>
+          <!-- Duplicate Logos for Infinite Scroll Effect -->
+          <div class="relative h-4">
+            <img src="/logos/posthog.svg" alt="Posthog" class="m-auto h-4" />
+          </div>
+          <div class="relative h-4">
+            <img src="/logos/sequoia.svg" alt="Sequoia" class="m-auto h-4" />
+          </div>
+          <div class="relative h-4">
+            <img src="/logos/redbull.svg" alt="Redbull" class="m-auto h-4" />
+          </div>
+          <div class="relative h-4">
+            <img src="/logos/rakuten.svg" alt="Rakuten" class="m-auto h-4" />
+          </div>
+          <div class="relative h-4">
+            <img
+              src="/logos/contentful.svg"
+              alt="Contentful"
+              class="m-auto h-4"
+            />
+          </div>
+          <div class="relative h-4">
+            <img src="/logos/roblox.svg" alt="Roblox" class="m-auto h-4" />
+          </div>
+          <div class="relative h-4">
+            <img src="/logos/clickup.svg" alt="ClickUp" class="m-auto h-4" />
+          </div>
+          <div class="relative h-4">
+            <img src="/logos/alan.svg" alt="Alan" class="m-auto h-4" />
+          </div>
+          <div class="relative h-4">
+            <img src="/logos/docusign.svg" alt="DocuSign" class="m-auto h-4" />
+          </div>
+          <div class="relative h-4">
+            <img
+              src="/logos/pipedrive.svg"
+              alt="Pipedrive"
+              class="m-auto h-4"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -95,8 +114,20 @@
 }
 
 .logo-scroll-container {
-  mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 15%,
+    black 85%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 15%,
+    black 85%,
+    transparent 100%
+  );
 }
 
 /* Relative positioning */

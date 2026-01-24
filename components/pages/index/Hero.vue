@@ -781,7 +781,7 @@ onBeforeUnmount(() => {
 
           <div
             :class="[
-              'flex flex-col gap-6',
+              'flex flex-col gap-10',
               'hero-fade-in',
               isVisible ? 'hero-visible' : '',
             ]"
@@ -870,8 +870,8 @@ onBeforeUnmount(() => {
           ]"
           style="animation-delay: 0.5s"
         >
-          <div class="flex justify-center">
-            <div class="w-full max-w-[90%]">
+          <div class="flex justify-center mt-16">
+            <div class="w-full max-w-full">
               <PagesIndexCompanyLogos class="relative z-10 -mt-1 mb-16" />
             </div>
           </div>
