@@ -768,7 +768,7 @@ onBeforeUnmount(() => {
 
           <h1
             :class="[
-              'relative z-20 font-serif font-bold text-white text-[2.5rem] lg:text-6xl transition-opacity duration-500 text-balance ease-out-quart',
+              'relative z-20 font-sentient font-bold text-white text-[2.5rem] lg:text-6xl transition-opacity duration-500 text-balance ease-out-quart',
               !homepageAnnouncement.data.content ||
                 homepageAnnouncement.data.content === 'NONE',
               'hero-fade-in',
