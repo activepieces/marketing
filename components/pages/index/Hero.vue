@@ -581,23 +581,6 @@ const setBackgroundNumber = (number) => {
   }
 };
 
-/* Magic Stars Effect */
-const magicStars = ref([]);
-
-let index = 0;
-const interval = 2500;
-
-const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
-
-const animate = (star) => {
-  star.style.setProperty("--star-left", `${rand(-10, 100)}%`);
-  star.style.setProperty("--star-top", `${rand(-20, 100)}%`);
-  star.style.opacity = "0.7";
-  star.style.animation = "none";
-  star.offsetHeight; // trigger reflow
-  star.style.animation = "";
-};
-
 // Entry animation state - start as false to keep elements hidden
 const isVisible = ref(false);
 
@@ -609,17 +592,6 @@ onMounted(async () => {
       // Double RAF ensures browser has painted the hidden state
       isVisible.value = true;
     });
-  });
-
-  // Retrieve elements with the `magic-star` class and animate them
-  magicStars.value.forEach((star) => {
-    setTimeout(
-      () => {
-        animate(star);
-        setInterval(() => animate(star), interval);
-      },
-      index++ * (interval / 3),
-    );
   });
 
   // Initialize organizations
@@ -673,11 +645,11 @@ onBeforeUnmount(() => {
           />
           <!-- Gradient overlays to fade into teal -->
           <div
-            class="absolute inset-0"
+            class="absolute inset-0 h-1/2"
             style="
               background: linear-gradient(
-                rgba(0, 0, 0, 0.6) 0%,
-                rgba(0, 0, 0, 0) 22%
+                rgba(54, 63, 152, 1) 10%,
+                rgba(54, 63, 152, 0) 80%
               );
             "
           ></div>
@@ -750,165 +722,144 @@ onBeforeUnmount(() => {
             {{ currentBackground }}
           </div>
         </div>
-        <div class="grid-pattern absolute inset-0 z-20"></div>
-        <div class="blur-background hidden lg:block"></div>
+
         <div
-          class="relative z-20 mx-auto w-full max-w-[1230px] px-4 pt-[90px] xl:pt-[110px] pb-[50px] max-[500px]:pt-[100px]"
+          class="text-center w-full max-w-3xl mx-auto pt-40 flex flex-col items-center gap-4"
         >
-          <div class="pb-12 flex justify-center">
-            <div class="text-center w-full max-w-3xl">
+          <a
+            :href="homepageAnnouncement.data.url"
+            v-if="
+              homepageAnnouncement.data.content &&
+              homepageAnnouncement.data.content !== 'NONE'
+            "
+            :class="[
+              'inline-flex max-w-full items-center justify-between px-1 py-1 pr-4 mb-6 text-sm text-white bg-white/10 backdrop-blur-sm shadow-lg rounded-full hover:bg-white/20 transition-all duration-300 ease-out-quart max-[500px]:pl-4',
+              'hero-fade-in',
+              isVisible ? 'hero-visible' : '',
+            ]"
+            role="alert"
+            style="animation-delay: 0.1s"
+          >
+            <span
+              class="px-3 py-1 mr-3 text-xs text-white rounded-full bg-primary-600 min-[501px]:whitespace-nowrap max-[500px]:hidden"
+              >New</span
+            >
+            <span
+              class="text-sm font-medium max-w-full min-[501px]:overflow-hidden min-[501px]:whitespace-nowrap min-[501px]:text-ellipsis"
+            >
+              <span class="hidden text-white font-semibold max-[500px]:inline"
+                >New:</span
+              >
+              {{ homepageAnnouncement.data.content }}</span
+            >
+            <svg
+              class="w-5 h-5 ml-2"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </a>
+
+          <h1
+            :class="[
+              'relative z-20 font-serif font-bold text-white text-[2.5rem] lg:text-6xl transition-opacity duration-500 text-balance ease-out-quart',
+              !homepageAnnouncement.data.content ||
+                homepageAnnouncement.data.content === 'NONE',
+              'hero-fade-in',
+              isVisible ? 'hero-visible' : '',
+            ]"
+            style="animation-delay: 0.2s"
+          >
+            Give AI to every team
+          </h1>
+
+          <div
+            :class="[
+              'flex flex-col gap-6',
+              'hero-fade-in',
+              isVisible ? 'hero-visible' : '',
+            ]"
+            style="animation-delay: 0.3s; position: relative; z-index: 100"
+          >
+            <div class="w-full" style="position: relative; z-index: 100">
+              <p
+                class="paragraph-with-links text-4xl leading-[130%] text-white font-normal transition-all duration-300 ease-out-quart"
+                style="position: relative; z-index: 100"
+              >
+                <a
+                  href="/product/ai-adoption"
+                  class="paragraph-link text-white underline transition-all duration-300 ease-out-quart tooltip-trigger"
+                  data-tooltip="Leaderboards and badges that gamify AI adoption across your teams — learn more 👉"
+                  @mousemove="handleTooltipMouseMove"
+                  @mouseleave="handleTooltipMouseLeave"
+                  >Build
+                </a>
+                <a
+                  href="/product/ai-agent-builder"
+                  class="paragraph-link text-white underline transition-all duration-300 ease-out-quart tooltip-trigger"
+                  data-tooltip="No-code builder to create AI agents that automate workflows across your apps — learn more 👉"
+                  @mousemove="handleTooltipMouseMove"
+                  @mouseleave="handleTooltipMouseLeave"
+                >
+                  AI agents</a
+                >
+                with
+                <a
+                  href="/product/governance-and-management"
+                  class="paragraph-link text-white underline transition-all duration-300 ease-out-quart tooltip-trigger"
+                  data-tooltip="Control who can access which apps, set environment permissions, and monitor all activity — learn more 👉"
+                  @mousemove="handleTooltipMouseMove"
+                  @mouseleave="handleTooltipMouseLeave"
+                  >IT control</a
+                >
+                built in, deployed with
+                <a
+                  href="/product/deployment-options"
+                  class="paragraph-link text-white underline transition-all duration-300 ease-out-quart tooltip-trigger"
+                  data-tooltip="Self-host on your infrastructure or use our secure cloud with SOC 2 compliance — learn more 👉"
+                  @mousemove="handleTooltipMouseMove"
+                  @mouseleave="handleTooltipMouseLeave"
+                  >enterprise security</a
+                >, on
+                <a
+                  href="/pricing"
+                  class="paragraph-link text-white underline transition-all duration-300 ease-out-quart tooltip-trigger"
+                  data-tooltip="Pricing based on active flows that deliver value, not users or execution counts — learn more 👉"
+                  @mousemove="handleTooltipMouseMove"
+                  @mouseleave="handleTooltipMouseLeave"
+                  >predictable pricing</a
+                >.
+              </p>
+            </div>
+            <div
+              class="w-full flex flex-col gap-4 sm:flex-row sm:justify-center"
+            >
+              <router-link
+                to="/sales"
+                class="btn group relative isolate inline-block cursor-pointer rounded-full transition-[background,color] duration-400 ease-out-quart text-center font-semibold tracking-tight whitespace-nowrap h-14 items-center justify-center px-8 py-3.5 text-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-outline disabled:pointer-events-none disabled:opacity-50 bg-transparent text-white border border-white hover:bg-white hover:text-black"
+              >
+                <span class="relative">Talk to sales</span>
+              </router-link>
+
               <a
-                :href="homepageAnnouncement.data.url"
-                v-if="
-                  homepageAnnouncement.data.content &&
-                  homepageAnnouncement.data.content !== 'NONE'
-                "
-                :class="[
-                  'inline-flex max-w-full items-center justify-between px-1 py-1 pr-4 mb-6 text-sm text-white bg-white/10 backdrop-blur-sm shadow-lg rounded-full hover:bg-white/20 transition-all duration-300 ease-out-quart max-[500px]:pl-4',
-                  'hero-fade-in',
-                  isVisible ? 'hero-visible' : '',
-                ]"
-                role="alert"
-                style="animation-delay: 0.1s"
+                href="https://cloud.activepieces.com/sign-up"
+                class="btn group relative isolate inline-block cursor-pointer rounded-full transition-[background,color] duration-400 ease-out-quart text-center font-semibold tracking-tight whitespace-nowrap h-14 items-center justify-center px-8 py-3.5 text-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-outline disabled:pointer-events-none disabled:opacity-50 text-black bg-white hover:bg-white/80"
               >
-                <span
-                  class="px-3 py-1 mr-3 text-xs text-white rounded-full bg-primary-600 min-[501px]:whitespace-nowrap max-[500px]:hidden"
-                  >New</span
-                >
-                <span
-                  class="text-sm font-medium max-w-full min-[501px]:overflow-hidden min-[501px]:whitespace-nowrap min-[501px]:text-ellipsis"
-                >
-                  <span
-                    class="hidden text-white font-semibold max-[500px]:inline"
-                    >New:</span
-                  >
-                  {{ homepageAnnouncement.data.content }}</span
-                >
-                <svg
-                  class="w-5 h-5 ml-2"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
+                <span class="relative">Start free</span>
               </a>
-
-              <h1
-                :class="[
-                  'relative z-20 magical-text font-serif font-bold text-white text-[2.5rem] lg:text-6xl xl:text-[5rem] transition-opacity duration-500 ease-out-quart',
-                  !homepageAnnouncement.data.content ||
-                    homepageAnnouncement.data.content === 'NONE',
-                  'hero-fade-in',
-                  isVisible ? 'hero-visible' : '',
-                ]"
-                style="animation-delay: 0.2s"
-              >
-                <span class="magic">
-                  <span
-                    v-for="n in 3"
-                    :key="n"
-                    ref="magicStars"
-                    class="magic-star"
-                  >
-                    <svg viewBox="0 0 512 512">
-                      <path
-                        d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z"
-                      />
-                    </svg>
-                  </span>
-                  <span class="magic-text text-pretty"
-                    >Give AI to every team.</span
-                  >
-                </span>
-              </h1>
-
-              <div
-                :class="[
-                  'flex flex-col gap-6',
-                  'hero-fade-in',
-                  isVisible ? 'hero-visible' : '',
-                ]"
-                style="animation-delay: 0.3s; position: relative; z-index: 100"
-              >
-                <div class="w-full" style="position: relative; z-index: 100">
-                  <p
-                    class="paragraph-with-links text-4xl leading-[130%] text-white font-normal transition-all duration-300 ease-out-quart"
-                    style="position: relative; z-index: 100"
-                  >
-                    <a
-                      href="/product/ai-adoption"
-                      class="paragraph-link text-white underline transition-all duration-300 ease-out-quart tooltip-trigger"
-                      data-tooltip="Leaderboards and badges that gamify AI adoption across your teams — learn more 👉"
-                      @mousemove="handleTooltipMouseMove"
-                      @mouseleave="handleTooltipMouseLeave"
-                      >Build</a
-                    >
-                    <a
-                      href="/product/ai-agent-builder"
-                      class="paragraph-link text-white underline transition-all duration-300 ease-out-quart tooltip-trigger"
-                      data-tooltip="No-code builder to create AI agents that automate workflows across your apps — learn more 👉"
-                      @mousemove="handleTooltipMouseMove"
-                      @mouseleave="handleTooltipMouseLeave"
-                      >AI agents</a
-                    >
-                    with
-                    <a
-                      href="/product/governance-and-management"
-                      class="paragraph-link text-white underline transition-all duration-300 ease-out-quart tooltip-trigger"
-                      data-tooltip="Control who can access which apps, set environment permissions, and monitor all activity — learn more 👉"
-                      @mousemove="handleTooltipMouseMove"
-                      @mouseleave="handleTooltipMouseLeave"
-                      >IT control</a
-                    >
-                    built in, deployed with
-                    <a
-                      href="/product/deployment-options"
-                      class="paragraph-link text-white underline transition-all duration-300 ease-out-quart tooltip-trigger"
-                      data-tooltip="Self-host on your infrastructure or use our secure cloud with SOC 2 compliance — learn more 👉"
-                      @mousemove="handleTooltipMouseMove"
-                      @mouseleave="handleTooltipMouseLeave"
-                      >enterprise security</a
-                    >, on
-                    <a
-                      href="/pricing"
-                      class="paragraph-link text-white underline transition-all duration-300 ease-out-quart tooltip-trigger"
-                      data-tooltip="Pricing based on active flows that deliver value, not users or execution counts — learn more 👉"
-                      @mousemove="handleTooltipMouseMove"
-                      @mouseleave="handleTooltipMouseLeave"
-                      >predictable pricing</a
-                    >.
-                  </p>
-                </div>
-                <div
-                  class="w-full flex flex-col gap-4 sm:flex-row sm:justify-center"
-                >
-                  <router-link
-                    to="/sales"
-                    class="btn group relative isolate inline-block cursor-pointer rounded-full transition-[background,color] duration-400 ease-out-quart text-center font-semibold tracking-tight whitespace-nowrap h-14 items-center justify-center px-8 py-3.5 text-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-outline disabled:pointer-events-none disabled:opacity-50 bg-transparent text-white border border-white hover:bg-white hover:text-black"
-                  >
-                    <span class="relative">Talk to sales</span>
-                  </router-link>
-
-                  <a
-                    href="https://cloud.activepieces.com/sign-up"
-                    class="btn group relative isolate inline-block cursor-pointer rounded-full transition-[background,color] duration-400 ease-out-quart text-center font-semibold tracking-tight whitespace-nowrap h-14 items-center justify-center px-8 py-3.5 text-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-outline disabled:pointer-events-none disabled:opacity-50 text-black bg-white hover:bg-white/80"
-                  >
-                    <span class="relative">Start free</span>
-                  </a>
-                </div>
-              </div>
-              <!--<div
+            </div>
+          </div>
+          <!--<div
                   class="flex flex-wrap text-base text-gray-600 font-bold items-center gap-1.5 gap-y-5 mt-7 max-[1023px]:justify-center"
                 >
                 <img class="w-[20px]" src="/g2-logo.png"><img class="h-[23px]" src="/stars.png"><span>4.8</span>
                 </div>-->
-            </div>
-          </div>
         </div>
 
         <div
@@ -1822,13 +1773,6 @@ onBeforeUnmount(() => {
 </template>
 
 <style>
-/* Define global CSS variables without the scoped attribute */
-:root {
-  --glow-color: rgb(255, 255, 255); /* White */
-  --default-color-1: rgb(255, 255, 255); /* White */
-  --default-color-2: rgb(255, 255, 255); /* White */
-}
-
 /* Custom easing function matching reference practices */
 .ease-out-quart {
   transition-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
@@ -1845,46 +1789,6 @@ onBeforeUnmount(() => {
   position: relative;
   width: 100%;
   max-width: 100%;
-}
-
-.grid-pattern {
-  background-image:
-    repeating-linear-gradient(90deg, #ffffff08 0 1px, #0000 1px 25px),
-    repeating-linear-gradient(#ffffff08 0 1px, #0000 1px 25px),
-    repeating-linear-gradient(90deg, #ffffff0f 0 1px, #0000 1px 100px),
-    repeating-linear-gradient(#ffffff0f 0 1px, #0000 1px 100px);
-  background-position:
-    calc(50% + 12.5px) calc(50% + 12.5px),
-    calc(50% + 12.5px) calc(50% + 12.5px),
-    calc(50% + 50px) calc(50% + 50px),
-    calc(50% + 50px) calc(50% + 50px);
-  background-size:
-    25px 25px,
-    25px 25px,
-    100px 100px,
-    100px 100px;
-  pointer-events: none;
-}
-
-.blur-background {
-  -webkit-filter: blur(100px);
-  background: linear-gradient(
-    134deg,
-    #95ffc4 15%,
-    #77f7ff99 42.34234234234234%,
-    #d632ffc2
-  );
-  border-radius: 100%;
-  filter: blur(100px);
-  flex: none;
-  height: 474px;
-  right: 200px;
-  overflow: hidden;
-  position: absolute;
-  top: -50px;
-  width: 554px;
-  will-change: var(--framer-will-change-override, transform);
-  z-index: -10;
 }
 
 .colored-text {
@@ -1961,67 +1865,6 @@ onBeforeUnmount(() => {
   to {
     background-position: -200% center;
   }
-}
-
-@keyframes scale {
-  from,
-  to {
-    transform: scale(0);
-  }
-
-  50% {
-    transform: scale(1);
-  }
-}
-
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(180deg);
-  }
-}
-
-.magical-text > .magic {
-  display: inline-block;
-  position: relative;
-}
-
-.magical-text > .magic > .magic-star {
-  --size: clamp(20px, 1.5vw, 30px);
-
-  animation: scale 700ms ease forwards;
-  display: block;
-  height: var(--size);
-  left: var(--star-left, -9999px);
-  position: absolute;
-  top: var(--star-top, -9999px);
-  width: var(--size);
-  opacity: 0;
-}
-
-.magical-text > .magic > .magic-star > svg {
-  animation: rotate 1000ms linear infinite;
-  display: block;
-  opacity: 0.7;
-}
-
-.magical-text > .magic > .magic-star > svg > path {
-  fill: var(--glow-color); /* White sparkles */
-}
-
-.magical-text > .magic > .magic-text {
-  color: white; /* Fallback color */
-  background: linear-gradient(
-    to right,
-    var(--default-color-1),
-    var(--default-color-2)
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 @keyframes rainbow {
@@ -2248,13 +2091,6 @@ onBeforeUnmount(() => {
 </style>
 
 <style>
-/* Define global CSS variables without the scoped attribute */
-:root {
-  --glow-color: rgb(255, 255, 255); /* White */
-  --default-color-1: rgb(255, 255, 255); /* White */
-  --default-color-2: rgb(255, 255, 255); /* White */
-}
-
 /* Custom easing function matching reference practices */
 .ease-out-quart {
   transition-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
@@ -2271,46 +2107,6 @@ onBeforeUnmount(() => {
   position: relative;
   width: 100%;
   max-width: 100%;
-}
-
-.grid-pattern {
-  background-image:
-    repeating-linear-gradient(90deg, #ffffff08 0 1px, #0000 1px 25px),
-    repeating-linear-gradient(#ffffff08 0 1px, #0000 1px 25px),
-    repeating-linear-gradient(90deg, #ffffff0f 0 1px, #0000 1px 100px),
-    repeating-linear-gradient(#ffffff0f 0 1px, #0000 1px 100px);
-  background-position:
-    calc(50% + 12.5px) calc(50% + 12.5px),
-    calc(50% + 12.5px) calc(50% + 12.5px),
-    calc(50% + 50px) calc(50% + 50px),
-    calc(50% + 50px) calc(50% + 50px);
-  background-size:
-    25px 25px,
-    25px 25px,
-    100px 100px,
-    100px 100px;
-  pointer-events: none;
-}
-
-.blur-background {
-  -webkit-filter: blur(100px);
-  background: linear-gradient(
-    134deg,
-    #95ffc4 15%,
-    #77f7ff99 42.34234234234234%,
-    #d632ffc2
-  );
-  border-radius: 100%;
-  filter: blur(100px);
-  flex: none;
-  height: 474px;
-  right: 200px;
-  overflow: hidden;
-  position: absolute;
-  top: -50px;
-  width: 554px;
-  will-change: var(--framer-will-change-override, transform);
-  z-index: -10;
 }
 
 .colored-text {
@@ -2387,67 +2183,6 @@ onBeforeUnmount(() => {
   to {
     background-position: -200% center;
   }
-}
-
-@keyframes scale {
-  from,
-  to {
-    transform: scale(0);
-  }
-
-  50% {
-    transform: scale(1);
-  }
-}
-
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(180deg);
-  }
-}
-
-.magical-text > .magic {
-  display: inline-block;
-  position: relative;
-}
-
-.magical-text > .magic > .magic-star {
-  --size: clamp(20px, 1.5vw, 30px);
-
-  animation: scale 700ms ease forwards;
-  display: block;
-  height: var(--size);
-  left: var(--star-left, -9999px);
-  position: absolute;
-  top: var(--star-top, -9999px);
-  width: var(--size);
-  opacity: 0;
-}
-
-.magical-text > .magic > .magic-star > svg {
-  animation: rotate 1000ms linear infinite;
-  display: block;
-  opacity: 0.7;
-}
-
-.magical-text > .magic > .magic-star > svg > path {
-  fill: var(--glow-color); /* White sparkles */
-}
-
-.magical-text > .magic > .magic-text {
-  color: white; /* Fallback color */
-  background: linear-gradient(
-    to right,
-    var(--default-color-1),
-    var(--default-color-2)
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 @keyframes rainbow {
