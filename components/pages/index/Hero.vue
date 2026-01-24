@@ -789,7 +789,7 @@ onBeforeUnmount(() => {
           >
             <div class="w-full" style="position: relative; z-index: 100">
               <p
-                class="paragraph-with-links text-4xl leading-[130%] text-white font-normal transition-all duration-300 ease-out-quart"
+                class="paragraph-with-links text-4xl leading-[160%] text-white font-normal transition-all duration-300 ease-out-quart"
                 style="position: relative; z-index: 100"
               >
                 <a
