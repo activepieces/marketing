@@ -888,12 +888,12 @@ onBeforeUnmount(() => {
         >
           <!-- Double border container -->
           <div
-            class="w-full max-w-[70%] p-[1px] rounded-xl"
-            style="background: rgba(255, 255, 255, 0.1)"
+            class="w-full max-w-[70%] border-2 rounded-3xl p-6"
+            style="border-color: rgba(255, 255, 255, 0.1)"
           >
             <div
-              class="p-[1px] rounded-xl"
-              style="background: rgba(255, 255, 255, 0.2)"
+              class="w-full border-2 rounded-2xl p-6"
+              style="border-color: rgba(255, 255, 255, 0.2)"
             >
               <div
                 ref="dashboardRef"
