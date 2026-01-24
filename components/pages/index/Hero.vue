@@ -798,9 +798,10 @@ onBeforeUnmount(() => {
                   data-tooltip="Leaderboards and badges that gamify AI adoption across your teams — learn more 👉"
                   @mousemove="handleTooltipMouseMove"
                   @mouseleave="handleTooltipMouseLeave"
-                  >Build
-                </a>
-                <a
+                  >Build</a
+                >
+                {{ " "
+                }}<a
                   href="/product/ai-agent-builder"
                   class="paragraph-link text-white underline transition-all duration-300 ease-out-quart tooltip-trigger"
                   data-tooltip="No-code builder to create AI agents that automate workflows across your apps — learn more 👉"
@@ -880,7 +881,7 @@ onBeforeUnmount(() => {
         <!-- Dashboard Mockup Section -->
         <div
           :class="[
-            'relative z-20 mx-auto w-full max-w-7xl px-4 mb-20 will-change-auto flex justify-center overflow-visible',
+            'relative z-20 mx-auto w-full max-w-5xl mb-20 will-change-auto flex justify-center overflow-visible ',
             'hero-fade-in',
             isVisible ? 'hero-visible' : '',
           ]"
@@ -888,7 +889,7 @@ onBeforeUnmount(() => {
         >
           <!-- Double border container -->
           <div
-            class="w-full max-w-[70%] border-2 rounded-3xl p-6"
+            class="w-full border-2 rounded-3xl p-6"
             style="border-color: rgba(255, 255, 255, 0.1)"
           >
             <div
@@ -897,7 +898,7 @@ onBeforeUnmount(() => {
             >
               <div
                 ref="dashboardRef"
-                class="w-full bg-white rounded-2xl shadow-2xl overflow-visible dashboard-3d relative select-none group/dashboard"
+                class="w-full bg-white rounded-lg shadow-2xl overflow-visible dashboard-3d relative select-none group/dashboard"
                 style="
                   user-select: none;
                   -webkit-user-select: none;
