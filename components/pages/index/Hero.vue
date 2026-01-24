@@ -880,7 +880,7 @@ onBeforeUnmount(() => {
         <!-- Dashboard Mockup Section -->
         <div
           :class="[
-            'relative z-20 mx-auto w-full max-w-[1230px] px-4 mb-32 will-change-auto flex justify-center overflow-visible',
+            'relative z-20 mx-auto w-full max-w-7xl px-4 mb-20 will-change-auto flex justify-center overflow-visible',
             'hero-fade-in',
             isVisible ? 'hero-visible' : '',
           ]"
@@ -897,7 +897,7 @@ onBeforeUnmount(() => {
             >
               <div
                 ref="dashboardRef"
-                class="w-full bg-white rounded-lg shadow-2xl overflow-visible dashboard-3d relative select-none group/dashboard"
+                class="w-full bg-white rounded-2xl shadow-2xl overflow-visible dashboard-3d relative select-none group/dashboard"
                 style="
                   user-select: none;
                   -webkit-user-select: none;
@@ -906,7 +906,9 @@ onBeforeUnmount(() => {
                 "
                 @mouseenter="handleDashboardHover"
               >
-                <div class="flex h-[500px] select-none relative">
+                <div
+                  class="flex h-[500px] select-none relative rounded-2xl overflow-hidden"
+                >
                   <!-- Inline Theme Form (only show when no custom branding) - Centered on screen -->
                   <div
                     v-if="!customOrg"
@@ -1073,7 +1075,7 @@ onBeforeUnmount(() => {
 
                   <!-- Main Content Area - Template Cards -->
                   <div
-                    class="flex-1 bg-gray-50 p-6 overflow-y-auto select-none pointer-events-none"
+                    class="flex-1 bg-gray-50 p-6 overflow-y-auto select-none pointer-events-none minimal-scrollbar"
                   >
                     <div class="mb-4">
                       <h2 class="text-lg font-semibold text-gray-900">
@@ -1116,7 +1118,6 @@ onBeforeUnmount(() => {
                                 currentOrgData.colors.primaryLight,
                             }"
                           >
-                            <span class="text-[10px]">💰</span>
                             <span
                               class="text-[10px] font-bold"
                               :style="{ color: currentOrgData.colors.primary }"
@@ -1185,7 +1186,6 @@ onBeforeUnmount(() => {
                                 currentOrgData.colors.primaryLight,
                             }"
                           >
-                            <span class="text-[10px]">💰</span>
                             <span
                               class="text-[10px] font-bold"
                               :style="{ color: currentOrgData.colors.primary }"
@@ -1254,7 +1254,6 @@ onBeforeUnmount(() => {
                                 currentOrgData.colors.primaryLight,
                             }"
                           >
-                            <span class="text-[10px]">💰</span>
                             <span
                               class="text-[10px] font-bold"
                               :style="{ color: currentOrgData.colors.primary }"
@@ -2088,6 +2087,24 @@ onBeforeUnmount(() => {
     --tooltip-angle: 360deg;
   }
 }
+
+/* Minimal scrollbar for Agent Library section */
+.minimal-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.minimal-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.minimal-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 2px;
+}
+
+.minimal-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
 </style>
 
 <style>
@@ -2405,5 +2422,23 @@ onBeforeUnmount(() => {
   to {
     --tooltip-angle: 360deg;
   }
+}
+
+/* Minimal scrollbar for Agent Library section */
+.minimal-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.minimal-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.minimal-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 2px;
+}
+
+.minimal-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.25);
 }
 </style>
