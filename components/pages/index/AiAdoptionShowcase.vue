@@ -1189,6 +1189,55 @@
                 </div>
               </div>
             </div>
+
+            <!-- Play/Pause Button with Circular Progress -->
+            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-50">
+              <button
+                @click="toggleAutoPlay"
+                class="relative w-12 h-12 rounded-full bg-white/90 backdrop-blur-sm shadow-lg hover:bg-white hover:shadow-xl transition-all duration-200 flex items-center justify-center group"
+              >
+                <!-- SVG Circular Progress -->
+                <svg
+                  class="absolute inset-0 w-full h-full -rotate-90"
+                  viewBox="0 0 48 48"
+                >
+                  <!-- Background circle -->
+                  <circle
+                    cx="24"
+                    cy="24"
+                    r="22"
+                    fill="none"
+                    stroke="#e5e7eb"
+                    stroke-width="2"
+                  />
+                  <!-- Progress circle -->
+                  <circle
+                    cx="24"
+                    cy="24"
+                    r="22"
+                    fill="none"
+                    stroke="#6e41e2"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    :stroke-dasharray="138.2"
+                    :stroke-dashoffset="138.2 - (138.2 * cardProgress) / 100"
+                    class="card-progress-circle"
+                    :style="{
+                      transitionDuration:
+                        cardProgress === 0 ? '0ms' : `${CARD_ROTATION_DURATION}ms`,
+                    }"
+                  />
+                </svg>
+
+                <!-- Play/Pause Icon -->
+                <PhPlay
+                  v-if="!isAutoPlaying"
+                  class="w-5 h-5 text-gray-700 ml-0.5"
+                  weight="fill"
+                />
+                <PhPause v-else class="w-5 h-5 text-gray-700" weight="fill" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -1222,6 +1271,8 @@ import {
   PhDiamond,
   PhFlowArrow,
   PhCpu,
+  PhPlay,
+  PhPause,
 } from "@phosphor-icons/vue";
 import FlowBuilder from "~/components/pages/product/ai-agents/FlowBuilder.vue";
 
@@ -1231,6 +1282,12 @@ const activeBrandColor = ref(0);
 const hoveredTemplate = ref(null);
 const beatProgress = ref(0);
 
+// Card auto-rotation state
+const isAutoPlaying = ref(true);
+const cardProgress = ref(0);
+const CARD_ROTATION_DURATION = 5000; // 5 seconds per card
+let cardRotationInterval = null;
+
 // Timing for smooth brand scrolling
 const BRAND_DISPLAY_DURATION = 2500; // 2.5 seconds showing each brand
 let brandCycleInterval = null;
@@ -1239,8 +1296,45 @@ let brandCycleInterval = null;
 const animatedStats = ref(["0", "0", "0"]);
 let animationFrame = null;
 
+// Card rotation functions
+const startCardRotation = () => {
+  cardProgress.value = 0;
+  requestAnimationFrame(() => {
+    cardProgress.value = 100;
+  });
+
+  cardRotationInterval = setInterval(() => {
+    activeCard.value = (activeCard.value + 1) % cards.length;
+    cardProgress.value = 0;
+    requestAnimationFrame(() => {
+      cardProgress.value = 100;
+    });
+  }, CARD_ROTATION_DURATION);
+};
+
+const stopCardRotation = () => {
+  if (cardRotationInterval) {
+    clearInterval(cardRotationInterval);
+    cardRotationInterval = null;
+  }
+  cardProgress.value = 0;
+};
+
+const toggleAutoPlay = () => {
+  isAutoPlaying.value = !isAutoPlaying.value;
+  if (isAutoPlaying.value) {
+    startCardRotation();
+  } else {
+    stopCardRotation();
+  }
+};
+
 const selectCard = (index) => {
   activeCard.value = index;
+  if (isAutoPlaying.value) {
+    stopCardRotation();
+    startCardRotation();
+  }
 };
 
 // Branding card is index 3
@@ -1367,11 +1461,17 @@ onMounted(() => {
   if (activeCard.value === BRANDING_CARD_INDEX) {
     startBrandCycle();
   }
+
+  // Start card auto-rotation
+  if (isAutoPlaying.value) {
+    startCardRotation();
+  }
 });
 
 onUnmounted(() => {
   if (animationFrame) cancelAnimationFrame(animationFrame);
   if (brandCycleInterval) clearInterval(brandCycleInterval);
+  if (cardRotationInterval) clearInterval(cardRotationInterval);
 });
 
 // Card definitions
@@ -1791,5 +1891,11 @@ const getCardStyle = (index) => {
     opacity 500ms ease-out,
     transform 500ms ease-out,
     filter 500ms ease-out;
+}
+
+/* Circular progress smooth fill */
+.card-progress-circle {
+  transition-property: stroke-dashoffset;
+  transition-timing-function: linear;
 }
 </style>

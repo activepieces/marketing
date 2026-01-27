@@ -41,7 +41,8 @@
       "mcp__chrome-devtools__get_network_request",
       "Bash(git reset:*)",
       "mcp__figma-desktop__get_design_context",
-      "mcp__figma-desktop__get_screenshot"
+      "mcp__figma-desktop__get_screenshot",
+      "Bash(npm run build:*)"
     ]
   }
 }
