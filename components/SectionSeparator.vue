@@ -37,7 +37,8 @@ const props = withDefaults(defineProps<Props>(), {
 // Starting Y position for the curve edge (where red fill ends and shadow begins)
 // Need room for 4 strokes inside the red area above this point
 const baseY = computed(() => {
-  const strokesZoneHeight = props.strokeSpacing + 4 * (props.strokeSpacing + props.strokeThickness);
+  const strokesZoneHeight =
+    props.strokeSpacing + 4 * (props.strokeSpacing + props.strokeThickness);
   return strokesZoneHeight + 10; // +10 for top padding
 });
 
@@ -49,7 +50,10 @@ const viewBoxHeight = computed(() => {
 // Generate stroke path at a given index (strokes are INSIDE red area, above the curve)
 // Stroke 0 is closest to the red edge, stroke 3 is furthest up
 const getStrokePath = (index: number) => {
-  const y = baseY.value - props.strokeSpacing - index * (props.strokeSpacing + props.strokeThickness);
+  const y =
+    baseY.value -
+    props.strokeSpacing -
+    index * (props.strokeSpacing + props.strokeThickness);
   const curveBottom = y + props.curveDepth;
   return `M0,${y} Q600,${curveBottom} 1200,${y}`;
 };
