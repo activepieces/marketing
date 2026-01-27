@@ -6,21 +6,21 @@
         <!-- Badge Pill -->
         <NuxtLink
           to="/product/ai-agent-builder"
-          class="inline-flex items-center gap-2.5 pl-4 pr-1 py-1 mb-6 rounded-full border border-[#312b60]/10 hover:border-[#312b60]/20 transition-all"
+          class="inline-flex items-center gap-2.5 pl-4 pr-1 py-1 mb-6 rounded-full border border-primary-dark/10 hover:border-primary-dark/20 transition-all"
         >
-          <span class="text-sm font-medium uppercase tracking-wide text-[#312b60]/80">Explore AI Agents</span>
-          <span class="bg-[#312b60]/5 rounded-full p-2">
-            <PhCaretRight weight="fill" class="w-4 h-4 text-[#312b60]" />
+          <span class="text-sm font-medium uppercase tracking-wide text-primary-dark/80">Explore AI Agents</span>
+          <span class="bg-primary-dark/5 rounded-full p-2">
+            <PhCaretRight weight="fill" class="w-4 h-4 text-primary-dark" />
           </span>
         </NuxtLink>
 
         <!-- Heading -->
-        <h2 class="text-5xl font-sentient font-bold text-[#312b60] mb-3">
+        <h2 class="text-5xl font-sentient font-bold text-primary-dark mb-3">
           AI agents like your<br>best employee
         </h2>
 
         <!-- Subtitle -->
-        <p class="text-xl text-[#312b60]/80 max-w-lg">
+        <p class="text-xl text-primary-dark/80 max-w-lg">
           Build intelligent agents with enterprise integrations and precise control.
         </p>
       </div>
@@ -33,8 +33,8 @@
           @click="goToTab(i)"
           class="relative px-4 py-2 text-[15px] font-medium transition-all duration-300 rounded-full overflow-hidden"
           :class="activeIndex === i
-            ? 'bg-[#312b60] text-white'
-            : 'text-[#312b60]/60 hover:text-[#312b60] hover:bg-[#312b60]/5'"
+            ? 'bg-primary-dark text-white'
+            : 'text-primary-dark/60 hover:text-primary-dark hover:bg-primary-dark/5'"
         >
           <!-- Progress fill - full when paused, follows progress when playing -->
           <span
@@ -47,15 +47,15 @@
       </div>
 
       <!-- Canvas -->
-      <div ref="canvasRef" class="relative bg-[#312b60]/5 rounded-2xl overflow-hidden" style="height: 453px;">
+      <div ref="canvasRef" class="relative bg-primary-dark/5 rounded-2xl overflow-hidden" style="height: 453px;">
 
         <!-- Play/Pause button - top left inside canvas, integrated look -->
         <button
           @click="toggleAuto"
           class="absolute top-5 left-5 z-50 p-1 hover:scale-110 transition-transform"
         >
-          <PhPause v-if="isAutoPlaying" class="w-5 h-5 text-[#312b60] hover:text-[#312b60]/80 transition-colors" weight="fill" />
-          <PhPlay v-else class="w-5 h-5 text-[#312b60] hover:text-[#312b60]/80 transition-colors" weight="fill" />
+          <PhPause v-if="isAutoPlaying" class="w-5 h-5 text-primary-dark hover:text-primary-dark/80 transition-colors" weight="fill" />
+          <PhPlay v-else class="w-5 h-5 text-primary-dark hover:text-primary-dark/80 transition-colors" weight="fill" />
         </button>
         
         <!-- ============================== -->
