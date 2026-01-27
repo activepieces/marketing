@@ -76,17 +76,16 @@
 
                 <!-- Title bar - just icon and title -->
                 <div
-                  class="flex items-center gap-2.5 px-4 border-b border-gray-100 transition-all duration-300 flex-shrink-0"
+                  class="relative z-[60] flex items-center gap-2.5 px-4 transition-all duration-300 flex-shrink-0"
                   :class="
                     activeCard === index
-                      ? 'py-2.5 bg-gray-50'
-                      : 'py-2 bg-gray-100'
+                      ? 'py-2.5 bg-gray-50 border-b border-gray-100'
+                      : 'py-2 bg-transparent'
                   "
                 >
                   <!-- Icon + Title -->
                   <div
                     class="flex items-center gap-2 transition-all duration-300"
-                    :class="activeCard === index ? 'opacity-100' : 'opacity-75'"
                   >
                     <div
                       class="rounded-md flex items-center justify-center transition-all duration-300 flex-shrink-0"
@@ -103,8 +102,10 @@
                       />
                     </div>
                     <span
-                      class="font-medium text-gray-700 transition-all duration-300"
-                      :class="activeCard === index ? 'text-sm' : 'text-xs'"
+                      class="font-medium transition-all duration-300"
+                      :class="[
+                        activeCard === index ? 'text-sm text-gray-700' : 'text-xs text-white'
+                      ]"
                     >
                       {{ card.title }}
                     </span>
