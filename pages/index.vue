@@ -29,6 +29,7 @@ onMounted(() => {
 
 <template>
   <PagesIndexHero />
+  <PagesIndexAiAgentsShowcase />
   <PagesIndexCaseStudies />
   <PagesIndexProductStrengths />
   <PagesIndexSocialLove />

@@ -1,45 +1,45 @@
 <template>
-  <section ref="sectionRef" class="relative py-24 bg-[#f8f8f6]">
-    <!-- Subtle pattern -->
-    <div class="absolute inset-0 opacity-40" style="background-image: radial-gradient(#d4d4d4 1px, transparent 1px); background-size: 24px 24px;"></div>
-
+  <section ref="sectionRef" class="relative py-24 bg-white">
     <div class="relative max-w-7xl mx-auto px-4">
-      <!-- Header row -->
-      <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-10">
-        <div class="max-w-2xl">
-          <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
-            AI agents that work like your best employee
-          </h2>
-          <p class="text-xl text-gray-500">
-            Build intelligent agents with enterprise integrations and precise control.
-          </p>
-        </div>
-        <NuxtLink 
+      <!-- Header - Centered -->
+      <div class="flex flex-col items-center text-center mb-10">
+        <!-- Badge Pill -->
+        <NuxtLink
           to="/product/ai-agent-builder"
-          class="inline-flex items-center gap-2 px-6 py-3 bg-white text-gray-900 font-semibold rounded-xl border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all"
+          class="inline-flex items-center gap-2.5 pl-4 pr-1 py-1 mb-6 rounded-full border border-[#312b60]/10 hover:border-[#312b60]/20 transition-all"
         >
-          Explore AI Agents
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-          </svg>
+          <span class="text-sm font-medium uppercase tracking-wide text-[#312b60]/80">Explore AI Agents</span>
+          <span class="bg-[#312b60]/5 rounded-full p-2">
+            <PhCaretRight weight="fill" class="w-4 h-4 text-[#312b60]" />
+          </span>
         </NuxtLink>
+
+        <!-- Heading -->
+        <h2 class="text-5xl font-sentient font-bold text-[#312b60] mb-3">
+          AI agents like your<br>best employee
+        </h2>
+
+        <!-- Subtitle -->
+        <p class="text-xl text-[#312b60]/80 max-w-lg">
+          Build intelligent agents with enterprise integrations and precise control.
+        </p>
       </div>
 
       <!-- Tabs row -->
-      <div class="flex items-center gap-2 mb-8">
+      <div class="flex items-center justify-center gap-2 mb-8">
         <button
           v-for="(tab, i) in tabs"
           :key="tab.id"
           @click="goToTab(i)"
           class="relative px-4 py-2 text-[15px] font-medium transition-all duration-300 rounded-full overflow-hidden"
-          :class="activeIndex === i 
-            ? 'bg-gray-700 text-white' 
-            : 'text-gray-500 hover:text-gray-900 hover:bg-gray-100'"
+          :class="activeIndex === i
+            ? 'bg-[#312b60] text-white'
+            : 'text-[#312b60]/60 hover:text-[#312b60] hover:bg-[#312b60]/5'"
         >
           <!-- Progress fill - full when paused, follows progress when playing -->
-          <span 
+          <span
             v-if="activeIndex === i"
-            class="absolute inset-0 bg-gray-900 rounded-l-full origin-left transition-transform duration-100 ease-linear"
+            class="absolute inset-0 bg-[#1a1640] rounded-l-full origin-left transition-transform duration-100 ease-linear"
             :style="{ transform: `scaleX(${isAutoPlaying ? progress / 100 : 1})` }"
           ></span>
           <span class="relative z-10">{{ tab.label }}</span>
@@ -47,15 +47,15 @@
       </div>
 
       <!-- Canvas -->
-      <div ref="canvasRef" class="relative bg-gradient-to-br from-[#ebe9e4] to-[#dedad3] rounded-[28px] overflow-hidden" style="height: 520px;">
-        
+      <div ref="canvasRef" class="relative bg-[#312b60]/5 rounded-2xl overflow-hidden" style="height: 453px;">
+
         <!-- Play/Pause button - top left inside canvas, integrated look -->
-        <button 
-          @click="toggleAuto" 
+        <button
+          @click="toggleAuto"
           class="absolute top-5 left-5 z-50 p-1 hover:scale-110 transition-transform"
         >
-          <svg v-if="isAutoPlaying" class="w-6 h-6 text-gray-400 hover:text-gray-600 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>
-          <svg v-else class="w-6 h-6 text-gray-400 hover:text-gray-600 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          <PhPause v-if="isAutoPlaying" class="w-5 h-5 text-[#312b60] hover:text-[#312b60]/80 transition-colors" weight="fill" />
+          <PhPlay v-else class="w-5 h-5 text-[#312b60] hover:text-[#312b60]/80 transition-colors" weight="fill" />
         </button>
         
         <!-- ============================== -->
@@ -550,6 +550,7 @@
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue'
+import { PhCaretRight, PhPlay, PhPause } from "@phosphor-icons/vue"
 
 const { piecesCount, pending } = usePiecesCount()
 const displayPiecesCount = computed(() => pending.value ? 500 : piecesCount.value)
