@@ -60,6 +60,20 @@
               <div
                 class="absolute inset-0 rounded-t-xl overflow-hidden bg-white border border-gray-200 border-b-0 shadow-sm flex flex-col"
               >
+                <!-- Color overlay for inactive cards -->
+                <div
+                  v-if="activeCard !== index"
+                  class="absolute inset-0 z-50 pointer-events-none rounded-t-xl overflow-hidden"
+                >
+                  <!-- Purple base layer -->
+                  <div class="absolute inset-0 bg-[#483E97]"></div>
+                  <!-- White overlay with varying opacity -->
+                  <div
+                    class="absolute inset-0 bg-white transition-opacity duration-500"
+                    :style="{ opacity: getWhiteOverlayOpacity(index) }"
+                  ></div>
+                </div>
+
                 <!-- Title bar - just icon and title -->
                 <div
                   class="flex items-center gap-2.5 px-4 border-b border-gray-100 transition-all duration-300 flex-shrink-0"
@@ -1733,6 +1747,24 @@ const brandColors = [
   { primary: "#E4002B", secondary: "#E9334F", name: "Colgate", icon: "star" },
   { primary: "#F26322", secondary: "#F5854E", name: "Fanta", icon: "star" },
 ];
+
+// Helper to calculate how many positions behind active a card is
+const getCardOffset = (index) => {
+  let offset = index - activeCard.value;
+  if (offset < 0) {
+    offset = cards.length + offset;
+  }
+  return offset;
+};
+
+// Helper for white overlay opacity based on card depth
+const getWhiteOverlayOpacity = (index) => {
+  const offset = getCardOffset(index);
+  if (offset === 0) return 0; // Active card - no overlay
+  if (offset === 1) return 0.6;
+  if (offset === 2) return 0.4;
+  return 0.2; // offset >= 3
+};
 
 // Card positioning - balanced: subtle tilt + moderate vertical stack
 const getCardStyle = (index) => {
