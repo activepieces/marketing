@@ -12,7 +12,7 @@
 
     <!-- Curved separator between AI Agents and AI Adoption sections -->
     <SectionSeparator
-      top-color="rgba(255, 0, 0, 1)"
+      top-color="transparent"
       bottom-color="green"
       stroke1-color="rgba(0, 0, 255, 0.2)"
       stroke2-color="rgba(0, 0, 255, 0.4)"
@@ -22,6 +22,7 @@
       :curve-depth="60"
       :stroke-spacing="12"
       :stroke-thickness="4"
+      overlap="60px"
     />
 
     <!-- AI Adoption Showcase (Full Width Playing Cards) -->

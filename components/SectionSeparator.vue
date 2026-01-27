@@ -17,6 +17,8 @@ interface Props {
   height?: string;
   /** Width of shadow band in SVG units. Default is 12 */
   shadowWidth?: number;
+  /** How much the separator overlaps the section above (for transparent top). Default is 0 */
+  overlap?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -32,6 +34,7 @@ const props = withDefaults(defineProps<Props>(), {
   curveDepth: 60,
   height: "120px",
   shadowWidth: 12,
+  overlap: "0px",
 });
 
 // Starting Y position for the curve edge (where red fill ends and shadow begins)
@@ -83,7 +86,7 @@ const bottomFillPath = computed(() => {
 </script>
 
 <template>
-  <div class="overflow-hidden">
+  <div class="overflow-hidden" :style="{ marginTop: `-${overlap}` }">
     <svg
       class="relative block w-full"
       :style="{ height: height, background: topColor }"
