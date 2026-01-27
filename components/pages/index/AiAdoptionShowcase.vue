@@ -7,15 +7,12 @@
       <!-- Centered header section -->
       <div class="flex flex-col items-center text-center mb-16">
         <!-- Pill button -->
-        <NuxtLink
+        <PagesIndexSectionBadge
           to="/product/ai-adoption"
-          class="inline-flex items-center gap-2 pl-5 pr-2 py-2 bg-white/10 text-white font-semibold rounded-full border border-white/20 hover:bg-white/15 hover:border-white/30 transition-all mb-8"
-        >
-          <span class="text-sm tracking-wide">EXPLORE AI ADOPTION</span>
-          <span class="bg-white/10 rounded-full p-2">
-            <PhCaretRight weight="fill" class="w-4 h-4 text-white" />
-          </span>
-        </NuxtLink>
+          label="Explore AI Adoption"
+          variant="dark"
+          class="mb-8"
+        />
 
         <!-- Heading -->
         <h2
@@ -1225,7 +1222,6 @@ import {
   PhDiamond,
   PhFlowArrow,
   PhCpu,
-  PhCaretRight,
 } from "@phosphor-icons/vue";
 import FlowBuilder from "~/components/pages/product/ai-agents/FlowBuilder.vue";
 

@@ -1,0 +1,54 @@
+<template>
+  <NuxtLink
+    :to="to"
+    class="inline-flex items-center gap-2.5 pl-4 pr-1 py-1 rounded-full transition-all"
+    :class="variantClasses"
+  >
+    <span class="text-sm font-medium uppercase tracking-wide" :class="textClass">
+      {{ label }}
+    </span>
+    <span class="rounded-full p-2" :class="iconBgClass">
+      <PhCaretRight weight="fill" class="w-4 h-4" :class="iconClass" />
+    </span>
+  </NuxtLink>
+</template>
+
+<script setup>
+import { computed } from "vue";
+import { PhCaretRight } from "@phosphor-icons/vue";
+
+const props = defineProps({
+  to: {
+    type: String,
+    required: true,
+  },
+  label: {
+    type: String,
+    required: true,
+  },
+  variant: {
+    type: String,
+    default: "light",
+    validator: (value) => ["light", "dark"].includes(value),
+  },
+});
+
+const variantClasses = computed(() => {
+  if (props.variant === "dark") {
+    return "bg-white/10 border border-white/20 hover:bg-white/15 hover:border-white/30";
+  }
+  return "border border-primary-dark/10 hover:border-primary-dark/20";
+});
+
+const textClass = computed(() => {
+  return props.variant === "dark" ? "text-white" : "text-primary-dark/80";
+});
+
+const iconBgClass = computed(() => {
+  return props.variant === "dark" ? "bg-white/10" : "bg-primary-dark/5";
+});
+
+const iconClass = computed(() => {
+  return props.variant === "dark" ? "text-white" : "text-primary-dark";
+});
+</script>

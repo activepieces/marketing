@@ -4,15 +4,12 @@
       <!-- Header - Centered -->
       <div class="flex flex-col items-center text-center mb-10">
         <!-- Badge Pill -->
-        <NuxtLink
+        <PagesIndexSectionBadge
           to="/product/ai-agent-builder"
-          class="inline-flex items-center gap-2.5 pl-4 pr-1 py-1 mb-6 rounded-full border border-primary-dark/10 hover:border-primary-dark/20 transition-all"
-        >
-          <span class="text-sm font-medium uppercase tracking-wide text-primary-dark/80">Explore AI Agents</span>
-          <span class="bg-primary-dark/5 rounded-full p-2">
-            <PhCaretRight weight="fill" class="w-4 h-4 text-primary-dark" />
-          </span>
-        </NuxtLink>
+          label="Explore AI Agents"
+          variant="light"
+          class="mb-6"
+        />
 
         <!-- Heading -->
         <h2 class="text-5xl font-sentient font-bold text-primary-dark mb-3">
@@ -550,7 +547,7 @@
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue'
-import { PhCaretRight, PhPlay, PhPause } from "@phosphor-icons/vue"
+import { PhPlay, PhPause } from "@phosphor-icons/vue"
 
 const { piecesCount, pending } = usePiecesCount()
 const displayPiecesCount = computed(() => pending.value ? 500 : piecesCount.value)
