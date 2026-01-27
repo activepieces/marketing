@@ -70,9 +70,9 @@ const shadowPath = computed(() => {
   return `M0,${y1} Q600,${curve1} 1200,${y1} L1200,${y2} Q600,${curve2} 0,${y2} Z`;
 });
 
-// Bottom fill path - starts after the shadow band
+// Bottom fill path - starts at baseY (same as where red ends, shadow will overlay on top)
 const bottomFillPath = computed(() => {
-  const y = baseY.value + props.shadowWidth;
+  const y = baseY.value;
   const curveBottom = y + props.curveDepth;
   return `M0,${y} Q600,${curveBottom} 1200,${y} L1200,${viewBoxHeight.value} L0,${viewBoxHeight.value} Z`;
 });
@@ -116,11 +116,11 @@ const bottomFillPath = computed(() => {
         :stroke-width="strokeThickness"
       />
 
-      <!-- Shadow band (directly under the red curve) -->
-      <path :d="shadowPath" :fill="shadowColor" />
-
       <!-- Bottom fill (matches section below) -->
       <path :d="bottomFillPath" :fill="bottomColor" />
+
+      <!-- Shadow band (on top of green, creating shadow effect from red) -->
+      <path :d="shadowPath" :fill="shadowColor" />
     </svg>
   </div>
 </template>

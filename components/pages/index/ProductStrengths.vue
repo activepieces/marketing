@@ -18,7 +18,7 @@
       stroke2-color="rgba(0, 0, 255, 0.4)"
       stroke3-color="rgba(0, 0, 255, 0.6)"
       stroke4-color="rgba(0, 0, 255, 0.8)"
-      shadow-color="yellow"
+      shadow-color="rgba(0, 0, 0, 0.4)"
       :curve-depth="60"
       :stroke-spacing="12"
       :stroke-thickness="4"
