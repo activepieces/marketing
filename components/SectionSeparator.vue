@@ -70,7 +70,7 @@ const bottomFillPath = computed(() => {
   <div class="overflow-hidden">
     <svg
       class="relative block w-full"
-      :style="{ height: height }"
+      :style="{ height: height, background: topColor }"
       :viewBox="`0 0 1200 ${viewBoxHeight}`"
       preserveAspectRatio="none"
       xmlns="http://www.w3.org/2000/svg"
