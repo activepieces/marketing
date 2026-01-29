@@ -186,7 +186,7 @@ const closeVideo = () => {
           </div>
 
           <div class="group cursor-pointer" @click="openVideo('vhkrlhDnP_w')">
-            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">I turned my emails into ClickUp tasks with one command 👇</h3>
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">I turned my emails into Asana tasks with one command 👇</h3>
             <div class="relative overflow-hidden rounded-xl">
               <img src="https://img.youtube.com/vi/vhkrlhDnP_w/maxresdefault.jpg" alt="Cursor creating tasks" class="w-full transition-transform duration-300 group-hover:scale-105">
               <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">

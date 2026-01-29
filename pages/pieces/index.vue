@@ -1,6 +1,6 @@
 <script setup>
 const pageTitle = 'Integrate your apps · Connectors catalog';
-const metaDesc = 'Connect hundreds of apps like Slack, Airtable, Google Sheets, ClickUp and Gmail to automate your work and save hours every day.';
+const metaDesc = 'Connect hundreds of apps like Slack, Airtable, Google Sheets, Notion and Gmail to automate your work and save hours every day.';
 const metaKeywords = 'connectors, integrations, no-code business automation';
 
 useHead({

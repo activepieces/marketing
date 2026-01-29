@@ -31,9 +31,6 @@
           <img src="/logos/roblox.svg" alt="Roblox" class="m-auto h-6" />
         </div>
         <div class="relative h-6">
-          <img src="/logos/clickup.svg" alt="ClickUp" class="m-auto h-6" />
-        </div>
-        <div class="relative h-6">
           <img src="/logos/alan.svg" alt="Alan" class="m-auto h-6" />
         </div>
         <div class="relative h-6">
@@ -60,9 +57,6 @@
         </div>
         <div class="relative h-6">
           <img src="/logos/roblox.svg" alt="Roblox" class="m-auto h-6" />
-        </div>
-        <div class="relative h-6">
-          <img src="/logos/clickup.svg" alt="ClickUp" class="m-auto h-6" />
         </div>
         <div class="relative h-6">
           <img src="/logos/alan.svg" alt="Alan" class="m-auto h-6" />
