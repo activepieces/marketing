@@ -1,14 +1,17 @@
 <template>
   <NuxtLink
     :to="to"
-    class="inline-flex items-center gap-2.5 pl-4 pr-1 py-1 rounded-full transition-all"
+    class="inline-flex items-center gap-2 hover:gap-3 pl-4 pr-1 py-1 rounded-full transition-all duration-150"
     :class="variantClasses"
   >
-    <span class="text-sm font-medium uppercase tracking-wide" :class="textClass">
+    <span
+      class="text-sm font-medium uppercase tracking-wide"
+      :class="textClass"
+    >
       {{ label }}
     </span>
     <span class="rounded-full p-2" :class="iconBgClass">
-      <PhCaretRight weight="fill" class="w-4 h-4" :class="iconClass" />
+      <PhCaretRight weight="bold" size="16" :class="iconClass" />
     </span>
   </NuxtLink>
 </template>
@@ -35,13 +38,15 @@ const props = defineProps({
 
 const variantClasses = computed(() => {
   if (props.variant === "dark") {
-    return "bg-white/10 border border-white/20 hover:bg-white/15 hover:border-white/30";
+    return "border border-white/10 hover:border-white/20";
   }
   return "border border-primary-dark/10 hover:border-primary-dark/20";
 });
 
 const textClass = computed(() => {
-  return props.variant === "dark" ? "text-white" : "text-primary-dark/80";
+  return props.variant === "dark"
+    ? "text-white/80 hover:text-white"
+    : "text-primary-dark/80 hover:text-primary-dark";
 });
 
 const iconBgClass = computed(() => {

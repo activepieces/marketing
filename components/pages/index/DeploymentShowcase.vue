@@ -3,11 +3,14 @@
     <div class="max-w-7xl mx-auto px-4">
       <!-- Centered Header -->
       <div class="flex flex-col items-center text-center mb-12">
-        <SectionBadge
-          variant="dark"
+        <!-- Badge Pill -->
+        <PagesIndexSectionBadge
           to="/product/deployment-options"
           label="Explore Deployment"
+          variant="dark"
+          class="mb-6"
         />
+
         <h2
           class="font-sentient font-bold text-white text-4xl lg:text-5xl mt-6 mb-3"
         >
@@ -126,10 +129,10 @@
         </p>
         <NuxtLink
           to="/pricing"
-          class="inline-flex items-center gap-3 bg-white text-primary-dark px-10 py-6 rounded-full font-medium text-xl lg:text-2xl hover:bg-white/95 transition-colors"
+          class="inline-flex items-center gap-2 hover:gap-3 text-white px-8 py-4 rounded-full border-2 border-white/5 hover:border-white/20 font-medium text-xl lg:text-2xl transition-all duration-150"
         >
           Let's find the best fit for your team
-          <PhCaretRight weight="fill" class="w-6 h-6" />
+          <PhCaretRight weight="bold" size="24" />
         </NuxtLink>
       </div>
     </div>
