@@ -65,7 +65,19 @@ onMounted(() => {
 
   <!-- Governance & Control Showcase -->
   <PagesIndexGovernanceShowcase />
-
+  <SectionSeparator
+    top-color="transparent"
+    bottom-color="#003E64"
+    stroke1-color="rgba(0, 0, 0, 0.2)"
+    stroke2-color="rgba(0, 0, 0, 0.15)"
+    stroke3-color="rgba(0, 0, 0, 0.1)"
+    stroke4-color="rgba(0, 0, 0, 0.05)"
+    shadow-color="rgba(0, 0, 0, 0.1)"
+    :curve-depth="60"
+    :stroke-spacing="12"
+    :stroke-thickness="4"
+    overlap="60px"
+  />
   <!-- Deployment & Cost Showcase -->
   <PagesIndexDeploymentShowcase />
   <PagesIndexSocialLove />

@@ -1,54 +1,46 @@
 <template>
   <section ref="sectionRef" class="relative py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4">
-      <!-- Header row -->
-      <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-10">
-        <div class="max-w-2xl">
-          <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
-            Enterprise control, zero complexity
-          </h2>
-          <p class="text-xl text-gray-500">
-            IT oversight tools that enterprise teams need—without slowing anyone down.
-          </p>
-        </div>
-        <NuxtLink 
+      <!-- Centered Header -->
+      <div class="flex flex-col items-center text-center mb-16">
+        <PagesIndexSectionBadge
           to="/product/governance-and-management"
-          class="inline-flex items-center gap-2 px-6 py-3 bg-white text-gray-900 font-semibold rounded-xl border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all"
-        >
-          Explore Governance
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-          </svg>
-        </NuxtLink>
+          label="Explore Governance"
+          variant="light"
+          class="mb-6"
+        />
+        <h2 class="font-sentient font-bold text-primary-dark text-4xl lg:text-5xl mb-3 leading-tight">
+          Enterprise control,<br class="hidden sm:block" />zero complexity
+        </h2>
+        <p class="text-xl text-primary-dark/80">
+          IT oversight tools that enterprise teams<br class="hidden sm:block" />
+          need without slowing anyone down.
+        </p>
       </div>
 
-      <!-- Tabs row with progress -->
-      <div class="flex items-center gap-2 mb-8">
-        <button
-          v-for="(tab, i) in tabs"
-          :key="tab.id"
-          @click="goToTab(i)"
-          class="relative px-4 py-2 text-[15px] font-medium transition-all duration-300 rounded-full overflow-hidden"
-          :class="activeTab === i 
-            ? 'bg-gray-700 text-white' 
-            : 'text-gray-500 hover:text-gray-900 hover:bg-gray-100'"
-        >
-          <!-- Progress fill -->
-          <span 
-            v-if="activeTab === i"
-            class="absolute inset-0 bg-gray-900 rounded-l-full origin-left transition-transform duration-100 ease-linear"
-            :style="{ transform: `scaleX(${isAutoPlaying ? progress / 100 : 1})` }"
-          ></span>
-          <span class="relative z-10">{{ tab.label }}</span>
-        </button>
-        
+      <!-- Tabs row -->
+      <div class="flex items-center justify-center gap-2 mb-8">
+        <div class="flex items-center gap-1 bg-primary-dark/5 rounded-full p-1">
+          <button
+            v-for="(tab, i) in tabs"
+            :key="tab.id"
+            @click="goToTab(i)"
+            class="px-4 py-2 text-[15px] font-medium transition-all duration-300 rounded-full"
+            :class="activeTab === i
+              ? 'bg-primary-dark text-white'
+              : 'text-primary-dark/60 hover:text-primary-dark'"
+          >
+            {{ tab.label }}
+          </button>
+        </div>
+
         <!-- Play/Pause button -->
-        <button 
-          @click="toggleAuto" 
-          class="ml-2 p-1.5 hover:bg-gray-100 rounded-full transition-colors"
+        <button
+          @click="toggleAuto"
+          class="ml-2 w-9 h-9 flex items-center justify-center bg-primary-dark/5 hover:bg-primary-dark/10 rounded-full transition-colors"
         >
-          <svg v-if="isAutoPlaying" class="w-4 h-4 text-gray-400 hover:text-gray-600" fill="currentColor" viewBox="0 0 24 24"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>
-          <svg v-else class="w-4 h-4 text-gray-400 hover:text-gray-600" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          <PhPause v-if="isAutoPlaying" class="w-4 h-4 text-primary-dark/60" weight="fill" />
+          <PhPlay v-else class="w-4 h-4 text-primary-dark/60" weight="fill" />
         </button>
       </div>
 
@@ -58,64 +50,64 @@
         <!-- ==================== USERS TAB ==================== -->
         <template v-if="activeTab === 0">
           <!-- SSO Card -->
-          <div class="bg-[#f5f5f7] rounded-[20px] overflow-hidden h-[400px] flex flex-col">
+          <div class="bg-primary-dark/5 rounded-2xl overflow-hidden h-[400px] flex flex-col">
             <!-- Top 1/3: Title -->
             <div class="p-6 pb-4">
-              <h3 class="text-[22px] font-semibold text-gray-900 mb-1">Single Sign-On</h3>
-              <p class="text-sm text-gray-500 leading-relaxed">Secure access with SAML 2.0 and Google. Connect your existing identity provider.</p>
+              <h3 class="font-sentient font-bold text-2xl text-primary-dark mb-1">Single Sign-On</h3>
+              <p class="text-base text-primary-dark/80 leading-relaxed">Secure access with SAML 2.0 and Google. Connect your existing identity provider.</p>
             </div>
             <!-- Bottom 2/3: Illustration -->
-            <div class="flex-1 bg-white rounded-2xl m-4 flex items-center justify-center p-6">
+            <div class="flex-1 bg-white rounded-xl m-4 flex items-center justify-center p-6">
               <div class="grid grid-cols-2 gap-4 w-full max-w-[260px]">
-                <div class="bg-[#f5f5f7] rounded-xl p-3 flex items-center justify-center h-14">
+                <div class="bg-primary-dark/5 rounded-xl p-3 flex items-center justify-center h-14">
                   <img src="/sso-icons/okta.png" class="h-6 w-auto object-contain" alt="Okta" />
                 </div>
-                <div class="bg-[#f5f5f7] rounded-xl p-3 flex items-center justify-center h-14">
+                <div class="bg-primary-dark/5 rounded-xl p-3 flex items-center justify-center h-14">
                   <img src="/sso-icons/entra-id.png" class="h-7 w-auto object-contain" alt="Microsoft Entra ID" />
                 </div>
-                <div class="bg-[#f5f5f7] rounded-xl p-3 flex items-center justify-center h-14">
+                <div class="bg-primary-dark/5 rounded-xl p-3 flex items-center justify-center h-14">
                   <img src="/sso-icons/google-workspace.png" class="h-8 w-auto object-contain" alt="Google Workspace" />
                 </div>
-                <div class="bg-[#f5f5f7] rounded-xl p-3 flex items-center justify-center h-14">
+                <div class="bg-primary-dark/5 rounded-xl p-3 flex items-center justify-center h-14">
                   <img src="/sso-icons/auth0.svg" class="h-6 w-auto object-contain" alt="Auth0" />
                 </div>
-                <div class="bg-[#f5f5f7] rounded-xl p-3 flex items-center justify-center h-14">
+                <div class="bg-primary-dark/5 rounded-xl p-3 flex items-center justify-center h-14">
                   <img src="/sso-icons/onelogin.png" class="h-5 w-auto object-contain" alt="OneLogin" />
                 </div>
-                <div class="bg-[#f5f5f7] rounded-xl p-3 flex items-center justify-center h-14 gap-1.5">
-                  <span class="text-lg text-gray-400">+</span>
-                  <span class="text-base font-medium text-gray-500">more</span>
+                <div class="bg-primary-dark/5 rounded-xl p-3 flex items-center justify-center h-14 gap-1.5">
+                  <span class="text-lg text-primary-dark/40">+</span>
+                  <span class="text-base font-medium text-primary-dark/60">more</span>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- SCIM Card -->
-          <div class="bg-[#f5f5f7] rounded-[20px] overflow-hidden h-[400px] flex flex-col">
+          <div class="bg-primary-dark/5 rounded-2xl overflow-hidden h-[400px] flex flex-col">
             <div class="p-6 pb-4">
-              <h3 class="text-[22px] font-semibold text-gray-900 mb-1">SCIM Provisioning</h3>
-              <p class="text-sm text-gray-500 leading-relaxed">Automatically sync users and groups from your identity provider. Fast onboarding.</p>
+              <h3 class="font-sentient font-bold text-2xl text-primary-dark mb-1">SCIM Provisioning</h3>
+              <p class="text-base text-primary-dark/80 leading-relaxed">Automatically sync users and groups from your identity provider. Fast onboarding.</p>
             </div>
-            <div class="flex-1 bg-white rounded-2xl m-4 flex items-center justify-center">
+            <div class="flex-1 bg-white rounded-xl m-4 flex items-center justify-center">
               <div class="w-full max-w-[220px] space-y-2.5">
-                <div v-for="(user, i) in scimUsers" :key="user.name" 
-                  class="flex items-center gap-3 bg-[#f5f5f7] rounded-xl px-4 py-3"
+                <div v-for="(user, i) in scimUsers" :key="user.name"
+                  class="flex items-center gap-3 bg-primary-dark/5 rounded-xl px-4 py-3"
                   :style="{ transform: `translateX(${(i - 1) * 12}px)` }"
                 >
                   <div class="w-9 h-9 rounded-full flex items-center justify-center text-white text-xs font-bold" :style="{ backgroundColor: user.color }">
                     {{ user.initials }}
                   </div>
                   <div class="flex-1">
-                    <p class="text-sm font-medium text-gray-900">{{ user.name }}</p>
-                    <p class="text-[11px] text-gray-400">{{ user.team }}</p>
+                    <p class="text-sm font-medium text-primary-dark">{{ user.name }}</p>
+                    <p class="text-[11px] text-primary-dark/50">{{ user.team }}</p>
                   </div>
-                  <svg 
+                  <svg
                     :key="`check-${i}-${checkAnimationKey}`"
-                    class="w-5 h-5 text-emerald-500 check-animate" 
-                    :style="{ animationDelay: `${i * 0.3 + 0.3}s` }" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    stroke-width="2.5" 
+                    class="w-5 h-5 text-emerald-500 check-animate"
+                    :style="{ animationDelay: `${i * 0.3 + 0.3}s` }"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
                     viewBox="0 0 20 20"
                   >
                     <path class="check-path" stroke-linecap="round" stroke-linejoin="round" d="M4 10l4 4 8-8"/>
@@ -126,23 +118,23 @@
           </div>
 
           <!-- RBAC Card -->
-          <div class="bg-[#f5f5f7] rounded-[20px] overflow-hidden h-[400px] flex flex-col">
+          <div class="bg-primary-dark/5 rounded-2xl overflow-hidden h-[400px] flex flex-col">
             <div class="p-6 pb-4">
-              <h3 class="text-[22px] font-semibold text-gray-900 mb-1">Advanced RBAC</h3>
-              <p class="text-sm text-gray-500 leading-relaxed">Granular role-based access control. Define exactly who can do what across your org.</p>
+              <h3 class="font-sentient font-bold text-2xl text-primary-dark mb-1">Advanced RBAC</h3>
+              <p class="text-base text-primary-dark/80 leading-relaxed">Granular role-based access control. Define exactly who can do what across your org.</p>
             </div>
-            <div class="flex-1 bg-white rounded-2xl m-4 flex items-center justify-center py-4">
+            <div class="flex-1 bg-white rounded-xl m-4 flex items-center justify-center py-4">
               <div class="w-full max-w-[220px] space-y-3">
-                <div v-for="role in roles" :key="role.name" class="bg-[#f5f5f7] rounded-xl p-4">
+                <div v-for="role in roles" :key="role.name" class="bg-primary-dark/5 rounded-xl p-4">
                   <div class="flex items-center justify-between mb-3">
                     <div class="flex items-center gap-2">
                       <span class="text-lg">{{ role.icon }}</span>
-                      <span class="text-sm font-semibold text-gray-900">{{ role.name }}</span>
+                      <span class="text-sm font-semibold text-primary-dark">{{ role.name }}</span>
                     </div>
-                    <span class="text-xs text-gray-400">{{ role.count }} users</span>
+                    <span class="text-xs text-primary-dark/50">{{ role.count }} users</span>
                   </div>
                   <div class="flex flex-wrap gap-1.5">
-                    <span v-for="perm in role.perms" :key="perm" class="px-2 py-0.5 bg-white text-gray-600 text-[10px] font-medium rounded-full">
+                    <span v-for="perm in role.perms" :key="perm" class="px-2 py-0.5 bg-white text-primary-dark/70 text-[10px] font-medium rounded-full">
                       {{ perm }}
                     </span>
                   </div>
@@ -155,19 +147,19 @@
         <!-- ==================== PIECES TAB ==================== -->
         <template v-if="activeTab === 1">
           <!-- Visibility Card -->
-          <div class="bg-[#f5f5f7] rounded-[20px] overflow-hidden h-[400px] flex flex-col">
+          <div class="bg-primary-dark/5 rounded-2xl overflow-hidden h-[400px] flex flex-col">
             <div class="p-6 pb-4">
-              <h3 class="text-[22px] font-semibold text-gray-900 mb-1">Visibility Control</h3>
-              <p class="text-sm text-gray-500 leading-relaxed">Show or hide integrations per team. Keep your workspace clean and focused.</p>
+              <h3 class="font-sentient font-bold text-2xl text-primary-dark mb-1">Visibility Control</h3>
+              <p class="text-base text-primary-dark/80 leading-relaxed">Show or hide integrations per team. Keep your workspace clean and focused.</p>
             </div>
-            <div class="flex-1 bg-white rounded-2xl m-4 flex items-center justify-center p-6">
-              <div class="w-full max-w-[240px] bg-[#f5f5f7] rounded-xl overflow-hidden">
+            <div class="flex-1 bg-white rounded-xl m-4 flex items-center justify-center p-6">
+              <div class="w-full max-w-[240px] bg-primary-dark/5 rounded-xl overflow-hidden">
                 <div v-for="piece in visibilityPieces" :key="piece.name" class="flex items-center justify-between px-3 py-2.5 border-b border-white/50 last:border-0">
                   <div class="flex items-center gap-2.5">
                     <img :src="piece.logo" class="w-6 h-6 rounded" :alt="piece.name" />
-                    <span class="text-[13px] font-medium text-gray-900">{{ piece.name }}</span>
+                    <span class="text-[13px] font-medium text-primary-dark">{{ piece.name }}</span>
                   </div>
-                  <div class="w-9 h-[18px] rounded-full transition-colors duration-300" :class="piece.on ? 'bg-gray-900' : 'bg-gray-300'">
+                  <div class="w-9 h-[18px] rounded-full transition-colors duration-300" :class="piece.on ? 'bg-primary-dark' : 'bg-primary-dark/30'">
                     <div class="w-3.5 h-3.5 mt-[2px] ml-[2px] bg-white rounded-full shadow transition-transform duration-300 ease-out" :class="piece.on ? 'translate-x-[18px]' : 'translate-x-0'"></div>
                   </div>
                 </div>
@@ -176,14 +168,14 @@
           </div>
 
           <!-- Private Pieces Card -->
-          <div class="bg-[#f5f5f7] rounded-[20px] overflow-hidden h-[400px] flex flex-col">
+          <div class="bg-primary-dark/5 rounded-2xl overflow-hidden h-[400px] flex flex-col">
             <div class="p-6 pb-4">
-              <h3 class="text-[22px] font-semibold text-gray-900 mb-1">Private Pieces</h3>
-              <p class="text-sm text-gray-500 leading-relaxed">Build custom integrations that only exist in your instance. Your code, your control.</p>
+              <h3 class="font-sentient font-bold text-2xl text-primary-dark mb-1">Private Pieces</h3>
+              <p class="text-base text-primary-dark/80 leading-relaxed">Build custom integrations that only exist in your instance. Your code, your control.</p>
             </div>
-            <div class="flex-1 bg-white rounded-2xl m-4 flex items-center justify-center py-4">
+            <div class="flex-1 bg-white rounded-xl m-4 flex items-center justify-center py-4">
               <div class="w-full max-w-[220px] space-y-3">
-                <div class="bg-[#f5f5f7] rounded-xl p-4 border-2 border-dashed border-violet-200">
+                <div class="bg-primary-dark/5 rounded-xl p-4 border-2 border-dashed border-violet-200">
                   <div class="flex items-center gap-3">
                     <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center">
                       <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -191,12 +183,12 @@
                       </svg>
                     </div>
                     <div>
-                      <p class="text-sm font-semibold text-gray-900">Internal API</p>
-                      <p class="text-[11px] text-violet-600 font-medium">🔒 Private</p>
+                      <p class="text-sm font-semibold text-primary-dark">Internal API</p>
+                      <p class="text-[11px] text-violet-600 font-medium">Private</p>
                     </div>
                   </div>
                 </div>
-                <div class="bg-[#f5f5f7] rounded-xl p-4 border-2 border-dashed border-emerald-200">
+                <div class="bg-primary-dark/5 rounded-xl p-4 border-2 border-dashed border-emerald-200">
                   <div class="flex items-center gap-3">
                     <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
                       <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -204,8 +196,8 @@
                       </svg>
                     </div>
                     <div>
-                      <p class="text-sm font-semibold text-gray-900">Payroll System</p>
-                      <p class="text-[11px] text-emerald-600 font-medium">🔒 Private</p>
+                      <p class="text-sm font-semibold text-primary-dark">Payroll System</p>
+                      <p class="text-[11px] text-emerald-600 font-medium">Private</p>
                     </div>
                   </div>
                 </div>
@@ -214,24 +206,24 @@
           </div>
 
           <!-- Pinned Tools Card -->
-          <div class="bg-[#f5f5f7] rounded-[20px] overflow-hidden h-[400px] flex flex-col">
+          <div class="bg-primary-dark/5 rounded-2xl overflow-hidden h-[400px] flex flex-col">
             <div class="p-6 pb-4">
-              <h3 class="text-[22px] font-semibold text-gray-900 mb-1">Pinned Tools</h3>
-              <p class="text-sm text-gray-500 leading-relaxed">Pin your most-used integrations to the top. Quick access for your team's essentials.</p>
+              <h3 class="font-sentient font-bold text-2xl text-primary-dark mb-1">Pinned Tools</h3>
+              <p class="text-base text-primary-dark/80 leading-relaxed">Pin your most-used integrations to the top. Quick access for your team's essentials.</p>
             </div>
-            <div class="flex-1 bg-white rounded-2xl m-4 flex items-center justify-center p-6">
-              <div class="w-full max-w-[240px] bg-[#f5f5f7] rounded-xl p-3">
+            <div class="flex-1 bg-white rounded-xl m-4 flex items-center justify-center p-6">
+              <div class="w-full max-w-[240px] bg-primary-dark/5 rounded-xl p-3">
                 <div class="flex items-center gap-1.5 mb-3 px-1">
-                  <svg class="w-3.5 h-3.5 text-gray-400" viewBox="0 0 24 24" fill="currentColor">
+                  <svg class="w-3.5 h-3.5 text-primary-dark/50" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M16 4a1 1 0 01.707.293l3 3a1 1 0 01-.464 1.664l-1.397.349-.793.793 1.5 6a1 1 0 01-.276.96l-1.414 1.413a1 1 0 01-1.414 0L12 15.02l-3.449 3.449a1 1 0 01-1.414-1.414l3.449-3.449-3.449-3.449a1 1 0 010-1.414l1.414-1.414a1 1 0 01.96-.276l6 1.5.793-.793.349-1.397A1 1 0 0116.96 4H16z"/>
                   </svg>
-                  <span class="text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Pinned</span>
+                  <span class="text-[11px] font-semibold text-primary-dark/60 uppercase tracking-wide">Pinned</span>
                 </div>
                 <div class="space-y-1.5">
                   <div v-for="(tool, i) in pinnedTools" :key="tool.name" class="flex items-center gap-3 bg-white rounded-lg px-3 py-2">
-                    <span class="text-[10px] text-gray-400 font-medium w-3">{{ i + 1 }}</span>
+                    <span class="text-[10px] text-primary-dark/50 font-medium w-3">{{ i + 1 }}</span>
                     <img :src="tool.logo" class="w-6 h-6 rounded" :alt="tool.name" />
-                    <span class="text-[13px] font-medium text-gray-900">{{ tool.name }}</span>
+                    <span class="text-[13px] font-medium text-primary-dark">{{ tool.name }}</span>
                   </div>
                 </div>
               </div>
@@ -242,18 +234,18 @@
         <!-- ==================== CONNECTIONS TAB ==================== -->
         <template v-if="activeTab === 2">
           <!-- Centralized Credentials Card -->
-          <div class="bg-[#f5f5f7] rounded-[20px] overflow-hidden h-[400px] flex flex-col">
+          <div class="bg-primary-dark/5 rounded-2xl overflow-hidden h-[400px] flex flex-col">
             <div class="p-6 pb-4">
-              <h3 class="text-[22px] font-semibold text-gray-900 mb-1">Centralized Credentials</h3>
-              <p class="text-sm text-gray-500 leading-relaxed">IT manages service accounts once. Teams reuse them across all projects.</p>
+              <h3 class="font-sentient font-bold text-2xl text-primary-dark mb-1">Centralized Credentials</h3>
+              <p class="text-base text-primary-dark/80 leading-relaxed">IT manages service accounts once. Teams reuse them across all projects.</p>
             </div>
-            <div class="flex-1 bg-white rounded-2xl m-4 flex items-center justify-center">
+            <div class="flex-1 bg-white rounded-xl m-4 flex items-center justify-center">
               <div class="w-full max-w-[200px] space-y-2.5">
-                <div v-for="conn in serviceAccounts" :key="conn.name" class="flex items-center gap-3 bg-[#f5f5f7] rounded-xl px-4 py-3">
+                <div v-for="conn in serviceAccounts" :key="conn.name" class="flex items-center gap-3 bg-primary-dark/5 rounded-xl px-4 py-3">
                   <img :src="conn.logo" class="w-8 h-8 rounded-lg" :alt="conn.name" />
                   <div class="flex-1 min-w-0">
-                    <p class="text-[13px] font-medium text-gray-900">{{ conn.name }}</p>
-                    <p class="text-[10px] text-gray-400 truncate">{{ conn.account }}</p>
+                    <p class="text-[13px] font-medium text-primary-dark">{{ conn.name }}</p>
+                    <p class="text-[10px] text-primary-dark/50 truncate">{{ conn.account }}</p>
                   </div>
                 </div>
               </div>
@@ -261,35 +253,35 @@
           </div>
 
           <!-- AI Providers Card -->
-          <div class="bg-[#f5f5f7] rounded-[20px] overflow-hidden h-[400px] flex flex-col">
+          <div class="bg-primary-dark/5 rounded-2xl overflow-hidden h-[400px] flex flex-col">
             <div class="p-6 pb-4">
-              <h3 class="text-[22px] font-semibold text-gray-900 mb-1">AI Providers</h3>
-              <p class="text-sm text-gray-500 leading-relaxed">Connect your AI gateway or cloud provider. Centralize billing and usage.</p>
+              <h3 class="font-sentient font-bold text-2xl text-primary-dark mb-1">AI Providers</h3>
+              <p class="text-base text-primary-dark/80 leading-relaxed">Connect your AI gateway or cloud provider. Centralize billing and usage.</p>
             </div>
-            <div class="flex-1 bg-white rounded-2xl m-4 flex items-center justify-center p-6">
+            <div class="flex-1 bg-white rounded-xl m-4 flex items-center justify-center p-6">
               <div class="w-full max-w-[260px]">
                 <div class="grid grid-cols-2 gap-3 mb-4">
-                  <div class="bg-[#f5f5f7] rounded-xl px-3 py-3 flex items-center justify-center">
+                  <div class="bg-primary-dark/5 rounded-xl px-3 py-3 flex items-center justify-center">
                     <img src="/ai-providers-icons/azureopenai.png" class="h-6 w-auto object-contain" alt="Azure OpenAI" />
                   </div>
-                  <div class="bg-[#f5f5f7] rounded-xl px-3 py-3 flex items-center justify-center">
+                  <div class="bg-primary-dark/5 rounded-xl px-3 py-3 flex items-center justify-center">
                     <img src="/ai-providers-icons/amazonbedrock.png" class="h-6 w-auto object-contain" alt="Amazon Bedrock" />
                   </div>
-                  <div class="bg-[#f5f5f7] rounded-xl px-3 py-3 flex items-center justify-center">
+                  <div class="bg-primary-dark/5 rounded-xl px-3 py-3 flex items-center justify-center">
                     <img src="/ai-providers-icons/openrouter.png" class="h-5 w-auto object-contain" alt="OpenRouter" />
                   </div>
-                  <div class="bg-[#f5f5f7] rounded-xl px-3 py-3 flex items-center justify-center">
+                  <div class="bg-primary-dark/5 rounded-xl px-3 py-3 flex items-center justify-center">
                     <img src="/ai-providers-icons/litellm.png" class="h-6 w-auto object-contain" alt="LiteLLM" />
                   </div>
                 </div>
                 <!-- AI Usage bar -->
                 <div class="px-1">
                   <div class="flex items-center justify-between mb-2">
-                    <span class="text-[11px] text-gray-500">AI spend this month</span>
-                    <span class="text-[13px] font-semibold text-gray-900">$1,247</span>
+                    <span class="text-[11px] text-primary-dark/60">AI spend this month</span>
+                    <span class="text-[13px] font-semibold text-primary-dark">$1,247</span>
                   </div>
-                  <div class="h-1.5 bg-gray-200 rounded-full overflow-hidden">
-                    <div class="h-full bg-gray-900 rounded-full" style="width: 62%"></div>
+                  <div class="h-1.5 bg-primary-dark/10 rounded-full overflow-hidden">
+                    <div class="h-full bg-primary-dark rounded-full" style="width: 62%"></div>
                   </div>
                 </div>
               </div>
@@ -297,26 +289,26 @@
           </div>
 
           <!-- Sensitive Connections Card -->
-          <div class="bg-[#f5f5f7] rounded-[20px] overflow-hidden h-[400px] flex flex-col">
+          <div class="bg-primary-dark/5 rounded-2xl overflow-hidden h-[400px] flex flex-col">
             <div class="p-6 pb-4">
-              <h3 class="text-[22px] font-semibold text-gray-900 mb-1">Sensitive Connections</h3>
-              <p class="text-sm text-gray-500 leading-relaxed">Mark connections as sensitive. Users need approval before using them.</p>
+              <h3 class="font-sentient font-bold text-2xl text-primary-dark mb-1">Sensitive Connections</h3>
+              <p class="text-base text-primary-dark/80 leading-relaxed">Mark connections as sensitive. Users need approval before using them.</p>
             </div>
-            <div class="flex-1 bg-white rounded-2xl m-4 flex items-center justify-center overflow-hidden relative">
-              <div 
+            <div class="flex-1 bg-white rounded-xl m-4 flex items-center justify-center overflow-hidden relative">
+              <div
                 class="w-full max-w-[200px] transition-all duration-500 ease-out"
                 :style="{ transform: sensitiveAnimationPhase >= 2 ? 'translateY(45px)' : 'translateY(0)' }"
               >
                 <!-- Connection row -->
-                <div 
-                  class="bg-[#f5f5f7] rounded-xl p-3 mb-2 transition-shadow duration-500"
+                <div
+                  class="bg-primary-dark/5 rounded-xl p-3 mb-2 transition-shadow duration-500"
                   :class="sensitiveAnimationPhase >= 2 ? 'shadow-lg' : ''"
                 >
                   <div class="flex items-center gap-3">
                     <div class="relative">
                       <img src="https://cdn.activepieces.com/pieces/metabase.png" class="w-8 h-8 rounded-lg" alt="Metabase" />
                       <!-- Shield overlay -->
-                      <div 
+                      <div
                         class="absolute -top-1 -right-1 w-5 h-5 bg-amber-500 rounded-full flex items-center justify-center transition-all duration-300"
                         :class="sensitiveAnimationPhase >= 2 ? 'opacity-100 scale-100' : 'opacity-0 scale-0'"
                       >
@@ -326,16 +318,16 @@
                       </div>
                     </div>
                     <div class="flex-1">
-                      <p class="text-[13px] font-medium text-gray-900">Metabase</p>
-                      <p 
+                      <p class="text-[13px] font-medium text-primary-dark">Metabase</p>
+                      <p
                         class="text-[10px] transition-all duration-300"
-                        :class="sensitiveAnimationPhase >= 2 ? 'text-amber-600 font-medium' : 'text-gray-400'"
+                        :class="sensitiveAnimationPhase >= 2 ? 'text-amber-600 font-medium' : 'text-primary-dark/50'"
                       >
                         {{ sensitiveAnimationPhase >= 2 ? 'Requires approval' : 'analytics@acme.com' }}
                       </p>
                     </div>
-                    <svg 
-                      class="w-4 h-4 text-gray-400 transition-opacity duration-300"
+                    <svg
+                      class="w-4 h-4 text-primary-dark/50 transition-opacity duration-300"
                       :class="sensitiveAnimationPhase >= 2 ? 'opacity-0' : 'opacity-100'"
                       fill="none" stroke="currentColor" viewBox="0 0 24 24"
                     >
@@ -344,11 +336,11 @@
                   </div>
                 </div>
                 <!-- Dropdown menu -->
-                <div 
-                  class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden ml-8 transition-all duration-300"
+                <div
+                  class="bg-white rounded-xl shadow-lg border border-primary-dark/10 overflow-hidden ml-8 transition-all duration-300"
                   :class="sensitiveAnimationPhase >= 2 ? 'opacity-0 pointer-events-none' : 'opacity-100'"
                 >
-                  <div 
+                  <div
                     class="px-3 py-2 flex items-center gap-2 cursor-pointer transition-colors duration-200"
                     :class="sensitiveAnimationPhase === 1 ? 'bg-amber-100' : 'bg-amber-50'"
                   >
@@ -358,16 +350,16 @@
                     <span class="text-[12px] text-amber-700 font-medium">Mark as sensitive</span>
                   </div>
                   <div class="px-3 py-2 flex items-center gap-2 cursor-pointer">
-                    <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-4 h-4 text-primary-dark/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
                     </svg>
-                    <span class="text-[12px] text-gray-700">Rename</span>
+                    <span class="text-[12px] text-primary-dark/80">Rename</span>
                   </div>
                   <div class="px-3 py-2 flex items-center gap-2 cursor-pointer">
-                    <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-4 h-4 text-primary-dark/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
                     </svg>
-                    <span class="text-[12px] text-gray-700">Delete</span>
+                    <span class="text-[12px] text-primary-dark/80">Delete</span>
                   </div>
                 </div>
               </div>
@@ -378,29 +370,29 @@
         <!-- ==================== AUDIT TAB ==================== -->
         <template v-if="activeTab === 3">
           <!-- Activity Tracking Card -->
-          <div class="bg-[#f5f5f7] rounded-[20px] overflow-hidden h-[400px] flex flex-col">
+          <div class="bg-primary-dark/5 rounded-2xl overflow-hidden h-[400px] flex flex-col">
             <div class="p-6 pb-4">
-              <h3 class="text-[22px] font-semibold text-gray-900 mb-1">Activity Tracking</h3>
-              <p class="text-sm text-gray-500 leading-relaxed">Every flow run, user action, and system event logged automatically with full details.</p>
+              <h3 class="font-sentient font-bold text-2xl text-primary-dark mb-1">Activity Tracking</h3>
+              <p class="text-base text-primary-dark/80 leading-relaxed">Every flow run, user action, and system event logged automatically with full details.</p>
             </div>
-            <div class="flex-1 bg-white rounded-2xl m-4 flex items-center justify-center overflow-hidden">
+            <div class="flex-1 bg-white rounded-xl m-4 flex items-center justify-center overflow-hidden">
               <div class="w-full max-w-[240px] audit-list-container">
                 <TransitionGroup name="audit-list" tag="div" class="space-y-2">
-                  <div 
-                    v-for="log in visibleAuditLogs" 
-                    :key="log.id" 
-                    class="flex items-center gap-2.5 bg-[#f5f5f7] rounded-xl px-3 py-2.5"
+                  <div
+                    v-for="log in visibleAuditLogs"
+                    :key="log.id"
+                    class="flex items-center gap-2.5 bg-primary-dark/5 rounded-xl px-3 py-2.5"
                   >
-                    <div class="w-5 h-5 rounded flex items-center justify-center bg-gray-200 flex-shrink-0">
-                      <svg class="w-3 h-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="w-5 h-5 rounded flex items-center justify-center bg-primary-dark/10 flex-shrink-0">
+                      <svg class="w-3 h-3 text-primary-dark/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
                       </svg>
                     </div>
-                    <span class="text-[11px] text-gray-900 flex-1 truncate">{{ log.what }}</span>
+                    <span class="text-[11px] text-primary-dark flex-1 truncate">{{ log.what }}</span>
                     <span class="px-1.5 py-0.5 text-[9px] font-semibold rounded flex-shrink-0" :class="getActionClass(log.action)">
                       {{ log.action }}
                     </span>
-                    <span class="text-[10px] text-gray-400 flex-shrink-0">Today</span>
+                    <span class="text-[10px] text-primary-dark/50 flex-shrink-0">Today</span>
                   </div>
                 </TransitionGroup>
               </div>
@@ -408,38 +400,38 @@
           </div>
 
           <!-- Smart Filters Card -->
-          <div class="bg-[#f5f5f7] rounded-[20px] overflow-hidden h-[400px] flex flex-col">
+          <div class="bg-primary-dark/5 rounded-2xl overflow-hidden h-[400px] flex flex-col">
             <div class="p-6 pb-4">
-              <h3 class="text-[22px] font-semibold text-gray-900 mb-1">Smart Filters</h3>
-              <p class="text-sm text-gray-500 leading-relaxed">Filter by action type, performer, project, or date range to find exactly what you need.</p>
+              <h3 class="font-sentient font-bold text-2xl text-primary-dark mb-1">Smart Filters</h3>
+              <p class="text-base text-primary-dark/80 leading-relaxed">Filter by action type, performer, project, or date range to find exactly what you need.</p>
             </div>
-            <div class="flex-1 bg-white rounded-2xl m-4 flex items-center justify-center">
+            <div class="flex-1 bg-white rounded-xl m-4 flex items-center justify-center">
               <div class="w-full max-w-[240px]">
-                <div class="bg-[#f5f5f7] rounded-xl p-4">
+                <div class="bg-primary-dark/5 rounded-xl p-4">
                   <div class="flex flex-wrap gap-2 mb-4">
-                    <div class="flex items-center gap-1.5 px-2.5 py-1.5 bg-white rounded-lg border border-gray-200">
-                      <svg class="w-3 h-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="flex items-center gap-1.5 px-2.5 py-1.5 bg-white rounded-lg border border-primary-dark/10">
+                      <svg class="w-3 h-3 text-primary-dark/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/>
                       </svg>
-                      <span class="text-[11px] text-gray-600 font-medium">Action</span>
+                      <span class="text-[11px] text-primary-dark/70 font-medium">Action</span>
                     </div>
-                    <div class="flex items-center gap-1.5 px-2.5 py-1.5 bg-white rounded-lg border border-gray-200">
-                      <svg class="w-3 h-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="flex items-center gap-1.5 px-2.5 py-1.5 bg-white rounded-lg border border-primary-dark/10">
+                      <svg class="w-3 h-3 text-primary-dark/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
                       </svg>
-                      <span class="text-[11px] text-gray-600 font-medium">Performed By</span>
+                      <span class="text-[11px] text-primary-dark/70 font-medium">Performed By</span>
                     </div>
-                    <div class="flex items-center gap-1.5 px-2.5 py-1.5 bg-white rounded-lg border border-gray-200">
-                      <svg class="w-3 h-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="flex items-center gap-1.5 px-2.5 py-1.5 bg-white rounded-lg border border-primary-dark/10">
+                      <svg class="w-3 h-3 text-primary-dark/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/>
                       </svg>
-                      <span class="text-[11px] text-gray-600 font-medium">Project</span>
+                      <span class="text-[11px] text-primary-dark/70 font-medium">Project</span>
                     </div>
-                    <div class="flex items-center gap-1.5 px-2.5 py-1.5 bg-white rounded-lg border border-gray-200">
-                      <svg class="w-3 h-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="flex items-center gap-1.5 px-2.5 py-1.5 bg-white rounded-lg border border-primary-dark/10">
+                      <svg class="w-3 h-3 text-primary-dark/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                       </svg>
-                      <span class="text-[11px] text-gray-600 font-medium">Date Range</span>
+                      <span class="text-[11px] text-primary-dark/70 font-medium">Date Range</span>
                     </div>
                   </div>
                   <div class="flex flex-wrap gap-1.5">
@@ -453,42 +445,42 @@
           </div>
 
           <!-- Full Context Card -->
-          <div class="bg-[#f5f5f7] rounded-[20px] overflow-hidden h-[400px] flex flex-col">
+          <div class="bg-primary-dark/5 rounded-2xl overflow-hidden h-[400px] flex flex-col">
             <div class="p-6 pb-4">
-              <h3 class="text-[22px] font-semibold text-gray-900 mb-1">Full Context</h3>
-              <p class="text-sm text-gray-500 leading-relaxed">See resource type, detailed descriptions, who performed the action, and timestamps.</p>
+              <h3 class="font-sentient font-bold text-2xl text-primary-dark mb-1">Full Context</h3>
+              <p class="text-base text-primary-dark/80 leading-relaxed">See resource type, detailed descriptions, who performed the action, and timestamps.</p>
             </div>
-            <div class="flex-1 bg-white rounded-2xl m-4 flex items-center justify-center py-4">
+            <div class="flex-1 bg-white rounded-xl m-4 flex items-center justify-center py-4">
               <div class="w-full max-w-[220px] space-y-3">
-                <div class="bg-[#f5f5f7] rounded-xl p-4">
+                <div class="bg-primary-dark/5 rounded-xl p-4">
                   <div class="flex items-center gap-2 mb-3">
-                    <div class="w-7 h-7 rounded-lg bg-gray-200 flex items-center justify-center">
-                      <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="w-7 h-7 rounded-lg bg-primary-dark/10 flex items-center justify-center">
+                      <svg class="w-4 h-4 text-primary-dark/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
                       </svg>
                     </div>
-                    <span class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Log Entry</span>
+                    <span class="text-xs font-semibold text-primary-dark/60 uppercase tracking-wide">Log Entry</span>
                   </div>
                   <div class="space-y-2.5">
                     <div class="flex items-center justify-between">
-                      <span class="text-[10px] text-gray-400">Resource</span>
-                      <span class="text-[11px] font-medium text-gray-900">Connection</span>
+                      <span class="text-[10px] text-primary-dark/50">Resource</span>
+                      <span class="text-[11px] font-medium text-primary-dark">Connection</span>
                     </div>
                     <div class="flex items-center justify-between">
-                      <span class="text-[10px] text-gray-400">Details</span>
-                      <span class="text-[11px] font-medium text-gray-900 truncate max-w-[100px]">Salesforce updated</span>
+                      <span class="text-[10px] text-primary-dark/50">Details</span>
+                      <span class="text-[11px] font-medium text-primary-dark truncate max-w-[100px]">Salesforce updated</span>
                     </div>
                     <div class="flex items-center justify-between">
-                      <span class="text-[10px] text-gray-400">Performed By</span>
-                      <span class="text-[11px] font-medium text-gray-900">sarah@acme.com</span>
+                      <span class="text-[10px] text-primary-dark/50">Performed By</span>
+                      <span class="text-[11px] font-medium text-primary-dark">sarah@acme.com</span>
                     </div>
                     <div class="flex items-center justify-between">
-                      <span class="text-[10px] text-gray-400">Action</span>
+                      <span class="text-[10px] text-primary-dark/50">Action</span>
                       <span class="px-1.5 py-0.5 text-[9px] font-semibold rounded bg-blue-100 text-blue-700">Updated</span>
                     </div>
                     <div class="flex items-center justify-between">
-                      <span class="text-[10px] text-gray-400">Project</span>
-                      <span class="text-[11px] font-medium text-gray-900">Sales Ops</span>
+                      <span class="text-[10px] text-primary-dark/50">Project</span>
+                      <span class="text-[11px] font-medium text-primary-dark">Sales Ops</span>
                     </div>
                   </div>
                 </div>
@@ -504,6 +496,7 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted, watch } from 'vue';
+import { PhPlay, PhPause } from '@phosphor-icons/vue';
 
 const sectionRef = ref(null);
 const activeTab = ref(0);

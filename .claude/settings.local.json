@@ -42,7 +42,9 @@
       "Bash(git reset:*)",
       "mcp__figma-desktop__get_design_context",
       "mcp__figma-desktop__get_screenshot",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Bash(pgrep:*)",
+      "Bash(xargs ps:*)"
     ]
   }
 }
