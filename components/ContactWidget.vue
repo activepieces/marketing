@@ -64,11 +64,11 @@ onBeforeUnmount(() => {
         <!-- Dismiss button -->
         <button
           @click="dismiss"
-          class="absolute -top-2 -right-2 w-5 h-5 bg-gray-200 hover:bg-gray-300 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 z-10"
+          class="absolute -top-2 -right-2 w-5 h-5 bg-primary-dark/80 hover:bg-primary-dark rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 z-10"
           aria-label="Dismiss"
         >
           <svg
-            class="w-3 h-3 text-gray-600"
+            class="w-3 h-3 text-white"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -89,7 +89,7 @@ onBeforeUnmount(() => {
         >
           <!-- Animated gradient border -->
           <div
-            class="p-0.5 group-hover:p-2 bg-gradient-to-r from-violet-500 via-fuchsia-500 to-cyan-500 rounded-full animate-gradient-border"
+            class="p-0.5 bg-gradient-to-r from-violet-500 via-fuchsia-500 to-cyan-500 rounded-full animate-gradient-border"
           >
             <div
               class="bg-white rounded-full px-4 py-2 flex items-center gap-2"
@@ -99,21 +99,23 @@ onBeforeUnmount(() => {
                 <img
                   src="/ap-logo-black-sq-cropped.svg"
                   alt="Activepieces"
-                  class="w-6 h-6 opacity-80"
+                  class="w-6 h-6 opacity-80 group-hover:opacity-100"
                 />
               </div>
 
               <!-- Text content -->
               <div class="flex flex-col">
-                <span class="text-sm font-semibold text-gray-900"
+                <span class="text-sm font-semibold text-primary-dark"
                   >See it in action</span
                 >
-                <span class="text-xs text-gray-500">Book a 30-min demo</span>
+                <span class="text-xs text-primary-dark/60"
+                  >Book a 30-min demo</span
+                >
               </div>
 
               <!-- Arrow icon -->
               <div
-                class="text-black/30 ml-2 transform transition-transform duration-300 group-hover:text-black/50"
+                class="text-primary-dark/30 ml-2 transform transition-transform duration-300 group-hover:text-primary-dark/50"
               >
                 <svg
                   class="w-5 h-5"
