@@ -44,7 +44,9 @@
       "mcp__figma-desktop__get_screenshot",
       "Bash(npm run build:*)",
       "Bash(pgrep:*)",
-      "Bash(xargs ps:*)"
+      "Bash(xargs ps:*)",
+      "Bash(ls:*)",
+      "mcp__figma-desktop__get_metadata"
     ]
   }
 }

@@ -31,6 +31,20 @@ onMounted(() => {
 <template>
   <PagesIndexHero />
   <PagesIndexCaseStudies />
+  <SectionSeparator
+    top-color="#1d4348"
+    bottom-color="#ffffff"
+    stroke1-color="rgba(255, 255,255, 0.2)"
+    stroke2-color="rgba(255, 255,255, 0.15)"
+    stroke3-color="rgba(255, 255,255, 0.1)"
+    stroke4-color="rgba(255, 255,255, 0.05)"
+    shadow-color="rgba(0, 0, 0, 0.1)"
+    :curve-depth="60"
+    :stroke-spacing="12"
+    :stroke-thickness="4"
+    overlap="60px"
+  />
+
   <PagesIndexAiAgentsShowcase />
 
   <SectionSeparator
