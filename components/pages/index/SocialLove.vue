@@ -1,4 +1,6 @@
 <script setup>
+import { PhCaretRight } from "@phosphor-icons/vue";
+
 // Helper to get initials from name
 const getInitials = (name) => {
   return name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
@@ -7,7 +9,7 @@ const getInitials = (name) => {
 // Generate a consistent color based on name
 const getAvatarColor = (name) => {
   const colors = [
-    'bg-violet-500', 'bg-blue-500', 'bg-emerald-500', 'bg-amber-500', 
+    'bg-violet-500', 'bg-blue-500', 'bg-emerald-500', 'bg-amber-500',
     'bg-rose-500', 'bg-cyan-500', 'bg-fuchsia-500', 'bg-indigo-500'
   ];
   let hash = 0;
@@ -38,17 +40,6 @@ const testimonials = [
     platform: 'trustpilot',
     author: 'Karan S.',
     content: 'Simply the best. Better than all the rest.',
-    featured: true,
-    words: [
-      { text: 'Simply', color: 'text-violet-600' },
-      { text: 'the', color: 'text-gray-800' },
-      { text: 'best.', color: 'text-fuchsia-600' },
-      { text: 'Better', color: 'text-violet-600' },
-      { text: 'than', color: 'text-gray-800' },
-      { text: 'all', color: 'text-gray-800' },
-      { text: 'the', color: 'text-gray-800' },
-      { text: 'rest.', color: 'text-fuchsia-600' },
-    ],
   },
   {
     id: 4,
@@ -113,14 +104,6 @@ const testimonials = [
     platform: 'trustpilot',
     author: 'DuxDev',
     content: 'Since implementing it, we\'ve saved countless hours and increased our team\'s productivity. A must-have tool for efficiency!',
-    featured: true,
-    words: [
-      { text: 'A', color: 'text-gray-800' },
-      { text: 'must-have', color: 'text-rose-500' },
-      { text: 'tool', color: 'text-gray-800' },
-      { text: 'for', color: 'text-gray-800' },
-      { text: 'efficiency!', color: 'text-emerald-600' },
-    ],
   },
   {
     id: 14,
@@ -175,13 +158,6 @@ const testimonials = [
     platform: 'g2',
     author: 'VinC L.',
     content: 'Simple, intuitive and all-in-one. UI/UX is very simple and grows on you.',
-    featured: true,
-    words: [
-      { text: 'Simple,', color: 'text-blue-600' },
-      { text: 'intuitive', color: 'text-cyan-600' },
-      { text: 'and', color: 'text-gray-800' },
-      { text: 'all-in-one.', color: 'text-violet-600' },
-    ],
   },
   {
     id: 22,
@@ -276,16 +252,6 @@ const testimonials = [
     author: 'Feisty-Assistance612',
     subreddit: 'r/automation',
     content: 'If you want control without vendor lock-in.',
-    featured: true,
-    words: [
-      { text: 'If', color: 'text-gray-800' },
-      { text: 'you', color: 'text-gray-800' },
-      { text: 'want', color: 'text-gray-800' },
-      { text: 'control', color: 'text-emerald-600' },
-      { text: 'without', color: 'text-gray-800' },
-      { text: 'vendor', color: 'text-orange-500' },
-      { text: 'lock-in.', color: 'text-orange-500' },
-    ],
   },
   {
     id: 36,
@@ -300,20 +266,6 @@ const testimonials = [
     author: 'heavy-fingers',
     subreddit: 'r/selfhosted',
     content: 'Super project! I used n8n, but your UI/UX is much cleaner.',
-    featured: true,
-    words: [
-      { text: 'Super', color: 'text-amber-500' },
-      { text: 'project!', color: 'text-amber-500' },
-      { text: 'I', color: 'text-gray-800' },
-      { text: 'used', color: 'text-gray-800' },
-      { text: 'n8n,', color: 'text-gray-400' },
-      { text: 'but', color: 'text-gray-800' },
-      { text: 'your', color: 'text-gray-800' },
-      { text: 'UI/UX', color: 'text-violet-600' },
-      { text: 'is', color: 'text-gray-800' },
-      { text: 'much', color: 'text-gray-800' },
-      { text: 'cleaner.', color: 'text-emerald-600' },
-    ],
   },
   {
     id: 38,
@@ -328,15 +280,6 @@ const testimonials = [
     author: 'Majestic-Contract-42',
     subreddit: 'r/selfhosted',
     content: 'A few times a week I look on this subreddit for that one new project that will make me go, oh yeah boys; here we gooOOOooo. This is one such project.',
-    featured: true,
-    words: [
-      { text: 'Oh', color: 'text-gray-800' },
-      { text: 'yeah', color: 'text-amber-500' },
-      { text: 'boys;', color: 'text-amber-500' },
-      { text: 'here', color: 'text-violet-600' },
-      { text: 'we', color: 'text-violet-600' },
-      { text: 'gooOOOooo.', color: 'text-fuchsia-600' },
-    ],
   },
   {
     id: 40,
@@ -347,23 +290,20 @@ const testimonials = [
   },
 ];
 
-// Distribute testimonials with featured ones spread across rows (appearing multiple times)
+// Distribute testimonials across rows
 const distributeTestimonials = (items) => {
-  const featured = items.filter(t => t.featured);
-  const regular = items.filter(t => !t.featured);
-  
-  // Group regular by platform for diversity
+  // Group by platform for diversity
   const byPlatform = {
-    trustpilot: regular.filter(t => t.platform === 'trustpilot'),
-    g2: regular.filter(t => t.platform === 'g2'),
-    reddit: regular.filter(t => t.platform === 'reddit'),
+    trustpilot: items.filter(t => t.platform === 'trustpilot'),
+    g2: items.filter(t => t.platform === 'g2'),
+    reddit: items.filter(t => t.platform === 'reddit'),
   };
-  
-  // Interleave regular testimonials
+
+  // Interleave testimonials
   const interleaved = [];
   const platforms = ['trustpilot', 'g2', 'reddit'];
   let maxLen = Math.max(...Object.values(byPlatform).map(arr => arr.length));
-  
+
   for (let i = 0; i < maxLen; i++) {
     for (const platform of platforms) {
       if (byPlatform[platform][i]) {
@@ -371,7 +311,7 @@ const distributeTestimonials = (items) => {
       }
     }
   }
-  
+
   // Split into 3 rows
   const chunkSize = Math.ceil(interleaved.length / 3);
   const rows = [
@@ -379,62 +319,45 @@ const distributeTestimonials = (items) => {
     interleaved.slice(chunkSize, chunkSize * 2),
     interleaved.slice(chunkSize * 2),
   ];
-  
-  // Distribute featured cards multiple times per row so they appear frequently
-  // Each row gets 2 featured cards at different positions
-  rows[0].splice(0, 0, featured[0]);
-  rows[0].splice(5, 0, featured[3] || featured[0]);
-  
-  rows[1].splice(0, 0, featured[1]);
-  rows[1].splice(5, 0, featured[4] || featured[1]);
-  
-  rows[2].splice(0, 0, featured[2]);
-  rows[2].splice(5, 0, featured[5] || featured[2]);
-  
+
   return rows;
 };
 
-// Distribute and get rows with featured cards spread evenly
+// Distribute and get rows
 const [row1, row2, row3] = distributeTestimonials(testimonials);
 
 const platformConfig = {
   trustpilot: {
     logo: '/reviews/trustpilot-logo.png',
     color: '#00B67A',
-    bgLight: 'rgba(0, 182, 122, 0.08)',
   },
   g2: {
     logo: '/reviews/g2-logo.png',
     color: '#FF492C',
-    bgLight: 'rgba(255, 73, 44, 0.08)',
   },
   reddit: {
     logo: '/reviews/reddit-logo.png',
     color: '#FF4500',
-    bgLight: 'rgba(255, 69, 0, 0.08)',
   },
   twitter: {
     icon: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`,
     color: '#000000',
-    bgLight: 'rgba(0, 0, 0, 0.06)',
   },
   linkedin: {
     icon: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>`,
     color: '#0A66C2',
-    bgLight: 'rgba(10, 102, 194, 0.08)',
   },
 };
 </script>
 
 <template>
-  <section class="relative py-32 lg:py-40 overflow-hidden bg-[#fafafa]">
+  <section class="relative py-32 lg:py-40 overflow-hidden bg-[#f4f2f6]">
     <!-- Subtle background texture -->
     <div class="absolute inset-0 opacity-[0.4]" style="background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.03) 1px, transparent 0); background-size: 32px 32px;"></div>
-    
+
     <!-- Header -->
     <div class="relative z-10 max-w-3xl mx-auto px-6 text-center mb-20">
-      <p class="text-sm font-medium tracking-wide text-gray-500 uppercase mb-4">What people are saying</p>
-      <h2 class="font-sentient text-4xl lg:text-5xl font-medium text-gray-900 tracking-tight">
+      <h2 class="font-sentient text-4xl lg:text-5xl font-medium text-[#230454] tracking-tight">
         Loved by builders everywhere
       </h2>
     </div>
@@ -444,70 +367,51 @@ const platformConfig = {
       <!-- Row 1 - scrolls left slowly -->
       <div class="relative">
         <!-- Strong edge fades -->
-        <div class="absolute left-0 top-0 bottom-0 w-40 lg:w-72 bg-gradient-to-r from-[#fafafa] via-[#fafafa]/80 to-transparent z-10 pointer-events-none"></div>
-        <div class="absolute right-0 top-0 bottom-0 w-40 lg:w-72 bg-gradient-to-l from-[#fafafa] via-[#fafafa]/80 to-transparent z-10 pointer-events-none"></div>
-        
+        <div class="absolute left-0 top-0 bottom-0 w-40 lg:w-72 bg-gradient-to-r from-[#f4f2f6] via-[#f4f2f6]/80 to-transparent z-10 pointer-events-none"></div>
+        <div class="absolute right-0 top-0 bottom-0 w-40 lg:w-72 bg-gradient-to-l from-[#f4f2f6] via-[#f4f2f6]/80 to-transparent z-10 pointer-events-none"></div>
+
         <div class="flex overflow-hidden">
           <div class="flex gap-8 items-center scroll-row-left">
             <template v-for="n in 2" :key="'row1-' + n">
-              <div 
-                v-for="testimonial in row1" 
+              <div
+                v-for="testimonial in row1"
                 :key="testimonial.id + '-' + n"
-                class="flex-shrink-0 w-[420px]"
+                class="flex-shrink-0 w-[400px]"
               >
-                <div class="group bg-white rounded-2xl p-7 shadow-[0_1px_3px_rgba(0,0,0,0.04)] border border-gray-100 transition-all duration-500 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:border-gray-200 h-[260px] flex flex-col relative overflow-hidden">
-                  <!-- Hearts for featured cards -->
-                  <div v-if="testimonial.featured" class="absolute top-0 left-0 right-0 h-16 pointer-events-none overflow-hidden">
-                    <span class="floating-heart heart-1" :class="`heart-color-${testimonial.id % 4}`">♥</span>
-                    <span class="floating-heart heart-2" :class="`heart-color-${testimonial.id % 4}`">♥</span>
-                    <span class="floating-heart heart-3" :class="`heart-color-${testimonial.id % 4}`">♥</span>
-                    <span class="floating-heart heart-4" :class="`heart-color-${testimonial.id % 4}`">♥</span>
-                  </div>
+                <div class="group bg-white rounded-2xl p-6 shadow-[0_1px_3px_rgba(0,0,0,0.04)] border border-[rgba(49,43,96,0.1)] transition-all duration-500 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] h-[260px] flex flex-col">
                   <!-- Quote -->
-                  <div class="flex-1 flex items-center justify-center relative z-10">
-                    <!-- Featured animated quote -->
-                    <p v-if="testimonial.featured && testimonial.words" class="text-2xl font-bold leading-snug text-center text-gray-800 -rotate-2">
-                      <span class="text-gray-300 mr-1">"</span>
-                      <span 
-                        v-for="(word, wIndex) in testimonial.words" 
-                        :key="wIndex"
-                        class="inline-block animate-word-bold"
-                        :style="{ animationDelay: `${wIndex * 0.15}s` }"
-                      >{{ word.text }}&nbsp;</span>
-                      <span class="text-gray-300">"</span>
+                  <div class="flex-1 flex items-center">
+                    <p class="text-[20px] text-[#312b60] leading-[1.4]">
+                      "{{ testimonial.content }}"
                     </p>
-                    <!-- Regular quote -->
-                    <p v-else class="text-[17px] text-gray-700 leading-relaxed">
-                    "{{ testimonial.content }}"
-                  </p>
                   </div>
-                  
+
                   <!-- Author -->
-                  <div class="flex items-center gap-3 mt-auto pt-4 border-t border-gray-50">
+                  <div class="flex items-center gap-3 mt-auto pt-4 border-t border-[#312b60]/5">
                     <!-- Avatar or Initials -->
-                    <img 
+                    <img
                       v-if="testimonial.avatar"
                       :src="testimonial.avatar"
                       :alt="testimonial.author"
-                      class="w-9 h-9 rounded-full object-cover transition-transform duration-300 group-hover:scale-110"
+                      class="w-10 h-10 rounded-full object-cover transition-transform duration-300 group-hover:scale-110"
                     />
-                    <div 
+                    <div
                       v-else
-                      class="w-9 h-9 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110 text-white text-sm font-medium"
+                      class="w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110 text-white text-sm font-medium"
                       :class="getAvatarColor(testimonial.author)"
                     >
                       {{ getInitials(testimonial.author) }}
                     </div>
                     <div>
-                      <div class="font-medium text-gray-900 text-sm">{{ testimonial.author }}</div>
-                      <div class="flex items-center gap-1.5 text-xs text-gray-400">
-                        <img 
+                      <div class="font-bold text-[#312b60] text-base">{{ testimonial.author }}</div>
+                      <div class="flex items-center gap-1.5 text-base text-[#312b60]/40">
+                        <img
                           v-if="platformConfig[testimonial.platform].logo"
                           :src="platformConfig[testimonial.platform].logo"
                           :alt="testimonial.platform"
                           class="w-3.5 h-3.5 flex-shrink-0 object-contain bg-transparent shadow-none border-0 drop-shadow-none"
                         />
-                        <div 
+                        <div
                           v-else
                           class="w-3 h-3 flex-shrink-0"
                           :style="{ color: platformConfig[testimonial.platform].color }"
@@ -531,75 +435,56 @@ const platformConfig = {
       <!-- Row 2 - scrolls right slowly -->
       <div class="relative">
         <!-- Strong edge fades -->
-        <div class="absolute left-0 top-0 bottom-0 w-40 lg:w-72 bg-gradient-to-r from-[#fafafa] via-[#fafafa]/80 to-transparent z-10 pointer-events-none"></div>
-        <div class="absolute right-0 top-0 bottom-0 w-40 lg:w-72 bg-gradient-to-l from-[#fafafa] via-[#fafafa]/80 to-transparent z-10 pointer-events-none"></div>
-        
+        <div class="absolute left-0 top-0 bottom-0 w-40 lg:w-72 bg-gradient-to-r from-[#f4f2f6] via-[#f4f2f6]/80 to-transparent z-10 pointer-events-none"></div>
+        <div class="absolute right-0 top-0 bottom-0 w-40 lg:w-72 bg-gradient-to-l from-[#f4f2f6] via-[#f4f2f6]/80 to-transparent z-10 pointer-events-none"></div>
+
         <div class="flex overflow-hidden">
           <div class="flex gap-8 items-center scroll-row-right">
             <template v-for="n in 2" :key="'row2-' + n">
-              <div 
-                v-for="testimonial in row2" 
+              <div
+                v-for="testimonial in row2"
                 :key="testimonial.id + '-' + n"
-                class="flex-shrink-0 w-[420px]"
+                class="flex-shrink-0 w-[400px]"
               >
-                <div class="group bg-white rounded-2xl p-7 shadow-[0_1px_3px_rgba(0,0,0,0.04)] border border-gray-100 transition-all duration-500 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:border-gray-200 h-[260px] flex flex-col relative overflow-hidden">
-                  <!-- Hearts for featured cards -->
-                  <div v-if="testimonial.featured" class="absolute top-0 left-0 right-0 h-16 pointer-events-none overflow-hidden">
-                    <span class="floating-heart heart-1" :class="`heart-color-${testimonial.id % 4}`">♥</span>
-                    <span class="floating-heart heart-2" :class="`heart-color-${testimonial.id % 4}`">♥</span>
-                    <span class="floating-heart heart-3" :class="`heart-color-${testimonial.id % 4}`">♥</span>
-                    <span class="floating-heart heart-4" :class="`heart-color-${testimonial.id % 4}`">♥</span>
-                  </div>
+                <div class="group bg-white rounded-2xl p-6 shadow-[0_1px_3px_rgba(0,0,0,0.04)] border border-[rgba(49,43,96,0.1)] transition-all duration-500 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] h-[260px] flex flex-col">
                   <!-- Quote -->
-                  <div class="flex-1 flex items-center justify-center relative z-10">
-                    <!-- Featured animated quote -->
-                    <p v-if="testimonial.featured && testimonial.words" class="text-2xl font-bold leading-snug text-center text-gray-800 -rotate-2">
-                      <span class="text-gray-300 mr-1">"</span>
-                      <span 
-                        v-for="(word, wIndex) in testimonial.words" 
-                        :key="wIndex"
-                        class="inline-block animate-word-bold"
-                        :style="{ animationDelay: `${wIndex * 0.15}s` }"
-                      >{{ word.text }}&nbsp;</span>
-                      <span class="text-gray-300">"</span>
+                  <div class="flex-1 flex items-center">
+                    <p class="text-[20px] text-[#312b60] leading-[1.4]">
+                      "{{ testimonial.content }}"
                     </p>
-                    <!-- Regular quote -->
-                    <p v-else class="text-[17px] text-gray-700 leading-relaxed">
-                    "{{ testimonial.content }}"
-                  </p>
                   </div>
-                  
+
                   <!-- Author -->
-                  <div class="flex items-center gap-3 mt-auto pt-4 border-t border-gray-50">
+                  <div class="flex items-center gap-3 mt-auto pt-4 border-t border-[#312b60]/5">
                     <!-- Avatar or Initials -->
-                    <img 
+                    <img
                       v-if="testimonial.avatar"
                       :src="testimonial.avatar"
                       :alt="testimonial.author"
-                      class="w-9 h-9 rounded-full object-cover transition-transform duration-300 group-hover:scale-110"
+                      class="w-10 h-10 rounded-full object-cover transition-transform duration-300 group-hover:scale-110"
                     />
-                    <div 
+                    <div
                       v-else
-                      class="w-9 h-9 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110 text-white text-sm font-medium"
+                      class="w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110 text-white text-sm font-medium"
                       :class="getAvatarColor(testimonial.author)"
                     >
                       {{ getInitials(testimonial.author) }}
                     </div>
                     <div>
-                      <div class="font-medium text-gray-900 text-sm">{{ testimonial.author }}</div>
-                      <div class="flex items-center gap-1.5 text-xs text-gray-400">
-                        <img 
+                      <div class="font-bold text-[#312b60] text-base">{{ testimonial.author }}</div>
+                      <div class="flex items-center gap-1.5 text-base text-[#312b60]/40">
+                        <img
                           v-if="platformConfig[testimonial.platform].logo"
                           :src="platformConfig[testimonial.platform].logo"
                           :alt="testimonial.platform"
                           class="w-3.5 h-3.5 flex-shrink-0 object-contain bg-transparent shadow-none border-0 drop-shadow-none"
                         />
-                        <div 
+                        <div
                           v-else
                           class="w-3 h-3 flex-shrink-0"
-                        :style="{ color: platformConfig[testimonial.platform].color }"
-                        v-html="platformConfig[testimonial.platform].icon"
-                      ></div>
+                          :style="{ color: platformConfig[testimonial.platform].color }"
+                          v-html="platformConfig[testimonial.platform].icon"
+                        ></div>
                         <span v-if="testimonial.subreddit">{{ testimonial.subreddit }}</span>
                         <span v-else-if="testimonial.handle">{{ testimonial.handle }}</span>
                         <span v-else-if="testimonial.role">{{ testimonial.role }}</span>
@@ -618,70 +503,51 @@ const platformConfig = {
       <!-- Row 3 - scrolls left slowly -->
       <div class="relative">
         <!-- Strong edge fades -->
-        <div class="absolute left-0 top-0 bottom-0 w-40 lg:w-72 bg-gradient-to-r from-[#fafafa] via-[#fafafa]/80 to-transparent z-10 pointer-events-none"></div>
-        <div class="absolute right-0 top-0 bottom-0 w-40 lg:w-72 bg-gradient-to-l from-[#fafafa] via-[#fafafa]/80 to-transparent z-10 pointer-events-none"></div>
-        
+        <div class="absolute left-0 top-0 bottom-0 w-40 lg:w-72 bg-gradient-to-r from-[#f4f2f6] via-[#f4f2f6]/80 to-transparent z-10 pointer-events-none"></div>
+        <div class="absolute right-0 top-0 bottom-0 w-40 lg:w-72 bg-gradient-to-l from-[#f4f2f6] via-[#f4f2f6]/80 to-transparent z-10 pointer-events-none"></div>
+
         <div class="flex overflow-hidden">
           <div class="flex gap-8 items-center scroll-row-left-slow">
             <template v-for="n in 2" :key="'row3-' + n">
-              <div 
-                v-for="testimonial in row3" 
+              <div
+                v-for="testimonial in row3"
                 :key="testimonial.id + '-' + n"
-                class="flex-shrink-0 w-[420px]"
+                class="flex-shrink-0 w-[400px]"
               >
-                <div class="group bg-white rounded-2xl p-7 shadow-[0_1px_3px_rgba(0,0,0,0.04)] border border-gray-100 transition-all duration-500 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:border-gray-200 h-[260px] flex flex-col relative overflow-hidden">
-                  <!-- Hearts for featured cards -->
-                  <div v-if="testimonial.featured" class="absolute top-0 left-0 right-0 h-16 pointer-events-none overflow-hidden">
-                    <span class="floating-heart heart-1" :class="`heart-color-${testimonial.id % 4}`">♥</span>
-                    <span class="floating-heart heart-2" :class="`heart-color-${testimonial.id % 4}`">♥</span>
-                    <span class="floating-heart heart-3" :class="`heart-color-${testimonial.id % 4}`">♥</span>
-                    <span class="floating-heart heart-4" :class="`heart-color-${testimonial.id % 4}`">♥</span>
-                  </div>
+                <div class="group bg-white rounded-2xl p-6 shadow-[0_1px_3px_rgba(0,0,0,0.04)] border border-[rgba(49,43,96,0.1)] transition-all duration-500 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] h-[260px] flex flex-col">
                   <!-- Quote -->
-                  <div class="flex-1 flex items-center justify-center relative z-10">
-                    <!-- Featured animated quote -->
-                    <p v-if="testimonial.featured && testimonial.words" class="text-2xl font-bold leading-snug text-center text-gray-800 -rotate-2">
-                      <span class="text-gray-300 mr-1">"</span>
-                      <span 
-                        v-for="(word, wIndex) in testimonial.words" 
-                        :key="wIndex"
-                        class="inline-block animate-word-bold"
-                        :style="{ animationDelay: `${wIndex * 0.15}s` }"
-                      >{{ word.text }}&nbsp;</span>
-                      <span class="text-gray-300">"</span>
-                    </p>
-                    <!-- Regular quote -->
-                    <p v-else class="text-[17px] text-gray-700 leading-relaxed">
+                  <div class="flex-1 flex items-center">
+                    <p class="text-[20px] text-[#312b60] leading-[1.4]">
                       "{{ testimonial.content }}"
                     </p>
                   </div>
-                  
+
                   <!-- Author -->
-                  <div class="flex items-center gap-3 mt-auto pt-4 border-t border-gray-50">
+                  <div class="flex items-center gap-3 mt-auto pt-4 border-t border-[#312b60]/5">
                     <!-- Avatar or Initials -->
-                    <img 
+                    <img
                       v-if="testimonial.avatar"
                       :src="testimonial.avatar"
                       :alt="testimonial.author"
-                      class="w-9 h-9 rounded-full object-cover transition-transform duration-300 group-hover:scale-110"
+                      class="w-10 h-10 rounded-full object-cover transition-transform duration-300 group-hover:scale-110"
                     />
-                    <div 
+                    <div
                       v-else
-                      class="w-9 h-9 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110 text-white text-sm font-medium"
+                      class="w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110 text-white text-sm font-medium"
                       :class="getAvatarColor(testimonial.author)"
                     >
                       {{ getInitials(testimonial.author) }}
                     </div>
                     <div>
-                      <div class="font-medium text-gray-900 text-sm">{{ testimonial.author }}</div>
-                      <div class="flex items-center gap-1.5 text-xs text-gray-400">
-                        <img 
+                      <div class="font-bold text-[#312b60] text-base">{{ testimonial.author }}</div>
+                      <div class="flex items-center gap-1.5 text-base text-[#312b60]/40">
+                        <img
                           v-if="platformConfig[testimonial.platform].logo"
                           :src="platformConfig[testimonial.platform].logo"
                           :alt="testimonial.platform"
                           class="w-3.5 h-3.5 flex-shrink-0 object-contain bg-transparent shadow-none border-0 drop-shadow-none"
                         />
-                        <div 
+                        <div
                           v-else
                           class="w-3 h-3 flex-shrink-0"
                           :style="{ color: platformConfig[testimonial.platform].color }"
@@ -703,105 +569,20 @@ const platformConfig = {
       </div>
     </div>
 
-    <!-- Minimal CTA -->
+    <!-- CTA Button -->
     <div class="relative z-10 max-w-3xl mx-auto px-6 text-center mt-20">
-      <a 
+      <a
         href="https://cloud.activepieces.com/sign-up"
-        class="inline-flex items-center gap-2 text-gray-600 font-medium hover:text-gray-900 transition-colors duration-300 group"
+        class="inline-flex items-center gap-2 px-10 py-6 rounded-full border-2 border-[rgba(49,43,96,0.1)] text-[#312b60] text-2xl font-medium transition-all duration-300 hover:border-[rgba(49,43,96,0.2)] hover:shadow-lg group"
       >
         Join thousands of happy users
-        <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-        </svg>
+        <PhCaretRight weight="fill" class="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1" />
       </a>
     </div>
   </section>
 </template>
 
 <style scoped>
-.animate-word-bold {
-  animation: word-slam 6s ease-out infinite;
-}
-
-@keyframes word-slam {
-  0% {
-    opacity: 0;
-    transform: scale(2.5);
-  }
-  4% {
-    opacity: 1;
-    transform: scale(1.3);
-  }
-  6% {
-    transform: scale(0.85);
-  }
-  9% {
-    transform: scale(1.08);
-  }
-  12%, 85% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  94%, 100% {
-    opacity: 0;
-    transform: scale(0.7);
-  }
-}
-
-/* Floating hearts animation */
-.floating-heart {
-  position: absolute;
-  top: 100%;
-  font-size: 1.1rem;
-  opacity: 0;
-  animation: float-up 6s ease-out infinite;
-}
-
-.heart-1 {
-  left: 20%;
-  animation-delay: 0s;
-  --drift: -10px;
-}
-.heart-2 {
-  left: 45%;
-  animation-delay: 1.5s;
-  --drift: 12px;
-}
-.heart-3 {
-  left: 70%;
-  animation-delay: 3s;
-  --drift: -8px;
-}
-.heart-4 {
-  left: 55%;
-  animation-delay: 4.5s;
-  --drift: 15px;
-}
-
-/* Color schemes for different cards */
-.heart-color-0 { color: #a78bfa; } /* violet */
-.heart-color-1 { color: #f472b6; } /* pink */
-.heart-color-2 { color: #22d3ee; } /* cyan */
-.heart-color-3 { color: #fbbf24; } /* amber */
-
-@keyframes float-up {
-  0% {
-    opacity: 0;
-    transform: translateX(0) translateY(0) scale(0.5);
-  }
-  15% {
-    opacity: 0.7;
-  }
-  50% {
-    opacity: 0.6;
-    transform: translateX(calc(var(--drift) * 0.5)) translateY(-25px) scale(0.85);
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(var(--drift)) translateY(-55px) scale(1);
-  }
-}
-
 .scroll-row-left {
   animation: scroll-left 150s linear infinite;
 }
@@ -812,6 +593,13 @@ const platformConfig = {
 
 .scroll-row-left-slow {
   animation: scroll-left 190s linear infinite;
+}
+
+/* Pause animation on row hover */
+.scroll-row-left:hover,
+.scroll-row-right:hover,
+.scroll-row-left-slow:hover {
+  animation-play-state: paused;
 }
 
 @keyframes scroll-left {
