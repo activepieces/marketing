@@ -244,12 +244,9 @@ const route = useRoute();
         </div>
       </div>
 
-      <!-- Horizontal separator -->
-      <hr class="border-white/10 mb-8" />
-
       <!-- Bottom bar -->
       <div
-        class="flex flex-col lg:flex-row justify-between items-center gap-6 text-center"
+        class="flex flex-col lg:flex-row justify-between items-center gap-6 text-center p-4 rounded-lg border border-white/5"
       >
         <!-- Y Combinator badge -->
         <div class="flex items-center gap-2">
