@@ -51,8 +51,7 @@
       <!-- Canvas -->
       <div
         ref="canvasRef"
-        class="relative bg-primary-dark/5 rounded-2xl overflow-hidden"
-        style="height: 453px"
+        class="relative bg-primary-dark/5 rounded-2xl overflow-hidden h-[520px] border-2 border-primary-dark/5"
       >
         <!-- Play/Pause button - top left inside canvas, integrated look -->
         <button
