@@ -28,7 +28,10 @@
       </div>
 
       <!-- Card stack with decorative background cards -->
-      <div class="relative mt-32" style="height: 520px">
+      <div
+        class="relative mt-32 mb-32 border-b-4 border-black/20"
+        style="height: 520px"
+      >
         <!-- Overflow wrapper - clips bottom only, room for shadows and animation -->
         <div
           class="absolute inset-0 overflow-hidden"
@@ -104,7 +107,9 @@
                     <span
                       class="font-medium transition-all duration-300"
                       :class="[
-                        activeCard === index ? 'text-sm text-gray-700' : 'text-xs text-white'
+                        activeCard === index
+                          ? 'text-sm text-gray-700'
+                          : 'text-xs text-white',
                       ]"
                     >
                       {{ card.title }}
@@ -1239,7 +1244,9 @@
                     class="card-progress-circle"
                     :style="{
                       transitionDuration:
-                        cardProgress === 0 ? '0ms' : `${CARD_ROTATION_DURATION}ms`,
+                        cardProgress === 0
+                          ? '0ms'
+                          : `${CARD_ROTATION_DURATION}ms`,
                     }"
                   />
                 </svg>
