@@ -4,7 +4,7 @@ const route = useRoute();
 </script>
 
 <template>
-  <footer class="relative overflow-hidden">
+  <footer class="relative overflow-hidden group">
     <!-- Background image layer -->
     <div class="absolute inset-0">
       <img
@@ -24,11 +24,13 @@ const route = useRoute();
       class="relative z-10 px-4 pt-12 pb-8 mx-auto max-w-screen-xl sm:px-8 lg:px-10"
     >
       <!-- White logo at top -->
-      <div class="flex justify-center mb-24 border-b-2 border-white/5 pb-16">
+      <div
+        class="flex justify-center mb-24 border-b-2 border-white/5 overflow-hidden"
+      >
         <img
           src="/images/activepieces-logo-h.svg"
           alt="Activepieces"
-          class="h-6 sm:h-8 brightness-0 invert opacity-10"
+          class="h-40 brightness-0 invert opacity-5 translate-y-1/2 hover:translate-y-1/3 hover:opacity-10 transition-all duration-500"
           loading="lazy"
         />
       </div>
@@ -296,7 +298,9 @@ const route = useRoute();
     </div>
 
     <!-- Large watermark logo at bottom -->
-    <div class="relative z-10 py-40 flex justify-center px-4">
+    <div
+      class="relative z-10 pb-40 flex justify-center px-4 mt-40 border-t-2 border-white/10 w-full max-w-7xl mx-auto overflow-hidden"
+    >
       <!-- <img
         src="/images/activepieces-logo-h-with-outline.svg"
         alt="Activepieces"
@@ -309,6 +313,7 @@ const route = useRoute();
         viewBox="0 0 1200 187"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        class="-translate-y-1/2 hover:-translate-y-2 transition-all duration-500"
       >
         <path
           d="M62.2041 27.7346C74.6401 19.3464 91.5211 22.6278 99.9092 35.0637L157.605 120.602C165.862 132.843 162.813 149.393 150.853 157.907L150.276 158.307C137.84 166.696 120.959 163.414 112.571 150.978L87.5566 113.893L87.5459 113.876L87.5342 113.862L87.3691 113.661C85.6426 111.629 83.1118 110.789 80.5361 110.934C77.8818 111.083 75.1474 112.277 73.0967 114.327C71.3585 116.066 70.253 119.091 69.4619 122.491C68.6654 125.915 68.1653 129.831 67.7041 133.435C67.5686 134.494 67.4362 135.526 67.3008 136.515L67.2988 136.531C66.8059 141.176 65.2016 145.772 62.4062 149.917C53.2731 163.457 34.8874 167.027 21.3467 157.894C8.01815 148.903 4.34362 130.95 12.9434 117.475L13.3623 116.836C18.099 109.814 25.3231 105.473 33.0713 104.196L34.0186 104.039L34.0098 104.031C45.0202 102.091 51.6071 94.8962 54.9443 87.2834C56.6591 83.3717 57.521 79.3411 57.6895 75.8372C57.8569 72.3517 57.3411 69.3178 56.2266 67.4456L56.2197 67.4329L56.2119 67.4211L54.875 65.4397C46.4869 53.0039 49.7682 36.1227 62.2041 27.7346Z"
