@@ -16,9 +16,9 @@
 
         <!-- Heading -->
         <h2
-          class="font-sentient font-bold text-white text-4xl lg:text-5xl mb-4"
+          class="font-sentient font-bold text-white text-4xl lg:text-5xl mb-4 text-balance max-w-2xl"
         >
-          Turn your entire<br />org into AI builders
+          Turn your entire org into AI builders
         </h2>
 
         <!-- Subtitle -->

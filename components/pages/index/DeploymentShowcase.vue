@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-[#003e64] py-24 bg-dotted-light">
+  <section class="bg-[#003e64] pt-24 pb-40 bg-dotted-light">
     <div class="max-w-7xl mx-auto px-4">
       <!-- Centered Header -->
       <div class="flex flex-col items-center text-center mb-12">
@@ -12,13 +12,12 @@
         />
 
         <h2
-          class="font-sentient font-bold text-white text-4xl lg:text-5xl mt-6 mb-3"
+          class="font-sentient font-bold text-white text-4xl lg:text-5xl mt-6 mb-3 text-balance max-w-2xl"
         >
           Deploy with confidence
         </h2>
-        <p class="text-xl text-white/80">
-          Our secure cloud or your infrastructure.<br />
-          Enterprise-grade either way.
+        <p class="text-xl text-white/80 text-balance max-w-2xl">
+          Our secure cloud or your infrastructure. Enterprise-grade either way.
         </p>
       </div>
 

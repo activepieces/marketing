@@ -1,5 +1,5 @@
 <template>
-  <section ref="sectionRef" class="relative py-24 bg-white bg-dotted">
+  <section ref="sectionRef" class="relative pt-24 pb-40 bg-white bg-dotted">
     <div class="relative max-w-7xl mx-auto px-4">
       <!-- Header - Centered -->
       <div class="flex flex-col items-center text-center mb-10">
@@ -12,12 +12,14 @@
         />
 
         <!-- Heading -->
-        <h2 class="text-5xl font-sentient font-bold text-primary-dark mb-3">
-          AI agents like your<br />best employee
+        <h2
+          class="text-5xl font-sentient font-bold text-primary-dark mb-3 text-balance max-w-2xl"
+        >
+          AI agents like your best employee
         </h2>
 
         <!-- Subtitle -->
-        <p class="text-xl text-primary-dark/80 max-w-lg">
+        <p class="text-xl text-primary-dark/80 text-balance max-w-2xl">
           Build intelligent agents with enterprise integrations and precise
           control.
         </p>

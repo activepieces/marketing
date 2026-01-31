@@ -1,5 +1,5 @@
 <template>
-  <section ref="sectionRef" class="relative py-24 bg-white bg-dotted">
+  <section ref="sectionRef" class="relative pt-24 pb-40 bg-white bg-dotted">
     <div class="max-w-7xl mx-auto px-4">
       <!-- Centered Header -->
       <div class="flex flex-col items-center text-center mb-16">
@@ -10,13 +10,13 @@
           class="mb-6"
         />
         <h2
-          class="font-sentient font-bold text-primary-dark text-4xl lg:text-5xl mb-3 leading-tight"
+          class="font-sentient font-bold text-primary-dark text-4xl lg:text-5xl mb-3 leading-tight text-balance max-w-2xl"
         >
-          Enterprise control,<br class="hidden sm:block" />zero complexity
+          Enterprise control, zero complexity
         </h2>
-        <p class="text-xl text-primary-dark/80">
-          IT oversight tools that enterprise teams<br class="hidden sm:block" />
-          need without slowing anyone down.
+        <p class="text-xl text-primary-dark/80 text-balance max-w-2xl">
+          IT oversight tools that enterprise teams need without slowing anyone
+          down.
         </p>
       </div>
 
