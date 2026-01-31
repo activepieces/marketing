@@ -24,11 +24,11 @@ const route = useRoute();
       class="relative z-10 px-4 pt-12 pb-8 mx-auto max-w-screen-xl sm:px-8 lg:px-10"
     >
       <!-- White logo at top -->
-      <div class="flex justify-center mb-12">
+      <div class="flex justify-center mb-24 border-b-2 border-white/5 pb-16">
         <img
           src="/images/activepieces-logo-h.svg"
           alt="Activepieces"
-          class="h-6 sm:h-8 brightness-0 invert"
+          class="h-6 sm:h-8 brightness-0 invert opacity-10"
           loading="lazy"
         />
       </div>
