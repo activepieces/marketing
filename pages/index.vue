@@ -31,7 +31,13 @@ onMounted(() => {
   <PagesIndexHero />
   <PagesIndexCaseStudies />
   <PagesIndexAiAgentsShowcase />
+  <!-- AI Adoption Showcase (Full Width Playing Cards) -->
   <PagesIndexAiAdoptionShowcase />
-  <PagesIndexProductStrengths />
+
+  <!-- Governance & Control Showcase -->
+  <PagesIndexGovernanceShowcase />
+
+  <!-- Deployment & Cost Showcase -->
+  <PagesIndexDeploymentShowcase />
   <PagesIndexSocialLove />
 </template>

@@ -24,14 +24,5 @@
       :stroke-thickness="4"
       overlap="60px"
     />
-
-    <!-- AI Adoption Showcase (Full Width Playing Cards) -->
-    <PagesIndexAiAdoptionShowcase />
-
-    <!-- Governance & Control Showcase -->
-    <PagesIndexGovernanceShowcase />
-
-    <!-- Deployment & Cost Showcase -->
-    <PagesIndexDeploymentShowcase />
   </div>
 </template>
