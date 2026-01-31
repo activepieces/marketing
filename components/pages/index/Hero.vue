@@ -843,16 +843,16 @@ onBeforeUnmount(() => {
             >
               <router-link
                 to="/sales"
-                class="btn group relative isolate inline-block cursor-pointer rounded-full transition-[background,color] duration-400 ease-out-quart text-center font-semibold tracking-tight whitespace-nowrap h-14 items-center justify-center px-8 py-3.5 text-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-outline disabled:pointer-events-none disabled:opacity-50 bg-transparent text-white border border-white hover:bg-white hover:text-black"
+                class="group cursor-pointer rounded-full transition-all duration-150 text-center font-semibold whitespace-nowrap items-center justify-center px-8 py-4 text-2xl bg-transparent text-white border border-white hover:bg-white hover:text-primary-dark"
               >
-                <span class="relative">Talk to sales</span>
+                Talk to sales
               </router-link>
 
               <a
                 href="https://cloud.activepieces.com/sign-up"
-                class="btn group relative isolate inline-block cursor-pointer rounded-full transition-[background,color] duration-400 ease-out-quart text-center font-semibold tracking-tight whitespace-nowrap h-14 items-center justify-center px-8 py-3.5 text-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-outline disabled:pointer-events-none disabled:opacity-50 text-black bg-white hover:bg-white/80"
+                class="group cursor-pointer rounded-full transition-all duration-150 text-center font-semibold whitespace-nowrap items-center justify-center px-8 py-4 min-w-60 text-2xl text-primary-dark bg-white ring-0 ring-white hover:ring-2"
               >
-                <span class="relative">Start free</span>
+                Start free
               </a>
             </div>
           </div>
