@@ -6,7 +6,7 @@ const metaKeywords =
   "enterprise automation solutions, open source business automation, open source zapier, zapier open source alternative, zapier alternative, workato alternative, open source workato";
 
 definePageMeta({
-  layout: 'home',
+  layout: "home",
 });
 
 useHead({
@@ -29,9 +29,9 @@ onMounted(() => {
 
 <template>
   <PagesIndexHero />
+  <PagesIndexCaseStudies />
   <PagesIndexAiAgentsShowcase />
   <PagesIndexAiAdoptionShowcase />
-  <PagesIndexCaseStudies />
   <PagesIndexProductStrengths />
   <PagesIndexSocialLove />
 </template>
