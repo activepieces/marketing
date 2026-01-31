@@ -97,7 +97,9 @@
         </div>
 
         <!-- Right: Image that changes on hover -->
-        <div class="relative rounded-2xl overflow-hidden h-[400px] lg:h-[638px]">
+        <div
+          class="relative rounded-2xl overflow-hidden h-[400px] lg:h-[638px] bg-white/5"
+        >
           <Transition name="fade" mode="out-in">
             <img
               :key="activeImage"
@@ -144,7 +146,7 @@ const activeImage = ref("self-host");
 <style scoped>
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.3s ease;
+  transition: opacity 0.15s ease;
 }
 .fade-enter-from,
 .fade-leave-to {
