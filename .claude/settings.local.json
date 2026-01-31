@@ -46,7 +46,8 @@
       "Bash(pgrep:*)",
       "Bash(xargs ps:*)",
       "Bash(ls:*)",
-      "mcp__figma-desktop__get_metadata"
+      "mcp__figma-desktop__get_metadata",
+      "WebFetch(domain:localhost)"
     ]
   }
 }

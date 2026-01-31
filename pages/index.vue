@@ -108,4 +108,17 @@ onMounted(() => {
     overlap="60px"
   />
   <PagesIndexSocialLove />
+  <SectionSeparator
+    top-color="#f4f2f6"
+    bottom-color="rgba(54,63,152,1)"
+    stroke1-color="rgba(0, 0, 0, 0.2)"
+    stroke2-color="rgba(0, 0, 0, 0.15)"
+    stroke3-color="rgba(0, 0, 0, 0.1)"
+    stroke4-color="rgba(0, 0, 0, 0.05)"
+    shadow-color="rgba(0, 0, 0, 0.1)"
+    :curve-depth="60"
+    :stroke-spacing="12"
+    :stroke-thickness="4"
+    overlap="60px"
+  />
 </template>
