@@ -28,7 +28,7 @@ onMounted(() => {
         <NuxtLink
           to="/customers/alan"
           :class="[
-            'group relative block overflow-hidden rounded-2xl bg-white/5 hover:bg-white/10 hover:-translate-y-0.5 p-6 cursor-pointer transition-all duration-300 ',
+            'group relative block overflow-hidden rounded-2xl bg-white hover:bg-gray-50 ring-0 ring-white/10 hover:ring-8 p-6 cursor-pointer transition-all duration-300 ',
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8',
           ]"
         >
@@ -36,16 +36,16 @@ onMounted(() => {
           <div class="relative flex flex-col gap-6">
             <!-- Header: Company name + Industry + Arrow -->
             <div class="flex items-center justify-between">
-              <span class="text-white font-bold text-[20px]">Alan</span>
+              <span class="text-black font-bold text-[20px]">Alan</span>
               <div class="flex items-center gap-4">
-                <span class="text-white/60 text-[14px] uppercase"
+                <span class="text-black/60 text-[14px] uppercase"
                   >Health Insurance</span
                 >
                 <div
-                  class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-white/10 group-hover:border-white/0 transition-all"
+                  class="w-8 h-8 rounded-full border border-black/10 flex items-center justify-center group-hover:bg-black/10 group-hover:border-black/0 transition-all"
                 >
                   <svg
-                    class="w-4 h-4 text-white/50 group-hover:text-white transition-colors"
+                    class="w-4 h-4 text-black/50 group-hover:text-black transition-colors"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -62,25 +62,25 @@ onMounted(() => {
             </div>
 
             <!-- Divider -->
-            <div class="w-full h-px bg-white/10"></div>
+            <div class="w-full h-px bg-black/10"></div>
 
             <!-- Metric section -->
             <div class="flex flex-col gap-2 max-w-[300px]">
-              <span class="text-5xl font-bold text-white font-sentient"
+              <span class="text-5xl font-bold text-black font-sentient"
                 >300+</span
               >
-              <p class="text-white/80 text-xl leading-relaxed">
+              <p class="text-black/80 text-xl leading-relaxed">
                 AI-powered workflows deployed across the organization
               </p>
             </div>
 
             <!-- Divider -->
-            <div class="w-full h-px bg-white/10"></div>
+            <div class="w-full h-px bg-black/10"></div>
 
             <!-- Person info -->
             <div class="flex flex-col gap-2">
-              <p class="text-white font-bold text-base">Jérémie Preault</p>
-              <p class="text-white/60 text-sm">
+              <p class="text-black font-bold text-base">Jérémie Preault</p>
+              <p class="text-black/60 text-sm">
                 Internal Tools & Automation Lead
               </p>
             </div>
@@ -102,7 +102,7 @@ onMounted(() => {
         <NuxtLink
           to="/customers/funding-societies"
           :class="[
-            'group relative block overflow-hidden rounded-2xl bg-white/5 hover:bg-white/10 hover:-translate-y-0.5 p-6 cursor-pointer transition-all duration-300 ',
+            'group relative block overflow-hidden rounded-2xl bg-white hover:bg-gray-50 ring-0 ring-white/10 hover:ring-8 p-6 cursor-pointer transition-all duration-300 ',
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8',
           ]"
         >
@@ -110,16 +110,16 @@ onMounted(() => {
           <div class="relative flex flex-col gap-6">
             <!-- Header: Company name + Industry + Arrow -->
             <div class="flex items-center justify-between">
-              <span class="text-white font-bold text-[20px]"
+              <span class="text-black font-bold text-[20px]"
                 >Funding Societies</span
               >
               <div class="flex items-center gap-4">
-                <span class="text-white/60 text-[14px] uppercase">Fintech</span>
+                <span class="text-black/60 text-[14px] uppercase">Fintech</span>
                 <div
-                  class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-white/10 group-hover:border-white/0 transition-all"
+                  class="w-8 h-8 rounded-full border border-black/10 flex items-center justify-center group-hover:bg-black/10 group-hover:border-black/0 transition-all"
                 >
                   <svg
-                    class="w-4 h-4 text-white/50 group-hover:text-white transition-colors"
+                    class="w-4 h-4 text-black/50 group-hover:text-black transition-colors"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -136,25 +136,25 @@ onMounted(() => {
             </div>
 
             <!-- Divider -->
-            <div class="w-full h-px bg-white/10"></div>
+            <div class="w-full h-px bg-black/10"></div>
 
             <!-- Metric section -->
             <div class="flex flex-col gap-2 max-w-[300px]">
-              <span class="text-5xl font-bold text-white font-sentient"
+              <span class="text-5xl font-bold text-black font-sentient"
                 >100+</span
               >
-              <p class="text-white/80 text-xl leading-relaxed">
+              <p class="text-black/80 text-xl leading-relaxed">
                 flows deployed, a quarter saved
               </p>
             </div>
 
             <!-- Divider -->
-            <div class="w-full h-px bg-white/10"></div>
+            <div class="w-full h-px bg-black/10"></div>
 
             <!-- Person info -->
             <div class="flex flex-col gap-2">
-              <p class="text-white font-bold text-base">Shawn Lim</p>
-              <p class="text-white/60 text-sm">VP, Platform and AI</p>
+              <p class="text-black font-bold text-base">Shawn Lim</p>
+              <p class="text-black/60 text-sm">VP, Platform and AI</p>
             </div>
           </div>
 
