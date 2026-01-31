@@ -80,5 +80,18 @@ onMounted(() => {
   />
   <!-- Deployment & Cost Showcase -->
   <PagesIndexDeploymentShowcase />
+  <SectionSeparator
+    top-color="#003E64"
+    bottom-color="#F4F2F6"
+    stroke1-color="rgba(0, 0, 0, 0.2)"
+    stroke2-color="rgba(0, 0, 0, 0.15)"
+    stroke3-color="rgba(0, 0, 0, 0.1)"
+    stroke4-color="rgba(0, 0, 0, 0.05)"
+    shadow-color="rgba(0, 0, 0, 0.1)"
+    :curve-depth="60"
+    :stroke-spacing="12"
+    :stroke-thickness="4"
+    overlap="60px"
+  />
   <PagesIndexSocialLove />
 </template>
