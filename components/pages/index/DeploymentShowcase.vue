@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-[#003e64] py-24">
+  <section class="bg-[#003e64] py-24 bg-dotted-light">
     <div class="max-w-7xl mx-auto px-4">
       <!-- Centered Header -->
       <div class="flex flex-col items-center text-center mb-12">

@@ -1,7 +1,7 @@
 <template>
   <section ref="sectionRef" class="relative pt-24 pb-0 overflow-hidden">
     <!-- Dark purple background -->
-    <div class="absolute inset-0 bg-[#483e97]"></div>
+    <div class="absolute inset-0 bg-[#483e97] bg-dotted-light"></div>
 
     <div class="relative max-w-7xl mx-auto px-4">
       <!-- Centered header section -->

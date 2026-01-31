@@ -8,9 +8,12 @@
 
 /* Sentient Variable Font - supports weights 200-700 */
 @font-face {
-  font-family: 'Sentient';
-  src: url('~/assets/fonts/sentient/Sentient-Variable.woff2') format('woff2-variations'),
-       url('~/assets/fonts/sentient/Sentient-Variable.woff') format('woff-variations');
+  font-family: "Sentient";
+  src:
+    url("~/assets/fonts/sentient/Sentient-Variable.woff2")
+      format("woff2-variations"),
+    url("~/assets/fonts/sentient/Sentient-Variable.woff")
+      format("woff-variations");
   font-weight: 200 700;
   font-display: swap;
   font-style: normal;
@@ -18,9 +21,10 @@
 
 /* Sentient Medium (500) - fallback for browsers with limited variable font support */
 @font-face {
-  font-family: 'Sentient';
-  src: url('~/assets/fonts/sentient/Sentient-Medium.woff2') format('woff2'),
-       url('~/assets/fonts/sentient/Sentient-Medium.woff') format('woff');
+  font-family: "Sentient";
+  src:
+    url("~/assets/fonts/sentient/Sentient-Medium.woff2") format("woff2"),
+    url("~/assets/fonts/sentient/Sentient-Medium.woff") format("woff");
   font-weight: 500;
   font-display: swap;
   font-style: normal;
@@ -33,7 +37,7 @@
 @layer components {
   /* Typography Components */
   .headline-hero {
-    font-family: 'Instrument Serif', serif;
+    font-family: "Instrument Serif", serif;
     font-size: clamp(2.5rem, 8vw, 4.5rem);
     font-weight: 400;
     line-height: 1.05;
@@ -41,7 +45,7 @@
   }
 
   .headline-section {
-    font-family: 'Sentient', serif;
+    font-family: "Sentient", serif;
     font-size: clamp(2.5rem, 5vw, 3.5rem);
     font-weight: 500;
     line-height: 1.15;
@@ -49,7 +53,7 @@
   }
 
   .headline-feature {
-    font-family: 'Sentient', serif;
+    font-family: "Sentient", serif;
     font-size: clamp(1.5rem, 3vw, 2.25rem);
     font-weight: 500;
     line-height: 1.25;
@@ -57,13 +61,13 @@
   }
 
   .body-large {
-    font-family: 'DM Sans', sans-serif;
+    font-family: "DM Sans", sans-serif;
     font-size: 1.125rem;
     line-height: 1.7;
   }
 
   .label-caps {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: "Space Grotesk", sans-serif;
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.1em;
@@ -104,7 +108,11 @@
   /* Gradient Mesh Overlay */
   .gradient-mesh {
     background-image:
-      radial-gradient(at 40% 20%, rgba(139, 92, 246, 0.06) 0px, transparent 50%),
+      radial-gradient(
+        at 40% 20%,
+        rgba(139, 92, 246, 0.06) 0px,
+        transparent 50%
+      ),
       radial-gradient(at 80% 0%, rgba(236, 72, 153, 0.04) 0px, transparent 50%),
       radial-gradient(at 0% 50%, rgba(59, 130, 246, 0.04) 0px, transparent 50%);
   }
@@ -125,28 +133,48 @@
   .accent-emerald .numbered-list-number {
     @apply bg-emerald-100 text-emerald-600;
   }
+
+  /* Dotted Background Pattern */
+  .bg-dotted {
+    background-image: radial-gradient(
+      circle,
+      rgba(0, 0, 0, 0.08) 1px,
+      transparent 1px
+    );
+    background-size: 16px 16px;
+  }
+
+  /* Light variant for dark backgrounds */
+  .bg-dotted-light {
+    background-image: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.06) 1px,
+      transparent 1px
+    );
+    background-size: 16px 16px;
+  }
 }
 
 @layer utilities {
-    .pause {
-        animation-play-state: paused;
-    }
+  .pause {
+    animation-play-state: paused;
+  }
 }
 
 /* Animated gradient border support */
 @property --border-angle {
-    inherits: false;
-    initial-value: 0deg;
-    syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+  syntax: "<angle>";
 }
 
 /* Prevent layout shift on page load */
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 /* Ensure header doesn't cause layout shift */
 header {
-    min-height: 62px;
-    /* Removed contain property as it was clipping dropdown menus */
+  min-height: 62px;
+  /* Removed contain property as it was clipping dropdown menus */
 }

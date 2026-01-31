@@ -1,5 +1,5 @@
 <template>
-  <section ref="sectionRef" class="relative py-24 bg-white">
+  <section ref="sectionRef" class="relative py-24 bg-white bg-dotted">
     <div class="relative max-w-7xl mx-auto px-4">
       <!-- Header - Centered -->
       <div class="flex flex-col items-center text-center mb-10">

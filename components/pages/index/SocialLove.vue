@@ -398,7 +398,9 @@ const platformConfig = {
 </script>
 
 <template>
-  <section class="relative py-32 lg:py-40 overflow-hidden bg-[#f4f2f6]">
+  <section
+    class="relative py-32 lg:py-40 overflow-hidden bg-[#f4f2f6] bg-dotted"
+  >
     <!-- Subtle background texture -->
     <div
       class="absolute inset-0 opacity-[0.4]"

@@ -1,22 +1,29 @@
 <script setup>
-import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
-import { useRoute } from 'vue-router';
+import { ref, computed, onMounted, onBeforeUnmount } from "vue";
+import { useRoute } from "vue-router";
 
 const route = useRoute();
-const isHovered = ref(false);
 const isDismissed = ref(false);
 const isMounted = ref(false);
 const hasScrolledDown = ref(false);
 
 // Pages where widget should NOT show
-const excludedPaths = ['/pricing', '/sales', '/customers/alan', '/customers/funding-societies', '/customers'];
+const excludedPaths = [
+  "/pricing",
+  "/sales",
+  "/customers/alan",
+  "/customers/funding-societies",
+  "/customers",
+];
 
 const shouldShow = computed(() => {
   if (!isMounted.value) return false;
   if (isDismissed.value) return false;
   if (!hasScrolledDown.value) return false;
   const currentPath = route.path;
-  return !excludedPaths.some(path => currentPath === path || currentPath.startsWith(path + '/'));
+  return !excludedPaths.some(
+    (path) => currentPath === path || currentPath.startsWith(path + "/"),
+  );
 });
 
 const dismiss = () => {
@@ -36,70 +43,90 @@ onMounted(() => {
   scrollHandler = () => {
     hasScrolledDown.value = window.scrollY > 100;
   };
-  
-  window.addEventListener('scroll', scrollHandler, { passive: true });
+
+  window.addEventListener("scroll", scrollHandler, { passive: true });
   // Check initial scroll position
   scrollHandler();
 });
 
 onBeforeUnmount(() => {
   if (scrollHandler) {
-    window.removeEventListener('scroll', scrollHandler);
+    window.removeEventListener("scroll", scrollHandler);
   }
 });
 </script>
 
 <template>
   <Transition name="widget">
-    <div
-      v-if="shouldShow"
-      class="fixed bottom-6 right-6 z-40"
-    >
+    <div v-if="shouldShow" class="fixed bottom-6 right-6 z-40">
       <!-- Main Widget -->
-      <div
-        class="relative group"
-        @mouseenter="isHovered = true"
-        @mouseleave="isHovered = false"
-      >
+      <div class="relative group">
         <!-- Dismiss button -->
         <button
           @click="dismiss"
           class="absolute -top-2 -right-2 w-5 h-5 bg-gray-200 hover:bg-gray-300 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 z-10"
           aria-label="Dismiss"
         >
-          <svg class="w-3 h-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          <svg
+            class="w-3 h-3 text-gray-600"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
           </svg>
         </button>
 
         <!-- Widget Card -->
         <a
           href="/sales"
-          class="block overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
-          :class="isHovered ? 'scale-[1.02]' : 'scale-100'"
+          class="block overflow-hidden rounded-full shadow-lg hover:shadow-2xl transition-all duration-300"
         >
           <!-- Animated gradient border -->
-          <div class="p-[2px] bg-gradient-to-r from-violet-500 via-fuchsia-500 to-cyan-500 rounded-2xl animate-gradient-border">
-            <div class="bg-white rounded-[14px] p-4 flex items-center gap-3">
+          <div
+            class="p-0.5 group-hover:p-2 bg-gradient-to-r from-violet-500 via-fuchsia-500 to-cyan-500 rounded-full animate-gradient-border"
+          >
+            <div
+              class="bg-white rounded-full px-4 py-2 flex items-center gap-2"
+            >
               <!-- Activepieces logo -->
               <div class="flex-shrink-0">
                 <img
                   src="/ap-logo-black-sq-cropped.svg"
                   alt="Activepieces"
-                  class="w-8 h-8"
+                  class="w-6 h-6 opacity-80"
                 />
               </div>
 
               <!-- Text content -->
               <div class="flex flex-col">
-                <span class="text-sm font-semibold text-gray-900">See it in action</span>
+                <span class="text-sm font-semibold text-gray-900"
+                  >See it in action</span
+                >
                 <span class="text-xs text-gray-500">Book a 30-min demo</span>
               </div>
 
               <!-- Arrow icon -->
-              <div class="ml-2 transform transition-transform duration-300" :class="isHovered ? 'translate-x-1' : ''">
-                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              <div
+                class="text-black/30 ml-2 transform transition-transform duration-300 group-hover:text-black/50"
+              >
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  />
                 </svg>
               </div>
             </div>
@@ -118,7 +145,8 @@ onBeforeUnmount(() => {
 }
 
 @keyframes gradient-shift {
-  0%, 100% {
+  0%,
+  100% {
     background-position: 0% 50%;
   }
   50% {
@@ -157,4 +185,3 @@ onBeforeUnmount(() => {
   }
 }
 </style>
-
