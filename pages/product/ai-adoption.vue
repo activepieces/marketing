@@ -199,66 +199,7 @@ definePageMeta({
     </section>
 
     <!-- Section 2: Onboard & Coach -->
-    <section
-      id="enable-building"
-      class="py-24 bg-[#082c41] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
-    >
-      <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col gap-20">
-        <PagesProductSectionHeader
-          title="Clear path forward. Built-in guidance."
-        />
-
-        <!-- Feature 1: Templates -->
-        <PagesProductAdoptionFeatureCard
-          content-position="right"
-          :content-ratio="2"
-          variant="bordered"
-          title="Every team knows exactly what to build"
-          description='Stop waiting for teams to "figure out" AI. Our curated template library gives HR, Finance, Marketing, Sales, and Operations concrete automations to build—from simple everyday tasks to advanced multi-step workflows.'
-          :items="[
-            'Everyday automations anyone can build in minutes',
-            'Advanced workflows for power users ready to level up',
-            'Department-specific ideas that actually make sense',
-          ]"
-        >
-          <PagesProductAdoptionTemplateCards />
-        </PagesProductAdoptionFeatureCard>
-
-        <!-- Feature 2: Personalized Guidance -->
-        <PagesProductAdoptionFeatureCard
-          content-position="left"
-          :content-ratio="2"
-          variant="bordered"
-          :content-border="true"
-          title="Every team member gets their own AI coach"
-          description="Generic training doesn't work. Our platform learns each user's role, skill level, and past activity to deliver personalized automation ideas, targeted resources, and timely nudges that keep momentum going."
-          :items="[
-            'Smart suggestions based on role and department',
-            'Learning paths that adapt to current skill level',
-            'Gentle nudges to re-engage inactive users',
-          ]"
-        >
-          <PagesProductAdoptionCoachingEmails />
-        </PagesProductAdoptionFeatureCard>
-
-        <!-- Feature 3: Expert Support -->
-        <PagesProductAdoptionFeatureCard
-          content-position="right"
-          :content-ratio="2"
-          variant="bordered"
-          :content-padding="true"
-          title="Your teams get instant support—you don't have to provide it"
-          description="When your users get stuck, they don't need to come to you. Our AI Automation Specialists are available directly inside the platform—your teams can book calls, get help, and keep building without burdening your IT or support teams."
-          :items="[
-            'In-app support—no tickets, no escalations to your team',
-            'Instant access—book calls directly from the platform',
-            'Zero overhead—we handle all user support, you focus on adoption',
-          ]"
-        >
-          <PagesProductAdoptionSupportBooking />
-        </PagesProductAdoptionFeatureCard>
-      </div>
-    </section>
+    <PagesProductAdoptionGuidanceSection />
 
     <!-- Section 3: Grow Champions -->
     <section
