@@ -1,7 +1,8 @@
 <script setup>
-import { ref, computed } from "vue";
+import { computed } from "vue";
+import { PhCaretDown } from "@phosphor-icons/vue";
 
-defineProps({
+const props = defineProps({
   title: {
     type: String,
     required: true,
@@ -14,7 +15,15 @@ defineProps({
     type: String,
     default: "",
   },
-  backgroundGradient: {
+  topGradientColor: {
+    type: String,
+    default: "",
+  },
+  bottomGradientColor: {
+    type: String,
+    default: "",
+  },
+  bottomSectionBackground: {
     type: String,
     default: "",
   },
@@ -31,97 +40,122 @@ defineProps({
 const route = useRoute();
 const { productPages } = useProductPages();
 
-const hoveredIndex = ref(null);
-
-const currentPageIndex = computed(() => {
-  return productPages.findIndex((page) => route.path === page.path);
+const displayedName = computed(() => {
+  const index = productPages.findIndex((page) => route.path === page.path);
+  return index >= 0 ? productPages[index].name : "Platform";
 });
 
-const displayedName = computed(() => {
-  if (hoveredIndex.value !== null) {
-    return productPages[hoveredIndex.value].name;
-  }
-  return currentPageIndex.value >= 0
-    ? productPages[currentPageIndex.value].name
-    : "Platform";
+function hexToRgba(hex, alpha) {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
+const topGradientStyle = computed(() => {
+  if (!props.topGradientColor) return {};
+  const c = props.topGradientColor;
+  return {
+    background: `linear-gradient(${c} 0%, ${hexToRgba(c, 0.8)} 25%, ${hexToRgba(c, 0)} 36%)`,
+  };
+});
+
+const bottomGradientStyle = computed(() => {
+  if (!props.bottomGradientColor) return {};
+  const c = props.bottomGradientColor;
+  return {
+    background: `linear-gradient(${hexToRgba(c, 0)} 43%, ${c} 88%)`,
+  };
 });
 </script>
 
 <template>
-  <section class="w-full relative section-hero-dark pt-4 pb-16 lg:pb-24">
-    <!-- Image background -->
-    <img
-      v-if="backgroundImage"
-      :src="backgroundImage"
-      alt=""
-      class="absolute inset-0 w-full h-full object-cover z-0"
-    />
-    <!-- Gradient background fallback -->
-    <div
-      v-else-if="backgroundGradient"
-      class="absolute inset-0 z-0"
-      :style="{ background: backgroundGradient }"
-    ></div>
+  <div class="w-full">
+    <!-- TOP SECTION: Image + Gradients + Content -->
+    <section class="w-full relative section-hero-dark">
+      <!-- Background image -->
+      <img
+        v-if="backgroundImage"
+        :src="backgroundImage"
+        alt=""
+        class="absolute inset-0 w-full h-full object-cover z-0"
+      />
 
-    <div
-      class="max-w-7xl mx-auto pt-40 pb-10 px-4 relative z-10 flex flex-col gap-16"
-    >
-      <div class="flex flex-col gap-8">
-        <div
-          class="text-white/60 text-sm uppercase font-semibold flex items-center gap-2"
-        >
-          <!-- All squares grouped together -->
-          <NuxtLink
-            v-for="(page, index) in productPages"
-            :key="page.path"
-            :to="page.path"
-            @mouseenter="hoveredIndex = index"
-            @mouseleave="hoveredIndex = null"
+      <!-- Top gradient overlay -->
+      <div
+        v-if="topGradientColor"
+        class="absolute inset-0 z-[1]"
+        :style="topGradientStyle"
+      ></div>
+
+      <!-- Bottom gradient overlay -->
+      <div
+        v-if="bottomGradientColor"
+        class="absolute inset-0 z-[1]"
+        :style="bottomGradientStyle"
+      ></div>
+
+      <!-- Content -->
+      <div
+        class="max-w-7xl mx-auto pt-[180px] pb-16 lg:pb-24 px-4 relative z-10 flex flex-col items-center gap-16 lg:gap-[120px]"
+      >
+        <div class="flex flex-col items-center gap-8 max-w-[800px]">
+          <!-- Product badge pill -->
+          <div
+            class="inline-flex items-center gap-1.5 px-3 py-1.5 border border-white/20 rounded-md text-white/80 text-sm font-medium"
           >
-            <div
-              class="w-2 h-2 rounded-sm transition-all duration-200"
-              :class="[
-                hoveredIndex === index
-                  ? 'bg-white rotate-45'
-                  : currentPageIndex === index
-                  ? 'bg-white/60'
-                  : 'bg-white/20',
-              ]"
-            />
-          </NuxtLink>
+            <span>{{ displayedName }}</span>
+            <PhCaretDown :size="12" weight="bold" />
+          </div>
 
-          <!-- Label after all squares -->
-          <span class="ml-1" :class="hoveredIndex !== null ? 'text-white' : ''">
-            {{ displayedName }}
-          </span>
+          <!-- Title -->
+          <h1
+            class="text-white text-balance text-4xl md:text-5xl lg:text-6xl font-sentient font-bold text-center leading-[1.2]"
+          >
+            {{ title }}
+          </h1>
+
+          <!-- Subtitle -->
+          <p
+            v-if="subtitle"
+            class="text-white/80 text-lg md:text-xl lg:text-2xl text-balance text-center"
+          >
+            {{ subtitle }}
+          </p>
+
+          <!-- Buttons: secondary first, primary second (Figma order) -->
+          <div class="flex flex-wrap justify-center gap-2 pt-2">
+            <a
+              :href="secondaryButton.href"
+              :target="secondaryButton.external ? '_blank' : undefined"
+              class="inline-flex items-center justify-center min-w-48 px-8 py-4 text-lg md:text-2xl font-medium text-white border-2 border-white/60 rounded-full hover:bg-white/10 transition-all hover:border-white/80"
+            >
+              {{ secondaryButton.text }}
+            </a>
+            <a
+              :href="primaryButton.href"
+              class="inline-flex items-center justify-center min-w-48 px-8 py-4 text-lg md:text-2xl font-medium text-[#190041] bg-white rounded-full hover:bg-gray-100 ring-0 ring-white transition-all duration-200 hover:ring-2 shadow-lg shadow-white/10"
+            >
+              {{ primaryButton.text }}
+            </a>
+          </div>
         </div>
-        <h1 class="text-white text-balance text-7xl font-sentient font-medium">
-          {{ title }}
-        </h1>
-        <p v-if="subtitle" class="text-white/80 text-2xl text-balance">
-          {{ subtitle }}
-        </p>
-      </div>
 
-      <div class="flex flex-wrap gap-2">
-        <a
-          :href="primaryButton.href"
-          class="inline-flex items-center justify-center min-w-60 px-6 py-4 text-xl font-semibold text-gray-900 bg-white rounded-full hover:bg-gray-100 ring-0 ring-white transition-all duration-200 hover:ring-2 shadow-lg shadow-white/10"
-        >
-          {{ primaryButton.text }}
-        </a>
-        <a
-          :href="secondaryButton.href"
-          :target="secondaryButton.external ? '_blank' : undefined"
-          class="inline-flex items-center px-8 py-4 text-xl font-semibold text-white border-2 border-white/20 rounded-full hover:bg-white/10 transition-all hover:border-white/40"
-        >
-          {{ secondaryButton.text }}
-        </a>
+        <!-- Company logos -->
+        <div class="w-full max-w-full shrink-0">
+          <PagesIndexCompanyLogos class="relative z-10" />
+        </div>
       </div>
+    </section>
 
-      <div class="w-full max-w-full shrink-0">
-        <PagesIndexCompanyLogos class="relative z-10" />
+    <!-- BOTTOM SECTION: Solid color + slot -->
+    <section
+      v-if="bottomSectionBackground"
+      :style="{ backgroundColor: bottomSectionBackground }"
+    >
+      <div class="max-w-7xl mx-auto px-4 py-24">
+        <slot />
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </template>

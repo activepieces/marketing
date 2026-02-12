@@ -38,7 +38,9 @@ definePageMeta({
     <ProductHero
       title="Deploy your way. Pay fairly."
       subtitle="Choose our secure cloud with GDPR & SOC 2 Type II compliance, or self-host in your infrastructure. Either way, you never pay for executions."
-      background-gradient="radial-gradient(ellipse 80% 60% at 50% 0%, rgba(6, 182, 212, 0.5), transparent 70%), #000000"
+      background-image="/images/sections-heros/deployment-and-cost.png"
+      top-gradient-color="#1A3CA7"
+      bottom-gradient-color="#12235B"
       :primary-button="{ text: 'Start free on cloud', href: 'https://cloud.activepieces.com/sign-up' }"
       :secondary-button="{ text: 'Self-host docs', href: 'https://www.activepieces.com/docs/install/overview', external: true }"
     />

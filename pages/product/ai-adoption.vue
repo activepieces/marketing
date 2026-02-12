@@ -120,8 +120,10 @@ definePageMeta({
     <!-- Hero Section -->
     <ProductHero
       title="Turn your entire organization into AI builders"
-      subtitle="Templates, analytics, and support to drive adoption from day one"
-      background-image="/images/ai-adoption-stack/ai-adoption-stack-hero.png"
+      background-image="/images/sections-heros/ai-adoption.png"
+      top-gradient-color="#1A3CA7"
+      bottom-gradient-color="#12235B"
+      bottom-section-background="#12235B"
       :primary-button="{
         text: 'Start free',
         href: 'https://cloud.activepieces.com/sign-up',

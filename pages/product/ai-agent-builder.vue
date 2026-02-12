@@ -43,7 +43,9 @@ definePageMeta({
     <!-- Hero Section -->
     <ProductHero
       title="Build AI agents that work where you work"
-      background-gradient="radial-gradient(ellipse 80% 60% at 50% 0%, rgba(236, 72, 153, 0.5), transparent 70%), #000000"
+      background-image="/images/sections-heros/ai-agents.png"
+      top-gradient-color="#1A3CA7"
+      bottom-gradient-color="#12235B"
       :primary-button="{
         text: 'Start free',
         href: 'https://cloud.activepieces.com/sign-up',

@@ -37,7 +37,9 @@ definePageMeta({
     <!-- Hero Section -->
     <ProductHero
       title="Enterprise control without the complexity"
-      background-gradient="radial-gradient(ellipse 80% 60% at 50% 0%, rgba(34, 197, 94, 0.5), transparent 70%), #000000"
+      background-image="/images/sections-heros/control-and-governance.png"
+      top-gradient-color="#1A3CA7"
+      bottom-gradient-color="#12235B"
       :primary-button="{ text: 'Start free', href: 'https://cloud.activepieces.com/sign-up' }"
       :secondary-button="{ text: 'Talk to sales', href: '/sales' }"
     />
