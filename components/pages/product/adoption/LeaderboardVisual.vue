@@ -2,6 +2,7 @@
   <div class="bg-[rgba(49,43,96,0.05)] p-[40px] rounded-[24px] w-[400px]">
     <div
       class="bg-white border border-[rgba(49,43,96,0.1)] rounded-[16px] pt-6 px-6 overflow-hidden"
+      style="height: 224px"
     >
       <div class="flex items-end justify-center gap-4">
         <!-- Position 2 (Silver) -->
@@ -12,16 +13,17 @@
           >
             2
           </span>
-          <img
-            src="/avatars/vibrent_2.png"
-            alt=""
-            class="w-16 h-16 rounded-full shadow-[0px_4px_0px_0px_white]"
-            :style="avatarStyle(0)"
-          />
-          <div
-            class="w-full"
-            :style="{ backgroundColor: '#ebffcd', height: '98px' }"
-          ></div>
+          <div :style="columnStyle(0)">
+            <img
+              src="/avatars/vibrent_2.png"
+              alt=""
+              class="relative z-10 shrink-0 w-16 h-16 rounded-full shadow-[0px_4px_0px_0px_white]"
+            />
+            <div
+              class="w-full -mt-8"
+              :style="{ backgroundColor: '#ebffcd', height: '98px' }"
+            ></div>
+          </div>
         </div>
 
         <!-- Position 1 (Gold) -->
@@ -32,16 +34,17 @@
           >
             1
           </span>
-          <img
-            src="/avatars/vibrent_1.png"
-            alt=""
-            class="w-16 h-16 rounded-full shadow-[0px_4px_0px_0px_white]"
-            :style="avatarStyle(1)"
-          />
-          <div
-            class="w-full"
-            :style="{ backgroundColor: '#d3ffcd', height: '132px' }"
-          ></div>
+          <div :style="columnStyle(1)">
+            <img
+              src="/avatars/vibrent_1.png"
+              alt=""
+              class="relative z-10 shrink-0 w-16 h-16 rounded-full shadow-[0px_4px_0px_0px_white]"
+            />
+            <div
+              class="w-full -mt-8"
+              :style="{ backgroundColor: '#d3ffcd', height: '132px' }"
+            ></div>
+          </div>
         </div>
 
         <!-- Position 3 (Bronze) -->
@@ -52,16 +55,17 @@
           >
             3
           </span>
-          <img
-            src="/avatars/vibrent_3.png"
-            alt=""
-            class="w-16 h-16 rounded-full shadow-[0px_4px_0px_0px_white]"
-            :style="avatarStyle(2)"
-          />
-          <div
-            class="w-full"
-            :style="{ backgroundColor: '#cdffe8', height: '80px' }"
-          ></div>
+          <div :style="columnStyle(2)">
+            <img
+              src="/avatars/vibrent_3.png"
+              alt=""
+              class="relative z-10 shrink-0 w-16 h-16 rounded-full shadow-[0px_4px_0px_0px_white]"
+            />
+            <div
+              class="w-full -mt-8"
+              :style="{ backgroundColor: '#cdffe8', height: '80px' }"
+            ></div>
+          </div>
         </div>
       </div>
     </div>
@@ -71,42 +75,43 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from "vue";
 
-// Phases: 'hidden' → 'avatars-entering' → 'badges-entering' → 'visible' → 'exiting' → 'hidden'
+// Phases: 'hidden' → 'rising' → 'badges-entering' → 'visible' → 'resetting' → 'hidden'
 const phase = ref("hidden");
 let timeoutId = null;
 const prefersReducedMotion = ref(false);
 
-const avatarStyle = (index) => {
+const columnStyle = (index) => {
   if (prefersReducedMotion.value) {
-    return { opacity: 1, transform: "translateY(0)" };
+    return { transform: "translateY(0)" };
   }
 
   const p = phase.value;
 
   if (p === "hidden") {
     return {
-      opacity: 0,
-      transform: "translateY(30px)",
+      transform: "translateY(250px)",
       transition: "none",
     };
   }
 
-  if (p === "avatars-entering" || p === "badges-entering" || p === "visible") {
+  if (p === "rising") {
     return {
-      opacity: 1,
       transform: "translateY(0)",
-      transition:
-        p === "avatars-entering"
-          ? `opacity 500ms ease ${index * 150}ms, transform 500ms ease ${index * 150}ms`
-          : "none",
+      transition: `transform 700ms cubic-bezier(0.22,1,0.36,1) ${index * 150}ms`,
     };
   }
 
-  if (p === "exiting") {
+  if (p === "badges-entering" || p === "visible") {
     return {
-      opacity: 0,
-      transform: "translateY(20px)",
-      transition: "opacity 200ms ease, transform 200ms ease",
+      transform: "translateY(0)",
+      transition: "none",
+    };
+  }
+
+  if (p === "resetting") {
+    return {
+      transform: "translateY(250px)",
+      transition: "transform 300ms ease-in",
     };
   }
 
@@ -120,7 +125,7 @@ const badgeStyle = (index) => {
 
   const p = phase.value;
 
-  if (p === "hidden" || p === "avatars-entering") {
+  if (p === "hidden" || p === "rising") {
     return {
       opacity: 0,
       transform: "translateY(15px)",
@@ -144,11 +149,10 @@ const badgeStyle = (index) => {
     };
   }
 
-  if (p === "exiting") {
+  if (p === "resetting") {
     return {
       opacity: 0,
-      transform: "translateY(20px)",
-      transition: "opacity 200ms ease, transform 200ms ease",
+      transition: "opacity 200ms ease",
     };
   }
 
@@ -167,26 +171,26 @@ const advancePhase = () => {
 
   if (p === "hidden") {
     requestAnimationFrame(() => {
-      phase.value = "avatars-entering";
-      // Wait for all avatars: last stagger (2*150) + duration (500) + buffer
-      scheduleNext("badges-entering", 2 * 150 + 500 + 50);
+      phase.value = "rising";
+      // Wait for all columns: last stagger (2*150) + duration (700) + buffer (50)
+      scheduleNext("badges-entering", 2 * 150 + 700 + 50);
     });
     return;
   }
 
   if (p === "badges-entering") {
-    // Wait for all badges: last stagger (2*100) + duration (400) + buffer
+    // Wait for all badges: last stagger (2*100) + duration (400) + buffer (50)
     scheduleNext("visible", 2 * 100 + 400 + 50);
     return;
   }
 
   if (p === "visible") {
-    scheduleNext("exiting", 1500);
+    scheduleNext("resetting", 1500);
     return;
   }
 
-  if (p === "exiting") {
-    scheduleNext("hidden", 200);
+  if (p === "resetting") {
+    scheduleNext("hidden", 350);
     return;
   }
 };
