@@ -91,8 +91,30 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="bg-primary-dark/5 rounded-[24px] pt-10 px-10 pb-[280px]">
+  <div class="bg-primary-dark/5 rounded-[24px] p-10">
     <div class="relative mx-auto w-full">
+      <!-- Invisible spacer to give the container intrinsic height -->
+      <div
+        class="invisible border-2 rounded-[24px] p-6"
+        aria-hidden="true"
+        :style="{ marginBottom: '50px' }"
+      >
+        <div class="flex flex-col gap-6">
+          <div class="flex items-center gap-1.5">
+            <div class="p-2"><PhHeadset :size="18" /></div>
+            <span class="text-[14px] font-bold uppercase">Support Agent</span>
+          </div>
+          <p class="text-[16px] leading-[1.4]">
+            A customer wants a refund for $899 but they're outside our 30-day
+            window.
+          </p>
+          <div class="flex gap-2">
+            <button class="flex-1 py-2 px-2.5 text-sm">Reject</button>
+            <button class="flex-1 py-2 px-2.5 text-sm">Approve</button>
+          </div>
+        </div>
+      </div>
+
       <div
         v-for="cardIndex in CARD_INDICES"
         :key="cardIndex"
