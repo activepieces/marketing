@@ -73,7 +73,7 @@ definePageMeta({
       <div class="max-w-4xl mx-auto px-4">
         <!-- Main Heading -->
         <h2
-          class="text-4xl md:text-5xl font-sentient font-bold text-primary-dark text-center mb-24"
+          class="text-4xl md:text-5xl font-sentient font-bold text-primary-dark text-center mb-24 max-w-xl mx-auto text-balance"
         >
           From idea to automation in minutes
         </h2>
@@ -143,36 +143,34 @@ definePageMeta({
               </p>
             </div>
           </div>
+        </div>
+      </div>
+      <!-- Panel 4: Stay in control — inside bordered container -->
+      <div
+        id="stay-in-control"
+        class="border-2 border-primary-dark/10 rounded-3xl p-8 md:p-20 w-full max-w-5xl mx-auto mt-24"
+      >
+        <h2
+          class="text-4xl md:text-5xl font-sentient font-bold text-primary-dark text-center mb-16 max-w-xl mx-auto text-balance"
+        >
+          All while you stay in control
+        </h2>
 
-          <!-- Panel 4: Stay in control — inside bordered container -->
-          <div
-            id="stay-in-control"
-            class="border-2 border-primary-dark/10 rounded-[32px] p-8 md:p-20"
-          >
-            <h2
-              class="text-4xl md:text-5xl font-sentient font-bold text-primary-dark text-center mb-16"
+        <div class="grid md:grid-cols-2 grid-cols-1 gap-10 items-center">
+          <div class="md:order-1 order-2">
+            <h3
+              class="font-sentient font-bold text-[28px] leading-[1.2] text-primary-dark mb-4 text-balance"
             >
-              All while you stay in control
-            </h2>
-
-            <div class="grid md:grid-cols-2 grid-cols-1 gap-10 items-center">
-              <div class="md:order-1 order-2">
-                <h3
-                  class="font-sentient font-bold text-[28px] leading-[1.2] text-primary-dark mb-4"
-                >
-                  Agents ask when they need you.
-                </h3>
-                <p class="text-base text-primary-dark/80 leading-relaxed">
-                  Not every task should be 100% autonomous. Let your agents ask
-                  for approval when they encounter situations that need human
-                  judgment. Stay in complete control while still automating the
-                  routine work.
-                </p>
-              </div>
-              <div class="md:order-2 order-1">
-                <PagesProductAiAgentsApprovalCardsVisual />
-              </div>
-            </div>
+              Agents ask when they need you.
+            </h3>
+            <p class="text-base text-primary-dark/80 leading-relaxed">
+              Not every task should be 100% autonomous. Let your agents ask for
+              approval when they encounter situations that need human judgment.
+              Stay in complete control while still automating the routine work.
+            </p>
+          </div>
+          <div class="md:order-2 order-1">
+            <PagesProductAiAgentsApprovalCardsVisual />
           </div>
         </div>
       </div>
