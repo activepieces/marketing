@@ -83,7 +83,7 @@ function startCycle() {
       fadingIndex.value = -1;
 
       startCycle();
-    }, 400);
+    }, 150);
   }, 2500);
 }
 
@@ -135,13 +135,13 @@ onBeforeUnmount(() => {
 <style scoped>
 .card-item {
   transition:
-    transform 400ms ease-in-out,
-    opacity 400ms ease-in-out;
+    transform 200ms ease-in-out,
+    opacity 300ms ease-in-out;
   will-change: transform, opacity;
 }
 
 .card-content {
-  transition: filter 400ms ease-in-out;
+  transition: filter 200ms ease-in-out;
 }
 
 @media (prefers-reduced-motion: reduce) {
