@@ -132,11 +132,11 @@ definePageMeta({
             </div>
             <div>
               <h3
-                class="font-sentient font-bold text-[28px] leading-[1.2] text-primary-dark mb-4"
+                class="font-sentient font-bold text-[28px] leading-[1.2] text-primary-dark mb-3"
               >
                 See exactly what happened
               </h3>
-              <p class="text-base text-primary-dark/80 leading-relaxed">
+              <p class="text-base text-primary-dark/80 leading-[1.4]">
                 No black boxes. Every run is logged with full input/output for
                 each step. When something fails, you'll know exactly where and
                 why.
