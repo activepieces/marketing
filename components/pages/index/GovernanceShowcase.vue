@@ -76,61 +76,7 @@
             <div
               class="flex-1 bg-white rounded-xl m-4 flex items-center justify-center p-6"
             >
-              <div class="grid grid-cols-2 gap-4 w-full max-w-[260px]">
-                <div
-                  class="bg-primary-dark/5 rounded-xl p-3 flex items-center justify-center h-14"
-                >
-                  <img
-                    src="/sso-icons/okta.png"
-                    class="h-6 w-auto object-contain"
-                    alt="Okta"
-                  />
-                </div>
-                <div
-                  class="bg-primary-dark/5 rounded-xl p-3 flex items-center justify-center h-14"
-                >
-                  <img
-                    src="/sso-icons/entra-id.png"
-                    class="h-7 w-auto object-contain"
-                    alt="Microsoft Entra ID"
-                  />
-                </div>
-                <div
-                  class="bg-primary-dark/5 rounded-xl p-3 flex items-center justify-center h-14"
-                >
-                  <img
-                    src="/sso-icons/google-workspace.png"
-                    class="h-8 w-auto object-contain"
-                    alt="Google Workspace"
-                  />
-                </div>
-                <div
-                  class="bg-primary-dark/5 rounded-xl p-3 flex items-center justify-center h-14"
-                >
-                  <img
-                    src="/sso-icons/auth0.svg"
-                    class="h-6 w-auto object-contain"
-                    alt="Auth0"
-                  />
-                </div>
-                <div
-                  class="bg-primary-dark/5 rounded-xl p-3 flex items-center justify-center h-14"
-                >
-                  <img
-                    src="/sso-icons/onelogin.png"
-                    class="h-5 w-auto object-contain"
-                    alt="OneLogin"
-                  />
-                </div>
-                <div
-                  class="bg-primary-dark/5 rounded-xl p-3 flex items-center justify-center h-14 gap-1.5"
-                >
-                  <span class="text-lg text-primary-dark/40">+</span>
-                  <span class="text-base font-medium text-primary-dark/60"
-                    >more</span
-                  >
-                </div>
-              </div>
+              <PagesProductGovernanceSsoCardContent />
             </div>
           </div>
 
@@ -152,45 +98,7 @@
             <div
               class="flex-1 bg-white rounded-xl m-4 flex items-center justify-center"
             >
-              <div class="w-full max-w-[220px] space-y-2.5">
-                <div
-                  v-for="(user, i) in scimUsers"
-                  :key="user.name"
-                  class="flex items-center gap-3 bg-primary-dark/5 rounded-xl px-4 py-3"
-                  :style="{ transform: `translateX(${(i - 1) * 12}px)` }"
-                >
-                  <div
-                    class="w-9 h-9 rounded-full flex items-center justify-center text-white text-xs font-bold"
-                    :style="{ backgroundColor: user.color }"
-                  >
-                    {{ user.initials }}
-                  </div>
-                  <div class="flex-1">
-                    <p class="text-sm font-medium text-primary-dark">
-                      {{ user.name }}
-                    </p>
-                    <p class="text-[11px] text-primary-dark/50">
-                      {{ user.team }}
-                    </p>
-                  </div>
-                  <svg
-                    :key="`check-${i}-${checkAnimationKey}`"
-                    class="w-5 h-5 text-emerald-500 check-animate"
-                    :style="{ animationDelay: `${i * 0.3 + 0.3}s` }"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2.5"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      class="check-path"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M4 10l4 4 8-8"
-                    />
-                  </svg>
-                </div>
-              </div>
+              <PagesProductGovernanceScimCardContent />
             </div>
           </div>
 
@@ -212,34 +120,7 @@
             <div
               class="flex-1 bg-white rounded-xl m-4 flex items-center justify-center py-4"
             >
-              <div class="w-full max-w-[220px] space-y-3">
-                <div
-                  v-for="role in roles"
-                  :key="role.name"
-                  class="bg-primary-dark/5 rounded-xl p-4"
-                >
-                  <div class="flex items-center justify-between mb-3">
-                    <div class="flex items-center gap-2">
-                      <span class="text-lg">{{ role.icon }}</span>
-                      <span class="text-sm font-semibold text-primary-dark">{{
-                        role.name
-                      }}</span>
-                    </div>
-                    <span class="text-xs text-primary-dark/50"
-                      >{{ role.count }} users</span
-                    >
-                  </div>
-                  <div class="flex flex-wrap gap-1.5">
-                    <span
-                      v-for="perm in role.perms"
-                      :key="perm"
-                      class="px-2 py-0.5 bg-white text-primary-dark/70 text-[10px] font-medium rounded-full"
-                    >
-                      {{ perm }}
-                    </span>
-                  </div>
-                </div>
-              </div>
+              <PagesProductGovernanceRbacCardContent />
             </div>
           </div>
         </template>
@@ -1029,7 +910,6 @@ const isAutoPlaying = ref(false);
 const isUserPaused = ref(false);
 const progress = ref(0);
 const isVisible = ref(false);
-const checkAnimationKey = ref(0);
 const sensitiveAnimationPhase = ref(0); // 0: initial, 1: click highlight, 2: shielded
 
 const tabs = [
@@ -1037,22 +917,6 @@ const tabs = [
   { id: "pieces", label: "Pieces" },
   { id: "connections", label: "Connections" },
   { id: "audit", label: "Audit Logs" },
-];
-
-const scimUsers = [
-  { name: "Sarah Chen", initials: "SC", team: "Engineering", color: "#8b5cf6" },
-  { name: "Mike Johnson", initials: "MJ", team: "Marketing", color: "#3b82f6" },
-  { name: "Emma Wilson", initials: "EW", team: "Sales", color: "#f59e0b" },
-];
-
-const roles = [
-  {
-    name: "Admin",
-    icon: "👑",
-    count: 3,
-    perms: ["Full Access", "Users", "Billing"],
-  },
-  { name: "Builder", icon: "🔨", count: 28, perms: ["Create", "Edit", "Run"] },
 ];
 
 const visibilityPieces = ref([
@@ -1146,35 +1010,8 @@ const getActionClass = (action) => {
 // Auto-play functionality
 let interval = null;
 let observer = null;
-let checkAnimationInterval = null;
-
-// Restart check animation when tab 0 is active and section is visible
-const startCheckAnimation = () => {
-  if (checkAnimationInterval) clearInterval(checkAnimationInterval);
-
-  // Initial animation
-  checkAnimationKey.value++;
-
-  // Repeat every 4 seconds (animation takes ~1.5s, pause ~2.5s)
-  checkAnimationInterval = setInterval(() => {
-    if (isVisible.value && activeTab.value === 0) {
-      checkAnimationKey.value++;
-    }
-  }, 4000);
-};
-
-const stopCheckAnimation = () => {
-  if (checkAnimationInterval) clearInterval(checkAnimationInterval);
-};
-
-// Watch for tab changes and visibility to control check animation
+// Watch for tab changes and visibility to control animations
 watch([activeTab, isVisible], ([tab, visible]) => {
-  if (tab === 0 && visible) {
-    startCheckAnimation();
-  } else {
-    stopCheckAnimation();
-  }
-
   if (tab === 1 && visible) {
     startToggleAnimation();
   } else {
@@ -1340,7 +1177,6 @@ onMounted(() => {
 
 onUnmounted(() => {
   stopAuto();
-  stopCheckAnimation();
   stopToggleAnimation();
   stopSensitiveAnimation();
   stopAuditAnimation();
@@ -1349,42 +1185,6 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-.check-animate {
-  opacity: 0;
-}
-
-.check-animate .check-path {
-  stroke-dasharray: 24;
-  stroke-dashoffset: 24;
-}
-
-.check-animate {
-  animation: check-appear 0.5s ease-out forwards;
-}
-
-.check-animate .check-path {
-  animation: draw-check 0.4s ease-out forwards;
-  animation-delay: inherit;
-}
-
-@keyframes check-appear {
-  0% {
-    opacity: 0;
-  }
-  1% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes draw-check {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
 /* Audit log list animations */
 .audit-list-container {
   position: relative;

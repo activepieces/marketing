@@ -45,48 +45,7 @@ definePageMeta({
     />
 
     <!-- Section 1: Centralized Access -->
-    <section
-      id="centralized-access"
-      class="py-24 bg-[#081635] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
-    >
-      <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col gap-20">
-        <PagesProductSectionHeader title="One place for all access" />
-
-        <div class="flex flex-col gap-8">
-          <!-- Feature 1: AI Provider Management -->
-          <PagesProductAdoptionFeatureCard
-            content-position="right"
-            :content-ratio="2"
-            variant="bordered"
-            title="Your AI providers, centralized billing"
-            description="Connect directly to Azure OpenAI, AWS Bedrock, and other providers—or route through gateways like LiteLLM and Cloudflare AI Gateway for extra control. Either way, your team uses AI without managing individual keys."
-            :items="[
-              'Direct providers—Azure OpenAI, AWS Bedrock, OpenAI, and more',
-              'AI gateways—LiteLLM, Cloudflare AI Gateway for caching & routing',
-              'Centralized billing—one place, full visibility'
-            ]"
-          >
-            <PagesProductGovernanceAiProviders />
-          </PagesProductAdoptionFeatureCard>
-
-          <!-- Feature 2: Global Connections -->
-          <PagesProductAdoptionFeatureCard
-            content-position="left"
-            :content-ratio="2"
-            variant="bordered"
-            title="Service accounts for the whole team"
-            description="Stop managing hundreds of individual connections. Add your service accounts as global connections that your entire team can use in their projects. One connection, unlimited access."
-            :items="[
-              'Service account management—Google Workspace, Microsoft 365, and more',
-              'Team-wide access—no per-user connection setup',
-              'Secure by default—IT controls who can use what'
-            ]"
-          >
-            <PagesProductGovernanceGlobalConnections />
-          </PagesProductAdoptionFeatureCard>
-        </div>
-      </div>
-    </section>
+    <PagesProductGovernanceCentralizedAccess />
 
     <!-- Section 2: Identity & Permissions -->
     <section
