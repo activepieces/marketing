@@ -145,35 +145,7 @@
             <div
               class="flex-1 bg-white rounded-xl m-4 flex items-center justify-center p-6"
             >
-              <div
-                class="w-full max-w-[240px] bg-primary-dark/5 rounded-xl overflow-hidden"
-              >
-                <div
-                  v-for="piece in visibilityPieces"
-                  :key="piece.name"
-                  class="flex items-center justify-between px-3 py-2.5 border-b border-white/50 last:border-0"
-                >
-                  <div class="flex items-center gap-2.5">
-                    <img
-                      :src="piece.logo"
-                      class="w-6 h-6 rounded"
-                      :alt="piece.name"
-                    />
-                    <span class="text-[13px] font-medium text-primary-dark">{{
-                      piece.name
-                    }}</span>
-                  </div>
-                  <div
-                    class="w-9 h-[18px] rounded-full transition-colors duration-300"
-                    :class="piece.on ? 'bg-primary-dark' : 'bg-primary-dark/30'"
-                  >
-                    <div
-                      class="w-3.5 h-3.5 mt-[2px] ml-[2px] bg-white rounded-full shadow transition-transform duration-300 ease-out"
-                      :class="piece.on ? 'translate-x-[18px]' : 'translate-x-0'"
-                    ></div>
-                  </div>
-                </div>
-              </div>
+              <PagesProductGovernanceVisibilityControlCard />
             </div>
           </div>
 
@@ -195,70 +167,7 @@
             <div
               class="flex-1 bg-white rounded-xl m-4 flex items-center justify-center py-4"
             >
-              <div class="w-full max-w-[220px] space-y-3">
-                <div
-                  class="bg-primary-dark/5 rounded-xl p-4 border-2 border-dashed border-violet-200"
-                >
-                  <div class="flex items-center gap-3">
-                    <div
-                      class="w-11 h-11 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center"
-                    >
-                      <svg
-                        class="w-5 h-5 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-                        />
-                      </svg>
-                    </div>
-                    <div>
-                      <p class="text-sm font-semibold text-primary-dark">
-                        Internal API
-                      </p>
-                      <p class="text-[11px] text-violet-600 font-medium">
-                        Private
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="bg-primary-dark/5 rounded-xl p-4 border-2 border-dashed border-emerald-200"
-                >
-                  <div class="flex items-center gap-3">
-                    <div
-                      class="w-11 h-11 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center"
-                    >
-                      <svg
-                        class="w-5 h-5 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
-                        />
-                      </svg>
-                    </div>
-                    <div>
-                      <p class="text-sm font-semibold text-primary-dark">
-                        Payroll System
-                      </p>
-                      <p class="text-[11px] text-emerald-600 font-medium">
-                        Private
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <PagesProductGovernancePrivatePiecesCard />
             </div>
           </div>
 
@@ -280,45 +189,7 @@
             <div
               class="flex-1 bg-white rounded-xl m-4 flex items-center justify-center p-6"
             >
-              <div
-                class="w-full max-w-[240px] bg-primary-dark/5 rounded-xl p-3"
-              >
-                <div class="flex items-center gap-1.5 mb-3 px-1">
-                  <svg
-                    class="w-3.5 h-3.5 text-primary-dark/50"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path
-                      d="M16 4a1 1 0 01.707.293l3 3a1 1 0 01-.464 1.664l-1.397.349-.793.793 1.5 6a1 1 0 01-.276.96l-1.414 1.413a1 1 0 01-1.414 0L12 15.02l-3.449 3.449a1 1 0 01-1.414-1.414l3.449-3.449-3.449-3.449a1 1 0 010-1.414l1.414-1.414a1 1 0 01.96-.276l6 1.5.793-.793.349-1.397A1 1 0 0116.96 4H16z"
-                    />
-                  </svg>
-                  <span
-                    class="text-[11px] font-semibold text-primary-dark/60 uppercase tracking-wide"
-                    >Pinned</span
-                  >
-                </div>
-                <div class="space-y-1.5">
-                  <div
-                    v-for="(tool, i) in pinnedTools"
-                    :key="tool.name"
-                    class="flex items-center gap-3 bg-white rounded-lg px-3 py-2"
-                  >
-                    <span
-                      class="text-[10px] text-primary-dark/50 font-medium w-3"
-                      >{{ i + 1 }}</span
-                    >
-                    <img
-                      :src="tool.logo"
-                      class="w-6 h-6 rounded"
-                      :alt="tool.name"
-                    />
-                    <span class="text-[13px] font-medium text-primary-dark">{{
-                      tool.name
-                    }}</span>
-                  </div>
-                </div>
-              </div>
+              <PagesProductGovernancePinnedToolsCard />
             </div>
           </div>
         </template>
@@ -919,41 +790,6 @@ const tabs = [
   { id: "audit", label: "Audit Logs" },
 ];
 
-const visibilityPieces = ref([
-  {
-    name: "Salesforce",
-    logo: "https://cdn.activepieces.com/pieces/salesforce.png",
-    on: true,
-  },
-  {
-    name: "ServiceNow",
-    logo: "https://cdn.activepieces.com/pieces/service-now.png",
-    on: true,
-  },
-  {
-    name: "Zendesk",
-    logo: "https://cdn.activepieces.com/pieces/zendesk.png",
-    on: false,
-  },
-  {
-    name: "Jira",
-    logo: "https://cdn.activepieces.com/pieces/jira.png",
-    on: true,
-  },
-]);
-
-const pinnedTools = [
-  {
-    name: "Salesforce",
-    logo: "https://cdn.activepieces.com/pieces/salesforce.png",
-  },
-  { name: "SAP", logo: "https://cdn.activepieces.com/pieces/sap-ariba.png" },
-  {
-    name: "NetSuite",
-    logo: "https://cdn.activepieces.com/pieces/netsuite.png",
-  },
-];
-
 const serviceAccounts = [
   {
     name: "HubSpot",
@@ -1012,12 +848,6 @@ let interval = null;
 let observer = null;
 // Watch for tab changes and visibility to control animations
 watch([activeTab, isVisible], ([tab, visible]) => {
-  if (tab === 1 && visible) {
-    startToggleAnimation();
-  } else {
-    stopToggleAnimation();
-  }
-
   if (tab === 2 && visible) {
     startSensitiveAnimation();
   } else {
@@ -1030,28 +860,6 @@ watch([activeTab, isVisible], ([tab, visible]) => {
     stopAuditAnimation();
   }
 });
-
-// Toggle animation for Visibility Control card
-let toggleAnimationInterval = null;
-
-const startToggleAnimation = () => {
-  if (toggleAnimationInterval) clearInterval(toggleAnimationInterval);
-
-  // Toggle a random piece every 1.2 seconds
-  toggleAnimationInterval = setInterval(() => {
-    if (isVisible.value && activeTab.value === 1) {
-      const randomIndex = Math.floor(
-        Math.random() * visibilityPieces.value.length,
-      );
-      visibilityPieces.value[randomIndex].on =
-        !visibilityPieces.value[randomIndex].on;
-    }
-  }, 1200);
-};
-
-const stopToggleAnimation = () => {
-  if (toggleAnimationInterval) clearInterval(toggleAnimationInterval);
-};
 
 // Sensitive connection animation
 let sensitiveAnimationTimeout = null;
@@ -1177,7 +985,6 @@ onMounted(() => {
 
 onUnmounted(() => {
   stopAuto();
-  stopToggleAnimation();
   stopSensitiveAnimation();
   stopAuditAnimation();
   if (observer) observer.disconnect();

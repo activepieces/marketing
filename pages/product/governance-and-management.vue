@@ -7,6 +7,7 @@ const { setSections, clearSections } = useProductSubmenu();
 
 const sections = [
   { id: 'centralized-access', name: 'Centralized Access', icon: 'key' },
+  { id: 'tools-access', name: 'Tools Access', icon: 'puzzle' },
   { id: 'identity-permissions', name: 'Identity & Permissions', icon: 'shield' },
   { id: 'audit-visibility', name: 'Audit & Visibility', icon: 'eye' }
 ];
@@ -47,7 +48,10 @@ definePageMeta({
     <!-- Section 1: Centralized Access -->
     <PagesProductGovernanceCentralizedAccess />
 
-    <!-- Section 2: Identity & Permissions -->
+    <!-- Section 2: Tools Access -->
+    <PagesProductGovernanceToolsAccessSection />
+
+    <!-- Section 3: Identity & Permissions -->
     <section
       id="identity-permissions"
       class="py-24 bg-[#082c41] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
