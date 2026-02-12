@@ -7,10 +7,14 @@
         v-for="(badge, index) in badges"
         :key="index"
         class="rounded-full pl-3 pr-5 py-2 flex items-center gap-2"
-        :style="{ backgroundColor: badge.color, width: badge.width + 'px', ...pillStyle(index) }"
+        :style="{
+          backgroundColor: badge.color,
+          width: badge.width + 'px',
+          ...pillStyle(index),
+        }"
       >
-        <PhConfetti class="w-4 h-4 text-[#312b60] shrink-0" />
-        <div class="bg-[#312b60]/10 h-2.5 rounded-sm flex-1"></div>
+        <PhConfetti class="w-4 h-4 text-primary-dark shrink-0" weight="fill" />
+        <div class="bg-primary-dark/10 h-2.5 rounded-sm flex-1"></div>
       </div>
     </div>
   </div>

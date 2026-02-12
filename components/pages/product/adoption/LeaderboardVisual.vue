@@ -7,7 +7,7 @@
         <!-- Position 2 (Silver) -->
         <div class="flex flex-col items-center w-16">
           <span
-            class="rounded-full px-1.5 py-0.5 text-base font-medium bg-[#ebffcd] text-[#312b60] mb-2"
+            class="rounded-full px-1.5 py-0.5 text-base font-medium bg-[#ebffcd] text-primary-dark mb-2"
             :style="badgeStyle(0)"
           >
             2
@@ -15,11 +15,11 @@
           <img
             src="/avatars/vibrent_2.png"
             alt=""
-            class="w-12 h-12 rounded-full shadow-[0px_4px_0px_0px_white]"
+            class="w-16 h-16 rounded-full shadow-[0px_4px_0px_0px_white]"
             :style="avatarStyle(0)"
           />
           <div
-            class="w-full rounded-t-lg mt-2 -mb-1"
+            class="w-full"
             :style="{ backgroundColor: '#ebffcd', height: '98px' }"
           ></div>
         </div>
@@ -27,7 +27,7 @@
         <!-- Position 1 (Gold) -->
         <div class="flex flex-col items-center w-16">
           <span
-            class="rounded-full px-1.5 py-0.5 text-base font-medium bg-[#d3ffcd] text-[#312b60] mb-2"
+            class="rounded-full px-1.5 py-0.5 text-base font-medium bg-[#d3ffcd] text-primary-dark mb-2"
             :style="badgeStyle(1)"
           >
             1
@@ -35,11 +35,11 @@
           <img
             src="/avatars/vibrent_1.png"
             alt=""
-            class="w-12 h-12 rounded-full shadow-[0px_4px_0px_0px_white]"
+            class="w-16 h-16 rounded-full shadow-[0px_4px_0px_0px_white]"
             :style="avatarStyle(1)"
           />
           <div
-            class="w-full rounded-t-lg mt-2 -mb-1"
+            class="w-full"
             :style="{ backgroundColor: '#d3ffcd', height: '132px' }"
           ></div>
         </div>
@@ -47,7 +47,7 @@
         <!-- Position 3 (Bronze) -->
         <div class="flex flex-col items-center w-16">
           <span
-            class="rounded-full px-1.5 py-0.5 text-base font-medium bg-[#cdffe8] text-[#312b60] mb-2"
+            class="rounded-full px-1.5 py-0.5 text-base font-medium bg-[#cdffe8] text-primary-dark mb-2"
             :style="badgeStyle(2)"
           >
             3
@@ -55,11 +55,11 @@
           <img
             src="/avatars/vibrent_3.png"
             alt=""
-            class="w-12 h-12 rounded-full shadow-[0px_4px_0px_0px_white]"
+            class="w-16 h-16 rounded-full shadow-[0px_4px_0px_0px_white]"
             :style="avatarStyle(2)"
           />
           <div
-            class="w-full rounded-t-lg mt-2 -mb-1"
+            class="w-full"
             :style="{ backgroundColor: '#cdffe8', height: '80px' }"
           ></div>
         </div>
