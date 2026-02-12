@@ -58,7 +58,7 @@ function startCycle() {
       fadingIndex.value = -1;
 
       startCycle();
-    }, 400);
+    }, 200);
   }, 2500);
 }
 
@@ -74,7 +74,7 @@ function dismissCard(cardIndex) {
     fadingIndex.value = -1;
 
     startCycle();
-  }, 400);
+  }, 200);
 }
 
 onMounted(() => {
@@ -105,20 +105,17 @@ onBeforeUnmount(() => {
           :style="getContentBlur(cardIndex)"
         >
           <div class="flex items-center gap-1.5">
-            <div
-              class="border border-primary-dark/20 rounded-[4px] p-2"
-            >
+            <div class="border border-primary-dark/20 rounded-[4px] p-2">
               <PhHeadset :size="18" class="text-primary-dark" />
             </div>
-            <span
-              class="text-[14px] font-bold uppercase text-primary-dark"
+            <span class="text-[14px] font-bold uppercase text-primary-dark"
               >Support Agent</span
             >
           </div>
 
           <p class="text-[16px] text-primary-dark leading-[1.4]">
-            A customer wants a refund for $899 but they're outside our
-            30-day window.
+            A customer wants a refund for $899 but they're outside our 30-day
+            window.
           </p>
 
           <div class="flex gap-2">
@@ -143,12 +140,14 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .card-item {
-  transition: transform 400ms ease-in-out, opacity 400ms ease-in-out;
+  transition:
+    transform 200ms ease-in-out,
+    opacity 200ms ease-in-out;
   will-change: transform, opacity;
 }
 
 .card-content {
-  transition: filter 150ms ease-out;
+  transition: filter 50ms ease-out;
 }
 
 @media (prefers-reduced-motion: reduce) {
