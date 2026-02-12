@@ -5,9 +5,7 @@
   >
     <!-- Title block -->
     <div class="max-w-[560px] mx-auto text-center">
-      <h2
-        class="font-sentient font-bold text-5xl text-[#312b60] leading-[1.2]"
-      >
+      <h2 class="font-sentient font-bold text-5xl text-[#312b60] leading-[1.2]">
         Full visibility.<br />Expert backup.
       </h2>
       <p class="text-xl text-[#312b60]/80 mt-3">
@@ -21,24 +19,22 @@
       <div
         v-for="(stat, index) in stats"
         :key="index"
-        class="flex-1 bg-white border border-[rgba(49,43,96,0.1)] p-4 rounded-2xl flex flex-col gap-3"
+        class="flex-1 bg-white border border-[rgba(49,43,96,0.1)] p-4 rounded-2xl flex flex-col gap-4"
       >
         <!-- Label pill -->
         <div
-          class="flex items-center justify-center gap-1.5 rounded-full px-3 py-1 mx-auto"
+          class="flex items-center justify-center gap-1 rounded-full px-2 py-1.5 w-full text-primary-dark"
           :style="{ backgroundColor: stat.color }"
         >
-          <component :is="stat.icon" class="w-4 h-4 text-[#312b60]" />
-          <span
-            class="uppercase text-[10px] font-medium text-[#312b60] whitespace-nowrap"
-          >
+          <component :is="stat.icon" weight="fill" size="16" />
+          <span class="uppercase text-xs font-medium whitespace-nowrap">
             {{ stat.label }}
           </span>
         </div>
 
         <!-- Number -->
         <div
-          class="text-[40px] font-bold text-[#312b60] text-center leading-none"
+          class="text-[40px] font-bold text-primary-dark text-center leading-none"
         >
           {{ displayValues[index] }}{{ stat.suffix || "" }}
         </div>
@@ -46,15 +42,15 @@
         <!-- Skeleton lines -->
         <div class="flex flex-col gap-1.5">
           <div
-            class="h-3.5 bg-[#312b60] rounded opacity-20"
+            class="h-3.5 bg-primary-dark rounded opacity-20"
             :style="skeletonStyle(0)"
           ></div>
           <div
-            class="h-2 bg-[#312b60] rounded opacity-10"
+            class="h-2 bg-primary-dark rounded opacity-10"
             :style="skeletonStyle(1)"
           ></div>
           <div
-            class="h-2 bg-[#312b60] rounded opacity-10"
+            class="h-2 bg-primary-dark rounded opacity-10"
             :style="skeletonStyle(2)"
           ></div>
         </div>
