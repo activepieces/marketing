@@ -69,7 +69,7 @@ definePageMeta({
     />
 
     <!-- Features Section -->
-    <section class="py-24 bg-white">
+    <section class="py-24 bg-white bg-dotted">
       <div class="max-w-7xl mx-auto px-4">
         <!-- Main Heading -->
         <h2
@@ -177,8 +177,18 @@ definePageMeta({
         </div>
       </div>
     </section>
-
-    <!-- Prev/Next Navigation -->
-    <ProductNavigation />
+    <SectionSeparator
+      top-color="#ffffff"
+      bottom-color="rgba(54,63,152,1)"
+      stroke1-color="#59BFEE"
+      stroke2-color="rgba(0, 0, 0, 0.15)"
+      stroke3-color="rgba(0, 0, 0, 0.1)"
+      stroke4-color="rgba(0, 0, 0, 0.05)"
+      shadow-color="rgba(0, 0, 0, 0.1)"
+      :curve-depth="60"
+      :stroke-spacing="12"
+      :stroke-thickness="4"
+      overlap="60px"
+    />
   </div>
 </template>
