@@ -150,20 +150,15 @@ onBeforeUnmount(() => {
           class="branch-v absolute left-1/2 -translate-x-px top-0 w-0.5 h-3 bg-primary-dark/20"
           :class="branchPhase >= 1 ? 'is-drawn' : 'is-hidden'"
         ></div>
-        <!-- Horizontal bar -->
+        <!-- Left branch elbow -->
         <div
-          class="branch-h absolute top-3 left-[20%] right-[20%] h-0.5 bg-primary-dark/20"
+          class="branch-elbow absolute top-3 left-[20%] w-[30%] h-5 border-t-2 border-l-2 border-primary-dark/20 rounded-tl-md"
           :class="branchPhase >= 2 ? 'is-drawn' : 'is-hidden'"
         ></div>
-        <!-- Left vertical drop -->
+        <!-- Right branch elbow -->
         <div
-          class="branch-v absolute left-[20%] top-3 w-0.5 h-5 bg-primary-dark/20"
-          :class="branchPhase >= 3 ? 'is-drawn' : 'is-hidden'"
-        ></div>
-        <!-- Right vertical drop -->
-        <div
-          class="branch-v absolute right-[20%] top-3 w-0.5 h-5 bg-primary-dark/20"
-          :class="branchPhase >= 3 ? 'is-drawn' : 'is-hidden'"
+          class="branch-elbow absolute top-3 left-[50%] w-[30%] h-5 border-t-2 border-r-2 border-primary-dark/20 rounded-tr-md"
+          :class="branchPhase >= 2 ? 'is-drawn' : 'is-hidden'"
         ></div>
       </div>
 
@@ -243,26 +238,23 @@ onBeforeUnmount(() => {
   transform: scaleY(0);
 }
 
-.branch-h {
-  transition: opacity 300ms ease-out, transform 300ms ease-out;
-  transform-origin: center;
+.branch-elbow {
+  transition: opacity 300ms ease-out;
 }
 
-.branch-h.is-drawn {
+.branch-elbow.is-drawn {
   opacity: 1;
-  transform: scaleX(1);
 }
 
-.branch-h.is-hidden {
+.branch-elbow.is-hidden {
   opacity: 0;
-  transform: scaleX(0);
 }
 
 @media (prefers-reduced-motion: reduce) {
   .flow-card,
   .connector,
   .branch-v,
-  .branch-h {
+  .branch-elbow {
     transition: none !important;
   }
 }
