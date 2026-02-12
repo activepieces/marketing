@@ -51,7 +51,10 @@ definePageMeta({
         href: 'https://cloud.activepieces.com/sign-up',
       }"
       :secondary-button="{ text: 'Talk to sales', href: '/sales' }"
-    />
+    >
+      HELLLOOO
+      <PagesProductToolLogosSection />
+    </ProductHero>
 
     <!-- Section 1: Integrations -->
     <section
