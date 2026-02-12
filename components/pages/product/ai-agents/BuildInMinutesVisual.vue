@@ -65,6 +65,14 @@ function getCardStyle(cardIndex) {
   };
 }
 
+function getContentBlur(cardIndex) {
+  const position = order.value.indexOf(cardIndex);
+  const isTop = position === 0 && fadingIndex.value !== cardIndex;
+  return {
+    filter: isTop ? "blur(0px)" : "blur(4px)",
+  };
+}
+
 function startCycle() {
   timer = setTimeout(() => {
     const topCard = order.value[0];
@@ -101,7 +109,10 @@ onBeforeUnmount(() => {
         class="card-item absolute top-0 left-0 w-full bg-white border border-primary-dark/10 rounded-[16px] p-6"
         :style="getCardStyle(CARDS.indexOf(card))"
       >
-        <div class="flex flex-col gap-[11px] items-start">
+        <div
+          class="card-content flex flex-col gap-[11px] items-start"
+          :style="getContentBlur(CARDS.indexOf(card))"
+        >
           <div
             class="rounded-[4px] border border-primary-dark/20 p-2"
             :style="{ backgroundColor: card.bg }"
@@ -127,8 +138,13 @@ onBeforeUnmount(() => {
   will-change: transform, opacity;
 }
 
+.card-content {
+  transition: filter 400ms ease-in-out;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .card-item {
+  .card-item,
+  .card-content {
     transition: none !important;
   }
 }
