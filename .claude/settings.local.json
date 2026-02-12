@@ -47,7 +47,8 @@
       "Bash(xargs ps:*)",
       "Bash(ls:*)",
       "mcp__figma-desktop__get_metadata",
-      "WebFetch(domain:localhost)"
+      "WebFetch(domain:localhost)",
+      "WebFetch(domain:cloud.activepieces.com)"
     ]
   }
 }

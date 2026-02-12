@@ -18,3 +18,4 @@ pnpm-debug.log*
 
 .env
 .DS_Store
+public/logos/.DS_Store
