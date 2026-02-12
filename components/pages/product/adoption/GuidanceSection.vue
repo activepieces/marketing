@@ -3,7 +3,7 @@
     id="enable-building"
     class="py-24 bg-[#350e3a] relative overflow-hidden z-10 bg-dotted-light"
   >
-    <div class="max-w-[840px] mx-auto px-4 flex flex-col items-center">
+    <div class="max-w-4xl mx-auto px-4 flex flex-col items-center">
       <!-- Section title -->
       <h2
         class="font-sentient font-bold text-5xl text-white text-center leading-[1.2] max-w-[560px]"

@@ -1,15 +1,13 @@
 <template>
   <section
     id="centralized-access"
-    class="py-24 bg-[#1a212c] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
+    class="py-24 bg-[#1a212c] relative overflow-hidden z-10"
   >
     <div
-      class="max-w-[840px] mx-auto px-4 relative z-10 flex flex-col"
+      class="max-w-4xl mx-auto px-4 relative z-10 flex flex-col"
       style="gap: 120px"
     >
-      <h2
-        class="text-5xl font-sentient font-bold text-white text-center"
-      >
+      <h2 class="text-5xl font-sentient font-bold text-white text-center">
         One place for all access
       </h2>
 
@@ -35,9 +33,7 @@
         </div>
 
         <!-- Row 2: SCIM (text left, card right) -->
-        <div
-          class="flex flex-col md:flex-row-reverse items-center gap-10"
-        >
+        <div class="flex flex-col md:flex-row-reverse items-center gap-10">
           <div class="bg-white/5 rounded-[24px] p-10 flex-1">
             <div
               class="bg-white rounded-2xl h-[240px] border border-white/10 flex items-center justify-center overflow-hidden"

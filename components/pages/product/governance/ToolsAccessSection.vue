@@ -1,7 +1,9 @@
 <template>
-  <section id="tools-access" class="py-24 bg-white">
-    <div class="max-w-[840px] mx-auto px-4 flex flex-col" style="gap: 120px">
-      <h2 class="text-5xl font-sentient font-bold text-primary-dark text-center">
+  <section id="tools-access" class="py-24 bg-white bg-dotted">
+    <div class="max-w-4xl mx-auto px-4 flex flex-col" style="gap: 120px">
+      <h2
+        class="text-5xl font-sentient font-bold text-primary-dark text-center"
+      >
         Control tools access
       </h2>
 

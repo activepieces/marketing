@@ -1,22 +1,30 @@
 <script setup>
-import { onMounted, onUnmounted } from 'vue';
-import { useProductSubmenu } from '~/composables/useProductSubmenu';
-import ProductHero from '~/components/pages/product/ProductHero.vue';
+import { onMounted, onUnmounted } from "vue";
+import { useProductSubmenu } from "~/composables/useProductSubmenu";
+import ProductHero from "~/components/pages/product/ProductHero.vue";
 
 const { setSections, clearSections } = useProductSubmenu();
 
 const sections = [
-  { id: 'centralized-access', name: 'Centralized Access', icon: 'key' },
-  { id: 'tools-access', name: 'Tools Access', icon: 'puzzle' },
-  { id: 'identity-permissions', name: 'Identity & Permissions', icon: 'shield' },
-  { id: 'audit-visibility', name: 'Audit & Visibility', icon: 'eye' }
+  { id: "centralized-access", name: "Centralized Access", icon: "key" },
+  { id: "tools-access", name: "Tools Access", icon: "puzzle" },
+  {
+    id: "identity-permissions",
+    name: "Identity & Permissions",
+    icon: "shield",
+  },
+  { id: "audit-visibility", name: "Audit & Visibility", icon: "eye" },
 ];
 
 useHead({
-  title: 'Control & Governance',
+  title: "Control & Governance",
   meta: [
-    { name: 'description', content: 'IT controls, permissions, and oversight tools for enterprise AI adoption' }
-  ]
+    {
+      name: "description",
+      content:
+        "IT controls, permissions, and oversight tools for enterprise AI adoption",
+    },
+  ],
 });
 
 // Set sections for the header submenu
@@ -29,7 +37,7 @@ onUnmounted(() => {
 });
 
 definePageMeta({
-  layout: 'home',
+  layout: "home",
 });
 </script>
 
@@ -39,14 +47,31 @@ definePageMeta({
     <ProductHero
       title="Enterprise control without the complexity"
       background-image="/images/sections-heros/control-and-governance.png"
-      top-gradient-color="#1A3CA7"
-      bottom-gradient-color="#12235B"
-      :primary-button="{ text: 'Start free', href: 'https://cloud.activepieces.com/sign-up' }"
+      top-gradient-color="#23235A"
+      bottom-gradient-color="#1A212C"
+      :primary-button="{
+        text: 'Start free',
+        href: 'https://cloud.activepieces.com/sign-up',
+      }"
       :secondary-button="{ text: 'Talk to sales', href: '/sales' }"
     />
 
     <!-- Section 1: Centralized Access -->
     <PagesProductGovernanceCentralizedAccess />
+
+    <SectionSeparator
+      top-color="#1A212C"
+      bottom-color="#ffffff"
+      stroke1-color="#59BFEE"
+      stroke2-color="rgba(255,255,255, 0.15)"
+      stroke3-color="rgba(255,255,255, 0.1)"
+      stroke4-color="rgba(255,255,255, 0.05)"
+      shadow-color="rgba(255, 255, 255, 0.1)"
+      :curve-depth="60"
+      :stroke-spacing="12"
+      :stroke-thickness="4"
+      overlap="0px"
+    />
 
     <!-- Section 2: Tools Access -->
     <PagesProductGovernanceToolsAccessSection />
@@ -70,7 +95,7 @@ definePageMeta({
             :items="[
               'SSO integration—SAML, OIDC, and more',
               'SCIM provisioning—automatic user sync from your IdP',
-              'Group mapping—sync teams automatically'
+              'Group mapping—sync teams automatically',
             ]"
           >
             <PagesProductGovernanceSsoScim />
@@ -86,7 +111,7 @@ definePageMeta({
             :items="[
               'Granular permissions—control access at project level',
               'Pieces visibility—show/hide integrations per team',
-              'Private pieces—organization-only integrations'
+              'Private pieces—organization-only integrations',
             ]"
           >
             <PagesProductGovernanceRbacPieces />
