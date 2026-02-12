@@ -50,7 +50,8 @@
       "WebFetch(domain:localhost)",
       "WebFetch(domain:cloud.activepieces.com)",
       "mcp__chrome-devtools__emulate",
-      "Bash(kill:*)"
+      "Bash(kill:*)",
+      "Bash(git status:*)"
     ]
   }
 }
