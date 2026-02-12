@@ -55,11 +55,24 @@ definePageMeta({
     >
       <PagesProductToolLogosSection class="pt-20 pb-40" />
     </ProductHero>
+    <SectionSeparator
+      top-color="#12235B"
+      bottom-color="#ffffff"
+      stroke1-color="#59BFEE"
+      stroke2-color="rgba(255,255,255, 0.15)"
+      stroke3-color="rgba(255,255,255, 0.1)"
+      stroke4-color="rgba(255,255,255, 0.05)"
+      shadow-color="rgba(255, 255, 255, 0.1)"
+      :curve-depth="60"
+      :stroke-spacing="12"
+      :stroke-thickness="4"
+      overlap="60px"
+    />
 
     <!-- Section 1: Integrations -->
     <section
       id="integrations"
-      class="py-24 bg-[#1a0a1f] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
+      class="py-24 bg-[#1a0a1f] relative overflow-hidden rounded-t-3xl z-10"
     >
       <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col gap-20">
         <PagesProductSectionHeader
