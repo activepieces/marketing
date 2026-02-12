@@ -1,74 +1,269 @@
+<script setup>
+import {
+  PhGraph,
+  PhWebhooksLogo,
+  PhRobot,
+  PhQuestion,
+  PhUsers,
+  PhArrowsClockwise,
+} from "@phosphor-icons/vue";
+import { ref, onMounted, onBeforeUnmount } from "vue";
+
+const CARDS = [
+  { icon: PhGraph, bg: "#fff3cd", label: "New Lead", bold: true },
+  { icon: PhWebhooksLogo, bg: "#ebffcd", label: "Enrich via API", bold: false },
+  { icon: PhRobot, bg: "#d3ffcd", label: "Research with AI", bold: false },
+  { icon: PhQuestion, bg: "#cdffe8", label: "Qualified?", bold: false },
+];
+
+const BRANCH_CARDS = [
+  { icon: PhUsers, bg: "#cdfffd", label: "Add to CRM" },
+  { icon: PhArrowsClockwise, bg: "#cdfffd", label: "Nurture Steps" },
+];
+
+const currentStep = ref(-1);
+const branchPhase = ref(0);
+const prefersReducedMotion = ref(false);
+
+let timers = [];
+
+function clearTimers() {
+  timers.forEach((t) => clearTimeout(t));
+  timers = [];
+}
+
+function schedule(fn, delay) {
+  const id = setTimeout(fn, delay);
+  timers.push(id);
+  return id;
+}
+
+function runAnimation() {
+  clearTimers();
+  currentStep.value = -1;
+  branchPhase.value = 0;
+
+  let elapsed = 800;
+
+  // Step 0: Card 1
+  schedule(() => {
+    currentStep.value = 0;
+  }, elapsed);
+
+  // Steps 1-3: Connector + Card
+  for (let i = 1; i <= 3; i++) {
+    elapsed += 800;
+    schedule(() => {
+      currentStep.value = i;
+    }, elapsed);
+  }
+
+  // Branch sub-phases
+  elapsed += 250;
+  schedule(() => {
+    branchPhase.value = 1;
+  }, elapsed);
+
+  elapsed += 250;
+  schedule(() => {
+    branchPhase.value = 2;
+  }, elapsed);
+
+  elapsed += 250;
+  schedule(() => {
+    branchPhase.value = 3;
+  }, elapsed);
+
+  // Hold for 2s then reset and restart
+  elapsed += 2000;
+  schedule(() => {
+    currentStep.value = -1;
+    branchPhase.value = 0;
+
+    schedule(() => {
+      runAnimation();
+    }, 500);
+  }, elapsed);
+}
+
+onMounted(() => {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    prefersReducedMotion.value = true;
+    currentStep.value = 3;
+    branchPhase.value = 3;
+    return;
+  }
+  runAnimation();
+});
+
+onBeforeUnmount(() => {
+  clearTimers();
+});
+</script>
+
 <template>
-  <div class="bg-primary-dark/5 rounded-3xl p-6 overflow-hidden">
+  <div class="bg-primary-dark/5 rounded-[24px] p-6 overflow-hidden h-[383px]">
     <div class="flex flex-col items-center">
-      <!-- Node 1: New Lead -->
-      <div
-        class="w-full max-w-xs bg-white border border-primary-dark/10 rounded-xl p-3 flex items-center gap-3"
-      >
-        <div class="w-8 h-8 rounded-lg bg-[#cdffe8] flex-shrink-0"></div>
-        <span class="text-sm font-medium text-primary-dark">New Lead</span>
-      </div>
-
-      <!-- Connector -->
-      <div class="w-0.5 h-6 bg-primary-dark/10"></div>
-
-      <!-- Node 2: Enrich via API -->
-      <div
-        class="w-full max-w-xs bg-white border border-primary-dark/10 rounded-xl p-3 flex items-center gap-3"
-      >
-        <div class="w-8 h-8 rounded-lg bg-[#d4e4ff] flex-shrink-0"></div>
-        <span class="text-sm font-medium text-primary-dark">Enrich via API</span>
-      </div>
-
-      <!-- Connector -->
-      <div class="w-0.5 h-6 bg-primary-dark/10"></div>
-
-      <!-- Node 3: Research with AI -->
-      <div
-        class="w-full max-w-xs bg-white border border-primary-dark/10 rounded-xl p-3 flex items-center gap-3"
-      >
-        <div class="w-8 h-8 rounded-lg bg-[#fff0cd] flex-shrink-0"></div>
-        <span class="text-sm font-medium text-primary-dark">Research with AI</span>
-      </div>
-
-      <!-- Connector -->
-      <div class="w-0.5 h-6 bg-primary-dark/10"></div>
-
-      <!-- Node 4: Qualified? -->
-      <div
-        class="w-full max-w-xs bg-white border border-primary-dark/10 rounded-xl p-3 flex items-center gap-3"
-      >
-        <div class="w-8 h-8 rounded-lg bg-[#f0cdff] flex-shrink-0"></div>
-        <span class="text-sm font-medium text-primary-dark">Qualified?</span>
-      </div>
-
-      <!-- Branch connectors -->
-      <div class="relative w-full max-w-xs h-10">
-        <!-- Center vertical line -->
-        <div class="absolute left-1/2 -translate-x-px top-0 w-0.5 h-4 bg-primary-dark/10"></div>
-        <!-- Horizontal line -->
-        <div class="absolute top-4 left-[25%] right-[25%] h-0.5 bg-primary-dark/10"></div>
-        <!-- Left vertical -->
-        <div class="absolute left-[25%] top-4 w-0.5 h-6 bg-primary-dark/10"></div>
-        <!-- Right vertical -->
-        <div class="absolute right-[25%] top-4 w-0.5 h-6 bg-primary-dark/10"></div>
-      </div>
-
-      <!-- Branch nodes -->
-      <div class="flex gap-4 w-full max-w-xs">
+      <!-- Linear cards 1-4 -->
+      <template v-for="(card, i) in CARDS" :key="i">
+        <!-- Connector before card (except first) -->
         <div
-          class="flex-1 bg-white border border-primary-dark/10 rounded-xl p-3 flex items-center gap-2"
+          v-if="i > 0"
+          class="connector"
+          :class="currentStep >= i ? 'is-drawn' : 'is-hidden'"
         >
-          <div class="w-7 h-7 rounded-lg bg-[#cdffe8] flex-shrink-0"></div>
-          <span class="text-xs font-medium text-primary-dark">Add to CRM</span>
+          <div class="w-0.5 h-5 bg-primary-dark/20"></div>
         </div>
+
+        <!-- Card -->
         <div
-          class="flex-1 bg-white border border-primary-dark/10 rounded-xl p-3 flex items-center gap-2"
+          class="flow-card"
+          :class="currentStep >= i ? 'is-visible' : 'is-hidden'"
         >
-          <div class="w-7 h-7 rounded-lg bg-[#ffe0cd] flex-shrink-0"></div>
-          <span class="text-xs font-medium text-primary-dark">Nurture Steps</span>
+          <div
+            class="bg-white border border-primary-dark/20 rounded-[6px] py-1.5 pl-1.5 pr-3 gap-1.5 inline-flex items-center"
+          >
+            <div
+              class="p-2 rounded border border-primary-dark/20 flex-shrink-0"
+              :style="{ backgroundColor: card.bg }"
+            >
+              <component
+                :is="card.icon"
+                :size="18"
+                class="text-primary-dark"
+              />
+            </div>
+            <span
+              class="text-sm text-primary-dark"
+              :class="card.bold ? 'font-bold' : 'font-medium'"
+            >
+              {{ card.label }}
+            </span>
+          </div>
+        </div>
+      </template>
+
+      <!-- Branch connector area -->
+      <div class="relative w-full max-w-[280px] h-[52px]">
+        <!-- Center vertical down from Qualified? -->
+        <div
+          class="branch-v absolute left-1/2 -translate-x-px top-0 w-0.5 h-3 bg-primary-dark/20"
+          :class="branchPhase >= 1 ? 'is-drawn' : 'is-hidden'"
+        ></div>
+        <!-- Horizontal bar -->
+        <div
+          class="branch-h absolute top-3 left-[20%] right-[20%] h-0.5 bg-primary-dark/20"
+          :class="branchPhase >= 2 ? 'is-drawn' : 'is-hidden'"
+        ></div>
+        <!-- Left vertical drop -->
+        <div
+          class="branch-v absolute left-[20%] top-3 w-0.5 h-5 bg-primary-dark/20"
+          :class="branchPhase >= 3 ? 'is-drawn' : 'is-hidden'"
+        ></div>
+        <!-- Right vertical drop -->
+        <div
+          class="branch-v absolute right-[20%] top-3 w-0.5 h-5 bg-primary-dark/20"
+          :class="branchPhase >= 3 ? 'is-drawn' : 'is-hidden'"
+        ></div>
+      </div>
+
+      <!-- Branch cards -->
+      <div class="flex gap-4">
+        <div
+          v-for="(card, i) in BRANCH_CARDS"
+          :key="'branch-' + i"
+          class="flow-card"
+          :class="branchPhase >= 3 ? 'is-visible' : 'is-hidden'"
+        >
+          <div
+            class="bg-white border border-primary-dark/20 rounded-[6px] py-1.5 pl-1.5 pr-3 gap-1.5 inline-flex items-center"
+          >
+            <div
+              class="p-2 rounded border border-primary-dark/20 flex-shrink-0"
+              :style="{ backgroundColor: card.bg }"
+            >
+              <component
+                :is="card.icon"
+                :size="18"
+                class="text-primary-dark"
+              />
+            </div>
+            <span class="text-sm font-medium text-primary-dark">
+              {{ card.label }}
+            </span>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<style scoped>
+.flow-card {
+  transition: opacity 400ms ease-out, transform 400ms ease-out;
+}
+
+.flow-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.flow-card.is-hidden {
+  opacity: 0;
+  transform: translateY(-12px);
+}
+
+.connector {
+  transition: opacity 300ms ease-out, transform 300ms ease-out;
+  transform-origin: top;
+}
+
+.connector.is-drawn {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.connector.is-hidden {
+  opacity: 0;
+  transform: scaleY(0);
+}
+
+.branch-v {
+  transition: opacity 300ms ease-out, transform 300ms ease-out;
+  transform-origin: top;
+}
+
+.branch-v.is-drawn {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.branch-v.is-hidden {
+  opacity: 0;
+  transform: scaleY(0);
+}
+
+.branch-h {
+  transition: opacity 300ms ease-out, transform 300ms ease-out;
+  transform-origin: center;
+}
+
+.branch-h.is-drawn {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.branch-h.is-hidden {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flow-card,
+  .connector,
+  .branch-v,
+  .branch-h {
+    transition: none !important;
+  }
+}
+</style>

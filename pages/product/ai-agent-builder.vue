@@ -107,7 +107,7 @@ definePageMeta({
           >
             <div class="md:order-1 order-2">
               <h3
-                class="font-sentient font-bold text-[28px] leading-[1.2] text-primary-dark mb-4"
+                class="font-sentient font-bold text-[28px] leading-[1.2] text-primary-dark mb-3"
               >
                 Go beyond simple
               </h3>
