@@ -15,7 +15,7 @@
           </span>
           <div :style="columnStyle(0)">
             <img
-              src="/avatars/vibrent_2.png"
+              src="/avatars/vibrent_6.png"
               alt=""
               class="relative z-10 shrink-0 w-16 h-16 rounded-full shadow-[0px_4px_0px_0px_white]"
             />
@@ -36,7 +36,7 @@
           </span>
           <div :style="columnStyle(1)">
             <img
-              src="/avatars/vibrent_1.png"
+              src="/avatars/vibrent_7.png"
               alt=""
               class="relative z-10 shrink-0 w-16 h-16 rounded-full shadow-[0px_4px_0px_0px_white]"
             />
@@ -57,7 +57,7 @@
           </span>
           <div :style="columnStyle(2)">
             <img
-              src="/avatars/vibrent_3.png"
+              src="/avatars/vibrent_4.png"
               alt=""
               class="relative z-10 shrink-0 w-16 h-16 rounded-full shadow-[0px_4px_0px_0px_white]"
             />
@@ -134,10 +134,12 @@ const badgeStyle = (index) => {
   }
 
   if (p === "badges-entering") {
+    // Order: badge "1" first (index 1→0ms), "2" second (index 0→100ms), "3" third (index 2→200ms)
+    const badgeDelay = [1, 0, 2][index] * 100;
     return {
       opacity: 1,
       transform: "translateY(0)",
-      transition: `opacity 400ms ease ${index * 100}ms, transform 400ms ease ${index * 100}ms`,
+      transition: `opacity 400ms ease ${badgeDelay}ms, transform 400ms ease ${badgeDelay}ms`,
     };
   }
 
