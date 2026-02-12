@@ -46,14 +46,14 @@ definePageMeta({
       background-image="/images/sections-heros/ai-agents.png"
       top-gradient-color="#1A3CA7"
       bottom-gradient-color="#12235B"
+      bottom-section-background="#12235B"
       :primary-button="{
         text: 'Start free',
         href: 'https://cloud.activepieces.com/sign-up',
       }"
       :secondary-button="{ text: 'Talk to sales', href: '/sales' }"
     >
-      HELLLOOO
-      <PagesProductToolLogosSection />
+      <PagesProductToolLogosSection class="pt-20 pb-40" />
     </ProductHero>
 
     <!-- Section 1: Integrations -->

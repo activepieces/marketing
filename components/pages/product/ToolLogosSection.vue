@@ -97,9 +97,7 @@ function animateNext(colIdx) {
 }
 
 onMounted(() => {
-  reduceMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
-  ).matches;
+  reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (!reduceMotion) {
     timerId = setTimeout(() => {
       animateNext(0);
@@ -148,11 +146,13 @@ onBeforeUnmount(() => {
     <!-- Title + Subtitle -->
     <div class="text-center -mt-6 relative z-10 max-w-3xl">
       <h2
-        class="text-white text-3xl md:text-4xl lg:text-[48px] font-sentient font-bold leading-tight"
+        class="text-white text-3xl md:text-4xl lg:text-5xl font-sentient font-bold leading-tight text-balance"
       >
         Agents work across every tool you use
       </h2>
-      <p class="text-white/80 text-base md:text-lg mt-4 max-w-2xl mx-auto">
+      <p
+        class="text-white/80 text-base md:text-lg mt-4 max-w-2xl mx-auto text-balance"
+      >
         We're a connectivity platform first. With
         {{ piecesCount }}+ apps and growing, your agents can work with any tool
         your team already uses.
