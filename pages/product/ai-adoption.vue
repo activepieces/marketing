@@ -131,46 +131,69 @@ definePageMeta({
       :secondary-button="{ text: 'Talk to sales', href: '/sales' }"
     />
 
+    <SectionSeparator
+      top-color="#0B1429"
+      bottom-color="#ffffff"
+      stroke1-color="#59BFEE"
+      stroke2-color="rgba(255,255,255, 0.15)"
+      stroke3-color="rgba(255,255,255, 0.1)"
+      stroke4-color="rgba(255,255,255, 0.05)"
+      shadow-color="rgba(255, 255, 255, 0.1)"
+      :curve-depth="60"
+      :stroke-spacing="12"
+      :stroke-thickness="4"
+      overlap="0px"
+    />
+
     <!-- Section 1: Roll Out -->
     <section
       id="setup"
-      class="py-24 bg-[#081635] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
+      class="py-24 bg-white relative overflow-hidden rounded-t-3xl z-10 bg-dotted"
     >
-      <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col gap-20">
-        <PagesProductSectionHeader title="Your AI home. Zero friction." />
+      <div class="max-w-4xl mx-auto px-4 flex flex-col gap-20 items-center">
+        <!-- Section title -->
+        <h2
+          class="font-sentient font-bold text-5xl text-[#312b60] text-center leading-[1.2] max-w-[560px]"
+        >
+          From idea to automation in minutes
+        </h2>
 
-        <div class="flex flex-col gap-8">
-          <!-- Feature 1: Branding -->
-          <PagesProductAdoptionFeatureCard
-            content-position="left"
-            :content-ratio="2"
-            variant="subtle"
-            title="Your brand, your platform"
-            description="When employees see your logo and colors, they trust it. White-label Activepieces with your branding so AI adoption feels like an internal initiative—not another external tool to learn."
-            :items="[
-              'Your logo in the header builds immediate trust',
-              'Your colors make it feel like home',
-              'Custom domain keeps everything under your roof',
-            ]"
-          >
+        <!-- Subsection 1: visual LEFT, text RIGHT -->
+        <div class="flex gap-10 items-center w-full">
+          <div class="w-[400px] shrink-0">
             <PagesProductAdoptionBrandingComparison />
-          </PagesProductAdoptionFeatureCard>
+          </div>
+          <div class="w-[400px] flex flex-col gap-3">
+            <h3
+              class="font-sentient font-bold text-[28px] text-[#312b60] leading-[1.2] text-balance"
+            >
+              Your brand, your platform
+            </h3>
+            <p class="text-base text-[#312b60]/80 leading-[1.4]">
+              When employees see your logo and colors, they trust it.
+              White-label Activepieces with your branding so AI adoption feels
+              like an internal initiative—not another external tool to learn.
+            </p>
+          </div>
+        </div>
 
-          <!-- Feature 2: Easy Onboarding -->
-          <PagesProductAdoptionFeatureCard
-            content-position="right"
-            :content-ratio="2"
-            variant="subtle"
-            title="Get everyone in with one click"
-            description="No IT tickets. No complex provisioning. Invite your whole team instantly—each person gets their own workspace to experiment, plus shared spaces for team collaboration."
-            :items="[
-              'Bulk invites via CSV or SSO integration',
-              'Personal sandboxes so everyone can learn safely',
-              'Team projects for cross-functional collaboration',
-            ]"
-          >
+        <!-- Subsection 2: text LEFT, visual RIGHT -->
+        <div class="flex gap-10 items-center w-full">
+          <div class="w-[400px] flex flex-col gap-3">
+            <h3
+              class="font-sentient font-bold text-[28px] text-[#312b60] leading-[1.2] text-balance"
+            >
+              Get everyone in with one click
+            </h3>
+            <p class="text-base text-[#312b60]/80 leading-[1.4]">
+              No IT tickets. No complex provisioning. Invite your whole team
+              instantly—each person gets their own workspace to experiment, plus
+              shared spaces for team collaboration.
+            </p>
+          </div>
+          <div class="w-[400px] shrink-0">
             <PagesProductAdoptionOnboardingFlow />
-          </PagesProductAdoptionFeatureCard>
+          </div>
         </div>
       </div>
     </section>
