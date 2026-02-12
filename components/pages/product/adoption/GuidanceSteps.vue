@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from "vue";
+import { ref, computed, onMounted, onBeforeUnmount } from "vue";
 import { PhCheckCircle, PhConfetti } from "@phosphor-icons/vue";
 
 const STEPS = [
@@ -11,6 +11,13 @@ const STEPS = [
 
 const currentStep = ref(-1);
 const prefersReducedMotion = ref(false);
+
+// 5 total items (4 steps + completed), line grows with each reveal
+const lineProgress = computed(() => {
+  if (currentStep.value < 0) return 0;
+  // steps 0-3 map to 0.2, 0.4, 0.6, 0.8; step 4 (completed) = 1
+  return Math.min((currentStep.value + 1) / 5, 1);
+});
 
 let timers = [];
 
@@ -74,9 +81,10 @@ onBeforeUnmount(() => {
       class="bg-white rounded-2xl p-6 flex items-center justify-center min-h-[280px]"
     >
       <div class="relative flex flex-col items-center gap-4">
-        <!-- Vertical line behind pills -->
+        <!-- Vertical line behind pills — grows with each step -->
         <div
-          class="absolute top-4 bottom-4 left-1/2 -translate-x-px w-0.5 bg-primary-dark/20"
+          class="progress-line absolute top-4 bottom-4 left-1/2 -translate-x-px w-0.5 bg-primary-dark/20 origin-top"
+          :style="{ transform: `translateX(-0.5px) scaleY(${lineProgress})` }"
         ></div>
 
         <!-- Step pills -->
@@ -135,8 +143,13 @@ onBeforeUnmount(() => {
   transform: translateY(-12px);
 }
 
+.progress-line {
+  transition: transform 400ms ease-out;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .step-pill {
+  .step-pill,
+  .progress-line {
     transition: none !important;
   }
 }
