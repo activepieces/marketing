@@ -198,8 +198,36 @@ definePageMeta({
       </div>
     </section>
 
+    <SectionSeparator
+      top-color="#ffffff"
+      bottom-color="#350e3a"
+      stroke1-color="#59BFEE"
+      stroke2-color="rgba(0,0,0, 0.15)"
+      stroke3-color="rgba(0,0,0, 0.1)"
+      stroke4-color="rgba(0,0,0, 0.05)"
+      shadow-color="rgba(255, 255, 255, 0.1)"
+      :curve-depth="60"
+      :stroke-spacing="12"
+      :stroke-thickness="4"
+      overlap="0px"
+    />
+
     <!-- Section 2: Onboard & Coach -->
     <PagesProductAdoptionGuidanceSection />
+
+    <SectionSeparator
+      top-color="#350e3a"
+      bottom-color="#ffffff"
+      stroke1-color="#59BFEE"
+      stroke2-color="rgba(255,255,255, 0.15)"
+      stroke3-color="rgba(255,255,255, 0.1)"
+      stroke4-color="rgba(255,255,255, 0.05)"
+      shadow-color="rgba(0, 0, 0, 0.1)"
+      :curve-depth="60"
+      :stroke-spacing="12"
+      :stroke-thickness="4"
+      overlap="0px"
+    />
 
     <!-- Section 3: Grow Champions -->
     <section

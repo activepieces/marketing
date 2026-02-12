@@ -36,7 +36,7 @@ function runAnimation() {
   clearTimers();
   currentStep.value = -1;
 
-  let elapsed = 800;
+  let elapsed = 150;
 
   for (let i = 0; i < STEPS.length; i++) {
     schedule(() => {

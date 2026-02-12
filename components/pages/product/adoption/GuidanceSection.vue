@@ -1,11 +1,9 @@
 <template>
   <section
     id="enable-building"
-    class="py-24 bg-[#350e3a] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
+    class="py-24 bg-[#350e3a] relative overflow-hidden z-10 bg-dotted-light"
   >
-    <div
-      class="max-w-[840px] mx-auto px-4 flex flex-col items-center"
-    >
+    <div class="max-w-[840px] mx-auto px-4 flex flex-col items-center">
       <!-- Section title -->
       <h2
         class="font-sentient font-bold text-5xl text-white text-center leading-[1.2] max-w-[560px]"
@@ -20,7 +18,7 @@
           <div class="flex flex-col gap-3 flex-1">
             <div class="self-start">
               <span
-                class="inline-flex items-center justify-center bg-white rounded-full px-4 py-1.5 font-sentient font-bold text-[19px] text-[#350e3a]"
+                class="inline-flex items-center justify-center bg-white rounded-full px-4 py-0.5 font-sentient font-bold text-[19px] text-[#350e3a]"
               >
                 1
               </span>
@@ -50,7 +48,7 @@
           <div class="flex flex-col gap-3 flex-1">
             <div class="self-start">
               <span
-                class="inline-flex items-center justify-center bg-white rounded-full px-4 py-1.5 font-sentient font-bold text-[19px] text-[#350e3a]"
+                class="inline-flex items-center justify-center bg-white rounded-full px-4 py-0.5 font-sentient font-bold text-[19px] text-[#350e3a]"
               >
                 2
               </span>
@@ -74,7 +72,7 @@
           <div class="flex flex-col gap-3 flex-1">
             <div class="self-start">
               <span
-                class="inline-flex items-center justify-center bg-white rounded-full px-4 py-1.5 font-sentient font-bold text-[19px] text-[#350e3a]"
+                class="inline-flex items-center justify-center bg-white rounded-full px-4 py-0.5 font-sentient font-bold text-[19px] text-[#350e3a]"
               >
                 3
               </span>
