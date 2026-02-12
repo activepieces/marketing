@@ -125,7 +125,7 @@ const bottomGradientStyle = computed(() => {
           <div ref="badgeRef" class="relative">
             <button
               @click="toggleMenu"
-              class="inline-flex items-center gap-1.5 px-3 py-1.5 border border-white/20 rounded-md text-white/80 text-sm font-medium hover:border-white/40 hover:text-white transition-all cursor-pointer"
+              class="inline-flex items-center gap-1 px-3 py-1 border border-white/20 rounded-full text-white/80 text-sm font-medium hover:border-white/40 hover:text-white transition-all cursor-pointer"
             >
               <span>{{ displayedName }}</span>
               <PhCaretDown

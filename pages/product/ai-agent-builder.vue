@@ -52,7 +52,7 @@ definePageMeta({
       }"
       :secondary-button="{ text: 'Talk to sales', href: '/sales' }"
     >
-      <PagesProductToolLogosSection class="pt-20 pb-40" />
+      <PagesProductToolLogosSection class="pt-60 pb-60" />
     </ProductHero>
     <SectionSeparator
       top-color="#12235B"
@@ -69,7 +69,7 @@ definePageMeta({
     />
 
     <!-- Features Section -->
-    <section class="py-24 bg-white bg-dotted">
+    <section class="pt-24 pb-60 bg-white bg-dotted">
       <div class="max-w-4xl mx-auto px-4">
         <!-- Main Heading -->
         <h2
