@@ -120,7 +120,7 @@ const bottomGradientStyle = computed(() => {
       <div
         class="max-w-7xl mx-auto pt-[180px] pb-16 lg:pb-24 px-4 relative z-10 flex flex-col items-center gap-16 lg:gap-[120px]"
       >
-        <div class="flex flex-col items-center gap-8 max-w-[800px]">
+        <div class="flex flex-col items-center gap-6 max-w-3xl">
           <!-- Product badge pill with dropdown -->
           <div ref="badgeRef" class="relative">
             <button
@@ -168,7 +168,7 @@ const bottomGradientStyle = computed(() => {
 
           <!-- Title -->
           <h1
-            class="text-white text-balance text-4xl md:text-5xl lg:text-6xl font-sentient font-bold text-center leading-[1.2]"
+            class="text-white text-balance text-4xl md:text-5xl lg:text-6xl font-sentient font-bold text-center lg:leading-[120%]"
           >
             {{ title }}
           </h1>
@@ -211,7 +211,7 @@ const bottomGradientStyle = computed(() => {
       v-if="bottomSectionBackground"
       :style="{ backgroundColor: bottomSectionBackground }"
     >
-      <div class="max-w-7xl mx-auto px-4 py-24">
+      <div class="max-w-7xl mx-auto">
         <slot />
       </div>
     </section>

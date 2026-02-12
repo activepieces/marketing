@@ -2,7 +2,7 @@
 
 <template>
   <section class="pt-2 pb-4 bg-transparent mx-auto rounded-t-[20px]">
-    <div class="relative flex flex-col items-center gap-4">
+    <div class="relative flex flex-col items-center gap-6">
       <!-- Trusted by text - centered above logos -->
       <span class="text-xs font-bold text-white/80 uppercase whitespace-nowrap"
         >Trusted by AI leaders</span
