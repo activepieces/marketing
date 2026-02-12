@@ -70,7 +70,7 @@ definePageMeta({
 
     <!-- Features Section -->
     <section class="py-24 bg-white bg-dotted">
-      <div class="max-w-7xl mx-auto px-4">
+      <div class="max-w-4xl mx-auto px-4">
         <!-- Main Heading -->
         <h2
           class="text-4xl md:text-5xl font-sentient font-bold text-primary-dark text-center mb-24"
@@ -78,7 +78,7 @@ definePageMeta({
           From idea to automation in minutes
         </h2>
 
-        <div class="space-y-32">
+        <div class="flex flex-col gap-24">
           <!-- Panel 1: Build in minutes — visual LEFT, text RIGHT -->
           <div
             id="build-in-minutes"

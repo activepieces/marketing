@@ -134,7 +134,9 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .card-item {
-  transition: transform 400ms ease-in-out, opacity 400ms ease-in-out;
+  transition:
+    transform 400ms ease-in-out,
+    opacity 400ms ease-in-out;
   will-change: transform, opacity;
 }
 
