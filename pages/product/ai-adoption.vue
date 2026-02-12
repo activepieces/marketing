@@ -232,62 +232,60 @@ definePageMeta({
     <!-- Section 3: Grow Champions -->
     <section
       id="drive-engagement"
-      class="py-24 bg-[#064448] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
+      class="py-24 bg-white relative overflow-hidden bg-dotted"
     >
-      <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col gap-20">
-        <PagesProductSectionHeader title="Visible progress. Real motivation." />
-
-        <!-- Feature 1: Leaderboard -->
-        <PagesProductAdoptionFeatureCard
-          content-position="right"
-          :content-ratio="2"
-          variant="bordered"
-          :content-padding="true"
-          title="Discover the AI heroes hiding in your organization"
-          description="Every organization has hidden champions—people who naturally embrace new technology and inspire others. Our leaderboard surfaces these heroes so you can celebrate them, learn from them, and amplify their impact."
-          :items="[
-            'Top builders ranked by automations created and impact',
-            'Department rankings to spark healthy competition',
-            'Rising stars—spot newcomers making rapid progress',
-          ]"
+      <div class="max-w-4xl mx-auto px-4 flex flex-col gap-20 items-center">
+        <!-- Section title -->
+        <h2
+          class="font-sentient font-bold text-5xl text-[#312b60] text-center leading-[1.2] max-w-[560px]"
         >
-          <PagesProductAdoptionLeaderboard />
-        </PagesProductAdoptionFeatureCard>
+          Visible progress. Real motivation.
+        </h2>
 
-        <!-- Feature 2: Badges -->
-        <PagesProductAdoptionFeatureCard
-          content-position="left"
-          :content-ratio="2"
-          variant="bordered"
-          :content-padding="true"
-          title="Make progress feel rewarding"
-          description="Our badge system turns the journey into an achievement, celebrating milestones and motivating continued growth."
-          :items="[
-            'Personal milestones—first automation, 10 workflows, 100 hours saved',
-            'Team achievements—helping teammates, sharing automations',
-            'Skill progression—level up from Beginner to Expert',
-          ]"
-        >
-          <PagesProductAdoptionBadgeChallenge />
-        </PagesProductAdoptionFeatureCard>
+        <!-- Subsection 1: text LEFT / visual RIGHT — Leaderboard -->
+        <div class="flex gap-10 items-center w-full">
+          <div class="w-[400px] flex flex-col gap-3">
+            <h3
+              class="font-sentient font-bold text-[28px] text-[#312b60] leading-[1.2] text-balance"
+            >
+              Organization leaderboard
+            </h3>
+            <p class="text-base text-[#312b60]/80 leading-[1.4]">
+              Every organization has hidden champions—people who naturally
+              embrace new technology and inspire others. Our leaderboard
+              surfaces these heroes so you can celebrate them, learn from them,
+              and amplify their impact.
+            </p>
+          </div>
+          <div class="w-[400px] shrink-0">
+            <PagesProductAdoptionLeaderboardVisual />
+          </div>
+        </div>
+
+        <!-- Subsection 2: visual LEFT / text RIGHT — Badges -->
+        <div class="flex gap-10 items-center w-full">
+          <div class="w-[400px] shrink-0">
+            <PagesProductAdoptionBadgesVisual />
+          </div>
+          <div class="w-[400px] flex flex-col gap-3">
+            <h3
+              class="font-sentient font-bold text-[28px] text-[#312b60] leading-[1.2] text-balance"
+            >
+              Badges to reward progress
+            </h3>
+            <p class="text-base text-[#312b60]/80 leading-[1.4]">
+              Our badge system turns the journey into an achievement,
+              celebrating milestones and motivating continued growth.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- Section 4: Measure Impact -->
-    <section
-      id="track-support"
-      class="py-24 bg-[#275d43] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
-    >
-      <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col gap-20">
-        <PagesProductSectionHeader
-          title="Full visibility. Expert backup."
-          subtitle="Finally, leadership can see AI adoption happening in real-time. No more guessing if your investment is paying off."
-        />
-
-        <!-- Full-width Interactive Dashboard -->
-        <div class="">
-          <PagesProductAdoptionAnalyticsDashboard />
-        </div>
+    <section id="track-support" class="pb-24 bg-white relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4">
+        <PagesProductAdoptionDashboardStatsVisual />
       </div>
     </section>
 
