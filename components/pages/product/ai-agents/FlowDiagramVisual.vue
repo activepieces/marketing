@@ -74,15 +74,15 @@ function runAnimation() {
     branchPhase.value = 3;
   }, elapsed);
 
-  // Hold for 2s then reset and restart
-  elapsed += 2000;
+  // Hold for 4s then reset and restart quickly
+  elapsed += 4000;
   schedule(() => {
     currentStep.value = -1;
     branchPhase.value = 0;
 
     schedule(() => {
       runAnimation();
-    }, 500);
+    }, 150);
   }, elapsed);
 }
 
