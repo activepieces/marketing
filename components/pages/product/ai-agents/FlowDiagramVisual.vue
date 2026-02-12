@@ -144,7 +144,7 @@ onBeforeUnmount(() => {
       </template>
 
       <!-- Branch connector area -->
-      <div class="relative w-full max-w-[280px] h-[52px]">
+      <div class="relative w-full max-w-[280px] h-[32px]">
         <!-- Center vertical down from Qualified? -->
         <div
           class="branch-v absolute left-1/2 -translate-x-px top-0 w-0.5 h-3 bg-primary-dark/20"
