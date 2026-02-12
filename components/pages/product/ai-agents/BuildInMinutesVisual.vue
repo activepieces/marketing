@@ -36,9 +36,9 @@ const CARDS = [
 
 const POSITION_CONFIG = [
   { translateY: 0, opacity: 1, zIndex: 4 },
-  { translateY: 30, opacity: 0.8, zIndex: 3 },
-  { translateY: 60, opacity: 0.6, zIndex: 2 },
-  { translateY: 90, opacity: 0.4, zIndex: 1 },
+  { translateY: 20, opacity: 0.8, zIndex: 3 },
+  { translateY: 40, opacity: 0.6, zIndex: 2 },
+  { translateY: 60, opacity: 0.4, zIndex: 1 },
 ];
 
 const order = ref([0, 1, 2, 3]);
@@ -101,12 +101,12 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="bg-primary-dark/5 rounded-[24px] pt-10 px-10 pb-[131px]">
-    <div class="relative mx-auto max-w-[400px] h-[211px]">
+  <div class="bg-primary-dark/5 rounded-[24px] p-10 overflow-hidden">
+    <div class="relative mx-auto max-w-[400px] h-48">
       <div
         v-for="card in CARDS"
         :key="card.id"
-        class="card-item absolute top-0 left-0 w-full bg-white border border-primary-dark/10 rounded-[16px] p-6"
+        class="card-item absolute top-0 left-0 w-full bg-white border border-primary-dark/10 rounded-2xl p-6"
         :style="getCardStyle(CARDS.indexOf(card))"
       >
         <div
@@ -114,7 +114,7 @@ onBeforeUnmount(() => {
           :style="getContentBlur(CARDS.indexOf(card))"
         >
           <div
-            class="rounded-[4px] border border-primary-dark/20 p-2"
+            class="rounded-lg border border-primary-dark/20 p-2"
             :style="{ backgroundColor: card.bg }"
           >
             <component
