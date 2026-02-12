@@ -121,9 +121,9 @@ definePageMeta({
     <ProductHero
       title="Turn your entire organization into AI builders"
       background-image="/images/sections-heros/ai-adoption.png"
-      top-gradient-color="#1A3CA7"
-      bottom-gradient-color="#12235B"
-      bottom-section-background="#12235B"
+      top-gradient-color="#202C5C"
+      bottom-gradient-color="#0B1429"
+      bottom-section-background="#0B1429"
       :primary-button="{
         text: 'Start free',
         href: 'https://cloud.activepieces.com/sign-up',

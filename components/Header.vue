@@ -29,7 +29,7 @@ const props = defineProps({
 
 const { y } = process.client ? useScroll(window) : { y: ref(0) };
 const isScrolled = computed(
-  () => process.client && isLoaded.value && y.value > 50
+  () => process.client && isLoaded.value && y.value > 50,
 );
 const isPricingPage = computed(() => route.path === "/pricing");
 
@@ -149,7 +149,7 @@ onMounted(() => {
   const githubButtonsScript = document.createElement("script");
   githubButtonsScript.setAttribute(
     "src",
-    "https://buttons.github.io/buttons.js"
+    "https://buttons.github.io/buttons.js",
   );
 
   githubButtonsScript.onload = () => (githubButtonsScriptLoaded.value = true);
@@ -207,11 +207,12 @@ watch(useRoute(), () => {
       }"
     >
       <nav
-        class="mx-auto pl-6 pr-2 py-2 dark:bg-gray-800 transition-all duration-200 overflow-visible rounded-b-2xl"
+        class="mx-auto pl-6 pr-6 py-4 dark:bg-gray-800 transition-all duration-200 overflow-visible rounded-b-2xl"
         :class="{
           'group-hover/header:bg-white': showTransparent,
           'bg-white': (!showTransparent || isScrolled) && isHeaderVisible,
-          'bg-transparent': showTransparent && (!isScrolled || !isHeaderVisible),
+          'bg-transparent':
+            showTransparent && (!isScrolled || !isHeaderVisible),
         }"
       >
         <div
@@ -245,7 +246,7 @@ watch(useRoute(), () => {
               }"
               >Login</a
             >
-            <div class="flex flex-row gap-1">
+            <div class="flex flex-row gap-2">
               <router-link
                 to="/sales"
                 class="px-4 py-1.5 rounded-full border border-slate-300"
@@ -484,7 +485,7 @@ watch(useRoute(), () => {
                           transform: `translateY(${
                             hoveredPlatformItem
                               ? -platformPages.findIndex(
-                                  (p) => p.id === hoveredPlatformItem
+                                  (p) => p.id === hoveredPlatformItem,
                                 ) * 265
                               : -30
                           }px)`,
@@ -1538,7 +1539,7 @@ watch(useRoute(), () => {
           ></a>
         </div>
         <svg
-          @click="(showGitHubBadge = false), (gitHubBadgeHidden = 'true')"
+          @click="((showGitHubBadge = false), (gitHubBadgeHidden = 'true'))"
           class="cursor-pointer"
           width="18"
           height="17"
