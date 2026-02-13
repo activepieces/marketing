@@ -2,7 +2,7 @@
 
 <template>
   <!-- Sticky Header -->
-  <Header :hide-github-badge="true" class="fixed top-2 z-50 w-full" />
+  <Header :hide-github-badge="true" :transparent="true" />
   <CookieBanner />
   <slot />
   <Footer />
