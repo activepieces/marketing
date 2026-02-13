@@ -32,7 +32,7 @@ const features = [
       >
         <!-- Icon -->
         <div class="flex justify-center mb-4">
-          <PhUsersThree :size="48" class="text-[#11A7B3]" />
+          <PhUsersThree :size="48" class="text-accent" />
         </div>
 
         <!-- Title -->
@@ -64,12 +64,12 @@ const features = [
           <div
             v-for="(feature, idx) in features"
             :key="idx"
-            class="flex items-start gap-2"
+            class="flex items-center gap-2"
           >
             <PhCheck
               :size="20"
               weight="bold"
-              class="flex-shrink-0 mt-0.5 text-primary-dark/60"
+              class="flex-shrink-0 mt-0.5 text-accent"
             />
             <span class="text-primary-dark/80">{{ feature }}</span>
           </div>

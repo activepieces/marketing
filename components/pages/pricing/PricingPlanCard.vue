@@ -249,21 +249,18 @@ onUnmounted(() => {
     <!-- Flat features (Standard plan) -->
     <div
       v-if="features.length > 0"
-      class="space-y-3"
+      class="flex flex-col gap-6 mb-6 relative"
       @mouseleave="onFeaturesGroupLeave"
     >
       <div
         v-for="(feature, idx) in features"
         :key="idx"
-        class="flex items-start gap-2"
+        class="flex items-center gap-2"
       >
         <PhCheck
           :size="20"
           weight="bold"
-          class="flex-shrink-0 mt-0.5"
-          :class="
-            feature.isHighlighted ? 'text-primary-dark' : 'text-primary-dark/60'
-          "
+          class="flex-shrink-0 mt-0.5 text-accent"
         />
         <div class="flex-1 relative">
           <span
@@ -330,16 +327,16 @@ onUnmounted(() => {
             >
               {{ category.category }}
             </h4>
-            <div class="space-y-3">
+            <div class="flex flex-col gap-6">
               <div
                 v-for="(feature, idx) in category.features"
                 :key="idx"
-                class="flex items-start gap-2"
+                class="flex items-center gap-2"
               >
                 <PhCheck
                   :size="20"
                   weight="bold"
-                  class="flex-shrink-0 mt-0.5 text-primary-dark/60"
+                  class="flex-shrink-0 mt-0.5 text-accent"
                 />
                 <div class="flex-1 relative">
                   <span
@@ -409,7 +406,7 @@ onUnmounted(() => {
           <button
             @click="expandFeatures"
             @mouseenter="hideTooltip"
-            class="border border-[rgba(49,43,96,0.1)] rounded-xl p-2.5 uppercase text-sm font-semibold text-primary-dark bg-white hover:bg-primary-dark/5 transition-colors"
+            class="border border-primary-dark/10 w-full rounded-lg p-2 uppercase text-xs font-semibold text-primary-dark bg-white hover:border-primary-dark/20 transition-colors"
           >
             Show all
           </button>

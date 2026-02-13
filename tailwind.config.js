@@ -346,6 +346,9 @@ export default {
         "primary-dark": {
           DEFAULT: "#312B60",
         },
+        accent: {
+          DEFAULT: "#11A7B3",
+        },
         secondary: safeColors.teal,
         rose: safeColors.rose,
       },
