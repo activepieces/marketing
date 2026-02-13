@@ -9,7 +9,7 @@ const sections = [
   { id: "centralized-access", name: "Centralized Access", icon: "key" },
   { id: "tools-access", name: "Tools Access", icon: "puzzle" },
   { id: "control-connections", name: "Control Connections", icon: "link" },
-  { id: "audit-visibility", name: "Audit & Visibility", icon: "eye" },
+  { id: "audit-visibility", name: "Audit Logs", icon: "eye" },
 ];
 
 useHead({
@@ -100,25 +100,20 @@ definePageMeta({
       overlap="0px"
     />
 
-    <!-- Section 3: Audit & Visibility -->
-    <section
-      id="audit-visibility"
-      class="py-24 bg-[#064448] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
-    >
-      <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col gap-20">
-        <PagesProductSectionHeader
-          title="See everything that happens"
-          subtitle="Every action is logged. See who created flows, modified settings, accessed data, or made changes. Filter by user, action type, date range, or project."
-        />
+    <!-- Section 4: Audit Logs -->
+    <PagesProductGovernanceAuditLogsSection />
 
-        <!-- Full-width Audit Log Demo -->
-        <div>
-          <PagesProductGovernanceAuditLog />
-        </div>
-      </div>
-    </section>
-
-    <!-- Prev/Next Navigation -->
-    <ProductNavigation />
+    <SectionSeparator
+      top-color="#ffffff"
+      bottom-color="rgba(54,63,152,1)"
+      stroke1-color="#59BFEE"
+      stroke2-color="rgba(0, 0, 0, 0.15)"
+      stroke3-color="rgba(0, 0, 0, 0.1)"
+      stroke4-color="rgba(0, 0, 0, 0.05)"
+      shadow-color="rgba(0, 0, 0, 0.1)"
+      :curve-depth="60"
+      :stroke-spacing="12"
+      :stroke-thickness="4"
+    />
   </div>
 </template>

@@ -283,46 +283,7 @@
             <div
               class="flex-1 bg-white rounded-xl m-4 flex items-center justify-center overflow-hidden"
             >
-              <div class="w-full max-w-[240px] audit-list-container">
-                <TransitionGroup name="audit-list" tag="div" class="space-y-2">
-                  <div
-                    v-for="log in visibleAuditLogs"
-                    :key="log.id"
-                    class="flex items-center gap-2.5 bg-primary-dark/5 rounded-xl px-3 py-2.5"
-                  >
-                    <div
-                      class="w-5 h-5 rounded flex items-center justify-center bg-primary-dark/10 flex-shrink-0"
-                    >
-                      <svg
-                        class="w-3 h-3 text-primary-dark/60"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M4 6h16M4 10h16M4 14h16M4 18h16"
-                        />
-                      </svg>
-                    </div>
-                    <span
-                      class="text-[11px] text-primary-dark flex-1 truncate"
-                      >{{ log.what }}</span
-                    >
-                    <span
-                      class="px-1.5 py-0.5 text-[9px] font-semibold rounded flex-shrink-0"
-                      :class="getActionClass(log.action)"
-                    >
-                      {{ log.action }}
-                    </span>
-                    <span class="text-[10px] text-primary-dark/50 flex-shrink-0"
-                      >Today</span
-                    >
-                  </div>
-                </TransitionGroup>
-              </div>
+              <PagesProductGovernanceActivityTrackingCardContent />
             </div>
           </div>
 
@@ -344,106 +305,7 @@
             <div
               class="flex-1 bg-white rounded-xl m-4 flex items-center justify-center"
             >
-              <div class="w-full max-w-[240px]">
-                <div class="bg-primary-dark/5 rounded-xl p-4">
-                  <div class="flex flex-wrap gap-2 mb-4">
-                    <div
-                      class="flex items-center gap-1.5 px-2.5 py-1.5 bg-white rounded-lg border border-primary-dark/10"
-                    >
-                      <svg
-                        class="w-3 h-3 text-primary-dark/50"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"
-                        />
-                      </svg>
-                      <span class="text-[11px] text-primary-dark/70 font-medium"
-                        >Action</span
-                      >
-                    </div>
-                    <div
-                      class="flex items-center gap-1.5 px-2.5 py-1.5 bg-white rounded-lg border border-primary-dark/10"
-                    >
-                      <svg
-                        class="w-3 h-3 text-primary-dark/50"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                        />
-                      </svg>
-                      <span class="text-[11px] text-primary-dark/70 font-medium"
-                        >Performed By</span
-                      >
-                    </div>
-                    <div
-                      class="flex items-center gap-1.5 px-2.5 py-1.5 bg-white rounded-lg border border-primary-dark/10"
-                    >
-                      <svg
-                        class="w-3 h-3 text-primary-dark/50"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"
-                        />
-                      </svg>
-                      <span class="text-[11px] text-primary-dark/70 font-medium"
-                        >Project</span
-                      >
-                    </div>
-                    <div
-                      class="flex items-center gap-1.5 px-2.5 py-1.5 bg-white rounded-lg border border-primary-dark/10"
-                    >
-                      <svg
-                        class="w-3 h-3 text-primary-dark/50"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                        />
-                      </svg>
-                      <span class="text-[11px] text-primary-dark/70 font-medium"
-                        >Date Range</span
-                      >
-                    </div>
-                  </div>
-                  <div class="flex flex-wrap gap-1.5">
-                    <span
-                      class="px-2 py-1 bg-emerald-100 text-emerald-700 text-[10px] font-medium rounded-full"
-                      >Created</span
-                    >
-                    <span
-                      class="px-2 py-1 bg-blue-100 text-blue-700 text-[10px] font-medium rounded-full"
-                      >Updated</span
-                    >
-                    <span
-                      class="px-2 py-1 bg-red-100 text-red-700 text-[10px] font-medium rounded-full"
-                      >Deleted</span
-                    >
-                  </div>
-                </div>
-              </div>
+              <PagesProductGovernanceSmartFiltersCardContent />
             </div>
           </div>
 
@@ -465,77 +327,7 @@
             <div
               class="flex-1 bg-white rounded-xl m-4 flex items-center justify-center py-4"
             >
-              <div class="w-full max-w-[220px] space-y-3">
-                <div class="bg-primary-dark/5 rounded-xl p-4">
-                  <div class="flex items-center gap-2 mb-3">
-                    <div
-                      class="w-7 h-7 rounded-lg bg-primary-dark/10 flex items-center justify-center"
-                    >
-                      <svg
-                        class="w-4 h-4 text-primary-dark/60"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
-                        />
-                      </svg>
-                    </div>
-                    <span
-                      class="text-xs font-semibold text-primary-dark/60 uppercase tracking-wide"
-                      >Log Entry</span
-                    >
-                  </div>
-                  <div class="space-y-2.5">
-                    <div class="flex items-center justify-between">
-                      <span class="text-[10px] text-primary-dark/50"
-                        >Resource</span
-                      >
-                      <span class="text-[11px] font-medium text-primary-dark"
-                        >Connection</span
-                      >
-                    </div>
-                    <div class="flex items-center justify-between">
-                      <span class="text-[10px] text-primary-dark/50"
-                        >Details</span
-                      >
-                      <span
-                        class="text-[11px] font-medium text-primary-dark truncate max-w-[100px]"
-                        >Salesforce updated</span
-                      >
-                    </div>
-                    <div class="flex items-center justify-between">
-                      <span class="text-[10px] text-primary-dark/50"
-                        >Performed By</span
-                      >
-                      <span class="text-[11px] font-medium text-primary-dark"
-                        >sarah@acme.com</span
-                      >
-                    </div>
-                    <div class="flex items-center justify-between">
-                      <span class="text-[10px] text-primary-dark/50"
-                        >Action</span
-                      >
-                      <span
-                        class="px-1.5 py-0.5 text-[9px] font-semibold rounded bg-blue-100 text-blue-700"
-                        >Updated</span
-                      >
-                    </div>
-                    <div class="flex items-center justify-between">
-                      <span class="text-[10px] text-primary-dark/50"
-                        >Project</span
-                      >
-                      <span class="text-[11px] font-medium text-primary-dark"
-                        >Sales Ops</span
-                      >
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <PagesProductGovernanceFullContextCardContent />
             </div>
           </div>
         </template>
@@ -545,7 +337,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, watch } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 import { PhPlay, PhPause } from "@phosphor-icons/vue";
 
 const sectionRef = ref(null);
@@ -561,80 +353,9 @@ const tabs = [
   { id: "audit", label: "Audit Logs" },
 ];
 
-// All possible audit entries to cycle through
-const allAuditEntries = [
-  { action: "Created", what: "Sarah created Lead Sync flow" },
-  { action: "Updated", what: "Mike updated Slack connection" },
-  { action: "Deleted", what: "Emma deleted test project" },
-  { action: "Invited", what: "John invited alex@acme.com" },
-  { action: "Created", what: "Alex created Daily Report flow" },
-  { action: "Updated", what: "Lisa updated HubSpot connection" },
-  { action: "Created", what: "Tom created Customer Sync" },
-  { action: "Deleted", what: "Anna deleted old webhook" },
-  { action: "Invited", what: "Chris invited sam@acme.com" },
-  { action: "Updated", what: "Kate updated Stripe connection" },
-];
-
-// Current visible audit entries (reactive)
-const visibleAuditLogs = ref([
-  { id: 1, ...allAuditEntries[0] },
-  { id: 2, ...allAuditEntries[1] },
-  { id: 3, ...allAuditEntries[2] },
-  { id: 4, ...allAuditEntries[3] },
-]);
-
-let auditEntryIndex = 4;
-let auditIdCounter = 5;
-
-const getActionClass = (action) => {
-  const classes = {
-    Created: "bg-emerald-100 text-emerald-700",
-    Updated: "bg-blue-100 text-blue-700",
-    Deleted: "bg-red-100 text-red-700",
-    Invited: "bg-violet-100 text-violet-700",
-  };
-  return classes[action] || "bg-gray-100 text-gray-700";
-};
-
 // Auto-play functionality
 let interval = null;
 let observer = null;
-// Watch for tab changes and visibility to control animations
-watch([activeTab, isVisible], ([tab, visible]) => {
-  if (tab === 3 && visible) {
-    startAuditAnimation();
-  } else {
-    stopAuditAnimation();
-  }
-});
-
-// Audit log animation
-let auditAnimationInterval = null;
-
-const startAuditAnimation = () => {
-  if (auditAnimationInterval) clearInterval(auditAnimationInterval);
-
-  // Add a new entry every 2 seconds
-  auditAnimationInterval = setInterval(() => {
-    if (isVisible.value && activeTab.value === 3) {
-      // Get next entry from the pool
-      const nextEntry =
-        allAuditEntries[auditEntryIndex % allAuditEntries.length];
-      auditEntryIndex++;
-
-      // Add new entry at the top with unique id
-      const newEntry = { id: auditIdCounter++, ...nextEntry };
-      visibleAuditLogs.value = [
-        newEntry,
-        ...visibleAuditLogs.value.slice(0, 3),
-      ];
-    }
-  }, 2000);
-};
-
-const stopAuditAnimation = () => {
-  if (auditAnimationInterval) clearInterval(auditAnimationInterval);
-};
 
 const goToTab = (i) => {
   activeTab.value = i;
@@ -695,38 +416,7 @@ onMounted(() => {
 
 onUnmounted(() => {
   stopAuto();
-  stopAuditAnimation();
   if (observer) observer.disconnect();
 });
 </script>
 
-<style scoped>
-/* Audit log list animations */
-.audit-list-container {
-  position: relative;
-}
-
-.audit-list-enter-active {
-  transition: all 0.4s ease-out;
-}
-
-.audit-list-leave-active {
-  transition: all 0.3s ease-in;
-  position: absolute;
-  width: 100%;
-}
-
-.audit-list-enter-from {
-  opacity: 0;
-  transform: translateY(-12px);
-}
-
-.audit-list-leave-to {
-  opacity: 0;
-  transform: translateY(12px);
-}
-
-.audit-list-move {
-  transition: transform 0.4s ease;
-}
-</style>
