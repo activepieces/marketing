@@ -8,11 +8,7 @@ const { setSections, clearSections } = useProductSubmenu();
 const sections = [
   { id: "centralized-access", name: "Centralized Access", icon: "key" },
   { id: "tools-access", name: "Tools Access", icon: "puzzle" },
-  {
-    id: "identity-permissions",
-    name: "Identity & Permissions",
-    icon: "shield",
-  },
+  { id: "control-connections", name: "Control Connections", icon: "link" },
   { id: "audit-visibility", name: "Audit & Visibility", icon: "eye" },
 ];
 
@@ -75,50 +71,34 @@ definePageMeta({
 
     <!-- Section 2: Tools Access -->
     <PagesProductGovernanceToolsAccessSection />
-
-    <!-- Section 3: Identity & Permissions -->
-    <section
-      id="identity-permissions"
-      class="py-24 bg-[#082c41] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
-    >
-      <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col gap-20">
-        <PagesProductSectionHeader title="Control who does what" />
-
-        <div class="flex flex-col gap-8">
-          <!-- Feature 1: SSO & SCIM -->
-          <PagesProductAdoptionFeatureCard
-            content-position="right"
-            :content-ratio="2"
-            variant="bordered"
-            title="Onboard users seamlessly"
-            description="SSO and SCIM give you enterprise-grade user management. Onboard users automatically, sync groups, and manage access through your existing identity provider."
-            :items="[
-              'SSO integration—SAML, OIDC, and more',
-              'SCIM provisioning—automatic user sync from your IdP',
-              'Group mapping—sync teams automatically',
-            ]"
-          >
-            <PagesProductGovernanceSsoScim />
-          </PagesProductAdoptionFeatureCard>
-
-          <!-- Feature 2: RBAC & Pieces Management -->
-          <PagesProductAdoptionFeatureCard
-            content-position="left"
-            :content-ratio="2"
-            variant="bordered"
-            title="Fine-grained access control"
-            description="Role-based access control combined with pieces management lets you decide exactly who can use what. Pin internal tools, hide external ones, and install private pieces for your organization only."
-            :items="[
-              'Granular permissions—control access at project level',
-              'Pieces visibility—show/hide integrations per team',
-              'Private pieces—organization-only integrations',
-            ]"
-          >
-            <PagesProductGovernanceRbacPieces />
-          </PagesProductAdoptionFeatureCard>
-        </div>
-      </div>
-    </section>
+    <SectionSeparator
+      top-color="#ffffff"
+      bottom-color="#350e3a"
+      stroke1-color="#59BFEE"
+      stroke2-color="rgba(0,0,0, 0.15)"
+      stroke3-color="rgba(0,0,0, 0.1)"
+      stroke4-color="rgba(0,0,0, 0.05)"
+      shadow-color="rgba(255, 255, 255, 0.1)"
+      :curve-depth="60"
+      :stroke-spacing="12"
+      :stroke-thickness="4"
+      overlap="0px"
+    />
+    <!-- Section 3: Control Connections -->
+    <PagesProductGovernanceControlConnections />
+    <SectionSeparator
+      top-color="#350e3a"
+      bottom-color="#ffffff"
+      stroke1-color="#59BFEE"
+      stroke2-color="rgba(255,255,255, 0.15)"
+      stroke3-color="rgba(255,255,255, 0.1)"
+      stroke4-color="rgba(255,255,255, 0.05)"
+      shadow-color="rgba(255, 255, 255, 0.1)"
+      :curve-depth="60"
+      :stroke-spacing="12"
+      :stroke-thickness="4"
+      overlap="0px"
+    />
 
     <!-- Section 3: Audit & Visibility -->
     <section
