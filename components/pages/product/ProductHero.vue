@@ -29,11 +29,19 @@ const props = defineProps({
   },
   primaryButton: {
     type: Object,
-    required: true,
+    default: null,
   },
   secondaryButton: {
     type: Object,
-    required: true,
+    default: null,
+  },
+  showTopPill: {
+    type: Boolean,
+    default: true,
+  },
+  showLogos: {
+    type: Boolean,
+    default: true,
   },
 });
 
@@ -122,7 +130,7 @@ const bottomGradientStyle = computed(() => {
       >
         <div class="flex flex-col items-center gap-6 max-w-3xl">
           <!-- Product badge pill with dropdown -->
-          <div ref="badgeRef" class="relative">
+          <div v-if="showTopPill" ref="badgeRef" class="relative">
             <button
               @click="toggleMenu"
               class="inline-flex items-center gap-1 px-3 py-1 border border-white/20 rounded-full text-white/80 text-sm font-medium hover:border-white/40 hover:text-white transition-all cursor-pointer"
@@ -182,8 +190,9 @@ const bottomGradientStyle = computed(() => {
           </p>
 
           <!-- Buttons: secondary first, primary second (Figma order) -->
-          <div class="flex flex-wrap justify-center gap-2 pt-2">
+          <div v-if="primaryButton?.href || secondaryButton?.href" class="flex flex-wrap justify-center gap-2 pt-2">
             <a
+              v-if="secondaryButton?.href"
               :href="secondaryButton.href"
               :target="secondaryButton.external ? '_blank' : undefined"
               class="inline-flex items-center justify-center min-w-48 px-8 py-4 text-lg md:text-2xl font-medium text-white border-2 border-white/60 rounded-full hover:bg-white/10 transition-all hover:border-white/80"
@@ -191,6 +200,7 @@ const bottomGradientStyle = computed(() => {
               {{ secondaryButton.text }}
             </a>
             <a
+              v-if="primaryButton?.href"
               :href="primaryButton.href"
               class="inline-flex items-center justify-center min-w-48 px-8 py-4 text-lg md:text-2xl font-medium text-[#190041] bg-white rounded-full hover:bg-gray-100 ring-0 ring-white transition-all duration-200 hover:ring-2 shadow-lg shadow-white/10"
             >
@@ -200,7 +210,7 @@ const bottomGradientStyle = computed(() => {
         </div>
 
         <!-- Company logos -->
-        <div class="w-full max-w-full shrink-0">
+        <div v-if="showLogos" class="w-full max-w-full shrink-0">
           <PagesIndexCompanyLogos class="relative z-10" />
         </div>
       </div>
