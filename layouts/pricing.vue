@@ -1,9 +1,8 @@
-<script setup>
-</script>
+<script setup></script>
 
 <template>
   <!-- Sticky Header -->
-  <Header :hide-github-badge="true" class="sticky top-0 z-50 w-full" />
+  <Header :hide-github-badge="true" :transparent="true" />
   <CookieBanner />
   <slot />
   <Footer />

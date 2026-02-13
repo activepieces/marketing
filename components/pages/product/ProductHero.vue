@@ -85,7 +85,7 @@ const topGradientStyle = computed(() => {
   if (!props.topGradientColor) return {};
   const c = props.topGradientColor;
   return {
-    background: `linear-gradient(${c} 0%, ${hexToRgba(c, 0.8)} 25%, ${hexToRgba(c, 0)} 36%)`,
+    background: `linear-gradient(${c} 0%, ${hexToRgba(c, 0.4)} 25%, ${hexToRgba(c, 0)} 35%)`,
   };
 });
 
@@ -93,7 +93,7 @@ const bottomGradientStyle = computed(() => {
   if (!props.bottomGradientColor) return {};
   const c = props.bottomGradientColor;
   return {
-    background: `linear-gradient(${hexToRgba(c, 0)} 43%, ${c} 88%)`,
+    background: `linear-gradient(${hexToRgba(c, 0)} 60%, ${c} 100%)`,
   };
 });
 </script>
@@ -190,7 +190,10 @@ const bottomGradientStyle = computed(() => {
           </p>
 
           <!-- Buttons: secondary first, primary second (Figma order) -->
-          <div v-if="primaryButton?.href || secondaryButton?.href" class="flex flex-wrap justify-center gap-2 pt-2">
+          <div
+            v-if="primaryButton?.href || secondaryButton?.href"
+            class="flex flex-wrap justify-center gap-2 pt-2"
+          >
             <a
               v-if="secondaryButton?.href"
               :href="secondaryButton.href"
