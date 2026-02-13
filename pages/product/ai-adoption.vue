@@ -4,6 +4,8 @@ import { useProductSubmenu } from "~/composables/useProductSubmenu";
 import ProductHero from "~/components/pages/product/ProductHero.vue";
 
 const { setSections, clearSections } = useProductSubmenu();
+const { productPages } = useProductPages();
+const currentPage = productPages.find(p => p.path === '/product/ai-adoption');
 
 const sections = [
   { id: "setup", name: "Roll Out", icon: "network" },
@@ -120,7 +122,7 @@ definePageMeta({
     <!-- Hero Section -->
     <ProductHero
       title="Turn your entire organization into AI builders"
-      background-image="/images/sections-heros/ai-adoption.png"
+      :background-image="currentPage.heroImage"
       top-gradient-color="#202C5C"
       bottom-gradient-color="#0B1429"
       bottom-section-background="#0B1429"

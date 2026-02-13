@@ -4,6 +4,8 @@ import { useProductSubmenu } from "~/composables/useProductSubmenu";
 import ProductHero from "~/components/pages/product/ProductHero.vue";
 
 const { setSections, clearSections } = useProductSubmenu();
+const { productPages } = useProductPages();
+const currentPage = productPages.find(p => p.path === '/product/ai-agent-builder');
 
 const sections = [
   { id: "build-in-minutes", name: "Build in Minutes", icon: "cube" },
@@ -42,7 +44,7 @@ definePageMeta({
     <!-- Hero Section -->
     <ProductHero
       title="Build AI agents that work where you work"
-      background-image="/images/sections-heros/ai-agents.png"
+      :background-image="currentPage.heroImage"
       top-gradient-color="#1A3CA7"
       bottom-gradient-color="#12235B"
       bottom-section-background="#12235B"

@@ -55,45 +55,7 @@ const { sections: productSubmenuSections } = useProductSubmenu();
 
 // Platform menu hover state and hero images
 const hoveredPlatformItem = ref(null);
-
-const defaultHeroImage = "/images/ai-adoption-stack/ai-adoption-stack-hero.png";
-
-const platformPages = [
-  {
-    id: "ai-adoption",
-    name: "AI Adoption Stack",
-    path: "/product/ai-adoption",
-    heroImage: "/images/ai-adoption-stack/ai-adoption-stack-hero.png",
-    filterStyle: null,
-  },
-  {
-    id: "ai-agents",
-    name: "AI Agents",
-    path: "/product/ai-agent-builder",
-    heroImage: null,
-    filterStyle: "hue-rotate(280deg) saturate(1.3)",
-    overlayGradient:
-      "linear-gradient(135deg, rgba(236,72,153,0.3) 0%, rgba(139,92,246,0.3) 100%)",
-  },
-  {
-    id: "governance",
-    name: "Control & Governance",
-    path: "/product/governance-and-management",
-    heroImage: null,
-    filterStyle: "hue-rotate(100deg) saturate(1.2)",
-    overlayGradient:
-      "linear-gradient(135deg, rgba(34,197,94,0.3) 0%, rgba(20,184,166,0.3) 100%)",
-  },
-  {
-    id: "deployment",
-    name: "Deployment & Cost",
-    path: "/product/deployment-options",
-    heroImage: null,
-    filterStyle: "hue-rotate(180deg) saturate(1.2)",
-    overlayGradient:
-      "linear-gradient(135deg, rgba(6,182,212,0.3) 0%, rgba(59,130,246,0.3) 100%)",
-  },
-];
+const { productPages: platformPages } = useProductPages();
 
 const currentPlatformPage = computed(() => {
   if (!hoveredPlatformItem.value) return null;
@@ -350,99 +312,20 @@ watch(useRoute(), () => {
                       class="flex flex-col gap-0"
                       @mouseleave="hoveredPlatformItem = null"
                     >
-                      <!-- AI Adoption Stack -->
                       <NuxtLink
-                        to="/product/ai-adoption"
-                        class="flex items-center gap-2.5 px-2 py-3 transition group/feature border-b border-gray-100 whitespace-nowrap"
-                        @mouseenter="hoveredPlatformItem = 'ai-adoption'"
-                      >
-                        <div
-                          class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-primary-dark group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
-                        ></div>
-                        <span
-                          class="text-base font-semibold text-primary-dark transition-colors duration-300 leading-tight"
-                          >AI Adoption Stack</span
-                        >
-                        <svg
-                          class="w-4 h-4 text-primary-dark opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          stroke-width="2.5"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M13 7l5 5m0 0l-5 5m5-5H6"
-                          />
-                        </svg>
-                      </NuxtLink>
-                      <!-- AI Agents -->
-                      <NuxtLink
-                        to="/product/ai-agent-builder"
-                        class="flex items-center gap-2.5 px-2 py-3 transition group/feature border-b border-gray-100 whitespace-nowrap"
-                        @mouseenter="hoveredPlatformItem = 'ai-agents'"
-                      >
-                        <div
-                          class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-primary-dark group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
-                        ></div>
-                        <span
-                          class="text-base font-semibold text-primary-dark transition-colors duration-300 leading-tight"
-                          >AI Agents</span
-                        >
-                        <svg
-                          class="w-4 h-4 text-primary-dark opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          stroke-width="2.5"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M13 7l5 5m0 0l-5 5m5-5H6"
-                          />
-                        </svg>
-                      </NuxtLink>
-                      <!-- Control & Governance -->
-                      <NuxtLink
-                        to="/product/governance-and-management"
-                        class="flex items-center gap-2.5 px-2 py-3 transition group/feature border-b border-gray-100 whitespace-nowrap"
-                        @mouseenter="hoveredPlatformItem = 'governance'"
-                      >
-                        <div
-                          class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-primary-dark group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
-                        ></div>
-                        <span
-                          class="text-base font-semibold text-primary-dark transition-colors duration-300 leading-tight"
-                          >Control & Governance</span
-                        >
-                        <svg
-                          class="w-4 h-4 text-primary-dark opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          stroke-width="2.5"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M13 7l5 5m0 0l-5 5m5-5H6"
-                          />
-                        </svg>
-                      </NuxtLink>
-                      <!-- Deployment & Cost -->
-                      <NuxtLink
-                        to="/product/deployment-options"
+                        v-for="(page, index) in platformPages"
+                        :key="page.id"
+                        :to="page.path"
                         class="flex items-center gap-2.5 px-2 py-3 transition group/feature whitespace-nowrap"
-                        @mouseenter="hoveredPlatformItem = 'deployment'"
+                        :class="{ 'border-b border-gray-100': index < platformPages.length - 1 }"
+                        @mouseenter="hoveredPlatformItem = page.id"
                       >
                         <div
                           class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-primary-dark group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
                         ></div>
                         <span
                           class="text-base font-semibold text-primary-dark transition-colors duration-300 leading-tight"
-                          >Deployment & Cost</span
+                          >{{ page.name }}</span
                         >
                         <svg
                           class="w-4 h-4 text-primary-dark opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
@@ -497,47 +380,21 @@ watch(useRoute(), () => {
                           :key="page.id"
                           class="w-full flex-shrink-0 relative h-[265px] overflow-hidden"
                         >
-                          <!-- Hero Image (original or with filter) -->
                           <img
-                            :src="page.heroImage || defaultHeroImage"
+                            :src="page.heroImage"
                             :alt="page.name"
                             class="absolute inset-0 w-[120%] h-[120%] -left-[10%] -top-[10%] object-cover scale-150"
-                            :style="
-                              page.filterStyle
-                                ? { filter: page.filterStyle }
-                                : {}
-                            "
                           />
-                          <!-- Color overlay for filtered images -->
-                          <div
-                            v-if="page.overlayGradient"
-                            class="absolute inset-0 pointer-events-none"
-                            :style="{ background: page.overlayGradient }"
-                          ></div>
                         </div>
                         <!-- First item repeated at end for circular peek effect -->
                         <div
                           class="w-full flex-shrink-0 relative h-[265px] overflow-hidden"
                         >
                           <img
-                            :src="
-                              platformPages[0].heroImage || defaultHeroImage
-                            "
+                            :src="platformPages[0].heroImage"
                             :alt="platformPages[0].name"
                             class="absolute inset-0 w-[120%] h-[120%] -left-[10%] -top-[10%] object-cover scale-150"
-                            :style="
-                              platformPages[0].filterStyle
-                                ? { filter: platformPages[0].filterStyle }
-                                : {}
-                            "
                           />
-                          <div
-                            v-if="platformPages[0].overlayGradient"
-                            class="absolute inset-0 pointer-events-none"
-                            :style="{
-                              background: platformPages[0].overlayGradient,
-                            }"
-                          ></div>
                         </div>
                       </div>
                       <!-- Subtle gradient overlay at bottom to hint at next item -->
@@ -1069,93 +926,18 @@ watch(useRoute(), () => {
               <div class="py-3 space-y-0 group/list">
                 <!-- Product Pages -->
                 <NuxtLink
-                  to="/product/ai-adoption"
-                  class="flex items-center gap-2.5 px-2.5 py-3 transition group/feature border-b border-gray-100"
-                >
-                  <div
-                    class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-primary-dark group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
-                  ></div>
-                  <span
-                    class="text-base font-semibold text-primary-dark transition-colors duration-300 leading-tight"
-                    >AI Adoption Stack</span
-                  >
-                  <svg
-                    class="w-4 h-4 text-primary-dark opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    stroke-width="2.5"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M13 7l5 5m0 0l-5 5m5-5H6"
-                    />
-                  </svg>
-                </NuxtLink>
-
-                <NuxtLink
-                  to="/product/ai-agent-builder"
-                  class="flex items-center gap-2.5 px-2.5 py-3 transition group/feature border-b border-gray-100"
-                >
-                  <div
-                    class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-primary-dark group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
-                  ></div>
-                  <span
-                    class="text-base font-semibold text-primary-dark transition-colors duration-300 leading-tight"
-                    >AI Agents</span
-                  >
-                  <svg
-                    class="w-4 h-4 text-primary-dark opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    stroke-width="2.5"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M13 7l5 5m0 0l-5 5m5-5H6"
-                    />
-                  </svg>
-                </NuxtLink>
-
-                <NuxtLink
-                  to="/product/governance-and-management"
-                  class="flex items-center gap-2.5 px-2.5 py-3 transition group/feature border-b border-gray-100"
-                >
-                  <div
-                    class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-primary-dark group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
-                  ></div>
-                  <span
-                    class="text-base font-semibold text-primary-dark transition-colors duration-300 leading-tight"
-                    >Control & Governance</span
-                  >
-                  <svg
-                    class="w-4 h-4 text-primary-dark opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    stroke-width="2.5"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M13 7l5 5m0 0l-5 5m5-5H6"
-                    />
-                  </svg>
-                </NuxtLink>
-
-                <NuxtLink
-                  to="/product/deployment-options"
+                  v-for="(page, index) in platformPages"
+                  :key="page.id"
+                  :to="page.path"
                   class="flex items-center gap-2.5 px-2.5 py-3 transition group/feature"
+                  :class="{ 'border-b border-gray-100': index < platformPages.length - 1 }"
                 >
                   <div
                     class="w-2 h-2 rounded-sm bg-gray-600 group-hover/feature:bg-primary-dark group-hover/feature:rotate-45 transition-all duration-300 flex-shrink-0"
                   ></div>
                   <span
                     class="text-base font-semibold text-primary-dark transition-colors duration-300 leading-tight"
-                    >Deployment & Cost</span
+                    >{{ page.name }}</span
                   >
                   <svg
                     class="w-4 h-4 text-primary-dark opacity-0 -translate-x-3 group-hover/feature:opacity-100 group-hover/feature:translate-x-0 transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] flex-shrink-0"

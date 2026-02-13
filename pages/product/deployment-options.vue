@@ -5,6 +5,8 @@ import ProductHero from "~/components/pages/product/ProductHero.vue";
 import { PhCheck, PhCaretRight } from "@phosphor-icons/vue";
 
 const { setSections, clearSections } = useProductSubmenu();
+const { productPages } = useProductPages();
+const currentPage = productPages.find(p => p.path === '/product/deployment-options');
 
 const sections = [
   { id: "cloud", name: "Cloud", icon: "cloud" },
@@ -42,7 +44,7 @@ definePageMeta({
     <ProductHero
       title="Deploy your way. Pay fairly."
       subtitle="Choose our secure cloud with GDPR & SOC 2 Type II compliance, or self-host in your infrastructure. Either way, you never pay for executions."
-      background-image="/images/sections-heros/deployment-and-cost.png"
+      :background-image="currentPage.heroImage"
       top-gradient-color="#222C7B"
       bottom-gradient-color="#222C7B"
       :primary-button="{

@@ -4,6 +4,8 @@ import { useProductSubmenu } from "~/composables/useProductSubmenu";
 import ProductHero from "~/components/pages/product/ProductHero.vue";
 
 const { setSections, clearSections } = useProductSubmenu();
+const { productPages } = useProductPages();
+const currentPage = productPages.find(p => p.path === '/product/governance-and-management');
 
 const sections = [
   { id: "centralized-access", name: "Centralized Access", icon: "key" },
@@ -42,7 +44,7 @@ definePageMeta({
     <!-- Hero Section -->
     <ProductHero
       title="Enterprise control without the complexity"
-      background-image="/images/sections-heros/control-and-governance.png"
+      :background-image="currentPage.heroImage"
       top-gradient-color="#23235A"
       bottom-gradient-color="#1A212C"
       :primary-button="{
