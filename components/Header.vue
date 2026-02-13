@@ -369,16 +369,16 @@ watch(useRoute(), () => {
                             hoveredPlatformItem
                               ? -platformPages.findIndex(
                                   (p) => p.id === hoveredPlatformItem,
-                                ) * 265
-                              : -30
-                          }px)`,
+                                ) * 100
+                              : 0
+                          }%)`,
                         }"
                       >
                         <!-- Each page preview -->
                         <div
                           v-for="(page, index) in platformPages"
                           :key="page.id"
-                          class="w-full flex-shrink-0 relative h-[265px] overflow-hidden"
+                          class="w-full flex-shrink-0 relative h-full overflow-hidden"
                         >
                           <img
                             :src="page.heroImage"
@@ -388,7 +388,7 @@ watch(useRoute(), () => {
                         </div>
                         <!-- First item repeated at end for circular peek effect -->
                         <div
-                          class="w-full flex-shrink-0 relative h-[265px] overflow-hidden"
+                          class="w-full flex-shrink-0 relative h-full overflow-hidden"
                         >
                           <img
                             :src="platformPages[0].heroImage"
