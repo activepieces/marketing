@@ -2,13 +2,13 @@
 import { onMounted, onUnmounted } from "vue";
 import { useProductSubmenu } from "~/composables/useProductSubmenu";
 import ProductHero from "~/components/pages/product/ProductHero.vue";
+import { PhCheck, PhCaretRight } from "@phosphor-icons/vue";
 
 const { setSections, clearSections } = useProductSubmenu();
 
 const sections = [
-  { id: "cloud", name: "Cloud Hosting", icon: "cloud" },
-  { id: "self-hosted", name: "Self-Hosting", icon: "server" },
-  { id: "pricing-model", name: "Simple Pricing", icon: "wallet" },
+  { id: "cloud", name: "Cloud", icon: "cloud" },
+  { id: "self-hosted", name: "Self-Hosted", icon: "server" },
 ];
 
 useHead({
@@ -70,186 +70,154 @@ definePageMeta({
       overlap="0px"
     />
 
-    <!-- Section 1: Cloud Hosting -->
-    <section
-      id="cloud"
-      class="py-24 bg-[#081635] relative overflow-hidden z-10"
-    >
-      <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col gap-20">
-        <PagesProductSectionHeader title="Enterprise cloud. Zero headaches." />
-
-        <div class="flex flex-col gap-8">
-          <!-- Feature 1: Compliance -->
-          <PagesProductAdoptionFeatureCard
-            content-position="right"
-            :content-ratio="2"
-            variant="bordered"
-            title="GDPR & SOC 2 Type II certified"
-            description="Our cloud platform is built for enterprises. GDPR compliant, SOC 2 Type II certified, and hosted on secure infrastructure. Your data stays safe, and your compliance team stays happy."
-            :items="[
-              'SOC 2 Type II—audited security controls',
-              'GDPR compliant—EU data protection ready',
-              '99.9% uptime SLA—enterprise reliability',
-            ]"
-          >
-            <PagesProductDeploymentCloudCompliance />
-          </PagesProductAdoptionFeatureCard>
-
-          <!-- Feature 2: Dedicated Workers -->
-          <PagesProductAdoptionFeatureCard
-            content-position="left"
-            :content-ratio="2"
-            variant="bordered"
-            title="Need more power? Add dedicated workers."
-            description="Our shared cloud works great for most teams. But when you need guaranteed resources and priority execution, add dedicated workers. Pay per instance, not per execution—run unlimited tasks."
-            :items="[
-              'Guaranteed resources—no noisy neighbors',
-              'Priority execution—your flows run first',
-              'Pay per instance—unlimited executions',
-            ]"
-          >
-            <PagesProductDeploymentDedicatedWorkers />
-          </PagesProductAdoptionFeatureCard>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section 2: Self-Hosting -->
-    <section
-      id="self-hosted"
-      class="py-24 bg-[#082c41] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
-    >
-      <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col gap-20">
-        <PagesProductSectionHeader
-          title="Your infrastructure. Full control."
-          subtitle="Big organizations love self-hosting. Keep data in your network, meet internal security requirements, and scale on your terms."
-        />
-
-        <div class="flex flex-col gap-8">
-          <!-- Feature 1: Simple Architecture -->
-          <PagesProductAdoptionFeatureCard
-            content-position="right"
-            :content-ratio="2"
-            variant="bordered"
-            title="Four components. That's it."
-            description="No complex dependencies or black-box services. Our architecture is simple: PostgreSQL for data, Redis for queuing, plus our app and worker containers. You already know how to run this."
-            :items="[
-              'PostgreSQL—your data, your database',
-              'Redis—fast, reliable queuing',
-              'Scale workers horizontally as needed',
-            ]"
-          >
-            <PagesProductDeploymentArchitecture />
-          </PagesProductAdoptionFeatureCard>
-
-          <!-- Feature 2: Deployment Options -->
-          <PagesProductAdoptionFeatureCard
-            content-position="left"
-            :content-ratio="2"
-            variant="bordered"
-            title="One command. Any platform."
-            description="Helm chart for Kubernetes, Docker Compose for quick starts, or use our guides for AWS, GCP, Azure, and more. Deploy in minutes, not days."
-            :items="[
-              'Helm chart—production-ready Kubernetes',
-              'Docker Compose—quick local setup',
-              'Cloud guides—AWS, GCP, Azure, and more',
-            ]"
-          >
-            <PagesProductDeploymentOptions />
-          </PagesProductAdoptionFeatureCard>
-        </div>
-
-        <!-- Docs link -->
-        <div class="text-center">
-          <a
-            href="https://www.activepieces.com/docs/install/overview"
-            target="_blank"
-            class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-semibold transition-colors"
-          >
-            View deployment docs
-            <svg
-              class="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+    <section class="bg-white py-24 bg-dotted">
+      <div class="max-w-4xl mx-auto px-4 flex flex-col gap-32">
+        <!-- Cloud Block -->
+        <div id="cloud" class="flex flex-col items-center gap-10">
+          <div class="flex flex-col items-center gap-3">
+            <h2
+              class="text-5xl font-sentient font-bold text-primary-dark text-center"
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-              />
-            </svg>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section 3: Simple Pricing -->
-    <section
-      id="pricing-model"
-      class="py-24 bg-[#064448] relative overflow-hidden rounded-t-3xl -mt-8 z-10"
-    >
-      <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col gap-20">
-        <PagesProductSectionHeader
-          title="No execution fees. Ever."
-          subtitle="Unlike other platforms that charge per task or execution, we believe you shouldn't be penalized for automating more. Run millions of tasks—pay the same."
-        />
-
-        <!-- Pricing Comparison -->
-        <PagesProductDeploymentPricingComparison />
-
-        <!-- Self-host note -->
-        <div class="text-center">
-          <div
-            class="inline-flex items-center gap-3 px-6 py-4 bg-white/10 border border-white/20 rounded-xl"
-          >
-            <div
-              class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center"
-            >
-              <svg
-                class="w-5 h-5 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              Cloud
+            </h2>
+            <p class="text-xl text-primary-dark/80 text-center">
+              We manage everything so you can focus on building.
+            </p>
+          </div>
+          <div class="flex flex-col md:flex-row items-center gap-10">
+            <img
+              src="/images/deployment-cloud.png"
+              alt="Cloud deployment"
+              class="w-full md:w-[400px] h-[180px] rounded-2xl object-cover"
+            />
+            <div class="flex flex-col gap-6">
+              <div class="flex items-center gap-2">
+                <PhCheck
+                  weight="bold"
+                  class="w-4 h-4 text-primary-dark shrink-0"
                 />
-              </svg>
-            </div>
-            <div class="text-left">
-              <p class="font-semibold text-white">Self-hosting?</p>
-              <p class="text-sm text-white/70">
-                We only charge for production environments—dev and staging are
-                free.
-              </p>
+                <span class="text-base text-primary-dark/80"
+                  >SOC 2 Type II & GDPR</span
+                >
+              </div>
+              <div class="flex items-center gap-2">
+                <PhCheck
+                  weight="bold"
+                  class="w-4 h-4 text-primary-dark shrink-0"
+                />
+                <span class="text-base text-primary-dark/80"
+                  >99.9% uptime SLA</span
+                >
+              </div>
+              <div class="flex items-center gap-2">
+                <PhCheck
+                  weight="bold"
+                  class="w-4 h-4 text-primary-dark shrink-0"
+                />
+                <span class="text-base text-primary-dark/80"
+                  >EU & US data regions</span
+                >
+              </div>
+              <div class="flex items-center gap-2">
+                <PhCheck
+                  weight="bold"
+                  class="w-4 h-4 text-primary-dark shrink-0"
+                />
+                <span class="text-base text-primary-dark/80"
+                  >Add dedicated workers for priority</span
+                >
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- CTA -->
-        <div class="flex flex-wrap justify-center gap-4">
-          <a
-            href="/pricing"
-            class="inline-flex items-center px-6 py-3 text-base font-semibold text-gray-900 bg-white rounded-lg hover:bg-gray-100 transition-colors"
+        <!-- Self-Hosted Block -->
+        <div id="self-hosted" class="flex flex-col items-center gap-10">
+          <div class="flex flex-col items-center gap-3">
+            <h2
+              class="text-5xl font-sentient font-bold text-primary-dark text-center"
+            >
+              Self-Hosted
+            </h2>
+            <p class="text-xl text-primary-dark/80 text-center">
+              Full control over your data and infrastructure.
+            </p>
+          </div>
+          <div class="flex flex-col md:flex-row items-center gap-10">
+            <img
+              src="/images/deployment-self-hosted.png"
+              alt="Self-hosted deployment"
+              class="w-full md:w-[400px] h-[180px] rounded-2xl object-cover"
+            />
+            <div class="flex flex-col gap-6">
+              <div class="flex items-center gap-2">
+                <PhCheck
+                  weight="bold"
+                  class="w-4 h-4 text-primary-dark shrink-0"
+                />
+                <span class="text-base text-primary-dark/80"
+                  >Data stays in your network</span
+                >
+              </div>
+              <div class="flex items-center gap-2">
+                <PhCheck
+                  weight="bold"
+                  class="w-4 h-4 text-primary-dark shrink-0"
+                />
+                <span class="text-base text-primary-dark/80"
+                  >Any compliance requirement</span
+                >
+              </div>
+              <div class="flex items-center gap-2">
+                <PhCheck
+                  weight="bold"
+                  class="w-4 h-4 text-primary-dark shrink-0"
+                />
+                <span class="text-base text-primary-dark/80"
+                  >Helm, Docker, any cloud</span
+                >
+              </div>
+              <div class="flex items-center gap-2">
+                <PhCheck
+                  weight="bold"
+                  class="w-4 h-4 text-primary-dark shrink-0"
+                />
+                <span class="text-base text-primary-dark/80"
+                  >Dev & staging environments free</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA Block -->
+        <div class="flex flex-col items-center gap-12">
+          <h3
+            class="text-2xl font-sentient font-bold text-primary-dark text-center"
           >
-            View full pricing
-          </a>
+            $0 per execution — run millions, pay the same
+          </h3>
           <a
             href="/sales"
-            class="inline-flex items-center px-6 py-3 text-base font-semibold text-white border-2 border-white/30 rounded-lg hover:bg-white/10 transition-colors"
+            class="inline-flex items-center gap-2 hover:gap-3 bg-primary-dark text-white text-2xl font-medium rounded-full px-10 py-6 transition-all"
           >
-            Talk to sales
+            Let's find the best fit for your team
+            <PhCaretRight weight="bold" :size="24" />
           </a>
         </div>
       </div>
     </section>
-
-    <!-- Prev/Next Navigation -->
-    <ProductNavigation />
+    <SectionSeparator
+      top-color="#ffffff"
+      bottom-color="rgba(54,63,152,1)"
+      stroke1-color="#59BFEE"
+      stroke2-color="rgba(0, 0, 0, 0.15)"
+      stroke3-color="rgba(0, 0, 0, 0.1)"
+      stroke4-color="rgba(0, 0, 0, 0.05)"
+      shadow-color="rgba(0, 0, 0, 0.1)"
+      :curve-depth="60"
+      :stroke-spacing="12"
+      :stroke-thickness="4"
+    />
   </div>
 </template>
