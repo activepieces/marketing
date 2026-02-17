@@ -60,7 +60,7 @@ const route = useRoute();
             </li>
             <li class="mb-4">
               <a
-                href="https://www.activepieces.com/docs/developers/overview"
+                href="https://www.activepieces.com/docs/build-pieces/building-pieces/overview"
                 class="hover:underline"
                 >Contribute</a
               >
