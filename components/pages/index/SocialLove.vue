@@ -399,7 +399,7 @@ const platformConfig = {
 
 <template>
   <section
-    class="relative py-32 lg:py-40 overflow-hidden bg-[#f4f2f6] bg-dotted"
+    class="relative py-16 sm:py-24 lg:py-40 overflow-hidden bg-[#f4f2f6] bg-dotted"
   >
     <!-- Subtle background texture -->
     <div
@@ -415,9 +415,9 @@ const platformConfig = {
     ></div>
 
     <!-- Header -->
-    <div class="relative z-10 max-w-3xl mx-auto px-6 text-center mb-20">
+    <div class="relative z-10 max-w-3xl mx-auto px-6 text-center mb-10 sm:mb-14 lg:mb-20">
       <h2
-        class="font-sentient text-4xl lg:text-5xl font-medium text-[#230454] tracking-tight"
+        class="font-sentient text-3xl sm:text-4xl lg:text-5xl font-medium text-[#230454] tracking-tight"
       >
         Loved by builders everywhere
       </h2>
@@ -441,14 +441,14 @@ const platformConfig = {
               <div
                 v-for="testimonial in row1"
                 :key="testimonial.id + '-' + n"
-                class="flex-shrink-0 w-[400px]"
+                class="flex-shrink-0 w-[260px] sm:w-[400px]"
               >
                 <div
-                  class="group bg-white rounded-2xl p-6 shadow-[0_1px_3px_rgba(0,0,0,0.04)] border border-[rgba(49,43,96,0.1)] transition-all duration-500 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] h-[260px] flex flex-col"
+                  class="group bg-white rounded-2xl p-6 shadow-[0_1px_3px_rgba(0,0,0,0.04)] border border-[rgba(49,43,96,0.1)] transition-all duration-500 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] h-[240px] sm:h-[260px] flex flex-col"
                 >
                   <!-- Quote -->
                   <div class="flex-1 flex items-center">
-                    <p class="text-[20px] text-[#312b60] leading-[1.4]">
+                    <p class="text-[17px] sm:text-[20px] text-[#312b60] leading-[1.4]">
                       "{{ testimonial.content }}"
                     </p>
                   </div>
@@ -533,14 +533,14 @@ const platformConfig = {
               <div
                 v-for="testimonial in row2"
                 :key="testimonial.id + '-' + n"
-                class="flex-shrink-0 w-[400px]"
+                class="flex-shrink-0 w-[260px] sm:w-[400px]"
               >
                 <div
-                  class="group bg-white rounded-2xl p-6 shadow-[0_1px_3px_rgba(0,0,0,0.04)] border border-[rgba(49,43,96,0.1)] transition-all duration-500 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] h-[260px] flex flex-col"
+                  class="group bg-white rounded-2xl p-6 shadow-[0_1px_3px_rgba(0,0,0,0.04)] border border-[rgba(49,43,96,0.1)] transition-all duration-500 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] h-[240px] sm:h-[260px] flex flex-col"
                 >
                   <!-- Quote -->
                   <div class="flex-1 flex items-center">
-                    <p class="text-[20px] text-[#312b60] leading-[1.4]">
+                    <p class="text-[17px] sm:text-[20px] text-[#312b60] leading-[1.4]">
                       "{{ testimonial.content }}"
                     </p>
                   </div>
@@ -609,8 +609,8 @@ const platformConfig = {
         </div>
       </div>
 
-      <!-- Row 3 - scrolls left slowly -->
-      <div class="relative">
+      <!-- Row 3 - scrolls left slowly (hidden on mobile) -->
+      <div class="relative hidden sm:block">
         <!-- Strong edge fades -->
         <div
           class="absolute left-0 top-0 bottom-0 w-40 lg:w-72 bg-gradient-to-r from-[#f4f2f6] via-[#f4f2f6]/80 to-transparent z-10 pointer-events-none"
@@ -625,14 +625,14 @@ const platformConfig = {
               <div
                 v-for="testimonial in row3"
                 :key="testimonial.id + '-' + n"
-                class="flex-shrink-0 w-[400px]"
+                class="flex-shrink-0 w-[260px] sm:w-[400px]"
               >
                 <div
-                  class="group bg-white rounded-2xl p-6 shadow-[0_1px_3px_rgba(0,0,0,0.04)] border border-[rgba(49,43,96,0.1)] transition-all duration-500 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] h-[260px] flex flex-col"
+                  class="group bg-white rounded-2xl p-6 shadow-[0_1px_3px_rgba(0,0,0,0.04)] border border-[rgba(49,43,96,0.1)] transition-all duration-500 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] h-[240px] sm:h-[260px] flex flex-col"
                 >
                   <!-- Quote -->
                   <div class="flex-1 flex items-center">
-                    <p class="text-[20px] text-[#312b60] leading-[1.4]">
+                    <p class="text-[17px] sm:text-[20px] text-[#312b60] leading-[1.4]">
                       "{{ testimonial.content }}"
                     </p>
                   </div>
@@ -703,10 +703,10 @@ const platformConfig = {
     </div>
 
     <!-- CTA Button -->
-    <div class="relative z-10 max-w-3xl mx-auto px-6 text-center mt-20">
+    <div class="relative z-10 max-w-3xl mx-auto px-6 text-center mt-10 sm:mt-14 lg:mt-20">
       <a
         href="https://cloud.activepieces.com/sign-up"
-        class="inline-flex items-center gap-2 hover:gap-3 px-8 py-4 rounded-full border-2 border-primary-dark/5 text-primary-dark text-2xl font-medium transition-all duration-200 hover:border-primary-dark/10"
+        class="inline-flex items-center gap-2 hover:gap-3 px-8 py-4 rounded-full border-2 border-primary-dark/5 text-primary-dark text-lg sm:text-xl md:text-2xl font-medium transition-all duration-200 hover:border-primary-dark/10"
       >
         Join thousands of happy users
         <PhCaretRight weight="bold" size="24" />

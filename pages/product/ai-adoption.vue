@@ -155,19 +155,19 @@ definePageMeta({
       <div class="max-w-4xl mx-auto px-4 flex flex-col gap-20 items-center">
         <!-- Section title -->
         <h2
-          class="font-sentient font-bold text-5xl text-[#312b60] text-center leading-[1.2] max-w-[560px]"
+          class="font-sentient font-bold text-3xl md:text-5xl text-[#312b60] text-center leading-[1.2] max-w-[560px]"
         >
           From idea to automation in minutes
         </h2>
 
         <!-- Subsection 1: visual LEFT, text RIGHT -->
-        <div class="flex gap-10 items-center w-full">
-          <div class="w-[400px] shrink-0">
+        <div class="flex flex-col md:flex-row gap-8 md:gap-10 items-center w-full">
+          <div class="w-full md:w-[400px] md:shrink-0">
             <PagesProductAdoptionBrandingComparison />
           </div>
-          <div class="w-[400px] flex flex-col gap-3">
+          <div class="w-full md:w-[400px] flex flex-col gap-3">
             <h3
-              class="font-sentient font-bold text-[28px] text-[#312b60] leading-[1.2] text-balance"
+              class="font-sentient font-bold text-xl md:text-[28px] text-[#312b60] leading-[1.2] text-balance"
             >
               Your brand, your platform
             </h3>
@@ -180,10 +180,10 @@ definePageMeta({
         </div>
 
         <!-- Subsection 2: text LEFT, visual RIGHT -->
-        <div class="flex gap-10 items-center w-full">
-          <div class="w-[400px] flex flex-col gap-3">
+        <div class="flex flex-col md:flex-row gap-8 md:gap-10 items-center w-full">
+          <div class="w-full md:w-[400px] flex flex-col gap-3">
             <h3
-              class="font-sentient font-bold text-[28px] text-[#312b60] leading-[1.2] text-balance"
+              class="font-sentient font-bold text-xl md:text-[28px] text-[#312b60] leading-[1.2] text-balance"
             >
               Get everyone in with one click
             </h3>
@@ -193,7 +193,7 @@ definePageMeta({
               shared spaces for team collaboration.
             </p>
           </div>
-          <div class="w-[400px] shrink-0">
+          <div class="w-full md:w-[400px] md:shrink-0">
             <PagesProductAdoptionOnboardingFlow />
           </div>
         </div>
@@ -239,16 +239,16 @@ definePageMeta({
       <div class="max-w-4xl mx-auto px-4 flex flex-col gap-20 items-center">
         <!-- Section title -->
         <h2
-          class="font-sentient font-bold text-5xl text-[#312b60] text-center leading-[1.2] max-w-[560px]"
+          class="font-sentient font-bold text-3xl md:text-5xl text-[#312b60] text-center leading-[1.2] max-w-[560px]"
         >
           Visible progress. Real motivation.
         </h2>
 
         <!-- Subsection 1: text LEFT / visual RIGHT — Leaderboard -->
-        <div class="flex gap-10 items-center w-full">
-          <div class="w-[400px] flex flex-col gap-3">
+        <div class="flex flex-col md:flex-row gap-8 md:gap-10 items-center w-full">
+          <div class="w-full md:w-[400px] flex flex-col gap-3">
             <h3
-              class="font-sentient font-bold text-[28px] text-[#312b60] leading-[1.2] text-balance"
+              class="font-sentient font-bold text-xl md:text-[28px] text-[#312b60] leading-[1.2] text-balance"
             >
               Organization leaderboard
             </h3>
@@ -259,19 +259,19 @@ definePageMeta({
               and amplify their impact.
             </p>
           </div>
-          <div class="w-[400px] shrink-0">
+          <div class="w-full md:w-[400px] md:shrink-0">
             <PagesProductAdoptionLeaderboardVisual />
           </div>
         </div>
 
         <!-- Subsection 2: visual LEFT / text RIGHT — Badges -->
-        <div class="flex gap-10 items-center w-full">
-          <div class="w-[400px] shrink-0">
+        <div class="flex flex-col md:flex-row gap-8 md:gap-10 items-center w-full">
+          <div class="w-full md:w-[400px] md:shrink-0">
             <PagesProductAdoptionBadgesVisual />
           </div>
-          <div class="w-[400px] flex flex-col gap-3">
+          <div class="w-full md:w-[400px] flex flex-col gap-3">
             <h3
-              class="font-sentient font-bold text-[28px] text-[#312b60] leading-[1.2] text-balance"
+              class="font-sentient font-bold text-xl md:text-[28px] text-[#312b60] leading-[1.2] text-balance"
             >
               Badges to reward progress
             </h3>

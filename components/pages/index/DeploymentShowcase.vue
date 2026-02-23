@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-[#003e64] pt-24 pb-40 bg-dotted-light">
+  <section class="bg-[#003e64] pt-24 pb-24 sm:pb-32 md:pb-40 bg-dotted-light">
     <div class="max-w-7xl mx-auto px-4">
       <!-- Centered Header -->
       <div class="flex flex-col items-center text-center mb-12">
@@ -28,7 +28,7 @@
           <!-- Cloud Card -->
           <div
             @mouseenter="activeImage = 'cloud'"
-            class="rounded-2xl p-10 h-auto lg:h-[315px] transition-all cursor-pointer"
+            class="rounded-2xl p-6 sm:p-8 md:p-10 h-auto lg:h-[315px] transition-all cursor-pointer"
             :class="
               activeImage === 'cloud'
                 ? 'bg-white/10'
@@ -59,12 +59,20 @@
                 >
               </li>
             </ul>
+            <!-- Inline image for mobile -->
+            <div class="lg:hidden mt-6 rounded-xl overflow-hidden h-[220px] bg-white/5">
+              <img
+                src="/images/deployment-cloud.png"
+                alt="Cloud deployment illustration"
+                class="w-full h-full object-cover"
+              />
+            </div>
           </div>
 
           <!-- Self-Host Card -->
           <div
             @mouseenter="activeImage = 'self-host'"
-            class="rounded-2xl p-10 h-auto lg:h-[315px] transition-all cursor-pointer"
+            class="rounded-2xl p-6 sm:p-8 md:p-10 h-auto lg:h-[315px] transition-all cursor-pointer"
             :class="
               activeImage === 'self-host'
                 ? 'bg-white/10'
@@ -95,12 +103,20 @@
                 >
               </li>
             </ul>
+            <!-- Inline image for mobile -->
+            <div class="lg:hidden mt-6 rounded-xl overflow-hidden h-[220px] bg-white/5">
+              <img
+                src="/images/deployment-self-hosted.png"
+                alt="Self-hosted deployment illustration"
+                class="w-full h-full object-cover"
+              />
+            </div>
           </div>
         </div>
 
-        <!-- Right: Image that changes on hover -->
+        <!-- Right: Image that changes on hover (desktop only) -->
         <div
-          class="relative rounded-2xl overflow-hidden h-[400px] lg:h-[638px] bg-white/5"
+          class="relative rounded-2xl overflow-hidden h-[400px] lg:h-[638px] bg-white/5 hidden lg:block"
         >
           <Transition name="fade" mode="out-in">
             <img

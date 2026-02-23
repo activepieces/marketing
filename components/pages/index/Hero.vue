@@ -789,28 +789,28 @@ onBeforeUnmount(() => {
           >
             <div class="w-full" style="position: relative; z-index: 100">
               <p
-                class="paragraph-with-links text-4xl leading-[160%] text-white font-normal transition-all duration-300 ease-out-quart"
+                class="paragraph-with-links text-2xl sm:text-3xl md:text-4xl leading-[160%] text-white font-normal transition-all duration-300 ease-out-quart"
                 style="position: relative; z-index: 100"
               >
                 <a
-                  href="/product/ai-adoption"
-                  class="paragraph-link text-white underline transition-all duration-300 ease-out-quart tooltip-trigger"
-                  data-tooltip="Leaderboards and badges that gamify AI adoption across your teams — learn more 👉"
-                  @mousemove="handleTooltipMouseMove"
-                  @mouseleave="handleTooltipMouseLeave"
-                  >Build</a
-                >
-                {{ " "
-                }}<a
                   href="/product/ai-agent-builder"
                   class="paragraph-link text-white underline transition-all duration-300 ease-out-quart tooltip-trigger"
                   data-tooltip="No-code builder to create AI agents that automate workflows across your apps — learn more 👉"
                   @mousemove="handleTooltipMouseMove"
                   @mouseleave="handleTooltipMouseLeave"
+                  >AI agents</a
                 >
-                  AI agents</a
+                your teams{{ " "
+                }}<a
+                  href="/product/ai-adoption"
+                  class="paragraph-link text-white underline transition-all duration-300 ease-out-quart tooltip-trigger"
+                  data-tooltip="Leaderboards and badges that gamify AI adoption across your teams — learn more 👉"
+                  @mousemove="handleTooltipMouseMove"
+                  @mouseleave="handleTooltipMouseLeave"
                 >
-                with
+                  adopt</a
+                >
+                — with
                 <a
                   href="/product/governance-and-management"
                   class="paragraph-link text-white underline transition-all duration-300 ease-out-quart tooltip-trigger"
@@ -819,7 +819,7 @@ onBeforeUnmount(() => {
                   @mouseleave="handleTooltipMouseLeave"
                   >IT control</a
                 >
-                built in, deployed with
+                and
                 <a
                   href="/product/deployment-options"
                   class="paragraph-link text-white underline transition-all duration-300 ease-out-quart tooltip-trigger"
@@ -827,7 +827,7 @@ onBeforeUnmount(() => {
                   @mousemove="handleTooltipMouseMove"
                   @mouseleave="handleTooltipMouseLeave"
                   >enterprise security</a
-                >, on
+                >, at
                 <a
                   href="/pricing"
                   class="paragraph-link text-white underline transition-all duration-300 ease-out-quart tooltip-trigger"
@@ -843,14 +843,14 @@ onBeforeUnmount(() => {
             >
               <router-link
                 to="/sales"
-                class="group cursor-pointer rounded-full transition-all duration-150 text-center font-semibold whitespace-nowrap items-center justify-center px-8 py-4 text-2xl bg-transparent text-white border border-white hover:bg-white hover:text-primary-dark"
+                class="group cursor-pointer rounded-full transition-all duration-150 text-center font-semibold whitespace-nowrap items-center justify-center px-6 py-3 text-lg sm:px-8 sm:py-4 sm:text-2xl bg-transparent text-white border border-white hover:bg-white hover:text-primary-dark"
               >
                 Talk to sales
               </router-link>
 
               <a
                 href="https://cloud.activepieces.com/sign-up"
-                class="group cursor-pointer rounded-full transition-all duration-150 text-center font-semibold whitespace-nowrap items-center justify-center px-8 py-4 min-w-60 text-2xl text-primary-dark bg-white ring-0 ring-white hover:ring-2"
+                class="group cursor-pointer rounded-full transition-all duration-150 text-center font-semibold whitespace-nowrap items-center justify-center px-6 py-3 text-lg sm:px-8 sm:py-4 sm:min-w-60 sm:text-2xl text-primary-dark bg-white ring-0 ring-white hover:ring-2"
               >
                 Start free
               </a>
@@ -1481,7 +1481,7 @@ onBeforeUnmount(() => {
 
                 <!-- Floating Popup Cards - Popping out of the dashboard -->
                 <div
-                  class="absolute pointer-events-none"
+                  class="absolute pointer-events-none hidden lg:block"
                   style="
                     z-index: 20;
                     top: -40px;

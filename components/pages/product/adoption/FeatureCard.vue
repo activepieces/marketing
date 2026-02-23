@@ -46,10 +46,10 @@ const props = defineProps({
 const gridClasses = computed(() => {
   if (props.contentPosition === 'left') {
     // Content on left: content gets contentRatio, text gets the other
-    return props.contentRatio === 2 ? 'grid-cols-[2fr_1fr]' : 'grid-cols-[1fr_2fr]'
+    return props.contentRatio === 2 ? 'grid-cols-1 md:grid-cols-[2fr_1fr]' : 'grid-cols-1 md:grid-cols-[1fr_2fr]'
   } else {
     // Content on right: text on left, content on right
-    return props.contentRatio === 2 ? 'grid-cols-[1fr_2fr]' : 'grid-cols-[2fr_1fr]'
+    return props.contentRatio === 2 ? 'grid-cols-1 md:grid-cols-[1fr_2fr]' : 'grid-cols-1 md:grid-cols-[2fr_1fr]'
   }
 })
 
@@ -64,7 +64,7 @@ const cardClasses = computed(() => {
 
 // Compute text section classes
 const textClasses = computed(() => {
-  const classes = ['p-12', 'flex', 'flex-col', 'gap-12']
+  const classes = ['p-6', 'md:p-12', 'flex', 'flex-col', 'gap-12']
   if (props.variant === 'subtle') {
     classes.push('bg-white/5')
   }
@@ -93,7 +93,7 @@ const contentClasses = computed(() => {
         </div>
         <div :class="textClasses">
           <div class="flex flex-col gap-4">
-            <h3 class="text-white text-4xl font-sentient font-medium text-balance">
+            <h3 class="text-white text-2xl md:text-4xl font-sentient font-medium text-balance">
               {{ title }}
             </h3>
             <p class="text-sm text-white/80">
@@ -120,7 +120,7 @@ const contentClasses = computed(() => {
       <template v-else>
         <div :class="textClasses">
           <div class="flex flex-col gap-4">
-            <h3 class="text-white text-4xl font-sentient font-medium text-balance">
+            <h3 class="text-white text-2xl md:text-4xl font-sentient font-medium text-balance">
               {{ title }}
             </h3>
             <p class="text-sm text-white/80">

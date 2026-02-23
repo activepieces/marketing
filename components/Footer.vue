@@ -25,19 +25,19 @@ const route = useRoute();
     >
       <!-- White logo at top -->
       <div
-        class="flex justify-center mb-24 border-b-2 border-white/5 overflow-hidden"
+        class="flex justify-center mb-8 sm:mb-12 lg:mb-24 border-b-2 border-white/5 overflow-hidden"
       >
         <img
           src="/images/activepieces-logo-h.svg"
           alt="Activepieces"
-          class="h-40 brightness-0 invert opacity-5 translate-y-1/2 hover:translate-y-1/3 hover:opacity-10 transition-all duration-500"
+          class="h-24 sm:h-32 lg:h-40 brightness-0 invert opacity-5 translate-y-1/2 hover:translate-y-1/3 hover:opacity-10 transition-all duration-500"
           loading="lazy"
         />
       </div>
 
       <!-- 4-column footer links -->
       <div
-        class="grid grid-cols-2 gap-8 sm:grid-cols-2 lg:grid-cols-4 sm:space-y-0 mb-12"
+        class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-12"
       >
         <!-- Product -->
         <div>
@@ -62,14 +62,6 @@ const route = useRoute();
               >
                 Pieces
               </NuxtLink>
-            </li>
-            <li>
-              <a
-                href="https://www.activepieces.com/roadmap"
-                class="text-white/80 hover:text-white transition-colors"
-              >
-                Pieces Roadmap
-              </a>
             </li>
             <li>
               <a
@@ -167,18 +159,10 @@ const route = useRoute();
             </li>
             <li>
               <a
-                href="https://community.activepieces.com"
+                href="https://feedback.activepieces.com"
                 class="text-white/80 hover:text-white transition-colors"
               >
-                Community
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://discord.com/invite/2jUXBKDdP8"
-                class="text-white/80 hover:text-white transition-colors"
-              >
-                Discord
+                Feedback
               </a>
             </li>
             <li>
@@ -246,7 +230,7 @@ const route = useRoute();
 
       <!-- Bottom bar -->
       <div
-        class="flex flex-col lg:flex-row justify-between items-center gap-6 text-center p-4 rounded-lg border border-white/5"
+        class="flex flex-col sm:flex-row sm:flex-wrap lg:flex-nowrap justify-between items-center gap-4 sm:gap-6 text-center p-4 rounded-lg border border-white/5"
       >
         <!-- Y Combinator badge -->
         <div class="flex items-center gap-2">
@@ -296,7 +280,7 @@ const route = useRoute();
 
     <!-- Large watermark logo at bottom -->
     <div
-      class="relative z-10 pb-40 flex justify-center px-4 mt-40 border-t-2 border-white/10 w-full max-w-7xl mx-auto overflow-hidden"
+      class="relative z-10 pb-16 sm:pb-28 lg:pb-40 flex justify-center px-4 mt-16 sm:mt-28 lg:mt-40 border-t-2 border-white/10 w-full max-w-7xl mx-auto overflow-hidden"
     >
       <!-- <img
         src="/images/activepieces-logo-h-with-outline.svg"

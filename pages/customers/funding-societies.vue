@@ -146,21 +146,21 @@ const onCarouselScroll = () => {
       <div v-if="showStickyHeader" class="fixed top-[64px] left-0 right-0 z-30 bg-white border-b border-gray-100">
         <div class="max-w-3xl mx-auto px-6 py-4">
           <div class="text-xs text-gray-400 mb-3">Funding Societies + Activepieces · SME Digital Finance</div>
-          <div class="flex justify-between">
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
             <div class="text-center">
-              <div class="text-2xl font-bold text-gray-900">100+</div>
+              <div class="text-lg sm:text-2xl font-bold text-gray-900">100+</div>
               <div class="text-xs text-gray-500">Workflows</div>
             </div>
             <div class="text-center">
-              <div class="text-2xl font-bold text-gray-900">8</div>
+              <div class="text-lg sm:text-2xl font-bold text-gray-900">8</div>
               <div class="text-xs text-gray-500">Departments</div>
             </div>
             <div class="text-center">
-              <div class="text-2xl font-bold text-gray-900">~¼</div>
+              <div class="text-lg sm:text-2xl font-bold text-gray-900">~¼</div>
               <div class="text-xs text-gray-500">Year Saved</div>
             </div>
             <div class="text-center">
-              <div class="text-2xl font-bold text-gray-900">85%</div>
+              <div class="text-lg sm:text-2xl font-bold text-gray-900">85%</div>
               <div class="text-xs text-gray-500">Time Reduced</div>
             </div>
           </div>
@@ -191,21 +191,21 @@ const onCarouselScroll = () => {
     <!-- Key Numbers Bar -->
     <section class="border-b border-gray-100">
       <div class="max-w-3xl mx-auto px-6">
-        <div class="flex justify-between py-12">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 py-12">
           <div class="text-center">
-            <div class="text-4xl md:text-5xl font-bold text-gray-900">100+</div>
+            <div class="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900">100+</div>
             <div class="text-sm text-gray-500 mt-2">Workflows</div>
           </div>
           <div class="text-center">
-            <div class="text-4xl md:text-5xl font-bold text-gray-900">8</div>
+            <div class="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900">8</div>
             <div class="text-sm text-gray-500 mt-2">Departments</div>
           </div>
           <div class="text-center">
-            <div class="text-4xl md:text-5xl font-bold text-gray-900">~¼</div>
+            <div class="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900">~¼</div>
             <div class="text-sm text-gray-500 mt-2">Year Saved</div>
           </div>
           <div class="text-center">
-            <div class="text-4xl md:text-5xl font-bold text-gray-900">85%</div>
+            <div class="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900">85%</div>
             <div class="text-sm text-gray-500 mt-2">Time Reduced</div>
           </div>
         </div>
@@ -449,9 +449,9 @@ const onCarouselScroll = () => {
       <!-- Big Number Callout -->
       <div class="text-center py-24 mb-24 border-y border-gray-100">
         <div class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-6">The Transformation</div>
-        <div class="text-[10rem] md:text-[12rem] font-bold text-gray-900 tracking-tighter leading-none">100+</div>
+        <div class="text-[5rem] sm:text-[8rem] md:text-[10rem] lg:text-[12rem] font-bold text-gray-900 tracking-tighter leading-none">100+</div>
         <div class="text-lg text-gray-500 mt-4">automation flows deployed across the organization</div>
-        <div class="flex justify-center gap-12 mt-10 text-base">
+        <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-12 mt-10 text-base">
           <div><span class="font-bold text-gray-900 text-lg">8</span> <span class="text-gray-500">departments using automation</span></div>
           <div><span class="font-bold text-gray-900 text-lg">~¼ year</span> <span class="text-gray-500">in manual task hours saved</span></div>
         </div>
@@ -521,13 +521,13 @@ const onCarouselScroll = () => {
         
         <!-- Scale & Adoption -->
         <h3 class="text-lg font-semibold text-gray-900 mb-6">Scale & Adoption</h3>
-        <div class="grid grid-cols-2 gap-6 mb-10">
-          <div class="p-8 bg-gradient-to-br from-emerald-50 to-white rounded-2xl border border-emerald-100">
-            <div class="text-5xl font-bold text-emerald-600 mb-2">100+</div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-10">
+          <div class="p-5 sm:p-8 bg-gradient-to-br from-emerald-50 to-white rounded-2xl border border-emerald-100">
+            <div class="text-3xl sm:text-5xl font-bold text-emerald-600 mb-2">100+</div>
             <div class="text-gray-600">Workflows Deployed</div>
           </div>
-          <div class="p-8 bg-gradient-to-br from-teal-50 to-white rounded-2xl border border-teal-100">
-            <div class="text-5xl font-bold text-teal-600 mb-2">~¼ yr</div>
+          <div class="p-5 sm:p-8 bg-gradient-to-br from-teal-50 to-white rounded-2xl border border-teal-100">
+            <div class="text-3xl sm:text-5xl font-bold text-teal-600 mb-2">~¼ yr</div>
             <div class="text-gray-600">Manual Hours Saved</div>
           </div>
         </div>

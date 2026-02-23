@@ -58,13 +58,13 @@ onBeforeUnmount(() => {
 
 <template>
   <Transition name="widget">
-    <div v-if="shouldShow" class="fixed bottom-6 right-6 z-40">
+    <div v-if="shouldShow" class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40">
       <!-- Main Widget -->
       <div class="relative group">
         <!-- Dismiss button -->
         <button
           @click="dismiss"
-          class="absolute -top-2 -right-2 w-5 h-5 bg-primary-dark/80 hover:bg-primary-dark rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 z-10"
+          class="absolute -top-2 -right-2 w-6 h-6 bg-primary-dark/80 hover:bg-primary-dark rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 z-10"
           aria-label="Dismiss"
         >
           <svg

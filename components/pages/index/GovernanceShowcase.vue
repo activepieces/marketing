@@ -1,5 +1,5 @@
 <template>
-  <section ref="sectionRef" class="relative pt-24 pb-40 bg-white bg-dotted">
+  <section ref="sectionRef" class="relative pt-24 pb-16 sm:pb-24 md:pb-40 bg-white bg-dotted">
     <div class="max-w-7xl mx-auto px-4">
       <!-- Centered Header -->
       <div class="flex flex-col items-center text-center mb-16">
@@ -20,36 +20,39 @@
         </p>
       </div>
 
-      <!-- Tabs row -->
-      <div class="flex items-center justify-center gap-2 mb-8">
-        <div class="flex items-center gap-1 bg-primary-dark/5 rounded-full p-1">
+      <!-- Sticky tabs wrapper -->
+      <div class="sticky top-16 z-30 bg-white py-2 -mx-4 px-4 sm:mx-0 sm:px-0">
+        <!-- Tabs row -->
+        <div class="flex items-center justify-start sm:justify-center gap-2 mb-4 overflow-x-auto scrollbar-hide">
+          <div class="flex items-center gap-1 bg-primary-dark/5 rounded-full p-1 flex-shrink-0">
+            <button
+              v-for="(tab, i) in tabs"
+              :key="tab.id"
+              @click="goToTab(i)"
+              class="px-4 py-2 text-[15px] font-medium transition-all duration-300 rounded-full flex-shrink-0 whitespace-nowrap"
+              :class="
+                activeTab === i
+                  ? 'bg-primary-dark text-white'
+                  : 'text-primary-dark/60 hover:text-primary-dark'
+              "
+            >
+              {{ tab.label }}
+            </button>
+          </div>
+
+          <!-- Play/Pause button -->
           <button
-            v-for="(tab, i) in tabs"
-            :key="tab.id"
-            @click="goToTab(i)"
-            class="px-4 py-2 text-[15px] font-medium transition-all duration-300 rounded-full"
-            :class="
-              activeTab === i
-                ? 'bg-primary-dark text-white'
-                : 'text-primary-dark/60 hover:text-primary-dark'
-            "
+            @click="toggleAuto"
+            class="ml-2 w-9 h-9 flex-shrink-0 flex items-center justify-center bg-primary-dark/5 hover:bg-primary-dark/10 rounded-full transition-colors"
           >
-            {{ tab.label }}
+            <PhPause
+              v-if="isAutoPlaying"
+              class="w-4 h-4 text-primary-dark/60"
+              weight="fill"
+            />
+            <PhPlay v-else class="w-4 h-4 text-primary-dark/60" weight="fill" />
           </button>
         </div>
-
-        <!-- Play/Pause button -->
-        <button
-          @click="toggleAuto"
-          class="ml-2 w-9 h-9 flex items-center justify-center bg-primary-dark/5 hover:bg-primary-dark/10 rounded-full transition-colors"
-        >
-          <PhPause
-            v-if="isAutoPlaying"
-            class="w-4 h-4 text-primary-dark/60"
-            weight="fill"
-          />
-          <PhPlay v-else class="w-4 h-4 text-primary-dark/60" weight="fill" />
-        </button>
       </div>
 
       <!-- Cards Grid -->
@@ -58,7 +61,7 @@
         <template v-if="activeTab === 0">
           <!-- SSO Card -->
           <div
-            class="bg-primary-dark/5 rounded-2xl overflow-hidden h-[400px] flex flex-col"
+            class="bg-primary-dark/5 rounded-2xl overflow-hidden h-auto min-h-[350px] md:h-[400px] flex flex-col"
           >
             <!-- Top 1/3: Title -->
             <div class="p-6 pb-4">
@@ -82,7 +85,7 @@
 
           <!-- SCIM Card -->
           <div
-            class="bg-primary-dark/5 rounded-2xl overflow-hidden h-[400px] flex flex-col"
+            class="bg-primary-dark/5 rounded-2xl overflow-hidden h-auto min-h-[350px] md:h-[400px] flex flex-col"
           >
             <div class="p-6 pb-4">
               <h3
@@ -104,7 +107,7 @@
 
           <!-- RBAC Card -->
           <div
-            class="bg-primary-dark/5 rounded-2xl overflow-hidden h-[400px] flex flex-col"
+            class="bg-primary-dark/5 rounded-2xl overflow-hidden h-auto min-h-[350px] md:h-[400px] flex flex-col"
           >
             <div class="p-6 pb-4">
               <h3
@@ -129,7 +132,7 @@
         <template v-if="activeTab === 1">
           <!-- Visibility Card -->
           <div
-            class="bg-primary-dark/5 rounded-2xl overflow-hidden h-[400px] flex flex-col"
+            class="bg-primary-dark/5 rounded-2xl overflow-hidden h-auto min-h-[350px] md:h-[400px] flex flex-col"
           >
             <div class="p-6 pb-4">
               <h3
@@ -151,7 +154,7 @@
 
           <!-- Private Pieces Card -->
           <div
-            class="bg-primary-dark/5 rounded-2xl overflow-hidden h-[400px] flex flex-col"
+            class="bg-primary-dark/5 rounded-2xl overflow-hidden h-auto min-h-[350px] md:h-[400px] flex flex-col"
           >
             <div class="p-6 pb-4">
               <h3
@@ -173,7 +176,7 @@
 
           <!-- Pinned Tools Card -->
           <div
-            class="bg-primary-dark/5 rounded-2xl overflow-hidden h-[400px] flex flex-col"
+            class="bg-primary-dark/5 rounded-2xl overflow-hidden h-auto min-h-[350px] md:h-[400px] flex flex-col"
           >
             <div class="p-6 pb-4">
               <h3
@@ -198,7 +201,7 @@
         <template v-if="activeTab === 2">
           <!-- Centralized Credentials Card -->
           <div
-            class="bg-primary-dark/5 rounded-2xl overflow-hidden h-[400px] flex flex-col"
+            class="bg-primary-dark/5 rounded-2xl overflow-hidden h-auto min-h-[350px] md:h-[400px] flex flex-col"
           >
             <div class="p-6 pb-4">
               <h3
@@ -220,7 +223,7 @@
 
           <!-- AI Providers Card -->
           <div
-            class="bg-primary-dark/5 rounded-2xl overflow-hidden h-[400px] flex flex-col"
+            class="bg-primary-dark/5 rounded-2xl overflow-hidden h-auto min-h-[350px] md:h-[400px] flex flex-col"
           >
             <div class="p-6 pb-4">
               <h3
@@ -242,7 +245,7 @@
 
           <!-- Sensitive Connections Card -->
           <div
-            class="bg-primary-dark/5 rounded-2xl overflow-hidden h-[400px] flex flex-col"
+            class="bg-primary-dark/5 rounded-2xl overflow-hidden h-auto min-h-[350px] md:h-[400px] flex flex-col"
           >
             <div class="p-6 pb-4">
               <h3
@@ -267,7 +270,7 @@
         <template v-if="activeTab === 3">
           <!-- Activity Tracking Card -->
           <div
-            class="bg-primary-dark/5 rounded-2xl overflow-hidden h-[400px] flex flex-col"
+            class="bg-primary-dark/5 rounded-2xl overflow-hidden h-auto min-h-[350px] md:h-[400px] flex flex-col"
           >
             <div class="p-6 pb-4">
               <h3
@@ -289,7 +292,7 @@
 
           <!-- Smart Filters Card -->
           <div
-            class="bg-primary-dark/5 rounded-2xl overflow-hidden h-[400px] flex flex-col"
+            class="bg-primary-dark/5 rounded-2xl overflow-hidden h-auto min-h-[350px] md:h-[400px] flex flex-col"
           >
             <div class="p-6 pb-4">
               <h3
@@ -311,7 +314,7 @@
 
           <!-- Full Context Card -->
           <div
-            class="bg-primary-dark/5 rounded-2xl overflow-hidden h-[400px] flex flex-col"
+            class="bg-primary-dark/5 rounded-2xl overflow-hidden h-auto min-h-[350px] md:h-[400px] flex flex-col"
           >
             <div class="p-6 pb-4">
               <h3
@@ -420,3 +423,12 @@ onUnmounted(() => {
 });
 </script>
 
+<style scoped>
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+</style>

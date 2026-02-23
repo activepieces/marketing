@@ -24,14 +24,14 @@ defineProps({
 
 <template>
   <div>
-    <div class="grid grid-cols-2 gap-8">
-      <div 
-        v-for="result in results" 
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
+      <div
+        v-for="result in results"
         :key="result.label"
-        class="p-8 rounded-2xl border bg-gradient-to-br to-white"
+        class="p-5 sm:p-8 rounded-2xl border bg-gradient-to-br to-white"
         :class="[result.gradientFrom, result.borderColor]"
       >
-        <div class="text-5xl font-bold mb-2" :class="result.textColor">{{ result.value }}</div>
+        <div class="text-3xl sm:text-5xl font-bold mb-2" :class="result.textColor">{{ result.value }}</div>
         <div class="text-gray-600">{{ result.label }}</div>
       </div>
     </div>

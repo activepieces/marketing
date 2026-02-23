@@ -13,7 +13,7 @@
 
         <!-- Heading -->
         <h2
-          class="text-5xl font-sentient font-bold text-primary-dark mb-3 text-balance max-w-2xl"
+          class="text-3xl sm:text-4xl md:text-5xl font-sentient font-bold text-primary-dark mb-3 text-balance max-w-2xl"
         >
           AI agents like your best employee
         </h2>
@@ -26,12 +26,12 @@
       </div>
 
       <!-- Tabs row -->
-      <div class="flex items-center justify-center gap-2 mb-8">
+      <div class="flex items-center justify-start sm:justify-center gap-2 mb-8 overflow-x-auto scrollbar-hide -mx-4 sm:mx-0 px-4 sm:px-0 [mask-image:linear-gradient(90deg,transparent,#000_3%,#000_97%,transparent)] sm:[mask-image:none]">
         <button
           v-for="(tab, i) in tabs"
           :key="tab.id"
           @click="goToTab(i)"
-          class="relative px-4 py-2 text-[15px] font-medium transition-all duration-300 rounded-full overflow-hidden"
+          class="relative px-4 py-2 text-[13px] sm:text-[15px] font-medium transition-all duration-300 rounded-full overflow-hidden flex-shrink-0"
           :class="
             activeIndex === i
               ? 'bg-primary-dark text-white'
@@ -50,30 +50,32 @@
         </button>
       </div>
 
-      <!-- Canvas -->
-      <div
-        ref="canvasRef"
-        class="relative bg-primary-dark/5 rounded-2xl overflow-hidden h-[520px] border-2 border-primary-dark/5"
-      >
-        <!-- Play/Pause button - top left inside canvas, integrated look -->
-        <button
-          @click="toggleAuto"
-          class="absolute top-5 left-5 z-50 p-1 hover:scale-110 transition-transform"
+      <!-- Canvas outer wrapper - controls visible height, clips overflow -->
+      <div class="canvas-scale-wrapper relative overflow-hidden rounded-2xl border-2 border-primary-dark/5">
+        <!-- Canvas - always renders at full 520px, CSS-scaled on mobile -->
+        <div
+          ref="canvasRef"
+          class="canvas-inner relative bg-primary-dark/5 overflow-hidden h-[520px] origin-top-left"
         >
-          <PhPause
-            v-if="isAutoPlaying"
-            class="w-5 h-5 text-primary-dark hover:text-primary-dark/80 transition-colors"
-            weight="fill"
-          />
-          <PhPlay
-            v-else
-            class="w-5 h-5 text-primary-dark hover:text-primary-dark/80 transition-colors"
-            weight="fill"
-          />
-        </button>
+          <!-- Play/Pause button - top left inside canvas, integrated look -->
+          <button
+            @click="toggleAuto"
+            class="absolute top-5 left-5 z-50 p-1 hover:scale-110 transition-transform"
+          >
+            <PhPause
+              v-if="isAutoPlaying"
+              class="w-5 h-5 text-primary-dark hover:text-primary-dark/80 transition-colors"
+              weight="fill"
+            />
+            <PhPlay
+              v-else
+              class="w-5 h-5 text-primary-dark hover:text-primary-dark/80 transition-colors"
+              weight="fill"
+            />
+          </button>
 
-        <!-- ============================== -->
-        <!-- THE AGENT - positioned via measured slots -->
+          <!-- ============================== -->
+          <!-- THE AGENT - positioned via measured slots -->
         <!-- z-index: lower when popup is showing (scene 1), higher otherwise -->
         <!-- ============================== -->
         <div
@@ -1072,7 +1074,8 @@
             </div>
           </div>
         </Transition>
-      </div>
+        </div><!-- end canvas-inner -->
+      </div><!-- end canvas-scale-wrapper -->
     </div>
   </section>
 </template>
@@ -1183,11 +1186,16 @@ const measureSlot = () => {
   const canvasRect = canvas.getBoundingClientRect();
   const slotRect = slot.getBoundingClientRect();
 
+  // getBoundingClientRect returns visual (post-transform) values.
+  // CSS top/left operate in local (pre-transform) space.
+  // Divide by the current scale factor to convert.
+  const scale = canvasRect.width / canvas.offsetWidth || 1;
+
   agentPosition.value = {
-    top: slotRect.top - canvasRect.top,
-    left: slotRect.left - canvasRect.left,
-    width: slotRect.width,
-    height: slotRect.height,
+    top: (slotRect.top - canvasRect.top) / scale,
+    left: (slotRect.left - canvasRect.left) / scale,
+    width: slotRect.width / scale,
+    height: slotRect.height / scale,
   };
 };
 
@@ -1337,6 +1345,43 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
+/* Hide scrollbar for tabs */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Canvas scaling for mobile - outer wrapper controls visible height */
+/* Canvas width is set to 1/scale so it fills the wrapper after transform */
+.canvas-scale-wrapper {
+  height: 370px; /* 520 * 0.71 */
+}
+.canvas-inner {
+  transform: scale(0.71);
+  width: 140.85%; /* 1/0.71 */
+}
+@media (min-width: 640px) {
+  .canvas-scale-wrapper {
+    height: 440px; /* 520 * 0.85 */
+  }
+  .canvas-inner {
+    transform: scale(0.85);
+    width: 117.65%; /* 1/0.85 */
+  }
+}
+@media (min-width: 768px) {
+  .canvas-scale-wrapper {
+    height: 520px;
+  }
+  .canvas-inner {
+    transform: scale(1);
+    width: 100%;
+  }
+}
+
 /* Agent element with spring-based staggered transitions */
 .agent-element {
   transition:

@@ -154,21 +154,21 @@ const onCarouselScroll = () => {
           <div class="text-xs text-gray-400 mb-3">Alan + Activepieces · Health Insurance</div>
           
           <!-- Numbers row -->
-          <div class="flex justify-between">
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
             <div class="text-center">
-              <div class="text-2xl font-bold text-gray-900">300+</div>
+              <div class="text-lg sm:text-2xl font-bold text-gray-900">300+</div>
               <div class="text-xs text-gray-500">Workflows</div>
             </div>
             <div class="text-center">
-              <div class="text-2xl font-bold text-gray-900">200+</div>
+              <div class="text-lg sm:text-2xl font-bold text-gray-900">200+</div>
               <div class="text-xs text-gray-500">Onboarded</div>
             </div>
             <div class="text-center">
-              <div class="text-2xl font-bold text-gray-900">6,300+</div>
+              <div class="text-lg sm:text-2xl font-bold text-gray-900">6,300+</div>
               <div class="text-xs text-gray-500">Hrs Saved/Yr</div>
-      </div>
+            </div>
             <div class="text-center">
-              <div class="text-2xl font-bold text-gray-900">14%</div>
+              <div class="text-lg sm:text-2xl font-bold text-gray-900">14%</div>
               <div class="text-xs text-gray-500">Active Builders</div>
             </div>
           </div>
@@ -202,21 +202,21 @@ const onCarouselScroll = () => {
     <!-- Key Numbers Bar -->
     <section class="border-b border-gray-100">
       <div class="max-w-3xl mx-auto px-6">
-        <div class="flex justify-between py-12">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 py-12">
           <div class="text-center">
-            <div class="text-4xl md:text-5xl font-bold text-gray-900">300+</div>
+            <div class="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900">300+</div>
             <div class="text-sm text-gray-500 mt-2">Workflows</div>
           </div>
           <div class="text-center">
-            <div class="text-4xl md:text-5xl font-bold text-gray-900">200+</div>
+            <div class="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900">200+</div>
             <div class="text-sm text-gray-500 mt-2">Onboarded</div>
           </div>
           <div class="text-center">
-            <div class="text-4xl md:text-5xl font-bold text-gray-900">6,300+</div>
+            <div class="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900">6,300+</div>
             <div class="text-sm text-gray-500 mt-2">Hours Saved/Year</div>
           </div>
           <div class="text-center">
-            <div class="text-4xl md:text-5xl font-bold text-gray-900">14%</div>
+            <div class="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900">14%</div>
             <div class="text-sm text-gray-500 mt-2">Active Builders</div>
           </div>
         </div>
@@ -353,7 +353,7 @@ const onCarouselScroll = () => {
 
         <!-- Why Activepieces Won -->
         <h3 class="text-xl font-semibold text-gray-900 mb-6">Why Activepieces Won</h3>
-        <div class="overflow-hidden rounded-2xl border border-gray-200">
+        <div class="overflow-x-auto rounded-2xl border border-gray-200">
           <table class="w-full text-base">
             <thead class="bg-gray-50">
               <tr>
@@ -390,9 +390,9 @@ const onCarouselScroll = () => {
       <!-- Big Number Callout -->
       <div class="text-center py-24 mb-24 border-y border-gray-100">
         <div class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-6">The Transformation</div>
-        <div class="text-[10rem] md:text-[12rem] font-bold text-gray-900 tracking-tighter leading-none">300+</div>
+        <div class="text-[5rem] sm:text-[8rem] md:text-[10rem] lg:text-[12rem] font-bold text-gray-900 tracking-tighter leading-none">300+</div>
         <div class="text-lg text-gray-500 mt-4">automated workflows now running in production</div>
-        <div class="flex justify-center gap-12 mt-10 text-base">
+        <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-12 mt-10 text-base">
           <div><span class="font-bold text-gray-900 text-lg">200+</span> <span class="text-gray-500">team members onboarded</span></div>
           <div><span class="font-bold text-gray-900 text-lg">6,300+</span> <span class="text-gray-500">hours saved per year</span></div>
         </div>
@@ -460,21 +460,21 @@ const onCarouselScroll = () => {
       <section id="results" class="mb-28 scroll-mt-56">
         <h2 class="text-3xl font-bold text-gray-900 mb-12">The Results</h2>
         
-        <div class="grid grid-cols-2 gap-8">
-          <div class="p-8 bg-gradient-to-br from-indigo-50 to-white rounded-2xl border border-indigo-100">
-            <div class="text-5xl font-bold text-indigo-600 mb-2">300+</div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
+          <div class="p-5 sm:p-8 bg-gradient-to-br from-indigo-50 to-white rounded-2xl border border-indigo-100">
+            <div class="text-3xl sm:text-5xl font-bold text-indigo-600 mb-2">300+</div>
             <div class="text-gray-600">Workflows in Production</div>
                     </div>
-          <div class="p-8 bg-gradient-to-br from-purple-50 to-white rounded-2xl border border-purple-100">
-            <div class="text-5xl font-bold text-purple-600 mb-2">200+</div>
+          <div class="p-5 sm:p-8 bg-gradient-to-br from-purple-50 to-white rounded-2xl border border-purple-100">
+            <div class="text-3xl sm:text-5xl font-bold text-purple-600 mb-2">200+</div>
             <div class="text-gray-600">Team Members Onboarded</div>
                   </div>
-          <div class="p-8 bg-gradient-to-br from-emerald-50 to-white rounded-2xl border border-emerald-100">
-            <div class="text-5xl font-bold text-emerald-600 mb-2">14%</div>
+          <div class="p-5 sm:p-8 bg-gradient-to-br from-emerald-50 to-white rounded-2xl border border-emerald-100">
+            <div class="text-3xl sm:text-5xl font-bold text-emerald-600 mb-2">14%</div>
             <div class="text-gray-600">Running Production Workflows</div>
                     </div>
-          <div class="p-8 bg-gradient-to-br from-amber-50 to-white rounded-2xl border border-amber-100">
-            <div class="text-5xl font-bold text-amber-600 mb-2">6,300+</div>
+          <div class="p-5 sm:p-8 bg-gradient-to-br from-amber-50 to-white rounded-2xl border border-amber-100">
+            <div class="text-3xl sm:text-5xl font-bold text-amber-600 mb-2">6,300+</div>
             <div class="text-gray-600">Hours Saved per Year</div>
                 </div>
               </div>

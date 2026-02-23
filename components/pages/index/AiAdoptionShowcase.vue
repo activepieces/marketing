@@ -27,9 +27,118 @@
         </p>
       </div>
 
-      <!-- Card stack with decorative background cards -->
+      <!-- Mobile layout: tab bar + single card -->
+      <div class="md:hidden mt-12 mb-12">
+        <!-- Tab bar -->
+        <div class="flex items-center gap-2 overflow-x-auto scrollbar-hide -mx-4 px-4 mb-4">
+          <button
+            v-for="(card, index) in cards"
+            :key="'mobile-tab-' + card.id"
+            @click="selectCard(index)"
+            class="flex-shrink-0 px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 whitespace-nowrap"
+            :class="activeCard === index ? 'bg-white text-gray-900' : 'bg-white/10 text-white/70 hover:text-white'"
+          >
+            {{ card.shortTitle }}
+          </button>
+          <!-- Play/Pause -->
+          <button
+            @click="toggleAutoPlay"
+            class="flex-shrink-0 w-8 h-8 rounded-full bg-white/10 flex items-center justify-center"
+          >
+            <PhPause v-if="isAutoPlaying" class="w-4 h-4 text-white/60" weight="fill" />
+            <PhPlay v-else class="w-4 h-4 text-white/60" weight="fill" />
+          </button>
+        </div>
+        <!-- Active card content -->
+        <div class="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-200">
+          <!-- Title bar -->
+          <div class="flex items-center gap-2.5 px-4 py-2.5 bg-gray-50 border-b border-gray-100">
+            <div
+              class="w-5 h-5 rounded-md flex items-center justify-center flex-shrink-0"
+              :style="{ backgroundColor: cards[activeCard].iconBg }"
+            >
+              <component
+                :is="cards[activeCard].icon"
+                class="w-3 h-3 text-white"
+                weight="fill"
+              />
+            </div>
+            <span class="text-sm font-medium text-gray-700">{{ cards[activeCard].title }}</span>
+          </div>
+          <!-- Card body -->
+          <div class="p-4 bg-gray-50 max-h-[420px] overflow-y-auto">
+            <!-- Templates content -->
+            <div v-if="cards[activeCard].id === 'templates'" class="space-y-4">
+              <div v-for="section in ['Everyday', 'Sales']" :key="section">
+                <span class="text-xs font-semibold text-violet-600 mb-2 block">{{ section }}</span>
+                <div class="grid grid-cols-2 gap-2">
+                  <div v-for="n in 2" :key="n" class="bg-white rounded-lg p-3 border border-gray-200">
+                    <div class="h-3 bg-gray-200 rounded w-20 mb-2"></div>
+                    <div class="flex items-center gap-1">
+                      <div class="w-4 h-4 rounded bg-gray-100"></div>
+                      <div class="w-4 h-4 rounded bg-gray-100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Analytics content -->
+            <div v-else-if="cards[activeCard].id === 'analytics'" class="space-y-4">
+              <div class="grid grid-cols-3 gap-3">
+                <div class="bg-white rounded-lg p-3 border border-gray-200 text-center">
+                  <p class="text-lg font-bold text-gray-900">847</p>
+                  <p class="text-[10px] text-gray-500">Active Flows</p>
+                </div>
+                <div class="bg-white rounded-lg p-3 border border-gray-200 text-center">
+                  <p class="text-lg font-bold text-gray-900">12.4k</p>
+                  <p class="text-[10px] text-gray-500">Hours Saved</p>
+                </div>
+                <div class="bg-white rounded-lg p-3 border border-gray-200 text-center">
+                  <p class="text-lg font-bold text-gray-900">94%</p>
+                  <p class="text-[10px] text-gray-500">Adoption</p>
+                </div>
+              </div>
+              <div class="bg-white rounded-lg p-3 border border-gray-200">
+                <span class="text-xs font-semibold text-gray-900">Cost Savings</span>
+                <div class="flex items-end gap-1 h-16 mt-2">
+                  <div v-for="(bar, i) in savingsBarData" :key="i" class="flex-1 rounded-t" :class="bar.current ? 'bg-emerald-500' : 'bg-emerald-300'" :style="{ height: bar.percent + '%' }"></div>
+                </div>
+              </div>
+            </div>
+            <!-- Leaderboard content -->
+            <div v-else-if="cards[activeCard].id === 'leaderboard'" class="space-y-3">
+              <div v-for="(person, i) in tableData.slice(0, 4)" :key="i" class="flex items-center gap-3 bg-white rounded-lg p-3 border border-gray-200">
+                <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0" :style="{ backgroundColor: person.color }">{{ person.initials }}</div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-sm font-medium text-gray-900 truncate">{{ person.name }}</p>
+                  <p class="text-xs text-gray-500">{{ person.role }}</p>
+                </div>
+                <div class="flex gap-1 flex-shrink-0">
+                  <div v-for="badge in person.badges.slice(0, 2)" :key="badge.name" class="w-5 h-5 rounded flex items-center justify-center" :style="{ backgroundColor: badge.bg }">
+                    <component :is="badge.icon" class="w-3 h-3" :style="{ color: badge.color }" weight="fill" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Branding content -->
+            <div v-else-if="cards[activeCard].id === 'branding'" class="space-y-4">
+              <p class="text-sm text-gray-600">Customize your platform's look and feel with your brand colors and logo.</p>
+              <div class="grid grid-cols-2 gap-3">
+                <div v-for="(brand, idx) in brandColors.slice(0, 4)" :key="idx" class="rounded-lg p-3 flex items-center gap-2" :style="{ backgroundColor: brand.primary + '15' }">
+                  <div class="w-6 h-6 rounded-md flex items-center justify-center" :style="{ backgroundColor: brand.primary }">
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 16 16" fill="white"><circle cx="8" cy="8" r="6" /></svg>
+                  </div>
+                  <span class="text-xs font-bold" :style="{ color: brand.primary }">{{ brand.name }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card stack with decorative background cards (desktop only) -->
       <div
-        class="relative mt-32 mb-32 border-b-4 border-black/20"
+        class="relative hidden md:block mt-32 mb-32 border-b-4 border-black/20"
         style="height: 520px"
       >
         <!-- Overflow wrapper - clips bottom only, room for shadows and animation -->
@@ -1811,6 +1920,15 @@ const getCardStyle = (index) => {
 </script>
 
 <style scoped>
+/* Hide scrollbar for mobile tabs */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 .card-active {
   box-shadow:
     0 25px 60px -15px rgba(0, 0, 0, 0.25),

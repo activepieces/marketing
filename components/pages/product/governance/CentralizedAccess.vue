@@ -4,17 +4,16 @@
     class="py-24 bg-[#1a212c] relative overflow-hidden z-10"
   >
     <div
-      class="max-w-4xl mx-auto px-4 relative z-10 flex flex-col"
-      style="gap: 120px"
+      class="max-w-4xl mx-auto px-4 relative z-10 flex flex-col gap-16 md:gap-[120px]"
     >
-      <h2 class="text-5xl font-sentient font-bold text-white text-center">
+      <h2 class="text-3xl md:text-5xl font-sentient font-bold text-white text-center">
         One place for all access
       </h2>
 
       <div class="flex flex-col gap-20">
         <!-- Row 1: SSO (card left, text right) -->
-        <div class="flex flex-col md:flex-row items-center gap-10">
-          <div class="bg-white/5 rounded-[24px] p-10 flex-1">
+        <div class="flex flex-col md:flex-row items-center gap-6 md:gap-10">
+          <div class="bg-white/5 rounded-[24px] p-5 md:p-10 flex-1">
             <div
               class="bg-white rounded-2xl h-[240px] border border-white/10 flex items-center justify-center overflow-hidden"
             >
@@ -22,7 +21,7 @@
             </div>
           </div>
           <div class="flex-1">
-            <h3 class="text-[28px] font-sentient font-bold text-white mb-4">
+            <h3 class="text-xl md:text-[28px] font-sentient font-bold text-white mb-4">
               Single Sign-On
             </h3>
             <p class="text-base text-white/80 leading-relaxed">
@@ -33,8 +32,8 @@
         </div>
 
         <!-- Row 2: SCIM (text left, card right) -->
-        <div class="flex flex-col md:flex-row-reverse items-center gap-10">
-          <div class="bg-white/5 rounded-[24px] p-10 flex-1">
+        <div class="flex flex-col md:flex-row-reverse items-center gap-6 md:gap-10">
+          <div class="bg-white/5 rounded-[24px] p-5 md:p-10 flex-1">
             <div
               class="bg-white rounded-2xl h-[240px] border border-white/10 flex items-center justify-center overflow-hidden"
             >
@@ -42,7 +41,7 @@
             </div>
           </div>
           <div class="flex-1">
-            <h3 class="text-[28px] font-sentient font-bold text-white mb-4">
+            <h3 class="text-xl md:text-[28px] font-sentient font-bold text-white mb-4">
               SCIM Provisioning
             </h3>
             <p class="text-base text-white/80 leading-relaxed">
@@ -53,8 +52,8 @@
         </div>
 
         <!-- Row 3: RBAC (card left, text right) -->
-        <div class="flex flex-col md:flex-row items-center gap-10">
-          <div class="bg-white/5 rounded-[24px] p-10 flex-1">
+        <div class="flex flex-col md:flex-row items-center gap-6 md:gap-10">
+          <div class="bg-white/5 rounded-[24px] p-5 md:p-10 flex-1">
             <div
               class="bg-white rounded-2xl h-[240px] border border-white/10 flex items-center justify-center overflow-hidden"
             >
@@ -62,7 +61,7 @@
             </div>
           </div>
           <div class="flex-1">
-            <h3 class="text-[28px] font-sentient font-bold text-white mb-4">
+            <h3 class="text-xl md:text-[28px] font-sentient font-bold text-white mb-4">
               Advanced RBAC
             </h3>
             <p class="text-base text-white/80 leading-relaxed">

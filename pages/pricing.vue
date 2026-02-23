@@ -46,7 +46,7 @@ const planHighlights = {
     "AI agents – AI that thinks and controls hundreds of apps in one place",
     "Unlimited MCP servers",
     "Unlimited tables",
-    "Email support",
+    "Community support",
   ],
   ultimate: [
     {
@@ -192,7 +192,7 @@ const appSumoFeatures = computed(() => [
             icon="stack"
             title="Unlimited"
             subtitle="Annual contract"
-            price="Varies"
+            price="Custom"
             price-subtext="we’ll help customize it"
             cta-text="Contact sales"
             cta-href="/sales"
@@ -212,7 +212,7 @@ const appSumoFeatures = computed(() => [
           icon="stack"
           title="Activepieces Embed"
           subtitle="Annual contract"
-          price="Varies"
+          price="Custom"
           price-subtext="Starts at $30k/year"
           cta-text="Contact sales"
           cta-href="/sales"

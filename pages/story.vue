@@ -75,12 +75,12 @@ useHead({
           <p class="text-gray-800 text-2xl font-bold mb-6 leading-[35px]">
             Happy automating!
           </p>
-          <div class="flex flex-row gap-x-8">
+          <div class="flex flex-col sm:flex-row gap-6 sm:gap-x-8 items-center">
             <div>
               <img
                 src="/ash.png"
                 alt="Ashraf Samhouri"
-                class="w-[150px] h-[150px] object-contain mb-[10px] bg-primary-200 rounded-lg"
+                class="w-[120px] h-[120px] sm:w-[150px] sm:h-[150px] object-contain mb-[10px] bg-primary-200 rounded-lg"
               />
               <p class="text-center text-xl font-bold text-gray-800">Ashraf</p>
               <p class="text-center text-lg text-gray-800">CEO</p>
@@ -89,7 +89,7 @@ useHead({
               <img
                 src="/chatgpt-logo.png"
                 alt="ChatGPT"
-                class="w-[150px] h-[150px] object-contain mb-[10px] bg-primary-200 rounded-lg px-10"
+                class="w-[120px] h-[120px] sm:w-[150px] sm:h-[150px] object-contain mb-[10px] bg-primary-200 rounded-lg px-10"
               />
               <p class="text-center text-xl font-bold text-gray-800">ChatGPT</p>
             </div>

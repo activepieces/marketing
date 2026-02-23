@@ -6,15 +6,15 @@
     <div class="max-w-4xl mx-auto px-4 flex flex-col items-center">
       <!-- Section title -->
       <h2
-        class="font-sentient font-bold text-5xl text-white text-center leading-[1.2] max-w-[560px]"
+        class="font-sentient font-bold text-3xl md:text-5xl text-white text-center leading-[1.2] max-w-[560px]"
       >
         Clear path forward. Built-in guidance.
       </h2>
 
       <!-- Subsection rows -->
-      <div class="flex flex-col gap-[120px] mt-[60px] w-full">
+      <div class="flex flex-col gap-16 md:gap-[120px] mt-[60px] w-full">
         <!-- 1: Pick a template — text LEFT, visual RIGHT -->
-        <div class="flex gap-10 items-center w-full">
+        <div class="flex flex-col md:flex-row gap-8 md:gap-10 items-center w-full">
           <div class="flex flex-col gap-3 flex-1">
             <div class="self-start">
               <span
@@ -24,7 +24,7 @@
               </span>
             </div>
             <h3
-              class="font-sentient font-bold text-[28px] text-white leading-[1.2]"
+              class="font-sentient font-bold text-xl md:text-[28px] text-white leading-[1.2]"
             >
               Pick a template
             </h3>
@@ -35,14 +35,14 @@
               advanced multi-step workflows.
             </p>
           </div>
-          <div class="w-[400px] shrink-0">
+          <div class="w-full md:w-[400px] md:shrink-0">
             <PagesProductAdoptionGuidanceTemplateStack />
           </div>
         </div>
 
         <!-- 2: Get personal onboarding — visual LEFT, text RIGHT -->
-        <div class="flex gap-10 items-center w-full">
-          <div class="w-[400px] shrink-0">
+        <div class="flex flex-col md:flex-row gap-8 md:gap-10 items-center w-full">
+          <div class="w-full md:w-[400px] md:shrink-0">
             <PagesProductAdoptionGuidanceSteps />
           </div>
           <div class="flex flex-col gap-3 flex-1">
@@ -54,7 +54,7 @@
               </span>
             </div>
             <h3
-              class="font-sentient font-bold text-[28px] text-white leading-[1.2]"
+              class="font-sentient font-bold text-xl md:text-[28px] text-white leading-[1.2]"
             >
               Get personal onboarding
             </h3>
@@ -68,7 +68,7 @@
         </div>
 
         <!-- 3: Schedule a call — text LEFT, visual RIGHT -->
-        <div class="flex gap-10 items-center w-full">
+        <div class="flex flex-col md:flex-row gap-8 md:gap-10 items-center w-full">
           <div class="flex flex-col gap-3 flex-1">
             <div class="self-start">
               <span
@@ -78,7 +78,7 @@
               </span>
             </div>
             <h3
-              class="font-sentient font-bold text-[28px] text-white leading-[1.2]"
+              class="font-sentient font-bold text-xl md:text-[28px] text-white leading-[1.2]"
             >
               Schedule a call with AI experts when needed
             </h3>
@@ -89,7 +89,7 @@
               without burdening your IT or support teams.
             </p>
           </div>
-          <div class="w-[400px] shrink-0">
+          <div class="w-full md:w-[400px] md:shrink-0">
             <PagesProductAdoptionGuidanceExpertCard />
           </div>
         </div>

@@ -188,7 +188,7 @@ watch(useRoute(), () => {
                 src="/images/activepieces-logo-h.svg"
                 width="200"
                 height="100"
-                class="mr-3 w-fit h-6 max-[555px]:h-8 max-[5555px]:object-cover max-[555px]:object-left transition-all duration-300"
+                class="mr-3 w-fit h-6 max-[555px]:h-8 max-[555px]:object-cover max-[555px]:object-left transition-all duration-300"
                 :class="{
                   'brightness-0 invert group-hover/header:brightness-100 group-hover/header:invert-0':
                     showTransparent,
@@ -570,7 +570,7 @@ watch(useRoute(), () => {
 
                 <!-- Mega Menu Content -->
                 <div
-                  class="absolute left-0 top-full z-[60] w-[520px] rounded-xl shadow-xl bg-white p-4 grid grid-cols-[1fr_1fr] gap-4 block transition-all duration-75 transform translate-y-2 opacity-0 group-hover/menu:opacity-100 group-hover/menu:translate-y-0 group-hover/menu:duration-200 border border-gray-100 pointer-events-none group-hover/menu:pointer-events-auto"
+                  class="absolute left-0 top-full z-[60] w-[260px] rounded-xl shadow-xl bg-white p-4 flex flex-col gap-4 block transition-all duration-75 transform translate-y-2 opacity-0 group-hover/menu:opacity-100 group-hover/menu:translate-y-0 group-hover/menu:duration-200 border border-gray-100 pointer-events-none group-hover/menu:pointer-events-auto"
                 >
                   <!-- Left Column: Links -->
                   <div class="flex flex-col gap-0 group/list">
@@ -679,8 +679,8 @@ watch(useRoute(), () => {
                     </a>
                   </div>
 
-                  <!-- Right Column: Case Studies -->
-                  <div
+                  <!-- TEMPORARILY HIDDEN: Case studies hidden until cleared by team -->
+                  <!-- <div
                     class="flex flex-col gap-1.5 bg-gray-50 -m-4 ml-0 p-3 rounded-r-xl min-w-[220px]"
                   >
                     <div
@@ -689,7 +689,6 @@ watch(useRoute(), () => {
                       Customer Stories
                     </div>
 
-                    <!-- Alan Case Study -->
                     <NuxtLink
                       to="/customers/alan"
                       class="group/card flex items-center gap-3 p-2 rounded-lg hover:bg-white transition-colors"
@@ -718,7 +717,6 @@ watch(useRoute(), () => {
                       </div>
                     </NuxtLink>
 
-                    <!-- Funding Societies Case Study -->
                     <NuxtLink
                       to="/customers/funding-societies"
                       class="group/card flex items-center gap-3 p-2 rounded-lg hover:bg-white transition-colors"
@@ -744,7 +742,7 @@ watch(useRoute(), () => {
                         />
                       </div>
                     </NuxtLink>
-                  </div>
+                  </div> -->
                 </div>
               </li>
 

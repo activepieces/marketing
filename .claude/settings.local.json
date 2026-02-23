@@ -61,7 +61,8 @@
       "Bash(npx nuxi typecheck:*)",
       "Bash(git -C /Users/mahdi/Desktop/code/activepieces-marketing log --name-only --diff-filter=A -1 e7f838fa)",
       "Bash(npx nuxi build:*)",
-      "Bash(python3:*)"
+      "Bash(python3:*)",
+      "Bash(find:*)"
     ]
   }
 }

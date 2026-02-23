@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2026-01-16',
-  devtools: { enabled: true },
+  devtools: { enabled: false },
 
   app: {
     head: {
@@ -34,6 +34,7 @@ export default defineNuxtConfig({
     openaiApiKey: process.env.OPENAI_API_KEY,
     brandfetchApiKey: process.env.BRANDFETCH_API_KEY,
     brandfetchClientId: process.env.BRANDFETCH_CLIENT_ID || '1id8CNBriO6auYJK5I7',
+    logoDevApiKey: process.env.LOGO_DEV_API_KEY,
     public: {
       strapiUrl: process.env.STRAPI_URL,
       brandfetchClientId: process.env.BRANDFETCH_CLIENT_ID || '1id8CNBriO6auYJK5I7',

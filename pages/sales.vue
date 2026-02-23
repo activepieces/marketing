@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue'
 
 const pageTitle = 'Contact Activepieces sales team';
-const metaDesc = '';
+const metaDesc = 'Get in touch with the Activepieces sales team to learn how our open source automation platform can help your business.';
 const metaKeywords = '';
 
 const route = useRoute()
