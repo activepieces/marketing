@@ -46,7 +46,7 @@
               </li>
               <li class="flex items-center gap-3">
                 <PhCheck weight="bold" class="w-5 h-5 text-[#93e2ff]" />
-                <span class="text-white/90">99.9% uptime SLA</span>
+                <span class="text-white/90">Always on, zero maintenance</span>
               </li>
               <li class="flex items-center gap-3">
                 <PhCheck weight="bold" class="w-5 h-5 text-[#93e2ff]" />
