@@ -36,7 +36,7 @@ pieces = pieces.map((group) => {
       <div class="gap-8 items-center xl:gap-16 flex flex-col md:flex-row">
         <div class="basis-1/4 text-center px-4 md:text-left">
           <h2
-            class="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white"
+            class="mb-4 text-3xl sm:text-4xl tracking-tight font-bold text-gray-900 dark:text-white"
           >
             Automate the apps that matter to you
           </h2>

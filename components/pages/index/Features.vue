@@ -81,7 +81,7 @@ watch([selectedFeature, playFeatures], () => {
         id="features-tab"
       >
         <div
-          class="mt-4 md:mt-0 basis-2/5 px-4 md:px-0 self-stretch block flex-nowrap gap-4 md:space-y-10 md:gap-0 md:flex-wrap md:whitespace-normal overflow-scroll md:overflow-auto flex md:flex-col"
+          class="mt-4 md:mt-0 basis-2/5 px-4 md:px-0 self-stretch block flex-nowrap gap-4 md:space-y-10 md:gap-0 md:flex-wrap md:whitespace-normal overflow-scroll md:overflow-auto flex md:flex-col [mask-image:linear-gradient(90deg,transparent,#000_3%,#000_97%,transparent)] md:[mask-image:none]"
           roles="presentation"
         >
           <div

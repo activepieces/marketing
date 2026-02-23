@@ -1,12 +1,18 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  devtools: { enabled: true },
+  compatibilityDate: '2026-01-16',
+  devtools: { enabled: false },
 
   app: {
     head: {
       htmlAttrs: {
         lang: "en",
       },
+      link: [
+        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
+        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Instrument+Serif&family=Space+Grotesk:wght@400;500;600;700&display=swap' }
+      ],
     },
   },
 
@@ -26,8 +32,12 @@ export default defineNuxtConfig({
     supabaseUrl: process.env.SUPABASE_URL,
     supabaseApiKey: process.env.SUPABASE_API_KEY,
     openaiApiKey: process.env.OPENAI_API_KEY,
+    brandfetchApiKey: process.env.BRANDFETCH_API_KEY,
+    brandfetchClientId: process.env.BRANDFETCH_CLIENT_ID || '1id8CNBriO6auYJK5I7',
+    logoDevApiKey: process.env.LOGO_DEV_API_KEY,
     public: {
       strapiUrl: process.env.STRAPI_URL,
+      brandfetchClientId: process.env.BRANDFETCH_CLIENT_ID || '1id8CNBriO6auYJK5I7',
     },
   },
 

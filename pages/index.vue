@@ -5,6 +5,10 @@ const metaDesc =
 const metaKeywords =
   "enterprise automation solutions, open source business automation, open source zapier, zapier open source alternative, zapier alternative, workato alternative, open source workato";
 
+definePageMeta({
+  layout: "home",
+});
+
 useHead({
   title: pageTitle,
   meta: [
@@ -17,7 +21,7 @@ useHead({
 
 import { onMounted } from "vue";
 import { initTabs } from "flowbite";
-import ProductsShowcase from '@/components/pages/index/ProductsShowcase.vue';
+import SectionSeparator from "~/components/SectionSeparator.vue";
 
 onMounted(() => {
   initTabs();
@@ -25,12 +29,96 @@ onMounted(() => {
 </script>
 
 <template>
-  <PagesIndexHero class="-mt-[62px]" />
-  <ProductsShowcase />
-  <!--<PagesIndexStory />
-  <PagesIndexEnterpriseValues />
-  <PagesIndexDepartments />
-  <PagesIndexResources />-->
-  <PagesIndexFeatures />
-  <PagesIndexPieces />
+  <PagesIndexHero />
+  <PagesIndexCaseStudies />
+  <SectionSeparator
+    top-color="#1d4348"
+    bottom-color="#ffffff"
+    stroke1-color="#59BFEE"
+    stroke2-color="rgba(255, 255,255, 0.15)"
+    stroke3-color="rgba(255, 255,255, 0.1)"
+    stroke4-color="rgba(255, 255,255, 0.05)"
+    shadow-color="rgba(0, 0, 0, 0.1)"
+    :curve-depth="60"
+    :stroke-spacing="12"
+    :stroke-thickness="4"
+    overlap="60px"
+  />
+
+  <PagesIndexAiAgentsShowcase />
+
+  <SectionSeparator
+    top-color="transparent"
+    bottom-color="#483e97"
+    stroke1-color="#59BFEE"
+    stroke2-color="rgba(0, 0, 0, 0.15)"
+    stroke3-color="rgba(0, 0, 0, 0.1)"
+    stroke4-color="rgba(0, 0, 0, 0.05)"
+    shadow-color="rgba(0, 0, 0, 0.1)"
+    :curve-depth="60"
+    :stroke-spacing="12"
+    :stroke-thickness="4"
+    overlap="60px"
+  />
+  <!-- AI Adoption Showcase (Full Width Playing Cards) -->
+  <PagesIndexAiAdoptionShowcase />
+
+  <SectionSeparator
+    top-color="#483e97"
+    bottom-color="#ffffff"
+    stroke1-color="#59BFEE"
+    stroke2-color="rgba(255,255,255, 0.15)"
+    stroke3-color="rgba(255,255,255, 0.1)"
+    stroke4-color="rgba(255,255,255, 0.05)"
+    shadow-color="rgba(255, 255, 255, 0.1)"
+    :curve-depth="60"
+    :stroke-spacing="12"
+    :stroke-thickness="4"
+    overlap="60px"
+  />
+
+  <!-- Governance & Control Showcase -->
+  <PagesIndexGovernanceShowcase />
+  <SectionSeparator
+    top-color="transparent"
+    bottom-color="#003E64"
+    stroke1-color="#59BFEE"
+    stroke2-color="rgba(0, 0, 0, 0.15)"
+    stroke3-color="rgba(0, 0, 0, 0.1)"
+    stroke4-color="rgba(0, 0, 0, 0.05)"
+    shadow-color="rgba(0, 0, 0, 0.1)"
+    :curve-depth="60"
+    :stroke-spacing="12"
+    :stroke-thickness="4"
+    overlap="60px"
+  />
+  <!-- Deployment & Cost Showcase -->
+  <PagesIndexDeploymentShowcase />
+  <SectionSeparator
+    top-color="#003E64"
+    bottom-color="#F4F2F6"
+    stroke1-color="#59BFEE"
+    stroke2-color="rgba(255,255,255, 0.15)"
+    stroke3-color="rgba(255,255,255, 0.1)"
+    stroke4-color="rgba(255,255,255, 0.05)"
+    shadow-color="rgba(0,0,0, 0.1)"
+    :curve-depth="60"
+    :stroke-spacing="12"
+    :stroke-thickness="4"
+    overlap="60px"
+  />
+  <PagesIndexSocialLove />
+  <SectionSeparator
+    top-color="#f4f2f6"
+    bottom-color="rgba(54,63,152,1)"
+    stroke1-color="#59BFEE"
+    stroke2-color="rgba(0, 0, 0, 0.15)"
+    stroke3-color="rgba(0, 0, 0, 0.1)"
+    stroke4-color="rgba(0, 0, 0, 0.05)"
+    shadow-color="rgba(0, 0, 0, 0.1)"
+    :curve-depth="60"
+    :stroke-spacing="12"
+    :stroke-thickness="4"
+    overlap="60px"
+  />
 </template>

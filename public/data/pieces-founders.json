@@ -1,0 +1,4204 @@
+{
+  "activepieces": {
+    "displayName": "Activepieces Platform",
+    "logoUrl": "https://cdn.activepieces.com/pieces/activepieces.png",
+    "domain": "activepieces.com",
+    "founder": {
+      "name": "Ashraf Samhouri",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "actualbudget": {
+    "displayName": "Actual Budget",
+    "logoUrl": "https://cdn.activepieces.com/pieces/actualbudget.png",
+    "domain": "actualbudget.com",
+    "founder": {
+      "name": "James Long",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "activecampaign": {
+    "displayName": "ActiveCampaign",
+    "logoUrl": "https://cdn.activepieces.com/pieces/activecampaign.png",
+    "domain": "activecampaign.com",
+    "founder": {
+      "name": "Jason Vandeboom",
+      "title": "Founder & CEO",
+      "photo": "/founders/jason-vandeboom.jpg",
+      "linkedin": "http://www.linkedin.com/in/jvandeboom"
+    }
+  },
+  "acumbamail": {
+    "displayName": "Acumbamail",
+    "logoUrl": "https://cdn.activepieces.com/pieces/acumbamail.png",
+    "domain": "acumbamail.com",
+    "founder": null
+  },
+  "acuity-scheduling": {
+    "displayName": "Acuity Scheduling",
+    "logoUrl": "https://cdn.activepieces.com/pieces/acuity-scheduling.png",
+    "domain": "acuity-scheduling.com",
+    "founder": {
+      "name": "Gavin Zuchlinski",
+      "title": "Founder",
+      "photo": "/founders/gavin-zuchlinski.jpg",
+      "linkedin": "http://www.linkedin.com/in/gavin-zuchlinski-30b06885"
+    }
+  },
+  "aianswer": {
+    "displayName": "AI Answer",
+    "logoUrl": "https://cdn.activepieces.com/pieces/aianswer.png",
+    "domain": "aianswer.com",
+    "founder": null
+  },
+  "agentx": {
+    "displayName": "AgentX",
+    "logoUrl": "https://cdn.activepieces.com/pieces/agentx.png",
+    "domain": "agentx.com",
+    "founder": null
+  },
+  "afforai": {
+    "displayName": "Afforai",
+    "logoUrl": "https://cdn.activepieces.com/pieces/afforai.png",
+    "domain": "afforai.com",
+    "founder": null
+  },
+  "aidbase": {
+    "displayName": "Aidbase",
+    "logoUrl": "https://cdn.activepieces.com/pieces/aidbase.png",
+    "domain": "aidbase.com",
+    "founder": null
+  },
+  "ai": {
+    "displayName": "AI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/text-ai.svg",
+    "domain": "ai.com",
+    "founder": null
+  },
+  "air-ops": {
+    "displayName": "AirOps",
+    "logoUrl": "https://cdn.activepieces.com/pieces/air-ops.png",
+    "domain": "air-ops.com",
+    "founder": null
+  },
+  "airparser": {
+    "displayName": "Airparser",
+    "logoUrl": "https://cdn.activepieces.com/pieces/airparser.png",
+    "domain": "airparser.com",
+    "founder": null
+  },
+  "airtable": {
+    "displayName": "Airtable",
+    "logoUrl": "https://cdn.activepieces.com/pieces/airtable.png",
+    "domain": "airtable.com",
+    "founder": {
+      "name": "Howie Liu",
+      "title": "Cofounder, CEO",
+      "photo": "/founders/howie-liu.jpg",
+      "linkedin": "http://www.linkedin.com/in/howieliu"
+    }
+  },
+  "aircall": {
+    "displayName": "Aircall",
+    "logoUrl": "https://cdn.activepieces.com/pieces/aircall.png",
+    "domain": "aircall.com",
+    "founder": {
+      "name": "Olivier Pailhes",
+      "title": "Co-founder at Aircall",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "airtop": {
+    "displayName": "Airtop",
+    "logoUrl": "https://cdn.activepieces.com/pieces/airtop.png",
+    "domain": "airtop.com",
+    "founder": null
+  },
+  "apitable": {
+    "displayName": "AITable",
+    "logoUrl": "https://cdn.activepieces.com/pieces/apitable.png",
+    "domain": "apitable.com",
+    "founder": null
+  },
+  "amazon-sns": {
+    "displayName": "Amazon SNS",
+    "logoUrl": "https://cdn.activepieces.com/pieces/amazon-sns.png",
+    "domain": "amazon-sns.com",
+    "founder": {
+      "name": "Andy Jassy",
+      "title": "President and CEO",
+      "photo": "/founders/andy-jassy.jpg",
+      "linkedin": "http://www.linkedin.com/in/andy-jassy-8b1615"
+    }
+  },
+  "alt-text-ai": {
+    "displayName": "AltText.ai",
+    "logoUrl": "https://cdn.activepieces.com/pieces/alt-text-ai.png",
+    "domain": "alt-text-ai.com",
+    "founder": null
+  },
+  "alttextify": {
+    "displayName": "AltTextify",
+    "logoUrl": "https://cdn.activepieces.com/pieces/alttextify.png",
+    "domain": "alttextify.com",
+    "founder": null
+  },
+  "amazon-s3": {
+    "displayName": "Amazon S3",
+    "logoUrl": "https://cdn.activepieces.com/pieces/amazon-s3.png",
+    "domain": "amazon-s3.com",
+    "founder": {
+      "name": "Andy Jassy",
+      "title": "President and CEO",
+      "photo": "/founders/andy-jassy.jpg",
+      "linkedin": "http://www.linkedin.com/in/andy-jassy-8b1615"
+    }
+  },
+  "aminos": {
+    "displayName": "Aminos",
+    "logoUrl": "https://cdn.activepieces.com/pieces/aminos.png",
+    "domain": "aminos.com",
+    "founder": null
+  },
+  "claude": {
+    "displayName": "Anthropic Claude",
+    "logoUrl": "https://cdn.activepieces.com/pieces/claude.png",
+    "domain": "claude.com",
+    "founder": {
+      "name": "Dario Amodei",
+      "title": "CEO and Co-Founder",
+      "photo": "/founders/dario-amodei.jpg",
+      "linkedin": "http://www.linkedin.com/in/dario-amodei-3934934"
+    }
+  },
+  "ampeco": {
+    "displayName": "AMPECO",
+    "logoUrl": "https://cdn.activepieces.com/pieces/ampeco.png",
+    "domain": "ampeco.com",
+    "founder": null
+  },
+  "anyhook-graphql": {
+    "displayName": "AnyHook GraphQL",
+    "logoUrl": "https://cdn.activepieces.com/pieces/anyhook-graphql.png",
+    "domain": "anyhook-graphql.com",
+    "founder": null
+  },
+  "amazon-sqs": {
+    "displayName": "Amazon SQS",
+    "logoUrl": "https://cdn.activepieces.com/pieces/aws-sqs.png",
+    "domain": "amazon-sqs.com",
+    "founder": {
+      "name": "Andy Jassy",
+      "title": "President and CEO",
+      "photo": "/founders/andy-jassy.jpg",
+      "linkedin": "http://www.linkedin.com/in/andy-jassy-8b1615"
+    }
+  },
+  "anyhook-websocket": {
+    "displayName": "AnyHook Websocket",
+    "logoUrl": "https://cdn.activepieces.com/pieces/anyhook-websocket.png",
+    "domain": "anyhook-websocket.com",
+    "founder": null
+  },
+  "apify": {
+    "displayName": "Apify",
+    "logoUrl": "https://cdn.activepieces.com/pieces/apify.svg",
+    "domain": "apify.com",
+    "founder": {
+      "name": "Jan Curn",
+      "title": "Founder and CEO",
+      "photo": "/founders/jan-curn.jpg",
+      "linkedin": "http://www.linkedin.com/in/jancurn"
+    }
+  },
+  "appfollow": {
+    "displayName": "AppFollow",
+    "logoUrl": "https://cdn.activepieces.com/pieces/appfollow.png",
+    "domain": "appfollow.com",
+    "founder": null
+  },
+  "apitemplate-io": {
+    "displayName": "APITemplate.io",
+    "logoUrl": "https://cdn.activepieces.com/pieces/apitemplate-io.png",
+    "domain": "apitemplate-io.com",
+    "founder": null
+  },
+  "apollo": {
+    "displayName": "Apollo",
+    "logoUrl": "https://cdn.activepieces.com/pieces/apollo.png",
+    "domain": "apollo.com",
+    "founder": {
+      "name": "Tim Zheng",
+      "title": "Founder & CEO",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/tim-zheng"
+    }
+  },
+  "approval": {
+    "displayName": "Approval (Legacy)",
+    "logoUrl": "https://cdn.activepieces.com/pieces/approval.svg",
+    "domain": "approval.com",
+    "founder": null
+  },
+  "ashby": {
+    "displayName": "Ashby",
+    "logoUrl": "https://cdn.activepieces.com/pieces/ashby.png",
+    "domain": "ashby.com",
+    "founder": {
+      "name": "Benji Encz",
+      "title": "Building people software for high growth companies.",
+      "photo": "/founders/benji-encz.jpg",
+      "linkedin": null
+    }
+  },
+  "asana": {
+    "displayName": "Asana",
+    "logoUrl": "https://cdn.activepieces.com/pieces/asana.png",
+    "domain": "asana.com",
+    "founder": {
+      "name": "Dustin Moskovitz",
+      "title": "CEO & Co-Founder",
+      "photo": "/founders/dustin-moskovitz.jpg",
+      "linkedin": "http://www.linkedin.com/in/dmoskov"
+    }
+  },
+  "assembled": {
+    "displayName": "Assembled",
+    "logoUrl": "https://cdn.activepieces.com/pieces/assembled.png",
+    "domain": "assembled.com",
+    "founder": null
+  },
+  "ask-handle": {
+    "displayName": "AskHandle",
+    "logoUrl": "https://cdn.activepieces.com/pieces/ask-handle.png",
+    "domain": "ask-handle.com",
+    "founder": null
+  },
+  "assemblyai": {
+    "displayName": "AssemblyAI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/assemblyai.png",
+    "domain": "assemblyai.com",
+    "founder": {
+      "name": "Dylan Fox",
+      "title": "Founder/CEO",
+      "photo": "/founders/dylan-fox.jpg",
+      "linkedin": "http://www.linkedin.com/in/dylanbfox"
+    }
+  },
+  "attio": {
+    "displayName": "Attio",
+    "logoUrl": "https://cdn.activepieces.com/pieces/attio.png",
+    "domain": "attio.com",
+    "founder": {
+      "name": "Nicolas Sharp",
+      "title": "Founder and CEO",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/nicolas-sharp-a92726b1"
+    }
+  },
+  "autocalls": {
+    "displayName": "Autocalls",
+    "logoUrl": "https://cdn.activepieces.com/pieces/autocalls.png",
+    "domain": "autocalls.com",
+    "founder": null
+  },
+  "avoma": {
+    "displayName": "Avoma",
+    "logoUrl": "https://cdn.activepieces.com/pieces/avoma.png",
+    "domain": "avoma.com",
+    "founder": {
+      "name": "Aditya Kothadiya",
+      "title": "Founder & CEO",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/adityakothadiya"
+    }
+  },
+  "azure-blob-storage": {
+    "displayName": "Azure Blob Storage",
+    "logoUrl": "https://cdn.activepieces.com/pieces/azure-blob-storage.png",
+    "domain": "azure-blob-storage.com",
+    "founder": {
+      "name": "Satya Nadella",
+      "title": "Chairman and CEO, Member Board of Trustees",
+      "photo": "/founders/satya-nadella.jpg",
+      "linkedin": "http://www.linkedin.com/in/satyanadella"
+    }
+  },
+  "bamboohr": {
+    "displayName": "BambooHR",
+    "logoUrl": "https://cdn.activepieces.com/pieces/bamboohr.png",
+    "domain": "bamboohr.com",
+    "founder": {
+      "name": "Ben Peterson",
+      "title": "Co-founder and Co-chairman",
+      "photo": "/founders/ben-peterson.jpg",
+      "linkedin": "http://www.linkedin.com/in/petersonben"
+    }
+  },
+  "bannerbear": {
+    "displayName": "Bannerbear",
+    "logoUrl": "https://cdn.activepieces.com/pieces/bannerbear.png",
+    "domain": "bannerbear.com",
+    "founder": {
+      "name": "Jon Yongfook",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "azure-openai": {
+    "displayName": "Azure OpenAI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/azure-openai.png",
+    "domain": "azure-openai.com",
+    "founder": {
+      "name": "Satya Nadella",
+      "title": "Chairman and CEO, Member Board of Trustees",
+      "photo": "/founders/satya-nadella.jpg",
+      "linkedin": "http://www.linkedin.com/in/satyanadella"
+    }
+  },
+  "backblaze": {
+    "displayName": "Backblaze",
+    "logoUrl": "https://cdn.activepieces.com/pieces/backblaze.png",
+    "domain": "backblaze.com",
+    "founder": null
+  },
+  "azure-communication-services": {
+    "displayName": "Azure Communication Services",
+    "logoUrl": "https://cdn.activepieces.com/pieces/azure-communication-services.png",
+    "domain": "azure-communication-services.com",
+    "founder": {
+      "name": "Satya Nadella",
+      "title": "Chairman and CEO, Member Board of Trustees",
+      "photo": "/founders/satya-nadella.jpg",
+      "linkedin": "http://www.linkedin.com/in/satyanadella"
+    }
+  },
+  "barcode-lookup": {
+    "displayName": "Barcode Lookup",
+    "logoUrl": "https://cdn.activepieces.com/pieces/barcode-lookup.png",
+    "domain": "barcode-lookup.com",
+    "founder": null
+  },
+  "baremetrics": {
+    "displayName": "Baremetrics",
+    "logoUrl": "https://cdn.activepieces.com/pieces/baremetrics.png",
+    "domain": "baremetrics.com",
+    "founder": {
+      "name": "Josh Pigford",
+      "title": "Founder",
+      "photo": "/founders/josh-pigford.jpg",
+      "linkedin": "http://www.linkedin.com/in/joshpigford"
+    }
+  },
+  "beamer": {
+    "displayName": "Beamer",
+    "logoUrl": "https://cdn.activepieces.com/pieces/beamer.png",
+    "domain": "beamer.com",
+    "founder": {
+      "name": "Euge Cuccaro",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "baserow": {
+    "displayName": "Baserow",
+    "logoUrl": "https://cdn.activepieces.com/pieces/baserow.png",
+    "domain": "baserow.com",
+    "founder": {
+      "name": "Bram Wiepjes",
+      "title": "CEO and Founder",
+      "photo": "/founders/bram-wiepjes.jpg",
+      "linkedin": "http://www.linkedin.com/in/bram-wiepjes-a197a5129"
+    }
+  },
+  "base44": {
+    "displayName": "Base44",
+    "logoUrl": "https://cdn.activepieces.com/pieces/base44.png",
+    "domain": "base44.com",
+    "founder": null
+  },
+  "bigcommerce": {
+    "displayName": "Bigcommerce",
+    "logoUrl": "https://cdn.activepieces.com/pieces/bigcommerce.png",
+    "domain": "bigcommerce.com",
+    "founder": {
+      "name": "Eddie Machaalani",
+      "title": "Angel Investor",
+      "photo": "/founders/eddie-machaalani.jpg",
+      "linkedin": "http://www.linkedin.com/in/machaalani"
+    }
+  },
+  "beehiiv": {
+    "displayName": "Beehiiv",
+    "logoUrl": "https://cdn.activepieces.com/pieces/beehiiv.png",
+    "domain": "beehiiv.com",
+    "founder": {
+      "name": "Tyler Denk",
+      "title": "Chief Executive Officer",
+      "photo": "/founders/tyler-denk.jpg",
+      "linkedin": "http://www.linkedin.com/in/tyler-denk"
+    }
+  },
+  "bigin-by-zoho": {
+    "displayName": "Bigin by Zoho CRM",
+    "logoUrl": "https://cdn.activepieces.com/pieces/bigin-by-zoho.png",
+    "domain": "bigin-by-zoho.com",
+    "founder": null
+  },
+  "bexio": {
+    "displayName": "Bexio",
+    "logoUrl": "https://cdn.activepieces.com/pieces/bexio.png",
+    "domain": "bexio.com",
+    "founder": null
+  },
+  "bettermode": {
+    "displayName": "Bettermode",
+    "logoUrl": "https://cdn.activepieces.com/pieces/bettermode.png",
+    "domain": "bettermode.com",
+    "founder": {
+      "name": "Morteza Mashayekhi",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "messagebird": {
+    "displayName": "Bird",
+    "logoUrl": "https://cdn.activepieces.com/pieces/messagebird.png",
+    "domain": "messagebird.com",
+    "founder": {
+      "name": "Robert Vis",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "bika": {
+    "displayName": "Bika.ai",
+    "logoUrl": "https://cdn.activepieces.com/pieces/bika.png",
+    "domain": "bika.com",
+    "founder": null
+  },
+  "billplz": {
+    "displayName": "Billplz",
+    "logoUrl": "https://cdn.activepieces.com/pieces/billplz.png",
+    "domain": "billplz.com",
+    "founder": null
+  },
+  "binance": {
+    "displayName": "Binance",
+    "logoUrl": "https://cdn.activepieces.com/pieces/binance.png",
+    "domain": "binance.com",
+    "founder": {
+      "name": "Changpeng Zhao",
+      "title": "Binance Founder",
+      "photo": "/founders/changpeng-zhao.jpg",
+      "linkedin": "http://www.linkedin.com/in/cpzhao"
+    }
+  },
+  "bitly": {
+    "displayName": "Bitly",
+    "logoUrl": "https://cdn.activepieces.com/pieces/bitly.png",
+    "domain": "bitly.com",
+    "founder": {
+      "name": "John Borthwick",
+      "title": "CEO",
+      "photo": "/founders/john-borthwick.jpg",
+      "linkedin": "http://www.linkedin.com/in/jborthwick"
+    }
+  },
+  "bloomerang": {
+    "displayName": "Bloomerang",
+    "logoUrl": "https://cdn.activepieces.com/pieces/bloomerang.png",
+    "domain": "bloomerang.com",
+    "founder": {
+      "name": "Jay Love",
+      "title": "Active Angel Investor, Former CEO, Tech Entrepreneur/Founder, Fundraiser, Board Member, Keynote Speaker and Author",
+      "photo": "/founders/jay-love.jpg",
+      "linkedin": null
+    }
+  },
+  "bolna": {
+    "displayName": "Bolna AI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/bolna.png",
+    "domain": "bolna.com",
+    "founder": {
+      "name": "Saahil Mehta",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "blockscout": {
+    "displayName": "Blockscout",
+    "logoUrl": "https://cdn.activepieces.com/pieces/blockscout.png",
+    "domain": "blockscout.com",
+    "founder": null
+  },
+  "blackbaud": {
+    "displayName": "Blackbaud",
+    "logoUrl": "https://cdn.activepieces.com/pieces/blackbaud.png",
+    "domain": "blackbaud.com",
+    "founder": null
+  },
+  "bluesky": {
+    "displayName": "Bluesky",
+    "logoUrl": "https://cdn.activepieces.com/pieces/bluesky.png",
+    "domain": "bluesky.com",
+    "founder": {
+      "name": "Jay Graber",
+      "title": "CEO",
+      "photo": "/founders/jay-graber.jpg",
+      "linkedin": "http://www.linkedin.com/in/jaygraber"
+    }
+  },
+  "sendinblue": {
+    "displayName": "Brevo",
+    "logoUrl": "https://cdn.activepieces.com/pieces/brevo.png",
+    "domain": "sendinblue.com",
+    "founder": {
+      "name": "Armand Thiberge",
+      "title": "Founder",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/armand-thiberge-72a4559"
+    }
+  },
+  "brilliant-directories": {
+    "displayName": "Brilliant Directories",
+    "logoUrl": "https://cdn.activepieces.com/pieces/brilliant-directories.png",
+    "domain": "brilliant-directories.com",
+    "founder": null
+  },
+  "bonjoro": {
+    "displayName": "Bonjoro",
+    "logoUrl": "https://cdn.activepieces.com/pieces/bonjoro.png",
+    "domain": "bonjoro.com",
+    "founder": {
+      "name": "Matthew Barnett",
+      "title": "Papa Bear",
+      "photo": "/founders/matthew-barnett.jpg",
+      "linkedin": "http://www.linkedin.com/in/mbjbarnett"
+    }
+  },
+  "box": {
+    "displayName": "Box",
+    "logoUrl": "https://cdn.activepieces.com/pieces/box.png",
+    "domain": "box.com",
+    "founder": {
+      "name": "Aaron Levie",
+      "title": "CEO",
+      "photo": "/founders/aaron-levie.jpg",
+      "linkedin": "http://www.linkedin.com/in/boxaaron"
+    }
+  },
+  "bookedin": {
+    "displayName": "Bookedin",
+    "logoUrl": "https://cdn.activepieces.com/pieces/bookedin.png",
+    "domain": "bookedin.com",
+    "founder": null
+  },
+  "browse-ai": {
+    "displayName": "Browse AI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/browse-ai.png",
+    "domain": "browse-ai.com",
+    "founder": null
+  },
+  "bumpups": {
+    "displayName": "Bumpups",
+    "logoUrl": "https://cdn.activepieces.com/pieces/bumpups.png",
+    "domain": "bumpups.com",
+    "founder": null
+  },
+  "browserless": {
+    "displayName": "Browserless",
+    "logoUrl": "https://cdn.activepieces.com/pieces/browserless.png",
+    "domain": "browserless.com",
+    "founder": null
+  },
+  "bubble": {
+    "displayName": "Bubble",
+    "logoUrl": "https://cdn.activepieces.com/pieces/bubble.png",
+    "domain": "bubble.com",
+    "founder": {
+      "name": "Emmanuel Straschnov",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "bursty-ai": {
+    "displayName": "BurstyAI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/bursty-ai.png",
+    "domain": "bursty-ai.com",
+    "founder": null
+  },
+  "camb-ai": {
+    "displayName": "Camb.AI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/camb-ai.png",
+    "domain": "camb-ai.com",
+    "founder": null
+  },
+  "calendly": {
+    "displayName": "Calendly",
+    "logoUrl": "https://cdn.activepieces.com/pieces/calendly.png",
+    "domain": "calendly.com",
+    "founder": {
+      "name": "Tope Awotona",
+      "title": "CEO + Founder",
+      "photo": "/founders/tope-awotona.jpg",
+      "linkedin": "http://www.linkedin.com/in/bawotona"
+    }
+  },
+  "rounded-studio": {
+    "displayName": "Call-rounded",
+    "logoUrl": "https://cdn.activepieces.com/pieces/call-rounded.png",
+    "domain": "rounded-studio.com",
+    "founder": null
+  },
+  "cal-com": {
+    "displayName": "Cal.com",
+    "logoUrl": "https://cdn.activepieces.com/pieces/cal.com.png",
+    "domain": "cal-com.com",
+    "founder": {
+      "name": "Peer Richelsen",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "campaign-monitor": {
+    "displayName": "Campaign Monitor",
+    "logoUrl": "https://cdn.activepieces.com/pieces/campaign-monitor.png",
+    "domain": "campaign-monitor.com",
+    "founder": {
+      "name": "Dave Greiner",
+      "title": "Co-founder",
+      "photo": "/founders/dave-greiner.jpg",
+      "linkedin": "http://www.linkedin.com/in/davegreiner"
+    }
+  },
+  "captain-data": {
+    "displayName": "Captain-data",
+    "logoUrl": "https://cdn.activepieces.com/pieces/captain-data.png",
+    "domain": "captain-data.com",
+    "founder": {
+      "name": "Guillaume Cabane",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "cashfree-payments": {
+    "displayName": "Cashfree Payments",
+    "logoUrl": "https://cdn.activepieces.com/pieces/cashfree-payments.png",
+    "domain": "cashfree-payments.com",
+    "founder": null
+  },
+  "capsule-crm": {
+    "displayName": "Capsule CRM",
+    "logoUrl": "https://cdn.activepieces.com/pieces/capsule-crm.png",
+    "domain": "capsule-crm.com",
+    "founder": {
+      "name": "Duncan Stockdill",
+      "title": "Co-founder & Director",
+      "photo": "/founders/duncan-stockdill.jpg",
+      "linkedin": "http://www.linkedin.com/in/duncanstockdill"
+    }
+  },
+  "cartloom": {
+    "displayName": "Cartloom",
+    "logoUrl": "https://cdn.activepieces.com/pieces/cartloom.png",
+    "domain": "cartloom.com",
+    "founder": null
+  },
+  "@activepieces/cashfree-payments": {
+    "displayName": "Cashfree Payments",
+    "logoUrl": "https://cdn.activepieces.com/pieces/cashfree-payments.png",
+    "domain": "@activepieces/cashfree-payments.com",
+    "founder": null
+  },
+  "chartly": {
+    "displayName": "Chartly",
+    "logoUrl": "https://cdn.activepieces.com/pieces/chartly.png",
+    "domain": "chartly.com",
+    "founder": null
+  },
+  "certopus": {
+    "displayName": "Certopus",
+    "logoUrl": "https://cdn.activepieces.com/pieces/certopus.png",
+    "domain": "certopus.com",
+    "founder": {
+      "name": "Shivam Gupta",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "chaindesk": {
+    "displayName": "Chaindesk",
+    "logoUrl": "https://cdn.activepieces.com/pieces/chaindesk.png",
+    "domain": "chaindesk.com",
+    "founder": null
+  },
+  "chainalysis-api": {
+    "displayName": "Chainalysis Screening API",
+    "logoUrl": "https://cdn.activepieces.com/pieces/chainalysis-api.jpg",
+    "domain": "chainalysis-api.com",
+    "founder": null
+  },
+  "chargekeep": {
+    "displayName": "ChargeKeep",
+    "logoUrl": "https://cdn.activepieces.com/pieces/chargekeep.png",
+    "domain": "chargekeep.com",
+    "founder": null
+  },
+  "chatfly": {
+    "displayName": "Chatfly",
+    "logoUrl": "https://cdn.activepieces.com/pieces/chatfly.png",
+    "domain": "chatfly.com",
+    "founder": null
+  },
+  "chatling": {
+    "displayName": "Chatling",
+    "logoUrl": "https://cdn.activepieces.com/pieces/chatling.png",
+    "domain": "chatling.com",
+    "founder": null
+  },
+  "chatbase": {
+    "displayName": "Chatbase",
+    "logoUrl": "https://cdn.activepieces.com/pieces/chatbase.png",
+    "domain": "chatbase.com",
+    "founder": {
+      "name": "Yasser Elsaid",
+      "title": "CEO",
+      "photo": "/founders/yasser-elsaid.jpg",
+      "linkedin": "http://www.linkedin.com/in/yasserelsaid"
+    }
+  },
+  "chat-data": {
+    "displayName": "Chat Data",
+    "logoUrl": "https://cdn.activepieces.com/pieces/chat-data.png",
+    "domain": "chat-data.com",
+    "founder": null
+  },
+  "chat-aid": {
+    "displayName": "Chat Aid",
+    "logoUrl": "https://cdn.activepieces.com/pieces/chat-aid.png",
+    "domain": "chat-aid.com",
+    "founder": null
+  },
+  "chatsistant": {
+    "displayName": "Chatsistant",
+    "logoUrl": "https://cdn.activepieces.com/pieces/chatsistant.png",
+    "domain": "chatsistant.com",
+    "founder": null
+  },
+  "clarifai": {
+    "displayName": "Clarifai",
+    "logoUrl": "https://cdn.activepieces.com/pieces/clarifai.png",
+    "domain": "clarifai.com",
+    "founder": {
+      "name": "Matthew Zeiler",
+      "title": "Founder & CEO",
+      "photo": "/founders/matt-zeiler.jpg",
+      "linkedin": "http://www.linkedin.com/in/mattzeiler"
+    }
+  },
+  "circle": {
+    "displayName": "Circle",
+    "logoUrl": "https://cdn.activepieces.com/pieces/circle.png",
+    "domain": "circle.com",
+    "founder": {
+      "name": "Sid Yadav",
+      "title": "Co-founder & CEO",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/sidyadav"
+    }
+  },
+  "chatnode": {
+    "displayName": "ChatNode",
+    "logoUrl": "https://cdn.activepieces.com/pieces/chatnode.png",
+    "domain": "chatnode.com",
+    "founder": null
+  },
+  "checkout": {
+    "displayName": "Checkout.com",
+    "logoUrl": "https://cdn.activepieces.com/pieces/checkout.png",
+    "domain": "checkout.com",
+    "founder": {
+      "name": "Guillaume Pousaz",
+      "title": "Founder & CEO",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/guillaumepousaz"
+    }
+  },
+  "clearoutphone": {
+    "displayName": "ClearoutPhone",
+    "logoUrl": "https://cdn.activepieces.com/pieces/clearoutphone.png",
+    "domain": "clearoutphone.com",
+    "founder": null
+  },
+  "clickfunnels": {
+    "displayName": "ClickFunnels",
+    "logoUrl": "https://cdn.activepieces.com/pieces/clickfunnels.png",
+    "domain": "clickfunnels.com",
+    "founder": {
+      "name": "Russell Brunson",
+      "title": "Owner",
+      "photo": "/founders/russell-brunson.jpg",
+      "linkedin": "http://www.linkedin.com/in/russellbrunson"
+    }
+  },
+  "clicdata": {
+    "displayName": "Clicdata",
+    "logoUrl": "https://cdn.activepieces.com/pieces/clicdata.png",
+    "domain": "clicdata.com",
+    "founder": null
+  },
+  "clearout": {
+    "displayName": "Clearout",
+    "logoUrl": "https://cdn.activepieces.com/pieces/clearout.png",
+    "domain": "clearout.com",
+    "founder": {
+      "name": "Elie Khoury",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "clicksend": {
+    "displayName": "ClickSend SMS",
+    "logoUrl": "https://cdn.activepieces.com/pieces/clicksend.png",
+    "domain": "clicksend.com",
+    "founder": {
+      "name": "Matthew Larner",
+      "title": "Founder & Director",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/matthew-larner-31390558"
+    }
+  },
+  "clockodo": {
+    "displayName": "Clockodo",
+    "logoUrl": "https://cdn.activepieces.com/pieces/clockodo.png",
+    "domain": "clockodo.com",
+    "founder": {
+      "name": "Andreas Hubel",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "clockify": {
+    "displayName": "Clockify",
+    "logoUrl": "https://cdn.activepieces.com/pieces/clockify.png",
+    "domain": "clockify.com",
+    "founder": {
+      "name": "Ivan Rajevic",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "cloudconvert": {
+    "displayName": "CloudConvert",
+    "logoUrl": "https://cdn.activepieces.com/pieces/cloudconvert.png",
+    "domain": "cloudconvert.com",
+    "founder": {
+      "name": "Josias Montag",
+      "title": "Founder of Lunaweb GmbH",
+      "photo": "/founders/josias-montag.jpg",
+      "linkedin": null
+    }
+  },
+  "clickup": {
+    "displayName": "ClickUp",
+    "logoUrl": "https://cdn.activepieces.com/pieces/clickup.png",
+    "domain": "clickup.com",
+    "founder": {
+      "name": "Zeb Evans",
+      "title": "Founder & CEO",
+      "photo": "/founders/zeb-evans.jpg",
+      "linkedin": "http://www.linkedin.com/in/zebevansclickup"
+    }
+  },
+  "close": {
+    "displayName": "Close",
+    "logoUrl": "https://cdn.activepieces.com/pieces/close.png",
+    "domain": "close.com",
+    "founder": {
+      "name": "Steli Efti",
+      "title": "CEO",
+      "photo": "/founders/steli-efti.jpg",
+      "linkedin": "http://www.linkedin.com/in/steliefti"
+    }
+  },
+  "cody": {
+    "displayName": "Cody",
+    "logoUrl": "https://cdn.activepieces.com/pieces/cody.png",
+    "domain": "cody.com",
+    "founder": null
+  },
+  "cloutly": {
+    "displayName": "Cloutly",
+    "logoUrl": "https://cdn.activepieces.com/pieces/cloutly.svg",
+    "domain": "cloutly.com",
+    "founder": null
+  },
+  "cloudinary": {
+    "displayName": "Cloudinary",
+    "logoUrl": "https://cdn.activepieces.com/pieces/cloudinary.png",
+    "domain": "cloudinary.com",
+    "founder": {
+      "name": "Itai Lahan",
+      "title": "Co-Founder and CEO",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/itail"
+    }
+  },
+  "coda": {
+    "displayName": "Coda",
+    "logoUrl": "https://cdn.activepieces.com/pieces/coda.png",
+    "domain": "coda.com",
+    "founder": {
+      "name": "Shishir Mehrotra",
+      "title": "CEO",
+      "photo": "/founders/shishir-mehrotra.jpg",
+      "linkedin": "http://www.linkedin.com/in/shishirmehrotra"
+    }
+  },
+  "cognito-forms": {
+    "displayName": "Cognito Forms",
+    "logoUrl": "https://cdn.activepieces.com/pieces/cognito-forms.png",
+    "domain": "cognito-forms.com",
+    "founder": {
+      "name": "Dana Larson",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "constant-contact": {
+    "displayName": "Constant Contact",
+    "logoUrl": "https://cdn.activepieces.com/pieces/constant-contact.png",
+    "domain": "constant-contact.com",
+    "founder": {
+      "name": "Randy Parker",
+      "title": "small biz marketing software -  founder Brevi & Constant Contact - St Pete FL and Boston MA",
+      "photo": "/founders/randy-parker.jpg",
+      "linkedin": "http://www.linkedin.com/in/randyparker"
+    }
+  },
+  "cometapi": {
+    "displayName": "CometAPI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/cometapi.png",
+    "domain": "cometapi.com",
+    "founder": null
+  },
+  "confluence": {
+    "displayName": "Confluence",
+    "logoUrl": "https://cdn.activepieces.com/pieces/confluence.png",
+    "domain": "confluence.com",
+    "founder": {
+      "name": "Mike Cannon-Brookes",
+      "title": "Principal",
+      "photo": "/founders/mike-cannon-brookes.jpg",
+      "linkedin": "http://www.linkedin.com/in/mcannonbrookes"
+    }
+  },
+  "connections": {
+    "displayName": "Connections",
+    "logoUrl": "https://cdn.activepieces.com/pieces/connections.png",
+    "domain": "connections.com",
+    "founder": null
+  },
+  "comfyicu": {
+    "displayName": "Comfy.ICU",
+    "logoUrl": "https://cdn.activepieces.com/pieces/comfyicu.png",
+    "domain": "comfyicu.com",
+    "founder": null
+  },
+  "convertkit": {
+    "displayName": "ConvertKit",
+    "logoUrl": "https://cdn.activepieces.com/pieces/convertkit.png",
+    "domain": "convertkit.com",
+    "founder": {
+      "name": "Nathan Barry",
+      "title": "Chief Executive Officer",
+      "photo": "/founders/nathan-barry.jpg",
+      "linkedin": "http://www.linkedin.com/in/nathanbarry"
+    }
+  },
+  "contiguity": {
+    "displayName": "Contiguity",
+    "logoUrl": "https://cdn.activepieces.com/pieces/contiguity.png",
+    "domain": "contiguity.com",
+    "founder": null
+  },
+  "copper": {
+    "displayName": "Copper",
+    "logoUrl": "https://cdn.activepieces.com/pieces/copper.png",
+    "domain": "copper.com",
+    "founder": {
+      "name": "Jon Lee",
+      "title": "Entrepreneur and Investor",
+      "photo": "/founders/jon-lee.jpg",
+      "linkedin": null
+    }
+  },
+  "contextual-ai": {
+    "displayName": "Contextual AI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/contextual-ai.png",
+    "domain": "contextual-ai.com",
+    "founder": null
+  },
+  "contentful": {
+    "displayName": "Contentful",
+    "logoUrl": "https://cdn.activepieces.com/pieces/contentful.png",
+    "domain": "contentful.com",
+    "founder": {
+      "name": "Sascha Konietzke",
+      "title": "Chief Strategy Officer, Board Member, Co-Founder",
+      "photo": "/founders/sascha-konietzke.jpg",
+      "linkedin": "http://www.linkedin.com/in/konietzke"
+    }
+  },
+  "crypto": {
+    "displayName": "Crypto",
+    "logoUrl": "https://cdn.activepieces.com/pieces/crypto.png",
+    "domain": "crypto.com",
+    "founder": null
+  },
+  "crisp": {
+    "displayName": "Crisp",
+    "logoUrl": "https://cdn.activepieces.com/pieces/crisp.png",
+    "domain": "crisp.com",
+    "founder": {
+      "name": "Baptiste Jamin",
+      "title": "Co-founder",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/baptistejamin"
+    }
+  },
+  "cryptolens": {
+    "displayName": "Cryptolens",
+    "logoUrl": "https://cdn.activepieces.com/pieces/cryptolens.png",
+    "domain": "cryptolens.com",
+    "founder": null
+  },
+  "copy-ai": {
+    "displayName": "Copy.ai",
+    "logoUrl": "https://cdn.activepieces.com/pieces/copy-ai.png",
+    "domain": "copy-ai.com",
+    "founder": {
+      "name": "Chris Lu",
+      "title": "Founder/CTO",
+      "photo": "/founders/chris-lu.jpg",
+      "linkedin": "http://www.linkedin.com/in/chris-lu11"
+    }
+  },
+  "couchbase": {
+    "displayName": "Couchbase",
+    "logoUrl": "https://cdn.activepieces.com/pieces/couchbase.png",
+    "domain": "couchbase.com",
+    "founder": null
+  },
+  "cursor": {
+    "displayName": "Cursor",
+    "logoUrl": "https://cdn.activepieces.com/pieces/cursor.png",
+    "domain": "cursor.com",
+    "founder": {
+      "name": "Michael Truell",
+      "title": "Building Cursor",
+      "photo": "/founders/michael-truell.jpg",
+      "linkedin": null
+    }
+  },
+  "customer-io": {
+    "displayName": "customer.io",
+    "logoUrl": "https://cdn.activepieces.com/pieces/customerio.png",
+    "domain": "customer-io.com",
+    "founder": {
+      "name": "Colin Nederkoorn",
+      "title": "Founder & CEO",
+      "photo": "/founders/colin-nederkoorn.jpg",
+      "linkedin": "http://www.linkedin.com/in/colinnederkoorn"
+    }
+  },
+  "csv": {
+    "displayName": "CSV",
+    "logoUrl": "https://cdn.activepieces.com/pieces/csv.svg",
+    "domain": "csv.com",
+    "founder": null
+  },
+  "customgpt": {
+    "displayName": "CustomGPT",
+    "logoUrl": "https://cdn.activepieces.com/pieces/customgpt.png",
+    "domain": "customgpt.com",
+    "founder": null
+  },
+  "cyberark": {
+    "displayName": "CyberArk",
+    "logoUrl": "https://cdn.activepieces.com/pieces/cyberark.png",
+    "domain": "cyberark.com",
+    "founder": null
+  },
+  "dappier": {
+    "displayName": "Dappier",
+    "logoUrl": "https://cdn.activepieces.com/pieces/dappier.png",
+    "founder": null
+  },
+  "dashworks": {
+    "displayName": "Dashworks",
+    "logoUrl": "https://cdn.activepieces.com/pieces/dashworks.png",
+    "founder": null
+  },
+  "data-mapper": {
+    "displayName": "Data Mapper",
+    "logoUrl": "https://cdn.activepieces.com/pieces/data-mapper.png",
+    "founder": null
+  },
+  "data-summarizer": {
+    "displayName": "Data Summarizer",
+    "logoUrl": "https://cdn.activepieces.com/pieces/data-summarizer.svg",
+    "founder": null
+  },
+  "datadog": {
+    "displayName": "Datadog",
+    "logoUrl": "https://cdn.activepieces.com/pieces/datadog.png",
+    "founder": {
+      "name": "Olivier Pomel",
+      "title": "Co-founder, CEO",
+      "photo": "/founders/olivier-pomel.jpg",
+      "linkedin": "http://www.linkedin.com/in/olivierpomel"
+    }
+  },
+  "datafuel": {
+    "displayName": "DataFuel",
+    "logoUrl": "https://cdn.activepieces.com/pieces/datafuel.png",
+    "founder": null
+  },
+  "date-helper": {
+    "displayName": "Date Helper",
+    "logoUrl": "https://cdn.activepieces.com/pieces/calendar_piece.svg",
+    "founder": null
+  },
+  "datocms": {
+    "displayName": "Dato CMS",
+    "logoUrl": "https://cdn.activepieces.com/pieces/datocms.png",
+    "founder": null
+  },
+  "deepgram": {
+    "displayName": "Deepgram",
+    "logoUrl": "https://cdn.activepieces.com/pieces/deepgram.png",
+    "founder": {
+      "name": "Scott Stephenson",
+      "title": "Co-Founder, CEO",
+      "photo": "/founders/scott-stephenson.jpg",
+      "linkedin": "http://www.linkedin.com/in/scott-stephenson-"
+    }
+  },
+  "deepl": {
+    "displayName": "DeepL",
+    "logoUrl": "https://cdn.activepieces.com/pieces/deepl.png",
+    "founder": null
+  },
+  "deepseek": {
+    "displayName": "DeepSeek",
+    "logoUrl": "https://cdn.activepieces.com/pieces/deepseek.png",
+    "founder": {
+      "name": "Liang Wenfeng",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "delay": {
+    "displayName": "Delay",
+    "logoUrl": "https://cdn.activepieces.com/pieces/delay.png",
+    "founder": null
+  },
+  "denser-ai": {
+    "displayName": "Denser.ai",
+    "logoUrl": "https://cdn.activepieces.com/pieces/denser-ai.png",
+    "founder": null
+  },
+  "devin": {
+    "displayName": "Devin AI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/devin.png",
+    "founder": null
+  },
+  "digital-pilot": {
+    "displayName": "DigitalPilot",
+    "logoUrl": "https://cdn.activepieces.com/pieces/digital-pilot.png",
+    "founder": null
+  },
+  "dimo": {
+    "displayName": "DIMO",
+    "logoUrl": "https://cdn.activepieces.com/pieces/dimo.png",
+    "founder": null
+  },
+  "discord": {
+    "displayName": "Discord",
+    "logoUrl": "https://cdn.activepieces.com/pieces/discord.png",
+    "founder": {
+      "name": "Jason Citron",
+      "title": "Board Member & Advisor to the CEO",
+      "photo": "/founders/jason-citron.jpg",
+      "linkedin": "http://www.linkedin.com/in/jasoncitron"
+    }
+  },
+  "discourse": {
+    "displayName": "Discourse",
+    "logoUrl": "https://cdn.activepieces.com/pieces/discourse.png",
+    "founder": null
+  },
+  "dittofeed": {
+    "displayName": "Dittofeed",
+    "logoUrl": "https://cdn.activepieces.com/pieces/dittofeed.png",
+    "founder": null
+  },
+  "docsbot": {
+    "displayName": "DocsBot",
+    "logoUrl": "https://cdn.activepieces.com/pieces/docsbot.png",
+    "founder": null
+  },
+  "doctly": {
+    "displayName": "Doctly AI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/doctly.png",
+    "founder": null
+  },
+  "documentpro": {
+    "displayName": "DocumentPro",
+    "logoUrl": "https://cdn.activepieces.com/pieces/documentpro.png",
+    "founder": null
+  },
+  "documerge": {
+    "displayName": "DocuMerge",
+    "logoUrl": "https://cdn.activepieces.com/pieces/documerge.png",
+    "founder": null
+  },
+  "docusign": {
+    "displayName": "Docusign",
+    "logoUrl": "https://cdn.activepieces.com/pieces/docusign.png",
+    "founder": {
+      "name": "Tom Gonser",
+      "title": "Founder",
+      "photo": "/founders/tom-gonser.jpg",
+      "linkedin": "http://www.linkedin.com/in/tgonser"
+    }
+  },
+  "drip": {
+    "displayName": "Drip",
+    "logoUrl": "https://cdn.activepieces.com/pieces/drip.png",
+    "founder": {
+      "name": "Rob Walling",
+      "title": "Co-Founder",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/robwalling"
+    }
+  },
+  "dropbox": {
+    "displayName": "Dropbox",
+    "logoUrl": "https://cdn.activepieces.com/pieces/dropbox.png",
+    "founder": {
+      "name": "Drew Houston",
+      "title": "Founder & CEO",
+      "photo": "/founders/drew-houston.jpg",
+      "linkedin": "http://www.linkedin.com/in/drew-houston-a46206"
+    }
+  },
+  "drupal": {
+    "displayName": "Drupal",
+    "logoUrl": "https://cdn.activepieces.com/pieces/drupal.png",
+    "founder": null
+  },
+  "duckdb": {
+    "displayName": "DuckDB",
+    "logoUrl": "https://cdn.activepieces.com/pieces/duckdb.png",
+    "founder": null
+  },
+  "dumpling-ai": {
+    "displayName": "Dumpling AI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/dumpling-ai.png",
+    "founder": null
+  },
+  "dust": {
+    "displayName": "Dust",
+    "logoUrl": "https://cdn.activepieces.com/pieces/dust.png",
+    "founder": null
+  },
+  "easy-peasy-ai": {
+    "displayName": "Easy-Peasy.AI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/easy-peasy-ai.png",
+    "founder": null
+  },
+  "echowin": {
+    "displayName": "Echowin",
+    "logoUrl": "https://cdn.activepieces.com/pieces/echowin.png",
+    "founder": null
+  },
+  "eden-ai": {
+    "displayName": "Eden AI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/eden-ai.png",
+    "founder": null
+  },
+  "elevenlabs": {
+    "displayName": "ElevenLabs",
+    "logoUrl": "https://cdn.activepieces.com/pieces/elevenlabs.png",
+    "founder": {
+      "name": "Piotr Dabkowski",
+      "title": "Co-Founder",
+      "photo": "/founders/piotr-dabkowski.jpg",
+      "linkedin": "http://www.linkedin.com/in/piotr-dabkowski-50222bba"
+    }
+  },
+  "emailoctopus": {
+    "displayName": "EmailOctopus",
+    "logoUrl": "https://cdn.activepieces.com/pieces/emailoctopus.png",
+    "founder": null
+  },
+  "esignatures": {
+    "displayName": "eSignatures",
+    "logoUrl": "https://cdn.activepieces.com/pieces/esignatures.png",
+    "founder": null
+  },
+  "eth-name-service": {
+    "displayName": "Ethereum Name Service (ENS)",
+    "logoUrl": "https://cdn.activepieces.com/pieces/eth-name-service.png",
+    "founder": null
+  },
+  "exa": {
+    "displayName": "Exa",
+    "logoUrl": "https://cdn.activepieces.com/pieces/exa.png",
+    "founder": {
+      "name": "Will Bryk",
+      "title": "Co-Founder and CEO",
+      "photo": "/founders/will-bryk.jpg",
+      "linkedin": "http://www.linkedin.com/in/william-bryk"
+    }
+  },
+  "extracta-ai": {
+    "displayName": "Extracta.ai",
+    "logoUrl": "https://cdn.activepieces.com/pieces/extracta-ai.png",
+    "founder": null
+  },
+  "facebook-leads": {
+    "displayName": "Facebook Leads",
+    "logoUrl": "https://cdn.activepieces.com/pieces/facebook.png",
+    "founder": {
+      "name": "Mark Zuckerberg",
+      "title": "CEO OF FACEBOOK",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/mark-elliot-zuckerberg-%e2%9c%85-426b741a8"
+    }
+  },
+  "facebook-pages": {
+    "displayName": "Facebook Pages",
+    "logoUrl": "https://cdn.activepieces.com/pieces/facebook.png",
+    "founder": {
+      "name": "Mark Zuckerberg",
+      "title": "CEO OF FACEBOOK",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/mark-elliot-zuckerberg-%e2%9c%85-426b741a8"
+    }
+  },
+  "famulor": {
+    "displayName": "Famulor AI - Voice Agent",
+    "logoUrl": "https://cdn.activepieces.com/pieces/famulor.png",
+    "founder": null
+  },
+  "fathom": {
+    "displayName": "Fathom",
+    "logoUrl": "https://cdn.activepieces.com/pieces/fathom.png",
+    "founder": null
+  },
+  "feathery": {
+    "displayName": "Feathery",
+    "logoUrl": "https://cdn.activepieces.com/pieces/feathery.png",
+    "founder": null
+  },
+  "fellow": {
+    "displayName": "Fellow.ai",
+    "logoUrl": "https://cdn.activepieces.com/pieces/fellow.png",
+    "founder": null
+  },
+  "figma": {
+    "displayName": "Figma",
+    "logoUrl": "https://cdn.activepieces.com/pieces/figma.png",
+    "founder": {
+      "name": "Dylan Field",
+      "title": "CEO & Co-founder of Figma",
+      "photo": "/founders/dylan-field.jpg",
+      "linkedin": "http://www.linkedin.com/in/dylanfield"
+    }
+  },
+  "file-helper": {
+    "displayName": "Files Helper",
+    "logoUrl": "https://cdn.activepieces.com/pieces/file-piece.svg",
+    "founder": null
+  },
+  "fillout-forms": {
+    "displayName": "Fillout Forms",
+    "logoUrl": "https://cdn.activepieces.com/pieces/fillout-forms.png",
+    "founder": null
+  },
+  "fireberry": {
+    "displayName": "Fireberry",
+    "logoUrl": "https://cdn.activepieces.com/pieces/fireberry.png",
+    "founder": null
+  },
+  "firecrawl": {
+    "displayName": "Firecrawl",
+    "logoUrl": "https://cdn.activepieces.com/pieces/firecrawl.png",
+    "founder": {
+      "name": "Eric Ciarla",
+      "title": "Co-Founder",
+      "photo": "/founders/eric-ciarla.jpg",
+      "linkedin": "http://www.linkedin.com/in/eric-ciarla"
+    }
+  },
+  "fireflies-ai": {
+    "displayName": "Fireflies.ai",
+    "logoUrl": "https://cdn.activepieces.com/pieces/fireflies-ai.png",
+    "founder": {
+      "name": "Krish Ramineni",
+      "title": "CEO",
+      "photo": "/founders/krish-ramineni.jpg",
+      "linkedin": "http://www.linkedin.com/in/krishramineni"
+    }
+  },
+  "flipando": {
+    "displayName": "Flipando AI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/flipando.png",
+    "founder": null
+  },
+  "fliqr-ai": {
+    "displayName": "Fliqr AI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/fliqr-ai.png",
+    "founder": null
+  },
+  "flow-helper": {
+    "displayName": "Flow Helper",
+    "logoUrl": "https://cdn.activepieces.com/pieces/flow-helper.svg",
+    "founder": null
+  },
+  "flowise": {
+    "displayName": "Flowise",
+    "logoUrl": "https://cdn.activepieces.com/pieces/flowise.png",
+    "founder": {
+      "name": "Henry Heng",
+      "title": "Co-Founder & CEO FlowiseAI, Acquired by Workday",
+      "photo": "/founders/henry-heng.jpg",
+      "linkedin": null
+    }
+  },
+  "flowlu": {
+    "displayName": "Flowlu",
+    "logoUrl": "https://cdn.activepieces.com/pieces/flowlu.png",
+    "founder": null
+  },
+  "flow-parser": {
+    "displayName": "FlowParser",
+    "logoUrl": "https://cdn.activepieces.com/pieces/flow-parser.png",
+    "founder": null
+  },
+  "folk": {
+    "displayName": "Folk",
+    "logoUrl": "https://cdn.activepieces.com/pieces/folk.png",
+    "founder": {
+      "name": "Simo Lemhandez",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "foreplay-co": {
+    "displayName": "Foreplay",
+    "logoUrl": "https://cdn.activepieces.com/pieces/foreplay-co.png",
+    "founder": null
+  },
+  "formbricks": {
+    "displayName": "Formbricks",
+    "logoUrl": "https://cdn.activepieces.com/pieces/formbricks.png",
+    "founder": {
+      "name": "Johannes Dellert",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "formsite": {
+    "displayName": "Formsite",
+    "logoUrl": "https://cdn.activepieces.com/pieces/formsite.png",
+    "founder": null
+  },
+  "formspark": {
+    "displayName": "Formspark",
+    "logoUrl": "https://cdn.activepieces.com/pieces/formspark.png",
+    "founder": null
+  },
+  "formstack": {
+    "displayName": "Formstack",
+    "logoUrl": "https://cdn.activepieces.com/pieces/formstack.png",
+    "founder": {
+      "name": "Ade Olonoh",
+      "title": "Board Member",
+      "photo": "/founders/ade-olonoh.jpg",
+      "linkedin": "http://www.linkedin.com/in/adeolonoh"
+    }
+  },
+  "fountain": {
+    "displayName": "Fountain",
+    "logoUrl": "https://cdn.activepieces.com/pieces/fountain.png",
+    "founder": null
+  },
+  "fragment": {
+    "displayName": "Fragment",
+    "logoUrl": "https://cdn.activepieces.com/pieces/fragment.png",
+    "founder": null
+  },
+  "frame": {
+    "displayName": "Frame",
+    "logoUrl": "https://cdn.activepieces.com/pieces/frameio.png",
+    "founder": {
+      "name": "Emery Wells",
+      "title": "CEO",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/emery-wells-5624161"
+    }
+  },
+  "free-agent": {
+    "displayName": "FreeAgent",
+    "logoUrl": "https://cdn.activepieces.com/pieces/free-agent.png",
+    "founder": null
+  },
+  "freshdesk": {
+    "displayName": "Freshdesk",
+    "logoUrl": "https://cdn.activepieces.com/pieces/freshdesk.png",
+    "founder": {
+      "name": "Girish Mathrubootham",
+      "title": "Co-Founder and Managing Partner",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/girish1"
+    }
+  },
+  "freshsales": {
+    "displayName": "Freshsales",
+    "logoUrl": "https://cdn.activepieces.com/pieces/freshsales.png",
+    "founder": {
+      "name": "Girish Mathrubootham",
+      "title": "Co-Founder and Managing Partner",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/girish1"
+    }
+  },
+  "front": {
+    "displayName": "Front",
+    "logoUrl": "https://cdn.activepieces.com/pieces/front.jpg",
+    "founder": {
+      "name": "Mathilde Collin",
+      "title": "Board Member",
+      "photo": "/founders/mathilde-collin.jpg",
+      "linkedin": "http://www.linkedin.com/in/mathilde-collin-bb59492a"
+    }
+  },
+  "sftp": {
+    "displayName": "FTP/SFTP",
+    "logoUrl": "https://cdn.activepieces.com/pieces/sftp.svg",
+    "founder": {
+      "name": "Tatu Ylonen",
+      "title": "Senior AI and cybersecurity professional & entrepreneur",
+      "photo": "/founders/tatu-ylonen.jpg",
+      "linkedin": null
+    }
+  },
+  "gameball": {
+    "displayName": "Gameball",
+    "logoUrl": "https://cdn.activepieces.com/pieces/gameball.png",
+    "founder": null
+  },
+  "gamma": {
+    "displayName": "Gamma",
+    "logoUrl": "https://cdn.activepieces.com/pieces/gamma.png",
+    "founder": null
+  },
+  "gcloud-pubsub": {
+    "displayName": "GCloud Pub/Sub",
+    "logoUrl": "https://cdn.activepieces.com/pieces/gcloud-pubsub.png",
+    "founder": null
+  },
+  "generatebanners": {
+    "displayName": "GenerateBanners",
+    "logoUrl": "https://cdn.activepieces.com/pieces/generatebanners.png",
+    "founder": null
+  },
+  "ghostcms": {
+    "displayName": "GhostCMS",
+    "logoUrl": "https://cdn.activepieces.com/pieces/ghostcms.png",
+    "founder": null
+  },
+  "giftbit": {
+    "displayName": "Giftbit",
+    "logoUrl": "https://cdn.activepieces.com/pieces/giftbit.png",
+    "founder": null
+  },
+  "gistly": {
+    "displayName": "Gistly",
+    "logoUrl": "https://cdn.activepieces.com/pieces/gistly.svg",
+    "founder": null
+  },
+  "github": {
+    "displayName": "GitHub",
+    "logoUrl": "https://cdn.activepieces.com/pieces/github.png",
+    "founder": {
+      "name": "Tom Preston-Werner",
+      "title": "Cofounder/GP",
+      "photo": "/founders/tom-preston-werner.jpg",
+      "linkedin": "http://www.linkedin.com/in/mojombo"
+    }
+  },
+  "gitlab": {
+    "displayName": "GitLab",
+    "logoUrl": "https://cdn.activepieces.com/pieces/gitlab.png",
+    "founder": {
+      "name": "Sid Sijbrandij",
+      "title": "Co-founder & Executive Chair at GitLab Inc. (nasdaq: GTLB). Co-founder",
+      "photo": "/founders/sid-sijbrandij.jpg",
+      "linkedin": "http://www.linkedin.com/in/sijbrandij"
+    }
+  },
+  "gladia": {
+    "displayName": "Gladia",
+    "logoUrl": "https://cdn.activepieces.com/pieces/gladia.png",
+    "founder": {
+      "name": "Jean-Louis Queguiner",
+      "title": "Founder & CEO",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/jlqueguiner"
+    }
+  },
+  "gmail": {
+    "displayName": "Gmail",
+    "logoUrl": "https://cdn.activepieces.com/pieces/gmail.png",
+    "founder": {
+      "name": "Paul Buchheit",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "google-calendar": {
+    "displayName": "Google Calendar",
+    "logoUrl": "https://cdn.activepieces.com/pieces/google-calendar.png",
+    "founder": {
+      "name": "Sundar Pichai",
+      "title": "CEO",
+      "photo": "/founders/sundar-pichai.jpg"
+    }
+  },
+  "googlechat": {
+    "displayName": "Google Chat",
+    "logoUrl": "https://cdn.activepieces.com/pieces/googlechat.png",
+    "founder": null
+  },
+  "google-cloud-storage": {
+    "displayName": "Google Cloud Storage",
+    "logoUrl": "https://cdn.activepieces.com/pieces/google-cloud-storage.png",
+    "founder": null
+  },
+  "google-contacts": {
+    "displayName": "Google Contacts",
+    "logoUrl": "https://cdn.activepieces.com/pieces/google-contacts.png",
+    "founder": {
+      "name": "Sundar Pichai",
+      "title": "CEO",
+      "photo": "/founders/sundar-pichai.jpg"
+    }
+  },
+  "google-docs": {
+    "displayName": "Google Docs",
+    "logoUrl": "https://cdn.activepieces.com/pieces/google-docs.png",
+    "founder": {
+      "name": "Sundar Pichai",
+      "title": "Google",
+      "photo": "/founders/sundar-pichai.jpg",
+      "linkedin": "http://www.linkedin.com/in/sundarpichai"
+    }
+  },
+  "google-drive": {
+    "displayName": "Google Drive",
+    "logoUrl": "https://cdn.activepieces.com/pieces/google-drive.png",
+    "founder": {
+      "name": "Sundar Pichai",
+      "title": "CEO",
+      "photo": "/founders/sundar-pichai.jpg"
+    }
+  },
+  "google-forms": {
+    "displayName": "Google Forms",
+    "logoUrl": "https://cdn.activepieces.com/pieces/google-forms.png",
+    "founder": {
+      "name": "Sundar Pichai",
+      "title": "CEO",
+      "photo": "/founders/sundar-pichai.jpg"
+    }
+  },
+  "google-gemini": {
+    "displayName": "Google Gemini",
+    "logoUrl": "https://cdn.activepieces.com/pieces/google-gemini.png",
+    "founder": {
+      "name": "Sundar Pichai",
+      "title": "Google",
+      "photo": "/founders/sundar-pichai.jpg",
+      "linkedin": "http://www.linkedin.com/in/sundarpichai"
+    }
+  },
+  "google-my-business": {
+    "displayName": "Google My Business",
+    "logoUrl": "https://cdn.activepieces.com/pieces/google-business.png",
+    "founder": {
+      "name": "Sundar Pichai",
+      "title": "CEO",
+      "photo": "/founders/sundar-pichai.jpg"
+    }
+  },
+  "google-search-console": {
+    "displayName": "Google Search Console",
+    "logoUrl": "https://cdn.activepieces.com/pieces/google-search-console.png",
+    "founder": {
+      "name": "Sundar Pichai",
+      "title": "CEO",
+      "photo": "/founders/sundar-pichai.jpg"
+    }
+  },
+  "google-sheets": {
+    "displayName": "Google Sheets",
+    "logoUrl": "https://cdn.activepieces.com/pieces/google-sheets.png",
+    "founder": {
+      "name": "Sundar Pichai",
+      "title": "CEO",
+      "photo": "/founders/sundar-pichai.jpg"
+    }
+  },
+  "google-slides": {
+    "displayName": "Google Slides",
+    "logoUrl": "https://cdn.activepieces.com/pieces/google-slides.png",
+    "founder": {
+      "name": "Sundar Pichai",
+      "title": "CEO",
+      "photo": "/founders/sundar-pichai.jpg"
+    }
+  },
+  "google-tasks": {
+    "displayName": "Google Tasks",
+    "logoUrl": "https://cdn.activepieces.com/pieces/google-tasks.png",
+    "founder": {
+      "name": "Sundar Pichai",
+      "title": "Google",
+      "photo": "/founders/sundar-pichai.jpg",
+      "linkedin": "http://www.linkedin.com/in/sundarpichai"
+    }
+  },
+  "gotify": {
+    "displayName": "Gotify",
+    "logoUrl": "https://cdn.activepieces.com/pieces/gotify.png",
+    "founder": null
+  },
+  "gptzero-detect-ai": {
+    "displayName": "GPTZero",
+    "logoUrl": "https://cdn.activepieces.com/pieces/gptzero-detect-ai.png",
+    "founder": null
+  },
+  "graphql": {
+    "displayName": "GraphQL",
+    "logoUrl": "https://cdn.activepieces.com/pieces/graphql.svg",
+    "founder": null
+  },
+  "gravityforms": {
+    "displayName": "Gravity Forms",
+    "logoUrl": "https://cdn.activepieces.com/pieces/gravityforms.svg",
+    "founder": null
+  },
+  "greenpt": {
+    "displayName": "GreenPT",
+    "logoUrl": "https://cdn.activepieces.com/pieces/greenpt.png",
+    "founder": null
+  },
+  "greip": {
+    "displayName": "Greip",
+    "logoUrl": "https://cdn.activepieces.com/pieces/greip.png",
+    "founder": null
+  },
+  "griptape": {
+    "displayName": "Griptape Cloud",
+    "logoUrl": "https://cdn.activepieces.com/pieces/griptape.png",
+    "founder": null
+  },
+  "grist": {
+    "displayName": "Grist",
+    "logoUrl": "https://cdn.activepieces.com/pieces/grist.png",
+    "founder": null
+  },
+  "grok-xai": {
+    "displayName": "Grok by xAI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/grok-xai.png",
+    "founder": null
+  },
+  "groq": {
+    "displayName": "Groq",
+    "logoUrl": "https://cdn.activepieces.com/pieces/groq.png",
+    "founder": {
+      "name": "Jonathan Ross",
+      "title": "CEO + Founder",
+      "photo": "/founders/jonathan-ross.jpg",
+      "linkedin": "http://www.linkedin.com/in/ross-jonathan"
+    }
+  },
+  "guidelite": {
+    "displayName": "GuideLite",
+    "logoUrl": "https://cdn.activepieces.com/pieces/guidelite.png",
+    "founder": null
+  },
+  "hackernews": {
+    "displayName": "Hacker News",
+    "logoUrl": "https://cdn.activepieces.com/pieces/hackernews.png",
+    "founder": null
+  },
+  "harvest": {
+    "displayName": "Harvest",
+    "logoUrl": "https://cdn.activepieces.com/pieces/harvest.png",
+    "founder": {
+      "name": "Danny Wen",
+      "title": "Co-founder and former CEO of Harvest",
+      "photo": "/founders/danny-wen.jpg",
+      "linkedin": "http://www.linkedin.com/in/dannywen"
+    }
+  },
+  "hashi-corp-vault": {
+    "displayName": "HashiCorp Vault",
+    "logoUrl": "https://cdn.activepieces.com/pieces/hashi-corp-vault.png",
+    "founder": null
+  },
+  "hastewire": {
+    "displayName": "Hastewire",
+    "logoUrl": "https://cdn.activepieces.com/pieces/hastewire.png",
+    "founder": null
+  },
+  "heartbeat": {
+    "displayName": "Heartbeat",
+    "logoUrl": "https://cdn.activepieces.com/pieces/heartbeat.png",
+    "founder": null
+  },
+  "hedy": {
+    "displayName": "Hedy",
+    "logoUrl": "https://cdn.activepieces.com/pieces/hedy.png",
+    "founder": null
+  },
+  "help-scout": {
+    "displayName": "Help Scout",
+    "logoUrl": "https://cdn.activepieces.com/pieces/help-scout.png",
+    "founder": {
+      "name": "Nick Francis",
+      "title": "Chairman",
+      "photo": "/founders/nick-francis.jpg",
+      "linkedin": "http://www.linkedin.com/in/nickfrancis1"
+    }
+  },
+  "heygen": {
+    "displayName": "HeyGen",
+    "logoUrl": "https://cdn.activepieces.com/pieces/heygen.jpg",
+    "founder": {
+      "name": "Joshua Xu",
+      "title": "Co-Founder and CEO",
+      "photo": "/founders/joshua-xu.jpg",
+      "linkedin": "http://www.linkedin.com/in/buffxz"
+    }
+  },
+  "heymarket-sms": {
+    "displayName": "Heymarket SMS",
+    "logoUrl": "https://cdn.activepieces.com/pieces/heymarket-sms.png",
+    "founder": null
+  },
+  "housecall-pro": {
+    "displayName": "Housecall Pro",
+    "logoUrl": "https://cdn.activepieces.com/pieces/housecall-pro.png",
+    "founder": null
+  },
+  "http": {
+    "displayName": "HTTP",
+    "logoUrl": "https://cdn.activepieces.com/pieces/http.png",
+    "founder": null
+  },
+  "http-oauth2": {
+    "displayName": "HTTP (OAuth2)",
+    "logoUrl": "https://cdn.activepieces.com/pieces/http.png",
+    "founder": null
+  },
+  "hubspot": {
+    "displayName": "HubSpot",
+    "logoUrl": "https://cdn.activepieces.com/pieces/hubspot.png",
+    "founder": {
+      "name": "Brian Halligan",
+      "title": "Co-founder & Partner",
+      "photo": "/founders/brian-halligan.jpg",
+      "linkedin": "http://www.linkedin.com/in/brianhalligan"
+    }
+  },
+  "hugging-face": {
+    "displayName": "Hugging Face",
+    "logoUrl": "https://cdn.activepieces.com/pieces/huggingface.svg",
+    "founder": null
+  },
+  "forms": {
+    "displayName": "Human Input",
+    "logoUrl": "https://cdn.activepieces.com/pieces/human-input.svg",
+    "founder": null
+  },
+  "hume-ai": {
+    "displayName": "Hume AI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/hume-ai.png",
+    "founder": null
+  },
+  "hunter": {
+    "displayName": "Hunter",
+    "logoUrl": "https://cdn.activepieces.com/pieces/hunter.png",
+    "founder": {
+      "name": "Antoine Finkelstein",
+      "title": "Co-founder",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/antoinefinkelstein"
+    }
+  },
+  "hystruct": {
+    "displayName": "Hystruct",
+    "logoUrl": "https://cdn.activepieces.com/pieces/hystruct.png",
+    "founder": null
+  },
+  "ibm-cognose": {
+    "displayName": "IBM Cognos Analytics",
+    "logoUrl": "https://cdn.activepieces.com/pieces/ibm-cognose.png",
+    "founder": null
+  },
+  "image-helper": {
+    "displayName": "Image Helper",
+    "logoUrl": "https://cdn.activepieces.com/pieces/image-helper.png",
+    "founder": null
+  },
+  "image-router": {
+    "displayName": "ImageRouter",
+    "logoUrl": "https://cdn.activepieces.com/pieces/image-router.png",
+    "founder": null
+  },
+  "imap": {
+    "displayName": "IMAP",
+    "logoUrl": "https://cdn.activepieces.com/pieces/imap.png",
+    "founder": {
+      "name": "Mark Crispin",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "influencers-club": {
+    "displayName": "Influencers.club",
+    "logoUrl": "https://cdn.activepieces.com/pieces/influencers-club.png",
+    "founder": null
+  },
+  "insightly": {
+    "displayName": "Insightly",
+    "logoUrl": "https://cdn.activepieces.com/pieces/insightly.png",
+    "founder": null
+  },
+  "insighto-ai": {
+    "displayName": "Insighto.ai",
+    "logoUrl": "https://cdn.activepieces.com/pieces/insighto-ai.png",
+    "founder": null
+  },
+  "instabase": {
+    "displayName": "Instabase",
+    "logoUrl": "https://cdn.activepieces.com/pieces/instabase.png",
+    "founder": null
+  },
+  "insta-charts": {
+    "displayName": "InstaCharts",
+    "logoUrl": "https://cdn.activepieces.com/pieces/insta-charts.png",
+    "founder": null
+  },
+  "instagram-business": {
+    "displayName": "Instagram for Business",
+    "logoUrl": "https://cdn.activepieces.com/pieces/instagram.png",
+    "founder": null
+  },
+  "instantly-ai": {
+    "displayName": "Instantly.ai",
+    "logoUrl": "https://cdn.activepieces.com/pieces/instantly-ai.png",
+    "founder": null
+  },
+  "instasent": {
+    "displayName": "Instasent",
+    "logoUrl": "https://cdn.activepieces.com/pieces/instasent.jpg",
+    "founder": null
+  },
+  "intercom": {
+    "displayName": "Intercom",
+    "logoUrl": "https://cdn.activepieces.com/pieces/intercom.png",
+    "founder": {
+      "name": "Eoghan McCabe",
+      "title": "CEO, Chairman, and Co-founder",
+      "photo": "/founders/eoghan-mccabe.jpg",
+      "linkedin": "http://www.linkedin.com/in/eoghanmccabe"
+    }
+  },
+  "invoiceninja": {
+    "displayName": "Invoice Ninja",
+    "logoUrl": "https://cdn.activepieces.com/pieces/invoiceninja.png",
+    "founder": {
+      "name": "Hillel Coren",
+      "title": "Co-Founder",
+      "photo": "/founders/hillel-coren.jpg",
+      "linkedin": "http://www.linkedin.com/in/hillelcoren"
+    }
+  },
+  "jina-ai": {
+    "displayName": "Jina AI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/jinaai.jpeg",
+    "founder": null
+  },
+  "jira-cloud": {
+    "displayName": "Jira Cloud",
+    "logoUrl": "https://cdn.activepieces.com/pieces/jira.png",
+    "founder": {
+      "name": "Mike Cannon-Brookes",
+      "title": "Principal",
+      "photo": "/founders/mike-cannon-brookes.jpg",
+      "linkedin": "http://www.linkedin.com/in/mcannonbrookes"
+    }
+  },
+  "jogg-ai": {
+    "displayName": "JoggAI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/jogg-ai.png",
+    "founder": null
+  },
+  "jotform": {
+    "displayName": "Jotform",
+    "logoUrl": "https://cdn.activepieces.com/pieces/jotform.svg",
+    "founder": {
+      "name": "Aytekin Tank",
+      "title": "Founder and CEO",
+      "photo": "/founders/aytekin-tank.jpg",
+      "linkedin": "http://www.linkedin.com/in/aytekintank"
+    }
+  },
+  "json": {
+    "displayName": "JSON",
+    "logoUrl": "https://cdn.activepieces.com/pieces/json.svg",
+    "founder": null
+  },
+  "just-invoice": {
+    "displayName": "JustInvoice",
+    "logoUrl": "https://cdn.activepieces.com/pieces/just-invoice.png",
+    "founder": null
+  },
+  "kallabot-ai": {
+    "displayName": "Kallabot",
+    "logoUrl": "https://cdn.activepieces.com/pieces/kallabot-ai.png",
+    "founder": null
+  },
+  "katana": {
+    "displayName": "Katana",
+    "logoUrl": "https://cdn.activepieces.com/pieces/katana.png",
+    "founder": null
+  },
+  "kimai": {
+    "displayName": "Kimai",
+    "logoUrl": "https://cdn.activepieces.com/pieces/kimai.png",
+    "founder": null
+  },
+  "kissflow": {
+    "displayName": "Kissflow",
+    "logoUrl": "https://cdn.activepieces.com/pieces/kissflow.png",
+    "founder": null
+  },
+  "kizeo-forms": {
+    "displayName": "Kizeo Forms",
+    "logoUrl": "https://cdn.activepieces.com/pieces/kizeo-forms.png",
+    "founder": null
+  },
+  "knack": {
+    "displayName": "Knack",
+    "logoUrl": "https://cdn.activepieces.com/pieces/knack.png",
+    "founder": null
+  },
+  "kommo": {
+    "displayName": "Kommo",
+    "logoUrl": "https://cdn.activepieces.com/pieces/kommo.png",
+    "founder": null
+  },
+  "krisp-call": {
+    "displayName": "KrispCall",
+    "logoUrl": "https://cdn.activepieces.com/pieces/krispcall.svg",
+    "founder": null
+  },
+  "kudosity": {
+    "displayName": "Kudosity",
+    "logoUrl": "https://cdn.activepieces.com/pieces/kudosity.png",
+    "founder": null
+  },
+  "lead-connector": {
+    "displayName": "LeadConnector",
+    "logoUrl": "https://cdn.activepieces.com/pieces/lead-connector.png",
+    "founder": null
+  },
+  "leexi": {
+    "displayName": "Leexi",
+    "logoUrl": "https://cdn.activepieces.com/pieces/leexi.png",
+    "founder": null
+  },
+  "lemlist": {
+    "displayName": "Lemlist",
+    "logoUrl": "https://cdn.activepieces.com/pieces/lemlist.png",
+    "founder": {
+      "name": "Guillaume Moubeche",
+      "title": "Founder @ Lemlist",
+      "photo": "/founders/guillaume-moubeche.jpg",
+      "linkedin": "http://www.linkedin.com/in/guillaume-moubeche-a026541b2"
+    }
+  },
+  "lemon-squeezy": {
+    "displayName": "Lemon Squeezy",
+    "logoUrl": "https://cdn.activepieces.com/pieces/lemon-squeezy.png",
+    "founder": null
+  },
+  "letta": {
+    "displayName": "Letta",
+    "logoUrl": "https://cdn.activepieces.com/pieces/letta.png",
+    "founder": null
+  },
+  "lever": {
+    "displayName": "Lever",
+    "logoUrl": "https://cdn.activepieces.com/pieces/lever.png",
+    "founder": {
+      "name": "Sarah Nahm",
+      "title": "Founder of Lever & Diversity Advocate",
+      "photo": "/founders/sarah-nahm.jpg",
+      "linkedin": "http://www.linkedin.com/in/sarahnahm"
+    }
+  },
+  "lightfunnels": {
+    "displayName": "Lightfunnels",
+    "logoUrl": "https://cdn.activepieces.com/pieces/lightfunnels.png",
+    "founder": null
+  },
+  "line": {
+    "displayName": "Line Bot",
+    "logoUrl": "https://cdn.activepieces.com/pieces/line.png",
+    "founder": {
+      "name": "Takeshi Idezawa",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "linear": {
+    "displayName": "Linear",
+    "logoUrl": "https://cdn.activepieces.com/pieces/linear.png",
+    "founder": {
+      "name": "Karri Saarinen",
+      "title": "CEO, Cofounder",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/karrisaarinen"
+    }
+  },
+  "linka": {
+    "displayName": "Linka",
+    "logoUrl": "https://cdn.activepieces.com/pieces/linka.png",
+    "founder": null
+  },
+  "linkedin": {
+    "displayName": "LinkedIn",
+    "logoUrl": "https://cdn.activepieces.com/pieces/linkedin.png",
+    "founder": {
+      "name": "Reid Hoffman",
+      "title": "",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/alexine-mudawar"
+    }
+  },
+  "linkup": {
+    "displayName": "Linkup",
+    "logoUrl": "https://cdn.activepieces.com/pieces/linkup.png",
+    "founder": null
+  },
+  "livesession": {
+    "displayName": "LiveSession",
+    "logoUrl": "https://cdn.activepieces.com/pieces/livesession.png",
+    "founder": null
+  },
+  "llmrails": {
+    "displayName": "LLMRails",
+    "logoUrl": "https://cdn.activepieces.com/pieces/llmrails.png",
+    "founder": null
+  },
+  "localai": {
+    "displayName": "LocalAI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/localai.jpeg",
+    "founder": null
+  },
+  "lofty": {
+    "displayName": "Lofty",
+    "logoUrl": "https://cdn.activepieces.com/pieces/lofty.png",
+    "founder": null
+  },
+  "logrocket": {
+    "displayName": "LogRocket",
+    "logoUrl": "https://cdn.activepieces.com/pieces/logrocket.png",
+    "founder": {
+      "name": "Matthew Arbesfeld",
+      "title": "CEO & Co-Founder",
+      "photo": "/founders/matthew-arbesfeld.jpg",
+      "linkedin": "http://www.linkedin.com/in/matthew-arbesfeld-04b5429b"
+    }
+  },
+  "lucidya": {
+    "displayName": "Lucidya",
+    "logoUrl": "https://cdn.activepieces.com/pieces/lucidya.png",
+    "founder": null
+  },
+  "lusha": {
+    "displayName": "Lusha",
+    "logoUrl": "https://cdn.activepieces.com/pieces/lusha.png",
+    "founder": {
+      "name": "Assaf Eisenstein",
+      "title": "Co Founder & President",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/assaf-eisenstein-a7b187159"
+    }
+  },
+  "luxury-presence": {
+    "displayName": "Luxury Presence",
+    "logoUrl": "https://cdn.activepieces.com/pieces/luxury-presence.png",
+    "founder": null
+  },
+  "magical-api": {
+    "displayName": "Magical API",
+    "logoUrl": "https://cdn.activepieces.com/pieces/magical-api.png",
+    "founder": null
+  },
+  "magicslides": {
+    "displayName": "MagicSlides",
+    "logoUrl": "https://cdn.activepieces.com/pieces/magicslides.png",
+    "founder": null
+  },
+  "mailchain": {
+    "displayName": "Mailchain",
+    "logoUrl": "https://cdn.activepieces.com/pieces/mailchain.png",
+    "founder": null
+  },
+  "mailchimp": {
+    "displayName": "Mailchimp",
+    "logoUrl": "https://cdn.activepieces.com/pieces/mailchimp.png",
+    "founder": {
+      "name": "Ben Chestnut",
+      "title": "Founder, fmr CEO of Mailchimp.",
+      "photo": "/founders/ben-chestnut.jpg",
+      "linkedin": "http://www.linkedin.com/in/ben-chestnut-02a2501"
+    }
+  },
+  "mailercheck": {
+    "displayName": "Mailercheck",
+    "logoUrl": "https://cdn.activepieces.com/pieces/mailercheck.png",
+    "founder": null
+  },
+  "mailer-lite": {
+    "displayName": "MailerLite",
+    "logoUrl": "https://cdn.activepieces.com/pieces/mailer-lite.png",
+    "founder": null
+  },
+  "maileroo": {
+    "displayName": "Maileroo",
+    "logoUrl": "https://cdn.activepieces.com/pieces/maileroo.png",
+    "founder": null
+  },
+  "mailjet": {
+    "displayName": "Mailjet",
+    "logoUrl": "https://cdn.activepieces.com/pieces/mailjet.svg",
+    "founder": {
+      "name": "Wilfried Durand",
+      "title": "Partner",
+      "photo": "/founders/wilfried-durand.jpg",
+      "linkedin": "http://www.linkedin.com/in/wilfrieddurand"
+    }
+  },
+  "manus": {
+    "displayName": "Manus",
+    "logoUrl": "https://cdn.activepieces.com/pieces/manus.png",
+    "founder": null
+  },
+  "manychat": {
+    "displayName": "Manychat",
+    "logoUrl": "https://cdn.activepieces.com/pieces/manychat.png",
+    "founder": {
+      "name": "Mikael Yan",
+      "title": "Co-founder / CEO @ Manychat",
+      "photo": "/founders/mikael-yan.jpg",
+      "linkedin": null
+    }
+  },
+  "mastodon": {
+    "displayName": "Mastodon",
+    "logoUrl": "https://cdn.activepieces.com/pieces/mastodon.png",
+    "founder": null
+  },
+  "math-helper": {
+    "displayName": "Math Helper",
+    "logoUrl": "https://cdn.activepieces.com/pieces/math-helper.svg",
+    "founder": null
+  },
+  "matomo": {
+    "displayName": "Matomo",
+    "logoUrl": "https://cdn.activepieces.com/pieces/matomo.png",
+    "founder": null
+  },
+  "matrix": {
+    "displayName": "Matrix",
+    "logoUrl": "https://cdn.activepieces.com/pieces/matrix.png",
+    "founder": null
+  },
+  "mattermost": {
+    "displayName": "Mattermost",
+    "logoUrl": "https://cdn.activepieces.com/pieces/mattermost.png",
+    "founder": null
+  },
+  "mautic": {
+    "displayName": "Mautic",
+    "logoUrl": "https://cdn.activepieces.com/pieces/mautic.png",
+    "founder": {
+      "name": "David Hurley",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "mcp": {
+    "displayName": "MCP",
+    "logoUrl": "https://cdn.activepieces.com/pieces/mcp.svg",
+    "founder": null
+  },
+  "medullar": {
+    "displayName": "Medullar",
+    "logoUrl": "https://cdn.activepieces.com/pieces/medullar.png",
+    "founder": null
+  },
+  "meetgeek-ai": {
+    "displayName": "Meetgeek",
+    "logoUrl": "https://cdn.activepieces.com/pieces/meetgeek-ai.png",
+    "founder": null
+  },
+  "meistertask": {
+    "displayName": "MeisterTask",
+    "logoUrl": "https://cdn.activepieces.com/pieces/meistertask.png",
+    "founder": null
+  },
+  "mem": {
+    "displayName": "Mem",
+    "logoUrl": "https://cdn.activepieces.com/pieces/mem.png",
+    "founder": {
+      "name": "Dennis Xu",
+      "title": "Co-founder",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/xudennis"
+    }
+  },
+  "mempool-space": {
+    "displayName": "Mempool",
+    "logoUrl": "https://cdn.activepieces.com/pieces/mempool-space.png",
+    "founder": null
+  },
+  "metabase": {
+    "displayName": "Metabase",
+    "logoUrl": "https://cdn.activepieces.com/pieces/metabase.png",
+    "founder": {
+      "name": "Sameer Al-Sakran",
+      "title": "CEO",
+      "photo": "/founders/sameer-al-sakran.jpg",
+      "linkedin": "http://www.linkedin.com/in/salsakran"
+    }
+  },
+  "metatext": {
+    "displayName": "Metatext",
+    "logoUrl": "https://cdn.activepieces.com/pieces/metatext.png",
+    "founder": null
+  },
+  "microsoft-365-people": {
+    "displayName": "Microsoft 365 People",
+    "logoUrl": "https://cdn.activepieces.com/pieces/microsoft-365-people.png",
+    "founder": null
+  },
+  "microsoft-365-planner": {
+    "displayName": "Microsoft 365 Planner",
+    "logoUrl": "https://cdn.activepieces.com/pieces/microsoft-365-planner.png",
+    "founder": null
+  },
+  "microsoft-dynamics-365-business-central": {
+    "displayName": "Microsoft Dynamics 365 Business Central",
+    "logoUrl": "https://cdn.activepieces.com/pieces/microsoft-dynamics-365-business-central.png",
+    "founder": {
+      "name": "Satya Nadella",
+      "title": "Chairman and CEO, Member Board of Trustees",
+      "photo": "/founders/satya-nadella.jpg",
+      "linkedin": "http://www.linkedin.com/in/satyanadella"
+    }
+  },
+  "microsoft-dynamics-crm": {
+    "displayName": "Microsoft Dynamics CRM",
+    "logoUrl": "https://cdn.activepieces.com/pieces/microsoft-dynamics-crm.png",
+    "founder": null
+  },
+  "microsoft-excel-365": {
+    "displayName": "Microsoft Excel 365",
+    "logoUrl": "https://cdn.activepieces.com/pieces/microsoft-excel-365.png",
+    "founder": {
+      "name": "Satya Nadella",
+      "title": "Chairman and CEO, Member Board of Trustees",
+      "photo": "/founders/satya-nadella.jpg",
+      "linkedin": "http://www.linkedin.com/in/satyanadella"
+    }
+  },
+  "microsoft-onedrive": {
+    "displayName": "Microsoft OneDrive",
+    "logoUrl": "https://cdn.activepieces.com/pieces/oneDrive.png",
+    "founder": {
+      "name": "Satya Nadella",
+      "title": "Chairman and CEO, Member Board of Trustees",
+      "photo": "/founders/satya-nadella.jpg",
+      "linkedin": "http://www.linkedin.com/in/satyanadella"
+    }
+  },
+  "microsoft-onenote": {
+    "displayName": "Microsoft OneNote",
+    "logoUrl": "https://cdn.activepieces.com/pieces/microsoft-onenote.png",
+    "founder": null
+  },
+  "microsoft-outlook": {
+    "displayName": "Microsoft Outlook",
+    "logoUrl": "https://cdn.activepieces.com/pieces/microsoft-outlook.jpg",
+    "founder": null
+  },
+  "microsoft-outlook-calendar": {
+    "displayName": "Microsoft Outlook Calendar",
+    "logoUrl": "https://cdn.activepieces.com/pieces/microsoft-outlook.png",
+    "founder": {
+      "name": "Satya Nadella",
+      "title": "Chairman and CEO, Member Board of Trustees",
+      "photo": "/founders/satya-nadella.jpg",
+      "linkedin": "http://www.linkedin.com/in/satyanadella"
+    }
+  },
+  "microsoft-power-bi": {
+    "displayName": "Microsoft Power BI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/microsoft-power-bi.png",
+    "founder": null
+  },
+  "microsoft-sharepoint": {
+    "displayName": "Microsoft SharePoint",
+    "logoUrl": "https://cdn.activepieces.com/pieces/microsoft-sharepoint.png",
+    "founder": {
+      "name": "Satya Nadella",
+      "title": "Chairman and CEO, Member Board of Trustees",
+      "photo": "/founders/satya-nadella.jpg",
+      "linkedin": "http://www.linkedin.com/in/satyanadella"
+    }
+  },
+  "microsoft-teams": {
+    "displayName": "Microsoft Teams",
+    "logoUrl": "https://cdn.activepieces.com/pieces/microsoft-teams.png",
+    "founder": {
+      "name": "Satya Nadella",
+      "title": "Chairman and CEO, Member Board of Trustees",
+      "photo": "/founders/satya-nadella.jpg",
+      "linkedin": "http://www.linkedin.com/in/satyanadella"
+    }
+  },
+  "microsoft-todo": {
+    "displayName": "Microsoft To Do",
+    "logoUrl": "https://cdn.activepieces.com/pieces/microsoft-todo.png",
+    "founder": null
+  },
+  "millionverifier": {
+    "displayName": "MillionVerifier",
+    "logoUrl": "https://cdn.activepieces.com/pieces/millionverifier.png",
+    "founder": null
+  },
+  "mindee": {
+    "displayName": "Mindee",
+    "logoUrl": "https://cdn.activepieces.com/pieces/mindee.png",
+    "founder": null
+  },
+  "mind-studio": {
+    "displayName": "MindStudio",
+    "logoUrl": "https://cdn.activepieces.com/pieces/mind-studio.png",
+    "founder": null
+  },
+  "missive": {
+    "displayName": "Missive",
+    "logoUrl": "https://cdn.activepieces.com/pieces/missive.png",
+    "founder": null
+  },
+  "mistral-ai": {
+    "displayName": "Mistral AI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/mistral-ai.png",
+    "founder": null
+  },
+  "mixpanel": {
+    "displayName": "Mixpanel",
+    "logoUrl": "https://cdn.activepieces.com/pieces/mixpanel.png",
+    "founder": {
+      "name": "Suhail Doshi",
+      "title": "",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/suhaildoshi"
+    }
+  },
+  "mollie": {
+    "displayName": "Mollie",
+    "logoUrl": "https://cdn.activepieces.com/pieces/mollie.png",
+    "founder": null
+  },
+  "monday": {
+    "displayName": "monday.com",
+    "logoUrl": "https://cdn.activepieces.com/pieces/monday.png",
+    "founder": {
+      "name": "Roy Mann",
+      "title": "CEO",
+      "photo": "/founders/roy-mann.jpg",
+      "linkedin": "http://www.linkedin.com/in/manroy"
+    }
+  },
+  "mongodb": {
+    "displayName": "MongoDB",
+    "logoUrl": "https://cdn.activepieces.com/pieces/mongodb.png",
+    "founder": {
+      "name": "Dev Ittycheria",
+      "title": "Lead Independent Director",
+      "photo": "/founders/dev-ittycheria.jpg",
+      "linkedin": "http://www.linkedin.com/in/dittycheria"
+    }
+  },
+  "moonclerk": {
+    "displayName": "Moonclerk",
+    "logoUrl": "https://cdn.activepieces.com/pieces/moonclerk.png",
+    "founder": null
+  },
+  "motion": {
+    "displayName": "Motion",
+    "logoUrl": "https://cdn.activepieces.com/pieces/motion.png",
+    "founder": {
+      "name": "Omid Safa",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "motiontools": {
+    "displayName": "MotionTools",
+    "logoUrl": "https://cdn.activepieces.com/pieces/motiontools.png",
+    "founder": null
+  },
+  "moxie-crm": {
+    "displayName": "Moxie",
+    "logoUrl": "https://cdn.activepieces.com/pieces/moxie-crm.png",
+    "founder": null
+  },
+  "murf-api": {
+    "displayName": "Murf AI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/murf-api.png",
+    "founder": null
+  },
+  "mycase-piece": {
+    "displayName": "MyCase",
+    "logoUrl": "https://cdn.activepieces.com/pieces/mycase-piece.png",
+    "founder": null
+  },
+  "mysql": {
+    "displayName": "MySQL",
+    "logoUrl": "https://cdn.activepieces.com/pieces/mysql.png",
+    "founder": {
+      "name": "Michael Widenius",
+      "title": "Chief Technology Officer",
+      "photo": "/founders/michael-widenius.jpg",
+      "linkedin": "http://www.linkedin.com/in/montywi"
+    }
+  },
+  "netlify": {
+    "displayName": "Netlify",
+    "logoUrl": "https://cdn.activepieces.com/pieces/netlify.png",
+    "founder": {
+      "name": "Mathias Biilmann",
+      "title": "CEO at Netlify. Started the JAMStack movement and helped millions of front-end developers change how the web is built. Now pioneering AX to help the next billion developers create with the full power of the web.",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "netsuite": {
+    "displayName": "NetSuite",
+    "logoUrl": "https://cdn.activepieces.com/pieces/netsuite.png",
+    "founder": null
+  },
+  "neverbounce": {
+    "displayName": "NeverBounce",
+    "logoUrl": "https://cdn.activepieces.com/pieces/neverbounce.png",
+    "founder": null
+  },
+  "nifty": {
+    "displayName": "Nifty",
+    "logoUrl": "https://cdn.activepieces.com/pieces/nifty.png",
+    "founder": null
+  },
+  "ninox": {
+    "displayName": "Ninox",
+    "logoUrl": "https://cdn.activepieces.com/pieces/ninox.png",
+    "founder": null
+  },
+  "nocodb": {
+    "displayName": "NocoDB",
+    "logoUrl": "https://cdn.activepieces.com/pieces/nocodb.png",
+    "founder": {
+      "name": "Pranav A",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "notion": {
+    "displayName": "Notion",
+    "logoUrl": "https://cdn.activepieces.com/pieces/notion.png",
+    "founder": {
+      "name": "Ivan Zhao",
+      "title": "Chief Executive Officer",
+      "photo": "/founders/ivan-zhao.jpg",
+      "linkedin": "http://www.linkedin.com/in/ivanhzhao"
+    }
+  },
+  "ntfy": {
+    "displayName": "ntfy",
+    "logoUrl": "https://cdn.activepieces.com/pieces/ntfy.png",
+    "founder": null
+  },
+  "nuelink": {
+    "displayName": "Nuelink",
+    "logoUrl": "https://cdn.activepieces.com/pieces/nuelink.png",
+    "founder": null
+  },
+  "octopush-sms": {
+    "displayName": "Octopush SMS",
+    "logoUrl": "https://cdn.activepieces.com/pieces/octopush-sms.png",
+    "founder": null
+  },
+  "odoo": {
+    "displayName": "Odoo",
+    "logoUrl": "https://cdn.activepieces.com/pieces/odoo.png",
+    "founder": {
+      "name": "Fabien Pinckaers",
+      "title": "CEO & Founder",
+      "photo": "/founders/fabien-pinckaers.jpg",
+      "linkedin": "http://www.linkedin.com/in/fpodoo"
+    }
+  },
+  "okta": {
+    "displayName": "Okta",
+    "logoUrl": "https://cdn.activepieces.com/pieces/okta.png",
+    "founder": {
+      "name": "Todd McKinnon",
+      "title": "CEO & Co-Founder",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/toddmckinnon"
+    }
+  },
+  "omni-co": {
+    "displayName": "Omni",
+    "logoUrl": "https://cdn.activepieces.com/pieces/omni-co.png",
+    "founder": null
+  },
+  "omnihr": {
+    "displayName": "Omni HR",
+    "logoUrl": "https://cdn.activepieces.com/pieces/omnihr.png",
+    "founder": null
+  },
+  "oncehub": {
+    "displayName": "Oncehub",
+    "logoUrl": "https://cdn.activepieces.com/pieces/oncehub.png",
+    "founder": null
+  },
+  "onfleet": {
+    "displayName": "Onfleet",
+    "logoUrl": "https://cdn.activepieces.com/pieces/onfleet.png",
+    "founder": {
+      "name": "Khaled Naim",
+      "title": "Co-Founder & CEO",
+      "photo": "/founders/khaled-naim.jpg",
+      "linkedin": "http://www.linkedin.com/in/knaim"
+    }
+  },
+  "openai": {
+    "displayName": "OpenAI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/openai.png",
+    "founder": {
+      "name": "Sam Altman",
+      "title": "Entrepreneur, Investor & programmer",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/sam-altman-2683b4240"
+    }
+  },
+  "openmic-ai": {
+    "displayName": "OpenMic AI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/openmic-ai.png",
+    "founder": null
+  },
+  "open-phone": {
+    "displayName": "OpenPhone",
+    "logoUrl": "https://cdn.activepieces.com/pieces/open-phone.png",
+    "founder": null
+  },
+  "open-router": {
+    "displayName": "OpenRouter",
+    "logoUrl": "https://cdn.activepieces.com/pieces/open-router.png",
+    "founder": null
+  },
+  "opnform": {
+    "displayName": "Opnform",
+    "logoUrl": "https://cdn.activepieces.com/pieces/opnform.png",
+    "founder": null
+  },
+  "opportify": {
+    "displayName": "Opportify",
+    "logoUrl": "https://cdn.activepieces.com/pieces/opportify.png",
+    "founder": null
+  },
+  "oracle-database": {
+    "displayName": "Oracle Database",
+    "logoUrl": "https://cdn.activepieces.com/pieces/oracle-database.png",
+    "founder": null
+  },
+  "orimon": {
+    "displayName": "Orimon",
+    "logoUrl": "https://cdn.activepieces.com/pieces/orimon.png",
+    "founder": {
+      "name": "Prateek Mehra",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "pandadoc": {
+    "displayName": "PandaDoc",
+    "logoUrl": "https://cdn.activepieces.com/pieces/pandadoc.png",
+    "founder": {
+      "name": "Mikita Mikado",
+      "title": "Product",
+      "photo": "/founders/mikita-mikado.jpg",
+      "linkedin": "http://www.linkedin.com/in/mikitamikado"
+    }
+  },
+  "paperform": {
+    "displayName": "Paperform",
+    "logoUrl": "https://cdn.activepieces.com/pieces/paperform.png",
+    "founder": {
+      "name": "Dean McPherson",
+      "title": "Co-Founder",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/dean-mcpherson"
+    }
+  },
+  "parser-expert": {
+    "displayName": "Parser Expert",
+    "logoUrl": "https://cdn.activepieces.com/pieces/parser-expert.png",
+    "founder": null
+  },
+  "parseur": {
+    "displayName": "Parseur",
+    "logoUrl": "https://cdn.activepieces.com/pieces/parseur.png",
+    "founder": {
+      "name": "Romain Fleury",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "pastebin": {
+    "displayName": "Pastebin",
+    "logoUrl": "https://cdn.activepieces.com/pieces/pastebin.png",
+    "founder": null
+  },
+  "pastefy": {
+    "displayName": "Pastefy",
+    "logoUrl": "https://cdn.activepieces.com/pieces/pastefy.png",
+    "founder": null
+  },
+  "pdf": {
+    "displayName": "PDF",
+    "logoUrl": "https://cdn.activepieces.com/pieces/pdf.svg",
+    "founder": null
+  },
+  "pdf-co": {
+    "displayName": "PDF.co",
+    "logoUrl": "https://cdn.activepieces.com/pieces/pdf-co.png",
+    "founder": null
+  },
+  "pdfmonkey": {
+    "displayName": "PDFMonkey",
+    "logoUrl": "https://cdn.activepieces.com/pieces/pdfmonkey.png",
+    "founder": null
+  },
+  "peekshot": {
+    "displayName": "PeekShot",
+    "logoUrl": "https://cdn.activepieces.com/pieces/peekshot.png",
+    "founder": null
+  },
+  "perplexity-ai": {
+    "displayName": "Perplexity AI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/perplexity-ai.png",
+    "founder": {
+      "name": "Aravind Srinivas",
+      "title": "Cofounder, President, CEO",
+      "photo": "/founders/aravind-srinivas.jpg",
+      "linkedin": "http://www.linkedin.com/in/aravind-srinivas-16051987"
+    }
+  },
+  "personal-ai": {
+    "displayName": "Personal AI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/personal-ai.png",
+    "founder": null
+  },
+  "phantombuster": {
+    "displayName": "PhantomBuster",
+    "logoUrl": "https://cdn.activepieces.com/pieces/phantombuster.png",
+    "founder": {
+      "name": "David Legrand",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "phone-validator": {
+    "displayName": "Phone Validator",
+    "logoUrl": "https://cdn.activepieces.com/pieces/phone-validator.png",
+    "founder": null
+  },
+  "photoroom": {
+    "displayName": "Photoroom",
+    "logoUrl": "https://cdn.activepieces.com/pieces/photoroom.png",
+    "founder": null
+  },
+  "pinch-payments": {
+    "displayName": "Pinch Payments",
+    "logoUrl": "https://cdn.activepieces.com/pieces/pinch-payments.png",
+    "founder": null
+  },
+  "pinecone": {
+    "displayName": "Pinecone",
+    "logoUrl": "https://cdn.activepieces.com/pieces/pinecone.png",
+    "founder": {
+      "name": "Edo Liberty",
+      "title": "Chief Scientist",
+      "photo": "/founders/edo-liberty.jpg",
+      "linkedin": "http://www.linkedin.com/in/edoliberty"
+    }
+  },
+  "pinterest": {
+    "displayName": "Pinterest",
+    "logoUrl": "https://cdn.activepieces.com/pieces/pinterest.png",
+    "founder": null
+  },
+  "pipedrive": {
+    "displayName": "Pipedrive",
+    "logoUrl": "https://cdn.activepieces.com/pieces/pipedrive.png",
+    "founder": {
+      "name": "Timo Rein",
+      "title": "Co-Founder",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/timorein"
+    }
+  },
+  "placid": {
+    "displayName": "Placid",
+    "logoUrl": "https://cdn.activepieces.com/pieces/placid.png",
+    "founder": null
+  },
+  "podio": {
+    "displayName": "Podio",
+    "logoUrl": "https://cdn.activepieces.com/pieces/podio.png",
+    "founder": null
+  },
+  "pollybot-ai": {
+    "displayName": "PollyBot AI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/pollybot-ai.png",
+    "founder": null
+  },
+  "poper": {
+    "displayName": "Poper",
+    "logoUrl": "https://cdn.activepieces.com/pieces/poper.png",
+    "founder": {
+      "name": "Anmol Singh",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "postgres": {
+    "displayName": "Postgres",
+    "logoUrl": "https://cdn.activepieces.com/pieces/postgres.png",
+    "founder": {
+      "name": "Michael Stonebraker",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "posthog": {
+    "displayName": "PostHog",
+    "logoUrl": "https://cdn.activepieces.com/pieces/posthog.png",
+    "founder": {
+      "name": "James Hawkins",
+      "title": "hedge honcho / co-ceo at posthog",
+      "photo": "/founders/james-hawkins.jpg",
+      "linkedin": null
+    }
+  },
+  "predict-leads": {
+    "displayName": "PredictLeads",
+    "logoUrl": "https://cdn.activepieces.com/pieces/predict-leads.png",
+    "founder": null
+  },
+  "presentation": {
+    "displayName": "Presenton",
+    "logoUrl": "https://cdn.activepieces.com/pieces/presenton.png",
+    "founder": null
+  },
+  "productboard": {
+    "displayName": "Productboard",
+    "logoUrl": "https://cdn.activepieces.com/pieces/productboard.png",
+    "founder": {
+      "name": "Hubert Palan",
+      "title": "Founder & CEO",
+      "photo": "/founders/hubert-palan.jpg",
+      "linkedin": "http://www.linkedin.com/in/hubertpalan"
+    }
+  },
+  "prompthub": {
+    "displayName": "PromptHub",
+    "logoUrl": "https://cdn.activepieces.com/pieces/prompthub.png",
+    "founder": null
+  },
+  "promptmate": {
+    "displayName": "PromptMate",
+    "logoUrl": "https://cdn.activepieces.com/pieces/promptmate.png",
+    "founder": null
+  },
+  "pushbullet": {
+    "displayName": "Pushbullet",
+    "logoUrl": "https://cdn.activepieces.com/pieces/pushbullet.png",
+    "founder": null
+  },
+  "pushover": {
+    "displayName": "Pushover",
+    "logoUrl": "https://cdn.activepieces.com/pieces/pushover.png",
+    "founder": {
+      "name": "Josh Roberts",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "pylon": {
+    "displayName": "Pylon",
+    "logoUrl": "https://cdn.activepieces.com/pieces/pylon.png",
+    "founder": null
+  },
+  "qdrant": {
+    "displayName": "Qdrant",
+    "logoUrl": "https://cdn.activepieces.com/pieces/qdrant.png",
+    "founder": {
+      "name": "Andre Zayarni",
+      "title": "Co-founder & CEO",
+      "photo": "/founders/andre-zayarni.jpg",
+      "linkedin": "http://www.linkedin.com/in/zayarni"
+    }
+  },
+  "qrcode": {
+    "displayName": "QR Code",
+    "logoUrl": "https://cdn.activepieces.com/pieces/qrcode.png",
+    "founder": null
+  },
+  "quaderno": {
+    "displayName": "Quaderno",
+    "logoUrl": "https://cdn.activepieces.com/pieces/quaderno.png",
+    "founder": null
+  },
+  "queue": {
+    "displayName": "Queue",
+    "logoUrl": "https://cdn.activepieces.com/pieces/queue.svg",
+    "founder": null
+  },
+  "quickbase": {
+    "displayName": "Quickbase",
+    "logoUrl": "https://cdn.activepieces.com/pieces/quickbase.png",
+    "founder": null
+  },
+  "quickbooks": {
+    "displayName": "Quickbooks Online",
+    "logoUrl": "https://cdn.activepieces.com/pieces/quickbooks.png",
+    "founder": {
+      "name": "Scott Cook",
+      "title": "Chief Innovator",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/scott-cook-97174561"
+    }
+  },
+  "quickzu": {
+    "displayName": "Quickzu",
+    "logoUrl": "https://cdn.activepieces.com/pieces/quickzu.png",
+    "founder": {
+      "name": "Ahmed Elsaadi",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "qwilr": {
+    "displayName": "Qwilr",
+    "logoUrl": "https://cdn.activepieces.com/pieces/qwilr.png",
+    "founder": null
+  },
+  "rabbitmq": {
+    "displayName": "RabbitMQ",
+    "logoUrl": "https://cdn.activepieces.com/pieces/rabbitmq.png",
+    "founder": null
+  },
+  "raia-ai": {
+    "displayName": "raia",
+    "logoUrl": "https://cdn.activepieces.com/pieces/raia-ai.png",
+    "founder": null
+  },
+  "rapidtext-ai": {
+    "displayName": "RapidText AI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/rapidtext-ai.png",
+    "founder": null
+  },
+  "razorpay": {
+    "displayName": "Razorpay",
+    "logoUrl": "https://cdn.activepieces.com/pieces/razorpay.png",
+    "founder": {
+      "name": "Harshil Mathur",
+      "title": "CEO & Co-Founder",
+      "photo": "/founders/harshil-mathur.jpg",
+      "linkedin": "http://www.linkedin.com/in/harshilmathur"
+    }
+  },
+  "retune": {
+    "displayName": "re:tune",
+    "logoUrl": "https://cdn.activepieces.com/pieces/retune.png",
+    "founder": null
+  },
+  "reachinbox": {
+    "displayName": "Reachinbox",
+    "logoUrl": "https://cdn.activepieces.com/pieces/reachinbox.png",
+    "founder": {
+      "name": "Himanshu Mehra",
+      "title": "Senior Relationship manager - Sales",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "recall-ai": {
+    "displayName": "Recall.ai",
+    "logoUrl": "https://cdn.activepieces.com/pieces/recall-ai.png",
+    "founder": null
+  },
+  "reddit": {
+    "displayName": "Reddit",
+    "logoUrl": "https://cdn.activepieces.com/pieces/reddit.png",
+    "founder": {
+      "name": "Steve Huffman",
+      "title": "CEO",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/shuffman56"
+    }
+  },
+  "reoon-verifier": {
+    "displayName": "Reoon Email Verifier",
+    "logoUrl": "https://cdn.activepieces.com/pieces/reoon-verifier.png",
+    "founder": null
+  },
+  "resend": {
+    "displayName": "Resend",
+    "logoUrl": "https://cdn.activepieces.com/pieces/resend.png",
+    "founder": {
+      "name": "Zeno Rocha",
+      "title": "",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/zenorocha"
+    }
+  },
+  "respaid": {
+    "displayName": "Respaid",
+    "logoUrl": "https://cdn.activepieces.com/pieces/respaid.jpg",
+    "founder": null
+  },
+  "respond-io": {
+    "displayName": "Respond.io",
+    "logoUrl": "https://cdn.activepieces.com/pieces/respond-io.png",
+    "founder": null
+  },
+  "retable": {
+    "displayName": "Retable",
+    "logoUrl": "https://cdn.activepieces.com/pieces/retable.png",
+    "founder": null
+  },
+  "retell-ai": {
+    "displayName": "Retell AI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/retell-ai.png",
+    "founder": null
+  },
+  "returning-ai": {
+    "displayName": "Returning AI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/returning-ai.png",
+    "founder": null
+  },
+  "robolly": {
+    "displayName": "Robolly",
+    "logoUrl": "https://cdn.activepieces.com/pieces/robolly.png",
+    "founder": null
+  },
+  "roe-ai": {
+    "displayName": "Roe AI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/roe-ai.png",
+    "founder": null
+  },
+  "rss": {
+    "displayName": "RSS Feed",
+    "logoUrl": "https://cdn.activepieces.com/pieces/rss.png",
+    "founder": {
+      "name": "Dave Winer",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "runware": {
+    "displayName": "Runware",
+    "logoUrl": "https://cdn.activepieces.com/pieces/runware.png",
+    "founder": {
+      "name": "Mohamed Aboelez",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "runway": {
+    "displayName": "Runway",
+    "logoUrl": "https://cdn.activepieces.com/pieces/runway.png",
+    "founder": null
+  },
+  "saastic": {
+    "displayName": "Saastic",
+    "logoUrl": "https://cdn.activepieces.com/pieces/saastic.png",
+    "founder": null
+  },
+  "saleor": {
+    "displayName": "Saleor",
+    "logoUrl": "https://cdn.activepieces.com/pieces/saleor.png",
+    "founder": null
+  },
+  "salesforce": {
+    "displayName": "Salesforce",
+    "logoUrl": "https://cdn.activepieces.com/pieces/salesforce.png",
+    "founder": {
+      "name": "Marc Benioff",
+      "title": "Chair & CEO at Salesforce",
+      "photo": "/founders/marc-benioff.jpg",
+      "linkedin": "http://www.linkedin.com/in/marcbenioff"
+    }
+  },
+  "salsa": {
+    "displayName": "Salsa",
+    "logoUrl": "https://cdn.activepieces.com/pieces/salsa.png",
+    "founder": null
+  },
+  "scenario": {
+    "displayName": "Scenario",
+    "logoUrl": "https://cdn.activepieces.com/pieces/scenario.png",
+    "founder": null
+  },
+  "schedule": {
+    "displayName": "Schedule",
+    "logoUrl": "https://cdn.activepieces.com/pieces/schedule.png",
+    "founder": null
+  },
+  "scrapegrapghai": {
+    "displayName": "ScrapeGraphAI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/scrapegraphai.jpg",
+    "founder": null
+  },
+  "scrapeless": {
+    "displayName": "Scrapeless",
+    "logoUrl": "https://cdn.activepieces.com/pieces/scrapeless.png",
+    "founder": null
+  },
+  "seek-table": {
+    "displayName": "SeekTable",
+    "logoUrl": "https://cdn.activepieces.com/pieces/seek-table.png",
+    "founder": null
+  },
+  "segment": {
+    "displayName": "Segment",
+    "logoUrl": "https://cdn.activepieces.com/pieces/segment.png",
+    "founder": {
+      "name": "Peter Reinhardt",
+      "title": "CEO",
+      "photo": "/founders/peter-reinhardt.jpg",
+      "linkedin": "http://www.linkedin.com/in/peterreinhardt"
+    }
+  },
+  "sender": {
+    "displayName": "Sender",
+    "logoUrl": "https://cdn.activepieces.com/pieces/sender.png",
+    "founder": null
+  },
+  "sendfox": {
+    "displayName": "SendFox",
+    "logoUrl": "https://cdn.activepieces.com/pieces/sendfox.png",
+    "founder": null
+  },
+  "sendgrid": {
+    "displayName": "SendGrid",
+    "logoUrl": "https://cdn.activepieces.com/pieces/sendgrid.png",
+    "founder": {
+      "name": "Isaac Saldana",
+      "title": "Founder & CEO",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/isaacsaldana"
+    }
+  },
+  "sendpulse": {
+    "displayName": "SendPulse",
+    "logoUrl": "https://cdn.activepieces.com/pieces/sendpulse.png",
+    "founder": {
+      "name": "Constantine Rozenshtrakh-Makarov",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "sendy": {
+    "displayName": "Sendy",
+    "logoUrl": "https://cdn.activepieces.com/pieces/sendy.png",
+    "founder": {
+      "name": "Ben Ho",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "serp-api": {
+    "displayName": "SerpApi",
+    "logoUrl": "https://cdn.activepieces.com/pieces/serp-api.png",
+    "founder": null
+  },
+  "serpstat": {
+    "displayName": "Serpstat",
+    "logoUrl": "https://cdn.activepieces.com/pieces/serpstat.png",
+    "founder": null
+  },
+  "service-now": {
+    "displayName": "ServiceNow",
+    "logoUrl": "https://cdn.activepieces.com/pieces/service-now.png",
+    "founder": null
+  },
+  "sessions-us": {
+    "displayName": "Sessions.us",
+    "logoUrl": "https://cdn.activepieces.com/pieces/sessions-us.png",
+    "founder": null
+  },
+  "seven": {
+    "displayName": "seven",
+    "logoUrl": "https://cdn.activepieces.com/pieces/seven.jpg",
+    "founder": null
+  },
+  "shippo": {
+    "displayName": "Shippo",
+    "logoUrl": "https://cdn.activepieces.com/pieces/shippo.png",
+    "founder": null
+  },
+  "shopify": {
+    "displayName": "Shopify",
+    "logoUrl": "https://cdn.activepieces.com/pieces/shopify.png",
+    "founder": {
+      "name": "Tobias Lutke",
+      "title": "CEO, Shopify",
+      "photo": "/founders/tobias-lutke.jpg",
+      "linkedin": null
+    }
+  },
+  "short-io": {
+    "displayName": "Short.io",
+    "logoUrl": "https://cdn.activepieces.com/pieces/short-io.png",
+    "founder": null
+  },
+  "signrequest": {
+    "displayName": "Signrequest",
+    "logoUrl": "https://cdn.activepieces.com/pieces/signrequest.png",
+    "founder": {
+      "name": "Michael Krens",
+      "title": "Senior Staff Engineer",
+      "photo": "/founders/michael-krens.jpg",
+      "linkedin": "http://www.linkedin.com/in/mkrens"
+    }
+  },
+  "simplepdf": {
+    "displayName": "SimplePDF",
+    "logoUrl": "https://cdn.activepieces.com/pieces/simplepdf.png",
+    "founder": null
+  },
+  "simpliroute": {
+    "displayName": "SimpliRoute",
+    "logoUrl": "https://cdn.activepieces.com/pieces/simpliroute.png",
+    "founder": null
+  },
+  "simplybookme": {
+    "displayName": "SimplyBook.me",
+    "logoUrl": "https://cdn.activepieces.com/pieces/simplybookme.png",
+    "founder": null
+  },
+  "sitespeakai": {
+    "displayName": "SiteSpeakAI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/sitespeakai.png",
+    "founder": null
+  },
+  "skyprep": {
+    "displayName": "SkyPrep",
+    "logoUrl": "https://cdn.activepieces.com/pieces/skyprep.png",
+    "founder": null
+  },
+  "skyvern": {
+    "displayName": "Skyvern",
+    "logoUrl": "https://cdn.activepieces.com/pieces/skyvern.jpg",
+    "founder": {
+      "name": "Suchintan Singh",
+      "title": "Co-Founder",
+      "photo": "/founders/suchintan-singh.jpg",
+      "linkedin": "http://www.linkedin.com/in/suchintansingh"
+    }
+  },
+  "slack": {
+    "displayName": "Slack",
+    "logoUrl": "https://cdn.activepieces.com/pieces/slack.png",
+    "founder": {
+      "name": "Stewart Butterfield",
+      "title": "Slack CEO. Love making software and love to learn.",
+      "photo": "/founders/stewart-butterfield.jpg",
+      "linkedin": "http://www.linkedin.com/in/butterfield"
+    }
+  },
+  "slidespeak": {
+    "displayName": "SlideSpeak",
+    "logoUrl": "https://cdn.activepieces.com/pieces/slidespeak.png",
+    "founder": null
+  },
+  "smaily": {
+    "displayName": "Smaily",
+    "logoUrl": "https://cdn.activepieces.com/pieces/smaily.png",
+    "founder": null
+  },
+  "smartsheet": {
+    "displayName": "Smartsheet",
+    "logoUrl": "https://cdn.activepieces.com/pieces/smartsheet.png",
+    "founder": {
+      "name": "Mark Mader",
+      "title": "President & CEO, Smartsheet Inc. | Blackstone / Vista",
+      "photo": "/founders/mark-mader.jpg",
+      "linkedin": "http://www.linkedin.com/in/markmader"
+    }
+  },
+  "smartsuite": {
+    "displayName": "SmartSuite",
+    "logoUrl": "https://cdn.activepieces.com/pieces/smartsuite.png",
+    "founder": {
+      "name": "Jon Gitlin",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "smoove": {
+    "displayName": "Smoove",
+    "logoUrl": "https://cdn.activepieces.com/pieces/smoove.png",
+    "founder": null
+  },
+  "smtp": {
+    "displayName": "SMTP",
+    "logoUrl": "https://cdn.activepieces.com/pieces/smtp.png",
+    "founder": {
+      "name": "Jon Postel",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "snowflake": {
+    "displayName": "Snowflake",
+    "logoUrl": "https://cdn.activepieces.com/pieces/snowflake.png",
+    "founder": {
+      "name": "Benoit Dageville",
+      "title": "Snowflake Co-founder, President of Product",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/benoit-dageville-3011845"
+    }
+  },
+  "soap": {
+    "displayName": "SOAP",
+    "logoUrl": "https://cdn.activepieces.com/pieces/soap.png",
+    "founder": null
+  },
+  "socialkit": {
+    "displayName": "Socialkit",
+    "logoUrl": "https://cdn.activepieces.com/pieces/socialkit.png",
+    "founder": null
+  },
+  "softr": {
+    "displayName": "Softr",
+    "logoUrl": "https://cdn.activepieces.com/pieces/softr.png",
+    "founder": {
+      "name": "Mariam Hakobyan",
+      "title": "Co-Founder & CEO",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/mariamhakobyan"
+    }
+  },
+  "sperse": {
+    "displayName": "Sperse",
+    "logoUrl": "https://cdn.activepieces.com/pieces/sperse.png",
+    "founder": null
+  },
+  "splitwise": {
+    "displayName": "Splitwise",
+    "logoUrl": "https://cdn.activepieces.com/pieces/splitwise.png",
+    "founder": {
+      "name": "Jon Bittner",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "spotify": {
+    "displayName": "Spotify",
+    "logoUrl": "https://cdn.activepieces.com/pieces/spotify.png",
+    "founder": {
+      "name": "Daniel Ek",
+      "title": "Principal",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/daniel-ek-1b52093a"
+    }
+  },
+  "square": {
+    "displayName": "Square",
+    "logoUrl": "https://cdn.activepieces.com/pieces/square.png",
+    "founder": {
+      "name": "Jack Dorsey",
+      "title": "CEO",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/jack-dorsey-29801b10b"
+    }
+  },
+  "stability-ai": {
+    "displayName": "Stability AI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/stability-ai.png",
+    "founder": {
+      "name": "Emad Mostaque",
+      "title": "Founder",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/emad-mostaque-9840ba274"
+    }
+  },
+  "stable-diffusion-webui": {
+    "displayName": "Stable Dffusion web UI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/stable-diffusion-webui.png",
+    "founder": null
+  },
+  "store": {
+    "displayName": "Storage",
+    "logoUrl": "https://cdn.activepieces.com/pieces/store.png",
+    "founder": null
+  },
+  "straico": {
+    "displayName": "Straico",
+    "logoUrl": "https://cdn.activepieces.com/pieces/straico.png",
+    "founder": null
+  },
+  "stripe": {
+    "displayName": "Stripe",
+    "logoUrl": "https://cdn.activepieces.com/pieces/stripe.png",
+    "founder": {
+      "name": "Patrick Collison",
+      "title": "Co-Founder & Chief Executive Officer",
+      "photo": "/founders/patrick-collison.jpg",
+      "linkedin": "http://www.linkedin.com/in/patrickcollison"
+    }
+  },
+  "subflows": {
+    "displayName": "Sub Flows",
+    "logoUrl": "https://cdn.activepieces.com/pieces/flows.svg",
+    "founder": null
+  },
+  "supabase": {
+    "displayName": "Supabase",
+    "logoUrl": "https://cdn.activepieces.com/pieces/supabase.png",
+    "founder": {
+      "name": "Paul Copplestone",
+      "title": "CEO & Co-Founder",
+      "photo": "/founders/paul-copplestone.jpg",
+      "linkedin": "http://www.linkedin.com/in/paulcopplestone"
+    }
+  },
+  "supadata": {
+    "displayName": "Supadata",
+    "logoUrl": "https://cdn.activepieces.com/pieces/supadata.svg",
+    "founder": null
+  },
+  "surrealdb": {
+    "displayName": "SurrealDB",
+    "logoUrl": "https://cdn.activepieces.com/pieces/surrealdb.jpg",
+    "founder": {
+      "name": "Tobie Hitchcock",
+      "title": "Co-founder and CEO",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/tobiemorganhitchcock"
+    }
+  },
+  "surveymonkey": {
+    "displayName": "SurveyMonkey",
+    "logoUrl": "https://cdn.activepieces.com/pieces/surveymonkey.png",
+    "founder": {
+      "name": "Ryan Finley",
+      "title": "Founder",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/ryfinley"
+    }
+  },
+  "swarmnode": {
+    "displayName": "SwarmNode",
+    "logoUrl": "https://cdn.activepieces.com/pieces/swarmnode.png",
+    "founder": null
+  },
+  "synthesia": {
+    "displayName": "Synthesia",
+    "logoUrl": "https://cdn.activepieces.com/pieces/synthesia.png",
+    "founder": {
+      "name": "Victor Riparbelli",
+      "title": "CEO & Co-founder",
+      "photo": "/founders/victor-riparbelli.jpg",
+      "linkedin": "http://www.linkedin.com/in/victorriparbelli"
+    }
+  },
+  "systeme-io": {
+    "displayName": "Systeme.io",
+    "logoUrl": "https://cdn.activepieces.com/pieces/systeme-io.png",
+    "founder": null
+  },
+  "tableau": {
+    "displayName": "Tableau",
+    "logoUrl": "https://cdn.activepieces.com/pieces/tableau.png",
+    "founder": {
+      "name": "Chris Stolte",
+      "title": "Co-Founder",
+      "photo": "/founders/chris-stolte.jpg",
+      "linkedin": "http://www.linkedin.com/in/cstolte"
+    }
+  },
+  "tables": {
+    "displayName": "Tables",
+    "logoUrl": "https://cdn.activepieces.com/pieces/tables_piece.svg",
+    "founder": null
+  },
+  "tags": {
+    "displayName": "Tags",
+    "logoUrl": "https://cdn.activepieces.com/pieces/tags.svg",
+    "founder": null
+  },
+  "talkable": {
+    "displayName": "Talkable",
+    "logoUrl": "https://www.talkable.com/wp-content/uploads/2021/12/talkable-favicon.svg",
+    "founder": null
+  },
+  "tally": {
+    "displayName": "Tally",
+    "logoUrl": "https://cdn.activepieces.com/pieces/tally.png",
+    "founder": {
+      "name": "Marie Martens",
+      "title": "Co-Founder",
+      "photo": "/founders/marie-martens.jpg",
+      "linkedin": "http://www.linkedin.com/in/mariemartens"
+    }
+  },
+  "tarvent": {
+    "displayName": "Tarvent",
+    "logoUrl": "https://cdn.activepieces.com/pieces/tarvent.png",
+    "founder": null
+  },
+  "taskade": {
+    "displayName": "Taskade",
+    "logoUrl": "https://cdn.activepieces.com/pieces/taskade.png",
+    "founder": {
+      "name": "John Xie",
+      "title": "Co-Founder and CEO",
+      "photo": "/founders/john-xie.jpg",
+      "linkedin": "http://www.linkedin.com/in/johnxie"
+    }
+  },
+  "tavily": {
+    "displayName": "Tavily",
+    "logoUrl": "https://cdn.activepieces.com/pieces/tavily.jpg",
+    "founder": {
+      "name": "Asaf Yigal",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "teamleader": {
+    "displayName": "Teamleader",
+    "logoUrl": "https://cdn.activepieces.com/pieces/teamleader.png",
+    "founder": null
+  },
+  "teamwork": {
+    "displayName": "Teamwork",
+    "logoUrl": "https://cdn.activepieces.com/pieces/teamwork.png",
+    "founder": {
+      "name": "Peter Coppinger",
+      "title": "Director & Co Founder",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/petercoppinger"
+    }
+  },
+  "telegram-bot": {
+    "displayName": "Telegram Bot",
+    "logoUrl": "https://cdn.activepieces.com/pieces/telegram_bot.png",
+    "founder": {
+      "name": "Pavel Durov",
+      "title": "CEO, Founder",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/pavel-durov-80174366"
+    }
+  },
+  "tenzo": {
+    "displayName": "Tenzo",
+    "logoUrl": "https://cdn.activepieces.com/pieces/tenzo.png",
+    "founder": null
+  },
+  "text-helper": {
+    "displayName": "Text Helper",
+    "logoUrl": "https://cdn.activepieces.com/pieces/text-helper.svg",
+    "founder": null
+  },
+  "textcortex-ai": {
+    "displayName": "TextCortex AI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/textcortex-ai.png",
+    "founder": null
+  },
+  "thankster": {
+    "displayName": "Thankster",
+    "logoUrl": "https://cdn.activepieces.com/pieces/thankster.png",
+    "founder": null
+  },
+  "ticktick": {
+    "displayName": "TickTick",
+    "logoUrl": "https://cdn.activepieces.com/pieces/ticktick.png",
+    "founder": {
+      "name": "Joey Zhuang",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "tidely": {
+    "displayName": "Tidely",
+    "logoUrl": "https://cdn.activepieces.com/pieces/tidely.png",
+    "founder": null
+  },
+  "tidycal": {
+    "displayName": "TidyCal",
+    "logoUrl": "https://cdn.activepieces.com/pieces/tidycal.png",
+    "founder": null
+  },
+  "timelines-ai": {
+    "displayName": "TimelinesAI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/timelines-ai.png",
+    "founder": null
+  },
+  "tiny-talk-ai": {
+    "displayName": "Tiny Talk AI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/tiny-talk-ai.png",
+    "founder": null
+  },
+  "tl-dv": {
+    "displayName": "tl;dv",
+    "logoUrl": "https://cdn.activepieces.com/pieces/tl-dv.png",
+    "founder": null
+  },
+  "todoist": {
+    "displayName": "Todoist",
+    "logoUrl": "https://cdn.activepieces.com/pieces/todoist.png",
+    "founder": {
+      "name": "Amir Salihefendic",
+      "title": "Founder and CEO",
+      "photo": "/founders/amir-salihefendic.jpg",
+      "linkedin": "http://www.linkedin.com/in/amix3k"
+    }
+  },
+  "todos": {
+    "displayName": "Todos",
+    "logoUrl": "https://cdn.activepieces.com/pieces/manual-tasks.svg",
+    "founder": null
+  },
+  "toggl-track": {
+    "displayName": "Toggl Track",
+    "logoUrl": "https://cdn.activepieces.com/pieces/toggl-track.png",
+    "founder": null
+  },
+  "totalcms": {
+    "displayName": "Total CMS",
+    "logoUrl": "https://cdn.activepieces.com/pieces/totalcms.png",
+    "founder": null
+  },
+  "trello": {
+    "displayName": "Trello",
+    "logoUrl": "https://cdn.activepieces.com/pieces/trello.png",
+    "founder": {
+      "name": "Joel Spolsky",
+      "title": "Co-Founder",
+      "photo": "/founders/joel-spolsky.jpg",
+      "linkedin": "http://www.linkedin.com/in/joelspolsky"
+    }
+  },
+  "truelayer": {
+    "displayName": "TrueLayer",
+    "logoUrl": "https://cdn.activepieces.com/pieces/truelayer.png",
+    "founder": null
+  },
+  "twilio": {
+    "displayName": "Twilio",
+    "logoUrl": "https://cdn.activepieces.com/pieces/twilio.png",
+    "founder": {
+      "name": "Jeff Lawson",
+      "title": "Chief Executive Officer",
+      "photo": "/founders/jeff-lawson.jpg",
+      "linkedin": "http://www.linkedin.com/in/jeffiel"
+    }
+  },
+  "twin-labs": {
+    "displayName": "Twin Web Agent",
+    "logoUrl": "https://cdn.activepieces.com/pieces/twin-labs.png",
+    "founder": null
+  },
+  "twitch": {
+    "displayName": "Twitch",
+    "logoUrl": "https://cdn.activepieces.com/pieces/twitch.png",
+    "founder": {
+      "name": "Emmett Shear",
+      "title": "CEO",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/emmettshear"
+    }
+  },
+  "twitter": {
+    "displayName": "Twitter",
+    "logoUrl": "https://cdn.activepieces.com/pieces/twitter.png",
+    "founder": {
+      "name": "Jack Dorsey",
+      "title": "CEO",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/jack-dorsey-29801b10b"
+    }
+  },
+  "typeform": {
+    "displayName": "Typeform",
+    "logoUrl": "https://cdn.activepieces.com/pieces/typeform.png",
+    "founder": {
+      "name": "David Okuniev",
+      "title": "Co-Founder",
+      "photo": "/founders/david-okuniev.jpg",
+      "linkedin": "http://www.linkedin.com/in/david-okuniev-a845b66"
+    }
+  },
+  "upgradechat": {
+    "displayName": "Upgrade.chat",
+    "logoUrl": "https://cdn.activepieces.com/pieces/upgradechat.png",
+    "founder": null
+  },
+  "uscreen": {
+    "displayName": "Uscreen",
+    "logoUrl": "https://cdn.activepieces.com/pieces/uscreen.png",
+    "founder": null
+  },
+  "vadoo-ai": {
+    "displayName": "Vadoo AI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/vadoo-ai.png",
+    "founder": null
+  },
+  "vbout": {
+    "displayName": "VBOUT",
+    "logoUrl": "https://cdn.activepieces.com/pieces/vbout.png",
+    "founder": {
+      "name": "Richard Castera",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "vero": {
+    "displayName": "Vero",
+    "logoUrl": "https://cdn.activepieces.com/pieces/vero.png",
+    "founder": {
+      "name": "Chris Hexton",
+      "title": "CEO and Co-Founder",
+      "photo": "/founders/chris-hexton.jpg",
+      "linkedin": "http://www.linkedin.com/in/chexton"
+    }
+  },
+  "video-ai": {
+    "displayName": "Video AI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/video-ai-piece.svg",
+    "founder": null
+  },
+  "videoask": {
+    "displayName": "VideoAsk",
+    "logoUrl": "https://cdn.activepieces.com/pieces/videoask.png",
+    "founder": {
+      "name": "David Okuniev",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "vidlab7": {
+    "displayName": "VidLab7",
+    "logoUrl": "https://cdn.activepieces.com/pieces/vidlab7.png",
+    "founder": null
+  },
+  "village": {
+    "displayName": "Village",
+    "logoUrl": "https://cdn.activepieces.com/pieces/village.png",
+    "founder": null
+  },
+  "vimeo": {
+    "displayName": "Vimeo",
+    "logoUrl": "https://cdn.activepieces.com/pieces/vimeo.png",
+    "founder": {
+      "name": "Anjali Sud",
+      "title": "CEO",
+      "photo": "/founders/anjali-sud.jpg",
+      "linkedin": "http://www.linkedin.com/in/anjalisud"
+    }
+  },
+  "vlm-run": {
+    "displayName": "VLM Run",
+    "logoUrl": "https://cdn.activepieces.com/pieces/vlm-run.png",
+    "founder": null
+  },
+  "voipstudio": {
+    "displayName": "VoIPstudio",
+    "logoUrl": "https://cdn.activepieces.com/pieces/voipstudio.png",
+    "founder": null
+  },
+  "vtex": {
+    "displayName": "VTEX",
+    "logoUrl": "https://cdn.activepieces.com/pieces/vtex.png",
+    "founder": null
+  },
+  "vtiger": {
+    "displayName": "Vtiger",
+    "logoUrl": "https://cdn.activepieces.com/pieces/vtiger.png",
+    "founder": {
+      "name": "Sridhar Vembu",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "waitwhile": {
+    "displayName": "WaitWhile",
+    "logoUrl": "https://cdn.activepieces.com/pieces/waitwhile.png",
+    "founder": null
+  },
+  "wealthbox": {
+    "displayName": "Wealthbox",
+    "logoUrl": "https://cdn.activepieces.com/pieces/wealthbox.png",
+    "founder": null
+  },
+  "webflow": {
+    "displayName": "Webflow",
+    "logoUrl": "https://cdn.activepieces.com/pieces/webflow.png",
+    "founder": {
+      "name": "Vlad Magdalin",
+      "title": "Co-founder & Chairman",
+      "photo": "/founders/vlad-magdalin.jpg",
+      "linkedin": "http://www.linkedin.com/in/vladmagdalin"
+    }
+  },
+  "webhook": {
+    "displayName": "Webhook",
+    "logoUrl": "https://cdn.activepieces.com/pieces/webhook.svg",
+    "founder": {
+      "name": "Jeff Lindsay",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "webling": {
+    "displayName": "Webling",
+    "logoUrl": "https://cdn.activepieces.com/pieces/webling.png",
+    "founder": null
+  },
+  "webscraping-ai": {
+    "displayName": "WebScraping AI",
+    "logoUrl": "https://cdn.activepieces.com/pieces/webscraping-ai.png",
+    "founder": null
+  },
+  "wedof": {
+    "displayName": "Wedof",
+    "logoUrl": "https://cdn.activepieces.com/pieces/wedof.svg",
+    "founder": null
+  },
+  "what-converts": {
+    "displayName": "WhatConverts",
+    "logoUrl": "https://cdn.activepieces.com/pieces/what-converts.png",
+    "founder": null
+  },
+  "whatsable": {
+    "displayName": "Whatsable",
+    "logoUrl": "https://cdn.activepieces.com/pieces/whatsable.png",
+    "founder": null
+  },
+  "whatsapp": {
+    "displayName": "WhatsApp Business",
+    "logoUrl": "https://cdn.activepieces.com/pieces/whatsapp.png",
+    "founder": {
+      "name": "Jan Koum",
+      "title": "",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/jkoum"
+    }
+  },
+  "wonderchat": {
+    "displayName": "Wonderchat",
+    "logoUrl": "https://cdn.activepieces.com/pieces/wonderchat.png",
+    "founder": {
+      "name": "Jiaqi Pan",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "woocommerce": {
+    "displayName": "WooCommerce",
+    "logoUrl": "https://cdn.activepieces.com/pieces/woocommerce.png",
+    "founder": {
+      "name": "Mark Forrester",
+      "title": "Designer of things. Bootstrapping entrepreneur turned backer of ventures & adventures. Proud co-founder of humans.",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "wootric": {
+    "displayName": "Wootric",
+    "logoUrl": "https://assets-production.wootric.com/assets/wootric-is-now-inmoment-250x108-85cb4900c62ff4d33200abafee7d63372d410abc5bf0cab90e80a07d4f4e5a31.png",
+    "founder": null
+  },
+  "wordpress": {
+    "displayName": "WordPress",
+    "logoUrl": "https://cdn.activepieces.com/pieces/wordpress.png",
+    "founder": {
+      "name": "Matt Mullenweg",
+      "title": "CEO",
+      "photo": "/founders/matt-mullenweg.jpg",
+      "linkedin": "http://www.linkedin.com/in/mattm"
+    }
+  },
+  "workable": {
+    "displayName": "Workable",
+    "logoUrl": "https://cdn.activepieces.com/pieces/workable.png",
+    "founder": {
+      "name": "Nikos Moraitakis",
+      "title": "CEO",
+      "photo": "/founders/nikos-moraitakis.jpg",
+      "linkedin": "http://www.linkedin.com/in/moraitakis"
+    }
+  },
+  "wrike": {
+    "displayName": "Wrike",
+    "logoUrl": "https://cdn.activepieces.com/pieces/wrike.png",
+    "founder": {
+      "name": "Andrew Filev",
+      "title": "Founder&CEO",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/filev"
+    }
+  },
+  "writesonic-bulk": {
+    "displayName": "Writesonic",
+    "logoUrl": "https://cdn.activepieces.com/pieces/writesonic-bulk.png",
+    "founder": null
+  },
+  "wufoo": {
+    "displayName": "Wufoo",
+    "logoUrl": "https://cdn.activepieces.com/pieces/wufoo.png",
+    "founder": null
+  },
+  "xero": {
+    "displayName": "Xero",
+    "logoUrl": "https://cdn.activepieces.com/pieces/xero.png",
+    "founder": {
+      "name": "Rod Drury",
+      "title": "Founder",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/roddrury"
+    }
+  },
+  "xml": {
+    "displayName": "XML",
+    "logoUrl": "https://cdn.activepieces.com/pieces/xml.png",
+    "founder": null
+  },
+  "youcanbookme": {
+    "displayName": "YouCanBookMe",
+    "logoUrl": "https://cdn.activepieces.com/pieces/youcanbookme.png",
+    "founder": null
+  },
+  "youform": {
+    "displayName": "Youform",
+    "logoUrl": "https://cdn.activepieces.com/pieces/youform.png",
+    "founder": null
+  },
+  "youtube": {
+    "displayName": "YouTube",
+    "logoUrl": "https://cdn.activepieces.com/pieces/youtube.png",
+    "founder": {
+      "name": "Chad Hurley",
+      "title": "Founder & CEO",
+      "photo": "/founders/chad-hurley.jpg",
+      "linkedin": "http://www.linkedin.com/in/chadhurley"
+    }
+  },
+  "zagomail": {
+    "displayName": "Zagomail",
+    "logoUrl": "https://cdn.activepieces.com/pieces/zagomail.png",
+    "founder": null
+  },
+  "zendesk": {
+    "displayName": "Zendesk",
+    "logoUrl": "https://cdn.activepieces.com/pieces/zendesk.png",
+    "founder": {
+      "name": "Mikkel Svane",
+      "title": "CEO daddy",
+      "photo": "/founders/mikkel-svane.jpg",
+      "linkedin": "http://www.linkedin.com/in/mikkelsvane"
+    }
+  },
+  "zendesk-sell": {
+    "displayName": "Zendesk-sell",
+    "logoUrl": "https://cdn.activepieces.com/pieces/zendesk-sell.png",
+    "founder": null
+  },
+  "zerobounce": {
+    "displayName": "ZeroBounce",
+    "logoUrl": "https://cdn.activepieces.com/pieces/zerobounce.png",
+    "founder": {
+      "name": "Liviu Tanase",
+      "title": "",
+      "photo": null,
+      "linkedin": null
+    }
+  },
+  "zoho-bookings": {
+    "displayName": "Zoho Bookings",
+    "logoUrl": "https://cdn.activepieces.com/pieces/zoho-bookings.png",
+    "founder": null
+  },
+  "zoho-books": {
+    "displayName": "Zoho Books",
+    "logoUrl": "https://cdn.activepieces.com/pieces/zoho-books.png",
+    "founder": {
+      "name": "Sridhar Vembu",
+      "title": "CEO at Zoho Corporation",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/sridhar-vembu-a58357171"
+    }
+  },
+  "zoho-campaigns": {
+    "displayName": "Zoho Campaigns",
+    "logoUrl": "https://cdn.activepieces.com/pieces/zoho-campaigns.png",
+    "founder": null
+  },
+  "zoho-crm": {
+    "displayName": "Zoho CRM",
+    "logoUrl": "https://cdn.activepieces.com/pieces/zoho-crm.png",
+    "founder": {
+      "name": "Sridhar Vembu",
+      "title": "CEO at Zoho Corporation",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/sridhar-vembu-a58357171"
+    }
+  },
+  "zoho-desk": {
+    "displayName": "Zoho Desk",
+    "logoUrl": "https://cdn.activepieces.com/pieces/zoho-desk.png",
+    "founder": null
+  },
+  "zoho-invoice": {
+    "displayName": "Zoho Invoice",
+    "logoUrl": "https://cdn.activepieces.com/pieces/zoho-invoice.png",
+    "founder": {
+      "name": "Sridhar Vembu",
+      "title": "CEO at Zoho Corporation",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/sridhar-vembu-a58357171"
+    }
+  },
+  "zoho-mail": {
+    "displayName": "Zoho Mail",
+    "logoUrl": "https://cdn.activepieces.com/pieces/zoho-mail.png",
+    "founder": {
+      "name": "Sridhar Vembu",
+      "title": "CEO at Zoho Corporation",
+      "photo": null,
+      "linkedin": "http://www.linkedin.com/in/sridhar-vembu-a58357171"
+    }
+  },
+  "zoo": {
+    "displayName": "Zoo",
+    "logoUrl": "https://cdn.activepieces.com/pieces/zoo.jpg",
+    "founder": null
+  },
+  "zoom": {
+    "displayName": "Zoom",
+    "logoUrl": "https://cdn.activepieces.com/pieces/zoom.png",
+    "founder": {
+      "name": "Eric Yuan",
+      "title": "Founder & CEO",
+      "photo": "/founders/eric-yuan.jpg",
+      "linkedin": "http://www.linkedin.com/in/ericsyuan"
+    }
+  },
+  "zuora": {
+    "displayName": "Zuora",
+    "logoUrl": "https://cdn.activepieces.com/pieces/zuora.png",
+    "founder": null
+  }
+}

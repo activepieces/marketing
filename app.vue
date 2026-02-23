@@ -1,5 +1,6 @@
 <script setup>
 import "flowbite";
+import ContactWidget from "~/components/ContactWidget.vue";
 
 useHead({
   link: [
@@ -36,6 +37,9 @@ useHead({
   titleTemplate: (titleChunk) => {
     return titleChunk ? `${titleChunk} · Activepieces` : "Activepieces";
   },
+  bodyAttrs: {
+    class: 'overscroll-none overflow-x-hidden font-sans antialiased transition-colors duration-500'
+  }
 });
 </script>
 
@@ -44,4 +48,5 @@ useHead({
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>
+  <ContactWidget />
 </template>

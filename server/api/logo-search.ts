@@ -2,7 +2,8 @@ import { defineEventHandler } from 'h3';
 
 export default defineEventHandler(async (event) => {
   const query = getQuery(event).q as string;
-  
+  const config = useRuntimeConfig();
+
   if (!query) {
     return { error: 'Query parameter is required' };
   }
@@ -10,7 +11,7 @@ export default defineEventHandler(async (event) => {
   try {
     const response = await fetch(`https://api.logo.dev/search?q=${encodeURIComponent(query)}`, {
       headers: {
-        'Authorization': 'Bearer sk_VgFSDXgyQSiLqwhcQ9r52A'
+        'Authorization': `Bearer ${config.logoDevApiKey}`
       }
     });
 
