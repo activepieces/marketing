@@ -237,12 +237,12 @@ onMounted(() => {
           class="group p-2 sm:p-3 rounded-md border border-white/10 hover:border-white/20 transition-all"
         >
           <img
-            src="/logos/formstack.svg"
-            alt="Formstack"
+            src="/logos/experience.com.svg"
+            alt="Experience.com"
             class="h-5 mb-3 logo-white opacity-80 group-hover:opacity-100 transition-all duration-300"
           />
           <p class="text-white/60 text-xs font-medium leading-relaxed">
-            Workflow Automation
+            Customer Experience
           </p>
         </div>
       </div>
