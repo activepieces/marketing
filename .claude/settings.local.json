@@ -65,7 +65,13 @@
       "Bash(find:*)",
       "WebFetch(domain:mercury.com)",
       "Bash(sips -g pixelWidth -g pixelHeight /Users/ashrafsam/Documents/ap/marketing/public/hero-new13.png)",
-      "Bash(sips -s format jpeg -s formatOptions 80 /Users/ashrafsam/Documents/ap/marketing/public/hero-new13.png --out /Users/ashrafsam/Documents/ap/marketing/public/hero-new13.jpg)"
+      "Bash(sips -s format jpeg -s formatOptions 80 /Users/ashrafsam/Documents/ap/marketing/public/hero-new13.png --out /Users/ashrafsam/Documents/ap/marketing/public/hero-new13.jpg)",
+      "Bash(sips -g all /Users/ashrafsam/Documents/ap/marketing/public/hero-new13.jpg)",
+      "Bash(sips -s format jpeg -s formatOptions 75 /Users/ashrafsam/Documents/ap/marketing/public/hero-new13.jpg --out /Users/ashrafsam/Documents/ap/marketing/public/hero-new13-opt.jpg)",
+      "Bash(sips -Z 1200 /Users/ashrafsam/Documents/ap/marketing/public/hero-new13.jpg --out /Users/ashrafsam/Documents/ap/marketing/public/hero-new13-half.jpg)",
+      "Bash(sips -Z 64 /Users/ashrafsam/Documents/ap/marketing/public/hero-new13.jpg --out /tmp/hero-tiny.jpg)",
+      "Bash(sips -Z 20 /Users/ashrafsam/Documents/ap/marketing/public/hero-new13.jpg --out /tmp/hero-tiny20.jpg)",
+      "Bash(pip3 install Pillow)"
     ]
   }
 }
