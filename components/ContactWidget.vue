@@ -58,7 +58,7 @@ onBeforeUnmount(() => {
 
 <template>
   <Transition name="widget">
-    <div v-if="shouldShow" class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40">
+    <div v-if="shouldShow" class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 min-[2200px]:right-0 min-[2200px]:left-0 min-[2200px]:mx-auto min-[2200px]:w-fit z-[9999]">
       <!-- Main Widget -->
       <div class="relative group">
         <!-- Dismiss button -->
@@ -92,23 +92,23 @@ onBeforeUnmount(() => {
             class="p-0.5 bg-gradient-to-r from-violet-500 via-fuchsia-500 to-cyan-500 rounded-full animate-gradient-border"
           >
             <div
-              class="bg-white rounded-full px-4 py-2 flex items-center gap-2"
+              class="bg-white rounded-full px-4 py-2 min-[2200px]:px-6 min-[2200px]:py-3 flex items-center gap-2 min-[2200px]:gap-3"
             >
               <!-- Activepieces logo -->
               <div class="flex-shrink-0">
                 <img
                   src="/ap-logo-black-sq-cropped.svg"
                   alt="Activepieces"
-                  class="w-6 h-6 opacity-80 group-hover:opacity-100"
+                  class="w-6 h-6 min-[2200px]:w-8 min-[2200px]:h-8 opacity-80 group-hover:opacity-100"
                 />
               </div>
 
               <!-- Text content -->
               <div class="flex flex-col">
-                <span class="text-sm font-semibold text-primary-dark"
+                <span class="text-sm min-[2200px]:text-base font-semibold text-primary-dark"
                   >See it in action</span
                 >
-                <span class="text-xs text-primary-dark/60"
+                <span class="text-xs min-[2200px]:text-sm text-primary-dark/60"
                   >Book a 30-min demo</span
                 >
               </div>
@@ -118,7 +118,7 @@ onBeforeUnmount(() => {
                 class="text-primary-dark/30 ml-2 transform transition-transform duration-300 group-hover:text-primary-dark/50"
               >
                 <svg
-                  class="w-5 h-5"
+                  class="w-5 h-5 min-[2200px]:w-6 min-[2200px]:h-6"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"

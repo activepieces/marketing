@@ -62,7 +62,10 @@
       "Bash(git -C /Users/mahdi/Desktop/code/activepieces-marketing log --name-only --diff-filter=A -1 e7f838fa)",
       "Bash(npx nuxi build:*)",
       "Bash(python3:*)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "WebFetch(domain:mercury.com)",
+      "Bash(sips -g pixelWidth -g pixelHeight /Users/ashrafsam/Documents/ap/marketing/public/hero-new13.png)",
+      "Bash(sips -s format jpeg -s formatOptions 80 /Users/ashrafsam/Documents/ap/marketing/public/hero-new13.png --out /Users/ashrafsam/Documents/ap/marketing/public/hero-new13.jpg)"
     ]
   }
 }

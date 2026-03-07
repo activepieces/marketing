@@ -29,8 +29,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <PagesIndexHero />
-  <PagesIndexCaseStudies />
+  <div class="min-h-screen flex flex-col">
+    <PagesIndexHero />
+    <PagesIndexCaseStudies class="mt-auto" />
+  </div>
   <SectionSeparator
     top-color="#1d4348"
     bottom-color="#ffffff"

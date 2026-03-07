@@ -6,7 +6,7 @@ import CookieBanner from "~/components/CookieBanner.vue";
 
 <template>
   <!-- Sticky Header -->
-  <Header :hide-github-badge="true" class="fixed top-2 z-50 w-full" />
+  <Header :hide-github-badge="true" />
   <CookieBanner />
   <slot />
   <Footer />

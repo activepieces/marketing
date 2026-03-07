@@ -35,9 +35,29 @@ const popupScale = ref(0.7);
 
 // Parallax effect for hero background - moves slower than scroll for depth effect
 const parallaxOffset = computed(() => {
-  // Parallax factor: 0.3 means the background moves at 30% of scroll speed
-  // This creates a subtle but noticeable depth effect
   return scrollY.value * 0.3;
+});
+
+// Camera zoom-out effect - cinematic pull-back as user scrolls
+const cameraScale = computed(() => {
+  const progress = Math.min(1, scrollY.value / 1200);
+  // Dramatic ease-out quart for cinematic feel
+  const eased = 1 - Math.pow(1 - progress, 4);
+  return 1.15 - 0.15 * eased;
+});
+
+// Camera vertical pan - starts looking at trees (lower), rises to reveal mountains
+const cameraPanY = computed(() => {
+  const progress = Math.min(1, scrollY.value / 1200);
+  const eased = 1 - Math.pow(1 - progress, 3);
+  // Shift from 45% (trees visible higher) to 40% (full vista)
+  return 45 - 5 * eased;
+});
+
+// Hide fixed background once scrolled past hero section
+const heroBgVisible = computed(() => {
+  if (!process.client) return true;
+  return scrollY.value < window.innerHeight * 1.5;
 });
 
 // Organization rotation and branding
@@ -563,7 +583,7 @@ const chartPath = computed(() => {
 
 // Background image switcher for experimentation
 const bgImageNumber = ref(13); // Current image number
-const currentBackground = computed(() => `hero-new${bgImageNumber.value}.png`);
+const currentBackground = computed(() => `hero-new${bgImageNumber.value}.jpg`);
 
 const nextBackground = () => {
   bgImageNumber.value += 1;
@@ -624,45 +644,53 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <section class="dark:bg-gray-900 overflow-x-hidden">
-    <div class="relative z-20 mx-auto w-full max-w-[1920px] 3xl:overflow-clip">
-      <div class="main-bg-section relative w-full max-w-full overflow-hidden">
-        <div class="absolute inset-0 overflow-hidden">
-          <div
-            class="hero-parallax-bg absolute w-full transition-opacity duration-300"
-            :style="{
-              backgroundImage: `url(/${currentBackground})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center center',
-              backgroundRepeat: 'no-repeat',
-              height: '120%',
-              top: '-10%',
-              left: 0,
-              right: 0,
-              transform: `translateY(${parallaxOffset}px)`,
-              willChange: 'transform',
-            }"
-          />
-          <!-- Gradient overlays to fade into teal -->
-          <div
-            class="absolute inset-0 h-1/2"
-            style="
-              background: linear-gradient(
-                rgba(54, 63, 152, 1) 10%,
-                rgba(54, 63, 152, 0) 80%
-              );
-            "
-          ></div>
-          <div
-            class="absolute inset-0"
-            style="
-              background: linear-gradient(
-                rgba(29, 67, 72, 0) 43%,
-                rgb(29, 67, 72) 88%
-              );
-            "
-          ></div>
-        </div>
+  <section class="dark:bg-gray-900 overflow-x-hidden flex-1 flex flex-col">
+    <!-- Fixed background - immune to browser zoom -->
+    <div
+      v-show="heroBgVisible"
+      class="fixed inset-0 overflow-hidden pointer-events-none"
+      :style="{
+        width: '100vw',
+        height: '100vh',
+        zIndex: 0,
+        transform: `scale(${cameraScale})`,
+        transformOrigin: 'center top',
+        willChange: 'transform',
+      }"
+    >
+      <div
+        class="hero-parallax-bg transition-opacity duration-300 absolute inset-0"
+        :style="{
+          backgroundImage: `url(/${currentBackground})`,
+          backgroundSize: 'cover',
+          backgroundPosition: `center ${cameraPanY}%`,
+          backgroundRepeat: 'no-repeat',
+        }"
+      ></div>
+      <!-- Gradient overlays -->
+      <div
+        class="absolute inset-0 h-1/3"
+        style="
+          background: linear-gradient(
+            rgba(54, 63, 152, 1) 0%,
+            rgba(54, 63, 152, 0) 100%
+          );
+        "
+      ></div>
+    </div>
+
+    <div class="relative z-20 w-full flex-1 flex flex-col">
+      <!-- Bottom gradient - scrolls with content, covers full hero area -->
+      <div
+        class="absolute inset-0 pointer-events-none"
+        style="
+          background: linear-gradient(
+            rgba(29, 67, 72, 0) 43%,
+            rgb(29, 67, 72) 88%
+          );
+        "
+      ></div>
+      <div class="main-bg-section relative w-full max-w-full overflow-hidden flex flex-col">
 
         <!-- Background Image Switcher Controls (hidden) -->
         <div
@@ -724,7 +752,7 @@ onBeforeUnmount(() => {
         </div>
 
         <div
-          class="text-center w-full max-w-3xl mx-auto pt-40 flex flex-col items-center gap-4"
+          class="text-center w-full max-w-3xl mx-auto pt-[15vh] pb-8 flex flex-col items-center gap-4"
         >
           <a
             :href="homepageAnnouncement.data.url"
@@ -871,9 +899,9 @@ onBeforeUnmount(() => {
           ]"
           style="animation-delay: 0.5s"
         >
-          <div class="flex justify-center mt-16">
+          <div class="flex justify-center">
             <div class="w-full max-w-full">
-              <PagesIndexCompanyLogos class="relative z-10 -mt-1 mb-16" />
+              <PagesIndexCompanyLogos class="relative z-10 -mt-1 mb-[3vh]" />
             </div>
           </div>
         </div>
@@ -881,7 +909,7 @@ onBeforeUnmount(() => {
         <!-- Dashboard Mockup Section -->
         <div
           :class="[
-            'relative z-20 mx-auto w-full max-w-5xl mb-20 will-change-auto flex justify-center overflow-visible ',
+            'relative z-20 mx-auto w-full max-w-5xl mb-[4vh] will-change-auto flex justify-center overflow-visible ',
             'hero-fade-in',
             isVisible ? 'hero-visible' : '',
           ]"

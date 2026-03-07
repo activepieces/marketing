@@ -13,6 +13,7 @@ const isLoaded = ref(false);
 const showAnnouncementBar = ref(true);
 // Header visibility based on scroll direction
 const isHeaderVisible = ref(true);
+const skipBgTransition = ref(false);
 let lastScrollY = 0;
 let ticking = false;
 
@@ -33,13 +34,10 @@ const isScrolled = computed(
 );
 const isPricingPage = computed(() => route.path === "/pricing");
 
-// Show white/transparent styling only when transparent prop is true AND not scrolled
-// On initial load, if transparent is true, start transparent (don't wait for isLoaded)
+// Show transparent styling when transparent prop is true AND near the top of the page
 const showTransparent = computed(() => {
   if (!props.transparent) return false;
-  // If not loaded yet, assume transparent (will update after mount)
   if (!isLoaded.value) return true;
-  // After loaded, check scroll position
   return !isScrolled.value;
 });
 
@@ -128,11 +126,20 @@ onMounted(() => {
     if (!ticking) {
       window.requestAnimationFrame(() => {
         const currentScrollY = window.scrollY;
-        // Hide header when scrolling down, show when scrolling up
-        if (currentScrollY > lastScrollY && currentScrollY > 80) {
+        // Hide header when scrolling down past threshold
+        if (currentScrollY > lastScrollY && currentScrollY > 50) {
           isHeaderVisible.value = false;
           bar && bar.classList.add("hide");
         } else {
+          // Skip bg color transition when header reappears to prevent flicker
+          if (!isHeaderVisible.value) {
+            skipBgTransition.value = true;
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => {
+                skipBgTransition.value = false;
+              });
+            });
+          }
           isHeaderVisible.value = true;
           bar && bar.classList.remove("hide");
         }
@@ -162,19 +169,18 @@ watch(useRoute(), () => {
 <template>
   <div class="m-0 p-0">
     <header
-      class="z-50 w-full transition-all duration-300 m-0 group/header overflow-visible fixed top-0"
+      class="z-50 w-full transition-all duration-300 m-0 group/header overflow-visible fixed top-0 px-4 pt-2"
       :class="{
         '-translate-y-full': !isHeaderVisible,
         'translate-y-0': isHeaderVisible,
       }"
     >
       <nav
-        class="mx-auto pl-6 pr-6 py-4 dark:bg-gray-800 transition-all duration-200 overflow-visible rounded-b-2xl"
+        class="mx-auto max-w-7xl pl-6 pr-6 py-4 dark:bg-gray-800 overflow-visible rounded-2xl"
         :class="{
-          'group-hover/header:bg-white': showTransparent,
-          'bg-white': (!showTransparent || isScrolled) && isHeaderVisible,
-          'bg-transparent':
-            showTransparent && (!isScrolled || !isHeaderVisible),
+          'group-hover/header:bg-white group-hover/header:shadow-lg bg-transparent': showTransparent,
+          'bg-white shadow-lg': !showTransparent,
+          'transition-all duration-200': !skipBgTransition,
         }"
       >
         <div
@@ -211,11 +217,11 @@ watch(useRoute(), () => {
             <div class="flex flex-row gap-2">
               <router-link
                 to="/sales"
-                class="px-4 py-1.5 rounded-full border border-slate-300"
+                class="px-4 py-1.5 rounded-full border transition-all duration-200"
                 :class="{
-                  'text-white group-hover/header:text-primary-dark':
+                  'text-white border-white/40 group-hover/header:text-primary-dark group-hover/header:border-slate-300 group-hover/header:hover:bg-primary-dark group-hover/header:hover:text-white group-hover/header:hover:border-primary-dark':
                     showTransparent,
-                  'text-primary-dark': !showTransparent,
+                  'text-primary-dark border-slate-300 hover:bg-primary-dark hover:text-white hover:border-primary-dark': !showTransparent,
                 }"
                 >Talk to sales</router-link
               >
