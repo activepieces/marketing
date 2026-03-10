@@ -74,7 +74,9 @@
       "Bash(pip3 install Pillow)",
       "Bash(sips -s format com.google.webp -s formatOptions 80 /Users/ashrafsam/Documents/ap/marketing/public/hero-new13.jpg --out /Users/ashrafsam/Documents/ap/marketing/public/hero-new13.webp)",
       "Bash(brew install webp)",
-      "Bash(cwebp -q 80 /Users/ashrafsam/Documents/ap/marketing/public/hero-new13.jpg -o /Users/ashrafsam/Documents/ap/marketing/public/hero-new13.webp)"
+      "Bash(cwebp -q 80 /Users/ashrafsam/Documents/ap/marketing/public/hero-new13.jpg -o /Users/ashrafsam/Documents/ap/marketing/public/hero-new13.webp)",
+      "Bash(cwebp -q 90 /Users/ashrafsam/Documents/ap/marketing/public/hero-new13-backup.jpg -o /Users/ashrafsam/Documents/ap/marketing/public/hero-new13.webp)",
+      "Bash(cwebp -q 85 /Users/ashrafsam/Documents/ap/marketing/public/hero-new13-backup.jpg -o /Users/ashrafsam/Documents/ap/marketing/public/hero-new13.webp)"
     ]
   }
 }
