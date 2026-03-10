@@ -71,7 +71,10 @@
       "Bash(sips -Z 1200 /Users/ashrafsam/Documents/ap/marketing/public/hero-new13.jpg --out /Users/ashrafsam/Documents/ap/marketing/public/hero-new13-half.jpg)",
       "Bash(sips -Z 64 /Users/ashrafsam/Documents/ap/marketing/public/hero-new13.jpg --out /tmp/hero-tiny.jpg)",
       "Bash(sips -Z 20 /Users/ashrafsam/Documents/ap/marketing/public/hero-new13.jpg --out /tmp/hero-tiny20.jpg)",
-      "Bash(pip3 install Pillow)"
+      "Bash(pip3 install Pillow)",
+      "Bash(sips -s format com.google.webp -s formatOptions 80 /Users/ashrafsam/Documents/ap/marketing/public/hero-new13.jpg --out /Users/ashrafsam/Documents/ap/marketing/public/hero-new13.webp)",
+      "Bash(brew install webp)",
+      "Bash(cwebp -q 80 /Users/ashrafsam/Documents/ap/marketing/public/hero-new13.jpg -o /Users/ashrafsam/Documents/ap/marketing/public/hero-new13.webp)"
     ]
   }
 }

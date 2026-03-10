@@ -1,4 +1,9 @@
 <script setup>
+// Preload hero image so browser fetches it as early as possible
+useHead({
+  link: [{ rel: 'preload', as: 'image', href: '/hero-new13.webp', fetchpriority: 'high' }],
+});
+
 const config = useRuntimeConfig();
 const { data: homepageAnnouncement } = await useFetch(`/api/announcement`);
 
@@ -27,7 +32,7 @@ const bgLoaded = ref(false);
 if (process.client) {
   const img = new Image();
   img.onload = () => { bgLoaded.value = true; };
-  img.src = '/hero-new13.jpg';
+  img.src = '/hero-new13.webp';
 }
 
 // Scroll-based animations - use window scroll directly for better reliability
@@ -591,7 +596,7 @@ const chartPath = computed(() => {
 
 // Background image switcher for experimentation
 const bgImageNumber = ref(13); // Current image number
-const currentBackground = computed(() => `hero-new${bgImageNumber.value}.jpg`);
+const currentBackground = computed(() => `hero-new${bgImageNumber.value}.webp`);
 
 const nextBackground = () => {
   bgImageNumber.value += 1;
@@ -787,7 +792,7 @@ onBeforeUnmount(() => {
               isVisible ? 'hero-visible' : '',
             ]"
             role="alert"
-            style="animation-delay: 0.1s"
+            style="animation-delay: 0s"
           >
             <span
               class="px-3 py-1 mr-3 text-xs text-white rounded-full bg-primary-600 min-[501px]:whitespace-nowrap max-[500px]:hidden"
@@ -823,7 +828,7 @@ onBeforeUnmount(() => {
               'hero-fade-in',
               isVisible ? 'hero-visible' : '',
             ]"
-            style="animation-delay: 0.2s"
+            style="animation-delay: 0.05s"
           >
             Give AI to every team
           </h1>
@@ -834,7 +839,7 @@ onBeforeUnmount(() => {
               'hero-fade-in',
               isVisible ? 'hero-visible' : '',
             ]"
-            style="animation-delay: 0.3s; position: relative; z-index: 100"
+            style="animation-delay: 0.1s; position: relative; z-index: 100"
           >
             <div class="w-full" style="position: relative; z-index: 100">
               <p
@@ -918,7 +923,7 @@ onBeforeUnmount(() => {
             'hero-fade-in',
             isVisible ? 'hero-visible' : '',
           ]"
-          style="animation-delay: 0.5s"
+          style="animation-delay: 0.2s"
         >
           <div class="flex justify-center">
             <div class="w-full max-w-full">
@@ -934,7 +939,7 @@ onBeforeUnmount(() => {
             'hero-fade-in',
             isVisible ? 'hero-visible' : '',
           ]"
-          style="animation-delay: 0.6s"
+          style="animation-delay: 0.25s"
         >
           <!-- Double border container -->
           <div
@@ -1945,7 +1950,7 @@ onBeforeUnmount(() => {
 /* Only animate when explicitly marked as visible */
 .hero-fade-in.hero-visible {
   visibility: visible;
-  animation: fade-in-up 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation: fade-in-up 0.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 @keyframes fade-in-up {
@@ -2281,7 +2286,7 @@ onBeforeUnmount(() => {
 /* Only animate when explicitly marked as visible */
 .hero-fade-in.hero-visible {
   visibility: visible;
-  animation: fade-in-up 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation: fade-in-up 0.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 @keyframes fade-in-up {
