@@ -116,7 +116,7 @@ const submitSalesForm = async function() {
   sendingStatus.value = 'pending'
 
   try {
-    const response = await fetch('https://cloud.activepieces.com/api/v1/webhooks/qC76SpjEoN34JERA1I5qH/sync', {
+    const response = await fetch('https://cloud.activepieces.com/api/v1/webhooks/Gq6CtfqT1DzO22D7qPiKR/sync', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
