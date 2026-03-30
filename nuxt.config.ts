@@ -9,6 +9,10 @@ export default defineNuxtConfig({
         lang: "en",
       },
       link: [
+        { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' },
+        { rel: 'icon', type: 'image/png', sizes: '192x192', href: '/logo-192.png' },
+        { rel: 'apple-touch-icon', sizes: '180x180', href: '/logo-180.png' },
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
         { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Instrument+Serif&family=Space+Grotesk:wght@400;500;600;700&display=swap' }
